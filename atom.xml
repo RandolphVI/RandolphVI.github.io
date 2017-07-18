@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-07-18T05:46:05.000Z</updated>
+  <updated>2017-07-18T05:52:43.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2017/03/13/%3CTensorflow%3E%20Use%20WeChat%20to%20Monitor%20Your%20Network/"/>
     <id>http://yoursite.com/2017/03/13/&lt;Tensorflow&gt; Use WeChat to Monitor Your Network/</id>
     <published>2017-03-13T13:46:51.000Z</published>
-    <updated>2017-07-18T05:46:05.000Z</updated>
+    <updated>2017-07-18T05:52:43.000Z</updated>
     
     <content type="html"><![CDATA[<h1 id="Use-WeChat-to-Monitor-Your-Network"><a href="#Use-WeChat-to-Monitor-Your-Network" class="headerlink" title="Use WeChat to Monitor Your Network"></a>Use WeChat to Monitor Your Network</h1><p>平时，大家自己的机器模型在训练期间（特别是深度网络），训练时间通常几小时到十几小时不等，甚至可能会花上好几天，那么在这段时间，你们又会干些什么事情呢？</p>
 <p>作为程序员，这里提供一个「有趣的」方式，用你的微信来监控你的模型在训练期间的一举一动。</p>
