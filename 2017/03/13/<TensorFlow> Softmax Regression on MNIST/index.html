@@ -77,7 +77,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Randolph, 黄威" />
 
 
 
@@ -262,6 +262,16 @@
               <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
             
             关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            站点地图
           </a>
         </li>
       
@@ -491,6 +501,9 @@
           
   <div class="comments" id="comments">
     
+      <div style="text-align:center;">
+        <button class="btn" id="load-disqus" onclick="disqus.load();">加载 Disqus 评论</button>
+      </div>
       <div id="disqus_thread">
         <noscript>
           Please enable JavaScript to view the
@@ -769,19 +782,19 @@
       <script id="dsq-count-scr" src="https://randolphvi.disqus.com/count.js" async></script>
     
 
-    
-      <script type="text/javascript">
-        var disqus_config = function () {
-          this.page.url = 'http://yoursite.com/2017/03/13/<TensorFlow> Softmax Regression on MNIST/';
-          this.page.identifier = '2017/03/13/<TensorFlow> Softmax Regression on MNIST/';
-          this.page.title = '';
-        };
-        var d = document, s = d.createElement('script');
-        s.src = 'https://randolphvi.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', '' + +new Date());
-        (d.head || d.body).appendChild(s);
-      </script>
-    
+    var disqus = {
+      load : function disqus(){
+          if(typeof DISQUS !== 'object') {
+            (function () {
+            var s = document.createElement('script'); s.async = true;
+            s.type = 'text/javascript';
+            s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+            }());
+            $('#load-disqus').remove(); ///加载后移除按钮
+          }
+      }
+    }
 
   
 
