@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="Dropout开篇明义，dropout 是指在深度学习网络的训练过程中，对于神经网络单元，按照一定的概率将其暂时从网络中丢弃。注意是暂时，对于随机梯度下降来说，由于是随机丢弃，故而每一个 mini-batch 都在训练不同的网络。 Dropout 是 CNN 中防止过拟合提高效果的一个大杀器，但对于其为何有效，却众说纷纭。在下读到两篇代表性的论文，代表两种不同的观点，特此分享给大家。 组合派参考文">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/2017/03/01/<TensorFlow> Dropout Introduction/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Dropout开篇明义，dropout 是指在深度学习网络的训练过程中，对于神经网络单元，按照一定的概率将其暂时从网络中丢弃。注意是暂时，对于随机梯度下降来说，由于是随机丢弃，故而每一个 mini-batch 都在训练不同的网络。 Dropout 是 CNN 中防止过拟合提高效果的一个大杀器，但对于其为何有效，却众说纷纭。在下读到两篇代表性的论文，代表两种不同的观点，特此分享给大家。 组合派参考文">
+<meta property="og:image" content="https://farm4.staticflickr.com/3878/33037649431_ab442383e2_o.png">
+<meta property="og:image" content="https://farm3.staticflickr.com/2588/32782576600_aefb2c6586_o.png">
+<meta property="og:image" content="https://farm4.staticflickr.com/3817/33123833046_48bf6f3dba_o.png">
+<meta property="og:image" content="https://farm3.staticflickr.com/2517/33185584305_9d146f80be_o.png">
+<meta property="og:updated_time" content="2017-03-01T11:28:39.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="Dropout开篇明义，dropout 是指在深度学习网络的训练过程中，对于神经网络单元，按照一定的概率将其暂时从网络中丢弃。注意是暂时，对于随机梯度下降来说，由于是随机丢弃，故而每一个 mini-batch 都在训练不同的网络。 Dropout 是 CNN 中防止过拟合提高效果的一个大杀器，但对于其为何有效，却众说纷纭。在下读到两篇代表性的论文，代表两种不同的观点，特此分享给大家。 组合派参考文">
+<meta name="twitter:image" content="https://farm4.staticflickr.com/3878/33037649431_ab442383e2_o.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/03/01/<TensorFlow> Dropout Introduction/"/>
+
+
+
+
+
+  <title> | Hexo</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?80985281ddae6899cfd57ad9d458b284";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/01/<TensorFlow> Dropout Introduction/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Randolph">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline"></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-01T19:28:39+08:00">
+                2017-03-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/03/01/<TensorFlow> Dropout Introduction/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/03/01/<TensorFlow> Dropout Introduction/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/03/01/<TensorFlow> Dropout Introduction/" class="leancloud_visitors" data-flag-title="">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Dropout"><a href="#Dropout" class="headerlink" title="Dropout"></a>Dropout</h1><p>开篇明义，dropout 是指在深度学习网络的训练过程中，对于神经网络单元，按照一定的概率将其暂时从网络中丢弃。注意是暂时，对于随机梯度下降来说，由于是随机丢弃，故而每一个 mini-batch 都在训练不同的网络。</p>
+<p>Dropout 是 CNN 中防止过拟合提高效果的一个大杀器，但对于其为何有效，却众说纷纭。在下读到两篇代表性的论文，代表两种不同的观点，特此分享给大家。</p>
+<h2 id="组合派"><a href="#组合派" class="headerlink" title="组合派"></a>组合派</h2><p>参考文献中第一篇中的观点，Hinton 老大爷提出来的，关于 Hinton 在深度学习界的地位我就不再赘述了，光是这地位，估计这一派的观点就是“武当少林”了。注意，派名是我自己起的，各位勿笑。</p>
+<h3 id="观点"><a href="#观点" class="headerlink" title="观点"></a>观点</h3><p>该论文从神经网络的难题出发，一步一步引出 dropout 为何有效的解释。大规模的神经网络有两个缺点：</p>
+<ul>
+<li>费时</li>
+<li>容易过拟合</li>
+</ul>
+<p>这两个缺点真是抱在深度学习大腿上的两个大包袱，一左一右，相得益彰，额不，臭气相投。过拟合是很多机器学习的通病，过拟合了，得到的模型基本就废了。而为了解决过拟合问题，一般会采用 ensemble 方法，即训练多个模型做组合，此时，费时就成为一个大问题，不仅训练起来费时，测试起来多个模型也很费时。总之，几乎形成了一个死锁。</p>
+<p>Dropout 的出现很好的可以解决这个问题，每次做完 dropout，相当于从原始的网络中找到一个更瘦的网络，如下图所示：</p>
+<p><img src="https://farm4.staticflickr.com/3878/33037649431_ab442383e2_o.png" alt=""></p>
+<p>因而，对于一个有 $N$ 个节点的神经网络，有了 dropout 后，就可以看做是 $2^n$ 个模型的集合了，但此时要训练的参数数目却是不变的，这就解脱了费时的问题。</p>
+<h3 id="动机论"><a href="#动机论" class="headerlink" title="动机论"></a>动机论</h3><p>虽然直观上看 dropout 是 ensemble 在分类性能上的一个近似，然而实际中，dropout 毕竟还是在一个神经网络上进行的，只训练出了一套模型参数。那么他到底是因何而有效呢？这就要从动机上进行分析了。论文中作者对dropout 的动机做了一个十分精彩的类比：</p>
+<p>在自然界中，在中大型动物中，一般是有性繁殖，有性繁殖是指后代的基因从父母两方各继承一半。但是从直观上看，似乎无性繁殖更加合理，因为无性繁殖可以保留大段大段的优秀基因。而有性繁殖则将基因随机拆了又拆，破坏了大段基因的联合适应性。</p>
+<p>但是自然选择中毕竟没有选择无性繁殖，而选择了有性繁殖，须知物竞天择，适者生存。我们先做一个假设，那就是基因的力量在于混合的能力而非单个基因的能力。不管是有性繁殖还是无性繁殖都得遵循这个假设。为了证明有性繁殖的强大，我们先看一个概率学小知识。</p>
+<p>比如要搞一次恐怖袭击，两种方式： </p>
+<ul>
+<li>集中 50 人，让这 50 个人准确分工，搞一次大爆破。 </li>
+<li>将 50 人分成10组，每组 5 人，分头行事，去随便什么地方搞点动作，成功一次就算。</li>
+</ul>
+<p>哪一个成功的概率比较大？ 显然是后者。因为将一个大团队作战变成了游击战。</p>
+<p>那么，类比过来，有性繁殖的方式不仅仅可以将优秀的基因传下来，还可以降低基因之间的联合适应性，使得复杂的大段大段基因联合适应性变成比较小的一个一个小段基因的联合适应性。</p>
+<p>Dropout 也能达到同样的效果，它强迫一个神经单元，和随机挑选出来的其他神经单元共同工作，达到好的效果。消除减弱了神经元节点间的联合适应性，增强了泛化能力。</p>
+<p>个人补充一点：那就是植物和微生物大多采用无性繁殖，因为他们的生存环境的变化很小，因而不需要太强的适应新环境的能力，所以保留大段大段优秀的基因适应当前环境就足够了。而高等动物却不一样，要准备随时适应新的环境，因而将基因之间的联合适应性变成一个一个小的，更能提高生存的概率。</p>
+<h3 id="Dropout带来的模型的变化"><a href="#Dropout带来的模型的变化" class="headerlink" title="Dropout带来的模型的变化"></a>Dropout带来的模型的变化</h3><p>而为了达到 ensemble 的特性，有了 dropout 后，神经网络的训练和预测就会发生一些变化。</p>
+<ul>
+<li><p>训练层面</p>
+<p>无可避免的，训练网络的每个单元要添加一道概率流程。 </p>
+<p><img src="https://farm3.staticflickr.com/2588/32782576600_aefb2c6586_o.png" alt=""></p>
+<p>对应的公式变化如下如下：</p>
+<ul>
+<li><p>没有 dropout 的神经网络<br>$$<br>\begin{align}<br>z<em>{i}^{(l+1)} &amp; = w</em>{i}^{(l+1)}y^{l} + b<em>{i}^{(l+1)} \cr<br>y</em>{i}^{(l+1)} &amp; = f(z_{i}^{(l+1)})<br>\end{align}<br>$$<br>​</p>
+</li>
+<li><p>有 dropout 的神经网络<br>$$<br>\begin{align}<br>r<em>{i}^{(l)} &amp; \sim Bernoulli(p) \cr<br>\tilde{y}^{(l)} &amp; = r^{(l)}*y^{(l)}\cr<br>z</em>{i}^{(l+1)} &amp; = w<em>{i}^{(l+1)} \tilde{y}^{l} + b</em>{i}^{(l+1)} \cr<br>y<em>{i}^{(l+1)} &amp; = f(z</em>{i}^{(l+1)})<br>\end{align}<br>$$<br>​</p>
+</li>
+</ul>
+</li>
+<li><p>测试层面</p>
+<p>预测的时候，每一个单元的参数要预乘以 $p$。</p>
+<p><img src="https://farm4.staticflickr.com/3817/33123833046_48bf6f3dba_o.png" alt=""> </p>
+</li>
+</ul>
+<h3 id="论文中的其他技术点"><a href="#论文中的其他技术点" class="headerlink" title="论文中的其他技术点"></a>论文中的其他技术点</h3><ul>
+<li><p>防止过拟合的方法：</p>
+<ul>
+<li>提前终止（当验证集上的效果变差的时候）</li>
+<li>L1 和 L2 正则化加权</li>
+<li>soft weight sharing</li>
+<li>dropout</li>
+</ul>
+</li>
+<li><p>dropout率的选择</p>
+<ul>
+<li>经过交叉验证，隐含节点 dropout 率等于 0.5 的时候效果最好，原因是 0.5 的时候 dropout 随机生成的网络结构最多。</li>
+<li>Dropout 也可以被用作一种添加噪声的方法，直接对 input 进行操作。输入层设为更接近 1 的数。使得输入变化不会太大（0.8）。</li>
+</ul>
+</li>
+<li><p>训练过程 </p>
+<ul>
+<li>对参数 w 的训练进行球形限制(max-normalization)，对 dropout 的训练非常有用。</li>
+<li>球形半径 c 是一个需要调整的参数。可以使用验证集进行参数调优。</li>
+<li>Dropout 自己虽然也很牛，但是 dropout、max-normalization、large decaying learning rates and high momentum 组合起来效果更好，比如 max-norm regularization 就可以防止大的 learning rate 导致的参数 blow up。</li>
+<li>使用 pretraining 方法也可以帮助 dropout 训练参数，在使用 dropout 时，要将所有参数都乘以 $\frac{1}{p}$。</li>
+</ul>
+</li>
+<li><p>部分实验结论</p>
+<p>该论文的实验部分很丰富，有大量的评测数据。</p>
+<ul>
+<li><p>maxout 神经网络中得另一种方法，Cifar-10上超越 dropout</p>
+</li>
+<li><p>文本分类上，dropout 效果提升有限，分析原因可能是 Reuters-RCV1 数据量足够大，过拟合并不是模型的主要问题</p>
+</li>
+<li><p>dropout 与其他 standerd regularizers 的对比 </p>
+</li>
+<li><ul>
+<li>L2 weight decay</li>
+<li>lasso</li>
+<li>KL-sparsity</li>
+<li>max-norm regularization</li>
+<li>dropout</li>
+</ul>
+</li>
+<li><p>特征学习 </p>
+<ul>
+<li>标准神经网络，节点之间的相关性使得他们可以合作去 fix 其他节点中得噪声，但这些合作并不能在 unseen data 上泛化，于是，过拟合，dropout 破坏了这种相关性。在 autoencoder 上，有 dropout 的算法更能学习有意义的特征（不过只能从直观上，不能量化）。</li>
+<li>产生的向量具有稀疏性。</li>
+<li>保持隐含节点数目不变，dropout 率变化；保持激活的隐节点数目不变，隐节点数目变化。</li>
+</ul>
+</li>
+<li><p>数据量小的时候，dropout 效果不好，数据量大了，dropout 效果好</p>
+</li>
+<li><p>模型均值预测</p>
+<ul>
+<li>使用 weight-scaling 来做预测的均值化</li>
+<li>使用 mente-carlo 方法来做预测。即对每个样本根据 dropout 率先 sample 出来 k 个 net，然后做预测，k 越大，效果越好。</li>
+</ul>
+</li>
+<li><p>Multiplicative Gaussian Noise </p>
+<p>使用高斯分布的 dropou t而不是伯努利模型 dropout</p>
+</li>
+<li><p>dropout 的缺点就在于训练时间是没有 dropout 网络的 2-3 倍。</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>&gt;</p>
+<blockquote>
+<p>进一步需要了解的知识点</p>
+<ul>
+<li>dropout RBM</li>
+<li>Marginalizing Dropout </li>
+<li>具体来说就是将随机化的 dropout 变为确定性的，比如对于 Logistic 回归，其 dropout 相当于加了一个正则化项</li>
+<li>Bayesian neural network 对稀疏数据特别有用，比如 medical diagnosis, genetics, drug discovery and other computational biology applications</li>
+</ul>
+</blockquote>
+<h2 id="噪声派"><a href="#噪声派" class="headerlink" title="噪声派"></a>噪声派</h2><p>参考文献中第二篇论文中得观点，也很强有力。</p>
+<h3 id="观点-1"><a href="#观点-1" class="headerlink" title="观点"></a>观点</h3><p>观点十分明确，就是对于每一个 dropout 后的网络，进行训练时，相当于做了 Data Augmentation，因为，总可以找到一个样本，使得在原始的网络上也能达到 dropout 单元后的效果。 比如，对于某一层，dropout 一些单元后，形成的结果是<code>(1.5,0,2.5,0,1,2,0)</code>，其中 0 是被 drop 的单元，那么总能找到一个样本，使得结果也是如此。这样，每一次 dropout 其实都相当于增加了样本。</p>
+<h3 id="稀疏性"><a href="#稀疏性" class="headerlink" title="稀疏性"></a>稀疏性</h3><h4 id="知识点A"><a href="#知识点A" class="headerlink" title="知识点A"></a>知识点A</h4><p>首先，先了解一个知识点：</p>
+<blockquote>
+<p>When the data points belonging to a particular class are distributed along a linear manifold, or sub-space, of the input space, it is enough to learn a single set of features which can span the entire manifold. But when the data is distributed along a highly non-linear and discontinuous manifold, the best way to represent such a distribution is to learn features which can explicitly represent small local regions of the input space, effectively “tiling” the space to define non-linear decision boundaries.</p>
+</blockquote>
+<p>大致含义就是： </p>
+<p>在线性空间中，学习一个整个空间的特征集合是足够的，但是当数据分布在非线性不连续的空间中得时候，则学习局部空间的特征集合会比较好。</p>
+<h4 id="知识点B"><a href="#知识点B" class="headerlink" title="知识点B"></a>知识点B</h4><p>假设有一堆数据，这些数据由 $M$ 个不同的非连续性簇表示，给定 $K$ 个数据。那么一个有效的特征表示是将输入的每个簇映射为特征以后，簇之间的重叠度最低。使用 $A$ 来表示每个簇的特征表示中激活的维度集合。重叠度是指两个不同的簇的 $A<em>{i}$ 和 $A</em>{j}$ 之间的 Jaccard 相似度最小，那么：</p>
+<ul>
+<li>当 $K$ 足够大时，即便 $A$ 也很大，也可以学习到最小的重叠度</li>
+<li>当 $K$ 小，$M$ 大时，学习到最小的重叠度的方法就是减小 $A$ 的大小，也就是稀疏性</li>
+</ul>
+<p>上述的解释可能是有点太专业化，比较拗口。主旨意思是这样，我们要把不同的类别区分出来，就要是学习到的特征区分度比较大，在数据量足够的情况下不会发生过拟合的行为，不用担心。但当数据量小的时候，可以通过稀疏性，来增加特征的区分度。</p>
+<blockquote>
+<p>因而有意思的假设来了，使用了 dropout 后，相当于得到更多的局部簇，同等的数据下，簇变多了，因而为了使区分性变大，就使得稀疏性变大。</p>
+</blockquote>
+<p>为了验证这个数据，论文还做了一个实验，如下图：</p>
+<p><img src="https://farm3.staticflickr.com/2517/33185584305_9d146f80be_o.png" alt=""></p>
+<p>该实验使用了一个模拟数据，即在一个圆上，有 15000 个点，将这个圆分为若干个弧，在一个弧上的属于同一个类，一共 10 个类，即不同的弧也可能属于同一个类。改变弧的大小，就可以使属于同一类的弧变多。</p>
+<p>实验结论就是当弧长变大时，簇数目变少，稀疏度变低。与假设相符合。</p>
+<p>个人观点：该假设不仅仅解释了 dropout 何以导致稀疏性，还解释了 dropout 因为使局部簇的更加显露出来，而根据知识点 A 可得，使局部簇显露出来是 dropout 能防止过拟合的原因，而稀疏性只是其外在表现。</p>
+<h3 id="论文中的其他技术知识点"><a href="#论文中的其他技术知识点" class="headerlink" title="论文中的其他技术知识点"></a>论文中的其他技术知识点</h3><ul>
+<li><p>将 dropout 映射回得样本训练一个完整的网络，可以达到 dropout 的效果。</p>
+</li>
+<li><p>Dropout 由固定值变为一个区间，可以提高效果。</p>
+</li>
+<li><p>将 dropout 后的表示映射回输入空间时，并不能找到一个样本 x* 使得所有层都能满足 dropout 的结果，但可以为每一层都找到一个样本，这样，对于每一个 dropout，都可以找到一组样本可以模拟结果。</p>
+</li>
+<li><p>dropout对应的还有一个dropConnect，公式如下：</p>
+<ul>
+<li><p>dropout<br>$$<br>h<em>{n} = \overrightarrow{w</em>{n}}^{T}(\overrightarrow{r} \odot \overrightarrow{x}) + b_{n}<br>$$<br>​</p>
+</li>
+<li><p>dropConnect<br>$$<br>h<em>{n} = (\overrightarrow{r</em>{n}} \odot \overrightarrow{w<em>{n}})^{T}\overrightarrow{x} + b</em>{n}<br>$$<br>​</p>
+</li>
+</ul>
+</li>
+<li><p>试验中，纯二值化的特征的效果也非常好，说明了稀疏表示在进行空间分区的假设是成立的，一个特征是否被激活表示该样本是否在一个子空间中。</p>
+</li>
+</ul>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p>[1]. Srivastava N, Hinton G, Krizhevsky A, et al. Dropout: A simple way to prevent neural networks from overfitting[J]. The Journal of Machine Learning Research, 2014, 15(1): 1929-1958.</p>
+<p>[2]. Dropout as data augmentation. <a href="http://arxiv.org/abs/1506.08700" target="_blank" rel="external">http://arxiv.org/abs/1506.08700</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/12/13/<Machine Learning> Introduction/" rel="next" title="">
+                <i class="fa fa-chevron-left"></i> 
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/03/03/<Machine Learning> Factorization Machines/" rel="prev" title="">
+                 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="Randolph" />
+          <p class="site-author-name" itemprop="name">Randolph</p>
+           
+              <p class="site-description motion-element" itemprop="description">世之落拓无成者 皆自谓不痴者也</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Dropout"><span class="nav-number">1.</span> <span class="nav-text">Dropout</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#组合派"><span class="nav-number">1.1.</span> <span class="nav-text">组合派</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#观点"><span class="nav-number">1.1.1.</span> <span class="nav-text">观点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#动机论"><span class="nav-number">1.1.2.</span> <span class="nav-text">动机论</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Dropout带来的模型的变化"><span class="nav-number">1.1.3.</span> <span class="nav-text">Dropout带来的模型的变化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#论文中的其他技术点"><span class="nav-number">1.1.4.</span> <span class="nav-text">论文中的其他技术点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#噪声派"><span class="nav-number">1.2.</span> <span class="nav-text">噪声派</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#观点-1"><span class="nav-number">1.2.1.</span> <span class="nav-text">观点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#稀疏性"><span class="nav-number">1.2.2.</span> <span class="nav-text">稀疏性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#知识点A"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">知识点A</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#知识点B"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">知识点B</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#论文中的其他技术知识点"><span class="nav-number">1.2.3.</span> <span class="nav-text">论文中的其他技术知识点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考文献"><span class="nav-number">1.3.</span> <span class="nav-text">参考文献</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Randolph</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://randolphvi.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://yoursite.com/2017/03/01/<TensorFlow> Dropout Introduction/';
+          this.page.identifier = '2017/03/01/<TensorFlow> Dropout Introduction/';
+          this.page.title = '';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://randolphvi.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("rlX1ugcCzQRlB8ljks0eiIKp-gzGzoHsz", "kpFrsFctrAimlBvhHvlgWnhV");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+
+  
+
+  
+
+</body>
+</html>
