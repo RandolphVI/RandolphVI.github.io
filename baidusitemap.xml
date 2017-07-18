@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+
+    
+  <url>
+    <loc>http://yoursite.com/2017/03/13/%3CTensorflow%3E%20Use%20WeChat%20to%20Monitor%20Your%20Network/</loc>
+    <lastmod>2017-07-18T06:00:56.000Z</lastmod>
+    <data>
+        <display>
+        <title>「TensorFlow」 Use WeChat to Monitor Your Network</title>
+        <pubTime>2017-03-13T13:46:51.000Z</pubTime>
+        
+        <tag>TensorFlow</tag>
+         
+        <tag>WeChat</tag>
+         
+         
+           
+             
+              <breadCrumb title="TensorFlow" url="http://yoursite.com/categories/TensorFlow/"/>
+          
+             
+              <breadCrumb title="WeChat" url="http://yoursite.com/categories/TensorFlow/WeChat/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+    
+    
+    
+  <url>
+    <loc>http://yoursite.com/2017/03/13/%3CTensorFlow%3E%20CNN%20Introduction/</loc>
+    <lastmod>2017-03-13T09:33:47.000Z</lastmod>
+    <data>
+        <display>
+        <title></title>
+        <pubTime>2017-03-13T09:33:47.000Z</pubTime>
+        
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2017/03/13/%3CTensorFlow%3E%20Softmax%20Regression%20on%20MNIST/</loc>
+    <lastmod>2017-03-13T09:28:16.000Z</lastmod>
+    <data>
+        <display>
+        <title></title>
+        <pubTime>2017-03-13T09:28:16.000Z</pubTime>
+        
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2017/03/01/%3CTensorFlow%3E%20Dropout%20Introduction/</loc>
+    <lastmod>2017-03-01T11:28:39.000Z</lastmod>
+    <data>
+        <display>
+        <title></title>
+        <pubTime>2017-03-01T11:28:39.000Z</pubTime>
+        
+         
+           
+        </display>
+    </data>
+    </url>
+
+</urlset>
