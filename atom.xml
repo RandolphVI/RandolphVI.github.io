@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://randolph.pro/"/>
-  <updated>2017-07-19T09:39:09.000Z</updated>
+  <updated>2017-07-19T10:09:23.000Z</updated>
   <id>http://randolph.pro/</id>
   
   <author>
@@ -20,10 +20,11 @@
     <link href="http://randolph.pro/2017/03/13/%3CTensorflow%3E%20Use%20WeChat%20to%20Monitor%20Your%20Network/"/>
     <id>http://randolph.pro/2017/03/13/&lt;Tensorflow&gt; Use WeChat to Monitor Your Network/</id>
     <published>2017-03-13T13:46:51.000Z</published>
-    <updated>2017-07-19T09:39:09.000Z</updated>
+    <updated>2017-07-19T10:09:23.000Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="Use-WeChat-to-Monitor-Your-Network"><a href="#Use-WeChat-to-Monitor-Your-Network" class="headerlink" title="Use WeChat to Monitor Your Network"></a>Use WeChat to Monitor Your Network</h1><p>平时，大家自己的机器模型在训练期间（特别是深度网络），训练时间通常几小时到十几小时不等，甚至可能会花上好几天，那么在这段时间，你们又会干些什么事情呢？</p>
+    <content type="html"><![CDATA[<p>平时，大家自己的机器模型在训练期间（特别是深度网络），训练时间通常几小时到十几小时不等，甚至可能会花上好几天，那么在这段时间，你们又会干些什么事情呢？</p>
 <p>作为程序员，这里提供一个「有趣的」方式，用你的微信来监控你的模型在训练期间的一举一动。</p>
+<a id="more"></a>
 <p>大概的效果是：</p>
 <p><img src="https://farm4.staticflickr.com/3767/32574547714_59711d3f0b_o.jpg" alt=""></p>
 <p>程序用到的主角是 Python 中的微信个人号接口 <strong>itchat</strong>。<a href="https://itchat.readthedocs.io/zh/latest/" target="_blank" rel="external">What’s itchat?</a> （itchat 的介绍及安装过程）</p>
@@ -65,7 +66,8 @@
     
     <summary type="html">
     
-      &lt;h1 id=&quot;Use-WeChat-to-Monitor-Your-Network&quot;&gt;&lt;a href=&quot;#Use-WeChat-to-Monitor-Your-Network&quot; class=&quot;headerlink&quot; title=&quot;Use WeChat to Monitor Yo
+      &lt;p&gt;平时，大家自己的机器模型在训练期间（特别是深度网络），训练时间通常几小时到十几小时不等，甚至可能会花上好几天，那么在这段时间，你们又会干些什么事情呢？&lt;/p&gt;
+&lt;p&gt;作为程序员，这里提供一个「有趣的」方式，用你的微信来监控你的模型在训练期间的一举一动。&lt;/p&gt;
     
     </summary>
     
@@ -79,44 +81,6 @@
       <category term="WeChat" scheme="http://randolph.pro/tags/WeChat/"/>
     
       <category term="Python" scheme="http://randolph.pro/tags/Python/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>「Programming Computer Vision with Python」 Other-PIL</title>
-    <link href="http://randolph.pro/2016/12/13/Other%20PIL/"/>
-    <id>http://randolph.pro/2016/12/13/Other PIL/</id>
-    <published>2016-12-13T14:57:23.000Z</published>
-    <updated>2017-07-19T09:41:05.000Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="Programming-Computer-Vision-with-Python」"><a href="#Programming-Computer-Vision-with-Python」" class="headerlink" title="Programming Computer Vision with Python」"></a>Programming Computer Vision with Python」</h1><ul>
-<li>Other - PIL</li>
-</ul>
-<a id="more"></a>
-<h2 id="Mac上的PIL安装方法"><a href="#Mac上的PIL安装方法" class="headerlink" title="Mac上的PIL安装方法"></a>Mac上的PIL安装方法</h2><p>首先肯定是直接尝试pip安装PIL:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo pip install PIL</div></pre></td></tr></table></figure></p>
-<p>得到的错误信息：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Could not find a version that satisfies the requirement PIL (from versions: )</div><div class="line">No matching distribution found for PIL</div></pre></td></tr></table></figure></p>
-<p>直接去官网下载 <a href="http://www.pythonware.com/products/pil/" target="_blank" rel="external">the link</a> </p>
-<p>解压下载的压缩包之后，命令行cd到该文件夹下，然后：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ python setup.py install</div></pre></td></tr></table></figure></p>
-<p>得到的错误信息为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">_imagingft.c:73:10: fatal error: &apos;freetype/fterrors.h&apos; file not found</div><div class="line">include &lt;freetype/fterrors.h&gt;</div><div class="line">		&apos;&apos;  ^</div><div class="line">1 error generated.</div><div class="line">error: command &apos;/usr/bin/clang&apos; failed with exit status 1</div></pre></td></tr></table></figure></p>
-<p>意思是freetype/fterrors.h这个文件不存在，上网寻找解决方法。</p>
-<p>从Finder进入到目录 usr/local/include下，发现存在文件夹freetype2，但是不存在freetype，而在freetype2文件夹中存在fterrors.h文件，所以网上提出的解决方案为创建一个软连接：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ ln -s /usr/local/include/freetype2 /usr/local/include/freetype</div></pre></td></tr></table></figure></p>
-<p>之后重新命令行执行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ python setup.py install</div></pre></td></tr></table></figure></p>
-<p>安装完成之后，检验PIL是否可用：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ python</div><div class="line">&gt;&gt;&gt; import PIL</div></pre></td></tr></table></figure></p>
-<p>如果没有报错，则说明PIL安装成功 </p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;Programming-Computer-Vision-with-Python」&quot;&gt;&lt;a href=&quot;#Programming-Computer-Vision-with-Python」&quot; class=&quot;headerlink&quot; title=&quot;Programming Computer Vision with Python」&quot;&gt;&lt;/a&gt;Programming Computer Vision with Python」&lt;/h1&gt;&lt;ul&gt;
-&lt;li&gt;Other - PIL&lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-    
-      <category term="Python" scheme="http://randolph.pro/tags/Python/"/>
-    
-      <category term="Computer Vision" scheme="http://randolph.pro/tags/Computer-Vision/"/>
     
   </entry>
   

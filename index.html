@@ -452,7 +452,7 @@
                   <i class="fa fa-file-word-o"></i>
                 </span>
                 <span title="Words count in article">
-                  1,802
+                  1,796
                 </span>
                 <span> words </span>
                 
@@ -487,211 +487,11 @@
 
       
         
-          
-            <h1 id="Use-WeChat-to-Monitor-Your-Network"><a href="#Use-WeChat-to-Monitor-Your-Network" class="headerlink" title="Use WeChat to Monitor Your Network"></a>Use WeChat to Monitor Your Network</h1><p>平时，大家自己的机器模型在训练期间（特别是深度网络），训练时间通常几小时到十几小时不等，甚至可能会花上好几天，那么在这段时间，你们又会干些什么事情呢？</p>
+          <p>平时，大家自己的机器模型在训练期间（特别是深度网络），训练时间通常几小时到十几小时不等，甚至可能会花上好几天，那么在这段时间，你们又会干些什么事情呢？</p>
 <p>作为程序员，这里提供一个「有趣的」方式，用你的微信来监控你的模型在训练期间的一举一动。</p>
-<p>大概的效果是：</p>
-<p><img src="https://farm4.staticflickr.com/3767/32574547714_59711d3f0b_o.jpg" alt=""></p>
-<p>程序用到的主角是 Python 中的微信个人号接口 <strong>itchat</strong>。<a href="https://itchat.readthedocs.io/zh/latest/" target="_blank" rel="external">What’s itchat?</a> （itchat 的介绍及安装过程）</p>
-<p>这次，我们要监控的模型是先前提到过的 <a href="http://www.jianshu.com/p/b5caf4d5ce3e" target="_blank" rel="external">基于 MNIST 手写体数据集的「CNN」模型</a>。</p>
-<p>注意：</p>
-<ol>
-<li>文章要求读者事先下载安装好 itchat。</li>
-<li>文章不会详细介绍 TensorFlow 以及 Tensorboard 的知识。</li>
-</ol>
-<h2 id="Environment"><a href="#Environment" class="headerlink" title="Environment"></a>Environment</h2><p><strong>OS: macOS Sierra 10.12.x</strong></p>
-<p><strong>Python Version: 3.4.x</strong></p>
-<p><strong>TensorFlow: 1.0</strong></p>
-<p><strong>itchat: 1.2.3</strong></p>
-<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><ul>
-<li>Use WeChat to Monitor Your Network（tensorboard 绘图）</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div><div class="line">179</div><div class="line">180</div><div class="line">181</div><div class="line">182</div><div class="line">183</div><div class="line">184</div><div class="line">185</div><div class="line">186</div><div class="line">187</div><div class="line">188</div><div class="line">189</div><div class="line">190</div><div class="line">191</div><div class="line">192</div><div class="line">193</div><div class="line">194</div><div class="line">195</div><div class="line">196</div><div class="line">197</div><div class="line">198</div><div class="line">199</div><div class="line">200</div><div class="line">201</div><div class="line">202</div><div class="line">203</div><div class="line">204</div><div class="line">205</div><div class="line">206</div><div class="line">207</div><div class="line">208</div><div class="line">209</div><div class="line">210</div><div class="line">211</div><div class="line">212</div><div class="line">213</div><div class="line">214</div><div class="line">215</div><div class="line">216</div><div class="line">217</div><div class="line">218</div><div class="line">219</div><div class="line">220</div><div class="line">221</div><div class="line">222</div><div class="line">223</div><div class="line">224</div><div class="line">225</div><div class="line">226</div><div class="line">227</div><div class="line">228</div><div class="line">229</div><div class="line">230</div><div class="line">231</div><div class="line">232</div><div class="line">233</div><div class="line">234</div><div class="line">235</div><div class="line">236</div><div class="line">237</div><div class="line">238</div><div class="line">239</div><div class="line">240</div><div class="line">241</div><div class="line">242</div><div class="line">243</div><div class="line">244</div><div class="line">245</div><div class="line">246</div><div class="line">247</div><div class="line">248</div><div class="line">249</div><div class="line">250</div><div class="line">251</div><div class="line">252</div><div class="line">253</div><div class="line">254</div><div class="line">255</div><div class="line">256</div><div class="line">257</div><div class="line">258</div><div class="line">259</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 基于 MNIST 数据集 的 「CNN」（tensorboard 绘图）</span></div><div class="line"><span class="keyword">from</span> tensorflow.examples.tutorials.mnist <span class="keyword">import</span> input_data</div><div class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"><span class="keyword">import</span> scipy</div><div class="line"></div><div class="line"><span class="comment"># Import itchat &amp; threading</span></div><div class="line"><span class="keyword">import</span> itchat</div><div class="line"><span class="keyword">import</span> threading</div><div class="line"></div><div class="line"><span class="comment"># Create a running status flag</span></div><div class="line">lock = threading.Lock()</div><div class="line">running = <span class="keyword">False</span></div><div class="line"></div><div class="line"><span class="comment"># Parameters</span></div><div class="line">learning_rate = <span class="number">0.001</span></div><div class="line">training_iters = <span class="number">200000</span></div><div class="line">batch_size = <span class="number">128</span></div><div class="line">display_step = <span class="number">10</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">weight_variable</span><span class="params">(shape)</span>:</span></div><div class="line">	initial = tf.truncated_normal(shape, stddev = <span class="number">0.1</span>)</div><div class="line">	<span class="keyword">return</span> tf.Variable(initial)</div><div class="line">	</div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">bias_variable</span><span class="params">(shape)</span>:</span></div><div class="line">	initial = tf.constant(<span class="number">0.1</span>, shape = shape)</div><div class="line">	<span class="keyword">return</span> tf.Variable(initial)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">conv2d</span><span class="params">(x, W, strides=<span class="number">1</span>)</span>:</span></div><div class="line">	<span class="keyword">return</span> tf.nn.conv2d(x, W, strides=[<span class="number">1</span>, strides, strides, <span class="number">1</span>], padding=<span class="string">'SAME'</span>)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">max_pool_2x2</span><span class="params">(x, k=<span class="number">2</span>)</span>:</span></div><div class="line">	<span class="keyword">return</span> tf.nn.max_pool(x, ksize=[<span class="number">1</span>, k, k, <span class="number">1</span>], strides=[<span class="number">1</span>, k, k, <span class="number">1</span>], padding=<span class="string">'SAME'</span>)</div><div class="line">	</div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">variable_summaries</span><span class="params">(var)</span>:</span></div><div class="line">	<span class="string">"""Attach a lot of summaries to a Tensor (for TensorBoard visualization)."""</span></div><div class="line">	<span class="keyword">with</span> tf.name_scope(<span class="string">'summaries'</span>):</div><div class="line">		mean = tf.reduce_mean(var)</div><div class="line">		tf.summary.scalar(<span class="string">'mean'</span>, mean)</div><div class="line">		<span class="keyword">with</span> tf.name_scope(<span class="string">'stddev'</span>):</div><div class="line">			stddev = tf.sqrt(tf.reduce_mean(tf.square(var - mean)))</div><div class="line">		tf.summary.scalar(<span class="string">'stddev'</span>, stddev)</div><div class="line">		tf.summary.scalar(<span class="string">'max'</span>, tf.reduce_max(var))</div><div class="line">		tf.summary.scalar(<span class="string">'min'</span>, tf.reduce_min(var))</div><div class="line">		tf.summary.histogram(<span class="string">'histogram'</span>, var)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">add_layer</span><span class="params">(input_tensor, weights_shape, biases_shape, layer_name, act = tf.nn.relu, flag = <span class="number">1</span>)</span>:</span></div><div class="line">	<span class="string">"""Reusable code for making a simple neural net layer.</span></div><div class="line"></div><div class="line">	It does a matrix multiply, bias add, and then uses relu to nonlinearize.</div><div class="line">	It also sets up name scoping so that the resultant graph is easy to read,</div><div class="line">	and adds a number of summary ops.</div><div class="line">	"""</div><div class="line">	<span class="keyword">with</span> tf.name_scope(layer_name):</div><div class="line">		<span class="keyword">with</span> tf.name_scope(<span class="string">'weights'</span>):</div><div class="line">			weights = weight_variable(weights_shape)</div><div class="line">			variable_summaries(weights)</div><div class="line">		<span class="keyword">with</span> tf.name_scope(<span class="string">'biases'</span>):</div><div class="line">			biases = bias_variable(biases_shape)</div><div class="line">			variable_summaries(biases)</div><div class="line">		<span class="keyword">with</span> tf.name_scope(<span class="string">'Wx_plus_b'</span>):</div><div class="line">			<span class="keyword">if</span> flag == <span class="number">1</span>:</div><div class="line">				preactivate = tf.add(conv2d(input_tensor, weights), biases)</div><div class="line">			<span class="keyword">else</span>:</div><div class="line">				preactivate = tf.add(tf.matmul(input_tensor, weights), biases)</div><div class="line">			tf.summary.histogram(<span class="string">'pre_activations'</span>, preactivate)</div><div class="line">		<span class="keyword">if</span> act == <span class="keyword">None</span>:</div><div class="line">			outputs = preactivate</div><div class="line">		<span class="keyword">else</span>:</div><div class="line">			outputs = act(preactivate, name = <span class="string">'activation'</span>)</div><div class="line">			tf.summary.histogram(<span class="string">'activation'</span>, outputs)</div><div class="line">		<span class="keyword">return</span> outputs</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">nn_train</span><span class="params">(wechat_name, param)</span>:</span></div><div class="line">	<span class="keyword">global</span> lock, running</div><div class="line">	<span class="comment"># Lock</span></div><div class="line">	<span class="keyword">with</span> lock:</div><div class="line">		running = <span class="keyword">True</span>	</div><div class="line">	<span class="comment"># 参数</span></div><div class="line">	learning_rate, training_iters, batch_size, display_step = param</div><div class="line">	</div><div class="line">	<span class="comment"># Import data</span></div><div class="line">	mnist_data_path = <span class="string">'MNIST_data/'</span></div><div class="line">	mnist = input_data.read_data_sets(mnist_data_path, one_hot = <span class="keyword">True</span>)</div><div class="line">	</div><div class="line">	<span class="comment"># Network Parameters</span></div><div class="line">	n_input = <span class="number">28</span>*<span class="number">28</span> <span class="comment"># MNIST data input (img shape: 28*28)</span></div><div class="line">	n_classes = <span class="number">10</span> <span class="comment"># MNIST total classes (0-9 digits)</span></div><div class="line">	dropout = <span class="number">0.75</span> <span class="comment"># Dropout, probability to keep units</span></div><div class="line">	</div><div class="line">	<span class="keyword">with</span> tf.name_scope(<span class="string">'Input'</span>):</div><div class="line">		x = tf.placeholder(tf.float32, [<span class="keyword">None</span>, n_input], name = <span class="string">'input_x'</span>)</div><div class="line">		y_ = tf.placeholder(tf.float32, [<span class="keyword">None</span>, n_classes], name = <span class="string">'target_y'</span>)</div><div class="line">		keep_prob = tf.placeholder(tf.float32, name = <span class="string">'keep_prob'</span>) <span class="comment">#dropout (keep probability)</span></div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">def</span> <span class="title">cnn_net</span><span class="params">(x, weights, biases, dropout)</span>:</span></div><div class="line">		<span class="comment"># Reshape input picture</span></div><div class="line">		x_image = tf.reshape(x, [<span class="number">-1</span>, <span class="number">28</span>, <span class="number">28</span> ,<span class="number">1</span>])</div><div class="line">		</div><div class="line">		<span class="comment"># First Convolutional Layer</span></div><div class="line">		conv_1 = add_layer(x_image, weights[<span class="string">'conv1_w'</span>], biases[<span class="string">'conv1_b'</span>], <span class="string">'First_Convolutional_Layer'</span>, flag = <span class="number">1</span>)</div><div class="line">		</div><div class="line">		<span class="comment"># First Pooling Layer</span></div><div class="line">		pool_1 = max_pool_2x2(conv_1)</div><div class="line">		</div><div class="line">		<span class="comment"># Second Convolutional Layer </span></div><div class="line">		conv_2 = add_layer(pool_1, weights[<span class="string">'conv2_w'</span>], biases[<span class="string">'conv2_b'</span>], <span class="string">'Second_Convolutional_Layer'</span>, flag = <span class="number">1</span>)</div><div class="line"></div><div class="line">		<span class="comment"># Second Pooling Layer </span></div><div class="line">		pool_2 = max_pool_2x2(conv_2)</div><div class="line"></div><div class="line">		<span class="comment"># Densely Connected Layer</span></div><div class="line">		pool_2_flat = tf.reshape(pool_2, [<span class="number">-1</span>, weight_variable(weights[<span class="string">'dc1_w'</span>]).get_shape().as_list()[<span class="number">0</span>]])</div><div class="line">		dc_1 = add_layer(pool_2_flat, weights[<span class="string">'dc1_w'</span>], biases[<span class="string">'dc1_b'</span>], <span class="string">'Densely_Connected_Layer'</span>, flag = <span class="number">0</span>) </div><div class="line">		</div><div class="line">		<span class="comment"># Dropout</span></div><div class="line">		dc_1_drop = tf.nn.dropout(dc_1, keep_prob)	</div><div class="line">		</div><div class="line">		<span class="comment"># Readout Layer</span></div><div class="line">		y = add_layer(dc_1_drop, weights[<span class="string">'out_w'</span>], biases[<span class="string">'out_b'</span>], <span class="string">'Readout_Layer'</span>, flag = <span class="number">0</span>)</div><div class="line">		</div><div class="line">		<span class="keyword">return</span> y</div><div class="line">	</div><div class="line">	<span class="comment"># Store layers weight &amp; bias</span></div><div class="line">	weights = &#123;</div><div class="line">		<span class="comment"># 5x5 conv, 1 input, 32 outputs</span></div><div class="line">		<span class="string">'conv1_w'</span>: [<span class="number">5</span>, <span class="number">5</span>, <span class="number">1</span>, <span class="number">32</span>],</div><div class="line">		<span class="comment"># 5x5 conv, 32 inputs, 64 outputs</span></div><div class="line">		<span class="string">'conv2_w'</span>: [<span class="number">5</span>, <span class="number">5</span>, <span class="number">32</span>, <span class="number">64</span>],</div><div class="line">		<span class="comment"># fully connected, 7*7*64 inputs, 1024 outputs</span></div><div class="line">		<span class="string">'dc1_w'</span>: [<span class="number">7</span>*<span class="number">7</span>*<span class="number">64</span>, <span class="number">1024</span>],</div><div class="line">		<span class="comment"># 1024 inputs, 10 outputs (class prediction)</span></div><div class="line">		<span class="string">'out_w'</span>: [<span class="number">1024</span>, n_classes]</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	biases = &#123;</div><div class="line">		<span class="string">'conv1_b'</span>: [<span class="number">32</span>],</div><div class="line">		<span class="string">'conv2_b'</span>: [<span class="number">64</span>],</div><div class="line">		<span class="string">'dc1_b'</span>: [<span class="number">1024</span>],</div><div class="line">		<span class="string">'out_b'</span>: [n_classes]</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	y = cnn_net(x, weights, biases, dropout)</div><div class="line">	</div><div class="line">	<span class="comment"># Optimizer</span></div><div class="line">	<span class="keyword">with</span> tf.name_scope(<span class="string">'cost'</span>):</div><div class="line">		cost = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(labels = y_,</div><div class="line">						logits = y))</div><div class="line">		tf.summary.scalar(<span class="string">'cost'</span>, cost)</div><div class="line">		tf.summary.histogram(<span class="string">'cost'</span>, cost)</div><div class="line">	</div><div class="line">	<span class="comment"># Train</span></div><div class="line">	<span class="keyword">with</span> tf.name_scope(<span class="string">'train'</span>):</div><div class="line">		optimizer = tf.train.AdamOptimizer(learning_rate=learning_rate).minimize(cost)</div><div class="line">	</div><div class="line">	<span class="comment"># Test</span></div><div class="line">	<span class="keyword">with</span> tf.name_scope(<span class="string">'accuracy'</span>):</div><div class="line">		<span class="keyword">with</span> tf.name_scope(<span class="string">'correct_prediction'</span>):</div><div class="line">			correct_prediction = tf.equal(tf.argmax(y, <span class="number">1</span>), tf.argmax(y_, <span class="number">1</span>))</div><div class="line">		<span class="keyword">with</span> tf.name_scope(<span class="string">'accuracy'</span>):</div><div class="line">			accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32))</div><div class="line">		tf.summary.scalar(<span class="string">'accuracy'</span>, accuracy)</div><div class="line">		</div><div class="line">	sess = tf.InteractiveSession()</div><div class="line">	merged = tf.summary.merge_all()</div><div class="line">	train_writer = tf.summary.FileWriter(<span class="string">'train/'</span>, sess.graph)</div><div class="line">	test_writer = tf.summary.FileWriter(<span class="string">'test/'</span>)</div><div class="line">	tf.global_variables_initializer().run()</div><div class="line"></div><div class="line">	</div><div class="line">	<span class="comment"># Train the model, and also write summaries.</span></div><div class="line">	<span class="comment"># Every 10th step, measure test-set accuracy, and write test summaries</span></div><div class="line">	<span class="comment"># All other steps, run train_step on training data, &amp; add training summaries</span></div><div class="line">	</div><div class="line">	<span class="comment"># Keep training until reach max iterations</span></div><div class="line">	print(<span class="string">'Wait for lock'</span>)</div><div class="line">	<span class="keyword">with</span> lock:</div><div class="line">		run_state = running</div><div class="line">	print(<span class="string">'Start'</span>)</div><div class="line">	</div><div class="line">	step = <span class="number">1</span></div><div class="line">	<span class="keyword">while</span> step * batch_size &lt; training_iters <span class="keyword">and</span> run_state:</div><div class="line">		batch_x, batch_y = mnist.train.next_batch(batch_size)</div><div class="line">		<span class="comment"># Run optimization op (backprop)</span></div><div class="line">		sess.run(optimizer, feed_dict = &#123;x: batch_x, y_: batch_y, keep_prob: dropout&#125;)</div><div class="line">		<span class="keyword">if</span> step % display_step == <span class="number">0</span>:	<span class="comment"># Record execution stats</span></div><div class="line">			run_options = tf.RunOptions(trace_level = tf.RunOptions.FULL_TRACE)</div><div class="line">			run_metadata = tf.RunMetadata()</div><div class="line">			summary, _ = sess.run([merged, optimizer], feed_dict = </div><div class="line">									&#123;x: batch_x, y_: batch_y, keep_prob: <span class="number">1.</span>&#125;, </div><div class="line">									options = run_options, run_metadata = run_metadata)</div><div class="line">			train_writer.add_run_metadata(run_metadata, <span class="string">'step %d '</span> % step)</div><div class="line">			train_writer.add_summary(summary, step)</div><div class="line">			print(<span class="string">'Adding run metadata for'</span>, step)</div><div class="line"></div><div class="line">			summary, loss, acc = sess.run([merged, cost, accuracy], feed_dict = </div><div class="line">											&#123;x: batch_x, y_: batch_y, keep_prob: <span class="number">1.</span>&#125;)</div><div class="line">			print(<span class="string">"Iter "</span> + str(step*batch_size) + <span class="string">", Minibatch Loss= "</span> + \</div><div class="line">				<span class="string">"&#123;:.6f&#125;"</span>.format(loss) + <span class="string">", Training Accuracy= "</span> + \</div><div class="line">				<span class="string">"&#123;:.5f&#125;"</span>.format(acc))</div><div class="line">			itchat.send(<span class="string">"Iter "</span> + str(step*batch_size) + <span class="string">", Minibatch Loss= "</span> + \</div><div class="line">				<span class="string">"&#123;:.6f&#125;"</span>.format(loss) + <span class="string">", Training Accuracy= "</span> + \</div><div class="line">						<span class="string">"&#123;:.5f&#125;"</span>.format(acc), <span class="string">'filehelper'</span>)</div><div class="line">		<span class="keyword">else</span>:</div><div class="line">			summary, _ = sess.run([merged, optimizer], feed_dict = &#123;x: batch_x, y_: batch_y, keep_prob: <span class="number">1.</span>&#125;)</div><div class="line">			train_writer.add_summary(summary, step)</div><div class="line">		step += <span class="number">1</span></div><div class="line">		<span class="keyword">with</span> lock:</div><div class="line">			run_state = running</div><div class="line">	print(<span class="string">"Optimization Finished!"</span>)</div><div class="line">	itchat.send(<span class="string">"Optimization Finished!"</span>, <span class="string">'filehelper'</span>)</div><div class="line"></div><div class="line">	<span class="comment"># Calculate accuracy for 256 mnist test images</span></div><div class="line">	summary, acc = sess.run([merged, accuracy], feed_dict = </div><div class="line">							&#123;x: mnist.test.images[:<span class="number">256</span>], y_: mnist.test.labels[:<span class="number">256</span>], </div><div class="line">							keep_prob: <span class="number">1.</span>&#125; )</div><div class="line">	text_writer.add_summary(summary)</div><div class="line">	print(<span class="string">"Testing Accuracy:"</span>, acc)</div><div class="line">	itchat.send(<span class="string">"Testing Accuracy: %s"</span> % acc, wechat_name)</div><div class="line"></div><div class="line">				</div><div class="line"><span class="meta">@itchat.msg_register([itchat.content.TEXT])</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">chat_trigger</span><span class="params">(msg)</span>:</span></div><div class="line">	<span class="keyword">global</span> lock, running, learning_rate, training_iters, batch_size, display_step</div><div class="line">	<span class="keyword">if</span> msg[<span class="string">'Text'</span>] == <span class="string">u'开始'</span>:</div><div class="line">		print(<span class="string">'Starting'</span>)</div><div class="line">		<span class="keyword">with</span> lock:</div><div class="line">			run_state = running</div><div class="line">		<span class="keyword">if</span> <span class="keyword">not</span> run_state:</div><div class="line">			<span class="keyword">try</span>:</div><div class="line">				threading.Thread(target=nn_train, args=(msg[<span class="string">'FromUserName'</span>], (learning_rate, training_iters, batch_size, display_step))).start()</div><div class="line">			<span class="keyword">except</span>:</div><div class="line">				msg.reply(<span class="string">'Running'</span>)</div><div class="line">	<span class="keyword">elif</span> msg[<span class="string">'Text'</span>] == <span class="string">u'停止'</span>:</div><div class="line">		print(<span class="string">'Stopping'</span>)</div><div class="line">		<span class="keyword">with</span> lock:</div><div class="line">			running = <span class="keyword">False</span></div><div class="line">	<span class="keyword">elif</span> msg[<span class="string">'Text'</span>] == <span class="string">u'参数'</span>:</div><div class="line">		itchat.send(<span class="string">'lr=%f, ti=%d, bs=%d, ds=%d'</span>%(learning_rate, training_iters, batch_size, display_step),msg[<span class="string">'FromUserName'</span>])</div><div class="line">	<span class="keyword">else</span>:</div><div class="line">		<span class="keyword">try</span>:</div><div class="line">			param = msg[<span class="string">'Text'</span>].split()</div><div class="line">			key, value = param</div><div class="line">			print(key, value)</div><div class="line">			<span class="keyword">if</span> key == <span class="string">'lr'</span>:</div><div class="line">				learning_rate = float(value)</div><div class="line">			<span class="keyword">elif</span> key == <span class="string">'ti'</span>:</div><div class="line">				training_iters = int(value)</div><div class="line">			<span class="keyword">elif</span> key == <span class="string">'bs'</span>:</div><div class="line">				batch_size = int(value)</div><div class="line">			<span class="keyword">elif</span> key == <span class="string">'ds'</span>:</div><div class="line">				display_step = int(value)</div><div class="line">		<span class="keyword">except</span>:</div><div class="line">			<span class="keyword">pass</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">	itchat.auto_login(hotReload=<span class="keyword">True</span>)</div><div class="line">	itchat.run()</div></pre></td></tr></table></figure>
-<p>大家可以看到，我对先前的代码进行了一些修改。</p>
-<p>下面我会对代码中用到 itchat 的部分进行一些简短的说明。</p>
-<ul>
-<li>代码部分截图：</li>
-</ul>
-<p><img src="https://farm4.staticflickr.com/3687/33417461155_a448845f98_o.png" alt=""></p>
-<p>说明：</p>
-<ol>
-<li>首先我导入了 itchat 和 threading。</li>
-<li>在原先所有 <code>print</code> 消息的地方，都添加了 <code>itchat.send()</code> 来输出我们的模型训练日志。</li>
-<li>加了一个带锁的状态量 <code>running</code> 用来做为发送微信消息的运行开关。</li>
-<li>写了一个 itchat 的 handler（就是上图）。其作用就是当程序运行，我们需要在微信中，对自己的微信号发送「开始」，模型才会开始训练，为了防止信息阻塞，所以要用到 <code>threading</code> 将其放在另一个线程当中。在训练的过程中，如果我们觉得结果已到达我们自己的预期，可以微信发送「停止」来停止模型的训练过程。</li>
-</ol>
-<p><strong>另外，脚本刚开始运行时，程序会弹出一个包含二维码的图片，我们需要通过微信来扫描该二维码，来登陆微信并启动 itchat 的服务。</strong></p>
-<p>程序是包含了 Tensorboard 绘图的，所以等模型训练好，我们依然是可以通过 Tensorboard 来更加详细地查看我们模型的训练过程。 </p>
-<p>至此，我们就可以一边通过微信来监控我们的模型训练过程，一边与身边的朋友们谈笑风生了。</p>
-<p>如果看过 itchat 那个连接的读者，可以了解到 itchat 同样是可以发送图片信息的，所以我们可以写额外的脚本在训练的过程中每隔 100 次迭代， plot 到目前为止 loss，acc 等指标的趋势图。在此，我就不再进行拓展了。</p>
-<p>关于各个模块的作用，以及各个变量的意义，我在此就不再赘述了。</p>
-<p>如果有读者对于 CNN 卷积神经网络有些陌生或者是遗忘，可以参考我的另外一篇文章 <a href="http://www.jianshu.com/p/95c79381ab4f" target="_blank" rel="external">CNN on TensorFlow</a>。</p>
-<p>如果读者对 Tensorboard 有所遗忘，可以参考我的另一篇文章 <a href="http://www.jianshu.com/p/b5caf4d5ce3e" target="_blank" rel="external">「TensorFlow 1.0」 Tensorboard</a>。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://randolph.pro/2016/12/13/Other PIL/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Randolph">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="黃某人">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/12/13/Other PIL/" itemprop="url">「Programming Computer Vision with Python」 Other-PIL</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-plus-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-13T22:57:23+08:00">
-                2016-12-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2016/12/13/Other PIL/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2016/12/13/Other PIL/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2016/12/13/Other PIL/" class="leancloud_visitors" data-flag-title="「Programming Computer Vision with Python」 Other-PIL">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-fire"></i>
-               </span>
-               <span class="leancloud-visitors-count"></span>
-               <span>℃</span>
-               <span class="post-meta-divider">|</span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                <span title="Words count in article">
-                  263
-                </span>
-                <span> words </span>
-                
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                <span title="Reading time">
-                  1
-                </span>
-                <span> mins </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="Programming-Computer-Vision-with-Python」"><a href="#Programming-Computer-Vision-with-Python」" class="headerlink" title="Programming Computer Vision with Python」"></a>Programming Computer Vision with Python」</h1><ul>
-<li>Other - PIL</li>
-</ul>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2016/12/13/Other PIL/#more" rel="contents">
+            <a class="btn" href="/2017/03/13/<Tensorflow> Use WeChat to Monitor Your Network/#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -774,7 +574,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">1</span>
                 <span class="site-state-item-name">Posts</span>
               </a>
             </div>
@@ -796,7 +596,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">Tags</span>
               </a>
             </div>
@@ -1232,7 +1032,24 @@
         }
       });
     </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
   
 
 
