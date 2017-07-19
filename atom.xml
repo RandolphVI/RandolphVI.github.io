@@ -83,13 +83,17 @@
   </entry>
   
   <entry>
-    <title></title>
+    <title>「Programming Computer Vision with Python」 Other-PIL</title>
     <link href="http://randolph.pro/2016/12/13/Other%20PIL/"/>
     <id>http://randolph.pro/2016/12/13/Other PIL/</id>
     <published>2016-12-13T14:57:23.000Z</published>
-    <updated>2017-07-19T09:29:44.000Z</updated>
+    <updated>2017-07-19T09:41:05.000Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="Mac上的PIL安装方法"><a href="#Mac上的PIL安装方法" class="headerlink" title="Mac上的PIL安装方法"></a>Mac上的PIL安装方法</h2><p>首先肯定是直接尝试pip安装PIL:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo pip install PIL</div></pre></td></tr></table></figure></p>
+    <content type="html"><![CDATA[<h1 id="Programming-Computer-Vision-with-Python」"><a href="#Programming-Computer-Vision-with-Python」" class="headerlink" title="Programming Computer Vision with Python」"></a>Programming Computer Vision with Python」</h1><ul>
+<li>Other - PIL</li>
+</ul>
+<a id="more"></a>
+<h2 id="Mac上的PIL安装方法"><a href="#Mac上的PIL安装方法" class="headerlink" title="Mac上的PIL安装方法"></a>Mac上的PIL安装方法</h2><p>首先肯定是直接尝试pip安装PIL:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo pip install PIL</div></pre></td></tr></table></figure></p>
 <p>得到的错误信息：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Could not find a version that satisfies the requirement PIL (from versions: )</div><div class="line">No matching distribution found for PIL</div></pre></td></tr></table></figure></p>
 <p>直接去官网下载 <a href="http://www.pythonware.com/products/pil/" target="_blank" rel="external">the link</a> </p>
 <p>解压下载的压缩包之后，命令行cd到该文件夹下，然后：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ python setup.py install</div></pre></td></tr></table></figure></p>
@@ -103,10 +107,16 @@
     
     <summary type="html">
     
-      &lt;h2 id=&quot;Mac上的PIL安装方法&quot;&gt;&lt;a href=&quot;#Mac上的PIL安装方法&quot; class=&quot;headerlink&quot; title=&quot;Mac上的PIL安装方法&quot;&gt;&lt;/a&gt;Mac上的PIL安装方法&lt;/h2&gt;&lt;p&gt;首先肯定是直接尝试pip安装PIL:&lt;br&gt;&lt;figure 
+      &lt;h1 id=&quot;Programming-Computer-Vision-with-Python」&quot;&gt;&lt;a href=&quot;#Programming-Computer-Vision-with-Python」&quot; class=&quot;headerlink&quot; title=&quot;Programming Computer Vision with Python」&quot;&gt;&lt;/a&gt;Programming Computer Vision with Python」&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;Other - PIL&lt;/li&gt;
+&lt;/ul&gt;
     
     </summary>
     
+    
+      <category term="Python" scheme="http://randolph.pro/tags/Python/"/>
+    
+      <category term="Computer Vision" scheme="http://randolph.pro/tags/Computer-Vision/"/>
     
   </entry>
   

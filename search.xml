@@ -15,8 +15,12 @@
       </tags>
   </entry>
   <entry>
-    <title></title>
+    <title><![CDATA[「Programming Computer Vision with Python」 Other-PIL]]></title>
     <url>%2F2016%2F12%2F13%2FOther%20PIL%2F</url>
-    <content type="text"><![CDATA[Mac上的PIL安装方法首先肯定是直接尝试pip安装PIL:1$ sudo pip install PIL 得到的错误信息：12Could not find a version that satisfies the requirement PIL (from versions: )No matching distribution found for PIL 直接去官网下载 the link 解压下载的压缩包之后，命令行cd到该文件夹下，然后：1$ python setup.py install 得到的错误信息为：12345_imagingft.c:73:10: fatal error: &apos;freetype/fterrors.h&apos; file not foundinclude &lt;freetype/fterrors.h&gt; &apos;&apos; ^1 error generated.error: command &apos;/usr/bin/clang&apos; failed with exit status 1 意思是freetype/fterrors.h这个文件不存在，上网寻找解决方法。 从Finder进入到目录 usr/local/include下，发现存在文件夹freetype2，但是不存在freetype，而在freetype2文件夹中存在fterrors.h文件，所以网上提出的解决方案为创建一个软连接：1$ ln -s /usr/local/include/freetype2 /usr/local/include/freetype 之后重新命令行执行：1$ python setup.py install 安装完成之后，检验PIL是否可用：12$ python&gt;&gt;&gt; import PIL 如果没有报错，则说明PIL安装成功]]></content>
+    <content type="text"><![CDATA[Programming Computer Vision with Python」 Other - PIL Mac上的PIL安装方法首先肯定是直接尝试pip安装PIL:1$ sudo pip install PIL 得到的错误信息：12Could not find a version that satisfies the requirement PIL (from versions: )No matching distribution found for PIL 直接去官网下载 the link 解压下载的压缩包之后，命令行cd到该文件夹下，然后：1$ python setup.py install 得到的错误信息为：12345_imagingft.c:73:10: fatal error: &apos;freetype/fterrors.h&apos; file not foundinclude &lt;freetype/fterrors.h&gt; &apos;&apos; ^1 error generated.error: command &apos;/usr/bin/clang&apos; failed with exit status 1 意思是freetype/fterrors.h这个文件不存在，上网寻找解决方法。 从Finder进入到目录 usr/local/include下，发现存在文件夹freetype2，但是不存在freetype，而在freetype2文件夹中存在fterrors.h文件，所以网上提出的解决方案为创建一个软连接：1$ ln -s /usr/local/include/freetype2 /usr/local/include/freetype 之后重新命令行执行：1$ python setup.py install 安装完成之后，检验PIL是否可用：12$ python&gt;&gt;&gt; import PIL 如果没有报错，则说明PIL安装成功]]></content>
+      <tags>
+        <tag>Python</tag>
+        <tag>Computer Vision</tag>
+      </tags>
   </entry>
 </search>
