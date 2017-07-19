@@ -419,7 +419,7 @@
                   <i class="fa fa-file-word-o"></i>
                 </span>
                 <span title="Words count in article">
-                  0
+                  256
                 </span>
                 <span> words </span>
                 
@@ -455,8 +455,12 @@
       
         
           
-          
-          
+          Mac上的PIL安装方法首先肯定是直接尝试pip安装PIL:1$ sudo pip install PIL
+得到的错误信息：12Could not find a version that satisfies the requirement PIL (from versions: )No matching distribution found for PIL
+直接去官网下载 the link 
+解压下载的压缩包之后，命令行cd到该文件夹下，然后：1$ python setup.py install
+得到的错误信息为：12345_imagingft.c:73:10: fatal error: &a
+          ...
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2016/12/13/Other PIL/#more" rel="contents">
