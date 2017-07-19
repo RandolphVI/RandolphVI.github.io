@@ -2,9 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://randolph.pro/tags/index.html</loc>
+    
+    <lastmod>2017-07-19T06:09:15.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://randolph.pro/categories/index.html</loc>
+    
+    <lastmod>2017-07-19T06:07:21.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://randolph.pro/about/index.html</loc>
     
-    <lastmod>2017-07-19T06:03:52.000Z</lastmod>
+    <lastmod>2017-07-19T06:05:23.000Z</lastmod>
     
   </url>
   
@@ -12,20 +26,6 @@
     <loc>http://randolph.pro/2017/03/13/%3CTensorflow%3E%20Use%20WeChat%20to%20Monitor%20Your%20Network/</loc>
     
     <lastmod>2017-07-18T06:00:56.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://randolph.pro/categories/index.html</loc>
-    
-    <lastmod>2017-07-18T05:50:30.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://randolph.pro/tags/index.html</loc>
-    
-    <lastmod>2017-07-18T05:50:10.000Z</lastmod>
     
   </url>
   
