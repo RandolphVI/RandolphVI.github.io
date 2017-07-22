@@ -111,7 +111,7 @@
 <meta property="og:description" content="Preview本文介绍了关于信息隐藏中的图像 JPEG 压缩标准方法，JPEG 是一种针对照片视频而广泛使用的一种有损压缩标准方法。">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://farm6.staticflickr.com/5342/31519596181_839559fe8c_o.png">
-<meta property="og:updated_time" content="2017-07-22T05:39:45.000Z">
+<meta property="og:updated_time" content="2017-07-22T05:41:17.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="「Computer Vision」 JPEG Compression">
 <meta name="twitter:description" content="Preview本文介绍了关于信息隐藏中的图像 JPEG 压缩标准方法，JPEG 是一种针对照片视频而广泛使用的一种有损压缩标准方法。">
@@ -437,7 +437,7 @@
                   <i class="fa fa-file-word-o"></i>
                 </span>
                 <span title="Words count in article">
-                  1,850
+                  1,842
                 </span>
                 <span> words </span>
                 
@@ -491,7 +491,7 @@
 <p>注意，编码时，程序从源数据中读取一个 $8 \times 8$ 的数据块后，进行 DCT 变换，量化，编码，然后再读取、处理下一个 $8 \times 8$ 的数据块。</p>
 <p><strong>JPEG 编码是以每 $8 \times 8$ 个点为一个单位进行处理的. 所以如果原始图片的长宽不是 8 的倍数， 都需要先补成 8 的倍数， 使其可以进行一块块的处理。将原始图像数据分为 $8 \times 8$ 的数据单元矩阵之后，还必须将每个数值减去 128，然后一一带入 DCT 变换公式，即可达到 DCT 变换的目的。图像的数据值必须减去 128，是因为 DCT 公式所接受的数字范围是 -128 到 127 之间。</strong></p>
 <h2 id="DCT离散余弦变化"><a href="#DCT离散余弦变化" class="headerlink" title="DCT离散余弦变化"></a>DCT离散余弦变化</h2><p>DCT（Discrete Cosine Transform，离散余弦变换），是码率压缩中常用的一种变换编码方法。任何连续的实对称函数的傅里叶变换中只含有余弦项，因此，余弦变换同傅里叶变换一样具有明确的物理意义。DCT 是先将整体图像分成 $N \times N$ 的像素块，然后针对 $N \times N$ 的像素块逐一进行 DCT 操作。需要提醒的是，JPEG 的编码过程需要进行正向离散余弦变换，而解码过程则需要反向离散余弦变换。</p>
-<h3 id="二维DCT变换公式："><a href="#二维DCT变换公式：" class="headerlink" title="二维DCT变换公式："></a>二维DCT变换公式：</h3><p>$$<br>c(u)=<br>\begin{cases}<br>\sqrt{\frac 1N},&amp; u = 0 \cr<br>\sqrt{2 \over N},&amp; u \neq 0 \cr<br>\end{cases}<br>$$</p>
+<h3 id="二维DCT变换公式："><a href="#二维DCT变换公式：" class="headerlink" title="二维DCT变换公式："></a>二维DCT变换公式：</h3><p>$$<br>F(u,v)=c(u)c(v)\sum_{i=0}^{N-1}<br>$$</p>
 <p>$$<br>c(u)=<br>\begin{cases}<br>\sqrt{\frac 1N},&amp; u = 0 \cr<br>\sqrt{2 \over N},&amp; u \neq 0 \cr<br>\end{cases}<br>$$</p>
 <p>###二维DCT逆变换公式：</p>
 <p>$$<br>f(i,j)=\sum<em>{u=0}^{N-1}\sum</em>{v=0}^{N-1}c(u)c(v)F(u,v)\cos \left[\frac{(i+0.5)\pi}{N}u\right]\cos \left[\frac{(j+0.5)\pi}{N}v\right]<br>$$</p>
