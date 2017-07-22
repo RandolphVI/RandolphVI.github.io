@@ -9,9 +9,9 @@
         <category>WeChat</category>
       </categories>
       <tags>
+        <tag>Python</tag>
         <tag>TensorFlow</tag>
         <tag>WeChat</tag>
-        <tag>Python</tag>
       </tags>
   </entry>
   <entry>
@@ -22,8 +22,8 @@
         <category>Computer Vision</category>
       </categories>
       <tags>
-        <tag>Python</tag>
         <tag>Computer Vision</tag>
+        <tag>Python</tag>
       </tags>
   </entry>
 </search>
