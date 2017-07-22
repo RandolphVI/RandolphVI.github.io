@@ -111,7 +111,7 @@
 <meta property="og:description" content="本文介绍了关于信息隐藏中的图像 JPEG 压缩标准方法，JPEG 是一种针对照片视频而广泛使用的一种「有损压缩」标准方法。">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://farm6.staticflickr.com/5342/31519596181_839559fe8c_o.png">
-<meta property="og:updated_time" content="2017-07-22T06:52:42.000Z">
+<meta property="og:updated_time" content="2017-07-22T06:54:29.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="「Computer Vision」 JPEG Compression">
 <meta name="twitter:description" content="本文介绍了关于信息隐藏中的图像 JPEG 压缩标准方法，JPEG 是一种针对照片视频而广泛使用的一种「有损压缩」标准方法。">
@@ -437,7 +437,7 @@
                   <i class="fa fa-file-word-o"></i>
                 </span>
                 <span title="Words count in article">
-                  1,821
+                  1,976
                 </span>
                 <span> words </span>
                 
@@ -452,7 +452,7 @@
                   <i class="fa fa-clock-o"></i>
                 </span>
                 <span title="Reading time">
-                  7
+                  8
                 </span>
                 <span> mins </span>
               
@@ -515,8 +515,9 @@ c(u)=
 \sqrt{2 \over N},&amp; u \neq 0 \cr
 \end{cases}
 $$</p>
-<hr>
-<p>### 二维 DCT 逆变换公式：</p>
+<h2>DCT 离散余弦变化 </h2>
+<p>DCT（Discrete Cosine Transform，离散余弦变换），是码率压缩中常用的一种变换编码方法。任何连续的实对称函数的傅里叶变换中只含有余弦项，因此，余弦变换同傅里叶变换一样具有明确的物理意义。DCT 是先将整体图像分成 $N \times N$ 的像素块，然后针对 $N \times N$ 的像素块逐一进行 DCT 操作。需要提醒的是，JPEG 的编码过程需要进行正向离散余弦变换，而解码过程则需要反向离散余弦变换。</p>
+<h3> 二维 DCT 逆变换公式：</h3>
 <p>$$
 f(i,j)=\sum_{u=0}^{N-1}\sum_{v=0}^{N-1}c(u)c(v)F(u,v)\cos \left[\frac{(i+0.5)\pi}{N}u\right]\cos \left[\frac{(j+0.5)\pi}{N}v\right]
 $$</p>
@@ -799,7 +800,7 @@ $$
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">Related</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text"> 颜色模式转换 </span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text"> 采样 </span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text"> 分块 </span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">4.1.</span> <span class="nav-text">DCT 离散余弦变化 </span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">4.1.1.</span> <span class="nav-text"> 二维 DCT 变换公式：</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">Related</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text"> 颜色模式转换 </span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text"> 采样 </span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text"> 分块 </span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">4.1.</span> <span class="nav-text">DCT 离散余弦变化 </span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">4.1.1.</span> <span class="nav-text"> 二维 DCT 变换公式：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">4.2.</span> <span class="nav-text">DCT 离散余弦变化 </span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">4.2.1.</span> <span class="nav-text"> 二维 DCT 逆变换公式：</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
