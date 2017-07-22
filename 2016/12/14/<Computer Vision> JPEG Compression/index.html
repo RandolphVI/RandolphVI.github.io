@@ -112,7 +112,7 @@
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://farm6.staticflickr.com/5342/31519596181_839559fe8c_o.png">
 <meta property="og:image" content="https://farm1.staticflickr.com/42/31635280065_4468d99a85_o.png">
-<meta property="og:updated_time" content="2017-07-22T08:15:52.000Z">
+<meta property="og:updated_time" content="2017-07-22T08:18:49.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="「Computer Vision」 JPEG Compression">
 <meta name="twitter:description" content="本文介绍了关于信息隐藏中的图像 JPEG 压缩标准方法，JPEG 是一种针对照片视频而广泛使用的一种「有损压缩」标准方法。">
@@ -586,7 +586,7 @@ $$</p>
 \hline
 \end{array}
 $$</p>
-<p>这两张表依据心理视觉阀制作, 对 8 bit 的亮度和色度的图象的处理效果不错。量化表是控制 JPEG 压缩比的关键，这个步骤除掉了一些高频量, 损失了很多细节信息。但事实上人眼对高频信号的敏感度远没有低频信号那么敏感。所以处理后的视觉损失很小，从上面的量化表也可以看出，低频部分采用了相对较短的量化步长，而高频部分则采用了相对较长的量化步长，这样做，也是为了在一定程度上得到相对清晰的图像和更高的压缩率。另一个重要原因是所有的图片的点与点之间会有一个色彩过渡的过程，而大量的图象信息被包含在低频率空间中，经过 DCT 处理后, 在高频率部分, 将出现大量连续的零。</p>
+<p>这两张表依据心理视觉阀制作, 对 8 bit 的亮度和色度的图象的处理效果不错。** 量化表是控制 JPEG 压缩比的关键，这个步骤除掉了一些高频量, 损失了很多细节信息。** 但事实上人眼对高频信号的敏感度远没有低频信号那么敏感。所以处理后的视觉损失很小，从上面的量化表也可以看出，低频部分采用了相对较短的量化步长，而高频部分则采用了相对较长的量化步长，这样做，也是为了在一定程度上得到相对清晰的图像和更高的压缩率。<em>另一个重要原因是所有的图片的点与点之间会有一个色彩过渡的过程，而大量的图象信息被包含在低频率空间中，经过 DCT 处理后, 在高频率部分, 将出现大量连续的零。</em></p>
 <h1>DPCM 差分编码（对 DC 系数）&amp; RLE 游程编码（对 AC 系数）</h1>
 <p>DCT 将一个 $8 \times 8$ 的数组变换成另一个 $8 \times 8$ 的数组. 编码信息分两类，一类是每个 $8 \times 8$ 格子 $F(0,0)$ 位置上元素，这是 DC（直流分量），代表 $8 \times 8$ 个子块的平均值，JPEG 中对 $F(0,0)$ 单独编码，由于两个相邻的 $8 \times 8$ 子块的 DC 系数相差很小，所以对它们采用 <strong> 差分编码 DPCM （Difference Pulse Code Modulation）</strong>，可以提高压缩比，也就是说 <strong> 对相邻的子块 DC 系数的差值进行编码。另 </strong> 一类是 $8 \times 8$ 块的其它 63 个子块，即交流（AC）系数，采用 <strong> 行程编码 RLE （Run-length encode）</strong>。</p>
 <p>那么，现在问题来了：这 63 个系数应该按照怎么样的顺序排列？为了保证低频分量先出现，高频分量后出现，以增加行程中连续 “0” 的个数，这 63 个元素采用了 “之” 字型（Zig-Zag）的排列方法，如下图所示：</p>
