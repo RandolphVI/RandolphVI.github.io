@@ -112,7 +112,7 @@
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://farm6.staticflickr.com/5342/31519596181_839559fe8c_o.png">
 <meta property="og:image" content="https://farm1.staticflickr.com/42/31635280065_4468d99a85_o.png">
-<meta property="og:updated_time" content="2017-07-22T08:31:50.000Z">
+<meta property="og:updated_time" content="2017-07-22T08:34:12.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="「Computer Vision」 JPEG Compression">
 <meta name="twitter:description" content="本文介绍了关于信息隐藏中的图像 JPEG 压缩标准方法，JPEG 是一种针对照片视频而广泛使用的一种「有损压缩」标准方法。">
@@ -691,9 +691,12 @@ $$
 同样的 $(0, 45)$ 的中间格式为：$(0, 6), 45$；$(1, -30)$ 的中间格式为：$(1, 5), -30$；</p>
 <h1>熵编码：Huffman 编码</h1>
 <p>在得到 DC 系数的中间格式和 AC 系数的中间格式之后，为进一步压缩图象数据，有必要对两者进行熵编码。</p>
-<p>**JPEG 标准具体规定了两种熵编码方式：Huffman 编码和算术编码。**JPEG 基本系统规定采用 Huffman 编码（因为不存在专利问题），但 JPEG 标准并没有限制 JPEG 算法必须用 Huffman 编码方式或者算术编码方式。</p>
+<p><strong>JPEG 标准具体规定了两种熵编码方式：Huffman 编码和算术编码。</strong></p>
+<p>JPEG 基本系统规定采用 Huffman 编码（因为不存在专利问题），但 JPEG 标准并没有限制 JPEG 算法必须用 Huffman 编码方式或者算术编码方式。</p>
 <h3>Huffman 编码</h3>
-<p>对出现概率大的字符分配字符长度较短的二进制编码，对出现概率小的字符分配字符长度较长的二进制编码，从而使得字符的平均编码长度最短。Huffman 编码的原理请参考数据结构中的 Huffman 树或者最优二叉树。**Huffman 编码时 DC 系数与 AC 系数分别采用不同的 Huffman 编码表，对于亮度和色度也采用不同的 Huffman 编码表。** 因此，需要 4 张 Huffman 编码表才能完成熵编码的工作。具体的 Huffman 编码采用查表的方式来高效地完成。然而，在 JPEG 标准中没有定义缺省的 Huffman 表，用户可以根据实际应用自由选择，也可以使用 JPEG 标准推荐的 Huffman 表。或者预先定义一个通用的 Huffman 表，也可以针对一副特定的图像，在压缩编码前通过搜集其统计特征来计算 Huffman 表的值。</p>
+<p>对出现概率大的字符分配字符长度较短的二进制编码，对出现概率小的字符分配字符长度较长的二进制编码，从而使得字符的平均编码长度最短。Huffman 编码的原理请参考数据结构中的 Huffman 树或者最优二叉树。</p>
+<p><strong>Huffman 编码时 DC 系数与 AC 系数分别采用不同的 Huffman 编码表，对于亮度和色度也采用不同的 Huffman 编码表。</strong></p>
+<p>因此，需要 4 张 Huffman 编码表才能完成熵编码的工作。具体的 Huffman 编码采用查表的方式来高效地完成。然而，在 JPEG 标准中没有定义缺省的 Huffman 表，用户可以根据实际应用自由选择，也可以使用 JPEG 标准推荐的 Huffman 表。或者预先定义一个通用的 Huffman 表，也可以针对一副特定的图像，在压缩编码前通过搜集其统计特征来计算 Huffman 表的值。</p>
 <p>下面我们举例来说明 $8\times 8$ 图像子块经过 DCT 及量化之后的处理过程：
 假设一个图像块经过量化以后得到以下的系数矩阵：</p>
 <p>$$
