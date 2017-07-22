@@ -111,7 +111,7 @@
 <meta property="og:description" content="本文介绍了关于信息隐藏中的图像 JPEG 压缩标准方法，JPEG 是一种针对照片视频而广泛使用的一种「有损压缩」标准方法。">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://farm6.staticflickr.com/5342/31519596181_839559fe8c_o.png">
-<meta property="og:updated_time" content="2017-07-22T06:55:30.000Z">
+<meta property="og:updated_time" content="2017-07-22T06:59:55.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="「Computer Vision」 JPEG Compression">
 <meta name="twitter:description" content="本文介绍了关于信息隐藏中的图像 JPEG 压缩标准方法，JPEG 是一种针对照片视频而广泛使用的一种「有损压缩」标准方法。">
@@ -437,7 +437,7 @@
                   <i class="fa fa-file-word-o"></i>
                 </span>
                 <span title="Words count in article">
-                  1,821
+                  2,703
                 </span>
                 <span> words </span>
                 
@@ -452,7 +452,7 @@
                   <i class="fa fa-clock-o"></i>
                 </span>
                 <span title="Reading time">
-                  7
+                  11
                 </span>
                 <span> mins </span>
               
@@ -532,10 +532,60 @@ $$</p>
 <p><img src="https://farm6.staticflickr.com/5342/31519596181_839559fe8c_o.png" alt=""></p>
 <p> 原始的图像信号（最左边的波形）经过 DCT 变换之后变成了 8 个波，其中第一个波为直流成分，其余 7 个为交流成分。可见图像信号被分解为直流成分和一些从低频到高频的各种余弦成分。而 DCT 系数只表示了该种成分所占原图像信号的份额大小。显然，恢复图像信息可以表示为下面的式子：
 $$
-F(n) = C(n) \cdot E(n)。
+F(n) = C(n) \cdot E(n)
 $$
 这里，E(n) 是一个基底，C(n) 是 DCT 系数，F(n) 则是图像信号；如果考虑垂直方向的变化，那就需要一个二维的基底。大学里面的信号处理，傅里叶变换等课程上也讲过，任何信号都可以被分解为基波和不同幅度的谐波的组合，而 DCT 变换的物理意义也正是如此。</p>
 <p><strong> 由于大多数图像的高频分量比较小，相应的图像高频分量的 DCT 系数经常接近于 0，再加上高频分量中只包含了图像的细微的细节变化信息，而人眼对这种高频成分的失真不太敏感，所以，可以考虑将这一些高频成分予以抛弃，从而降低需要传输的数据量。这样一来，传送 DCT 变换系数的所需要的编码长度要远远小于传送图像像素的编码长度。到达接收端之后通过反离散余弦变换就可以得到原来的数据，虽然这么做存在一定的失真，但人眼是可接受的，而且对这种微小的变换是不敏感的。所谓 JPEG 的有损压缩，损的是量化过程中的高频部分，romove 50% 的高频信息可能对于编码信息只损失了 5%。</strong></p>
+<h1> 量化 </h1>
+<p> 图像数据转换为 DCT 频率系数之后，还要进行量化阶段，才能进入编码过程。量化阶段需要两个 $8 \times 8$ 量化矩阵数据，将频率系数除以量化矩阵的值之后取整，即完成了量化过程。</p>
+<p> 简而言之，所谓量化就是用像素值除以量化表对应值所得的结果。</p>
+<p> 由于量化表左上角的值较小，右下角的值较大，这样就起到了保持低频分量，抑制高频分量的目的。JPEG 使用的颜色是 YUV 格式。我们提到过，Y 分量代表了亮度信息，UV 分量代表了色差信息。相比而言，Y 分量更重要一些。我们可以对 Y 采用细量化，对 UV 采用粗量化，可进一步提高压缩比。所以上面所说的量化表通常有两张，一个是专门处理亮度的频率系数，另一个则是针对色度的频率系数，即一张是针对 Y 的，而另一张是针对 UV 的。__当频率系数经过量化之后，将频率系数由浮点数转变为整数，这才便于执行最后的编码。__不难发现，经过量化阶段之后，所有的数据只保留了整数近似值，也就再度损失了一些数据内容。在 JPEG 算法中，由于对亮度和色度的精度要求不同，分别对亮度和色度采用不同的量化表。</p>
+<p> 下图给出 JPEG 的亮度量化表和色度量化表，该量化表是从广泛的实验中得出的。当然，你也可以自定义量化表。</p>
+<h3>JPEG 亮度量化表：</h3>
+<p>$$
+\begin{array}{|c|c|c|c|c|c|c|c|c|}
+\hline
+16 &amp; 11 &amp; 10 &amp; 16 &amp; 24 &amp; 40 &amp; 51 &amp; 61 \cr
+\hline
+12 &amp; 12 &amp; 14 &amp; 19 &amp; 26 &amp; 58 &amp; 60 &amp; 55 \cr
+\hline
+14 &amp; 13 &amp; 16 &amp; 24 &amp; 40 &amp; 57 &amp; 69 &amp; 56 \cr
+\hline
+14 &amp; 17 &amp; 22 &amp; 29 &amp; 51 &amp; 87 &amp; 80 &amp; 62 \cr
+\hline
+18 &amp; 22 &amp; 37 &amp; 56 &amp; 68 &amp; 109 &amp; 103 &amp; 77 \cr
+\hline
+24 &amp; 35 &amp; 55 &amp; 64 &amp; 81 &amp; 104 &amp; 113 &amp; 92 \cr
+\hline
+49 &amp; 64 &amp; 78 &amp; 87 &amp; 103 &amp; 121 &amp; 120 &amp; 101 \cr
+\hline
+72 &amp; 92 &amp; 95 &amp; 98 &amp; 112 &amp; 100 &amp; 103 &amp; 99 \cr
+\hline
+\end{array}
+$$</p>
+<h4>JPEG 色度量化表：</h4>
+<p>$$
+\begin{array}{|c|c|c|c|c|c|c|c|c|}
+\hline
+17 &amp; 18 &amp; 24 &amp; 47 &amp; 99 &amp; 99 &amp; 99 &amp; 99 \cr
+\hline
+18 &amp; 21 &amp; 26 &amp; 66 &amp; 99 &amp; 99 &amp; 99 &amp; 99 \cr
+\hline
+24 &amp; 26 &amp; 56 &amp; 99 &amp; 99 &amp; 99 &amp; 99 &amp; 99 \cr
+\hline
+47 &amp; 66 &amp; 99 &amp; 99 &amp; 99 &amp; 99 &amp; 99 &amp; 99 \cr
+\hline
+99 &amp; 99 &amp; 99 &amp; 99 &amp; 99 &amp; 99 &amp; 99 &amp; 99 \cr
+\hline
+99 &amp; 99 &amp; 99 &amp; 99 &amp; 99 &amp; 99 &amp; 99 &amp; 99 \cr
+\hline
+99 &amp; 99 &amp; 99 &amp; 99 &amp; 99 &amp; 99 &amp; 99 &amp; 99 \cr
+\hline
+99 &amp; 99 &amp; 99 &amp; 99 &amp; 99 &amp; 99 &amp; 99 &amp; 99 \cr
+\hline
+\end{array}
+$$</p>
+<p> 这两张表依据心理视觉阀制作, 对 8 bit 的亮度和色度的图象的处理效果不错。__量化表是控制 JPEG 压缩比的关键，这个步骤除掉了一些高频量, 损失了很多细节信息。__但事实上人眼对高频信号的敏感度远没有低频信号那么敏感。所以处理后的视觉损失很小，从上面的量化表也可以看出，低频部分采用了相对较短的量化步长，而高频部分则采用了相对较长的量化步长，这样做，也是为了在一定程度上得到相对清晰的图像和更高的压缩率。另一个重要原因是所有的图片的点与点之间会有一个色彩过渡的过程，而大量的图象信息被包含在低频率空间中，经过 DCT 处理后, 在高频率部分, 将出现大量连续的零。</p>
 
       
     </div>
@@ -798,7 +848,7 @@ $$
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">Related</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text"> 颜色模式转换 </span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text"> 采样 </span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text"> 分块 </span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">4.1.</span> <span class="nav-text">DCT 离散余弦变化 </span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">4.1.1.</span> <span class="nav-text"> 二维 DCT 变换公式：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">4.1.2.</span> <span class="nav-text"> 二维 DCT 逆变换公式：</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">Related</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text"> 颜色模式转换 </span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text"> 采样 </span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text"> 分块 </span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">4.1.</span> <span class="nav-text">DCT 离散余弦变化 </span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">4.1.1.</span> <span class="nav-text"> 二维 DCT 变换公式：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">4.1.2.</span> <span class="nav-text"> 二维 DCT 逆变换公式：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">5.</span> <span class="nav-text"> 量化 </span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">5.0.1.</span> <span class="nav-text">JPEG 亮度量化表：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">5.0.1.1.</span> <span class="nav-text">JPEG 色度量化表：</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>
