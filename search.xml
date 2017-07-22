@@ -14,4 +14,16 @@
         <tag>Python</tag>
       </tags>
   </entry>
+  <entry>
+    <title><![CDATA[「Computer Vision」 JPEG Compression]]></title>
+    <url>%2F2016%2F12%2F14%2F%3CComputer%20Vision%3E%20JPEG%20Compression%2F</url>
+    <content type="text"><![CDATA[本文介绍了关于信息隐藏中的图像 JPEG 压缩标准方法，JPEG 是一种针对照片视频而广泛使用的一种有损压缩标准方法。 颜色模式转换:RBG to YUV 采样 &amp; 分块 DCT离散余弦变换 量化 DPCM差分编码（对DC系数） RLE游程编码（对AC系数）：Zig-Zag扫描 熵编码：Huffman编码 颜色模式转换JPEG采用的是YCrCb颜色空间，而BMP采用的是RGB颜色空间，要想对BMP图片进行压缩，首先需要进行颜色空间的转换。YCrCb颜色空间中，$Y$代表亮度，$Cr$,$Cb$则代表色度和饱和度(也有人将$Cb$,$Cr$两者统称为色度)，三者通常以$Y$,$U$,$V$来表示，即用$U$代表$Cb$，用$V$代表$Cr$。RGB和YCrCb之间的转换关系如下所示： $$\begin{align}Y &amp;= &amp;0.299R &amp;+ 0.587G + 0.114B \crCb &amp;= &amp;-0.168R &amp;- 0.331G + 0.500B + 128 \crCr &amp;= &amp;0.500R &amp;- 0.418G - 0.081B + 128\end{align}$$]]></content>
+      <categories>
+        <category>Computer Vision</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>Computer Vision</tag>
+      </tags>
+  </entry>
 </search>
