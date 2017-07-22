@@ -88,7 +88,7 @@
     <link href="http://randolph.pro/2016/12/14/%3CComputer%20Vision%3E%20JPEG%20Compression/"/>
     <id>http://randolph.pro/2016/12/14/&lt;Computer Vision&gt; JPEG Compression/</id>
     <published>2016-12-14T06:33:41.000Z</published>
-    <updated>2017-07-22T06:51:53.000Z</updated>
+    <updated>2017-07-22T06:52:42.000Z</updated>
     
     <content type="html"><![CDATA[<h1>Related</h1>
 <ul>
@@ -130,7 +130,8 @@ c(u)=
 \sqrt{2 \over N},&amp; u \neq 0 \cr
 \end{cases}
 $$</p>
-<p>## 二维 DCT 逆变换公式：</p>
+<hr>
+<p>### 二维 DCT 逆变换公式：</p>
 <p>$$
 f(i,j)=\sum_{u=0}^{N-1}\sum_{v=0}^{N-1}c(u)c(v)F(u,v)\cos \left[\frac{(i+0.5)\pi}{N}u\right]\cos \left[\frac{(j+0.5)\pi}{N}v\right]
 $$</p>
