@@ -89,9 +89,10 @@
     <link href="http://randolph.pro/2016/12/14/%3CComputer%20Vision%3E%20JPEG%20Compression/"/>
     <id>http://randolph.pro/2016/12/14/&lt;Computer Vision&gt; JPEG Compression/</id>
     <published>2016-12-14T06:33:41.000Z</published>
-    <updated>2017-07-22T05:51:13.000Z</updated>
+    <updated>2017-07-22T06:03:34.000Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="Preview"><a href="#Preview" class="headerlink" title="Preview"></a>Preview</h1><p>本文介绍了关于信息隐藏中的图像 JPEG 压缩标准方法，JPEG 是一种针对照片视频而广泛使用的一种<strong>有损压缩</strong>标准方法。</p>
+    <content type="html"><![CDATA[<h1 id="Preview"><a href="#Preview" class="headerlink" title="Preview"></a>Preview</h1><blockquote class="blockquote-center"><br><br>本文介绍了关于信息隐藏中的图像 JPEG 压缩标准方法，JPEG 是一种针对照片视频而广泛使用的一种<strong>有损压缩</strong>标准方法。<br><br></blockquote>
+
 <a id="more"></a>
 <h1 id="Related"><a href="#Related" class="headerlink" title="Related"></a>Related</h1><ul>
 <li>颜色模式转换: RBG to YUV</li>
@@ -114,7 +115,7 @@
 <h3 id="二维DCT变换公式："><a href="#二维DCT变换公式：" class="headerlink" title="二维DCT变换公式："></a>二维DCT变换公式：</h3><p>$$<br>F(u,v)=c(u)c(v)\sum<em>{i=0}^{N-1}\sum</em>{j=0}^{N-1}f(i,j)\cos (\frac{(i+0.5)\pi}{N}u) \cos (\frac{(j+0.5)\pi}{N}v)<br>$$</p>
 <p>$$<br>c(u)=<br>\begin{cases}<br>\sqrt{\frac 1N},&amp; u = 0 \cr<br>\sqrt{2 \over N},&amp; u \neq 0 \cr<br>\end{cases}<br>$$</p>
 <p>###二维DCT逆变换公式：</p>
-<p>$$<br>f(i,j)=\sum<em>{u=0}^{N-1}\sum</em>{v=0}^{N-1}c(u)c(v)F(u,v)\cos (\frac{(i+0.5)\pi}{N}u) \cos (\frac{(j+0.5)\pi}{N}v)<br>$$</p>
+<p>$$<br>f(i,j)=\sum<em>{u=0}^{N-1}\sum</em>{v=0}^{N-1}c(u)c(v)F(u,v)\cos \left[\frac{(i+0.5)\pi}{N}u\right]\cos \left[\frac{(j+0.5)\pi}{N}v\right]<br>$$</p>
 <p>$$<br>c(u)=<br>\begin{cases}<br>\sqrt{\frac 1N},&amp; u = 0 \cr<br>\sqrt{2 \over N},&amp; u \neq 0 \cr<br>\end{cases}<br>$$</p>
 <p>这里的 N 是水平、垂直方向的像素数目，一般取值为 8。$8 \times 8$ 的二维像素块经过 DCT 操作之后，就得到了 $8 \times 8$ 的变换系数矩阵。这些系数，都有具体的物理含义。</p>
 <p>例如，U=0，V=0 时的 F(0,0) 是原来的64个数据的均值，相当于直流分量，也有人称之为 DC 系数或者直流系数。随着 U，V 的增加，相另外的 63 个系数则代表了水平空间频率和垂直空间频率分量（高频分量）的大小，多半是一些接近于 0 的正负浮点数，我们称之为交流系数 AC。</p>
@@ -126,7 +127,7 @@
     
     <summary type="html">
     
-      &lt;h1 id=&quot;Preview&quot;&gt;&lt;a href=&quot;#Preview&quot; class=&quot;headerlink&quot; title=&quot;Preview&quot;&gt;&lt;/a&gt;Preview&lt;/h1&gt;&lt;p&gt;本文介绍了关于信息隐藏中的图像 JPEG 压缩标准方法，JPEG 是一种针对照片视频而广泛使用的一种&lt;strong&gt;有损压缩&lt;/strong&gt;标准方法。&lt;/p&gt;
+      &lt;h1 id=&quot;Preview&quot;&gt;&lt;a href=&quot;#Preview&quot; class=&quot;headerlink&quot; title=&quot;Preview&quot;&gt;&lt;/a&gt;Preview&lt;/h1&gt;&lt;blockquote class=&quot;blockquote-center&quot;&gt;&lt;br&gt;&lt;br&gt;本文介绍了关于信息隐藏中的图像 JPEG 压缩标准方法，JPEG 是一种针对照片视频而广泛使用的一种&lt;strong&gt;有损压缩&lt;/strong&gt;标准方法。&lt;br&gt;&lt;br&gt;&lt;/blockquote&gt;
     
     </summary>
     
