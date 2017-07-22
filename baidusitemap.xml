@@ -4,6 +4,28 @@
 
     
   <url>
+    <loc>http://randolph.pro/2016/12/14/%3CComputer%20Vision%3E%20JPEG%20Compression/</loc>
+    <lastmod>2017-07-22T06:51:53.000Z</lastmod>
+    <data>
+        <display>
+        <title>「Computer Vision」 JPEG Compression</title>
+        <pubTime>2016-12-14T06:33:41.000Z</pubTime>
+        
+        <tag>Computer Vision</tag>
+         
+        <tag>Python</tag>
+         
+         
+           
+             
+              <breadCrumb title="Computer Vision" url="http://randolph.pro/categories/Computer-Vision/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://randolph.pro/2017/03/13/%3CTensorflow%3E%20Use%20WeChat%20to%20Monitor%20Your%20Network/</loc>
     <lastmod>2017-07-22T06:21:39.000Z</lastmod>
     <data>
@@ -24,28 +46,6 @@
           
              
               <breadCrumb title="WeChat" url="http://randolph.pro/categories/TensorFlow/WeChat/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://randolph.pro/2016/12/14/%3CComputer%20Vision%3E%20JPEG%20Compression/</loc>
-    <lastmod>2017-07-22T06:20:25.000Z</lastmod>
-    <data>
-        <display>
-        <title>「Computer Vision」 JPEG Compression</title>
-        <pubTime>2016-12-14T06:33:41.000Z</pubTime>
-        
-        <tag>Computer Vision</tag>
-         
-        <tag>Python</tag>
-         
-         
-           
-             
-              <breadCrumb title="Computer Vision" url="http://randolph.pro/categories/Computer-Vision/"/>
           
         </display>
     </data>
