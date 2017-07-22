@@ -89,7 +89,7 @@
     <link href="http://randolph.pro/2016/12/14/%3CComputer%20Vision%3E%20JPEG%20Compression/"/>
     <id>http://randolph.pro/2016/12/14/&lt;Computer Vision&gt; JPEG Compression/</id>
     <published>2016-12-14T06:33:41.000Z</published>
-    <updated>2017-07-22T04:32:54.000Z</updated>
+    <updated>2017-07-22T04:38:39.000Z</updated>
     
     <content type="html"><![CDATA[<h1 id="Preview"><a href="#Preview" class="headerlink" title="Preview"></a>Preview</h1><p>本文介绍了关于信息隐藏中的图像 JPEG 压缩标准方法，JPEG 是一种针对照片视频而广泛使用的一种<strong>有损压缩</strong>标准方法。</p>
 <a id="more"></a>
@@ -105,7 +105,7 @@
 <h1 id="颜色模式转换"><a href="#颜色模式转换" class="headerlink" title="颜色模式转换"></a>颜色模式转换</h1><p>JPEG 采用的是 YCrCb 颜色空间，而 BMP 采用的是 RGB 颜色空间，要想对 BMP 图片进行压缩，首先需要进行颜色空间的转换。YCrCb 颜色空间中，$Y$ 代表亮度，$Cr$，$Cb$ 则代表色度和饱和度（也有人将 $Cb$，$Cr$ 两者统称为色度），三者通常以 $Y$，$U$，$V$ 来表示，即用 $U$ 代表 $Cb$，用 $V$ 代表 $Cr$。RGB 和 YCrCb 之间的转换关系如下所示：</p>
 <p>$$<br>\begin{align}<br>Y &amp;= &amp;0.299R &amp;+ 0.587G + 0.114B \cr<br>Cb &amp;= &amp;-0.168R &amp;- 0.331G + 0.500B  + 128 \cr<br>Cr &amp;= &amp;0.500R &amp;- 0.418G - 0.081B  + 128<br>\end{align}<br>$$</p>
 <h1 id="采样"><a href="#采样" class="headerlink" title="采样"></a>采样</h1><p>研究发现，<strong>人眼对亮度变换的敏感度要比对色彩变换的敏感度高出很多</strong>。</p>
-<p>因此，我们可以认为 Y 分量要比 Cb，Cr 分量重要的多。在 BMP 图片中，RGB 三个分量各采用一个字节进行采样，也就是我们常听到的 RGB-888 的模式；而 JPEG 图片中，通常采用两种采样方式：YUV-411 和 YUV-422，它们所代表的意义是Y，Cb，Cr 三个分量的数据取样比例一般是 4：1：1 或者 4：2：2（4：1：1 含义就是：在 $2\times 2$ 的单元中，本应分别有 4 个 Y，4 个 U，4 个 V 值，用 12 个字节进行存储。经过 4:1:1 采样处理后，每个单元中的值分别有 4 个 Y、1 个 U、1 个 V，只要用 6 个字节就可以存储了）</p>
+<p>因此，我们可以认为 Y 分量要比 Cb，Cr 分量重要的多。在 BMP 图片中，RGB 三个分量各采用一个字节进行采样，也就是我们常听到的 RGB-888 的模式；而 JPEG 图片中，通常采用两种采样方式：YUV-411 和 YUV-422，它们所代表的意义是 Y，Cb，Cr 三个分量的数据取样比例一般是 4：1：1 或者 4：2：2（4：1：1 含义就是：在 $2\times 2$ 的单元中，本应分别有 4 个 Y，4 个 U，4 个 V 值，用 12 个字节进行存储。经过 4:1:1 采样处理后，每个单元中的值分别有 4 个 Y、1 个 U、1 个 V，只要用 6 个字节就可以存储了）</p>
 <p>这样的采样方式，虽然损失了一定的精度但也在人眼不太察觉到的范围内减小了数据的存储量。当然，JPEG 格式里面也允许将每个点的 U，V 值都记录下来。</p>
 <h1 id="分块"><a href="#分块" class="headerlink" title="分块"></a>分块</h1><p>由于后面的 DCT 变换是是对 $8 \times 8$ 的子块进行处理的，因此，在进行 DCT 变换之前必须把源图象数据进行分块。源图象中每点的 3 个分量是交替出现的，先要把这 3 个分量分开，存放到 3 张表中去。然后由左及右，由上到下依次读取 $8 \times 8$ 的子块，存放在长度为 64 的表中，即可以进行 DCT 变换。</p>
 <p>注意，编码时，程序从源数据中读取一个 $8 \times 8$ 的数据块后，进行 DCT 变换，量化，编码，然后再读取、处理下一个 $8 \times 8$ 的数据块。</p>
