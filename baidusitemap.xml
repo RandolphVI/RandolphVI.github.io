@@ -11,14 +11,36 @@
         <title>「NLP with Python」 Chapter 1 & 2</title>
         <pubTime>2016-12-14T06:38:56.000Z</pubTime>
         
+        <tag>Python</tag>
+         
         <tag>NLP</tag>
+         
+         
+           
+             
+              <breadCrumb title="NLP" url="http://randolph.pro/categories/NLP/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://randolph.pro/2016/12/14/%3CComputer%20Vision%3E%20JPEG%20Compression/</loc>
+    <lastmod>2017-07-23T08:47:54.000Z</lastmod>
+    <data>
+        <display>
+        <title>「Computer Vision」 JPEG Compression</title>
+        <pubTime>2016-12-14T06:33:41.000Z</pubTime>
+        
+        <tag>Computer Vision</tag>
          
         <tag>Python</tag>
          
          
            
              
-              <breadCrumb title="NLP" url="http://randolph.pro/categories/NLP/"/>
+              <breadCrumb title="Computer Vision" url="http://randolph.pro/categories/Computer-Vision/"/>
           
         </display>
     </data>
@@ -43,28 +65,6 @@
            
              
               <breadCrumb title="TensorFlow" url="http://randolph.pro/categories/TensorFlow/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://randolph.pro/2016/12/14/%3CComputer%20Vision%3E%20JPEG%20Compression/</loc>
-    <lastmod>2017-07-23T08:37:21.000Z</lastmod>
-    <data>
-        <display>
-        <title>「Computer Vision」 JPEG Compression</title>
-        <pubTime>2016-12-14T06:33:41.000Z</pubTime>
-        
-        <tag>Python</tag>
-         
-        <tag>Computer Vision</tag>
-         
-         
-           
-             
-              <breadCrumb title="Computer Vision" url="http://randolph.pro/categories/Computer-Vision/"/>
           
         </display>
     </data>
