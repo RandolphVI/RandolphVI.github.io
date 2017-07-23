@@ -83,7 +83,7 @@
     <link href="http://randolph.pro/2016/12/14/%3CNatural%20Language%20Processing%20with%20Python%3E%20Chapter%201%20&amp;%202/"/>
     <id>http://randolph.pro/2016/12/14/&lt;Natural Language Processing with Python&gt; Chapter 1 &amp; 2/</id>
     <published>2016-12-14T06:38:56.000Z</published>
-    <updated>2017-07-23T08:39:54.000Z</updated>
+    <updated>2017-07-23T08:49:22.000Z</updated>
     
     <content type="html"><![CDATA[<h1 id="Related"><a href="#Related" class="headerlink" title="Related"></a>Related</h1><ul>
 <li>NLTK</li>
@@ -92,7 +92,7 @@
 <li>Text Corpus Structure</li>
 <li>WordNet</li>
 </ul>
-<h2 id="1-Key："><a href="#1-Key：" class="headerlink" title="1.Key："></a>1.Key：</h2><h3 id="What’s-NTLK"><a href="#What’s-NTLK" class="headerlink" title="What’s NTLK?"></a><strong>What’s NTLK?</strong></h3><p>NTLK 是一个自然语言工具包，最初创建于 2001 年，最初是宾州大学计算机与信息科学系计算语言学课程的一部分，大部分 NLP 研究者入门的首选 tool。</p>
+<h1 id="1-Key："><a href="#1-Key：" class="headerlink" title="1.Key："></a>1.Key：</h1><h2 id="What’s-NTLK"><a href="#What’s-NTLK" class="headerlink" title="What’s NTLK?"></a><strong>What’s NTLK?</strong></h2><p>NTLK 是一个自然语言工具包，最初创建于 2001 年，最初是宾州大学计算机与信息科学系计算语言学课程的一部分，大部分 NLP 研究者入门的首选 tool。</p>
 <p>另外，这本书是关于用 Python 进行自然语言处理的一本入门书，基本上可以看做是 NLTK 这个库的 HandBook，使用的方法均是 nltk 库中的方法。如果希望查阅 API 文档或者是下载安装 NLTK，可以前往 <a href="http://www.nltk.org" target="_blank" rel="external"> 官方网站 </a> 下载，官网上提供和的 API 文档涵盖了工具包中的每一个模块、类和函数，详细说明了各种参数，以及用法示例，在此不再赘述。</p>
 <ul>
 <li><strong>简单介绍一下 NLTK 的几个重要的模块以及功能描述：</strong></li>
@@ -171,14 +171,14 @@
 </table>
 </div>
 <hr>
-<h3 id="concordance-function"><a href="#concordance-function" class="headerlink" title="concordance function."></a><em>concordance</em> <strong>function</strong>.</h3><ul>
+<h2 id="concordance-function"><a href="#concordance-function" class="headerlink" title="concordance function."></a><em>concordance</em> <strong>function</strong>.</h2><ul>
 <li><strong>concordance</strong>函数：这个函数挺有意思的，是 nltk 下的一个函数，可以显示指定单词的出现情况（使用这个函数，指定单词的大小写不敏感），同时还可以显示一些上下文。下面是该函数的使用场景（其中 text1 的内容是 nltk.book 导入后中的 text1）:</li>
 </ul>
 <figure class="highlight mizar"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; text1.concordance("monstrous")</div><div class="line">    Building index...</div><div class="line">    Displaying 11 <span class="keyword">of</span> 11 matches:</div><div class="line">    ong the former , one was <span class="keyword">of</span> a most monstrous size . ... This came towards us ,</div><div class="line">    ON OF THE PSALMS . "Touching <span class="keyword">that</span> monstrous bulk <span class="keyword">of</span> the whale <span class="keyword">or</span> ork we have r</div><div class="line">    ll over with a heathenish array <span class="keyword">of</span> monstrous clubs <span class="keyword">and</span> spears . Some were thick</div><div class="line">    d <span class="keyword">as</span> you gazed , <span class="keyword">and</span> wondered what monstrous cannibal <span class="keyword">and</span> savage could ever hav</div><div class="line">    <span class="keyword">that</span> has survived the flood ; most monstrous <span class="keyword">and</span> most mountainous ! That Himmal</div><div class="line">    they might scout at Moby Dick <span class="keyword">as</span> a monstrous fable , <span class="keyword">or</span> still worse <span class="keyword">and</span> more de</div><div class="line">    th <span class="keyword">of</span> Radney .'" CHAPTER 55 Of the monstrous Pictures <span class="keyword">of</span> Whales . I shall ere l</div><div class="line">    ing Scenes . In connexion with the monstrous pictures <span class="keyword">of</span> whales , I am strongly</div><div class="line">    ere to enter upon those still more monstrous stories <span class="keyword">of</span> them which are to <span class="keyword">be</span> fo</div></pre></td></tr></table></figure>
 <p>这个函数的具体实现如下：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">concordance</span><span class="params">(self, word, width=<span class="number">79</span>, lines=<span class="number">25</span>)</span>:</span></div><div class="line">    <span class="string">"""</span></div><div class="line">    Print a concordance for ``word`` with the specified context window.</div><div class="line">    Word matching is not case-sensitive.</div><div class="line">    :seealso: ``ConcordanceIndex``</div><div class="line">"""</div><div class="line">    <span class="keyword">if</span> <span class="string">'_concordance_index'</span> <span class="keyword">not</span> <span class="keyword">in</span> self.__dict__:</div><div class="line">        print(<span class="string">"Building index..."</span>)</div><div class="line">        self._concordance_index = ConcordanceIndex(self.tokens,</div><div class="line">                                                   key=<span class="keyword">lambda</span> s:s.lower())</div><div class="line"></div><div class="line">    self._concordance_index.print_concordance(word, width, lines)</div></pre></td></tr></table></figure>
 <hr>
-<h3 id="Word-Sense-Disambiguation-amp-Pronoun-Resolution"><a href="#Word-Sense-Disambiguation-amp-Pronoun-Resolution" class="headerlink" title="Word Sense Disambiguation &amp; Pronoun Resolution"></a>Word Sense Disambiguation &amp; Pronoun Resolution</h3><ul>
+<h2 id="Word-Sense-Disambiguation-amp-Pronoun-Resolution"><a href="#Word-Sense-Disambiguation-amp-Pronoun-Resolution" class="headerlink" title="Word Sense Disambiguation &amp; Pronoun Resolution"></a>Word Sense Disambiguation &amp; Pronoun Resolution</h2><ul>
 <li>Word Sense Disambiguation<br>意思是“词义消歧”，简而言之，我们需要做的就是分析出特定上下文中的词被赋予的是哪个意思。例如：</li>
 </ul>
 <blockquote>
@@ -189,7 +189,7 @@
 <li>Pronoun Resolution<br>指代消解，是解决”词义消歧”的一个手段，解决“谁对谁做了什么”<br>，即检测动词的主语和宾语，另外还有 <strong> 语义角色标注</strong>（semantic role labing）—- 确定名词短语如何与动词相关联（如代理、受事、工具等）。</li>
 </ul>
 <hr>
-<h3 id="Text-Corpus-Structure"><a href="#Text-Corpus-Structure" class="headerlink" title="Text Corpus Structure"></a>Text Corpus Structure</h3><p>以下是几种常见的语料库结构：<br><img src="https://farm1.staticflickr.com/445/31263100710_d839312795_o.png" alt=""></p>
+<h2 id="Text-Corpus-Structure"><a href="#Text-Corpus-Structure" class="headerlink" title="Text Corpus Structure"></a>Text Corpus Structure</h2><p>以下是几种常见的语料库结构：<br><img src="https://farm1.staticflickr.com/445/31263100710_d839312795_o.png" alt=""></p>
 <ul>
 <li>最简单的一种语料库是一些孤立的没有什么特别结构的文本集合；</li>
 <li>一些语料库按如文体（布朗语料库）等分类成组织结构；</li>
@@ -197,7 +197,7 @@
 <li>另外一些语料库可以表示随时间变化，语言用法的改变（就职演说语料库）；</li>
 </ul>
 <hr>
-<h3 id="WordNet"><a href="#WordNet" class="headerlink" title="WordNet"></a>WordNet</h3><ul>
+<h2 id="WordNet"><a href="#WordNet" class="headerlink" title="WordNet"></a>WordNet</h2><ul>
 <li>Senses and Synonyms.（意义与同义词）</li>
 <li>Synonyms and Synset.（同义词集与词条）</li>
 <li>The WordNet Hierarchy.（WordNet 的层次结构）</li>
@@ -211,7 +211,7 @@
 <li>Antonyms.（反义词）</li>
 </ul>
 <hr>
-<h2 id="2-Correct-errors-in-printing："><a href="#2-Correct-errors-in-printing：" class="headerlink" title="2.Correct errors in printing："></a>2.Correct errors in printing：</h2><p>P19.</p>
+<h1 id="2-Correct-errors-in-printing："><a href="#2-Correct-errors-in-printing：" class="headerlink" title="2.Correct errors in printing："></a>2.Correct errors in printing：</h1><p>P19.</p>
 <p>在 [Your Trun] 的那块内容中：</p>
 <blockquote>
 <p>使用 text2 尝试前面频率分布的例子。…如果得到的是错误信息：NameError: name ‘FreqDist’is not defined, 则需要在一开始输入 <strong>nltk.book import *</strong>。</p>
@@ -227,7 +227,7 @@
 <p>需更正为：</p>
 <figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;</span>&gt; cfd = nltk.ConditionalFreqDist(</div><div class="line">    ...           (target, fileid[<span class="symbol">:</span><span class="number">4</span>])</div><div class="line">    ...           <span class="keyword">for</span> fileid <span class="keyword">in</span> inaugural.fileids()</div></pre></td></tr></table></figure>
 <hr>
-<h2 id="3-Practice："><a href="#3-Practice：" class="headerlink" title="3.Practice："></a>3.Practice：</h2><blockquote>
+<h1 id="3-Practice："><a href="#3-Practice：" class="headerlink" title="3.Practice："></a>3.Practice：</h1><blockquote>
 <p>6.​○ In the discussion of comparative wordlists, we created an object called trans late, which you could look up using words in both German and Italian in order to get corresponding words in English. What problem might arise with this approach? Can you suggest a way to avoid this problem?</p>
 </blockquote>
 <ul>
@@ -240,8 +240,8 @@
 </blockquote>
 <figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">def most_fifty_words(<span class="keyword">text</span>):</div><div class="line">    stopwords = nltk.corpus.stopwords.<span class="keyword">words</span>(<span class="string">'english'</span>)</div><div class="line">    content = [w <span class="keyword">for</span> w <span class="keyword">in</span> <span class="keyword">text</span> <span class="keyword">if</span> w.<span class="built_in">lower</span>() <span class="keyword">not</span> <span class="keyword">in</span> stopwords]</div><div class="line">    fdist = FreqDist(content)</div><div class="line">    vocabulary = list(fdist.<span class="built_in">keys</span>())</div><div class="line">    <span class="literal">return</span> vocabulary[:<span class="number">50</span>]</div></pre></td></tr></table></figure>
 <hr>
-<h2 id="4-Still-have-Question："><a href="#4-Still-have-Question：" class="headerlink" title="4.Still have Question："></a>4.Still have Question：</h2><ul>
-<li><strong>暂无</strong> ​</li>
+<h1 id="4-Still-have-Question："><a href="#4-Still-have-Question：" class="headerlink" title="4.Still have Question："></a>4.Still have Question：</h1><ul>
+<li><strong>暂无</strong> </li>
 </ul>
 ]]></content>
     

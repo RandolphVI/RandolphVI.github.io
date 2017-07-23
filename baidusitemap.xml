@@ -4,6 +4,28 @@
 
     
   <url>
+    <loc>http://randolph.pro/2016/12/14/%3CNatural%20Language%20Processing%20with%20Python%3E%20Chapter%201%20&%202/</loc>
+    <lastmod>2017-07-23T08:49:22.000Z</lastmod>
+    <data>
+        <display>
+        <title>「NLP with Python」 Chapter 1 & 2</title>
+        <pubTime>2016-12-14T06:38:56.000Z</pubTime>
+        
+        <tag>NLP</tag>
+         
+        <tag>Python</tag>
+         
+         
+           
+             
+              <breadCrumb title="NLP" url="http://randolph.pro/categories/NLP/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://randolph.pro/2017/03/13/%3CTensorflow%3E%20Use%20WeChat%20to%20Monitor%20Your%20Network/</loc>
     <lastmod>2017-07-23T08:44:57.000Z</lastmod>
     <data>
@@ -21,28 +43,6 @@
            
              
               <breadCrumb title="TensorFlow" url="http://randolph.pro/categories/TensorFlow/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://randolph.pro/2016/12/14/%3CNatural%20Language%20Processing%20with%20Python%3E%20Chapter%201%20&%202/</loc>
-    <lastmod>2017-07-23T08:39:54.000Z</lastmod>
-    <data>
-        <display>
-        <title>「NLP with Python」 Chapter 1 & 2</title>
-        <pubTime>2016-12-14T06:38:56.000Z</pubTime>
-        
-        <tag>NLP</tag>
-         
-        <tag>Python</tag>
-         
-         
-           
-             
-              <breadCrumb title="NLP" url="http://randolph.pro/categories/NLP/"/>
           
         </display>
     </data>
