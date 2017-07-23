@@ -256,9 +256,9 @@
       <category term="NLP" scheme="http://randolph.pro/categories/NLP/"/>
     
     
-      <category term="NLP" scheme="http://randolph.pro/tags/NLP/"/>
-    
       <category term="Python" scheme="http://randolph.pro/tags/Python/"/>
+    
+      <category term="NLP" scheme="http://randolph.pro/tags/NLP/"/>
     
   </entry>
   
@@ -478,9 +478,9 @@ AC & (1,2)(-2),(0,1)(-1),(0,1)(-1),(0,1)(-1),(2,1)(-1),(EOB)(0,0)
       <category term="Computer Vision" scheme="http://randolph.pro/categories/Computer-Vision/"/>
     
     
-      <category term="Python" scheme="http://randolph.pro/tags/Python/"/>
-    
       <category term="Computer Vision" scheme="http://randolph.pro/tags/Computer-Vision/"/>
+    
+      <category term="Python" scheme="http://randolph.pro/tags/Python/"/>
     
   </entry>
   
