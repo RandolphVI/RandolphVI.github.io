@@ -83,7 +83,7 @@
     <link href="http://randolph.pro/2016/12/14/%3CNatural%20Language%20Processing%20with%20Python%3E%20Chapter%201%20&amp;%202/"/>
     <id>http://randolph.pro/2016/12/14/&lt;Natural Language Processing with Python&gt; Chapter 1 &amp; 2/</id>
     <published>2016-12-14T06:38:56.000Z</published>
-    <updated>2017-07-23T08:49:22.000Z</updated>
+    <updated>2017-07-23T08:52:33.000Z</updated>
     
     <content type="html"><![CDATA[<h1 id="Related"><a href="#Related" class="headerlink" title="Related"></a>Related</h1><ul>
 <li>NLTK</li>
@@ -92,7 +92,7 @@
 <li>Text Corpus Structure</li>
 <li>WordNet</li>
 </ul>
-<h1 id="1-Key："><a href="#1-Key：" class="headerlink" title="1.Key："></a>1.Key：</h1><h2 id="What’s-NTLK"><a href="#What’s-NTLK" class="headerlink" title="What’s NTLK?"></a><strong>What’s NTLK?</strong></h2><p>NTLK 是一个自然语言工具包，最初创建于 2001 年，最初是宾州大学计算机与信息科学系计算语言学课程的一部分，大部分 NLP 研究者入门的首选 tool。</p>
+<h1 id="Key："><a href="#Key：" class="headerlink" title="Key："></a>Key：</h1><h2 id="What’s-NTLK"><a href="#What’s-NTLK" class="headerlink" title="What’s NTLK?"></a><strong>What’s NTLK?</strong></h2><p>NTLK 是一个自然语言工具包，最初创建于 2001 年，最初是宾州大学计算机与信息科学系计算语言学课程的一部分，大部分 NLP 研究者入门的首选 tool。</p>
 <p>另外，这本书是关于用 Python 进行自然语言处理的一本入门书，基本上可以看做是 NLTK 这个库的 HandBook，使用的方法均是 nltk 库中的方法。如果希望查阅 API 文档或者是下载安装 NLTK，可以前往 <a href="http://www.nltk.org" target="_blank" rel="external"> 官方网站 </a> 下载，官网上提供和的 API 文档涵盖了工具包中的每一个模块、类和函数，详细说明了各种参数，以及用法示例，在此不再赘述。</p>
 <ul>
 <li><strong>简单介绍一下 NLTK 的几个重要的模块以及功能描述：</strong></li>
@@ -211,7 +211,7 @@
 <li>Antonyms.（反义词）</li>
 </ul>
 <hr>
-<h1 id="2-Correct-errors-in-printing："><a href="#2-Correct-errors-in-printing：" class="headerlink" title="2.Correct errors in printing："></a>2.Correct errors in printing：</h1><p>P19.</p>
+<h1 id="Correct-errors-in-printing："><a href="#Correct-errors-in-printing：" class="headerlink" title="Correct errors in printing："></a>Correct errors in printing：</h1><p>P19.</p>
 <p>在 [Your Trun] 的那块内容中：</p>
 <blockquote>
 <p>使用 text2 尝试前面频率分布的例子。…如果得到的是错误信息：NameError: name ‘FreqDist’is not defined, 则需要在一开始输入 <strong>nltk.book import *</strong>。</p>
@@ -227,7 +227,7 @@
 <p>需更正为：</p>
 <figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;</span>&gt; cfd = nltk.ConditionalFreqDist(</div><div class="line">    ...           (target, fileid[<span class="symbol">:</span><span class="number">4</span>])</div><div class="line">    ...           <span class="keyword">for</span> fileid <span class="keyword">in</span> inaugural.fileids()</div></pre></td></tr></table></figure>
 <hr>
-<h1 id="3-Practice："><a href="#3-Practice：" class="headerlink" title="3.Practice："></a>3.Practice：</h1><blockquote>
+<h1 id="Practice："><a href="#Practice：" class="headerlink" title="Practice："></a>Practice：</h1><blockquote>
 <p>6.​○ In the discussion of comparative wordlists, we created an object called trans late, which you could look up using words in both German and Italian in order to get corresponding words in English. What problem might arise with this approach? Can you suggest a way to avoid this problem?</p>
 </blockquote>
 <ul>
@@ -240,7 +240,7 @@
 </blockquote>
 <figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">def most_fifty_words(<span class="keyword">text</span>):</div><div class="line">    stopwords = nltk.corpus.stopwords.<span class="keyword">words</span>(<span class="string">'english'</span>)</div><div class="line">    content = [w <span class="keyword">for</span> w <span class="keyword">in</span> <span class="keyword">text</span> <span class="keyword">if</span> w.<span class="built_in">lower</span>() <span class="keyword">not</span> <span class="keyword">in</span> stopwords]</div><div class="line">    fdist = FreqDist(content)</div><div class="line">    vocabulary = list(fdist.<span class="built_in">keys</span>())</div><div class="line">    <span class="literal">return</span> vocabulary[:<span class="number">50</span>]</div></pre></td></tr></table></figure>
 <hr>
-<h1 id="4-Still-have-Question："><a href="#4-Still-have-Question：" class="headerlink" title="4.Still have Question："></a>4.Still have Question：</h1><ul>
+<h1 id="Still-have-Question："><a href="#Still-have-Question：" class="headerlink" title="Still have Question："></a>Still have Question：</h1><ul>
 <li><strong>暂无</strong> </li>
 </ul>
 ]]></content>
