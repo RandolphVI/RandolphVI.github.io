@@ -83,7 +83,7 @@
     <link href="http://randolph.pro/2016/12/14/%3CNatural%20Language%20Processing%20with%20Python%3E%20Chapter%201%20&amp;%202/"/>
     <id>http://randolph.pro/2016/12/14/&lt;Natural Language Processing with Python&gt; Chapter 1 &amp; 2/</id>
     <published>2016-12-14T06:38:56.000Z</published>
-    <updated>2017-07-23T15:10:27.000Z</updated>
+    <updated>2017-07-23T15:37:31.000Z</updated>
     
     <content type="html"><![CDATA[<h1 id="Related"><a href="#Related" class="headerlink" title="Related"></a>Related</h1><ul>
 <li>NLTK</li>
@@ -145,7 +145,7 @@
 <tr>
 <td>语义解释</td>
 <td>nltk.sem，nltk.inference</td>
-<td>ℷ演算、一阶逻辑、模型检验</td>
+<td>ℷ 演算、一阶逻辑、模型检验</td>
 </tr>
 <tr>
 <td>指标评测</td>
@@ -172,7 +172,7 @@
 </div>
 <hr>
 <h2 id="concordance-function"><a href="#concordance-function" class="headerlink" title="concordance function."></a><em>concordance</em> <strong>function</strong>.</h2><ul>
-<li><strong>concordance</strong>函数：这个函数挺有意思的，是 nltk 下的一个函数，可以显示指定单词的出现情况（使用这个函数，指定单词的大小写不敏感），同时还可以显示一些上下文。下面是该函数的使用场景（其中 text1 的内容是 nltk.book 导入后中的 text1）:</li>
+<li><strong>concordance</strong> 函数：这个函数挺有意思的，是 nltk 下的一个函数，可以显示指定单词的出现情况（使用这个函数，指定单词的大小写不敏感），同时还可以显示一些上下文。下面是该函数的使用场景（其中 text1 的内容是 nltk.book 导入后中的 text1）:</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; text1.concordance(&quot;monstrous&quot;)</div><div class="line">    Building index...</div><div class="line">    Displaying 11 of 11 matches:</div><div class="line">    ong the former , one was of a most monstrous size . ... This came towards us ,</div><div class="line">    ON OF THE PSALMS . &quot; Touching that monstrous bulk of the whale or ork we have r</div><div class="line">    ll over with a heathenish array of monstrous clubs and spears . Some were thick</div><div class="line">    d as you gazed , and wondered what monstrous cannibal and savage could ever hav</div><div class="line">    that has survived the flood ; most monstrous and most mountainous ! That Himmal</div><div class="line">    they might scout at Moby Dick as a monstrous fable , or still worse and more de</div><div class="line">    th of Radney .&apos;&quot; CHAPTER 55 Of the monstrous Pictures of Whales . I shall ere l</div><div class="line">    ing Scenes . In connexion with the monstrous pictures of whales , I am strongly</div><div class="line">    ere to enter upon those still more monstrous stories of them which are to be fo</div></pre></td></tr></table></figure>
 <p>这个函数的具体实现如下：</p>
@@ -189,7 +189,7 @@
 <ul>
 <li>Pronoun Resolution</li>
 </ul>
-<p>指代消解，是解决”词义消歧”的一个手段，解决“谁对谁做了什么”，即检测动词的主语和宾语，另外还有 <strong> 语义角色标注</strong>（semantic role labing）—- 确定名词短语如何与动词相关联（如代理、受事、工具等）。</p>
+<p>指代消解，是解决“词义消歧”的一个手段，解决“谁对谁做了什么”，即检测动词的主语和宾语，另外还有 <strong> 语义角色标注</strong>（semantic role labing）— 确定名词短语如何与动词相关联（如代理、受事、工具等）。</p>
 <hr>
 <h2 id="Text-Corpus-Structure"><a href="#Text-Corpus-Structure" class="headerlink" title="Text Corpus Structure"></a>Text Corpus Structure</h2><p>以下是几种常见的语料库结构：<br><img src="https://farm1.staticflickr.com/445/31263100710_d839312795_o.png" alt=""></p>
 <ul>
@@ -216,13 +216,13 @@
 <h1 id="Correct-errors-in-printing："><a href="#Correct-errors-in-printing：" class="headerlink" title="Correct errors in printing："></a>Correct errors in printing：</h1><p>P19.</p>
 <p>在 [Your Trun] 的那块内容中：</p>
 <blockquote>
-<p>使用 text2 尝试前面频率分布的例子。…如果得到的是错误信息：NameError: name ‘FreqDist’is not defined, 则需要在一开始输入 <strong>nltk.book import *</strong>。</p>
+<p>使用 text2 尝试前面频率分布的例子。…如果得到的是错误信息：NameError: name ‘FreqDist’is not defined，则需要在一开始输入  <strong>nltk.book import *</strong>。</p>
 </blockquote>
 <p>需更正为：</p>
 <blockquote>
-<p>使用 text2 尝试前面频率分布的例子。…如果得到的是错误信息：NameError: name ‘FreqDist’is not defined, 则需要在一开始输入 <strong>nltk.import *</strong>。</p>
+<p>使用 text2 尝试前面频率分布的例子。…如果得到的是错误信息：NameError: name ‘FreqDist’is not defined，则需要在一开始输入 <strong>nltk.import *</strong>。</p>
 </blockquote>
-<p><strong>原因:nltk.book 中并不存在 FreqDist()这一 function.</strong></p>
+<p><strong>原因：nltk.book 中并不存在 FreqDist() 这一 function.</strong></p>
 <hr>
 <p>P48.</p>
 <p>在 [Inaugural Address Corpus] 的那块代码部分中：<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;</span>&gt; cfd = nltk.ConditionalFreqDist(</div><div class="line">    ...           (target, file[<span class="symbol">:</span><span class="number">4</span>])</div><div class="line">    ...           <span class="keyword">for</span> fileid <span class="keyword">in</span> inaugural.fileids()</div></pre></td></tr></table></figure></p>
@@ -230,17 +230,23 @@
 <figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;</span>&gt; cfd = nltk.ConditionalFreqDist(</div><div class="line">    ...           (target, fileid[<span class="symbol">:</span><span class="number">4</span>])</div><div class="line">    ...           <span class="keyword">for</span> fileid <span class="keyword">in</span> inaugural.fileids()</div></pre></td></tr></table></figure>
 <hr>
 <h1 id="Practice："><a href="#Practice：" class="headerlink" title="Practice："></a>Practice：</h1><blockquote>
-<p>6.​○ In the discussion of comparative wordlists, we created an object called trans late, which you could look up using words in both German and Italian in order to get corresponding words in English. What problem might arise with this approach? Can you suggest a way to avoid this problem?</p>
+<p>6.○ In the discussion of comparative wordlists, we created an object called trans late, which you could look up using words in both German and Italian in order to get corresponding words in English. What problem might arise with this approach? Can you suggest a way to avoid this problem?</p>
 </blockquote>
 <ul>
-<li>如果输入错误（不存在的词语或者其他没有通过 translate.update(dict(xx))加入字典的语言词语，则会引发 KeyError.）。其中一个解决办法是，添加一个错误处理情况。</li>
+<li>如果输入错误（不存在的词语或者其他没有通过 translate.update(dict(xx)) 加入字典的语言词语，则会引发 KeyError.）。其中一个解决办法是，添加一个错误处理情况。</li>
 </ul>
 <blockquote>
-<p>8.◑ Define a conditional frequency distribution over the Names Corpus that allows you to see which initial letters are more frequent for males versus females (see Figure 2-7).<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">cfd = nltk.ConditionalFreqDist((fileid, name[<span class="number">1</span>]</div><div class="line">                                 <span class="keyword">for</span> fileid <span class="keyword">in</span> names.fileids()</div><div class="line">                                 <span class="keyword">for</span> name <span class="keyword">in</span> names.words(fileid))</div></pre></td></tr></table></figure></p>
-<p>14.◑ Define a function supergloss(s) that takes a synset s as its argument and returns a string consisting of the concatenation of the definition of s, and the definitions of all the hypernyms and hyponyms of s.<br><figure class="highlight ceylon"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">def supergloss(s):</div><div class="line">    s = wn.synset(<span class="string">'s'</span>)</div><div class="line">    hyponyms<span class="number">_</span><span class="keyword">of</span><span class="number">_</span>s = s.hyponyms()</div><div class="line">    hypernyms<span class="number">_</span><span class="keyword">of</span><span class="number">_</span>s = s.hypernyms()</div><div class="line">    <span class="keyword">return</span> str(s) + str(hyponyms<span class="number">_</span><span class="keyword">of</span><span class="number">_</span>s) + str(hypernyms<span class="number">_</span><span class="keyword">of</span><span class="number">_</span>s)</div></pre></td></tr></table></figure></p>
+<p>8.◑ Define a conditional frequency distribution over the Names Corpus that allows you to see which initial letters are more frequent for males versus females (see Figure 2-7).</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">cfd = nltk.ConditionalFreqDist((fileid, name[<span class="number">1</span>]</div><div class="line">                                 <span class="keyword">for</span> fileid <span class="keyword">in</span> names.fileids()</div><div class="line">                                 <span class="keyword">for</span> name <span class="keyword">in</span> names.words(fileid))</div></pre></td></tr></table></figure>
+<blockquote>
+<p>14.◑ Define a function supergloss(s) that takes a synset s as its argument and returns a string consisting of the concatenation of the definition of s, and the definitions of all the hypernyms and hyponyms of s.</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">supergloss</span><span class="params">(s)</span>:</span></div><div class="line">    s = wn.synset(<span class="string">'s'</span>)</div><div class="line">    hyponyms_of_s = s.hyponyms()</div><div class="line">    hypernyms_of_s = s.hypernyms()</div><div class="line">    <span class="keyword">return</span> str(s) + str(hyponyms_of_s) + str(hypernyms_of_s)</div></pre></td></tr></table></figure>
+<blockquote>
 <p>17.◑ Write a function that finds the 50 most frequently occurring words of a text that are not stopwords.</p>
 </blockquote>
-<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">def most_fifty_words(<span class="keyword">text</span>):</div><div class="line">    stopwords = nltk.corpus.stopwords.<span class="keyword">words</span>(<span class="string">'english'</span>)</div><div class="line">    content = [w <span class="keyword">for</span> w <span class="keyword">in</span> <span class="keyword">text</span> <span class="keyword">if</span> w.<span class="built_in">lower</span>() <span class="keyword">not</span> <span class="keyword">in</span> stopwords]</div><div class="line">    fdist = FreqDist(content)</div><div class="line">    vocabulary = list(fdist.<span class="built_in">keys</span>())</div><div class="line">    <span class="literal">return</span> vocabulary[:<span class="number">50</span>]</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">most_fifty_words</span><span class="params">(text)</span>:</span></div><div class="line">    stopwords = nltk.corpus.stopwords.words(<span class="string">'english'</span>)</div><div class="line">    content = [w <span class="keyword">for</span> w <span class="keyword">in</span> text <span class="keyword">if</span> w.lower() <span class="keyword">not</span> <span class="keyword">in</span> stopwords]</div><div class="line">    fdist = FreqDist(content)</div><div class="line">    vocabulary = list(fdist.keys())</div><div class="line">    <span class="keyword">return</span> vocabulary[:<span class="number">50</span>]</div></pre></td></tr></table></figure>
 <hr>
 <h1 id="Still-have-Question："><a href="#Still-have-Question：" class="headerlink" title="Still have Question："></a>Still have Question：</h1><ul>
 <li><strong>暂无</strong> </li>
