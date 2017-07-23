@@ -86,7 +86,7 @@
     <link href="http://randolph.pro/2016/12/14/%3CComputer%20Vision%3E%20JPEG%20Compression/"/>
     <id>http://randolph.pro/2016/12/14/&lt;Computer Vision&gt; JPEG Compression/</id>
     <published>2016-12-14T06:33:41.000Z</published>
-    <updated>2017-07-22T08:38:13.000Z</updated>
+    <updated>2017-07-23T08:21:49.000Z</updated>
     
     <content type="html"><![CDATA[<h1 id="Related"><a href="#Related" class="headerlink" title="Related"></a>Related</h1><ul>
 <li>颜色模式转换: RBG to YUV</li>
@@ -134,7 +134,7 @@ F(n) = C(n) \cdot E(n)</script><p>这里，$E(n)$ 是一个基底，$C(n)$ 是 D
 <p>简而言之，所谓量化就是用像素值除以量化表对应值所得的结果。</p>
 <p>由于量化表左上角的值较小，右下角的值较大，这样就起到了保持低频分量，抑制高频分量的目的。JPEG 使用的颜色是 YUV 格式。我们提到过，$Y$ 分量代表了亮度信息，$UV$ 分量代表了色差信息。相比而言，$Y$ 分量更重要一些。我们可以对  $Y$ 采用细量化，对 $UV$ 采用粗量化，可进一步提高压缩比。所以上面所说的量化表通常有两张，一个是专门处理亮度的频率系数，另一个则是针对色度的频率系数，即一张是针对 $Y$ 的，而另一张是针对 $UV$ 的。<strong>当频率系数经过量化之后，将频率系数由浮点数转变为整数，这才便于执行最后的编码。不难发现，经过量化阶段之后，所有的数据只保留了整数近似值，也就再度损失了一些数据内容。在 JPEG 算法中，由于对亮度和色度的精度要求不同，分别对亮度和色度采用不同的量化表。</strong></p>
 <p>下图给出 JPEG 的亮度量化表和色度量化表，该量化表是从广泛的实验中得出的。当然，你也可以自定义量化表。</p>
-<h3 id="JPEG- 亮度量化表："><a href="#JPEG- 亮度量化表：" class="headerlink" title="JPEG 亮度量化表："></a>JPEG 亮度量化表：</h3><script type="math/tex; mode=display">
+<h2 id="JPEG- 亮度量化表"><a href="#JPEG- 亮度量化表" class="headerlink" title="JPEG 亮度量化表"></a>JPEG 亮度量化表</h2><script type="math/tex; mode=display">
 \begin{array}{|c|c|c|c|c|c|c|c|c|}
 \hline
 16 & 11 & 10 & 16 & 24 & 40 & 51 & 61 \cr
@@ -153,7 +153,7 @@ F(n) = C(n) \cdot E(n)</script><p>这里，$E(n)$ 是一个基底，$C(n)$ 是 D
 \hline
 72 & 92 & 95 & 98 & 112 & 100 & 103 & 99 \cr
 \hline
-\end{array}</script><h3 id="JPEG- 色度量化表："><a href="#JPEG- 色度量化表：" class="headerlink" title="JPEG 色度量化表："></a>JPEG 色度量化表：</h3><script type="math/tex; mode=display">
+\end{array}</script><h2 id="JPEG- 色度量化表"><a href="#JPEG- 色度量化表" class="headerlink" title="JPEG 色度量化表"></a>JPEG 色度量化表</h2><script type="math/tex; mode=display">
 \begin{array}{|c|c|c|c|c|c|c|c|c|}
 \hline
 17 & 18 & 24 & 47 & 99 & 99 & 99 & 99 \cr
@@ -202,13 +202,13 @@ F(n) = C(n) \cdot E(n)</script><p>这里，$E(n)$ 是一个基底，$C(n)$ 是 D
 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \cr
 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \cr
 \end{array}
-\right]</script><h3 id="DC- 系数的差分脉冲调制编码"><a href="#DC- 系数的差分脉冲调制编码" class="headerlink" title="DC 系数的差分脉冲调制编码"></a>DC 系数的差分脉冲调制编码</h3><p>$8\times 8$ 的图像块经过 DCT 变换之后得到的 DC 系数有两个特点：</p>
+\right]</script><h2 id="DC- 系数的差分脉冲调制编码"><a href="#DC- 系数的差分脉冲调制编码" class="headerlink" title="DC 系数的差分脉冲调制编码"></a>DC 系数的差分脉冲调制编码</h2><p>$8\times 8$ 的图像块经过 DCT 变换之后得到的 DC 系数有两个特点：</p>
 <ol>
 <li>系数的数值比较大；</li>
 <li>相邻的 $8\times 8$ 图像块的 DC 系数值变化不大；</li>
 </ol>
 <p>根据这两个特点，DC 系数一般采用差分脉冲调制编码 DPCM（Difference Pulse Code Modulation），即：取同一个图像分量中每个 DC 值与前一个 DC 值的差值来进行编码。对差值进行编码所需要的位数会比对原值进行编码所需要的位数少了很多。假设某一个 $8\times 8$ 图像块的 DC 系数值为 15，而上一个 $8\times 8$ 图像块的 DC 系数为 12，则两者之间的差值为 3。</p>
-<h3 id="DC- 系数的中间格式计算"><a href="#DC- 系数的中间格式计算" class="headerlink" title="DC 系数的中间格式计算"></a>DC 系数的中间格式计算</h3><p>JPEG 中为了更进一步节约空间，并不直接保存数据的具体数值，而是将数据按照位数分为 16 组，保存在表里面。这也就是所谓的变长整数编码 VLI。即，第 0 组中保存的编码位数为 0，其编码所代表的数字为 0；第 1 组中保存的编码位数为 1，编码所代表的数字为 -1 或者 1 ……，如下面的表格所示, 暂且称其为 VLI 编码表：</p>
+<h2 id="DC- 系数的中间格式计算"><a href="#DC- 系数的中间格式计算" class="headerlink" title="DC 系数的中间格式计算"></a>DC 系数的中间格式计算</h2><p>JPEG 中为了更进一步节约空间，并不直接保存数据的具体数值，而是将数据按照位数分为 16 组，保存在表里面。这也就是所谓的变长整数编码 VLI。即，第 0 组中保存的编码位数为 0，其编码所代表的数字为 0；第 1 组中保存的编码位数为 1，编码所代表的数字为 -1 或者 1 ……，如下面的表格所示, 暂且称其为 VLI 编码表：</p>
 <script type="math/tex; mode=display">
 \begin{array}{|c|c|c|}
 \hline
@@ -247,18 +247,18 @@ F(n) = C(n) \cdot E(n)</script><p>这里，$E(n)$ 是一个基底，$C(n)$ 是 D
 -32767,..,-16384,16384,..,32767 & 15 & . \cr
 \hline
 \end{array}</script><p>前面提到的那个 DC 差值为 3 的数据，通过查找 VLI 可以发现，整数 3 位于 VLI 表格的第 2 组，因此，可以写成 $(2)(3)$ 的形式，该形式，称之为 DC 系数的中间格式。</p>
-<h3 id="AC- 系数的行程长度编码（RLC）"><a href="#AC- 系数的行程长度编码（RLC）" class="headerlink" title="AC 系数的行程长度编码（RLC）"></a>AC 系数的行程长度编码（RLC）</h3><p>量化之后的 AC 系数的特点是，63 个系数中含有很多值为 0 的系数。因此，可以采用行程编码 RLC（Run Length Coding）来更进一步降低数据的传输量。利用该编码方式，可以将一个字符串中重复出现的连续字符用两个字节来代替，其中，第一个字节代表重复的次数，第二个字节代表被重复的字符串。例如，$(4, 6)$ 就代表字符串 “6666”。</p>
+<h2 id="AC- 系数的行程长度编码（RLC）"><a href="#AC- 系数的行程长度编码（RLC）" class="headerlink" title="AC 系数的行程长度编码（RLC）"></a>AC 系数的行程长度编码（RLC）</h2><p>量化之后的 AC 系数的特点是，63 个系数中含有很多值为 0 的系数。因此，可以采用行程编码 RLC（Run Length Coding）来更进一步降低数据的传输量。利用该编码方式，可以将一个字符串中重复出现的连续字符用两个字节来代替，其中，第一个字节代表重复的次数，第二个字节代表被重复的字符串。例如，$(4, 6)$ 就代表字符串 “6666”。</p>
 <p>但是，在 JPEG 编码中，RLC 的含义就同其原有的意义略有不同。在 JPEG 编码中，假设 RLC 编码之后得到了一个 $(M,N)$ 的数据对，其中 M 是两个非零 AC 系数之间连续的 0 的个数（即，行程长度），N 是下一个非零的 AC 系数的值。采用这样的方式进行表示，是因为 AC 系数当中有大量的 0，而采用 Zigzag 扫描也会使得 AC 系数中有很多连续的 0 的存在，如此一来，便非常适合于用 RLC 进行编码。</p>
 <p>例如，现有一个字符串，如下所示：</p>
 <script type="math/tex; mode=display">
 57, 45, 0, 0, 0, 0, 23, 0, -30, -8, 0, 0, 1, 0 0 0 .....</script><p>经过 RLC 之后，将呈现出以下的形式：</p>
 <script type="math/tex; mode=display">
  (0, 57) ; (0, 45) ; (4, 23) ; (1, -30) ; (0, -8) ; (2, 1) ; (0, 0)</script><p><strong>注意，如果 AC 系数之间连续 0 的个数超过 16，则用一个扩展字节 (15, 0) 来表示 16 连续的 0。</strong></p>
-<h3 id="AC 系数的中间格式"><a href="#AC 系数的中间格式" class="headerlink" title="AC 系数的中间格式"></a>AC 系数的中间格式 </h3><p> 根据前面提到的 VLI 表格，对于前面的字符串：</p>
+<h2 id="AC 系数的中间格式"><a href="#AC 系数的中间格式" class="headerlink" title="AC 系数的中间格式"></a>AC 系数的中间格式 </h2><p> 根据前面提到的 VLI 表格，对于前面的字符串：</p>
 <script type="math/tex; mode=display">
  (0, 57) ; (0, 45) ; (4, 23) ; (1, -30) ; (0, -8) ; (2, 1) ; (0, 0)</script><p>只处理每对数右边的那个数据，对其进行 VLI 编码: 查找上面的 VLI 编码表格，可以发现，57 在第 6 组当中，因此，可以将其写成 $(0,6),57$ 的形式，该形式，称之为 AC 系数的中间格式。<br>同样的 $(0, 45)$ 的中间格式为：$(0, 6), 45$；$(1, -30)$ 的中间格式为：$(1, 5), -30$；</p>
 <h1 id="熵编码：Huffman- 编码"><a href="# 熵编码：Huffman- 编码" class="headerlink" title="熵编码：Huffman 编码"></a>熵编码：Huffman 编码 </h1><p> 在得到 DC 系数的中间格式和 AC 系数的中间格式之后，为进一步压缩图象数据，有必要对两者进行熵编码。<strong>JPEG 标准具体规定了两种熵编码方式：Huffman 编码和算术编码。</strong>JPEG 基本系统规定采用 Huffman 编码（因为不存在专利问题），但 JPEG 标准并没有限制 JPEG 算法必须用 Huffman 编码方式或者算术编码方式。 </p>
-<h3 id="Huffman- 编码"><a href="#Huffman- 编码" class="headerlink" title="Huffman 编码"></a>Huffman 编码 </h3><p> 对出现概率大的字符分配字符长度较短的二进制编码，对出现概率小的字符分配字符长度较长的二进制编码，从而使得字符的平均编码长度最短。Huffman 编码的原理请参考数据结构中的 Huffman 树或者最优二叉树。</p>
+<h2 id="Huffman- 编码"><a href="#Huffman- 编码" class="headerlink" title="Huffman 编码"></a>Huffman 编码 </h2><p> 对出现概率大的字符分配字符长度较短的二进制编码，对出现概率小的字符分配字符长度较长的二进制编码，从而使得字符的平均编码长度最短。Huffman 编码的原理请参考数据结构中的 Huffman 树或者最优二叉树。</p>
 <p><strong>Huffman 编码时 DC 系数与 AC 系数分别采用不同的 Huffman 编码表，对于亮度和色度也采用不同的 Huffman 编码表。</strong>因此，需要 4 张 Huffman 编码表才能完成熵编码的工作。具体的 Huffman 编码采用查表的方式来高效地完成。然而，在 JPEG 标准中没有定义缺省的 Huffman 表，用户可以根据实际应用自由选择，也可以使用 JPEG 标准推荐的 Huffman 表。或者预先定义一个通用的 Huffman 表，也可以针对一副特定的图像，在压缩编码前通过搜集其统计特征来计算 Huffman 表的值。</p>
 <p>下面我们举例来说明 $8\times 8$ 图像子块经过 DCT 及量化之后的处理过程：<br>假设一个图像块经过量化以后得到以下的系数矩阵：</p>
 <script type="math/tex; mode=display">
