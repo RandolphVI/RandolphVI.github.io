@@ -83,7 +83,7 @@
     <link href="http://randolph.pro/2016/12/14/%3CNatural%20Language%20Processing%20with%20Python%3E%20Chapter%201%20&amp;%202/"/>
     <id>http://randolph.pro/2016/12/14/&lt;Natural Language Processing with Python&gt; Chapter 1 &amp; 2/</id>
     <published>2016-12-14T06:38:56.000Z</published>
-    <updated>2017-07-23T11:03:06.000Z</updated>
+    <updated>2017-07-23T15:10:27.000Z</updated>
     
     <content type="html"><![CDATA[<h1 id="Related"><a href="#Related" class="headerlink" title="Related"></a>Related</h1><ul>
 <li>NLTK</li>
@@ -181,11 +181,6 @@
 <h2 id="Word-Sense-Disambiguation-amp-Pronoun-Resolution"><a href="#Word-Sense-Disambiguation-amp-Pronoun-Resolution" class="headerlink" title="Word Sense Disambiguation &amp; Pronoun Resolution"></a>Word Sense Disambiguation &amp; Pronoun Resolution</h2><ul>
 <li>Word Sense Disambiguation</li>
 </ul>
-<blockquote><p>Do not just seek happiness for yourself. Seek happiness for all. Through kindness. Through mercy.</p>
-<footer><strong>David Levithan</strong><cite>Wide Awake</cite></footer></blockquote>
-<p id="div-border-top-yellow">这是带颜色的文本框</p>
-
-<p><span id="inline-purple">这是颜色块标签</span></p>
 <p>意思是“词义消歧”，简而言之，我们需要做的就是分析出特定上下文中的词被赋予的是哪个意思。例如：</p>
 <blockquote>
 <p>a. <strong>serve</strong>: help with food or drink; hold an office; put ball into  play </p>
