@@ -305,7 +305,7 @@ AC & (1,2)(-2),(0,1)(-1),(0,1)(-1),(0,1)(-1),(2,1)(-1),(EOB)(0,0)
     <link href="http://randolph.pro/2016/03/19/%3CProgramming%20Collective%20Intelligence%3E%20Chapter%203/"/>
     <id>http://randolph.pro/2016/03/19/&lt;Programming Collective Intelligence&gt; Chapter 3/</id>
     <published>2016-03-18T16:00:00.000Z</published>
-    <updated>2017-07-25T13:51:35.000Z</updated>
+    <updated>2017-07-25T14:13:00.000Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fhu94m6p9zj30t612ah7b.jpg" alt=""></p>
 <p>关于该书的其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/Book-「Programming-Collective-Intelligence」/">「Programming Collective Intelligence」</a></p>
@@ -385,10 +385,12 @@ AC & (1,2)(-2),(0,1)(-1),(0,1)(-1),(0,1)(-1),(2,1)(-1),(EOB)(0,0)
 <li>P46</li>
 </ul>
 <blockquote>
-<pre><code>... 代码首先会构造一个列表，其中包含的是超过 5 个人都希望拥有的物品....
-</code></pre><p>  需要更正为：</p>
-<pre><code>... 代码首先会构造一个列表，其中包含的是超过 10 个人都希望拥有的物品....
-</code></pre></blockquote>
+<p>…代码首先会构造一个列表，其中包含的是超过 5 个人都希望拥有的物品….</p>
+</blockquote>
+<p>需要更正为：</p>
+<blockquote>
+<p>…代码首先会构造一个列表，其中包含的是超过 10 个人都希望拥有的物品….</p>
+</blockquote>
 <hr>
 <h1 id="Practice"><a href="#Practice" class="headerlink" title="Practice:"></a>Practice:</h1><ul>
 <li><strong>暂无</strong></li>
