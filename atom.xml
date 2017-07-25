@@ -602,7 +602,7 @@ P(\mathrm{d} E) = exp(\mathrm{d}E/kT)</script><p>其中 <strong><em>k</em></stro
     <link href="http://randolph.pro/2015/09/11/%3CNatural%20Language%20Processing%20with%20Python%3E%20Chapter%201%20&amp;%202/"/>
     <id>http://randolph.pro/2015/09/11/&lt;Natural Language Processing with Python&gt; Chapter 1 &amp; 2/</id>
     <published>2015-09-10T16:00:00.000Z</published>
-    <updated>2017-07-25T11:05:08.000Z</updated>
+    <updated>2017-07-25T11:13:21.000Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fhu96awavpj30yg1cp1kx.jpg" alt=""></p>
 <p>关于该书的其他学习笔记系列：<a href="http://randolph.pro/categories/NLP/Book-「NLP-with-Python」/">「NLP with Python」</a></p>
@@ -738,11 +738,11 @@ P(\mathrm{d} E) = exp(\mathrm{d}E/kT)</script><p>其中 <strong><em>k</em></stro
 <h1 id="Correct-errors-in-printing："><a href="#Correct-errors-in-printing：" class="headerlink" title="Correct errors in printing："></a>Correct errors in printing：</h1><p>P19.</p>
 <p>在 [Your Trun] 的那块内容中：</p>
 <blockquote>
-<p>使用 text2 尝试前面频率分布的例子。…如果得到的是错误信息：NameError: name ‘FreqDist’is not defined，则需要在一开始输入  <strong>nltk.book import *</strong>。</p>
+<p>使用 text2 尝试前面频率分布的例子。…如果得到的是错误信息：NameError: name ‘FreqDist’is not defined，则需要在一开始输入  <strong><code>nltk.book import *</code></strong>。</p>
 </blockquote>
 <p>需更正为：</p>
 <blockquote>
-<p>使用 text2 尝试前面频率分布的例子。…如果得到的是错误信息：NameError: name ‘FreqDist’is not defined，则需要在一开始输入 <strong>nltk.import *</strong>。</p>
+<p>使用 text2 尝试前面频率分布的例子。…如果得到的是错误信息：NameError: name ‘FreqDist’is not defined，则需要在一开始输入 <strong><code>nltk.import *</code></strong>。</p>
 </blockquote>
 <p><strong>原因：nltk.book 中并不存在 <code>FreqDist()</code> 这一 function.</strong></p>
 <hr>
@@ -752,7 +752,7 @@ P(\mathrm{d} E) = exp(\mathrm{d}E/kT)</script><p>其中 <strong><em>k</em></stro
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; cfd = nltk.ConditionalFreqDist(</div><div class="line">    ...           (target, fileid[:4])</div><div class="line">    ...           <span class="keyword">for</span> fileid <span class="keyword">in</span> inaugural.fileids()</div></pre></td></tr></table></figure>
 <hr>
 <h1 id="Practice："><a href="#Practice：" class="headerlink" title="Practice："></a>Practice：</h1><blockquote>
-<p>6.○ In the discussion of comparative wordlists, we created an object called trans late, which you could look up using words in both German and Italian in order to get corresponding words in English. What problem might arise with this approach? Can you suggest a way to avoid this problem?</p>
+<p>6.○ In the discussion of comparative wordlists, we created an object called <strong>translate</strong>, which you could look up using words in both German and Italian in order to get corresponding words in English. What problem might arise with this approach? Can you suggest a way to avoid this problem?</p>
 </blockquote>
 <ul>
 <li>如果输入错误（不存在的词语或者其他没有通过 <code>translate.update(dict(xx))</code> 加入字典的语言词语，则会引发 <strong>KeyError</strong>）。其中一个解决办法是，添加一个错误处理情况。</li>
@@ -762,7 +762,7 @@ P(\mathrm{d} E) = exp(\mathrm{d}E/kT)</script><p>其中 <strong><em>k</em></stro
 </blockquote>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; cfd = nltk.ConditionalFreqDist((fileid, name[1]</div><div class="line">    ...                             <span class="keyword">for</span> fileid <span class="keyword">in</span> names.fileids()</div><div class="line">    ...                             <span class="keyword">for</span> name <span class="keyword">in</span> names.words(fileid))</div></pre></td></tr></table></figure>
 <blockquote>
-<p>14.◑ Define a function supergloss(s) that takes a synset s as its argument and returns a string consisting of the concatenation of the definition of s, and the definitions of all the hypernyms and hyponyms of s.</p>
+<p>14.◑ Define a function <strong><code>supergloss(s)</code></strong> that takes a synset s as its argument and returns a string consisting of the concatenation of the definition of <strong>s</strong>, and the definitions of all the hypernyms and hyponyms of <strong>s</strong>.</p>
 </blockquote>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">supergloss</span><span class="params">(s)</span>:</span></div><div class="line">    s = wn.synset(<span class="string">'s'</span>)</div><div class="line">    hyponyms_of_s = s.hyponyms()</div><div class="line">    hypernyms_of_s = s.hypernyms()</div><div class="line">    <span class="keyword">return</span> str(s) + str(hyponyms_of_s) + str(hypernyms_of_s)</div></pre></td></tr></table></figure>
 <blockquote>
