@@ -114,7 +114,7 @@
 <meta property="og:image" content="https://farm1.staticflickr.com/591/30827330683_718ddf881c_o.png">
 <meta property="og:image" content="https://farm1.staticflickr.com/380/31521742461_dcb281b151_o.png">
 <meta property="og:image" content="https://farm1.staticflickr.com/732/31600482456_67bececb29_o.png">
-<meta property="og:updated_time" content="2017-07-25T13:41:12.000Z">
+<meta property="og:updated_time" content="2017-07-25T13:48:32.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="♞「Programming Collective Intelligence」 Chapter 3">
 <meta name="twitter:description" content="本文是关于「Programming Collective Intelligence」这本书的 Chapter 3的学习笔记。">
@@ -451,7 +451,7 @@
                   <i class="fa fa-file-word-o"></i>
                 </span>
                 <span title="Words count in article">
-                  4,726
+                  4,727
                 </span>
                 <span> words </span>
                 
@@ -556,7 +556,7 @@
 <p>根据 scaledown()函数得到的 loc，我们可以利用 PIL 在生成一张二维图，根据新的坐标值 loc，在图上标出所有数据项的位置以及对应的标签。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">draw2d</span><span class="params">(data, labels, jpeg=<span class="string">'mds2d.jpg'</span>)</span>:</span></div><div class="line">    img = Image.new(<span class="string">'RGB'</span>, (<span class="number">2000</span>, <span class="number">2000</span>), (<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>))</div><div class="line">    draw = ImageDraw.Draw(img)</div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(data)):</div><div class="line">        x = (data[i][<span class="number">0</span>] + <span class="number">0.5</span>)*<span class="number">1000</span></div><div class="line">        y = (data[i][<span class="number">1</span>] + <span class="number">0.5</span>)*<span class="number">1000</span></div><div class="line">        draw.text((x, y), labels[i], (<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>))</div><div class="line">    img.save(jpeg, <span class="string">'JPEG'</span>)</div></pre></td></tr></table></figure></p>
 <p>在命令行中输入：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; import clusters</div><div class="line">&gt;&gt;&gt; words, blognames, data = clusters.readfile(<span class="string">'blogname.txt'</span>)</div><div class="line">&gt;&gt;&gt; coords = clusters.scaledown(data)</div><div class="line">&gt;&gt;&gt; clusters.draw2d(coords, blognames, jpeg = <span class="string">'blogs2d.jpg'</span>)</div></pre></td></tr></table></figure></p>
 <p>得到的 <strong>blog2d.jpg</strong> 反映就是博客数据集中 blog 之间的相似关系，当然我们也可以通过 rotatematrix()函数来转置矩阵 data，得到 rdata，再根据 rdata 画出单词表中的单词的相似度（误差有点大）：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; import clusters</div><div class="line">&gt;&gt;&gt; words, blognames, data = clusters.readfile(<span class="string">'blogname.txt'</span>)</div><div class="line">&gt;&gt;&gt; rdata = clusters.rotatematrix(data)</div><div class="line">&gt;&gt;&gt; coords = clusters.scaledown(rdata)</div><div class="line">&gt;&gt;&gt; clusters.draw2d(coords, words, jpeg = <span class="string">'words2d.jpg'</span>)</div></pre></td></tr></table></figure></p>
-<p>既可以得到单词之间的相似关系<strong>words2d.jpg</strong>。</p>
+<p>即得到单词之间的相似关系<strong>words2d.jpg</strong>。</p>
 <p>同样，我们可以将其用于我们的欲望物品数据集，距离度量使用 <strong>tanimoto 系数</strong>，但是要修改<strong>tanimoto()</strong> 与<strong>scaledown()</strong>几处代码，即需要判断分母为 0 的时候的返回值。修改完之后，调用 scaledown()与 draw2d()，画出欲望物品之间的相似关系图<strong>items2d.jpg</strong>。（同样也可以通过转置 data 矩阵，画出用户之间的相似关系图<strong>users2d.jpg</strong>）<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; import clusters</div><div class="line">&gt;&gt;&gt; users, items, data = clusters.readfile(<span class="string">'zebo.txt'</span>)</div><div class="line">&gt;&gt;&gt; coords = clusters.scaledown(rdata, distance = tanimoto)</div><div class="line">&gt;&gt;&gt; clusters.draw2d(coords, items, jpeg = <span class="string">'items2d.jpg'</span>)</div></pre></td></tr></table></figure></p>
 <p>当然，我们还可以根据需要修改 <strong>rate</strong> 等诸多参数的值来调整算法，在此不再赘述。</p>
 <hr>
@@ -571,6 +571,10 @@
 </code></pre><p>  需要更正为：</p>
 <pre><code>... 代码首先会构造一个列表，其中包含的是超过 10 个人都希望拥有的物品....
 </code></pre></blockquote>
+<hr>
+<h1 id="Practice"><a href="#Practice" class="headerlink" title="Practice:"></a>Practice:</h1><ul>
+<li><strong>暂无</strong></li>
+</ul>
 
       
     </div>
@@ -837,7 +841,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Related"><span class="nav-number">1.</span> <span class="nav-text">Related</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Key"><span class="nav-number">2.</span> <span class="nav-text">Key:</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#皮尔逊相关系数："><span class="nav-number">2.1.</span> <span class="nav-text">皮尔逊相关系数：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分级聚类："><span class="nav-number">2.2.</span> <span class="nav-text">分级聚类：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#K- 均值聚类："><span class="nav-number">2.3.</span> <span class="nav-text">$K$- 均值聚类：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#针对偏好的聚类："><span class="nav-number">2.4.</span> <span class="nav-text">针对偏好的聚类：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多维缩放："><span class="nav-number">2.5.</span> <span class="nav-text">多维缩放：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#EM 聚类："><span class="nav-number">2.6.</span> <span class="nav-text">EM 聚类：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Correct-errors-in-printing"><span class="nav-number">3.</span> <span class="nav-text">Correct errors in printing:</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Related"><span class="nav-number">1.</span> <span class="nav-text">Related</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Key"><span class="nav-number">2.</span> <span class="nav-text">Key:</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#皮尔逊相关系数："><span class="nav-number">2.1.</span> <span class="nav-text">皮尔逊相关系数：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分级聚类："><span class="nav-number">2.2.</span> <span class="nav-text">分级聚类：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#K- 均值聚类："><span class="nav-number">2.3.</span> <span class="nav-text">$K$- 均值聚类：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#针对偏好的聚类："><span class="nav-number">2.4.</span> <span class="nav-text">针对偏好的聚类：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多维缩放："><span class="nav-number">2.5.</span> <span class="nav-text">多维缩放：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#EM 聚类："><span class="nav-number">2.6.</span> <span class="nav-text">EM 聚类：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Correct-errors-in-printing"><span class="nav-number">3.</span> <span class="nav-text">Correct errors in printing:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Practice"><span class="nav-number">4.</span> <span class="nav-text">Practice:</span></a></li></ol></div>
             
 
           </div>
