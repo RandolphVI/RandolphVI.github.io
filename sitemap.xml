@@ -2,9 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://randolph.pro/2016/03/12/%3CProgramming%20Collective%20Intelligence%3E%20Chapter%201%20&%202/</loc>
+    
+    <lastmod>2017-07-25T14:07:04.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://randolph.pro/2015/11/02/%3CWeb%20Scraping%20with%20Python%3E%20Chapter%201%20&%202/</loc>
     
-    <lastmod>2017-07-25T14:01:15.000Z</lastmod>
+    <lastmod>2017-07-25T14:06:45.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://randolph.pro/2015/09/11/%3CNatural%20Language%20Processing%20with%20Python%3E%20Chapter%201%20&%202/</loc>
+    
+    <lastmod>2017-07-25T14:05:23.000Z</lastmod>
     
   </url>
   
@@ -16,23 +30,9 @@
   </url>
   
   <url>
-    <loc>http://randolph.pro/2016/03/12/%3CProgramming%20Collective%20Intelligence%3E%20Chapter%201%20&%202/</loc>
-    
-    <lastmod>2017-07-25T13:51:28.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://randolph.pro/2015/09/17/%3CNatural%20Language%20Processing%20with%20Python%3E%20Chapter%203/</loc>
     
     <lastmod>2017-07-25T13:51:12.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://randolph.pro/2015/09/11/%3CNatural%20Language%20Processing%20with%20Python%3E%20Chapter%201%20&%202/</loc>
-    
-    <lastmod>2017-07-25T13:50:49.000Z</lastmod>
     
   </url>
   
