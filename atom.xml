@@ -305,7 +305,7 @@ AC & (1,2)(-2),(0,1)(-1),(0,1)(-1),(0,1)(-1),(2,1)(-1),(EOB)(0,0)
     <link href="http://randolph.pro/2016/03/12/%3CProgramming%20Collective%20Intelligence%3E%20Chapter%201%20&amp;%202/"/>
     <id>http://randolph.pro/2016/03/12/&lt;Programming Collective Intelligence&gt; Chapter 1 &amp; 2/</id>
     <published>2016-03-11T16:00:00.000Z</published>
-    <updated>2017-07-25T12:47:17.000Z</updated>
+    <updated>2017-07-25T12:49:59.000Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fhu94m6p9zj30t612ah7b.jpg" alt=""></p>
 <p>关于该书的其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/Book-「Programming-Collective-Intelligence」/">「Programming Collective Intelligence」</a></p>
@@ -353,7 +353,7 @@ AC & (1,2)(-2),(0,1)(-1),(0,1)(-1),(0,1)(-1),(2,1)(-1),(EOB)(0,0)
 </ol>
 </blockquote>
 <ul>
-<li>2016.11.28 补充：如果按照书本上下载的 pydelicious-0.5.0 版本，是可以正常运行书本上的代码的而不报错的，但是会出现无论我如何修改 tag 的值，返回的内容都是一样的，原因在后面解释了。但是如果我们下载的是<a href="https://github.com/dotmpe/python-delicious" target="_blank" rel="external">github 上更新后的 pydelicious 版本</a>，会遇到如下问题，解决办法是需要修改_<em>init_</em>.py 文件中的几处代码，但是仍然会出现 tag 值的问题。</li>
+<li>2016.11.28 补充：如果按照书本上下载的 pydelicious-0.5.0 版本，是可以正常运行书本上的代码的而不报错的，但是会出现无论我如何修改 tag 的值，返回的内容都是一样的，原因在后面解释了。但是如果我们下载的是<a href="https://github.com/dotmpe/python-delicious" target="_blank" rel="external">github 上更新后的 pydelicious 版本</a>，会遇到如下问题，解决办法是需要修改__init__.py 文件中的几处代码，但是仍然会出现 tag 值的问题。</li>
 </ul>
 <hr>
 <p>本以为问题得到了解决，可以按照书上的代码继续进行:</p>
