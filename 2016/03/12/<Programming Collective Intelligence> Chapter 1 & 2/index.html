@@ -111,7 +111,7 @@
 <meta property="og:description" content="本文是关于「Programming Collective Intelligence」这本书的 Chapter 1 &amp; 2 的学习笔记。">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNc79gy1fhu94m6p9zj30t612ah7b.jpg">
-<meta property="og:updated_time" content="2017-07-25T12:28:46.000Z">
+<meta property="og:updated_time" content="2017-07-25T12:42:10.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="♞「Programming Collective Intelligence」 Chapter 1 &amp; 2">
 <meta name="twitter:description" content="本文是关于「Programming Collective Intelligence」这本书的 Chapter 1 &amp; 2 的学习笔记。">
@@ -448,7 +448,7 @@
                   <i class="fa fa-file-word-o"></i>
                 </span>
                 <span title="Words count in article">
-                  1,764
+                  1,770
                 </span>
                 <span> words </span>
                 
@@ -502,7 +502,7 @@
 <li>其他相似度计算函数（Minkowski 距离、Mahalanobis 距离等）</li>
 </ul>
 <hr>
-<h1 id="Key："><a href="#Key：" class="headerlink" title="Key："></a>Key：</h1><p>在［推荐物品］的模块中，提到了一种方法：</p>
+<h1 id="Key："><a href="#Key：" class="headerlink" title="Key："></a>Key：</h1><p>在「推荐物品」的模块中，提到了一种方法：</p>
 <ol>
 <li>通过函数找出与自己有相似品味的影评者，并按相似度从大到小排序。</li>
 <li>对于自己未看过的影片，建立一张表，表的内容包括：品位相似的影评者以及其对应的相似度，对于自己未看过影片的评分（影评者可以看过也可以没有看过）。</li>
@@ -510,29 +510,29 @@
 <li>最后得到的结果，表示为自己对于没有看过的电影，通过自己品位相似的影评者得到的预测评分，根据预测评分，来给出决策。</li>
 </ol>
 <hr>
-<h1 id="Need-to-know："><a href="#Need-to-know：" class="headerlink" title="Need to know："></a>Need to know：</h1><p>在［构建一个基于 del.icio.us 的链接推荐系统］的模块中：<br>首先我们需要下载 <strong>pydelicious</strong> 这一个 package。<strong>［这个 package 不支持 python3.x］</strong></p>
+<h1 id="Need-to-know："><a href="#Need-to-know：" class="headerlink" title="Need to know："></a>Need to know：</h1><p>在「构建一个基于 del.icio.us 的链接推荐系统」的模块中：<br>首先我们需要下载 <strong>pydelicious</strong> 这一个 package。<strong>［这个 package 不支持 python3.x］</strong></p>
 <p>我的尝试：</p>
 <blockquote>
 <ol>
 <li>通过 Pycharm 自带的“便利”package 下载。出错，原因：无法找到对应的版本。</li>
-<li>通过命令行输入 sudo pip install pydelicious。出错，原因：Could not find a version that satisfies the requirement pydelicious (from versions:)No matching distribution found for pydelicious。</li>
-<li>通过命令行输入 sudo pip install pydelicious —allow-external pydelicious —allow-unverified pydelicious。出错，原因：Could not find a version that satisfies the requirement pydelicious (from versions:)No matching distribution found for pydelicious。</li>
+<li>通过命令行输入<code>sudo pip install pydelicious</code>。出错，原因：Could not find a version that satisfies the requirement pydelicious (from versions:)No matching distribution found for pydelicious。</li>
+<li>通过命令行输入<code>sudo pip install pydelicious --allow-external pydelicious --allow-unverified pydelicious</code>。出错，原因：Could not find a version that satisfies the requirement pydelicious (from versions:)No matching distribution found for pydelicious。</li>
 </ol>
 </blockquote>
 <hr>
 <p>初次尝试失败之后，在 Stackoverflow 寻找解决办法：</p>
 <blockquote>
 <ol>
-<li>首先，按照书本提供的下载地址：<a href="https://code.google.com/archive/p/pydelicious/downloads" target="_blank" rel="external">the pydelicious download page</a><br><strong>［需要翻墙］</strong>下载 <strong>pydelicious-0.5.0.zip</strong> 文件。解压之后得到文件夹。</li>
-<li>命令行 cd 到解压后的文件夹，然后输入 sudo python setup.py install，错误提示：Feedparser not available, no RSS parsing.<strong>意思是缺少 feedparser，需要安装 feedparser</strong></li>
-<li>安装 feedparser, 下载地址：<a href="http://download.csdn.net/download/dixin28/5271130" target="_blank" rel="external">the feedparser download page</a><strong>［需要积分］</strong>，或者<a href="https://github.com/kurtmckee/feedparser" target="_blank" rel="external">the feedparser download page</a><strong>［需要翻墙］</strong>，下载文件夹。</li>
-<li>命令行 cd 到 feedparser 的文件夹，然后输入 sudo python setup.py install，feedparser 安装完成。</li>
-<li>命令行 cd 回到 pydelicious 文件夹，再次输入 sudo python setup.py install，此时会发现 pydelicious 安装成功。</li>
-<li>测试 pydelicious 此 package 是否能够导入，命令行输入 python 之后，再输入 import pydelicious，如果没有报错，这说明 pydelicious 安装成功。</li>
+<li>首先，按照书本提供的下载地址：<a href="https://code.google.com/archive/p/pydelicious/downloads" target="_blank" rel="external">the pydelicious download page</a><br>［需要翻墙］下载 <strong>pydelicious-0.5.0.zip</strong> 文件。解压之后得到文件夹。</li>
+<li>命令行 cd 到解压后的文件夹，然后输入 <code>sudo python setup.py install</code>，错误提示：Feedparser not available, no RSS parsing。<strong> 意思是缺少 feedparser 这一 package 依赖库，需要安装 feedparser</strong>。</li>
+<li>安装 feedparser, 下载地址：<a href="http://download.csdn.net/download/dixin28/5271130" target="_blank" rel="external">the feedparser download page</a>［需要积分］，或者<a href="https://github.com/kurtmckee/feedparser" target="_blank" rel="external">the feedparser download page</a>［需要翻墙］，下载文件夹。</li>
+<li>命令行 cd 到 feedparser 的文件夹，然后输入<code>sudo python setup.py instal</code>l，feedparser 安装完成。</li>
+<li>命令行 cd 回到 pydelicious 文件夹，再次输入<code>sudo python setup.py install</code>，此时会发现 pydelicious 安装成功。</li>
+<li>测试 pydelicious 此 package 是否能够导入，命令行输入 python 之后，再输入<code>import pydelicious</code>，如果没有报错，这说明 pydelicious 安装成功。</li>
 </ol>
 </blockquote>
 <ul>
-<li>2016.11.28 补充：如果按照书本上下载的 pydelicious-0.5.0 版本，是可以正常运行书本上的代码的而不报错的，但是会出现无论我如何修改 tag 的值，返回的内容都是一样的，原因在后面解释了。但是如果我们下载的是<a href="https://github.com/dotmpe/python-delicious" target="_blank" rel="external">github 上更新后的 pydelicious 版本</a>，会遇到如下问题，解决办法是需要修改<strong>init</strong>.py 文件中的几处代码，但是仍然会出现 tag 值的问题。</li>
+<li>2016.11.28 补充：如果按照书本上下载的 pydelicious-0.5.0 版本，是可以正常运行书本上的代码的而不报错的，但是会出现无论我如何修改 tag 的值，返回的内容都是一样的，原因在后面解释了。但是如果我们下载的是<a href="https://github.com/dotmpe/python-delicious" target="_blank" rel="external">github 上更新后的 pydelicious 版本</a>，会遇到如下问题，解决办法是需要修改_<em>init_</em>.py 文件中的几处代码，但是仍然会出现 tag 值的问题。</li>
 </ul>
 <hr>
 <p>本以为问题得到了解决，可以按照书上的代码继续进行:</p>
