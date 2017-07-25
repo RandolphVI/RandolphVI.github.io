@@ -4,49 +4,24 @@
 
     
   <url>
-    <loc>http://randolph.pro/2015/09/11/%3CNatural%20Language%20Processing%20with%20Python%3E%20Chapter%201%20&%202/</loc>
-    <lastmod>2017-07-25T13:49:08.000Z</lastmod>
+    <loc>http://randolph.pro/2016/03/19/%3CProgramming%20Collective%20Intelligence%3E%20Chapter%203/</loc>
+    <lastmod>2017-07-25T13:51:35.000Z</lastmod>
     <data>
         <display>
-        <title>♞「NLP with Python」 Chapter 1 & 2</title>
-        <pubTime>2015-09-10T16:00:00.000Z</pubTime>
+        <title>♞「Programming Collective Intelligence」 Chapter 3</title>
+        <pubTime>2016-03-18T16:00:00.000Z</pubTime>
         
-        <tag>NLP</tag>
-         
         <tag>Python</tag>
+         
+        <tag>Machine Learning</tag>
          
          
            
              
-              <breadCrumb title="NLP" url="http://randolph.pro/categories/NLP/"/>
+              <breadCrumb title="Machine Learning" url="http://randolph.pro/categories/Machine-Learning/"/>
           
              
-              <breadCrumb title="Book:「NLP with Python」" url="http://randolph.pro/categories/NLP/Book-%E3%80%8CNLP-with-Python%E3%80%8D/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://randolph.pro/2015/09/17/%3CNatural%20Language%20Processing%20with%20Python%3E%20Chapter%203/</loc>
-    <lastmod>2017-07-25T13:48:55.000Z</lastmod>
-    <data>
-        <display>
-        <title>♞「NLP with Python」 Chapter 3</title>
-        <pubTime>2015-09-16T16:00:00.000Z</pubTime>
-        
-        <tag>NLP</tag>
-         
-        <tag>Python</tag>
-         
-         
-           
-             
-              <breadCrumb title="NLP" url="http://randolph.pro/categories/NLP/"/>
-          
-             
-              <breadCrumb title="Book:「NLP with Python」" url="http://randolph.pro/categories/NLP/Book-%E3%80%8CNLP-with-Python%E3%80%8D/"/>
+              <breadCrumb title="Book:「Programming Collective Intelligence」" url="http://randolph.pro/categories/Machine-Learning/Book-%E3%80%8CProgramming-Collective-Intelligence%E3%80%8D/"/>
           
         </display>
     </data>
@@ -55,7 +30,7 @@
     
   <url>
     <loc>http://randolph.pro/2016/03/12/%3CProgramming%20Collective%20Intelligence%3E%20Chapter%201%20&%202/</loc>
-    <lastmod>2017-07-25T13:48:41.000Z</lastmod>
+    <lastmod>2017-07-25T13:51:28.000Z</lastmod>
     <data>
         <display>
         <title>♞「Programming Collective Intelligence」 Chapter 1 & 2</title>
@@ -79,24 +54,49 @@
 
     
   <url>
-    <loc>http://randolph.pro/2016/03/19/%3CProgramming%20Collective%20Intelligence%3E%20Chapter%203/</loc>
-    <lastmod>2017-07-25T13:48:32.000Z</lastmod>
+    <loc>http://randolph.pro/2015/09/17/%3CNatural%20Language%20Processing%20with%20Python%3E%20Chapter%203/</loc>
+    <lastmod>2017-07-25T13:51:12.000Z</lastmod>
     <data>
         <display>
-        <title>♞「Programming Collective Intelligence」 Chapter 3</title>
-        <pubTime>2016-03-18T16:00:00.000Z</pubTime>
+        <title>♞「NLP with Python」 Chapter 3</title>
+        <pubTime>2015-09-16T16:00:00.000Z</pubTime>
         
-        <tag>Python</tag>
+        <tag>NLP</tag>
          
-        <tag>Machine Learning</tag>
+        <tag>Python</tag>
          
          
            
              
-              <breadCrumb title="Machine Learning" url="http://randolph.pro/categories/Machine-Learning/"/>
+              <breadCrumb title="NLP" url="http://randolph.pro/categories/NLP/"/>
           
              
-              <breadCrumb title="Book:「Programming Collective Intelligence」" url="http://randolph.pro/categories/Machine-Learning/Book-%E3%80%8CProgramming-Collective-Intelligence%E3%80%8D/"/>
+              <breadCrumb title="Book:「NLP with Python」" url="http://randolph.pro/categories/NLP/Book-%E3%80%8CNLP-with-Python%E3%80%8D/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://randolph.pro/2015/09/11/%3CNatural%20Language%20Processing%20with%20Python%3E%20Chapter%201%20&%202/</loc>
+    <lastmod>2017-07-25T13:50:49.000Z</lastmod>
+    <data>
+        <display>
+        <title>♞「NLP with Python」 Chapter 1 & 2</title>
+        <pubTime>2015-09-10T16:00:00.000Z</pubTime>
+        
+        <tag>NLP</tag>
+         
+        <tag>Python</tag>
+         
+         
+           
+             
+              <breadCrumb title="NLP" url="http://randolph.pro/categories/NLP/"/>
+          
+             
+              <breadCrumb title="Book:「NLP with Python」" url="http://randolph.pro/categories/NLP/Book-%E3%80%8CNLP-with-Python%E3%80%8D/"/>
           
         </display>
     </data>

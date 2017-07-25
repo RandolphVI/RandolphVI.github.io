@@ -113,7 +113,7 @@
 <meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNc79gy1fhu96awavpj30yg1cp1kx.jpg">
 <meta property="og:image" content="https://farm1.staticflickr.com/445/31263100710_d839312795_o.png">
 <meta property="og:image" content="https://farm1.staticflickr.com/474/31598383846_537809b299_o.png">
-<meta property="og:updated_time" content="2017-07-25T13:49:08.000Z">
+<meta property="og:updated_time" content="2017-07-25T13:50:49.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="♞「NLP with Python」 Chapter 1 &amp; 2">
 <meta name="twitter:description" content="本文是关于「Natural Language Processing with Python」这本书的 Chapter 1 &amp; 2 的学习笔记。">
@@ -653,6 +653,7 @@
 <p>17.◑ Write a function that finds the 50 most frequently occurring words of a text that are not stopwords.</p>
 </blockquote>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">most_fifty_words</span><span class="params">(text)</span>:</span></div><div class="line">    stopwords = nltk.corpus.stopwords.words(<span class="string">'english'</span>)</div><div class="line">    content = [w <span class="keyword">for</span> w <span class="keyword">in</span> text <span class="keyword">if</span> w.lower() <span class="keyword">not</span> <span class="keyword">in</span> stopwords]</div><div class="line">    fdist = FreqDist(content)</div><div class="line">    vocabulary = list(fdist.keys())</div><div class="line">    <span class="keyword">return</span> vocabulary[:<span class="number">50</span>]</div></pre></td></tr></table></figure>
+<hr>
 
       
     </div>
