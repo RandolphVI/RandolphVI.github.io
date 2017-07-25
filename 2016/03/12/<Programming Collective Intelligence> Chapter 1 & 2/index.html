@@ -110,7 +110,7 @@
 <meta property="og:site_name" content="黃某人">
 <meta property="og:description" content="本文是关于「Programming Collective Intelligence」这本书的 Chapter 1 &amp; 2 的学习笔记。">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2017-07-25T12:23:38.000Z">
+<meta property="og:updated_time" content="2017-07-25T12:24:27.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="♞「Programming Collective Intelligence」 Chapter 1 &amp; 2">
 <meta name="twitter:description" content="本文是关于「Programming Collective Intelligence」这本书的 Chapter 1 &amp; 2 的学习笔记。">
@@ -519,7 +519,7 @@
 <p>初次尝试失败之后，在 Stackoverflow 寻找解决办法：</p>
 <blockquote>
 <ol>
-<li>首先，按照书本提供的下载地址：<a href="https://code.google.com/archive/p/pydelicious/downloads" target="_blank" rel="external">the pydelicious download page</a><br><strong>［需要翻墙］</strong>下载 ==pydelicious-0.5.0.zip== 文件。解压之后得到文件夹。</li>
+<li>首先，按照书本提供的下载地址：<a href="https://code.google.com/archive/p/pydelicious/downloads" target="_blank" rel="external">the pydelicious download page</a><br><strong>［需要翻墙］</strong>下载 <strong>pydelicious-0.5.0.zip</strong> 文件。解压之后得到文件夹。</li>
 <li>命令行 cd 到解压后的文件夹，然后输入 sudo python setup.py install，错误提示：Feedparser not available, no RSS parsing.<strong>意思是缺少 feedparser，需要安装 feedparser</strong></li>
 <li>安装 feedparser, 下载地址：<a href="http://download.csdn.net/download/dixin28/5271130" target="_blank" rel="external">the feedparser download page</a><strong>［需要积分］</strong>，或者<a href="https://github.com/kurtmckee/feedparser" target="_blank" rel="external">the feedparser download page</a><strong>［需要翻墙］</strong>，下载文件夹。</li>
 <li>命令行 cd 到 feedparser 的文件夹，然后输入 sudo python setup.py install，feedparser 安装完成。</li>
@@ -528,7 +528,7 @@
 </ol>
 </blockquote>
 <ul>
-<li>2016.11.28 补充：如果按照书本上下载的 pydelicious-0.5.0 版本，是可以正常运行书本上的代码的而不报错的，但是会出现无论我如何修改 tag 的值，返回的内容都是一样的，原因在后面解释了。但是如果我们下载的是<a href="https://github.com/dotmpe/python-delicious" target="_blank" rel="external">github 上更新后的 pydelicious 版本</a>，会遇到如下问题，解决办法是需要修改_<em>init_</em>.py 文件中的几处代码，但是仍然会出现 tag 值的问题。</li>
+<li>2016.11.28 补充：如果按照书本上下载的 pydelicious-0.5.0 版本，是可以正常运行书本上的代码的而不报错的，但是会出现无论我如何修改 tag 的值，返回的内容都是一样的，原因在后面解释了。但是如果我们下载的是<a href="https://github.com/dotmpe/python-delicious" target="_blank" rel="external">github 上更新后的 pydelicious 版本</a>，会遇到如下问题，解决办法是需要修改<strong>init</strong>.py 文件中的几处代码，但是仍然会出现 tag 值的问题。</li>
 </ul>
 <hr>
 <p>本以为问题得到了解决，可以按照书上的代码继续进行:</p>
