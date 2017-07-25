@@ -111,7 +111,7 @@
 <meta property="og:description" content="本文是关于「Programming Collective Intelligence」这本书的 Chapter 1 &amp; 2 的学习笔记。">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNc79gy1fhu94m6p9zj30t612ah7b.jpg">
-<meta property="og:updated_time" content="2017-07-25T12:58:44.000Z">
+<meta property="og:updated_time" content="2017-07-25T13:02:21.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="♞「Programming Collective Intelligence」 Chapter 1 &amp; 2">
 <meta name="twitter:description" content="本文是关于「Programming Collective Intelligence」这本书的 Chapter 1 &amp; 2 的学习笔记。">
@@ -546,22 +546,18 @@
 <li><strong>def get_popular(tag =””):return getrss(tag = tag, popular =0)</strong></li>
 </ul>
 <p>命令行 cd 到 pydelicious 安装总文件夹，重新输入 sudo python setup.py install。<br>命令行输入 python:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> pydelicious</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>pydelicious.get_popular(tag=<span class="string">'python'</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; import pydelicious</div><div class="line">&gt;&gt;&gt; pydelicious.get_popular(tag=<span class="string">'python'</span>)</div></pre></td></tr></table></figure>
 <p>此时会发现成功获取到了内容（注意检查网络，如果仍然无法获取，记得翻墙）。</p>
 <hr>
 <p>本以为到此终于告一段落，但是实际上：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> pydelicious</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>pydelicious.get_popular(tag=<span class="string">'python'</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>pydelicious.get_popular(tag=<span class="string">'xxx'</span>)</div></pre></td></tr></table></figure>
-<ul>
-<li><p>意思是无论我如何更改 tag 的值，返回的内容会发现是一样。这个问题，stackoverflow 老外也同样遇到了：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; import pydelicious</div><div class="line">&gt;&gt;&gt; pydelicious.get_popular(tag=<span class="string">'python'</span>)</div><div class="line">&gt;&gt;&gt; pydelicious.get_popular(tag=<span class="string">'xxx'</span>)</div></pre></td></tr></table></figure>
+<p>意思是无论我如何更改 tag 的值，返回的内容会发现是一样。这个问题，stackoverflow 老外也同样遇到了：</p>
 <blockquote>
 <p><strong>I see the resource code again. Maybe it is wrong.Because If you edit the code,the procedural answer always remain unchanged…I’m studing…</strong></p>
 </blockquote>
-</li>
-<li><p>我个人觉得可能是 DLCS_RSS 的网址还需要更改一下（因为这本书在刚出来的时候，pydelicious 还是支持原 del.icio.us 的网站，是不需要去更改__init__.py 的文件等，后来是 unspported，所以需要更改__init__.py 文件中的 RSS 订阅源，也许可能这个订阅源还不是最新的，反正是坑…），或者说是 <em>get_popular</em> 的 function 有误（这个不太可能），总而言之，折腾了一下晚上，感觉是遇到了坑，不过好歹也算是解决出来了。</p>
-</li>
-<li>貌似有 <strong>deliciousapi</strong> 这个 package 作为替代，我也尝试过，但运行说明文档中的几个函数，发现会报错，希望如果有人知道如何用 <strong>deliciousapi</strong> 替代 pydelicious 完成第二章后续的几个模块，请务必告诉我！</li>
-<li>新手实践这本书的时候，完全可以跳过这个坑，因为没有必要，只需要 get 第二章几个重要的算法或者是思想就可以了。</li>
-</ul>
+<p>我个人觉得可能是 DLCS_RSS 的网址还需要更改一下（因为这本书在刚出来的时候，pydelicious 还是支持原 del.icio.us 的网站，是不需要去更改__init__.py 的文件等，后来是 unspported，所以需要更改__init__.py 文件中的 RSS 订阅源，也许可能这个订阅源还不是最新的，反正是坑…），或者说是 <em>get_popular</em> 的 function 有误（这个不太可能），总而言之，折腾了一下晚上，感觉是遇到了坑，不过好歹也算是解决出来了。</p>
+<p>貌似有 <strong>deliciousapi</strong> 这个 package 作为替代，我也尝试过，但运行说明文档中的几个函数，发现会报错，希望如果有人知道如何用 <strong>deliciousapi</strong> 替代 pydelicious 完成第二章后续的几个模块，请务必告诉我！</p>
+<p>新手实践这本书的时候，完全可以跳过这个坑，因为没有必要，只需要 get 第二章几个重要的算法或者是思想就可以了。</p>
 <hr>
 <h1 id="Correct-errors-in-printing："><a href="#Correct-errors-in-printing：" class="headerlink" title="Correct errors in printing："></a>Correct errors in printing：</h1><ul>
 <li>P13</li>
