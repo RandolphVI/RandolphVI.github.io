@@ -921,7 +921,7 @@ P(\mathrm{d} E) = exp(\mathrm{d}E/kT)</script><p>其中 <strong><em>k</em></stro
     <link href="http://randolph.pro/2015/09/11/%3CNatural%20Language%20Processing%20with%20Python%3E%20Chapter%201%20&amp;%202/"/>
     <id>http://randolph.pro/2015/09/11/&lt;Natural Language Processing with Python&gt; Chapter 1 &amp; 2/</id>
     <published>2015-09-10T16:00:00.000Z</published>
-    <updated>2017-07-25T14:10:19.000Z</updated>
+    <updated>2017-07-25T14:10:35.000Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fhu96awavpj30yg1cp1kx.jpg" alt=""></p>
 <p>关于该书的其他学习笔记系列：<a href="http://randolph.pro/categories/NLP/Book-「NLP-with-Python」/">「NLP with Python」</a></p>
@@ -1055,7 +1055,7 @@ P(\mathrm{d} E) = exp(\mathrm{d}E/kT)</script><p>其中 <strong><em>k</em></stro
 </ul>
 <hr>
 <h1 id="Correct-errors-in-printing"><a href="#Correct-errors-in-printing" class="headerlink" title="Correct errors in printing:"></a>Correct errors in printing:</h1><ul>
-<li>P19</li>
+<li>P19:</li>
 </ul>
 <p>在 「Your Trun」 的那块内容中：</p>
 <blockquote>
@@ -1068,7 +1068,7 @@ P(\mathrm{d} E) = exp(\mathrm{d}E/kT)</script><p>其中 <strong><em>k</em></stro
 <p><strong>原因：nltk.book 中并不存在 <code>FreqDist()</code> 这一 function.</strong></p>
 <hr>
 <ul>
-<li>P48</li>
+<li>P48:</li>
 </ul>
 <p>在 「Inaugural Address Corpus」 的那块代码部分中：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; cfd = nltk.ConditionalFreqDist(</div><div class="line">    ...           (target, file[:4])</div><div class="line">    ...           <span class="keyword">for</span> fileid <span class="keyword">in</span> inaugural.fileids()</div></pre></td></tr></table></figure></p>
 <p>需更正为：</p>
