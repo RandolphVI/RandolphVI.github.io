@@ -305,7 +305,7 @@ AC & (1,2)(-2),(0,1)(-1),(0,1)(-1),(0,1)(-1),(2,1)(-1),(EOB)(0,0)
     <link href="http://randolph.pro/2016/03/19/%3CProgramming%20Collective%20Intelligence%3E%20Chapter%203/"/>
     <id>http://randolph.pro/2016/03/19/&lt;Programming Collective Intelligence&gt; Chapter 3/</id>
     <published>2016-03-18T16:00:00.000Z</published>
-    <updated>2017-07-25T13:24:15.000Z</updated>
+    <updated>2017-07-25T13:28:19.000Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fhu94m6p9zj30t612ah7b.jpg" alt=""></p>
 <p>关于该书的其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/Book-「Programming-Collective-Intelligence」/">「Programming Collective Intelligence」</a></p>
@@ -380,7 +380,7 @@ AC & (1,2)(-2),(0,1)(-1),(0,1)(-1),(0,1)(-1),(2,1)(-1),(EOB)(0,0)
 <h2 id="EM 聚类："><a href="#EM 聚类：" class="headerlink" title="EM 聚类："></a>EM 聚类：</h2><p>EM 聚类算法的重点不是像 K- 均值聚类那样找到一个质心，然后找到与其相关的数据点，而是求解另一个不同的问题。比如我们希望一个数据集分为两部分：簇 1 与簇 2。<strong>EM 聚类算法的目的是，我们希望得到一个关于数据是否存在某个簇中的良好估计，但并不用关心其中是否存在模糊性。我们真正希望获得的是一个数据点属于各簇的概率值，而非分配结果。</strong></p>
 <p>与专注于确定各簇之间边界的 $K$- 均值聚类算法不同，EM 聚类对于可能同属于多个簇的数据点具有一定的稳健性。EM 聚类算法非常适用于对不存在明确边界的数据进行分类。</p>
 <hr>
-<h1 id="orrect-errors-in-printing"><a href="#orrect-errors-in-printing" class="headerlink" title="orrect errors in printing:"></a>orrect errors in printing:</h1><ul>
+<h1 id="Correct-errors-in-printing"><a href="#Correct-errors-in-printing" class="headerlink" title="Correct errors in printing:"></a>Correct errors in printing:</h1><ul>
 <li>P46</li>
 </ul>
 <blockquote>
