@@ -566,16 +566,16 @@ P(\mathrm{d} E) = exp(\mathrm{d}E/kT)</script><p>其中 <strong><em>k</em></stro
     <link href="http://randolph.pro/2016/12/14/%3CComputer%20Vision%3E%20JPEG%20Compression/"/>
     <id>http://randolph.pro/2016/12/14/&lt;Computer Vision&gt; JPEG Compression/</id>
     <published>2016-12-14T06:33:41.000Z</published>
-    <updated>2017-07-23T08:47:54.000Z</updated>
+    <updated>2017-07-25T08:39:13.000Z</updated>
     
     <content type="html"><![CDATA[<h1 id="Related"><a href="#Related" class="headerlink" title="Related"></a>Related</h1><ul>
-<li>颜色模式转换: RBG to YUV</li>
-<li>采样 &amp; 分块</li>
-<li>DCT 离散余弦变换</li>
-<li>量化</li>
-<li>DPCM 差分编码（对 DC 系数）</li>
-<li>RLE 游程编码（对 AC 系数）：Zig-Zag 扫描</li>
-<li>熵编码：Huffman 编码</li>
+<li><strong>颜色模式转换: RBG to YUV</strong></li>
+<li><strong>采样 &amp; 分块</strong></li>
+<li><strong>DCT 离散余弦变换</strong></li>
+<li><strong>量化</strong></li>
+<li><strong>DPCM 差分编码（对 DC 系数）</strong></li>
+<li><strong>RLE 游程编码（对 AC 系数）：Zig-Zag 扫描</strong></li>
+<li><strong>熵编码：Huffman 编码</strong></li>
 </ul>
 <h1 id="颜色模式转换"><a href="# 颜色模式转换" class="headerlink" title="颜色模式转换"></a>颜色模式转换</h1><p>JPEG 采用的是 YCrCb 颜色空间，而 BMP 采用的是 RGB 颜色空间，要想对 BMP 图片进行压缩，首先需要进行颜色空间的转换。YCrCb 颜色空间中，$Y$ 代表亮度，$Cr$，$Cb$ 则代表色度和饱和度（也有人将 $Cb$，$Cr$ 两者统称为色度），三者通常以 $Y$，$U$，$V$ 来表示，即用 $U$ 代表 $Cb$，用 $V$ 代表 $Cr$。RGB 和 YCrCb 之间的转换关系如下所示：</p>
 <script type="math/tex; mode=display">
