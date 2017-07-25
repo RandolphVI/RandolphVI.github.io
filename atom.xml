@@ -83,7 +83,7 @@
     <link href="http://randolph.pro/2016/12/14/%3CNatural%20Language%20Processing%20with%20Python%3E%20Chapter%203/"/>
     <id>http://randolph.pro/2016/12/14/&lt;Natural Language Processing with Python&gt; Chapter 3/</id>
     <published>2016-12-14T06:42:05.000Z</published>
-    <updated>2017-07-25T10:20:22.000Z</updated>
+    <updated>2017-07-25T10:20:51.000Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fhu96awavpj30yg1cp1kx.jpg" alt=""></p>
 <p>关于该书的其他学习笔记系列：<a href="http://randolph.pro/categories/NLP/Book-「NLP-with-Python」/">「NLP with Python」</a></p>
@@ -284,7 +284,7 @@ P(\mathrm{d} E) = exp(\mathrm{d}E/kT)</script><p>其中 <strong><em>k</em></stro
 <blockquote>
 <p>7.○ Write regular expressions to match the following classes of strings:</p>
 <ol>
-<li>A single determiner (assume that <strong><em>a</em></strong>, <strong><em>an</em></strong>, and <strong><em>the</em></strong> are the only determiners)</li>
+<li>A single determiner (assume that <em>a</em>, <em>an</em>, and <em>the</em> are the only determiners)</li>
 <li>An arithmetic expression using integers, addition, and multiplication, such as <strong>2*3+8</strong></li>
 </ol>
 </blockquote>
