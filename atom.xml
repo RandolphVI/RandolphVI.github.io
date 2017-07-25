@@ -79,34 +79,6 @@
   </entry>
   
   <entry>
-    <title></title>
-    <link href="http://randolph.pro/2016/12/13/%3CProgramming%20Collective%20Intelligence%3E%20Chapter%201%20&amp;%202/"/>
-    <id>http://randolph.pro/2016/12/13/&lt;Programming Collective Intelligence&gt; Chapter 1 &amp; 2/</id>
-    <published>2016-12-13T14:59:27.000Z</published>
-    <updated>2017-07-25T12:17:39.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>title: ♞「Programming Collective Intelligence」 Chapter 1 &amp; 2<br>date: 2016-03-12<br>tags:</p>
-<pre><code>- Machine Learning
-- Python
-</code></pre><p>categories: </p>
-<pre><code>- Machine Learning
-- Book:「Programming Collective Intelligence」
-</code></pre><p>description: 本文是关于「Programming Collective Intelligence」这本书的 Chapter 1 &amp; 2 的学习笔记。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;title: ♞「Programming Collective Intelligence」 Chapter 1 &amp;amp; 2&lt;br&gt;date: 2016-03-12&lt;br&gt;tags:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;- Machine Learning
-- Python
-&lt;
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
     <title>「Computer Vision」 JPEG Compression</title>
     <link href="http://randolph.pro/2016/04/15/%3CComputer%20Vision%3E%20JPEG%20Compression/"/>
     <id>http://randolph.pro/2016/04/15/&lt;Computer Vision&gt; JPEG Compression/</id>
@@ -325,6 +297,131 @@ AC & (1,2)(-2),(0,1)(-1),(0,1)(-1),(0,1)(-1),(2,1)(-1),(EOB)(0,0)
       <category term="Python" scheme="http://randolph.pro/tags/Python/"/>
     
       <category term="Computer Vision" scheme="http://randolph.pro/tags/Computer-Vision/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>♞「Programming Collective Intelligence」 Chapter 1 &amp; 2</title>
+    <link href="http://randolph.pro/2016/03/12/%3CProgramming%20Collective%20Intelligence%3E%20Chapter%201%20&amp;%202/"/>
+    <id>http://randolph.pro/2016/03/12/&lt;Programming Collective Intelligence&gt; Chapter 1 &amp; 2/</id>
+    <published>2016-03-11T16:00:00.000Z</published>
+    <updated>2017-07-25T12:23:38.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Related"><a href="#Related" class="headerlink" title="Related"></a>Related</h1><ul>
+<li>欧几里得距离评价</li>
+<li>皮尔逊相关度评价</li>
+</ul>
+<blockquote>
+<ul>
+<li>The formula for this is more complicated than the Euclidean distance score, but it tends to give better results in situations where the data isn’t well normalized—for example, if critics’ movie rankings are routinely more harsh than average. 它相比于欧几里德距离评价更加复杂，但其在数据不是很规范的时候（比如，影评者对影片的评价总是相对于平均水平偏离很大的时候），会给出更好的结果。      </li>
+<li>If one critic is inclined to give higher scores than the other, there can still be perfect correlation if the difference between their scores is consistent. The Euclidean distance score described earlier will say that two critics are dissimilar because one is consistently harsher than the other, even if their tastes are very similar. 如果某人总是倾向于给出比另一个人更高的分值，而两者的分值之差又始终保持一致，则他们依然可能会存在很好的相关性。而欧几里德距离评价会因为一个人的评价之中比另外一个人的更为“严格”（从而导致评价始终相对偏低），从而得出两者不相近的结论，即使他们的品位很相似也是如此。</li>
+</ul>
+</blockquote>
+<ul>
+<li>其他相似度计算函数（Minkowski 距离、Mahalanobis 距离等）</li>
+</ul>
+<hr>
+<h1 id="Key："><a href="#Key：" class="headerlink" title="Key："></a>Key：</h1><p>在［推荐物品］的模块中，提到了一种方法：</p>
+<ol>
+<li>通过函数找出与自己有相似品味的影评者，并按相似度从大到小排序。</li>
+<li>对于自己未看过的影片，建立一张表，表的内容包括：品位相似的影评者以及其对应的相似度，对于自己未看过影片的评分（影评者可以看过也可以没有看过）。</li>
+<li>对于某一个未看过的电影，影评者的相似度（可理解为权值，不同评论者的权值不同，相似度越高，权值越高）乘以其对该电影的评分，其他影评者也得到一个值（如果没有看过，则为零），然后累加，记为其他影评者对于该电影者的评价总和，之后总和需要除以所有对该电影评过分的影评者的相似度之和。</li>
+<li>最后得到的结果，表示为自己对于没有看过的电影，通过自己品位相似的影评者得到的预测评分，根据预测评分，来给出决策。</li>
+</ol>
+<hr>
+<h1 id="Need-to-know："><a href="#Need-to-know：" class="headerlink" title="Need to know："></a>Need to know：</h1><p>在［构建一个基于 del.icio.us 的链接推荐系统］的模块中：<br>首先我们需要下载 <strong>pydelicious</strong> 这一个 package。<strong>［这个 package 不支持 python3.x］</strong></p>
+<p>我的尝试：</p>
+<blockquote>
+<ol>
+<li>通过 Pycharm 自带的“便利”package 下载。出错，原因：无法找到对应的版本。</li>
+<li>通过命令行输入 sudo pip install pydelicious。出错，原因：Could not find a version that satisfies the requirement pydelicious (from versions:)No matching distribution found for pydelicious。</li>
+<li>通过命令行输入 sudo pip install pydelicious —allow-external pydelicious —allow-unverified pydelicious。出错，原因：Could not find a version that satisfies the requirement pydelicious (from versions:)No matching distribution found for pydelicious。</li>
+</ol>
+</blockquote>
+<hr>
+<p>初次尝试失败之后，在 Stackoverflow 寻找解决办法：</p>
+<blockquote>
+<ol>
+<li>首先，按照书本提供的下载地址：<a href="https://code.google.com/archive/p/pydelicious/downloads" target="_blank" rel="external">the pydelicious download page</a><br><strong>［需要翻墙］</strong>下载 ==pydelicious-0.5.0.zip== 文件。解压之后得到文件夹。</li>
+<li>命令行 cd 到解压后的文件夹，然后输入 sudo python setup.py install，错误提示：Feedparser not available, no RSS parsing.<strong>意思是缺少 feedparser，需要安装 feedparser</strong></li>
+<li>安装 feedparser, 下载地址：<a href="http://download.csdn.net/download/dixin28/5271130" target="_blank" rel="external">the feedparser download page</a><strong>［需要积分］</strong>，或者<a href="https://github.com/kurtmckee/feedparser" target="_blank" rel="external">the feedparser download page</a><strong>［需要翻墙］</strong>，下载文件夹。</li>
+<li>命令行 cd 到 feedparser 的文件夹，然后输入 sudo python setup.py install，feedparser 安装完成。</li>
+<li>命令行 cd 回到 pydelicious 文件夹，再次输入 sudo python setup.py install，此时会发现 pydelicious 安装成功。</li>
+<li>测试 pydelicious 此 package 是否能够导入，命令行输入 python 之后，再输入 import pydelicious，如果没有报错，这说明 pydelicious 安装成功。</li>
+</ol>
+</blockquote>
+<ul>
+<li>2016.11.28 补充：如果按照书本上下载的 pydelicious-0.5.0 版本，是可以正常运行书本上的代码的而不报错的，但是会出现无论我如何修改 tag 的值，返回的内容都是一样的，原因在后面解释了。但是如果我们下载的是<a href="https://github.com/dotmpe/python-delicious" target="_blank" rel="external">github 上更新后的 pydelicious 版本</a>，会遇到如下问题，解决办法是需要修改_<em>init_</em>.py 文件中的几处代码，但是仍然会出现 tag 值的问题。</li>
+</ul>
+<hr>
+<p>本以为问题得到了解决，可以按照书上的代码继续进行:</p>
+<p>命令行输入 python:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> pydelicious</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>pydelicious.get_popular(tag=<span class="string">'python'</span>)</div></pre></td></tr></table></figure></p>
+<p>此时会报错，无论是否翻墙，显示获取失败。</p>
+<hr>
+<p>我在 stackoverflow.com 上找到了原因：<a href="http://stackoverflow.com/questions/29543799/pydelicious-get-popularprogramming-doesnt-return-any-valid-url" target="_blank" rel="external">the answer</a><strong>［需要翻墙］</strong><br>仔细看提问者的问题，重点是后面提出解决办法的几个回答。</p>
+<blockquote>
+<p><strong>You should modify the __init__.py to:rss =http_request(‘<a href="http://feeds.delicious.com/v2/rss" target="_blank" rel="external">http://feeds.delicious.com/v2/rss</a>‘) .read()</strong></p>
+</blockquote>
+<p>所以解决的办法是：<br>打开 pydelicious 的文件夹，找到子文件夹 pydelicious 下的__init__.py 文件，修改三处地方：</p>
+<blockquote>
+<ul>
+<li><strong>DLCS_RSS = ‘<a href="http://feeds.delicious.com/v2/rss/" target="_blank" rel="external">http://feeds.delicious.com/v2/rss/</a>‘</strong></li>
+<li><strong>rss = http_request(‘<a href="http://feeds.delicious.com/v2/rss" target="_blank" rel="external">http://feeds.delicious.com/v2/rss</a>‘). read()</strong></li>
+<li><strong>def get_popular(tag =””):return getrss(tag = tag, popular =0)</strong></li>
+</ul>
+</blockquote>
+<p>命令行 cd 到 pydelicious 安装总文件夹，重新输入 sudo python setup.py install。<br>命令行输入 python:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> pydelicious</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>pydelicious.get_popular(tag=<span class="string">'python'</span>)</div></pre></td></tr></table></figure>
+<p>此时会发现成功获取到了内容（注意检查网络，如果仍然无法获取，记得翻墙）。</p>
+<hr>
+<p>本以为到此终于告一段落，但是实际上：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> pydelicious</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>pydelicious.get_popular(tag=<span class="string">'python'</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>pydelicious.get_popular(tag=<span class="string">'xxx'</span>)</div></pre></td></tr></table></figure>
+<ul>
+<li><p>意思是无论我如何更改 tag 的值，返回的内容会发现是一样。这个问题，stackoverflow 老外也同样遇到了：</p>
+<blockquote>
+<p><strong>I see the resource code again. Maybe it is wrong.Because If you edit the code,the procedural answer always remain unchanged…I’m studing…</strong></p>
+</blockquote>
+</li>
+<li><p>我个人觉得可能是 DLCS_RSS 的网址还需要更改一下（因为这本书在刚出来的时候，pydelicious 还是支持原 del.icio.us 的网站，是不需要去更改__init__.py 的文件等，后来是 unspported，所以需要更改__init__.py 文件中的 RSS 订阅源，也许可能这个订阅源还不是最新的，反正是坑…），或者说是 <em>get_popular</em> 的 function 有误（这个不太可能），总而言之，折腾了一下晚上，感觉是遇到了坑，不过好歹也算是解决出来了。</p>
+</li>
+<li>貌似有 <strong>deliciousapi</strong> 这个 package 作为替代，我也尝试过，但运行说明文档中的几个函数，发现会报错，希望如果有人知道如何用 <strong>deliciousapi</strong> 替代 pydelicious 完成第二章后续的几个模块，请务必告诉我！</li>
+<li>新手实践这本书的时候，完全可以跳过这个坑，因为没有必要，只需要 get 第二章几个重要的算法或者是思想就可以了。</li>
+</ul>
+<hr>
+<h1 id="Correct-errors-in-printing："><a href="#Correct-errors-in-printing：" class="headerlink" title="Correct errors in printing："></a>Correct errors in printing：</h1><ul>
+<li>P13</li>
+</ul>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 如果两者没有共同之处，则返回 1</span></div><div class="line"><span class="keyword">if</span> <span class="attribute">n</span>==0: return 1</div></pre></td></tr></table></figure>
+<blockquote>
+<p>  需要更正为：</p>
+</blockquote>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 如果两者没有共同之处，则返回 0</span></div><div class="line"><span class="keyword">if</span> <span class="attribute">n</span>==0: return 0</div></pre></td></tr></table></figure>
+<hr>
+<h1 id="Practice："><a href="#Practice：" class="headerlink" title="Practice："></a>Practice：</h1><ul>
+<li><strong>暂无</strong></li>
+</ul>
+<hr>
+<h1 id="Still-have-Question："><a href="#Still-have-Question：" class="headerlink" title="Still have Question："></a>Still have Question：</h1><blockquote>
+<ol>
+<li>皮尔逊相关度理论的学习（已完成）</li>
+</ol>
+</blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      本文是关于「Programming Collective Intelligence」这本书的 Chapter 1 &amp; 2 的学习笔记。
+    
+    </summary>
+    
+      <category term="Machine Learning" scheme="http://randolph.pro/categories/Machine-Learning/"/>
+    
+      <category term="Book:「Programming Collective Intelligence」" scheme="http://randolph.pro/categories/Machine-Learning/Book-%E3%80%8CProgramming-Collective-Intelligence%E3%80%8D/"/>
+    
+    
+      <category term="Python" scheme="http://randolph.pro/tags/Python/"/>
+    
+      <category term="Machine Learning" scheme="http://randolph.pro/tags/Machine-Learning/"/>
     
   </entry>
   
