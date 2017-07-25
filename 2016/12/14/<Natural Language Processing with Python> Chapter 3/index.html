@@ -114,7 +114,7 @@
 <meta property="og:image" content="https://farm1.staticflickr.com/645/30825223223_8abc614f13_o.png">
 <meta property="og:image" content="https://farm1.staticflickr.com/767/31488720242_48aae8823f_o.png">
 <meta property="og:image" content="https://farm1.staticflickr.com/768/31263141960_9e2f2a7c44_o.png">
-<meta property="og:updated_time" content="2017-07-25T05:25:59.000Z">
+<meta property="og:updated_time" content="2017-07-25T05:34:13.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="「NLP with Python」 Chapter 3">
 <meta name="twitter:description" content="本文是关于「Natural Language Processing with Python」这本书的 Chapter 3 的学习笔记。">
@@ -501,7 +501,7 @@
 <li>Word Segmentation</li>
 <li>Formatting: From Lists to Strings</li>
 </ul>
-<h1 id="Key："><a href="#Key：" class="headerlink" title="Key："></a>Key：</h1><h2 id="The-NLP-Pipeline"><a href="#The-NLP-Pipeline" class="headerlink" title="The NLP Pipeline"></a>The NLP Pipeline</h2><p>NLP 的处理流程：我们打开一个 URL 代码读取里面 HTML 格式的内容，去除标记，并选择字符的切片，然后分词，是否转换为 nltk.Text 对象是可选择的。我们也可以将所有词汇小写并提取成词汇表(Vocab)。</p>
+<h1 id="Key："><a href="#Key：" class="headerlink" title="Key："></a>Key：</h1><h2 id="The-NLP-Pipeline"><a href="#The-NLP-Pipeline" class="headerlink" title="The NLP Pipeline"></a>The NLP Pipeline</h2><p>NLP 的处理流程：我们打开一个 URL 代码读取里面 HTML 格式的内容，去除标记，并选择字符的切片，然后分词，是否转换为 nltk.Text 对象是可选择的。我们也可以将所有词汇小写并提取成词汇表（Vocab）。</p>
 <p><img src="https://farm1.staticflickr.com/645/30825223223_8abc614f13_o.png" alt=""></p>
 <hr>
 <h2 id="Basic-Operations-with-Strings"><a href="#Basic-Operations-with-Strings" class="headerlink" title="Basic Operations with Strings"></a>Basic Operations with Strings</h2><p>有时候字符串跨好几行。Python 提供了多种方式表示它们。在下面的例子中，一个包含两个字符串的序列被连接为一个字符串。我们需要使用 <strong> 反斜杠 </strong> 或者 <strong> 括号</strong>，这样解释器就知道第一行的表达式不完整了。</p>
@@ -540,9 +540,7 @@
 <td>Matches one of a range of characters</td>
 </tr>
 <tr>
-<td>ed\</td>
-<td>ing\</td>
-<td>s</td>
+<td>ed/ing/s</td>
 <td>Matches one of the specified strings (disjunction)</td>
 </tr>
 <tr>
