@@ -113,7 +113,7 @@
 <meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNc79gy1fhu96awavpj30yg1cp1kx.jpg">
 <meta property="og:image" content="https://farm1.staticflickr.com/445/31263100710_d839312795_o.png">
 <meta property="og:image" content="https://farm1.staticflickr.com/474/31598383846_537809b299_o.png">
-<meta property="og:updated_time" content="2017-07-26T03:41:46.000Z">
+<meta property="og:updated_time" content="2017-07-26T05:04:31.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="♞「NLP with Python」 Chapter 1 &amp; 2">
 <meta name="twitter:description" content="本文是关于「Natural Language Processing with Python」这本书的 Chapter 1 &amp; 2 的学习笔记。">
@@ -450,7 +450,7 @@
                   <i class="fa fa-file-word-o"></i>
                 </span>
                 <span title="Words count in article">
-                  1,575
+                  1,577
                 </span>
                 <span> words </span>
                 
@@ -624,11 +624,11 @@
 </ul>
 <p>在 「Your Trun」 的那块内容中：</p>
 <blockquote>
-<p>使用 text2 尝试前面频率分布的例子。…如果得到的是错误信息：NameError: name ‘FreqDist’is not defined，则需要在一开始输入  <strong><code>nltk.book import *</code></strong>。</p>
+<p>使用 text2 尝试前面频率分布的例子。…如果得到的是错误信息：NameError: name ‘FreqDist’is not defined，则需要在一开始输入  <strong><code>from nltk.book import *</code></strong>。</p>
 </blockquote>
 <p>需更正为：</p>
 <blockquote>
-<p>使用 text2 尝试前面频率分布的例子。…如果得到的是错误信息：NameError: name ‘FreqDist’is not defined，则需要在一开始输入 <strong><code>nltk.import *</code></strong>。</p>
+<p>使用 text2 尝试前面频率分布的例子。…如果得到的是错误信息：NameError: name ‘FreqDist’is not defined，则需要在一开始输入 <strong><code>from nltk import *</code></strong>。</p>
 </blockquote>
 <p><strong>原因：nltk.book 中并不存在 <code>FreqDist()</code> 这一 function.</strong></p>
 <hr>

@@ -1147,11 +1147,11 @@ P(\mathrm{d} E) = exp(\mathrm{d}E/kT)</script><p>其中 <strong><em>k</em></stro
 </ul>
 <p>在 「Your Trun」 的那块内容中：</p>
 <blockquote>
-<p>使用 text2 尝试前面频率分布的例子。…如果得到的是错误信息：NameError: name ‘FreqDist’is not defined，则需要在一开始输入  <strong><code>nltk.book import *</code></strong>。</p>
+<p>使用 text2 尝试前面频率分布的例子。…如果得到的是错误信息：NameError: name ‘FreqDist’is not defined，则需要在一开始输入  <strong><code>from nltk.book import *</code></strong>。</p>
 </blockquote>
 <p>需更正为：</p>
 <blockquote>
-<p>使用 text2 尝试前面频率分布的例子。…如果得到的是错误信息：NameError: name ‘FreqDist’is not defined，则需要在一开始输入 <strong><code>nltk.import *</code></strong>。</p>
+<p>使用 text2 尝试前面频率分布的例子。…如果得到的是错误信息：NameError: name ‘FreqDist’is not defined，则需要在一开始输入 <strong><code>from nltk import *</code></strong>。</p>
 </blockquote>
 <p><strong>原因：nltk.book 中并不存在 <code>FreqDist()</code> 这一 function.</strong></p>
 <hr>
