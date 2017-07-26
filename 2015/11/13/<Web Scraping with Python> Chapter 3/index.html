@@ -111,7 +111,7 @@
 <meta property="og:description" content="本文是关于「Web Scraping with Python」这本书的 Chapter 3 的学习笔记。">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNc79gy1fhwh5fcvm3j30t612ah43.jpg">
-<meta property="og:updated_time" content="2017-07-26T10:45:44.000Z">
+<meta property="og:updated_time" content="2017-07-26T11:00:12.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="♞「Web Scraping with Python」 Chapter 3">
 <meta name="twitter:description" content="本文是关于「Web Scraping with Python」这本书的 Chapter 3 的学习笔记。">
@@ -499,8 +499,8 @@
 <p>How am I protecting myself against legal action if my web crawler catches the attention of a webmaster on one of the sites it runs across?<br> 如果我的爬虫引起了某个网站网管的怀疑，我该如何避免法律责任？</p>
 </blockquote>
 <hr>
-<h2 id="urlparse-module"><a href="#urlparse-module" class="headerlink" title="urlparse module"></a><em>urlparse</em> module</h2><p><strong>urlparse</strong> 模块主要是把 url 拆分为六个部分，并返回元组 tuple。并且可以把拆分后的部分再组成一个 url。主要函数有 <strong><code>urljoin</code></strong>、<strong><code>urlsplit</code></strong>、<strong><code>urlunsplit</code></strong>、<strong><code>urlparse</code></strong> 等。</p>
-<h3 id="urlparse-function"><a href="#urlparse-function" class="headerlink" title="urlparse function"></a><em>urlparse</em> function</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; from urlparse import urlparse</div><div class="line">&gt;&gt;&gt; o = urlparse(<span class="string">'http://www.cwi.nl:80/%7Eguido/Python.html'</span>)</div><div class="line">&gt;&gt;&gt; o    </div><div class="line">    ParseResult(scheme=<span class="string">'http'</span>, netloc=<span class="string">'www.cwi.nl:80'</span>, path=<span class="string">'/%7Eguido/Python.html'</span>, params=<span class="string">''</span>, query=<span class="string">''</span>, fragment=<span class="string">''</span>)</div><div class="line">&gt;&gt;&gt; o.scheme  </div><div class="line">    <span class="string">'http'</span></div><div class="line">&gt;&gt;&gt; o.port  </div><div class="line">    80</div><div class="line">&gt;&gt;&gt; o.geturl()  </div><div class="line">    <span class="string">'http://www.cwi.nl:80/%7Eguido/Python.html'</span></div></pre></td></tr></table></figure>
+<h2 id="urlparse-module"><a href="#urlparse-module" class="headerlink" title="urlparse module"></a>urlparse module</h2><p><strong>urlparse</strong> 模块主要是把 url 拆分为六个部分，并返回元组 tuple。并且可以把拆分后的部分再组成一个 url。主要函数有 <strong><code>urljoin</code></strong>、<strong><code>urlsplit</code></strong>、<strong><code>urlunsplit</code></strong>、<strong><code>urlparse</code></strong> 等。</p>
+<h3 id="urlparse-function"><a href="#urlparse-function" class="headerlink" title="urlparse function"></a>urlparse function</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; from urlparse import urlparse</div><div class="line">&gt;&gt;&gt; o = urlparse(<span class="string">'http://www.cwi.nl:80/%7Eguido/Python.html'</span>)</div><div class="line">&gt;&gt;&gt; o    </div><div class="line">    ParseResult(scheme=<span class="string">'http'</span>, netloc=<span class="string">'www.cwi.nl:80'</span>, path=<span class="string">'/%7Eguido/Python.html'</span>, params=<span class="string">''</span>, query=<span class="string">''</span>, fragment=<span class="string">''</span>)</div><div class="line">&gt;&gt;&gt; o.scheme  </div><div class="line">    <span class="string">'http'</span></div><div class="line">&gt;&gt;&gt; o.port  </div><div class="line">    80</div><div class="line">&gt;&gt;&gt; o.geturl()  </div><div class="line">    <span class="string">'http://www.cwi.nl:80/%7Eguido/Python.html'</span></div></pre></td></tr></table></figure>
 <p> 其将 url 解析成六个部分 <strong>（scheme, netloc, path, parameters, query, fragment）</strong>。</p>
 <hr>
 <h2 id="scrapy"><a href="#scrapy" class="headerlink" title="scrapy"></a>scrapy</h2><blockquote>
@@ -719,7 +719,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">Posts</span>
               </a>
             </div>
