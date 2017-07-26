@@ -111,7 +111,7 @@
 <meta property="og:description" content="本文是关于周志华「Machine Learning」这本书的 Chapter 1 的学习笔记。">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://ws3.sinaimg.cn/large/006tKfTcgy1fhxi0z29mdj30sg11c77u.jpg">
-<meta property="og:updated_time" content="2017-07-26T23:51:07.000Z">
+<meta property="og:updated_time" content="2017-07-26T23:53:46.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="♞「Machine Learning」 Chapter 1">
 <meta name="twitter:description" content="本文是关于周志华「Machine Learning」这本书的 Chapter 1 的学习笔记。">
@@ -448,7 +448,7 @@
                   <i class="fa fa-file-word-o"></i>
                 </span>
                 <span title="Words count in article">
-                  3,033
+                  3,032
                 </span>
                 <span> words </span>
                 
@@ -538,7 +538,7 @@
 <p><code>好瓜 ⟺ ((色泽 = \*) ∧ (根蒂 = 蜷缩) ∧ (敲声 = \*)) ∨ ((色泽 = 乌黑) ∧ (根蒂 = \*) ∧ (敲声 = 沉闷))</code></p>
 <p>会把 <strong>(色泽 = 青绿) ∧ (根蒂 = 蜷缩) ∧ (敲声 = 清脆)</strong> 以及 <strong>(色泽 = 乌黑) ∧ (根蒂 = 硬挺) ∧ (敲声 = 沉闷)</strong> 都分类为“好瓜”。若使用最多包含 $k$ 个合取式的析合范式来表达表 1.1 西瓜分类问题的假设空间，试估算共有多少种可能的假设。 </p>
 </blockquote>
-<p>（提示：注意冗余情况， 如 $(A=a) \vee (A=<em>)$  与  $(A=</em>)$ 等价。） </p>
+<p>（提示：注意冗余情况， 如 $(A=a) \vee (A=<em>)$     $(A=</em>)$ 等价。） </p>
 <p>表 1.1 包含 4 个样例， 3 种属性，假设空间中有 $3 \times 4 \times 4 + 1 = 49 $ 种假设。在不考虑沉余的情况下，最多包含 $k$ 个合取式来表达假设空间，显然 $k$ 的最大值是 49，每次从中选出 $k$ 个来组成析合式，共 $ \sum C_{49}^k = 249 $ 种可能。（但是其中包含了很多沉余的情况）</p>
 <p>如果考虑沉余的情况：<br>在这里忽略空集，一个原因是并不是太明白空集是否应该加入析合式，另外就算需要加入，求出了前面 48 种假设的组合，可以很容易求出加入空集后的组合数(每种可能都可以加上空集，再加上 1 种空集单独的情况)。 </p>
 <p>48 种假设中： </p>
