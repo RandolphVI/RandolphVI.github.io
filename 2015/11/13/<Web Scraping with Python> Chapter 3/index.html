@@ -111,7 +111,7 @@
 <meta property="og:description" content="本文是关于「Web Scraping with Python」这本书的 Chapter 3的学习笔记。">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNc79gy1fhwh5fcvm3j30t612ah43.jpg">
-<meta property="og:updated_time" content="2017-07-26T04:13:31.000Z">
+<meta property="og:updated_time" content="2017-07-26T04:37:38.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="♞「Web Scraping with Python」 Chapter 3">
 <meta name="twitter:description" content="本文是关于「Web Scraping with Python」这本书的 Chapter 3的学习笔记。">
@@ -500,21 +500,21 @@
 </blockquote>
 <hr>
 <h2 id="urlparse-module"><a href="#urlparse-module" class="headerlink" title="urlparse module"></a><em>urlparse</em> module</h2><p><strong>urlparse</strong> 模块主要是把 url 拆分为六个部分，并返回元组 tuple。并且可以把拆分后的部分再组成一个 url。主要函数有 urljoin、urlsplit、urlunsplit、urlparse 等。</p>
-<h3 id="urlparse-function"><a href="#urlparse-function" class="headerlink" title="urlparse function"></a><em>urlparse</em> function</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; from urlparse import urlparse</div><div class="line">&gt;&gt;&gt; o =</div><div class="line">    urlparse(<span class="string">'http://www.cwi.nl:80/%7Eguido/Python.html'</span>)</div><div class="line">&gt;&gt;&gt; o    </div><div class="line">    ParseResult(scheme=<span class="string">'http'</span>, netloc=<span class="string">'www.cwi.nl:80'</span>, path=<span class="string">'/%7Eguido/Python.html'</span>, params=<span class="string">''</span>, query=<span class="string">''</span>, fragment=<span class="string">''</span>)</div><div class="line">&gt;&gt;&gt; o.scheme  </div><div class="line">    <span class="string">'http'</span></div><div class="line">&gt;&gt;&gt; o.port  </div><div class="line">    80</div><div class="line">&gt;&gt;&gt; o.geturl()  </div><div class="line">    <span class="string">'http://www.cwi.nl:80/%7Eguido/Python.html'</span></div></pre></td></tr></table></figure>
+<h3 id="urlparse-function"><a href="#urlparse-function" class="headerlink" title="urlparse function"></a><em>urlparse</em> function</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; from urlparse import urlparse</div><div class="line">&gt;&gt;&gt; o = urlparse(<span class="string">'http://www.cwi.nl:80/%7Eguido/Python.html'</span>)</div><div class="line">&gt;&gt;&gt; o    </div><div class="line">    ParseResult(scheme=<span class="string">'http'</span>, netloc=<span class="string">'www.cwi.nl:80'</span>, path=<span class="string">'/%7Eguido/Python.html'</span>, params=<span class="string">''</span>, query=<span class="string">''</span>, fragment=<span class="string">''</span>)</div><div class="line">&gt;&gt;&gt; o.scheme  </div><div class="line">    <span class="string">'http'</span></div><div class="line">&gt;&gt;&gt; o.port  </div><div class="line">    80</div><div class="line">&gt;&gt;&gt; o.geturl()  </div><div class="line">    <span class="string">'http://www.cwi.nl:80/%7Eguido/Python.html'</span></div></pre></td></tr></table></figure>
 <p> 其将 url 解析成六个部分（scheme, netloc, path, parameters, query, fragment）。</p>
 <hr>
 <h2 id="scrapy"><a href="#scrapy" class="headerlink" title="scrapy"></a>scrapy</h2><blockquote>
 <p>Scrapy uses the Item objects to determine which pieces of information it should save from the pages it visits. This information can be saved by Scrapy in a variety of ways, such as a CSV, JSON, or XML files, using the following commands:<br>Scrapy 用 Item 对象决定要从它浏览的页面中提取哪些信息。Scrapy 支持用不同的输出格式来保存这些信息，比如 CSV、JSON、XML 文件格式，对应命令如下：</p>
 </blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; scrapy crawl article -o articles.csv -t csv</div><div class="line">&gt;&gt;&gt; scrapy crawl article -o articles.json -t json</div><div class="line">&gt;&gt;&gt; scrapy crawl article -o articles.xml -t xml</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ scrapy crawl article -o articles.csv -t csv</div><div class="line">$ scrapy crawl article -o articles.json -t json</div><div class="line">$ scrapy crawl article -o articles.xml -t xml</div></pre></td></tr></table></figure>
 <p> 当然我们也可以自己定义 Item 对象，把结果写入我们需要的一个文件或者数据库中，只要在爬虫的 parse 部分增加相应的代码即可。<br>Scrapy 是处理网络数据采集相关问题的利器。它可以自动收集所有 URL，然后和指定的规则进行比较；确保所有的 URL 是唯一的；根据需求对相关的 URL 进行标准化；以及到更深层的页面中递归查询。</p>
 <hr>
 <h1 id="Need-to-know："><a href="#Need-to-know：" class="headerlink" title="Need to know："></a>Need to know：</h1><p> 在「用 Scrapy 采集」的模块中：</p>
 <p> 我们需要下载 <strong>scrapy</strong> 这一个 package。<strong>「 这个 package 不支持 python3.x 和 python2.6，只能使用 python2.7 。」</strong></p>
 <p> 我的尝试：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; sudo pip install scrapy</div><div class="line">    Could not find <span class="keyword">function</span> xmlCheckVersion <span class="keyword">in</span> library libxml2. Is libxml2 installed? Perhaps try: xcode-select --install</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ sudo pip install scrapy</div><div class="line">    Could not find <span class="keyword">function</span> xmlCheckVersion <span class="keyword">in</span> library libxml2. Is libxml2 installed? </div><div class="line">    Perhaps try: xcode-select --install</div></pre></td></tr></table></figure>
 <p> 意思是缺少 libxml2 ，通过命令行输入:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; xcode-select --install</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ xcode-select --install</div></pre></td></tr></table></figure>
 <p> 接着会弹出 Xcode command line tools 下载，里面包含了 libxml2。安装完成之后，再次尝试 sudo pip install scrapy，报错，内容为:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; from six.moves import xmlrpc_client as xmlrpclib</div><div class="line">ImportError: cannot import name xmlrpc_client</div></pre></td></tr></table></figure>
 <p> 在 stackoverflow 上寻找原因:</p>
@@ -534,7 +534,7 @@
 </ul>
 </blockquote>
 <p>Mac 自带的 six 版本过低，scrapy 需要 six 的版本在 1.5.0 以上，建议是采用 Python 虚拟环境，如果真的需要在 system level 上进行更改的话，需要重新安装 six。<br> 于是，我先尝试了其中的一个解决办法：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; sudo rm -rf /Library/Python/2.7/site-packages/six*</div><div class="line">&gt;&gt;&gt; sudo rm -rf </div><div class="line">/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/six*</div><div class="line">&gt;&gt;&gt; sudo pip install six</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ sudo rm -rf /Library/Python/2.7/site-packages/six*</div><div class="line">$ sudo rm -rf </div><div class="line">/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/six*</div><div class="line">$ sudo pip install six</div></pre></td></tr></table></figure>
 <p> 但很不幸的是，sudo rm -rf 尝试删除文件的时候失败报错，Operation not Permitted。<br> 继续查找原因：</p>
 <blockquote>
 <ul>
@@ -561,7 +561,7 @@
 <p>If none of this works, take a look at the link above.</p>
 </blockquote>
 <p> 此时命令行输入 python, 之后输入：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> scrapy</div></pre></td></tr></table></figure>
+<figure class="highlight elm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; <span class="keyword">import</span> scrapy</div></pre></td></tr></table></figure>
 <p> 没有报错，说明可以导入 scrapy。</p>
 <p> 尝试书上的命令：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash"> scrapy startproject wikiSpider</span></div></pre></td></tr></table></figure>
