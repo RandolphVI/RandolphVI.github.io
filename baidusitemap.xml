@@ -4,6 +4,56 @@
 
     
   <url>
+    <loc>http://randolph.pro/2015/09/17/%3CNatural%20Language%20Processing%20with%20Python%3E%20Chapter%203/</loc>
+    <lastmod>2017-07-26T06:18:16.000Z</lastmod>
+    <data>
+        <display>
+        <title>♞「NLP with Python」 Chapter 3</title>
+        <pubTime>2015-09-16T16:00:00.000Z</pubTime>
+        
+        <tag>NLP</tag>
+         
+        <tag>Python</tag>
+         
+         
+           
+             
+              <breadCrumb title="NLP" url="http://randolph.pro/categories/NLP/"/>
+          
+             
+              <breadCrumb title="Book:「NLP with Python」" url="http://randolph.pro/categories/NLP/Book-%E3%80%8CNLP-with-Python%E3%80%8D/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://randolph.pro/2015/09/11/%3CNatural%20Language%20Processing%20with%20Python%3E%20Chapter%201%20&%202/</loc>
+    <lastmod>2017-07-26T06:15:37.000Z</lastmod>
+    <data>
+        <display>
+        <title>♞「NLP with Python」 Chapter 1 & 2</title>
+        <pubTime>2015-09-10T16:00:00.000Z</pubTime>
+        
+        <tag>NLP</tag>
+         
+        <tag>Python</tag>
+         
+         
+           
+             
+              <breadCrumb title="NLP" url="http://randolph.pro/categories/NLP/"/>
+          
+             
+              <breadCrumb title="Book:「NLP with Python」" url="http://randolph.pro/categories/NLP/Book-%E3%80%8CNLP-with-Python%E3%80%8D/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://randolph.pro/2015/11/13/%3CWeb%20Scraping%20with%20Python%3E%20Chapter%203/</loc>
     <lastmod>2017-07-26T06:11:10.000Z</lastmod>
     <data>
@@ -54,31 +104,6 @@
 
     
   <url>
-    <loc>http://randolph.pro/2015/09/17/%3CNatural%20Language%20Processing%20with%20Python%3E%20Chapter%203/</loc>
-    <lastmod>2017-07-26T05:24:51.000Z</lastmod>
-    <data>
-        <display>
-        <title>♞「NLP with Python」 Chapter 3</title>
-        <pubTime>2015-09-16T16:00:00.000Z</pubTime>
-        
-        <tag>NLP</tag>
-         
-        <tag>Python</tag>
-         
-         
-           
-             
-              <breadCrumb title="NLP" url="http://randolph.pro/categories/NLP/"/>
-          
-             
-              <breadCrumb title="Book:「NLP with Python」" url="http://randolph.pro/categories/NLP/Book-%E3%80%8CNLP-with-Python%E3%80%8D/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://randolph.pro/2015/11/02/%3CWeb%20Scraping%20with%20Python%3E%20Chapter%201%20&%202/</loc>
     <lastmod>2017-07-26T05:14:11.000Z</lastmod>
     <data>
@@ -97,31 +122,6 @@
           
              
               <breadCrumb title="Book:「Web Scraping with Python」" url="http://randolph.pro/categories/Web-Scraping/Book-%E3%80%8CWeb-Scraping-with-Python%E3%80%8D/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://randolph.pro/2015/09/11/%3CNatural%20Language%20Processing%20with%20Python%3E%20Chapter%201%20&%202/</loc>
-    <lastmod>2017-07-26T05:07:32.000Z</lastmod>
-    <data>
-        <display>
-        <title>♞「NLP with Python」 Chapter 1 & 2</title>
-        <pubTime>2015-09-10T16:00:00.000Z</pubTime>
-        
-        <tag>NLP</tag>
-         
-        <tag>Python</tag>
-         
-         
-           
-             
-              <breadCrumb title="NLP" url="http://randolph.pro/categories/NLP/"/>
-          
-             
-              <breadCrumb title="Book:「NLP with Python」" url="http://randolph.pro/categories/NLP/Book-%E3%80%8CNLP-with-Python%E3%80%8D/"/>
           
         </display>
     </data>
