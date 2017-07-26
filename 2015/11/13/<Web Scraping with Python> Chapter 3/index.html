@@ -111,7 +111,7 @@
 <meta property="og:description" content="本文是关于「Web Scraping with Python」这本书的 Chapter 3的学习笔记。">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNc79gy1fhwh5fcvm3j30t612ah43.jpg">
-<meta property="og:updated_time" content="2017-07-26T04:43:56.000Z">
+<meta property="og:updated_time" content="2017-07-26T05:18:58.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="♞「Web Scraping with Python」 Chapter 3">
 <meta name="twitter:description" content="本文是关于「Web Scraping with Python」这本书的 Chapter 3的学习笔记。">
@@ -510,12 +510,12 @@
 <p> 当然我们也可以自己定义 Item 对象，把结果写入我们需要的一个文件或者数据库中，只要在爬虫的 parse 部分增加相应的代码即可。<br>Scrapy 是处理网络数据采集相关问题的利器。它可以自动收集所有 URL，然后和指定的规则进行比较；确保所有的 URL 是唯一的；根据需求对相关的 URL 进行标准化；以及到更深层的页面中递归查询。</p>
 <hr>
 <h1 id="Need-to-know："><a href="#Need-to-know：" class="headerlink" title="Need to know："></a>Need to know：</h1><p> 在「用 Scrapy 采集」的模块中：</p>
-<p> 我们需要下载 <strong>scrapy</strong> 这一个 package。<strong>「 这个 package 不支持 python3.x 和 python2.6，只能使用 python2.7 。」</strong></p>
+<p> 我们需要下载 <strong><code>scrapy</code></strong> 这一个 package。<strong>「 这个 package 不支持 python3.x 和 python2.6，只能使用 python2.7 。」</strong></p>
 <p> 我的尝试：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ sudo pip install scrapy</div><div class="line">Could not find <span class="keyword">function</span> xmlCheckVersion <span class="keyword">in</span> library libxml2. Is libxml2 installed? </div><div class="line">Perhaps try: xcode-select --install</div></pre></td></tr></table></figure>
-<p> 意思是缺少 libxml2 ，通过命令行输入:</p>
+<p> 意思是缺少 <code>libxml2</code> ，通过命令行输入:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ xcode-select --install</div></pre></td></tr></table></figure>
-<p> 接着会弹出 Xcode command line tools 下载，里面包含了 libxml2。安装完成之后，再次尝试 sudo pip install scrapy，报错，内容为:</p>
+<p> 接着会弹出 Xcode command line tools 下载，里面包含了 <code>libxml2</code>。安装完成之后，再次尝试 <code>sudo pip install scrapy</code>，报错，内容为:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; from six.moves import xmlrpc_client as xmlrpclib</div><div class="line">ImportError: cannot import name xmlrpc_client</div></pre></td></tr></table></figure>
 <p> 在 stackoverflow 上寻找原因:</p>
 <blockquote>
@@ -533,9 +533,9 @@
 <li>This will remove various OS X-provided packages from your path for just that run of Python; Apple installs these for their own needs.</li>
 </ul>
 </blockquote>
-<p>Mac 自带的 six 版本过低，scrapy 需要 six 的版本在 1.5.0 以上，建议是采用 Python 虚拟环境，如果真的需要在 system level 上进行更改的话，需要重新安装 six。<br> 于是，我先尝试了其中的一个解决办法：</p>
+<p>Mac 自带的 <code>six</code> 版本过低，<code>scrapy</code> 需要 <code>six</code> 的版本在 1.5.0 以上，建议是采用 Python 虚拟环境，如果真的需要在 system level 上进行更改的话，需要重新安装 <code>six</code>。<br> 于是，我先尝试了其中的一个解决办法：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ sudo rm -rf /Library/Python/2.7/site-packages/six*</div><div class="line">$ sudo rm -rf </div><div class="line">/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/six*</div><div class="line">$ sudo pip install six</div></pre></td></tr></table></figure>
-<p> 但很不幸的是，sudo rm -rf 尝试删除文件的时候失败报错，Operation not Permitted。<br> 继续查找原因：</p>
+<p> 但很不幸的是，<code>sudo rm -rf</code> 尝试删除文件的时候失败报错，Operation not Permitted。<br> 继续查找原因：</p>
 <blockquote>
 <ul>
 <li>This is because OS X El Capitan ships with six 1.4.1 installed already and when it attempts to uninstall it (because scrapy depends on six &gt;= 1.5) it doesn’t have permission to do so because <strong>System Integrity Protection</strong> doesn’t allow even root to modify those directories.</li>
@@ -547,26 +547,26 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ sudo pip uninstall six</div><div class="line">$ easy_install six</div></pre></td></tr></table></figure>
 <p> 同样得到的是 Operation not Permitted（此方法在 10.11 之前的版本应该都可以行得通）。</p>
 <p> 后来尝试了通过 Python 虚拟环境进行解决，能力不够失败。<br> 还尝试了通过下载 Python 官网的 2.7.11，不使用 Mac 系统默认自带的 2.7.10（有人提到使用自己安装的 Python2.7 可以解决问题），折腾了半天，还是失败告终，还差点弄的 pip 无法安装 package。挽救办法为：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash"> brew link python </span></div><div class="line"><span class="meta">$</span><span class="bash"> bre unlink python</span></div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ brew link python </div><div class="line">$ bre unlink python</div></pre></td></tr></table></figure>
 <p> 到最后，本来想着要放弃的，Stackoverflow 上的另一个办法让事情有了转机：</p>
 <blockquote>
 <p>This is a known issue on Mac OSX for Scrapy. You can refer to <a href="https://github.com/pypa/pip/issues/3165" target="_blank" rel="external">this link</a>.<br>Basically the issue is with the <strong>PYTHONPATH</strong> in your system. To solve the issue change the current PYTHONPATH to point to the newer or none Mac OSX version of Python. Before running Scrapy, try:</p>
 </blockquote>
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="builtin-name">export</span> <span class="attribute">PYTHONPATH</span>=/Library/Python/2.7/site-packages:$PYTHONPATH</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">export</span> PYTHONPATH=/Library/Python/2.7/site-packages:<span class="variable">$PYTHONPATH</span></div></pre></td></tr></table></figure>
 <blockquote>
 <p>If that worked you can change the .bashrc file permanently:</p>
 </blockquote>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">echo</span> <span class="string">"export PYTHONPATH=/Library/Python/2.7/site-packages:<span class="variable">$PYTHONPATH</span>"</span> &gt;&gt; ~/.bashrc</span></div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">echo</span> <span class="string">"export PYTHONPATH=/Library/Python/2.7/site-packages:<span class="variable">$PYTHONPATH</span>"</span> &gt;&gt; ~/.bashrc</div></pre></td></tr></table></figure>
 <blockquote>
 <p>If none of this works, take a look at the link above.</p>
 </blockquote>
 <p> 此时命令行输入 python, 之后输入：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> scrapy</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; import scrapy</div></pre></td></tr></table></figure>
 <p> 没有报错，说明可以导入 scrapy。</p>
 <p> 尝试书上的命令：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash"> scrapy startproject wikiSpider</span></div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ scrapy startproject wikiSpider</div></pre></td></tr></table></figure>
 <p> 得到信息：</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">New Scrapy project <span class="string">'wikiSpider'</span> created <span class="string">in:</span></div><div class="line">	<span class="regexp">/Users/</span>randolph<span class="regexp">/PycharmProjects/</span>Scraping/wikiSpider</div><div class="line">You can start your first spider <span class="string">with:</span></div><div class="line">	cd wikiSpider</div><div class="line">	scrapy genspider example example.com</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">New Scrapy project <span class="string">'wikiSpider'</span> created <span class="keyword">in</span>:</div><div class="line">	/Users/randolph/PycharmProjects/Scraping/wikiSpider</div><div class="line">You can start your first spider with:</div><div class="line">	<span class="built_in">cd</span> wikiSpider</div><div class="line">	scrapy genspider example example.com</div></pre></td></tr></table></figure>
 <p> 成功！scrapy is ready to go!</p>
 <hr>
 <h1 id="Correct-errors-in-printing："><a href="#Correct-errors-in-printing：" class="headerlink" title="Correct errors in printing："></a>Correct errors in printing：</h1><ul>

@@ -111,7 +111,7 @@
 <meta property="og:description" content="本文是关于「Web Scraping with Python」这本书的 Chapter 1 &amp; 2的学习笔记。">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNc79gy1fhwh5fcvm3j30t612ah43.jpg">
-<meta property="og:updated_time" content="2017-07-25T14:06:45.000Z">
+<meta property="og:updated_time" content="2017-07-26T05:14:11.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="♞「Web Scraping with Python」 Chapter 1 &amp; 2">
 <meta name="twitter:description" content="本文是关于「Web Scraping with Python」这本书的 Chapter 1 &amp; 2的学习笔记。">
@@ -498,7 +498,7 @@
 <p>If you’ve used the urllib2 library in Python 2.x, you might have noticed that things have changed somewhat between urllib2 and urllib. In Python 3.x, urllib2 was renamed urllib and was split into several submodules: urllib.request, urllib.parse, and url lib.error. Although function names mostly remain the same, you might want to note which functions have moved to submodules when using the new urllib. </p>
 </blockquote>
 <p>在学习这本书之前，使用过此 package（我一开始学习 Python 就用的是 3.x，Mac 自带 Python2.x），当时出错了，上 Stackoverflow 找到了答案，现在这本书提到了这点，重新回顾一下:</p>
-<p>如果你用过 Python 2.x 里的 <code>urllib2</code> 库，可能会发现 <code>urllib2</code> 与 <code>urllib</code> 有些不同。在 Python 3.x 里，<code>urllib2</code> 改名为 <code>urllib</code>，被分成一些子模块：<code>urllib.request</code>、<code>urllib.parse</code> 和 <code>urllib.error</code>。尽管函数名称大多和原来一样，但是在用新的 urllib 库时需要注意哪些函数被移动到子模块里了。</p>
+<p>如果你用过 Python 2.x 里的 <code>urllib2</code> 库，可能会发现 <code>urllib2</code> 与 <code>urllib</code> 有些不同。在 Python 3.x 里，<code>urllib2</code> 改名为 <code>urllib</code>，被分成一些子模块：<code>urllib.request</code>、<code>urllib.parse</code> 和 <code>urllib.error</code>。尽管函数名称大多和原来一样，但是在用新的 <code>urllib</code> 库时需要注意哪些函数被移动到子模块里了。</p>
 <hr>
 <h2 id="When-to-get-text-and-When-to-Preserve-Tags"><a href="#When-to-get-text-and-When-to-Preserve-Tags" class="headerlink" title="When to get_text() and When to Preserve Tags?"></a>When to get_text() and When to Preserve Tags?</h2><blockquote>
 <p>.get_text() strips all tags from the document you are working with and returns a string containing the text only. For example, if you are working with a large block of text that contains many hyperlinks, paragraphs, and other tags, all those will be stripped away and you’ll be left with a tagless block of text.</p>

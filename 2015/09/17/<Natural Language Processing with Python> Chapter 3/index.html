@@ -114,7 +114,7 @@
 <meta property="og:image" content="https://farm1.staticflickr.com/645/30825223223_8abc614f13_o.png">
 <meta property="og:image" content="https://farm1.staticflickr.com/767/31488720242_48aae8823f_o.png">
 <meta property="og:image" content="https://farm1.staticflickr.com/768/31263141960_9e2f2a7c44_o.png">
-<meta property="og:updated_time" content="2017-07-26T04:15:59.000Z">
+<meta property="og:updated_time" content="2017-07-26T05:12:56.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="♞「NLP with Python」 Chapter 3">
 <meta name="twitter:description" content="本文是关于「Natural Language Processing with Python」这本书的 Chapter 3 的学习笔记。">
@@ -502,7 +502,7 @@
 <li><strong>Formatting: From Lists to Strings</strong></li>
 </ul>
 <hr>
-<h1 id="Key"><a href="#Key" class="headerlink" title="Key:"></a>Key:</h1><h2 id="The-NLP-Pipeline"><a href="#The-NLP-Pipeline" class="headerlink" title="The NLP Pipeline"></a>The NLP Pipeline</h2><p>NLP 的处理流程：我们打开一个 URL 代码读取里面 HTML 格式的内容，去除标记，并选择字符的切片，然后分词，是否转换为 nltk.Text 对象是可选择的。我们也可以将所有词汇小写并提取成词汇表（Vocab）。</p>
+<h1 id="Key"><a href="#Key" class="headerlink" title="Key:"></a>Key:</h1><h2 id="The-NLP-Pipeline"><a href="#The-NLP-Pipeline" class="headerlink" title="The NLP Pipeline"></a>The NLP Pipeline</h2><p>NLP 的处理流程：我们打开一个 URL 代码读取里面 HTML 格式的内容，去除标记，并选择字符的切片，然后分词，是否转换为 <code>nltk.Text</code> 对象是可选择的。我们也可以将所有词汇小写并提取成词汇表（Vocab）。</p>
 <p><img src="https://farm1.staticflickr.com/645/30825223223_8abc614f13_o.png" alt=""></p>
 <hr>
 <h2 id="Basic-Operations-with-Strings"><a href="#Basic-Operations-with-Strings" class="headerlink" title="Basic Operations with Strings"></a>Basic Operations with Strings</h2><p>有时候字符串跨好几行。Python 提供了多种方式表示它们。在下面的例子中，一个包含两个字符串的序列被连接为一个字符串。我们需要使用 <strong> 反斜杠 </strong> 或者 <strong> 括号</strong>，这样解释器就知道第一行的表达式不完整了。</p>
@@ -580,7 +580,7 @@
 </table>
 </div>
 <ul>
-<li><p>正则表达式是用来指定模式的一种强大而灵活的方法。只要导入了 <strong>re</strong> 模块，就可以使用 <code>re.findall()</code> 找到一个字符串中匹配一个模式的所有子字符串。</p>
+<li><p>正则表达式是用来指定模式的一种强大而灵活的方法。只要导入了 <strong><code>re</code></strong> 模块，就可以使用 <code>re.findall()</code> 找到一个字符串中匹配一个模式的所有子字符串。</p>
 </li>
 <li><p>如果正则表达式字符串包含反斜杠，应该使用原始字符串与 r 前缀：<code>r&#39;regexp&#39;</code>，告诉 Python 不要预处理这个字符串。</p>
 </li>
@@ -608,7 +608,7 @@
 <hr>
 <p>在「处理 HTML」的模块中：</p>
 <p>书本提到从 HTML 中提取文本，采用辅助函数 <code>nltk.clean_html()</code> 将 HTML 字符串作为参数，返回原始文本。</p>
-<p>然而，现在这个辅助函数已不支持。为了实现这一目的，我们可以下载<strong>Beautiful Soup 4</strong>。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ pip install beautifulsoup4</div></pre></td></tr></table></figure></p>
+<p>然而，现在这个辅助函数已不支持。为了实现这一目的，我们可以下载<strong><code>Beautiful Soup 4</code></strong>。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ pip install beautifulsoup4</div></pre></td></tr></table></figure></p>
 <p>随后在代码部分中，调用 BeautifulSoup：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> nltk, re, pprint</div><div class="line"><span class="keyword">from</span> urllib.request <span class="keyword">import</span> urlopen</div><div class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> *</div><div class="line"></div><div class="line">url = <span class="string">"http://youraddress"</span></div><div class="line">html = urlopen(url).read()</div><div class="line">soup = BeautifulSoup(html)</div><div class="line">raw = soup.get_text()</div><div class="line">tokens = nltk.word_tokenize(raw)</div></pre></td></tr></table></figure></p>
 <hr>
 <p>在 [分词] 的模块中：</p>
@@ -742,7 +742,7 @@ P(\mathrm{d} E) = exp(\mathrm{d}E/kT)</script><p>其中 <strong><em>k</em></stro
 <blockquote>
 <p>32.◑ Define a variable silly to contain the string: <strong>‘newly formed bland ideas are inexpressible in an infuriating way’</strong>. (This happens to be the legitimate inter- pretation that bilingual English-Spanish speakers can assign to Chomsky’s famous nonsense phrase <strong><em>colorless green ideas sleep furiously</em></strong>, according to Wikipedia). Now write code to perform the following tasks:</p>
 <ol>
-<li>Split <strong>silly</strong> into a list of strings, one per word, using Python’s <strong>split()</strong> opera- tion, and save this to a variable called <strong>bland</strong>.</li>
+<li>Split <strong>silly</strong> into a list of strings, one per word, using Python’s <strong><code>split()</code></strong> opera- tion, and save this to a variable called <strong>bland</strong>.</li>
 <li>Extract the second letter of each word in <strong>silly</strong> and join them into a string, to get <strong>‘eoldrnnnna’</strong>.</li>
 </ol>
 </blockquote>

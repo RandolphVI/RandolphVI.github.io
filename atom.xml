@@ -420,7 +420,7 @@ AC & (1,2)(-2),(0,1)(-1),(0,1)(-1),(0,1)(-1),(2,1)(-1),(EOB)(0,0)
     <link href="http://randolph.pro/2016/03/12/%3CProgramming%20Collective%20Intelligence%3E%20Chapter%201%20&amp;%202/"/>
     <id>http://randolph.pro/2016/03/12/&lt;Programming Collective Intelligence&gt; Chapter 1 &amp; 2/</id>
     <published>2016-03-11T16:00:00.000Z</published>
-    <updated>2017-07-26T04:54:29.000Z</updated>
+    <updated>2017-07-26T05:13:44.000Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fhu94m6p9zj30t612ah7b.jpg" alt=""></p>
 <p>关于该书的其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/Book-「Programming-Collective-Intelligence」/">「Programming Collective Intelligence」</a></p>
@@ -487,7 +487,7 @@ AC & (1,2)(-2),(0,1)(-1),(0,1)(-1),(0,1)(-1),(2,1)(-1),(EOB)(0,0)
 <hr>
 <p>本以为到此终于告一段落，但是实际上：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; import pydelicious</div><div class="line">&gt;&gt;&gt; pydelicious.get_popular(tag=<span class="string">'python'</span>)</div><div class="line">&gt;&gt;&gt; pydelicious.get_popular(tag=<span class="string">'xxx'</span>)</div></pre></td></tr></table></figure>
-<p>意思是无论我如何更改 tag 的值，返回的内容会发现是一样。这个问题，stackoverflow 老外也同样遇到了：</p>
+<p>意思是无论我如何更改参数 <code>tag</code> 的值，返回的内容会发现是一样。这个问题，stackoverflow 老外也同样遇到了：</p>
 <blockquote>
 <p><strong>I see the resource code again. Maybe it is wrong. Because If you edit the code, the procedural answer always remain unchanged…I’m studing…</strong></p>
 </blockquote>
@@ -530,7 +530,7 @@ AC & (1,2)(-2),(0,1)(-1),(0,1)(-1),(0,1)(-1),(2,1)(-1),(EOB)(0,0)
     <link href="http://randolph.pro/2015/11/13/%3CWeb%20Scraping%20with%20Python%3E%20Chapter%203/"/>
     <id>http://randolph.pro/2015/11/13/&lt;Web Scraping with Python&gt; Chapter 3/</id>
     <published>2015-11-12T16:00:00.000Z</published>
-    <updated>2017-07-26T04:43:56.000Z</updated>
+    <updated>2017-07-26T05:18:58.000Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fhwh5fcvm3j30t612ah43.jpg" alt=""></p>
 <p> 关于该书的其他学习笔记系列：<a href="http://randolph.pro/categories/Web-Scraping/Book-「Web-Scraping-with-Python」/">「Web Scraping with Python」</a></p>
@@ -556,12 +556,12 @@ AC & (1,2)(-2),(0,1)(-1),(0,1)(-1),(0,1)(-1),(2,1)(-1),(EOB)(0,0)
 <p> 当然我们也可以自己定义 Item 对象，把结果写入我们需要的一个文件或者数据库中，只要在爬虫的 parse 部分增加相应的代码即可。<br>Scrapy 是处理网络数据采集相关问题的利器。它可以自动收集所有 URL，然后和指定的规则进行比较；确保所有的 URL 是唯一的；根据需求对相关的 URL 进行标准化；以及到更深层的页面中递归查询。</p>
 <hr>
 <h1 id="Need-to-know："><a href="#Need-to-know：" class="headerlink" title="Need to know："></a>Need to know：</h1><p> 在「用 Scrapy 采集」的模块中：</p>
-<p> 我们需要下载 <strong>scrapy</strong> 这一个 package。<strong>「 这个 package 不支持 python3.x 和 python2.6，只能使用 python2.7 。」</strong></p>
+<p> 我们需要下载 <strong><code>scrapy</code></strong> 这一个 package。<strong>「 这个 package 不支持 python3.x 和 python2.6，只能使用 python2.7 。」</strong></p>
 <p> 我的尝试：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ sudo pip install scrapy</div><div class="line">Could not find <span class="keyword">function</span> xmlCheckVersion <span class="keyword">in</span> library libxml2. Is libxml2 installed? </div><div class="line">Perhaps try: xcode-select --install</div></pre></td></tr></table></figure>
-<p> 意思是缺少 libxml2 ，通过命令行输入:</p>
+<p> 意思是缺少 <code>libxml2</code> ，通过命令行输入:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ xcode-select --install</div></pre></td></tr></table></figure>
-<p> 接着会弹出 Xcode command line tools 下载，里面包含了 libxml2。安装完成之后，再次尝试 sudo pip install scrapy，报错，内容为:</p>
+<p> 接着会弹出 Xcode command line tools 下载，里面包含了 <code>libxml2</code>。安装完成之后，再次尝试 <code>sudo pip install scrapy</code>，报错，内容为:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; from six.moves import xmlrpc_client as xmlrpclib</div><div class="line">ImportError: cannot import name xmlrpc_client</div></pre></td></tr></table></figure>
 <p> 在 stackoverflow 上寻找原因:</p>
 <blockquote>
@@ -579,9 +579,9 @@ AC & (1,2)(-2),(0,1)(-1),(0,1)(-1),(0,1)(-1),(2,1)(-1),(EOB)(0,0)
 <li>This will remove various OS X-provided packages from your path for just that run of Python; Apple installs these for their own needs.</li>
 </ul>
 </blockquote>
-<p>Mac 自带的 six 版本过低，scrapy 需要 six 的版本在 1.5.0 以上，建议是采用 Python 虚拟环境，如果真的需要在 system level 上进行更改的话，需要重新安装 six。<br> 于是，我先尝试了其中的一个解决办法：</p>
+<p>Mac 自带的 <code>six</code> 版本过低，<code>scrapy</code> 需要 <code>six</code> 的版本在 1.5.0 以上，建议是采用 Python 虚拟环境，如果真的需要在 system level 上进行更改的话，需要重新安装 <code>six</code>。<br> 于是，我先尝试了其中的一个解决办法：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ sudo rm -rf /Library/Python/2.7/site-packages/six*</div><div class="line">$ sudo rm -rf </div><div class="line">/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/six*</div><div class="line">$ sudo pip install six</div></pre></td></tr></table></figure>
-<p> 但很不幸的是，sudo rm -rf 尝试删除文件的时候失败报错，Operation not Permitted。<br> 继续查找原因：</p>
+<p> 但很不幸的是，<code>sudo rm -rf</code> 尝试删除文件的时候失败报错，Operation not Permitted。<br> 继续查找原因：</p>
 <blockquote>
 <ul>
 <li>This is because OS X El Capitan ships with six 1.4.1 installed already and when it attempts to uninstall it (because scrapy depends on six &gt;= 1.5) it doesn’t have permission to do so because <strong>System Integrity Protection</strong> doesn’t allow even root to modify those directories.</li>
@@ -593,26 +593,26 @@ AC & (1,2)(-2),(0,1)(-1),(0,1)(-1),(0,1)(-1),(2,1)(-1),(EOB)(0,0)
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ sudo pip uninstall six</div><div class="line">$ easy_install six</div></pre></td></tr></table></figure>
 <p> 同样得到的是 Operation not Permitted（此方法在 10.11 之前的版本应该都可以行得通）。</p>
 <p> 后来尝试了通过 Python 虚拟环境进行解决，能力不够失败。<br> 还尝试了通过下载 Python 官网的 2.7.11，不使用 Mac 系统默认自带的 2.7.10（有人提到使用自己安装的 Python2.7 可以解决问题），折腾了半天，还是失败告终，还差点弄的 pip 无法安装 package。挽救办法为：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash"> brew link python </span></div><div class="line"><span class="meta">$</span><span class="bash"> bre unlink python</span></div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ brew link python </div><div class="line">$ bre unlink python</div></pre></td></tr></table></figure>
 <p> 到最后，本来想着要放弃的，Stackoverflow 上的另一个办法让事情有了转机：</p>
 <blockquote>
 <p>This is a known issue on Mac OSX for Scrapy. You can refer to <a href="https://github.com/pypa/pip/issues/3165" target="_blank" rel="external">this link</a>.<br>Basically the issue is with the <strong>PYTHONPATH</strong> in your system. To solve the issue change the current PYTHONPATH to point to the newer or none Mac OSX version of Python. Before running Scrapy, try:</p>
 </blockquote>
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="builtin-name">export</span> <span class="attribute">PYTHONPATH</span>=/Library/Python/2.7/site-packages:$PYTHONPATH</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">export</span> PYTHONPATH=/Library/Python/2.7/site-packages:<span class="variable">$PYTHONPATH</span></div></pre></td></tr></table></figure>
 <blockquote>
 <p>If that worked you can change the .bashrc file permanently:</p>
 </blockquote>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">echo</span> <span class="string">"export PYTHONPATH=/Library/Python/2.7/site-packages:<span class="variable">$PYTHONPATH</span>"</span> &gt;&gt; ~/.bashrc</span></div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">echo</span> <span class="string">"export PYTHONPATH=/Library/Python/2.7/site-packages:<span class="variable">$PYTHONPATH</span>"</span> &gt;&gt; ~/.bashrc</div></pre></td></tr></table></figure>
 <blockquote>
 <p>If none of this works, take a look at the link above.</p>
 </blockquote>
 <p> 此时命令行输入 python, 之后输入：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> scrapy</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; import scrapy</div></pre></td></tr></table></figure>
 <p> 没有报错，说明可以导入 scrapy。</p>
 <p> 尝试书上的命令：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash"> scrapy startproject wikiSpider</span></div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ scrapy startproject wikiSpider</div></pre></td></tr></table></figure>
 <p> 得到信息：</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">New Scrapy project <span class="string">'wikiSpider'</span> created <span class="string">in:</span></div><div class="line">	<span class="regexp">/Users/</span>randolph<span class="regexp">/PycharmProjects/</span>Scraping/wikiSpider</div><div class="line">You can start your first spider <span class="string">with:</span></div><div class="line">	cd wikiSpider</div><div class="line">	scrapy genspider example example.com</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">New Scrapy project <span class="string">'wikiSpider'</span> created <span class="keyword">in</span>:</div><div class="line">	/Users/randolph/PycharmProjects/Scraping/wikiSpider</div><div class="line">You can start your first spider with:</div><div class="line">	<span class="built_in">cd</span> wikiSpider</div><div class="line">	scrapy genspider example example.com</div></pre></td></tr></table></figure>
 <p> 成功！scrapy is ready to go!</p>
 <hr>
 <h1 id="Correct-errors-in-printing："><a href="#Correct-errors-in-printing：" class="headerlink" title="Correct errors in printing："></a>Correct errors in printing：</h1><ul>
@@ -647,7 +647,7 @@ AC & (1,2)(-2),(0,1)(-1),(0,1)(-1),(0,1)(-1),(2,1)(-1),(EOB)(0,0)
     <link href="http://randolph.pro/2015/11/02/%3CWeb%20Scraping%20with%20Python%3E%20Chapter%201%20&amp;%202/"/>
     <id>http://randolph.pro/2015/11/02/&lt;Web Scraping with Python&gt; Chapter 1 &amp; 2/</id>
     <published>2015-11-01T16:00:00.000Z</published>
-    <updated>2017-07-25T14:06:45.000Z</updated>
+    <updated>2017-07-26T05:14:11.000Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fhwh5fcvm3j30t612ah43.jpg" alt=""></p>
 <p>关于该书的其他学习笔记系列：<a href="http://randolph.pro/categories/Web-Scraping/Book-「Web-Scraping-with-Python」/">「Web Scraping with Python」</a></p>
@@ -661,7 +661,7 @@ AC & (1,2)(-2),(0,1)(-1),(0,1)(-1),(0,1)(-1),(2,1)(-1),(EOB)(0,0)
 <p>If you’ve used the urllib2 library in Python 2.x, you might have noticed that things have changed somewhat between urllib2 and urllib. In Python 3.x, urllib2 was renamed urllib and was split into several submodules: urllib.request, urllib.parse, and url lib.error. Although function names mostly remain the same, you might want to note which functions have moved to submodules when using the new urllib. </p>
 </blockquote>
 <p>在学习这本书之前，使用过此 package（我一开始学习 Python 就用的是 3.x，Mac 自带 Python2.x），当时出错了，上 Stackoverflow 找到了答案，现在这本书提到了这点，重新回顾一下:</p>
-<p>如果你用过 Python 2.x 里的 <code>urllib2</code> 库，可能会发现 <code>urllib2</code> 与 <code>urllib</code> 有些不同。在 Python 3.x 里，<code>urllib2</code> 改名为 <code>urllib</code>，被分成一些子模块：<code>urllib.request</code>、<code>urllib.parse</code> 和 <code>urllib.error</code>。尽管函数名称大多和原来一样，但是在用新的 urllib 库时需要注意哪些函数被移动到子模块里了。</p>
+<p>如果你用过 Python 2.x 里的 <code>urllib2</code> 库，可能会发现 <code>urllib2</code> 与 <code>urllib</code> 有些不同。在 Python 3.x 里，<code>urllib2</code> 改名为 <code>urllib</code>，被分成一些子模块：<code>urllib.request</code>、<code>urllib.parse</code> 和 <code>urllib.error</code>。尽管函数名称大多和原来一样，但是在用新的 <code>urllib</code> 库时需要注意哪些函数被移动到子模块里了。</p>
 <hr>
 <h2 id="When-to-get-text-and-When-to-Preserve-Tags"><a href="#When-to-get-text-and-When-to-Preserve-Tags" class="headerlink" title="When to get_text() and When to Preserve Tags?"></a>When to get_text() and When to Preserve Tags?</h2><blockquote>
 <p>.get_text() strips all tags from the document you are working with and returns a string containing the text only. For example, if you are working with a large block of text that contains many hyperlinks, paragraphs, and other tags, all those will be stripped away and you’ll be left with a tagless block of text.</p>
@@ -745,7 +745,7 @@ AC & (1,2)(-2),(0,1)(-1),(0,1)(-1),(0,1)(-1),(2,1)(-1),(EOB)(0,0)
     <link href="http://randolph.pro/2015/09/17/%3CNatural%20Language%20Processing%20with%20Python%3E%20Chapter%203/"/>
     <id>http://randolph.pro/2015/09/17/&lt;Natural Language Processing with Python&gt; Chapter 3/</id>
     <published>2015-09-16T16:00:00.000Z</published>
-    <updated>2017-07-26T04:15:59.000Z</updated>
+    <updated>2017-07-26T05:12:56.000Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fhu96awavpj30yg1cp1kx.jpg" alt=""></p>
 <p>关于该书的其他学习笔记系列：<a href="http://randolph.pro/categories/NLP/Book-「NLP-with-Python」/">「NLP with Python」</a></p>
@@ -760,7 +760,7 @@ AC & (1,2)(-2),(0,1)(-1),(0,1)(-1),(0,1)(-1),(2,1)(-1),(EOB)(0,0)
 <li><strong>Formatting: From Lists to Strings</strong></li>
 </ul>
 <hr>
-<h1 id="Key"><a href="#Key" class="headerlink" title="Key:"></a>Key:</h1><h2 id="The-NLP-Pipeline"><a href="#The-NLP-Pipeline" class="headerlink" title="The NLP Pipeline"></a>The NLP Pipeline</h2><p>NLP 的处理流程：我们打开一个 URL 代码读取里面 HTML 格式的内容，去除标记，并选择字符的切片，然后分词，是否转换为 nltk.Text 对象是可选择的。我们也可以将所有词汇小写并提取成词汇表（Vocab）。</p>
+<h1 id="Key"><a href="#Key" class="headerlink" title="Key:"></a>Key:</h1><h2 id="The-NLP-Pipeline"><a href="#The-NLP-Pipeline" class="headerlink" title="The NLP Pipeline"></a>The NLP Pipeline</h2><p>NLP 的处理流程：我们打开一个 URL 代码读取里面 HTML 格式的内容，去除标记，并选择字符的切片，然后分词，是否转换为 <code>nltk.Text</code> 对象是可选择的。我们也可以将所有词汇小写并提取成词汇表（Vocab）。</p>
 <p><img src="https://farm1.staticflickr.com/645/30825223223_8abc614f13_o.png" alt=""></p>
 <hr>
 <h2 id="Basic-Operations-with-Strings"><a href="#Basic-Operations-with-Strings" class="headerlink" title="Basic Operations with Strings"></a>Basic Operations with Strings</h2><p>有时候字符串跨好几行。Python 提供了多种方式表示它们。在下面的例子中，一个包含两个字符串的序列被连接为一个字符串。我们需要使用 <strong> 反斜杠 </strong> 或者 <strong> 括号</strong>，这样解释器就知道第一行的表达式不完整了。</p>
@@ -838,7 +838,7 @@ AC & (1,2)(-2),(0,1)(-1),(0,1)(-1),(0,1)(-1),(2,1)(-1),(EOB)(0,0)
 </table>
 </div>
 <ul>
-<li><p>正则表达式是用来指定模式的一种强大而灵活的方法。只要导入了 <strong>re</strong> 模块，就可以使用 <code>re.findall()</code> 找到一个字符串中匹配一个模式的所有子字符串。</p>
+<li><p>正则表达式是用来指定模式的一种强大而灵活的方法。只要导入了 <strong><code>re</code></strong> 模块，就可以使用 <code>re.findall()</code> 找到一个字符串中匹配一个模式的所有子字符串。</p>
 </li>
 <li><p>如果正则表达式字符串包含反斜杠，应该使用原始字符串与 r 前缀：<code>r&#39;regexp&#39;</code>，告诉 Python 不要预处理这个字符串。</p>
 </li>
@@ -866,7 +866,7 @@ AC & (1,2)(-2),(0,1)(-1),(0,1)(-1),(0,1)(-1),(2,1)(-1),(EOB)(0,0)
 <hr>
 <p>在「处理 HTML」的模块中：</p>
 <p>书本提到从 HTML 中提取文本，采用辅助函数 <code>nltk.clean_html()</code> 将 HTML 字符串作为参数，返回原始文本。</p>
-<p>然而，现在这个辅助函数已不支持。为了实现这一目的，我们可以下载<strong>Beautiful Soup 4</strong>。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ pip install beautifulsoup4</div></pre></td></tr></table></figure></p>
+<p>然而，现在这个辅助函数已不支持。为了实现这一目的，我们可以下载<strong><code>Beautiful Soup 4</code></strong>。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ pip install beautifulsoup4</div></pre></td></tr></table></figure></p>
 <p>随后在代码部分中，调用 BeautifulSoup：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> nltk, re, pprint</div><div class="line"><span class="keyword">from</span> urllib.request <span class="keyword">import</span> urlopen</div><div class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> *</div><div class="line"></div><div class="line">url = <span class="string">"http://youraddress"</span></div><div class="line">html = urlopen(url).read()</div><div class="line">soup = BeautifulSoup(html)</div><div class="line">raw = soup.get_text()</div><div class="line">tokens = nltk.word_tokenize(raw)</div></pre></td></tr></table></figure></p>
 <hr>
 <p>在 [分词] 的模块中：</p>
@@ -1000,7 +1000,7 @@ P(\mathrm{d} E) = exp(\mathrm{d}E/kT)</script><p>其中 <strong><em>k</em></stro
 <blockquote>
 <p>32.◑ Define a variable silly to contain the string: <strong>‘newly formed bland ideas are inexpressible in an infuriating way’</strong>. (This happens to be the legitimate inter- pretation that bilingual English-Spanish speakers can assign to Chomsky’s famous nonsense phrase <strong><em>colorless green ideas sleep furiously</em></strong>, according to Wikipedia). Now write code to perform the following tasks:</p>
 <ol>
-<li>Split <strong>silly</strong> into a list of strings, one per word, using Python’s <strong>split()</strong> opera- tion, and save this to a variable called <strong>bland</strong>.</li>
+<li>Split <strong>silly</strong> into a list of strings, one per word, using Python’s <strong><code>split()</code></strong> opera- tion, and save this to a variable called <strong>bland</strong>.</li>
 <li>Extract the second letter of each word in <strong>silly</strong> and join them into a string, to get <strong>‘eoldrnnnna’</strong>.</li>
 </ol>
 </blockquote>
@@ -1040,7 +1040,7 @@ P(\mathrm{d} E) = exp(\mathrm{d}E/kT)</script><p>其中 <strong><em>k</em></stro
     <link href="http://randolph.pro/2015/09/11/%3CNatural%20Language%20Processing%20with%20Python%3E%20Chapter%201%20&amp;%202/"/>
     <id>http://randolph.pro/2015/09/11/&lt;Natural Language Processing with Python&gt; Chapter 1 &amp; 2/</id>
     <published>2015-09-10T16:00:00.000Z</published>
-    <updated>2017-07-26T05:04:31.000Z</updated>
+    <updated>2017-07-26T05:07:32.000Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fhu96awavpj30yg1cp1kx.jpg" alt=""></p>
 <p>关于该书的其他学习笔记系列：<a href="http://randolph.pro/categories/NLP/Book-「NLP-with-Python」/">「NLP with Python」</a></p>
@@ -1184,7 +1184,7 @@ P(\mathrm{d} E) = exp(\mathrm{d}E/kT)</script><p>其中 <strong><em>k</em></stro
 <blockquote>
 <p>使用 text2 尝试前面频率分布的例子。…如果得到的是错误信息：NameError: name ‘FreqDist’is not defined，则需要在一开始输入 <strong><code>from nltk import *</code></strong>。</p>
 </blockquote>
-<p><strong>原因：nltk.book 中并不存在 <code>FreqDist()</code> 这一 function.</strong></p>
+<p><strong>原因：<code>nltk.book</code> 中并不存在 <code>FreqDist()</code> 这一 function.</strong></p>
 <hr>
 <ul>
 <li>P48:</li>
