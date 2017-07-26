@@ -423,7 +423,7 @@ AC & (1,2)(-2),(0,1)(-1),(0,1)(-1),(0,1)(-1),(2,1)(-1),(EOB)(0,0)
 <li>最后得到的结果，表示为自己对于没有看过的电影，通过自己品位相似的影评者得到的预测评分，根据预测评分，来给出决策。</li>
 </ol>
 <hr>
-<h1 id="Need-to-know"><a href="#Need-to-know" class="headerlink" title="Need to know:"></a>Need to know:</h1><p>在「构建一个基于 del.icio.us 的链接推荐系统」的模块中：<br>首先我们需要下载 <strong>pydelicious</strong> 这一个 package。<strong>［这个 package 不支持 python3.x］</strong></p>
+<h1 id="Need-to-know"><a href="#Need-to-know" class="headerlink" title="Need to know:"></a>Need to know:</h1><p>在「构建一个基于 del.icio.us 的链接推荐系统」的模块中：<br>首先我们需要下载 <strong><code>pydelicious</code></strong> 这一个 package。<strong>［这个 package 不支持 python3.x］</strong></p>
 <p>我的尝试：</p>
 <ol>
 <li>通过 Pycharm 自带的“便利”package 下载。出错，原因：无法找到对应的版本。</li>
@@ -434,31 +434,31 @@ AC & (1,2)(-2),(0,1)(-1),(0,1)(-1),(0,1)(-1),(2,1)(-1),(EOB)(0,0)
 <p>初次尝试失败之后，在 Stackoverflow 寻找解决办法：</p>
 <ol>
 <li>首先，按照书本提供的下载地址：<a href="https://code.google.com/archive/p/pydelicious/downloads" target="_blank" rel="external">the pydelicious download page</a>［需要翻墙］下载 <strong>pydelicious-0.5.0.zip</strong> 文件。解压之后得到文件夹。</li>
-<li>命令行 cd 到解压后的文件夹，然后输入 <code>sudo python setup.py install</code>，错误提示：Feedparser not available, no RSS parsing。<strong> 意思是缺少 feedparser 这一 package 依赖库，需要安装 feedparser</strong>。</li>
+<li>命令行 <code>cd</code> 到解压后的文件夹，然后输入 <code>sudo python setup.py install</code>，错误提示：Feedparser not available, no RSS parsing。<strong> 意思是缺少 <code>feedparser</code> 这一 package 依赖库，需要安装 feedparser</strong>。</li>
 <li>安装 feedparser, 下载地址：<a href="http://download.csdn.net/download/dixin28/5271130" target="_blank" rel="external">the feedparser download page</a>［需要积分］，或者<a href="https://github.com/kurtmckee/feedparser" target="_blank" rel="external">the feedparser download page</a>［需要翻墙］，下载文件夹。</li>
-<li>命令行 cd 到 feedparser 的文件夹，然后输入<code>sudo python setup.py install</code>，feedparser 安装完成。</li>
-<li>命令行 cd 回到 pydelicious 文件夹，再次输入<code>sudo python setup.py install</code>，此时会发现 pydelicious 安装成功。</li>
-<li>测试 pydelicious 此 package 是否能够导入，命令行输入 python 之后，再输入<code>import pydelicious</code>，如果没有报错，这说明 pydelicious 安装成功。</li>
+<li>命令行 <code>cd</code> 到 feedparser 的文件夹，然后输入<code>sudo python setup.py install</code>，feedparser 安装完成。</li>
+<li>命令行 <code>cd</code> 回到 pydelicious 文件夹，再次输入<code>sudo python setup.py install</code>，此时会发现 pydelicious 安装成功。</li>
+<li>测试 pydelicious 此 package 是否能够导入，命令行输入 <code>python</code> 之后，再输入<code>import pydelicious</code>，如果没有报错，这说明 pydelicious 安装成功。</li>
 </ol>
 <ul>
-<li>2016.11.28 补充：如果按照书本上下载的 pydelicious-0.5.0 版本，是可以正常运行书本上的代码的而不报错的，但是会出现无论我如何修改 tag 的值，返回的内容都是一样的，原因在后面解释了。但是如果我们下载的是<a href="https://github.com/dotmpe/python-delicious" target="_blank" rel="external">github 上更新后的 pydelicious 版本</a>，会遇到如下问题，解决办法是需要修改__init__.py 文件中的几处代码，但是仍然会出现 tag 值的问题。</li>
+<li>2016.11.28 补充：如果按照书本上下载的 pydelicious-0.5.0 版本，是可以正常运行书本上的代码的而不报错的，但是会出现无论我如何修改 tag 的值，返回的内容都是一样的，原因在后面解释了。但是如果我们下载的是 <a href="https://github.com/dotmpe/python-delicious" target="_blank" rel="external">github 上更新后的 pydelicious 版本</a>，会遇到如下问题，解决办法是需要修改<code>__init__.py</code> 文件中的几处代码，但是仍然会出现 tag 值的问题。</li>
 </ul>
 <hr>
 <p>本以为问题得到了解决，可以按照书上的代码继续进行:</p>
-<p>命令行输入 python:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; import pydelicious</div><div class="line">&gt;&gt;&gt; pydelicious.get_popular(tag=<span class="string">'python'</span>)</div></pre></td></tr></table></figure></p>
+<p>命令行输入<code>python</code>:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; import pydelicious</div><div class="line">&gt;&gt;&gt; pydelicious.get_popular(tag=<span class="string">'python'</span>)</div></pre></td></tr></table></figure></p>
 <p>此时会报错，无论是否翻墙，显示获取失败。</p>
 <hr>
 <p>我在 stackoverflow.com 上找到了原因：<a href="http://stackoverflow.com/questions/29543799/pydelicious-get-popularprogramming-doesnt-return-any-valid-url" target="_blank" rel="external">the answer</a><strong>［需要翻墙］</strong><br>仔细看提问者的问题，重点是后面提出解决办法的几个回答。</p>
 <blockquote>
 <p><strong>You should modify the __init__.py to:rss =http_request(‘<a href="http://feeds.delicious.com/v2/rss" target="_blank" rel="external">http://feeds.delicious.com/v2/rss</a>‘) .read()</strong></p>
 </blockquote>
-<p>所以解决的办法是：<br>打开 pydelicious 的文件夹，找到子文件夹 pydelicious 下的__init__.py 文件，修改三处地方：</p>
+<p>所以解决的办法是：<br>打开 pydelicious 的文件夹，找到子文件夹 pydelicious 下的 <code>__init__.py</code> 文件，修改三处地方：</p>
 <ul>
 <li><strong>DLCS_RSS = ‘<a href="http://feeds.delicious.com/v2/rss/" target="_blank" rel="external">http://feeds.delicious.com/v2/rss/</a>‘</strong></li>
 <li><strong>rss = http_request(‘<a href="http://feeds.delicious.com/v2/rss" target="_blank" rel="external">http://feeds.delicious.com/v2/rss</a>‘). read()</strong></li>
 <li><strong>def get_popular(tag =””):return getrss(tag = tag, popular =0)</strong></li>
 </ul>
-<p>命令行 cd 到 pydelicious 安装总文件夹，重新输入 sudo python setup.py install。<br>命令行输入 python:</p>
+<p>命令行 <code>cd</code> 到 pydelicious 安装总文件夹，重新输入 <code>sudo python setup.py install</code>。<br> 命令行输入<code>python</code>:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; import pydelicious</div><div class="line">&gt;&gt;&gt; pydelicious.get_popular(tag=<span class="string">'python'</span>)</div></pre></td></tr></table></figure>
 <p>此时会发现成功获取到了内容（注意检查网络，如果仍然无法获取，记得翻墙）。</p>
 <hr>
@@ -468,8 +468,8 @@ AC & (1,2)(-2),(0,1)(-1),(0,1)(-1),(0,1)(-1),(2,1)(-1),(EOB)(0,0)
 <blockquote>
 <p><strong>I see the resource code again. Maybe it is wrong. Because If you edit the code, the procedural answer always remain unchanged…I’m studing…</strong></p>
 </blockquote>
-<p>我个人觉得可能是 DLCS_RSS 的网址还需要更改一下（因为这本书在刚出来的时候，pydelicious 还是支持原 del.icio.us 的网站，是不需要去更改__init__.py 的文件等，后来是 unspported，所以需要更改__init__.py 文件中的 RSS 订阅源，也许可能这个订阅源还不是最新的，反正是坑…），或者说是 <code>get_popular()</code> 这个 function 有误（这个不太可能），总而言之，折腾了一下晚上，感觉是遇到了坑，不过好歹也算是解决出来了。</p>
-<p>貌似有 <strong>deliciousapi</strong> 这个 package 作为替代，我也尝试过，但运行说明文档中的几个函数，发现会报错，希望如果有人知道如何用 <strong>deliciousapi</strong> 替代 pydelicious 完成第二章后续的几个模块，请务必告诉我！</p>
+<p>我个人觉得可能是 DLCS_RSS 的网址还需要更改一下（因为这本书在刚出来的时候，pydelicious 还是支持原 del.icio.us 的网站，是不需要去更改 <code>__init__.py</code> 的文件等，后来是 unspported，所以需要更改 <code>__init__.py</code> 文件中的 RSS 订阅源，也许可能这个订阅源还不是最新的，反正是坑…），或者说是 <code>get_popular()</code> 这个 function 有误（这个不太可能），总而言之，折腾了一下晚上，感觉是遇到了坑，不过好歹也算是解决出来了。</p>
+<p>貌似有 <strong><code>deliciousapi</code></strong> 这个 package 作为替代，我也尝试过，但运行说明文档中的几个函数，发现会报错，希望如果有人知道如何用 <strong>deliciousapi</strong> 替代 pydelicious 完成第二章后续的几个模块，请务必告诉我！</p>
 <p>注意：新手实践这本书的时候，完全可以跳过这个坑，因为没有必要，只需要 get 第二章几个重要的算法或者是思想就可以了。</p>
 <hr>
 <h1 id="Correct-errors-in-printing"><a href="#Correct-errors-in-printing" class="headerlink" title="Correct errors in printing:"></a>Correct errors in printing:</h1><ul>
@@ -520,7 +520,7 @@ AC & (1,2)(-2),(0,1)(-1),(0,1)(-1),(0,1)(-1),(2,1)(-1),(EOB)(0,0)
 <p>How am I protecting myself against legal action if my web crawler catches the attention of a webmaster on one of the sites it runs across?<br> 如果我的爬虫引起了某个网站网管的怀疑，我该如何避免法律责任？</p>
 </blockquote>
 <hr>
-<h2 id="urlparse-module"><a href="#urlparse-module" class="headerlink" title="urlparse module"></a><em>urlparse</em> module</h2><p><strong>urlparse</strong> 模块主要是把 url 拆分为六个部分，并返回元组 tuple。并且可以把拆分后的部分再组成一个 url。主要函数有 urljoin、urlsplit、urlunsplit、urlparse 等。</p>
+<h2 id="urlparse-module"><a href="#urlparse-module" class="headerlink" title="urlparse module"></a><em>urlparse</em> module</h2><p><strong>urlparse</strong> 模块主要是把 url 拆分为六个部分，并返回元组 tuple。并且可以把拆分后的部分再组成一个 url。主要函数有 <code>urljoin</code>、<code>urlsplit</code>、<code>urlunsplit</code>、<code>urlparse</code> 等。</p>
 <h3 id="urlparse-function"><a href="#urlparse-function" class="headerlink" title="urlparse function"></a><em>urlparse</em> function</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; from urlparse import urlparse</div><div class="line">&gt;&gt;&gt; o = urlparse(<span class="string">'http://www.cwi.nl:80/%7Eguido/Python.html'</span>)</div><div class="line">&gt;&gt;&gt; o    </div><div class="line">    ParseResult(scheme=<span class="string">'http'</span>, netloc=<span class="string">'www.cwi.nl:80'</span>, path=<span class="string">'/%7Eguido/Python.html'</span>, params=<span class="string">''</span>, query=<span class="string">''</span>, fragment=<span class="string">''</span>)</div><div class="line">&gt;&gt;&gt; o.scheme  </div><div class="line">    <span class="string">'http'</span></div><div class="line">&gt;&gt;&gt; o.port  </div><div class="line">    80</div><div class="line">&gt;&gt;&gt; o.geturl()  </div><div class="line">    <span class="string">'http://www.cwi.nl:80/%7Eguido/Python.html'</span></div></pre></td></tr></table></figure>
 <p> 其将 url 解析成六个部分（scheme, netloc, path, parameters, query, fragment）。</p>
 <hr>
@@ -582,7 +582,7 @@ AC & (1,2)(-2),(0,1)(-1),(0,1)(-1),(0,1)(-1),(2,1)(-1),(EOB)(0,0)
 <p>If none of this works, take a look at the link above.</p>
 </blockquote>
 <p> 此时命令行输入 python, 之后输入：</p>
-<figure class="highlight elm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; <span class="keyword">import</span> scrapy</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> scrapy</div></pre></td></tr></table></figure>
 <p> 没有报错，说明可以导入 scrapy。</p>
 <p> 尝试书上的命令：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash"> scrapy startproject wikiSpider</span></div></pre></td></tr></table></figure>
