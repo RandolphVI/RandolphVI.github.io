@@ -305,17 +305,17 @@ AC & (1,2)(-2),(0,1)(-1),(0,1)(-1),(0,1)(-1),(2,1)(-1),(EOB)(0,0)
     <link href="http://randolph.pro/2016/03/19/%3CProgramming%20Collective%20Intelligence%3E%20Chapter%203/"/>
     <id>http://randolph.pro/2016/03/19/&lt;Programming Collective Intelligence&gt; Chapter 3/</id>
     <published>2016-03-18T16:00:00.000Z</published>
-    <updated>2017-07-25T14:13:00.000Z</updated>
+    <updated>2017-07-26T10:37:36.000Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fhu94m6p9zj30t612ah7b.jpg" alt=""></p>
 <p>关于该书的其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/Book-「Programming-Collective-Intelligence」/">「Programming Collective Intelligence」</a></p>
 <h1 id="Related"><a href="#Related" class="headerlink" title="Related"></a>Related</h1><ul>
-<li>皮尔逊相关系数</li>
-<li>分级聚类</li>
-<li>K- 均值聚类</li>
-<li>针对偏好的聚类</li>
-<li>多维缩放</li>
-<li>EM 聚类</li>
+<li><strong>皮尔逊相关系数</strong></li>
+<li><strong>分级聚类</strong></li>
+<li><strong>K- 均值聚类</strong></li>
+<li><strong>针对偏好的聚类</strong></li>
+<li><strong>多维缩放</strong></li>
+<li><strong>EM 聚类</strong></li>
 </ul>
 <hr>
 <h1 id="Key"><a href="#Key" class="headerlink" title="Key:"></a>Key:</h1><h2 id="皮尔逊相关系数："><a href="# 皮尔逊相关系数：" class="headerlink" title="皮尔逊相关系数："></a>皮尔逊相关系数：</h2><p>定义：两个变量之间的皮尔逊相关系数定义为 <strong>（两个变量之间的协方差）</strong> 和<strong>（两个变量标准差的积）</strong>的商。</p>
@@ -420,13 +420,13 @@ AC & (1,2)(-2),(0,1)(-1),(0,1)(-1),(0,1)(-1),(2,1)(-1),(EOB)(0,0)
     <link href="http://randolph.pro/2016/03/12/%3CProgramming%20Collective%20Intelligence%3E%20Chapter%201%20&amp;%202/"/>
     <id>http://randolph.pro/2016/03/12/&lt;Programming Collective Intelligence&gt; Chapter 1 &amp; 2/</id>
     <published>2016-03-11T16:00:00.000Z</published>
-    <updated>2017-07-26T06:25:50.000Z</updated>
+    <updated>2017-07-26T10:37:50.000Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fhu94m6p9zj30t612ah7b.jpg" alt=""></p>
 <p>关于该书的其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/Book-「Programming-Collective-Intelligence」/">「Programming Collective Intelligence」</a></p>
 <h1 id="Related"><a href="#Related" class="headerlink" title="Related"></a>Related</h1><ul>
-<li>欧几里得距离评价</li>
-<li>皮尔逊相关度评价</li>
+<li><strong>欧几里得距离评价</strong></li>
+<li><strong>皮尔逊相关度评价</strong></li>
 </ul>
 <blockquote>
 <ul>
@@ -435,7 +435,7 @@ AC & (1,2)(-2),(0,1)(-1),(0,1)(-1),(0,1)(-1),(2,1)(-1),(EOB)(0,0)
 </ul>
 </blockquote>
 <ul>
-<li>其他相似度计算函数（Minkowski 距离、Mahalanobis 距离等）</li>
+<li><strong>其他相似度计算函数（Minkowski 距离、Mahalanobis 距离等）</strong></li>
 </ul>
 <hr>
 <h1 id="Key"><a href="#Key" class="headerlink" title="Key:"></a>Key:</h1><p>在「推荐物品」的模块中，提到了一种方法：</p>
@@ -653,14 +653,14 @@ AC & (1,2)(-2),(0,1)(-1),(0,1)(-1),(0,1)(-1),(2,1)(-1),(EOB)(0,0)
     <link href="http://randolph.pro/2015/11/02/%3CWeb%20Scraping%20with%20Python%3E%20Chapter%201%20&amp;%202/"/>
     <id>http://randolph.pro/2015/11/02/&lt;Web Scraping with Python&gt; Chapter 1 &amp; 2/</id>
     <published>2015-11-01T16:00:00.000Z</published>
-    <updated>2017-07-26T10:25:43.000Z</updated>
+    <updated>2017-07-26T10:37:24.000Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fhwh5fcvm3j30t612ah43.jpg" alt=""></p>
 <p>关于该书的其他学习笔记系列：<a href="http://randolph.pro/categories/Web-Scraping/Book-「Web-Scraping-with-Python」/">「Web Scraping with Python」</a></p>
 <h1 id="Related"><a href="#Related" class="headerlink" title="Related"></a>Related</h1><ul>
-<li>BeautifulSoup package</li>
-<li>Navigating Trees </li>
-<li>Regular Expression</li>
+<li><strong>BeautifulSoup package</strong></li>
+<li><strong>Navigating Trees</strong> </li>
+<li><strong>Regular Expression</strong></li>
 </ul>
 <hr>
 <h1 id="Key："><a href="#Key：" class="headerlink" title="Key："></a>Key：</h1><h2 id="urlib-or-urlib2"><a href="#urlib-or-urlib2" class="headerlink" title="urlib or urlib2?"></a>urlib or urlib2?</h2><blockquote>

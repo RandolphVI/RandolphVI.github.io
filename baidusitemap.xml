@@ -4,24 +4,49 @@
 
     
   <url>
-    <loc>http://randolph.pro/2015/11/13/%3CWeb%20Scraping%20with%20Python%3E%20Chapter%203/</loc>
-    <lastmod>2017-07-26T10:34:58.000Z</lastmod>
+    <loc>http://randolph.pro/2016/03/12/%3CProgramming%20Collective%20Intelligence%3E%20Chapter%201%20&%202/</loc>
+    <lastmod>2017-07-26T10:37:50.000Z</lastmod>
     <data>
         <display>
-        <title>♞「Web Scraping with Python」 Chapter 3</title>
-        <pubTime>2015-11-12T16:00:00.000Z</pubTime>
+        <title>♞「Programming Collective Intelligence」 Chapter 1 & 2</title>
+        <pubTime>2016-03-11T16:00:00.000Z</pubTime>
         
         <tag>Python</tag>
          
-        <tag>Web Scraping</tag>
+        <tag>Machine Learning</tag>
          
          
            
              
-              <breadCrumb title="Web Scraping" url="http://randolph.pro/categories/Web-Scraping/"/>
+              <breadCrumb title="Machine Learning" url="http://randolph.pro/categories/Machine-Learning/"/>
           
              
-              <breadCrumb title="Book:「Web Scraping with Python」" url="http://randolph.pro/categories/Web-Scraping/Book-%E3%80%8CWeb-Scraping-with-Python%E3%80%8D/"/>
+              <breadCrumb title="Book:「Programming Collective Intelligence」" url="http://randolph.pro/categories/Machine-Learning/Book-%E3%80%8CProgramming-Collective-Intelligence%E3%80%8D/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://randolph.pro/2016/03/19/%3CProgramming%20Collective%20Intelligence%3E%20Chapter%203/</loc>
+    <lastmod>2017-07-26T10:37:36.000Z</lastmod>
+    <data>
+        <display>
+        <title>♞「Programming Collective Intelligence」 Chapter 3</title>
+        <pubTime>2016-03-18T16:00:00.000Z</pubTime>
+        
+        <tag>Python</tag>
+         
+        <tag>Machine Learning</tag>
+         
+         
+           
+             
+              <breadCrumb title="Machine Learning" url="http://randolph.pro/categories/Machine-Learning/"/>
+          
+             
+              <breadCrumb title="Book:「Programming Collective Intelligence」" url="http://randolph.pro/categories/Machine-Learning/Book-%E3%80%8CProgramming-Collective-Intelligence%E3%80%8D/"/>
           
         </display>
     </data>
@@ -30,7 +55,7 @@
     
   <url>
     <loc>http://randolph.pro/2015/11/02/%3CWeb%20Scraping%20with%20Python%3E%20Chapter%201%20&%202/</loc>
-    <lastmod>2017-07-26T10:25:43.000Z</lastmod>
+    <lastmod>2017-07-26T10:37:24.000Z</lastmod>
     <data>
         <display>
         <title>♞「Web Scraping with Python」 Chapter 1 & 2</title>
@@ -54,24 +79,24 @@
 
     
   <url>
-    <loc>http://randolph.pro/2016/03/12/%3CProgramming%20Collective%20Intelligence%3E%20Chapter%201%20&%202/</loc>
-    <lastmod>2017-07-26T06:25:50.000Z</lastmod>
+    <loc>http://randolph.pro/2015/11/13/%3CWeb%20Scraping%20with%20Python%3E%20Chapter%203/</loc>
+    <lastmod>2017-07-26T10:34:58.000Z</lastmod>
     <data>
         <display>
-        <title>♞「Programming Collective Intelligence」 Chapter 1 & 2</title>
-        <pubTime>2016-03-11T16:00:00.000Z</pubTime>
+        <title>♞「Web Scraping with Python」 Chapter 3</title>
+        <pubTime>2015-11-12T16:00:00.000Z</pubTime>
         
         <tag>Python</tag>
          
-        <tag>Machine Learning</tag>
+        <tag>Web Scraping</tag>
          
          
            
              
-              <breadCrumb title="Machine Learning" url="http://randolph.pro/categories/Machine-Learning/"/>
+              <breadCrumb title="Web Scraping" url="http://randolph.pro/categories/Web-Scraping/"/>
           
              
-              <breadCrumb title="Book:「Programming Collective Intelligence」" url="http://randolph.pro/categories/Machine-Learning/Book-%E3%80%8CProgramming-Collective-Intelligence%E3%80%8D/"/>
+              <breadCrumb title="Book:「Web Scraping with Python」" url="http://randolph.pro/categories/Web-Scraping/Book-%E3%80%8CWeb-Scraping-with-Python%E3%80%8D/"/>
           
         </display>
     </data>
@@ -122,31 +147,6 @@
           
              
               <breadCrumb title="Book:「NLP with Python」" url="http://randolph.pro/categories/NLP/Book-%E3%80%8CNLP-with-Python%E3%80%8D/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://randolph.pro/2016/03/19/%3CProgramming%20Collective%20Intelligence%3E%20Chapter%203/</loc>
-    <lastmod>2017-07-25T14:13:00.000Z</lastmod>
-    <data>
-        <display>
-        <title>♞「Programming Collective Intelligence」 Chapter 3</title>
-        <pubTime>2016-03-18T16:00:00.000Z</pubTime>
-        
-        <tag>Python</tag>
-         
-        <tag>Machine Learning</tag>
-         
-         
-           
-             
-              <breadCrumb title="Machine Learning" url="http://randolph.pro/categories/Machine-Learning/"/>
-          
-             
-              <breadCrumb title="Book:「Programming Collective Intelligence」" url="http://randolph.pro/categories/Machine-Learning/Book-%E3%80%8CProgramming-Collective-Intelligence%E3%80%8D/"/>
           
         </display>
     </data>
