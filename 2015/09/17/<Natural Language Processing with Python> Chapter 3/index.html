@@ -114,7 +114,7 @@
 <meta property="og:image" content="https://farm1.staticflickr.com/645/30825223223_8abc614f13_o.png">
 <meta property="og:image" content="https://farm1.staticflickr.com/767/31488720242_48aae8823f_o.png">
 <meta property="og:image" content="https://farm1.staticflickr.com/768/31263141960_9e2f2a7c44_o.png">
-<meta property="og:updated_time" content="2017-07-26T04:07:13.000Z">
+<meta property="og:updated_time" content="2017-07-26T04:15:59.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="♞「NLP with Python」 Chapter 3">
 <meta name="twitter:description" content="本文是关于「Natural Language Processing with Python」这本书的 Chapter 3 的学习笔记。">
@@ -608,7 +608,7 @@
 <hr>
 <p>在「处理 HTML」的模块中：</p>
 <p>书本提到从 HTML 中提取文本，采用辅助函数 <code>nltk.clean_html()</code> 将 HTML 字符串作为参数，返回原始文本。</p>
-<p>然而，现在这个辅助函数已不支持。为了实现这一目的，我们可以下载<strong>Beautiful Soup 4</strong>。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip install beautifulsoup4</div></pre></td></tr></table></figure></p>
+<p>然而，现在这个辅助函数已不支持。为了实现这一目的，我们可以下载<strong>Beautiful Soup 4</strong>。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ pip install beautifulsoup4</div></pre></td></tr></table></figure></p>
 <p>随后在代码部分中，调用 BeautifulSoup：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> nltk, re, pprint</div><div class="line"><span class="keyword">from</span> urllib.request <span class="keyword">import</span> urlopen</div><div class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> *</div><div class="line"></div><div class="line">url = <span class="string">"http://youraddress"</span></div><div class="line">html = urlopen(url).read()</div><div class="line">soup = BeautifulSoup(html)</div><div class="line">raw = soup.get_text()</div><div class="line">tokens = nltk.word_tokenize(raw)</div></pre></td></tr></table></figure></p>
 <hr>
 <p>在 [分词] 的模块中：</p>
@@ -693,7 +693,7 @@ P(\mathrm{d} E) = exp(\mathrm{d}E/kT)</script><p>其中 <strong><em>k</em></stro
 <li>An arithmetic expression using integers, addition, and multiplication, such as <strong>2*3+8</strong></li>
 </ol>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">1. nltk.re_show(&apos;an?|the&apos;, &apos;thesisiaishihsthean&apos;, left=&apos;&#123;&apos;, right=&apos;&#125;&apos;)</div><div class="line">2. nltk.re_show(&apos;\d+\*\d+\+\d+&apos;, &apos;2*3+8&apos;, left=&apos;&#123;&apos;, right=&apos;&#125;&apos;)</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="number">1.</span> &gt;&gt;&gt; nltk.re_show(<span class="string">'an?|the'</span>, <span class="string">'thesisiaishihsthean'</span>, left=<span class="string">'&#123;'</span>, right=<span class="string">'&#125;'</span>)</div><div class="line"><span class="number">2.</span> &gt;&gt;&gt; nltk.re_show(<span class="string">'\d+\*\d+\+\d+'</span>, <span class="string">'2*3+8'</span>, left=<span class="string">'&#123;'</span>, right=<span class="string">'&#125;'</span>)</div></pre></td></tr></table></figure>
 <hr>
 <blockquote>
 <p>9.○ Save some text into a file corpus.txt. Define a function <strong><code>load(f)</code></strong> that reads from the file named in its sole argument, and returns a string containing the text of the file.</p>
