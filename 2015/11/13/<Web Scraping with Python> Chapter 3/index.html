@@ -111,7 +111,7 @@
 <meta property="og:description" content="本文是关于「Web Scraping with Python」这本书的 Chapter 3的学习笔记。">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNc79gy1fhwh5fcvm3j30t612ah43.jpg">
-<meta property="og:updated_time" content="2017-07-26T03:37:16.000Z">
+<meta property="og:updated_time" content="2017-07-26T03:37:36.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="♞「Web Scraping with Python」 Chapter 3">
 <meta name="twitter:description" content="本文是关于「Web Scraping with Python」这本书的 Chapter 3的学习笔记。">
@@ -512,9 +512,9 @@
 <h1 id="Need-to-know："><a href="#Need-to-know：" class="headerlink" title="Need to know："></a>Need to know：</h1><p> 在「用 Scrapy 采集」的模块中：</p>
 <p> 我们需要下载 <strong>scrapy</strong> 这一个 package。<strong>「 这个 package 不支持 python3.x 和 python2.6，只能使用 python2.7 。」</strong></p>
 <p> 我的尝试：</p>
-<figure class="highlight ada"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; sudo pip install scrapy</div><div class="line">    Could <span class="keyword">not</span> find <span class="keyword">function</span> <span class="title">xmlCheckVersion</span> in library libxml2. <span class="keyword">Is</span> libxml2 installed? Perhaps try: xcode-<span class="keyword">select</span> <span class="comment">--install</span></div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; sudo pip install scrapy</div><div class="line">    Could not find <span class="keyword">function</span> xmlCheckVersion <span class="keyword">in</span> library libxml2. Is libxml2 installed? Perhaps try: xcode-select --install</div></pre></td></tr></table></figure>
 <p> 意思是缺少 libxml2 ，通过命令行输入:</p>
-<figure class="highlight ada"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ xcode-<span class="keyword">select</span> <span class="comment">--install</span></div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; xcode-select --install</div></pre></td></tr></table></figure>
 <p> 接着会弹出 Xcode command line tools 下载，里面包含了 libxml2。安装完成之后，再次尝试 sudo pip install scrapy，报错，内容为:</p>
 <figure class="highlight xl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; from six.moves <span class="keyword">import</span> xmlrpc_client <span class="keyword">as</span> xmlrpclib</div><div class="line">ImportError: cannot <span class="keyword">import</span> <span class="keyword">name</span> xmlrpc_client</div></pre></td></tr></table></figure>
 <p> 在 stackoverflow 上寻找原因:</p>
@@ -561,7 +561,7 @@
 <p>If none of this works, take a look at the link above.</p>
 </blockquote>
 <p> 此时命令行输入 python, 之后输入：</p>
-<figure class="highlight elm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; <span class="keyword">import</span> scrapy</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> scrapy</div></pre></td></tr></table></figure>
 <p> 没有报错，说明可以导入 scrapy。</p>
 <p> 尝试书上的命令：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash"> scrapy startproject wikiSpider</span></div></pre></td></tr></table></figure>
