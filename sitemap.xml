@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://randolph.pro/2015/11/27/%3CWeb%20Scraping%20with%20Python%3E%20Chapter%204%20&%205/</loc>
+    
+    <lastmod>2017-07-26T10:49:28.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://randolph.pro/2015/11/13/%3CWeb%20Scraping%20with%20Python%3E%20Chapter%203/</loc>
+    
+    <lastmod>2017-07-26T10:45:44.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://randolph.pro/2016/03/12/%3CProgramming%20Collective%20Intelligence%3E%20Chapter%201%20&%202/</loc>
     
     <lastmod>2017-07-26T10:37:50.000Z</lastmod>
@@ -19,13 +33,6 @@
     <loc>http://randolph.pro/2015/11/02/%3CWeb%20Scraping%20with%20Python%3E%20Chapter%201%20&%202/</loc>
     
     <lastmod>2017-07-26T10:37:24.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://randolph.pro/2015/11/13/%3CWeb%20Scraping%20with%20Python%3E%20Chapter%203/</loc>
-    
-    <lastmod>2017-07-26T10:34:58.000Z</lastmod>
     
   </url>
   
