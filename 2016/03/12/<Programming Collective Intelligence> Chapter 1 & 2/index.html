@@ -111,7 +111,7 @@
 <meta property="og:description" content="本文是关于「Programming Collective Intelligence」这本书的 Chapter 1 &amp; 2 的学习笔记。">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNc79gy1fhu94m6p9zj30t612ah7b.jpg">
-<meta property="og:updated_time" content="2017-07-26T06:06:29.000Z">
+<meta property="og:updated_time" content="2017-07-26T06:25:50.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="♞「Programming Collective Intelligence」 Chapter 1 &amp; 2">
 <meta name="twitter:description" content="本文是关于「Programming Collective Intelligence」这本书的 Chapter 1 &amp; 2 的学习笔记。">
@@ -514,21 +514,21 @@
 <p>我的尝试：</p>
 <ol>
 <li>通过 Pycharm 自带的“便利”package 下载。出错，原因：无法找到对应的版本。</li>
-<li>通过命令行输入<code>sudo pip install pydelicious</code>。出错，原因：Could not find a version that satisfies the requirement pydelicious (from versions:)No matching distribution found for pydelicious。</li>
-<li>通过命令行输入<code>sudo pip install pydelicious --allow-external pydelicious --allow-unverified pydelicious</code>。出错，原因：Could not find a version that satisfies the requirement pydelicious (from versions:)No matching distribution found for pydelicious。</li>
+<li>通过命令行输入<strong><code>sudo pip install pydelicious</code></strong>。出错，原因：Could not find a version that satisfies the requirement pydelicious (from versions:)No matching distribution found for pydelicious。</li>
+<li>通过命令行输入<strong><code>sudo pip install pydelicious --allow-external pydelicious --allow-unverified pydelicious</code></strong>。出错，原因：Could not find a version that satisfies the requirement pydelicious (from versions:)No matching distribution found for pydelicious。</li>
 </ol>
 <hr>
 <p>初次尝试失败之后，在 Stackoverflow 寻找解决办法：</p>
 <ol>
 <li>首先，按照书本提供的下载地址：<a href="https://code.google.com/archive/p/pydelicious/downloads" target="_blank" rel="external">the pydelicious download page</a>［需要翻墙］下载 <strong>pydelicious-0.5.0.zip</strong> 文件。解压之后得到文件夹。</li>
-<li>命令行 <code>cd</code> 到解压后的文件夹，然后输入 <code>sudo python setup.py install</code>，错误提示：Feedparser not available, no RSS parsing。<strong> 意思是缺少 <code>feedparser</code> 这一 package 依赖库，需要安装 feedparser</strong>。</li>
+<li>命令行 <strong><code>cd</code></strong> 到解压后的文件夹，然后输入 <strong><code>sudo python setup.py install</code></strong>，错误提示：Feedparser not available, no RSS parsing。<strong> 意思是缺少 <code>feedparser</code> 这一 package 依赖库，需要安装 feedparser</strong>。</li>
 <li>安装 feedparser, 下载地址：<a href="http://download.csdn.net/download/dixin28/5271130" target="_blank" rel="external">the feedparser download page</a>［需要积分］，或者<a href="https://github.com/kurtmckee/feedparser" target="_blank" rel="external">the feedparser download page</a>［需要翻墙］，下载文件夹。</li>
-<li>命令行 <code>cd</code> 到 feedparser 的文件夹，然后输入<code>sudo python setup.py install</code>，feedparser 安装完成。</li>
-<li>命令行 <code>cd</code> 回到 pydelicious 文件夹，再次输入<code>sudo python setup.py install</code>，此时会发现 pydelicious 安装成功。</li>
-<li>测试 pydelicious 此 package 是否能够导入，命令行输入 <code>python</code> 之后，再输入<code>import pydelicious</code>，如果没有报错，这说明 pydelicious 安装成功。</li>
+<li>命令行 <strong><code>cd</code></strong> 到 feedparser 的文件夹，然后输入<strong><code>sudo python setup.py install</code></strong>，feedparser 安装完成。</li>
+<li>命令行 <strong><code>cd</code></strong> 回到 pydelicious 文件夹，再次输入<strong><code>sudo python setup.py install</code></strong>，此时会发现 pydelicious 安装成功。</li>
+<li>测试 pydelicious 此 package 是否能够导入，命令行输入 <strong><code>python</code></strong> 之后，再输入<strong><code>import pydelicious</code></strong>，如果没有报错，这说明 pydelicious 安装成功。</li>
 </ol>
 <ul>
-<li>2016.11.28 补充：如果按照书本上下载的 pydelicious-0.5.0 版本，是可以正常运行书本上的代码的而不报错的，但是会出现无论我如何修改 tag 的值，返回的内容都是一样的，原因在后面解释了。但是如果我们下载的是 <a href="https://github.com/dotmpe/python-delicious" target="_blank" rel="external">github 上更新后的 pydelicious 版本</a>，会遇到如下问题，解决办法是需要修改<code>__init__.py</code> 文件中的几处代码，但是仍然会出现 tag 值的问题。</li>
+<li>2016.11.28 补充：如果按照书本上下载的 pydelicious-0.5.0 版本，是可以正常运行书本上的代码的而不报错的，但是会出现无论我如何修改 tag 的值，返回的内容都是一样的，原因在后面解释了。但是如果我们下载的是 <a href="https://github.com/dotmpe/python-delicious" target="_blank" rel="external">github 上更新后的 pydelicious 版本</a>，会遇到如下问题，解决办法是需要修改<strong><code>__init__.py</code></strong> 文件中的几处代码，但是仍然会出现 tag 值的问题。</li>
 </ul>
 <hr>
 <p>本以为问题得到了解决，可以按照书上的代码继续进行:</p>
@@ -539,23 +539,23 @@
 <blockquote>
 <p><strong>You should modify the __init__.py to:rss =http_request(‘<a href="http://feeds.delicious.com/v2/rss" target="_blank" rel="external">http://feeds.delicious.com/v2/rss</a>‘) .read()</strong></p>
 </blockquote>
-<p>所以解决的办法是：<br>打开 pydelicious 的文件夹，找到子文件夹 pydelicious 下的 <code>__init__.py</code> 文件，修改三处地方：</p>
+<p>所以解决的办法是：<br>打开 pydelicious 的文件夹，找到子文件夹 pydelicious 下的 <strong><code>__init__.py</code></strong> 文件，修改三处地方：</p>
 <ul>
 <li><strong>DLCS_RSS = ‘<a href="http://feeds.delicious.com/v2/rss/" target="_blank" rel="external">http://feeds.delicious.com/v2/rss/</a>‘</strong></li>
 <li><strong>rss = http_request(‘<a href="http://feeds.delicious.com/v2/rss" target="_blank" rel="external">http://feeds.delicious.com/v2/rss</a>‘). read()</strong></li>
 <li><strong>def get_popular(tag =””):return getrss(tag = tag, popular =0)</strong></li>
 </ul>
-<p>命令行 <code>cd</code> 到 pydelicious 安装总文件夹，重新输入<code>sudo python setup.py install</code>。</p>
+<p>命令行 <strong><code>cd</code></strong> 到 pydelicious 安装总文件夹，重新输入<strong><code>sudo python setup.py install</code></strong>。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ python</div><div class="line">&gt;&gt;&gt; import pydelicious</div><div class="line">&gt;&gt;&gt; pydelicious.get_popular(tag=<span class="string">'python'</span>)</div></pre></td></tr></table></figure>
 <p>此时会发现成功获取到了内容（注意检查网络，如果仍然无法获取，记得翻墙）。</p>
 <hr>
 <p>本以为到此终于告一段落，但是实际上：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; import pydelicious</div><div class="line">&gt;&gt;&gt; pydelicious.get_popular(tag=<span class="string">'python'</span>)</div><div class="line">&gt;&gt;&gt; pydelicious.get_popular(tag=<span class="string">'xxx'</span>)</div></pre></td></tr></table></figure>
-<p>意思是无论我如何更改参数 <code>tag</code> 的值，返回的内容会发现是一样。这个问题，stackoverflow 老外也同样遇到了：</p>
+<p>意思是无论我如何更改参数 <strong><code>tag</code></strong> 的值，返回的内容会发现是一样。这个问题，stackoverflow 老外也同样遇到了：</p>
 <blockquote>
 <p><strong>I see the resource code again. Maybe it is wrong. Because If you edit the code, the procedural answer always remain unchanged…I’m studing…</strong></p>
 </blockquote>
-<p>我个人觉得可能是 DLCS_RSS 的网址还需要更改一下（因为这本书在刚出来的时候，pydelicious 还是支持原 del.icio.us 的网站，是不需要去更改 <code>__init__.py</code> 的文件等，后来是 unspported，所以需要更改 <code>__init__.py</code> 文件中的 RSS 订阅源，也许可能这个订阅源还不是最新的，反正是坑…），或者说是 <code>get_popular()</code> 这个 function 有误（这个不太可能），总而言之，折腾了一下晚上，感觉是遇到了坑，不过好歹也算是解决出来了。</p>
+<p>我个人觉得可能是 DLCS_RSS 的网址还需要更改一下（因为这本书在刚出来的时候，pydelicious 还是支持原 del.icio.us 的网站，是不需要去更改 <strong><code>__init__.py</code></strong> 的文件等，后来是 unspported，所以需要更改 <strong><code>__init__.py</code></strong> 文件中的 RSS 订阅源，也许可能这个订阅源还不是最新的，反正是坑…），或者说是 <strong><code>get_popular()</code></strong> 这个 function 有误（这个不太可能），总而言之，折腾了一下晚上，感觉是遇到了坑，不过好歹也算是解决出来了。</p>
 <p>貌似有 <strong><code>deliciousapi</code></strong> 这个 package 作为替代，我也尝试过，但运行说明文档中的几个函数，发现会报错，希望如果有人知道如何用 <strong>deliciousapi</strong> 替代 pydelicious 完成第二章后续的几个模块，请务必告诉我！</p>
 <p>注意：新手实践这本书的时候，完全可以跳过这个坑，因为没有必要，只需要 get 第二章几个重要的算法或者是思想就可以了。</p>
 <hr>
