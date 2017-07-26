@@ -114,7 +114,7 @@
 <meta property="og:image" content="https://farm1.staticflickr.com/645/30825223223_8abc614f13_o.png">
 <meta property="og:image" content="https://farm1.staticflickr.com/767/31488720242_48aae8823f_o.png">
 <meta property="og:image" content="https://farm1.staticflickr.com/768/31263141960_9e2f2a7c44_o.png">
-<meta property="og:updated_time" content="2017-07-26T05:12:56.000Z">
+<meta property="og:updated_time" content="2017-07-26T05:24:51.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="♞「NLP with Python」 Chapter 3">
 <meta name="twitter:description" content="本文是关于「Natural Language Processing with Python」这本书的 Chapter 3 的学习笔记。">
@@ -611,7 +611,7 @@
 <p>然而，现在这个辅助函数已不支持。为了实现这一目的，我们可以下载<strong><code>Beautiful Soup 4</code></strong>。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ pip install beautifulsoup4</div></pre></td></tr></table></figure></p>
 <p>随后在代码部分中，调用 BeautifulSoup：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> nltk, re, pprint</div><div class="line"><span class="keyword">from</span> urllib.request <span class="keyword">import</span> urlopen</div><div class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> *</div><div class="line"></div><div class="line">url = <span class="string">"http://youraddress"</span></div><div class="line">html = urlopen(url).read()</div><div class="line">soup = BeautifulSoup(html)</div><div class="line">raw = soup.get_text()</div><div class="line">tokens = nltk.word_tokenize(raw)</div></pre></td></tr></table></figure></p>
 <hr>
-<p>在 [分词] 的模块中：</p>
+<p>在「分词」的模块中：</p>
 <blockquote>
 <p>Now the segmentation task becomes a search problem: find the bit string that causes the text string to be correctly segmented into words.<br>现在分词的任务变成一个搜索问题：找到能将文本字符串正确地分割成词汇的字位串。</p>
 <p><strong>We assume the learner is acquiring words and storing them in an internal lexicon. Given a suitable lexicon, it is possible to reconstruct the source text as a sequence of lexical items.</strong></p>
