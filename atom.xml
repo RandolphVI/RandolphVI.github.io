@@ -83,7 +83,7 @@
     <link href="http://randolph.pro/2017/01/03/%3CMachine%20Learning%3E%20Clustering/"/>
     <id>http://randolph.pro/2017/01/03/&lt;Machine Learning&gt; Clustering/</id>
     <published>2017-01-02T16:00:00.000Z</published>
-    <updated>2017-07-27T08:37:40.000Z</updated>
+    <updated>2017-07-27T08:38:49.000Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fhxi0z29mdj30sg11c77u.jpg" alt=""></p>
 <p>关于该书的其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/Book-「Machine-Learning」/">「Machine Learning」</a></p>
@@ -129,7 +129,7 @@ D = \{x_1, x_2, \ldots, x_n \}</script><p>每个样本是一个 $p$ 维特征向
 <script type="math/tex; mode=display">
 x_i=(x_{i1}; x_{i2}; \ldots; x_{ip})</script><p>聚类算法将样本集 $D$ 划分为 $k$ 个不相交的簇:</p>
 <script type="math/tex; mode=display">
-\{C_l|l=1, 2, \ldots, k\}</script><p>其中: <script type="math/tex">(C_{l^{'}} \cap_{l^{'} \neq l} C_{l} = \emptyset)​</script> 且 <script type="math/tex">(D=\cup_{l=1}^{k}C_{l})</script></p>
+\{C_l|l=1, 2, \ldots, k\}</script><p>其中: <script type="math/tex">(C_{l^{'}} \cap_{l^{'} \neq l} C_{l} = \emptyset)</script> 且 <script type="math/tex">(D=\cup_{l=1}^{k}C_{l})</script></p>
 <p>相应的，用</p>
 <script type="math/tex; mode=display">
 \lambda_{i} \in {1, 2, \ldots, k}</script><p>表示样本 $x_{i}$ 的“簇标记”(cluster label), 即</p>
