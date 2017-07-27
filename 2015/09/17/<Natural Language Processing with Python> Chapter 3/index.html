@@ -114,7 +114,7 @@
 <meta property="og:image" content="https://farm1.staticflickr.com/645/30825223223_8abc614f13_o.png">
 <meta property="og:image" content="https://farm1.staticflickr.com/767/31488720242_48aae8823f_o.png">
 <meta property="og:image" content="https://farm1.staticflickr.com/768/31263141960_9e2f2a7c44_o.png">
-<meta property="og:updated_time" content="2017-07-26T06:18:16.000Z">
+<meta property="og:updated_time" content="2017-07-27T00:28:23.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="♞「NLP with Python」 Chapter 3">
 <meta name="twitter:description" content="本文是关于「Natural Language Processing with Python」这本书的 Chapter 3 的学习笔记。">
@@ -633,7 +633,7 @@
 <p><strong>这里的“一定的概率”的计算参考了金属冶炼的退火过程，这也是模拟退火算法名称的由来。</strong></p>
 <p>根据热力学的原理，在温度为 <strong><em>T</em></strong> 时，出现能量差为 <strong><em>dE</em></strong> 的降温的概率为<strong><em>P(dE)</em></strong>，表示为：</p>
 <script type="math/tex; mode=display">
-P(\mathrm{d} E) = exp(\mathrm{d}E/kT)</script><p>其中 <strong><em>k</em></strong> 是一个常数，<strong><em>exp</em></strong>表示自然指数，且 <strong><em>dE&lt;0</em></strong>。这条公式说白了就是：温度越高，出现一次能量差为<strong><em>dE</em></strong> 的降温的概率就越大；温度越低，则出现降温的概率就越小。又由于 <strong><em>dE</em></strong> 总是小于 0（否则就不叫退火了），因此 <strong><em>dE/kT &lt; 0</em></strong>，所以<strong><em>P(dE)</em></strong> 的函数取值范围是(0,1) 。</p>
+P(\mathrm{d} E) = exp(\mathrm{d}E/kT)</script><p>其中 <strong><em>k</em></strong> 是一个常数，<strong><em>exp</em></strong>表示自然指数，且 <strong><em>dE&lt;0</em></strong>。这条公式说白了就是：温度越高，出现一次能量差为<strong><em>dE</em></strong> 的降温的概率就越大；温度越低，则出现降温的概率就越小。又由于 <strong><em>dE</em></strong> 总是小于 0（否则就不叫退火了），因此 <strong><em>dE/kT &lt; 0</em></strong>，所以<strong><em>P(dE)</em></strong> 的函数取值范围是 $(0,1)$ 。</p>
 <p>　　随着温度 <strong><em>T</em></strong> 的降低，<strong><em>P(dE)</em></strong>会逐渐降低。</p>
 <p>我们将一次向较差解的移动看做一次温度跳变过程，我们以概率 <strong><em>P(dE)</em></strong> 来接受这样的移动。</p>
 <p>关于爬山算法与模拟退火，有一个有趣的比喻：</p>

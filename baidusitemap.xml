@@ -4,6 +4,125 @@
 
     
   <url>
+    <loc>http://randolph.pro/2015/12/13/%3CWeb%20Scraping%20with%20Python%3E%20Other-smtplib%20&%20email/</loc>
+    <lastmod>2017-07-27T00:40:03.000Z</lastmod>
+    <data>
+        <display>
+        <title>「Web Scraping 」smtplib & email module</title>
+        <pubTime>2015-12-12T16:00:00.000Z</pubTime>
+        
+        <tag>Python</tag>
+         
+        <tag>Web Scraping</tag>
+         
+         
+           
+             
+              <breadCrumb title="Web Scraping" url="http://randolph.pro/categories/Web-Scraping/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://randolph.pro/2015/11/13/%3CWeb%20Scraping%20with%20Python%3E%20Chapter%203/</loc>
+    <lastmod>2017-07-27T00:31:17.000Z</lastmod>
+    <data>
+        <display>
+        <title>♞「Web Scraping with Python」 Chapter 3</title>
+        <pubTime>2015-11-12T16:00:00.000Z</pubTime>
+        
+        <tag>Python</tag>
+         
+        <tag>Web Scraping</tag>
+         
+         
+           
+             
+              <breadCrumb title="Web Scraping" url="http://randolph.pro/categories/Web-Scraping/"/>
+          
+             
+              <breadCrumb title="Book:「Web Scraping with Python」" url="http://randolph.pro/categories/Web-Scraping/Book-%E3%80%8CWeb-Scraping-with-Python%E3%80%8D/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://randolph.pro/2016/03/12/%3CProgramming%20Collective%20Intelligence%3E%20Chapter%201%20&%202/</loc>
+    <lastmod>2017-07-27T00:29:46.000Z</lastmod>
+    <data>
+        <display>
+        <title>♞「Programming Collective Intelligence」 Chapter 1 & 2</title>
+        <pubTime>2016-03-11T16:00:00.000Z</pubTime>
+        
+        <tag>Python</tag>
+         
+        <tag>Machine Learning</tag>
+         
+         
+           
+             
+              <breadCrumb title="Machine Learning" url="http://randolph.pro/categories/Machine-Learning/"/>
+          
+             
+              <breadCrumb title="Book:「Programming Collective Intelligence」" url="http://randolph.pro/categories/Machine-Learning/Book-%E3%80%8CProgramming-Collective-Intelligence%E3%80%8D/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://randolph.pro/2015/09/17/%3CNatural%20Language%20Processing%20with%20Python%3E%20Chapter%203/</loc>
+    <lastmod>2017-07-27T00:28:23.000Z</lastmod>
+    <data>
+        <display>
+        <title>♞「NLP with Python」 Chapter 3</title>
+        <pubTime>2015-09-16T16:00:00.000Z</pubTime>
+        
+        <tag>NLP</tag>
+         
+        <tag>Python</tag>
+         
+         
+           
+             
+              <breadCrumb title="NLP" url="http://randolph.pro/categories/NLP/"/>
+          
+             
+              <breadCrumb title="Book:「NLP with Python」" url="http://randolph.pro/categories/NLP/Book-%E3%80%8CNLP-with-Python%E3%80%8D/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://randolph.pro/2016/04/15/%3CComputer%20Vision%3E%20JPEG%20Compression/</loc>
+    <lastmod>2017-07-27T00:25:19.000Z</lastmod>
+    <data>
+        <display>
+        <title>「Computer Vision」 JPEG Compression</title>
+        <pubTime>2016-04-14T16:00:00.000Z</pubTime>
+        
+        <tag>Python</tag>
+         
+        <tag>Computer Vision</tag>
+         
+         
+           
+             
+              <breadCrumb title="Computer Vision" url="http://randolph.pro/categories/Computer-Vision/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://randolph.pro/2016/12/26/%3CMachine%20Learning%3E%20Chapter%201/</loc>
     <lastmod>2017-07-27T00:19:09.000Z</lastmod>
     <data>
@@ -22,28 +141,6 @@
           
              
               <breadCrumb title="Book:「Machine Learning」" url="http://randolph.pro/categories/Machine-Learning/Book-%E3%80%8CMachine-Learning%E3%80%8D/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://randolph.pro/2015/12/13/%3CWeb%20Scraping%20with%20Python%3E%20Other-smtplib%20&%20email/</loc>
-    <lastmod>2017-07-26T11:09:06.000Z</lastmod>
-    <data>
-        <display>
-        <title>「Web Scraping 」smtplib & email module</title>
-        <pubTime>2015-12-12T16:00:00.000Z</pubTime>
-        
-        <tag>Python</tag>
-         
-        <tag>Web Scraping</tag>
-         
-         
-           
-             
-              <breadCrumb title="Web Scraping" url="http://randolph.pro/categories/Web-Scraping/"/>
           
         </display>
     </data>
@@ -76,31 +173,6 @@
 
     
   <url>
-    <loc>http://randolph.pro/2015/11/13/%3CWeb%20Scraping%20with%20Python%3E%20Chapter%203/</loc>
-    <lastmod>2017-07-26T11:00:12.000Z</lastmod>
-    <data>
-        <display>
-        <title>♞「Web Scraping with Python」 Chapter 3</title>
-        <pubTime>2015-11-12T16:00:00.000Z</pubTime>
-        
-        <tag>Python</tag>
-         
-        <tag>Web Scraping</tag>
-         
-         
-           
-             
-              <breadCrumb title="Web Scraping" url="http://randolph.pro/categories/Web-Scraping/"/>
-          
-             
-              <breadCrumb title="Book:「Web Scraping with Python」" url="http://randolph.pro/categories/Web-Scraping/Book-%E3%80%8CWeb-Scraping-with-Python%E3%80%8D/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://randolph.pro/2015/11/27/%3CWeb%20Scraping%20with%20Python%3E%20Chapter%204%20&%205/</loc>
     <lastmod>2017-07-26T10:51:52.000Z</lastmod>
     <data>
@@ -119,31 +191,6 @@
           
              
               <breadCrumb title="Book:「Web Scraping with Python」" url="http://randolph.pro/categories/Web-Scraping/Book-%E3%80%8CWeb-Scraping-with-Python%E3%80%8D/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://randolph.pro/2016/03/12/%3CProgramming%20Collective%20Intelligence%3E%20Chapter%201%20&%202/</loc>
-    <lastmod>2017-07-26T10:37:50.000Z</lastmod>
-    <data>
-        <display>
-        <title>♞「Programming Collective Intelligence」 Chapter 1 & 2</title>
-        <pubTime>2016-03-11T16:00:00.000Z</pubTime>
-        
-        <tag>Python</tag>
-         
-        <tag>Machine Learning</tag>
-         
-         
-           
-             
-              <breadCrumb title="Machine Learning" url="http://randolph.pro/categories/Machine-Learning/"/>
-          
-             
-              <breadCrumb title="Book:「Programming Collective Intelligence」" url="http://randolph.pro/categories/Machine-Learning/Book-%E3%80%8CProgramming-Collective-Intelligence%E3%80%8D/"/>
           
         </display>
     </data>
@@ -194,53 +241,6 @@
           
              
               <breadCrumb title="Book:「Web Scraping with Python」" url="http://randolph.pro/categories/Web-Scraping/Book-%E3%80%8CWeb-Scraping-with-Python%E3%80%8D/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://randolph.pro/2015/09/17/%3CNatural%20Language%20Processing%20with%20Python%3E%20Chapter%203/</loc>
-    <lastmod>2017-07-26T06:18:16.000Z</lastmod>
-    <data>
-        <display>
-        <title>♞「NLP with Python」 Chapter 3</title>
-        <pubTime>2015-09-16T16:00:00.000Z</pubTime>
-        
-        <tag>NLP</tag>
-         
-        <tag>Python</tag>
-         
-         
-           
-             
-              <breadCrumb title="NLP" url="http://randolph.pro/categories/NLP/"/>
-          
-             
-              <breadCrumb title="Book:「NLP with Python」" url="http://randolph.pro/categories/NLP/Book-%E3%80%8CNLP-with-Python%E3%80%8D/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://randolph.pro/2016/04/15/%3CComputer%20Vision%3E%20JPEG%20Compression/</loc>
-    <lastmod>2017-07-25T12:12:00.000Z</lastmod>
-    <data>
-        <display>
-        <title>「Computer Vision」 JPEG Compression</title>
-        <pubTime>2016-04-14T16:00:00.000Z</pubTime>
-        
-        <tag>Python</tag>
-         
-        <tag>Computer Vision</tag>
-         
-         
-           
-             
-              <breadCrumb title="Computer Vision" url="http://randolph.pro/categories/Computer-Vision/"/>
           
         </display>
     </data>

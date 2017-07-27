@@ -110,7 +110,7 @@
 <meta property="og:site_name" content="黃某人">
 <meta property="og:description" content="本文介绍了关于 Web Scraping 网络爬虫时可能会用到的 smtplib &amp; email 模块。">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2017-07-26T11:09:06.000Z">
+<meta property="og:updated_time" content="2017-07-27T00:40:03.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="「Web Scraping 」smtplib &amp; email module">
 <meta name="twitter:description" content="本文介绍了关于 Web Scraping 网络爬虫时可能会用到的 smtplib &amp; email 模块。">
@@ -498,16 +498,16 @@
 <li><strong><code>smtp.quit()</code></strong><br>终止 smtp 会话并且关闭连接。</li>
 </ul>
 <hr>
-<h2 id="email-module"><a href="#email-module" class="headerlink" title="email module"></a>email module</h2><p>如果想在邮件中携带附件, 使用 html 书写邮件，附带图片等等，就需要使用 <strong><code>email</code></strong> 模块及其子模块。下面来看看 email 包，email 包是用来管理 email 信息的，它包括 MIME 和其他基于 RFC 2822 的消息格式。email 包的主要特征是在它内部解析和生成 email 信息是分开的模块来实现的。</p>
+<h2 id="email-module"><a href="#email-module" class="headerlink" title="email module"></a>email module</h2><p>如果想在邮件中携带附件，使用 html 书写邮件，附带图片等等，就需要使用 <strong><code>email</code></strong> 模块及其子模块。下面来看看 email 包，email 包是用来管理 email 信息的，它包括 MIME 和其他基于 RFC 2822 的消息格式。email 包的主要特征是在它内部解析和生成 email 信息是分开的模块来实现的。</p>
 <p>MIME 消息由消息头和消息体两大部分组成，在邮件里就是邮件头和邮件体。邮件头与邮件体之间以空行进行分隔。</p>
 <p>邮件头包含了发件人、收件人、主题、时间、MIME 版本、邮件内容的类型等重要信息。每条信息称为一个域，由域名后加 “ : ” 和信息内容构成，可以是一行，较长的也可以占用多行。域的首行必须“顶头”写，即左边不能有空白字符（空格和制表符）；续行则必须以空白字符打头，且第一个空白字符不是信息本身固有的。</p>
-<p>邮件体包含邮件的内容，它的类型由邮件头的 “Content-Type” 域指出。最常见的类型有 text/plain(纯文本) 和 text/html(超文本)。邮件体被分为多个段，每个段又包含段头和段体两部分，这两部分之间也以空行分隔。常见的 multipart 类型有三种：multipart/mixed, multipart/related 和 multipart/alternative。</p>
+<p>邮件体包含邮件的内容，它的类型由邮件头的 “Content-Type” 域指出。最常见的类型有 text/plain（纯文本） 和 text/html（超文本）。邮件体被分为多个段，每个段又包含段头和段体两部分，这两部分之间也以空行分隔。常见的 multipart 类型有三种：multipart/mixed，multipart/related 和 multipart/alternative。</p>
 <p>在 email 的包里面包含了很多模块：</p>
 <ul>
 <li><strong><code>email.message</code></strong></li>
 <li><strong><code>email.parser</code></strong></li>
 <li><strong><code>email.generator</code></strong></li>
-<li><strong><code>email.mime</code> (创建 email 和 MIME 对象)</strong></li>
+<li><strong><code>email.mime</code> （创建 email 和 MIME 对象）</strong></li>
 <li><strong><code>email.header</code></strong></li>
 <li><strong><code>email.charset</code></strong></li>
 <li><strong><code>email.encoders</code></strong></li>

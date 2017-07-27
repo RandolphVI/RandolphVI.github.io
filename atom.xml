@@ -192,10 +192,10 @@
     <link href="http://randolph.pro/2016/04/15/%3CComputer%20Vision%3E%20JPEG%20Compression/"/>
     <id>http://randolph.pro/2016/04/15/&lt;Computer Vision&gt; JPEG Compression/</id>
     <published>2016-04-14T16:00:00.000Z</published>
-    <updated>2017-07-25T12:12:00.000Z</updated>
+    <updated>2017-07-27T00:25:19.000Z</updated>
     
     <content type="html"><![CDATA[<h1 id="Related"><a href="#Related" class="headerlink" title="Related"></a>Related</h1><ul>
-<li><strong>颜色模式转换: RBG to YUV</strong></li>
+<li><strong>颜色模式转换：RBG to YUV</strong></li>
 <li><strong>采样 &amp; 分块</strong></li>
 <li><strong>DCT 离散余弦变换</strong></li>
 <li><strong>量化</strong></li>
@@ -214,7 +214,7 @@ Cr &= &0.500R &- 0.418G - 0.081B  + 128
 <p>这样的采样方式，虽然损失了一定的精度但也在人眼不太察觉到的范围内减小了数据的存储量。当然，JPEG 格式里面也允许将每个点的 U，V 值都记录下来。</p>
 <h1 id="分块"><a href="# 分块" class="headerlink" title="分块"></a>分块 </h1><p> 由于后面的 DCT 变换是是对 $8 \times 8$ 的子块进行处理的，因此，在进行 DCT 变换之前必须把源图象数据进行分块。源图象中每点的 3 个分量是交替出现的，先要把这 3 个分量分开，存放到 3 张表中去。然后由左及右，由上到下依次读取 $8 \times 8$ 的子块，存放在长度为 64 的表中，即可以进行 DCT 变换。</p>
 <p>注意，编码时，程序从源数据中读取一个 $8 \times 8$ 的数据块后，进行 DCT 变换，量化，编码，然后再读取、处理下一个 $8 \times 8$ 的数据块。</p>
-<p><strong>JPEG 编码是以每 $8 \times 8$ 个点为一个单位进行处理的. 所以如果原始图片的长宽不是 8 的倍数， 都需要先补成 8 的倍数， 使其可以进行一块块的处理。将原始图像数据分为 $8 \times 8$ 的数据单元矩阵之后，还必须将每个数值减去 128，然后一一带入 DCT 变换公式，即可达到 DCT 变换的目的。图像的数据值必须减去 128，是因为 DCT 公式所接受的数字范围是 -128 到 127 之间。</strong></p>
+<p><strong>JPEG 编码是以每 $8 \times 8$ 个点为一个单位进行处理的。所以如果原始图片的长宽不是 8 的倍数， 都需要先补成 8 的倍数， 使其可以进行一块块的处理。将原始图像数据分为 $8 \times 8$ 的数据单元矩阵之后，还必须将每个数值减去 128，然后一一带入 DCT 变换公式，即可达到 DCT 变换的目的。图像的数据值必须减去 128，是因为 DCT 公式所接受的数字范围是 -128 到 127 之间。</strong></p>
 <h2 id="DCT- 离散余弦变化"><a href="#DCT- 离散余弦变化" class="headerlink" title="DCT 离散余弦变化"></a>DCT 离散余弦变化</h2><p>DCT（Discrete Cosine Transform，离散余弦变换），是码率压缩中常用的一种变换编码方法。任何连续的实对称函数的傅里叶变换中只含有余弦项，因此，余弦变换同傅里叶变换一样具有明确的物理意义。DCT 是先将整体图像分成 $N \times N$ 的像素块，然后针对 $N \times N$ 的像素块逐一进行 DCT 操作。需要提醒的是，JPEG 的编码过程需要进行正向离散余弦变换，而解码过程则需要反向离散余弦变换。</p>
 <h3 id="二维 -DCT- 变换公式："><a href="# 二维 -DCT- 变换公式：" class="headerlink" title="二维 DCT 变换公式："></a>二维 DCT 变换公式：</h3><script type="math/tex; mode=display">
 F(u,v)=c(u)c(v)\sum_{i=0}^{N-1}\sum_{j=0}^{N-1}f(i,j)\cos \left[\frac{(i+0.5)\pi}{N}u\right]\cos \left[\frac{(j+0.5)\pi}{N}v\right]</script><script type="math/tex; mode=display">
@@ -278,10 +278,10 @@ F(n) = C(n) \cdot E(n)</script><p>这里，$E(n)$ 是一个基底，$C(n)$ 是 D
 \hline
 99 & 99 & 99 & 99 & 99 & 99 & 99 & 99 \cr
 \hline
-\end{array}</script><p>这两张表依据心理视觉阀制作, 对 8 bit 的亮度和色度的图象的处理效果不错。</p>
-<p><strong>量化表是控制 JPEG 压缩比的关键，这个步骤除掉了一些高频量, 损失了很多细节信息。但事实上人眼对高频信号的敏感度远没有低频信号那么敏感。</strong></p>
-<p>所以处理后的视觉损失很小，从上面的量化表也可以看出，低频部分采用了相对较短的量化步长，而高频部分则采用了相对较长的量化步长，这样做，也是为了在一定程度上得到相对清晰的图像和更高的压缩率。另一个重要原因是所有的图片的点与点之间会有一个色彩过渡的过程，而大量的图象信息被包含在低频率空间中，经过 DCT 处理后, 在高频率部分, 将出现大量连续的零。</p>
-<h1 id="DPCM- 差分编码（对 -DC- 系数）-amp-RLE- 游程编码（对 -AC- 系数）"><a href="#DPCM- 差分编码（对 -DC- 系数）-amp-RLE- 游程编码（对 -AC- 系数）" class="headerlink" title="DPCM 差分编码（对 DC 系数）&amp; RLE 游程编码（对 AC 系数）"></a>DPCM 差分编码（对 DC 系数）&amp; RLE 游程编码（对 AC 系数）</h1><p>DCT 将一个 $8 \times 8$ 的数组变换成另一个 $8 \times 8$ 的数组. 编码信息分两类，一类是每个 $8 \times 8$ 格子 $F(0,0)$ 位置上元素，这是 DC（直流分量），代表 $8 \times 8$ 个子块的平均值，JPEG 中对 $F(0,0)$ 单独编码，由于两个相邻的 $8 \times 8$ 子块的 DC 系数相差很小，所以对它们采用 <strong> 差分编码 DPCM （Difference Pulse Code Modulation）</strong>，可以提高压缩比，也就是说 <strong> 对相邻的子块 DC 系数的差值进行编码。</strong>另一类是 $8 \times 8$ 块的其它 63 个子块，即交流（AC）系数，采用 <strong> 行程编码 RLE （Run-length encode）</strong>。</p>
+\end{array}</script><p>这两张表依据心理视觉阀制作，对 8 bit 的亮度和色度的图象的处理效果不错。</p>
+<p><strong>量化表是控制 JPEG 压缩比的关键，这个步骤除掉了一些高频量，损失了很多细节信息。但事实上人眼对高频信号的敏感度远没有低频信号那么敏感。</strong></p>
+<p>所以处理后的视觉损失很小，从上面的量化表也可以看出，低频部分采用了相对较短的量化步长，而高频部分则采用了相对较长的量化步长，这样做，也是为了在一定程度上得到相对清晰的图像和更高的压缩率。另一个重要原因是所有的图片的点与点之间会有一个色彩过渡的过程，而大量的图象信息被包含在低频率空间中，经过 DCT 处理后，在高频率部分，将出现大量连续的零。</p>
+<h1 id="DPCM- 差分编码（对 -DC- 系数）-amp-RLE- 游程编码（对 -AC- 系数）"><a href="#DPCM- 差分编码（对 -DC- 系数）-amp-RLE- 游程编码（对 -AC- 系数）" class="headerlink" title="DPCM 差分编码（对 DC 系数）&amp; RLE 游程编码（对 AC 系数）"></a>DPCM 差分编码（对 DC 系数）&amp; RLE 游程编码（对 AC 系数）</h1><p>DCT 将一个 $8 \times 8$ 的数组变换成另一个 $8 \times 8$ 的数组。编码信息分两类，一类是每个 $8 \times 8$ 格子 $F(0,0)$ 位置上元素，这是 DC（直流分量），代表 $8 \times 8$ 个子块的平均值，JPEG 中对 $F(0,0)$ 单独编码，由于两个相邻的 $8 \times 8$ 子块的 DC 系数相差很小，所以对它们采用 <strong> 差分编码 DPCM （Difference Pulse Code Modulation）</strong>，可以提高压缩比，也就是说 <strong> 对相邻的子块 DC 系数的差值进行编码。</strong>另一类是 $8 \times 8$ 块的其它 63 个子块，即交流（AC）系数，采用 <strong> 行程编码 RLE （Run-length encode）</strong>。</p>
 <p>那么，现在问题来了：这 63 个系数应该按照怎么样的顺序排列？为了保证低频分量先出现，高频分量后出现，以增加行程中连续 “0” 的个数，这 63 个元素采用了 “之” 字型（Zig-Zag）的排列方法，如下图所示：</p>
 <p><img src="https://farm1.staticflickr.com/42/31635280065_4468d99a85_o.png" alt=""></p>
 <p>举个例子，现在在一个 $ 8\times 8$ 的 block 中：</p>
@@ -314,7 +314,7 @@ F(n) = C(n) \cdot E(n)</script><p>这里，$E(n)$ 是一个基底，$C(n)$ 是 D
 <li>相邻的 $8\times 8$ 图像块的 DC 系数值变化不大；</li>
 </ol>
 <p>根据这两个特点，DC 系数一般采用差分脉冲调制编码 DPCM（Difference Pulse Code Modulation），即：取同一个图像分量中每个 DC 值与前一个 DC 值的差值来进行编码。对差值进行编码所需要的位数会比对原值进行编码所需要的位数少了很多。假设某一个 $8\times 8$ 图像块的 DC 系数值为 15，而上一个 $8\times 8$ 图像块的 DC 系数为 12，则两者之间的差值为 3。</p>
-<h2 id="DC- 系数的中间格式计算"><a href="#DC- 系数的中间格式计算" class="headerlink" title="DC 系数的中间格式计算"></a>DC 系数的中间格式计算</h2><p>JPEG 中为了更进一步节约空间，并不直接保存数据的具体数值，而是将数据按照位数分为 16 组，保存在表里面。这也就是所谓的变长整数编码 VLI。即，第 0 组中保存的编码位数为 0，其编码所代表的数字为 0；第 1 组中保存的编码位数为 1，编码所代表的数字为 -1 或者 1 ……，如下面的表格所示, 暂且称其为 VLI 编码表：</p>
+<h2 id="DC- 系数的中间格式计算"><a href="#DC- 系数的中间格式计算" class="headerlink" title="DC 系数的中间格式计算"></a>DC 系数的中间格式计算</h2><p>JPEG 中为了更进一步节约空间，并不直接保存数据的具体数值，而是将数据按照位数分为 16 组，保存在表里面。这也就是所谓的变长整数编码 VLI。即，第 0 组中保存的编码位数为 0，其编码所代表的数字为 0；第 1 组中保存的编码位数为 1，编码所代表的数字为 -1 或者 1 ……，如下面的表格所示，暂且称其为 VLI 编码表：</p>
 <script type="math/tex; mode=display">
 \begin{array}{|c|c|c|}
 \hline
@@ -362,7 +362,7 @@ F(n) = C(n) \cdot E(n)</script><p>这里，$E(n)$ 是一个基底，$C(n)$ 是 D
  (0, 57) ; (0, 45) ; (4, 23) ; (1, -30) ; (0, -8) ; (2, 1) ; (0, 0)</script><p><strong>注意，如果 AC 系数之间连续 0 的个数超过 16，则用一个扩展字节 (15, 0) 来表示 16 连续的 0。</strong></p>
 <h2 id="AC 系数的中间格式"><a href="#AC 系数的中间格式" class="headerlink" title="AC 系数的中间格式"></a>AC 系数的中间格式 </h2><p> 根据前面提到的 VLI 表格，对于前面的字符串：</p>
 <script type="math/tex; mode=display">
- (0, 57) ; (0, 45) ; (4, 23) ; (1, -30) ; (0, -8) ; (2, 1) ; (0, 0)</script><p>只处理每对数右边的那个数据，对其进行 VLI 编码: 查找上面的 VLI 编码表格，可以发现，57 在第 6 组当中，因此，可以将其写成 $(0,6),57$ 的形式，该形式，称之为 AC 系数的中间格式。<br>同样的 $(0, 45)$ 的中间格式为：$(0, 6), 45$；$(1, -30)$ 的中间格式为：$(1, 5), -30$；</p>
+ (0, 57) ; (0, 45) ; (4, 23) ; (1, -30) ; (0, -8) ; (2, 1) ; (0, 0)</script><p>只处理每对数右边的那个数据，对其进行 VLI 编码：查找上面的 VLI 编码表格，可以发现，57 在第 6 组当中，因此，可以将其写成 $(0,6),57$ 的形式，该形式，称之为 AC 系数的中间格式。<br>同样的 $(0, 45)$ 的中间格式为：$(0, 6), 45$；$(1, -30)$ 的中间格式为：$(1, 5), -30$；</p>
 <h1 id="熵编码：Huffman- 编码"><a href="# 熵编码：Huffman- 编码" class="headerlink" title="熵编码：Huffman 编码"></a>熵编码：Huffman 编码 </h1><p> 在得到 DC 系数的中间格式和 AC 系数的中间格式之后，为进一步压缩图象数据，有必要对两者进行熵编码。<strong>JPEG 标准具体规定了两种熵编码方式：Huffman 编码和算术编码。</strong>JPEG 基本系统规定采用 Huffman 编码（因为不存在专利问题），但 JPEG 标准并没有限制 JPEG 算法必须用 Huffman 编码方式或者算术编码方式。 </p>
 <h2 id="Huffman- 编码"><a href="#Huffman- 编码" class="headerlink" title="Huffman 编码"></a>Huffman 编码 </h2><p> 对出现概率大的字符分配字符长度较短的二进制编码，对出现概率小的字符分配字符长度较长的二进制编码，从而使得字符的平均编码长度最短。Huffman 编码的原理请参考数据结构中的 Huffman 树或者最优二叉树。</p>
 <p><strong>Huffman 编码时 DC 系数与 AC 系数分别采用不同的 Huffman 编码表，对于亮度和色度也采用不同的 Huffman 编码表。</strong>因此，需要 4 张 Huffman 编码表才能完成熵编码的工作。具体的 Huffman 编码采用查表的方式来高效地完成。然而，在 JPEG 标准中没有定义缺省的 Huffman 表，用户可以根据实际应用自由选择，也可以使用 JPEG 标准推荐的 Huffman 表。或者预先定义一个通用的 Huffman 表，也可以针对一副特定的图像，在压缩编码前通过搜集其统计特征来计算 Huffman 表的值。</p>
@@ -378,7 +378,7 @@ F(n) = C(n) \cdot E(n)</script><p>这里，$E(n)$ 是一个基底，$C(n)$ 是 D
 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \cr
 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \cr
 \end{array}
-\right]</script><p>显然，DC 系数为 15，假设前一个 $8\times 8$ 的图像块的 DC 系数量化值为 12，则当前 DC 系统同上一个 DC 系数之间的差值为 3，通过查找 VLI 编码表，可以得到 DC 系数的中间格式为 $(2)(3)$，这里的 2 代表后面的数字 $(3)$ 的编码长度为 2 位；之后，通过 Zigzag 扫描之后，遇到第一个非 0 的 AC 系数为 -2，遇到 0 的个数为 1，AC 系数经过 RLC 编码后可表示为 $(1, -2)$，通过查找 VLI 表发现，-2 在第 2 组，因此，该 AC 系数的中间格式为 $(1, 2) , -2$；其余的点类似，可以求得这个 $ 8\times 8$ 子块熵编码的中间格式为:</p>
+\right]</script><p>显然，DC 系数为 15，假设前一个 $8\times 8$ 的图像块的 DC 系数量化值为 12，则当前 DC 系统同上一个 DC 系数之间的差值为 3，通过查找 VLI 编码表，可以得到 DC 系数的中间格式为 $(2)(3)$，这里的 2 代表后面的数字 $(3)$ 的编码长度为 2 位；之后，通过 Zigzag 扫描之后，遇到第一个非 0 的 AC 系数为 -2，遇到 0 的个数为 1，AC 系数经过 RLC 编码后可表示为 $(1, -2)$，通过查找 VLI 表发现，-2 在第 2 组，因此，该 AC 系数的中间格式为 $(1, 2) , -2$；其余的点类似，可以求得这个 $ 8\times 8$ 子块熵编码的中间格式为：</p>
 <script type="math/tex; mode=display">
 \begin{array}{c|c}
 DC & (2)(3) \cr
@@ -529,7 +529,7 @@ AC & (1,2)(-2),(0,1)(-1),(0,1)(-1),(0,1)(-1),(2,1)(-1),(EOB)(0,0)
     <link href="http://randolph.pro/2016/03/12/%3CProgramming%20Collective%20Intelligence%3E%20Chapter%201%20&amp;%202/"/>
     <id>http://randolph.pro/2016/03/12/&lt;Programming Collective Intelligence&gt; Chapter 1 &amp; 2/</id>
     <published>2016-03-11T16:00:00.000Z</published>
-    <updated>2017-07-26T10:37:50.000Z</updated>
+    <updated>2017-07-27T00:29:46.000Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fhu94m6p9zj30t612ah7b.jpg" alt=""></p>
 <p>关于该书的其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/Book-「Programming-Collective-Intelligence」/">「Programming Collective Intelligence」</a></p>
@@ -567,7 +567,7 @@ AC & (1,2)(-2),(0,1)(-1),(0,1)(-1),(0,1)(-1),(2,1)(-1),(EOB)(0,0)
 <ol>
 <li>首先，按照书本提供的下载地址：<a href="https://code.google.com/archive/p/pydelicious/downloads" target="_blank" rel="external">the pydelicious download page</a>［需要翻墙］下载 <strong>pydelicious-0.5.0.zip</strong> 文件。解压之后得到文件夹。</li>
 <li>命令行 <strong><code>cd</code></strong> 到解压后的文件夹，然后输入 <strong><code>sudo python setup.py install</code></strong>，错误提示：Feedparser not available, no RSS parsing。<strong> 意思是缺少 <code>feedparser</code> 这一 package 依赖库，需要安装 feedparser</strong>。</li>
-<li>安装 feedparser, 下载地址：<a href="http://download.csdn.net/download/dixin28/5271130" target="_blank" rel="external">the feedparser download page</a>［需要积分］，或者<a href="https://github.com/kurtmckee/feedparser" target="_blank" rel="external">the feedparser download page</a>［需要翻墙］，下载文件夹。</li>
+<li>安装 feedparser，下载地址：<a href="http://download.csdn.net/download/dixin28/5271130" target="_blank" rel="external">the feedparser download page</a>［需要积分］，或者<a href="https://github.com/kurtmckee/feedparser" target="_blank" rel="external">the feedparser download page</a>［需要翻墙］，下载文件夹。</li>
 <li>命令行 <strong><code>cd</code></strong> 到 feedparser 的文件夹，然后输入<strong><code>sudo python setup.py install</code></strong>，feedparser 安装完成。</li>
 <li>命令行 <strong><code>cd</code></strong> 回到 pydelicious 文件夹，再次输入<strong><code>sudo python setup.py install</code></strong>，此时会发现 pydelicious 安装成功。</li>
 <li>测试 pydelicious 此 package 是否能够导入，命令行输入 <strong><code>python</code></strong> 之后，再输入<strong><code>import pydelicious</code></strong>，如果没有报错，这说明 pydelicious 安装成功。</li>
@@ -639,7 +639,7 @@ AC & (1,2)(-2),(0,1)(-1),(0,1)(-1),(0,1)(-1),(2,1)(-1),(EOB)(0,0)
     <link href="http://randolph.pro/2015/12/13/%3CWeb%20Scraping%20with%20Python%3E%20Other-smtplib%20&amp;%20email/"/>
     <id>http://randolph.pro/2015/12/13/&lt;Web Scraping with Python&gt; Other-smtplib &amp; email/</id>
     <published>2015-12-12T16:00:00.000Z</published>
-    <updated>2017-07-26T11:09:06.000Z</updated>
+    <updated>2017-07-27T00:40:03.000Z</updated>
     
     <content type="html"><![CDATA[<h1 id="Related"><a href="#Related" class="headerlink" title="Related"></a>Related</h1><ul>
 <li><strong>smtplib module</strong></li>
@@ -666,16 +666,16 @@ AC & (1,2)(-2),(0,1)(-1),(0,1)(-1),(0,1)(-1),(2,1)(-1),(EOB)(0,0)
 <li><strong><code>smtp.quit()</code></strong><br>终止 smtp 会话并且关闭连接。</li>
 </ul>
 <hr>
-<h2 id="email-module"><a href="#email-module" class="headerlink" title="email module"></a>email module</h2><p>如果想在邮件中携带附件, 使用 html 书写邮件，附带图片等等，就需要使用 <strong><code>email</code></strong> 模块及其子模块。下面来看看 email 包，email 包是用来管理 email 信息的，它包括 MIME 和其他基于 RFC 2822 的消息格式。email 包的主要特征是在它内部解析和生成 email 信息是分开的模块来实现的。</p>
+<h2 id="email-module"><a href="#email-module" class="headerlink" title="email module"></a>email module</h2><p>如果想在邮件中携带附件，使用 html 书写邮件，附带图片等等，就需要使用 <strong><code>email</code></strong> 模块及其子模块。下面来看看 email 包，email 包是用来管理 email 信息的，它包括 MIME 和其他基于 RFC 2822 的消息格式。email 包的主要特征是在它内部解析和生成 email 信息是分开的模块来实现的。</p>
 <p>MIME 消息由消息头和消息体两大部分组成，在邮件里就是邮件头和邮件体。邮件头与邮件体之间以空行进行分隔。</p>
 <p>邮件头包含了发件人、收件人、主题、时间、MIME 版本、邮件内容的类型等重要信息。每条信息称为一个域，由域名后加 “ : ” 和信息内容构成，可以是一行，较长的也可以占用多行。域的首行必须“顶头”写，即左边不能有空白字符（空格和制表符）；续行则必须以空白字符打头，且第一个空白字符不是信息本身固有的。</p>
-<p>邮件体包含邮件的内容，它的类型由邮件头的 “Content-Type” 域指出。最常见的类型有 text/plain(纯文本) 和 text/html(超文本)。邮件体被分为多个段，每个段又包含段头和段体两部分，这两部分之间也以空行分隔。常见的 multipart 类型有三种：multipart/mixed, multipart/related 和 multipart/alternative。</p>
+<p>邮件体包含邮件的内容，它的类型由邮件头的 “Content-Type” 域指出。最常见的类型有 text/plain（纯文本） 和 text/html（超文本）。邮件体被分为多个段，每个段又包含段头和段体两部分，这两部分之间也以空行分隔。常见的 multipart 类型有三种：multipart/mixed，multipart/related 和 multipart/alternative。</p>
 <p>在 email 的包里面包含了很多模块：</p>
 <ul>
 <li><strong><code>email.message</code></strong></li>
 <li><strong><code>email.parser</code></strong></li>
 <li><strong><code>email.generator</code></strong></li>
-<li><strong><code>email.mime</code> (创建 email 和 MIME 对象)</strong></li>
+<li><strong><code>email.mime</code> （创建 email 和 MIME 对象）</strong></li>
 <li><strong><code>email.header</code></strong></li>
 <li><strong><code>email.charset</code></strong></li>
 <li><strong><code>email.encoders</code></strong></li>
@@ -798,7 +798,7 @@ AC & (1,2)(-2),(0,1)(-1),(0,1)(-1),(0,1)(-1),(2,1)(-1),(EOB)(0,0)
     <link href="http://randolph.pro/2015/11/13/%3CWeb%20Scraping%20with%20Python%3E%20Chapter%203/"/>
     <id>http://randolph.pro/2015/11/13/&lt;Web Scraping with Python&gt; Chapter 3/</id>
     <published>2015-11-12T16:00:00.000Z</published>
-    <updated>2017-07-26T11:00:12.000Z</updated>
+    <updated>2017-07-27T00:31:17.000Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fhwh5fcvm3j30t612ah43.jpg" alt=""></p>
 <p> 关于该书的其他学习笔记系列：<a href="http://randolph.pro/categories/Web-Scraping/Book-「Web-Scraping-with-Python」/">「Web Scraping with Python」</a></p>
@@ -880,7 +880,7 @@ AC & (1,2)(-2),(0,1)(-1),(0,1)(-1),(0,1)(-1),(2,1)(-1),(EOB)(0,0)
 <blockquote>
 <p>If none of this works, take a look at the link above.</p>
 </blockquote>
-<p> 此时命令行输入 python, 之后输入：</p>
+<p> 此时命令行输入 python，之后输入：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; import scrapy</div></pre></td></tr></table></figure>
 <p> 没有报错，说明可以导入 scrapy。</p>
 <p> 尝试书上的命令：</p>
@@ -1021,7 +1021,7 @@ AC & (1,2)(-2),(0,1)(-1),(0,1)(-1),(0,1)(-1),(2,1)(-1),(EOB)(0,0)
     <link href="http://randolph.pro/2015/09/17/%3CNatural%20Language%20Processing%20with%20Python%3E%20Chapter%203/"/>
     <id>http://randolph.pro/2015/09/17/&lt;Natural Language Processing with Python&gt; Chapter 3/</id>
     <published>2015-09-16T16:00:00.000Z</published>
-    <updated>2017-07-26T06:18:16.000Z</updated>
+    <updated>2017-07-27T00:28:23.000Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fhu96awavpj30yg1cp1kx.jpg" alt=""></p>
 <p>关于该书的其他学习笔记系列：<a href="http://randolph.pro/categories/NLP/Book-「NLP-with-Python」/">「NLP with Python」</a></p>
@@ -1167,7 +1167,7 @@ AC & (1,2)(-2),(0,1)(-1),(0,1)(-1),(0,1)(-1),(2,1)(-1),(EOB)(0,0)
 <p><strong>这里的“一定的概率”的计算参考了金属冶炼的退火过程，这也是模拟退火算法名称的由来。</strong></p>
 <p>根据热力学的原理，在温度为 <strong><em>T</em></strong> 时，出现能量差为 <strong><em>dE</em></strong> 的降温的概率为<strong><em>P(dE)</em></strong>，表示为：</p>
 <script type="math/tex; mode=display">
-P(\mathrm{d} E) = exp(\mathrm{d}E/kT)</script><p>其中 <strong><em>k</em></strong> 是一个常数，<strong><em>exp</em></strong>表示自然指数，且 <strong><em>dE&lt;0</em></strong>。这条公式说白了就是：温度越高，出现一次能量差为<strong><em>dE</em></strong> 的降温的概率就越大；温度越低，则出现降温的概率就越小。又由于 <strong><em>dE</em></strong> 总是小于 0（否则就不叫退火了），因此 <strong><em>dE/kT &lt; 0</em></strong>，所以<strong><em>P(dE)</em></strong> 的函数取值范围是(0,1) 。</p>
+P(\mathrm{d} E) = exp(\mathrm{d}E/kT)</script><p>其中 <strong><em>k</em></strong> 是一个常数，<strong><em>exp</em></strong>表示自然指数，且 <strong><em>dE&lt;0</em></strong>。这条公式说白了就是：温度越高，出现一次能量差为<strong><em>dE</em></strong> 的降温的概率就越大；温度越低，则出现降温的概率就越小。又由于 <strong><em>dE</em></strong> 总是小于 0（否则就不叫退火了），因此 <strong><em>dE/kT &lt; 0</em></strong>，所以<strong><em>P(dE)</em></strong> 的函数取值范围是 $(0,1)$ 。</p>
 <p>　　随着温度 <strong><em>T</em></strong> 的降低，<strong><em>P(dE)</em></strong>会逐渐降低。</p>
 <p>我们将一次向较差解的移动看做一次温度跳变过程，我们以概率 <strong><em>P(dE)</em></strong> 来接受这样的移动。</p>
 <p>关于爬山算法与模拟退火，有一个有趣的比喻：</p>
