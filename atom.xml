@@ -83,11 +83,11 @@
     <link href="http://randolph.pro/2017/01/03/%3CMachine%20Learning%3E%20Clustering/"/>
     <id>http://randolph.pro/2017/01/03/&lt;Machine Learning&gt; Clustering/</id>
     <published>2017-01-02T16:00:00.000Z</published>
-    <updated>2017-07-27T08:42:36.000Z</updated>
+    <updated>2017-07-27T10:44:45.000Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fhxi0z29mdj30sg11c77u.jpg" alt=""></p>
 <p>关于该书的其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/Book-「Machine-Learning」/">「Machine Learning」</a></p>
-<h1 id="Clustering"><a href="#Clustering" class="headerlink" title="Clustering"></a>Clustering</h1><h1 id="聚类介绍"><a href="# 聚类介绍" class="headerlink" title="聚类介绍"></a>聚类介绍</h1><ul>
+<h1 id="聚类介绍"><a href="# 聚类介绍" class="headerlink" title="聚类介绍"></a>聚类介绍</h1><ul>
 <li>聚类是从数据集中挖掘相似观测值集合的方法.</li>
 <li>聚类试图将数据集中的样本划分为若干个通常是不相交的子集，每个子集称为一个“簇”(cluster)。通过这样的划分，每个簇可能对应于一些潜在的概念(类别)。</li>
 <li>聚类过程仅能自动形成簇结构，簇所对应的概念语义需由使用者自己来把握。</li>
@@ -123,21 +123,21 @@
 <li><strong>其他聚类方法: 谱聚类, Chameleon, Canopy…</strong></li>
 </ul>
 <hr>
-<h2 id="聚类数据设置"><a href="# 聚类数据设置" class="headerlink" title="聚类数据设置"></a>聚类数据设置 </h2><p> 假定样本集 $ D $ 包含 $n$ 个无标记样本:</p>
+<h2 id="聚类数据设置"><a href="# 聚类数据设置" class="headerlink" title="聚类数据设置"></a>聚类数据设置 </h2><p> 假定样本集 $ D $ 包含 $n$ 个无标记样本：</p>
 <script type="math/tex; mode=display">
-D = \{x_1, x_2, \ldots, x_n \}</script><p>每个样本是一个 $p$ 维特征向量:</p>
+D = \{x_1, x_2, \ldots, x_n \}</script><p>每个样本是一个 $p$ 维特征向量：</p>
 <script type="math/tex; mode=display">
-x_i=(x_{i1}; x_{i2}; \ldots; x_{ip})</script><p>聚类算法将样本集 $D$ 划分为 $k$ 个不相交的簇:</p>
+x_i=(x_{i1}; x_{i2}; \ldots; x_{ip})</script><p>聚类算法将样本集 $D$ 划分为 $k$ 个不相交的簇：</p>
 <script type="math/tex; mode=display">
-\{C_l|l=1, 2, \ldots, k\}</script><p>其中: <script type="math/tex">(C_{l^{'}} \cap_{l^{'} \neq l} C_{l} = \emptyset)</script> 且 <script type="math/tex">(D=\cup_{l=1}^{k}C_{l})</script></p>
+\{C_l|l=1, 2, \ldots, k\}</script><p>其中， <script type="math/tex">(C_{l^{'}} \cap_{l^{'} \neq l} C_{l} = \emptyset)</script> 且 <script type="math/tex">(D=\cup_{l=1}^{k}C_{l})</script></p>
 <p>相应的，用</p>
 <script type="math/tex; mode=display">
-\lambda_{i} \in {1, 2, \ldots, k}</script><p>表示样本 $x_{i}$ 的“簇标记”(cluster label), 即</p>
+\lambda_{i} \in {1, 2, \ldots, k}</script><p>表示样本 $x_{i}$ 的“簇标记”(cluster label), 即：</p>
 <script type="math/tex; mode=display">
-x_{i} \in C_{\lambda_{i}}</script><p>于是，聚类的结果可用包含 $n$ 个元素的簇标记向量表示</p>
+x_{i} \in C_{\lambda_{i}}</script><p>于是，聚类的结果可用包含 $n$ 个元素的簇标记向量表示：</p>
 <script type="math/tex; mode=display">
 \lambda=(\lambda_{1}; \lambda_{2}, \ldots, \lambda_{n})</script><hr>
-<h2 id="聚类性能度量"><a href="# 聚类性能度量" class="headerlink" title="聚类性能度量"></a>聚类性能度量 </h2><p><strong> 聚类性能度量亦称聚类“有效性指标”(validity index).</strong></p>
+<h2 id="聚类性能度量"><a href="# 聚类性能度量" class="headerlink" title="聚类性能度量"></a>聚类性能度量 </h2><p><strong> 聚类性能度量亦称聚类“有效性指标”（validity index）。</strong></p>
 <p><strong>设置聚类性能度量的目的:</strong></p>
 <ul>
 <li>对聚类结果，通过某种性能度量来评估其好坏；</li>
@@ -145,17 +145,15 @@ x_{i} \in C_{\lambda_{i}}</script><p>于是，聚类的结果可用包含 $n$ �
 </ul>
 <p><strong>什么样的聚类结果比较好？</strong></p>
 <ul>
-<li>“簇内相似度”(intra-cluster similarity)高</li>
-<li>“蔟间相似度”(inter-cluster similarity)低</li>
+<li>“簇内相似度”（intra-cluster similarity）高</li>
+<li>“蔟间相似度”（inter-cluster similarity）低</li>
 </ul>
 <p><strong>聚类性能度量分类：</strong></p>
 <ul>
-<li>“外部指标”(external index) ：将聚类结果与某个“参考模型”(reference model)进行比较</li>
-<li>“内部指标”(internal index): 直接考察聚类结果而不利用任何参考模型</li>
+<li>“外部指标”（external index） ：将聚类结果与某个“参考模型”（reference model）进行比较</li>
+<li>“内部指标”（internal index）: 直接考察聚类结果而不利用任何参考模型</li>
 </ul>
-<p><strong>性能度量指标：</strong></p>
-<p><strong>(1) 外部指标</strong></p>
-<p>对数据集  $ D = {x<em>1, x_2, \ldots, x_n}$，假定通过聚类，给出的簇划分为 $V={v</em>{1}, v<em>{2}, \ldots, v</em>{C}}$，参考模型给出的簇划分为 $U={u<em>{1}, u</em>{2}\, \ldots, u_{R}}$。相应地，令 $\lambda$ 与 <strong>$\lambda^{*}$</strong> 分别表示与 $V$ 和 $U$ 对应的簇标记向量。我们将样本两两配对考虑，定义:</p>
+<h3 id="外部指标"><a href="# 外部指标" class="headerlink" title="外部指标"></a>外部指标 </h3><p> 对数据集  $ D = {x<em>1, x_2, \ldots, x_n}$，假定通过聚类，给出的簇划分为 $V={v</em>{1}, v<em>{2}, \ldots, v</em>{C}}$，参考模型给出的簇划分为 $U={u<em>{1}, u</em>{2}\, \ldots, u_{R}}$。相应地，令 $\lambda$ 与 <strong>$\lambda^{*}$</strong> 分别表示与 $V$ 和 $U$ 对应的簇标记向量。我们将样本两两配对考虑，定义：</p>
 <script type="math/tex; mode=display">
 \begin{align}
 a & = |SS|, SS =\left \{(x_i,x_j)|(\lambda_i = \lambda_j, \lambda_i^* =  \lambda_j^* , i < j)\right \} \cr
@@ -171,11 +169,8 @@ d & = |DD|, DD =\left \{(x_i,x_j)|(\lambda_i \neq \lambda_j, \lambda_i^* \neq  \
 </ul>
 <p>这样，由于每个样本对 $((x<em>{i}, x</em>{j})(i&lt;j))$ 仅能出现在一个集合中，因此有：</p>
 <script type="math/tex; mode=display">
-a+b+c+d=n(n-1)/2</script><ul>
-<li><strong>JC（Jaccard Coefficient)</strong><script type="math/tex; mode=display">
-JC = \frac{a}{a+b+c}</script></li>
-</ul>
-<p>JC 系数的结果分布在 [0,1] 区间，值越大越好。个人总结，JC 系数是一个比较“爱憎分明”的相似性度量指标，对于聚类效果越好的模型的 JC 计算结果会很好，对于聚类效果越差的模型的 JC 计算结果会很差。关于 JC 系数的数学解释及实际意义，可以参考 Wiki 对应词条，讲的非常清晰：<a href="https://en.wikipedia.org/wiki/Jaccard_index" target="_blank" rel="external">Jaccard index</a>.</p>
+a+b+c+d=n(n-1)/2</script><h4 id="JC-Jaccard-Coefficient"><a href="#JC-Jaccard-Coefficient" class="headerlink" title="JC(Jaccard Coefficient)"></a>JC(Jaccard Coefficient)</h4><script type="math/tex; mode=display">
+JC = \frac{a}{a+b+c}</script><p>JC 系数的结果分布在 $[0,1]$ 区间，值越大越好。个人总结，JC 系数是一个比较“爱憎分明”的相似性度量指标，对于聚类效果越好的模型的 JC 计算结果会很好，对于聚类效果越差的模型的 JC 计算结果会很差。关于 JC 系数的数学解释及实际意义，可以参考 Wiki 对应词条，讲的非常清晰：<a href="https://en.wikipedia.org/wiki/Jaccard_index" target="_blank" rel="external">Jaccard index</a>.</p>
 <p>在此我摘取其中的重点：</p>
 <blockquote>
 <p>When used for binary attributes, the Jaccard index is very similar to the Simple matching coefficient. The main difference is that the SMC has the term $M_{00}$ in its numerator and denominator, whereas the Jaccard index does not. Thus, the SMC compares the number of matches with the entire set of the possible attributes, whereas the Jaccard index only compares it to tshe attributes that have been chosen by at least A or B.</p>
@@ -184,36 +179,26 @@ JC = \frac{a}{a+b+c}</script></li>
 <p><strong>In general, the Jaccard index can be considered as an indicator of local “similarity” while SMC evaluates “similarity” relative to the whole “universe”.</strong>Similarity and dissimilarity must be understood in a relative sense. For example, if there are only 2 attributes (x,y), then A=(1,0) is intuitively very different from B=(0,1). However if there are 10 attributes in the “universe”, A=(1,0,0,0,0,0,0,0,0,0) and B=(0,1,0,0,0,0,0,0,0) are not intuitively so different anymore. If the focus comes back to be just on A and B, the remaining 8 attributes are often considered as redundant. As a result, A and B are very different in a “local” sense (which the Jaccard Index measures efficiently), but less different in a “global” sense (which the SMC measures efficiently). From this point of view, the choice of using SMC or the Jaccard index comes down to more than just symmetry and asymmetry of information in the attributes. The distribution of sets in the defined “universe” and the nature of the problem to be modeled should also be considered.</p>
 <p>The Jaccard index is also more general than the SMC and can be used to compare other data types than just vectors of binary attributes, such as Probability measures.</p>
 </blockquote>
-<p>上段重点的大体意思是：JC 的一个适用场景，例如商场或者电商（亚马逊）的用户们，在买东西的时候，我们对其相似性进行判断的时候，SMC(Simple Matching Coefficient)简单匹配系数并不太适用，是因为 SMC 中添加了（两个顾客都不感兴趣的商品这一信息），而 JC 并没有考虑这一部分。对于琳琅满目的商品信息而言，两个顾客不感兴趣的商品应该远远多于他们感兴趣的商品，简而言之，如果将顾客对所有的商品向量进行标记，感兴趣的为 1，不感兴趣的为 0，那么得到的这个向量应当是一个非常稀疏的。在这种情况下，如果使用 SMC，势必会导致结果很小，但是实际上我们完全可以不考虑两个顾客都不感兴趣的内容，而是考虑两个顾客感兴趣的商品信息之和，对其进行计算，相对于 SMC，得到的结果会好解释许多。就像那句话说的，<strong>JC 就好比是一个局域性的“相似性”比较的衡量指标，而 SMC 就好比是要考虑整个宏观宇宙之下的“相似性”比较</strong>。</p>
-<ul>
-<li><strong>FMI（Fowlkes and Mallows Index）</strong> <script type="math/tex; mode=display">
-FMI = \sqrt{\frac{a}{a+b}\cdot \frac{a}{a+c}}</script></li>
-</ul>
-<p>FMI 系数的结果分布在 [0,1] 区间，值越大越好。个人总结，FMI 系数是一个比较“温文儒雅”的相似性度量指标，对于聚类效果特别好的模型的 FMI 计算结果不会好得特别夸张，对于聚类效果特别越差的模型的 FMI 计算结果也不会差得特别夸张。同样，FMI 系数的数学解释及实际意义，对应的 Wiki 词条：<a href="https://en.wikipedia.org/wiki/Fowlkes–Mallows_index" target="_blank" rel="external">Fowlkes–Mallows index</a>.</p>
+<p>上段重点的大体意思是：JC 的一个适用场景，例如商场或者电商（亚马逊）的用户们，在买东西的时候，我们对其相似性进行判断的时候，SMC（Simple Matching Coefficient）简单匹配系数并不太适用，是因为 SMC 中添加了（两个顾客都不感兴趣的商品这一信息），而 JC 并没有考虑这一部分。对于琳琅满目的商品信息而言，两个顾客不感兴趣的商品应该远远多于他们感兴趣的商品，简而言之，如果将顾客对所有的商品向量进行标记，感兴趣的为 1，不感兴趣的为 0，那么得到的这个向量应当是一个非常稀疏的。在这种情况下，如果使用 SMC，势必会导致结果很小，但是实际上我们完全可以不考虑两个顾客都不感兴趣的内容，而是考虑两个顾客感兴趣的商品信息之和，对其进行计算，相对于 SMC，得到的结果会好解释许多。就像那句话说的，<strong>JC 就好比是一个局域性的“相似性”比较的衡量指标，而 SMC 就好比是要考虑整个宏观宇宙之下的“相似性”比较</strong>。</p>
+<h4 id="FMI-Fowlkes-and-Mallows-Index"><a href="#FMI-Fowlkes-and-Mallows-Index" class="headerlink" title="FMI(Fowlkes and Mallows Index)"></a>FMI(Fowlkes and Mallows Index)</h4><script type="math/tex; mode=display">
+FMI = \sqrt{\frac{a}{a+b}\cdot \frac{a}{a+c}}</script><p>FMI 系数的结果分布在 $[0,1]$ 区间，值越大越好。个人总结，FMI 系数是一个比较“温文儒雅”的相似性度量指标，对于聚类效果特别好的模型的 FMI 计算结果不会好得特别夸张，对于聚类效果特别越差的模型的 FMI 计算结果也不会差得特别夸张。同样，FMI 系数的数学解释及实际意义，对应的 Wiki 词条：<a href="https://en.wikipedia.org/wiki/Fowlkes–Mallows_index" target="_blank" rel="external">Fowlkes–Mallows index</a>.</p>
 <p>在此我摘取其中的重点：</p>
 <blockquote>
 <p>Since the index is directly proportional to the number of true positives, a higher index means greater similarity between the two clusterings used to determine the index. <strong>One of the most basic thing to test the validity of this index is to compare two clusterings that are unrelated to each other.</strong> Fowlkes and Mallows showed that on using two unrelated clusterings, the value of this index approaches zero as the number of total data points chosen for clustering increase; whereas the value for the Rand index for the same data quickly approaches making Fowlkes–Mallows index a much more accurate representation for unrelated data. <strong>This index also performs well if noise is added to an existing dataset and their similarity compared. Fowlkes and Mallows showed that the value of the index decreases as the component of the noise increases.</strong> The index also showed similarity even when the noisy dataset had a different number of clusters than the clusters of the original dataset. Thus making it a reliable tool for measuring similarity between two clusters.</p>
 </blockquote>
 <p>上段重点的大体意思是：“衡量一个相似性度量指标是否可靠，应当将对于两个完全不相关簇的研究也作为重要的判定基础之一”，这样讲可能太绕了，解释一下就是如果我们对一个相似性度量指标的可靠性进行判断，不仅仅需要：我们的模型与’参考模型’两个模型越相似（聚类效果越好），指标系数越大（或越小）；同样的，我们的模型与’参考模型’越不相似（聚类效果越差），指标系数也应该呈现一个单调变大（或变小）的趋势。</p>
 <p>FMI 与其他相似性度量指标的区别是，特别是与 JC 系数对比，JC 系数 $[0,1]$ 的特点是假如我们的模型聚类效果越好，结果就越趋向于 1，反之，如果我们的模型聚类效果越不好，结果就越趋向于 0；而 FMI $[0,1]$ 则不会显得那么“爱憎分明”，因为在 $[0,1]$ 范围内根号运算的存在，使得模型越好的结果不会好得特别夸张，但是模型越差的结果也不会显得特别夸张，因为根号运算起到一个“缓冲 ”的作用。另外一点，就是 FMI 系数对于含有噪声的数据集的判定效果仍然不错。</p>
-<ul>
-<li><strong>RI（Rand Index)</strong> <script type="math/tex; mode=display">
-RI = \frac{a+d}{a+b+c+d}</script></li>
-</ul>
-<p>RI 系数的结果分布在 [0,1] 区间，值越大越好。关于 RI 系数的数学解释及实际意义，可以参考 Wiki 对应词条，重点是要看它的改进指标 ARI：<a href="https://en.wikipedia.org/wiki/Rand_index" target="_blank" rel="external">Rand  index</a>.</p>
-<ul>
-<li><p><strong>ARI（Adjusted Rand Index)</strong> </p>
-<p>在 <strong>RI (Rand Index)</strong> 的评判基础上，为了实现“在聚类结果随机产生的情况下，指标应该接近零”，<strong>ARI（Adjusted Rand Index)</strong>系数被提出，它具有更高的区分度。</p>
+<h4 id="RI-Rand-Index"><a href="#RI-Rand-Index" class="headerlink" title="RI(Rand Index)"></a>RI(Rand Index)</h4><script type="math/tex; mode=display">
+RI = \frac{a+d}{a+b+c+d}</script><p>RI 系数的结果分布在 $[0,1]$ 区间，值越大越好。关于 RI 系数的数学解释及实际意义，可以参考 Wiki 对应词条，重点是要看它的改进指标 ARI：<a href="https://en.wikipedia.org/wiki/Rand_index" target="_blank" rel="external">Rand  index</a>.</p>
+<h4 id="ARI-Adjusted-Rand-Index"><a href="#ARI-Adjusted-Rand-Index" class="headerlink" title="ARI(Adjusted Rand Index)"></a>ARI(Adjusted Rand Index)</h4><p>  在 <strong>RI (Rand Index)</strong> 的评判基础上，为了实现“在聚类结果随机产生的情况下，指标应该接近零”，<strong>ARI（Adjusted Rand Index)</strong>系数被提出，它具有更高的区分度。</p>
 <blockquote>
 <p>A problem with the Rand index is that the expected value of the Rand index of two random partitions does not take a constant value (say zero). The adjusted Rand index proposed by [Hubert and Arabie, 1985] assumes the generalized hypergeometric distribution as the model of randomness, i.e., the $U$ and $V$ partitions are picked at random such that the number of objects in the classes and clusters are fixed.</p>
 <script type="math/tex; mode=display">
 ARI  = \frac{Rand \ Index - expected \ index}{maximum \ index - expected \ index} = \frac{RI - E(RI)}{1-E(RI)}</script></blockquote>
-</li>
-</ul>
 <p>进行进一步的展开推导后：</p>
 <script type="math/tex; mode=display">
-API = \frac{\frac{a+d}{a+b+c+d} - \frac{(a+b)(a+c)+(c+d)(b+d)}{(a+b+c+d)^2}}{\frac{(a+b)(a+c)+(c+d)(b+d)}{(a+b+c+d)^2}}</script><p>ARI 系数结果分布在 [-1,1] 区间，负数代表结果不好，越接近于 1 意味着聚类结果与真实情况越吻合。个人总结，ARI 系数对于任意数量的聚类中心和样本数，随机聚类的 ARI 都非常接近于 0。ARI 相比于 RI 好在，它是负数的时候就说明我们自己的模型很糟糕，有个更加相对明确的评判标准。(从广义的角度上来说，ARI 衡量的是两个数据分布的吻合程度)</p>
-<h1 id="举个具体例子计算 -ARI"><a href="# 举个具体例子计算 -ARI" class="headerlink" title="举个具体例子计算 ARI"></a>举个具体例子计算 ARI</h1><p>Let $n<em>{ij}$ be the number of objects that are in both class $u</em>{i}$ and cluster $v<em>{j}$. Let $n</em>{i.}$ and $n<em>{.j}$ be the number of objects in class $u</em>{i}$ and cluster $v_{j}$ respectively.The notations are illustrated in Table below:</p>
+API = \frac{\frac{a+d}{a+b+c+d} - \frac{(a+b)(a+c)+(c+d)(b+d)}{(a+b+c+d)^2}}{\frac{(a+b)(a+c)+(c+d)(b+d)}{(a+b+c+d)^2}}</script><p>ARI 系数结果分布在 $[-1,1]$ 区间，负数代表结果不好，越接近于 1 意味着聚类结果与真实情况越吻合。个人总结，ARI 系数对于任意数量的聚类中心和样本数，随机聚类的 ARI 都非常接近于 0。ARI 相比于 RI 好在，它是负数的时候就说明我们自己的模型很糟糕，有个更加相对明确的评判标准。(从广义的角度上来说，ARI 衡量的是两个数据分布的吻合程度)</p>
+<h4 id="举个具体例子计算 -ARI"><a href="# 举个具体例子计算 -ARI" class="headerlink" title="举个具体例子计算 ARI"></a>举个具体例子计算 ARI</h4><p>Let $n<em>{ij}$ be the number of objects that are in both class $u</em>{i}$ and cluster $v<em>{j}$. Let $n</em>{i.}$ and $n<em>{.j}$ be the number of objects in class $u</em>{i}$ and cluster $v_{j}$ respectively.The notations are illustrated in Table below:</p>
 <script type="math/tex; mode=display">
 \begin{array}{c|cccc|c}
 Class \ Cluster & v_{1}  & v_{2} & ... & v_{C} & Sums \cr
@@ -240,8 +225,7 @@ Sums & 2 & 3 & 5 & n = 10  \cr
 <p>$d$ is defined as the number of pairs of objects that are not in the same class in $U$ and not in the same cluster in $V$. Since $a + b + c + d = \binom{n}{2}$, $d = \binom{10}{2} -7 - 6 - 7 = 25$.</p>
 <p>The Rand Index for comparing the two partitions in Example is $\frac{7+25}{45} = 0.711$, while the adjusted Rand Index is 0.311.</p>
 <p><strong>The Rand index is much higher than the adjusted Rand index, which is typical. Since the Rand index lies between 0 and 1, the expected value of the Rand index (although not a constant value) must be greater than or equal to 0.On the other hand, the expected value of the adjusted Rand index has value zero and the maximum value of the adjusted Rand is  also 1. Hence, there is a wider range of values that the adjusted Rand index can take on, thus increasing the sensitivity of the index.</strong></p>
-<p><strong>(2) 内部指标</strong></p>
-<p>根据聚类结果的簇划分 $(C={C<em>{1}, C</em>{2}, \ldots, C_{k}})$ , 定义：</p>
+<h3 id="内部指标"><a href="# 内部指标" class="headerlink" title="内部指标"></a>内部指标 </h3><p> 根据聚类结果的簇划分 $(C={C<em>{1}, C</em>{2}, \ldots, C_{k}})$ , 定义：</p>
 <ul>
 <li>簇 $C$ 内样本间的平均距离</li>
 </ul>
@@ -261,33 +245,21 @@ d_{cen}(C_{i}, C_{j})=dist(\mu_{i}, \mu_{j})</script></li>
 <li>$dist(,)$ 是两个样本之间的距离</li>
 <li>$\mu$ 是簇 $C$ 的中心点 $\mu=\frac{1}{|C|}\sum<em>{1&lt;i&lt;|C|}x</em>{i}$</li>
 </ul>
-<ul>
-<li><strong>CP（Compactness) </strong></li>
-</ul>
-<script type="math/tex; mode=display">
+<h4 id="CP-Compactness"><a href="#CP-Compactness" class="headerlink" title="CP(Compactness)"></a>CP(Compactness)</h4><script type="math/tex; mode=display">
 \begin{align}
 \overline{CP_{i}} & =\frac{1}{|C_{i}|}\sum_{x_{i} \in C_{i}} dist(x_{i}, \mu_{i}) \cr
 \overline{CP} & =\frac{1}{k}\sum_{k=1}^{k} \overline{CP_{k}}
 \end{align}</script><p>CP 紧密性，其计算的是每个簇中各个点到簇中心的平均距离，值越低意味着簇内聚类距离越近，缺点就是没有考虑到簇间效果。</p>
-<ul>
-<li><p><strong>SP（Separation) </strong></p>
-<script type="math/tex; mode=display">
+<h4 id="SP-Separation"><a href="#SP-Separation" class="headerlink" title="SP(Separation)"></a>SP(Separation)</h4><script type="math/tex; mode=display">
 SP=\frac{2}{k^2-k}\sum^{k}_{i=1}\sum^{k}_{j=i+1} d_{cen}(\mu_{i}, \mu_{j})</script><p>SP 间隔性，其计算的是各簇中心两两之间的平均距离，值越高意味着簇间距离越远，缺点是没有考虑簇内效果。</p>
-</li>
-<li><p><strong>DBI（Davies-Bouldin Index) </strong></p>
-<script type="math/tex; mode=display">
-DBI=\frac{1}{k}\sum^{k}_{i=1}\underset{j \neq i}{max}\bigg(\frac{avg(C_{i})+avg(C_{j})}{d_{cen}(\mu_{i}, \mu_{j})}\bigg)</script></li>
-</ul>
-<p>关于 DBI 系数的数学解释及实际意义，可以参考 Wiki 对应词条：<a href="https://en.wikipedia.org/wiki/Davies–Bouldin_index" target="_blank" rel="external">Davies-Bouldin Index</a>.</p>
+<h4 id="DBI-Davies-Bouldin-Index"><a href="#DBI-Davies-Bouldin-Index" class="headerlink" title="DBI(Davies-Bouldin Index)"></a>DBI(Davies-Bouldin Index)</h4><script type="math/tex; mode=display">
+DBI=\frac{1}{k}\sum^{k}_{i=1}\underset{j \neq i}{max}\bigg(\frac{avg(C_{i})+avg(C_{j})}{d_{cen}(\mu_{i}, \mu_{j})}\bigg)</script><p>关于 DBI 系数的数学解释及实际意义，可以参考 Wiki 对应词条：<a href="https://en.wikipedia.org/wiki/Davies–Bouldin_index" target="_blank" rel="external">Davies-Bouldin Index</a>.</p>
 <blockquote>
 <p>These conditions constrain the index so defined to be symmetric and non-negative. Due to the way it is defined, as a function of the ratio of the within cluster scatter, to the between cluster separation, a lower value will mean that the clustering is better. <strong>It happens to be the average similarity between each cluster and its most similar one, averaged over all the clusters, where the similarity is defined as $S_{i}$ above.</strong> This affirms the idea that no cluster has to be similar to another, and hence the best clustering scheme essentially minimizes the Davies–Bouldin index. This index thus defined is an average over all the $i$ clusters, and hence a good measure of deciding how many clusters actually exists in the data is to plot it against the number of clusters it is calculated over. The number <em>i</em> for which this value is the lowest is a good measure of the number of clusters the data could be ideally classified into. This has applications in deciding the value of $k$ in the <a href="https://en.wikipedia.org/wiki/Kmeans" target="_blank" rel="external">kmeans</a> algorithm, where the value of k is not known apriori. </p>
 </blockquote>
 <p>DBI 系数结果为非负数，值越小意味着簇内距离越小，同时簇间距离越大。个人总结，DBI 其实就是将几个 $d<em>{max}$ 的值叠加，当我们模型最后聚集了多少个 Cluster 簇，就会出现多少个 $d</em>{max}$，这些 $d_{max}$ 值叠加的结果越小，说明我们模型的聚类越合理。可以通过 DBI 系数来确定 k-means 中 $k$ 的最佳值，即不同的 $k$ 值对应不同的 DBI 结果，选取 DBI 结果最小时对应的 $k$ 值，意味着此时这样划分 $k$ 个簇是最合理，效果最佳的。其缺点是，因为使用的是欧式距离，所以对于环状分布，聚类评测比较糟糕。</p>
-<ul>
-<li><strong>DI（Dunn Index) </strong><script type="math/tex; mode=display">
-DI=\underset{1 \leqslant i \leqslant k}{min}\bigg\{\underset{j \neq i}{min}\bigg(\frac{d_{min}(C_{i}, C_{j})}{max_{1 \leqslant l \leqslant k}diam(C_{l})}\bigg)\bigg\}</script></li>
-</ul>
-<p>关于 DI 系数的数学解释及实际意义，可以参考 Wiki 对应词条：<a href="https://en.wikipedia.org/wiki/Dunn_index" target="_blank" rel="external">Dunn Index</a>.</p>
+<h4 id="DI-Dunn-Index"><a href="#DI-Dunn-Index" class="headerlink" title="DI(Dunn Index)"></a>DI(Dunn Index)</h4><script type="math/tex; mode=display">
+DI=\underset{1 \leqslant i \leqslant k}{min}\bigg\{\underset{j \neq i}{min}\bigg(\frac{d_{min}(C_{i}, C_{j})}{max_{1 \leqslant l \leqslant k}diam(C_{l})}\bigg)\bigg\}</script><p>关于 DI 系数的数学解释及实际意义，可以参考 Wiki 对应词条：<a href="https://en.wikipedia.org/wiki/Dunn_index" target="_blank" rel="external">Dunn Index</a>.</p>
 <blockquote>
 <p>Being defined in this way, the <em>DI</em> depends on $k$, the number of clusters in the set. If the number of clusters is not known apriori, the $k$ for which the <em>DI</em> is the highest can be chosen as the number of clusters. There is also some flexibility when it comes to the definition of d(x,y) where any of the well known metrics can be used, like <a href="https://en.wikipedia.org/wiki/Manhattan_distance" target="_blank" rel="external">Manhattan distance</a> or <a href="https://en.wikipedia.org/wiki/Euclidean_distance" target="_blank" rel="external">Euclidean distance</a> based on the geometry of the clustering problem. <strong>This formulation has a peculiar problem, in that if one of the clusters is badly behaved, where the others are tightly packed, since the denominator contains a ‘max’ term instead of an average term, the Dunn Index for that set of clusters will be uncharacteristically low. This is thus some sort of a worst case indicator, and has to be kept in mind.</strong></p>
 </blockquote>
@@ -309,23 +281,19 @@ DI=\underset{1 \leqslant i \leqslant k}{min}\bigg\{\underset{j \neq i}{min}\bigg
 </li>
 <li>混合属性：闵可夫斯基距离 与 VDM 混合距离</li>
 </ul>
-<p><strong>(1) 闵可夫斯基距离(Minkowski distance)</strong></p>
-<p>样本：</p>
+<h3 id="闵可夫斯基距离（Minkowski-distance）"><a href="# 闵可夫斯基距离（Minkowski-distance）" class="headerlink" title="闵可夫斯基距离（Minkowski distance）"></a>闵可夫斯基距离（Minkowski distance）</h3><p>样本：</p>
 <p>$x<em>{i}=(x</em>{i1}, x<em>{i2}, \ldots, x</em>{in})$ 与 $x<em>{j}=(x</em>{j1}, x<em>{j2}, \ldots, x</em>{jn})$</p>
 <script type="math/tex; mode=display">
-dist_{mk}(x_{i}, x_{j})=\bigg(\sum_{u=1}^{n}|x_{iu}-x_{ju}|^{p}\bigg)^{\frac{1}{p}}</script><p><strong>(2) VDM(Value Difference Metric)</strong></p>
-<blockquote>
+dist_{mk}(x_{i}, x_{j})=\bigg(\sum_{u=1}^{n}|x_{iu}-x_{ju}|^{p}\bigg)^{\frac{1}{p}}</script><h3 id="VDM-Value-Difference-Metric"><a href="#VDM-Value-Difference-Metric" class="headerlink" title="VDM(Value Difference Metric)"></a>VDM(Value Difference Metric)</h3><blockquote>
 <p>我们常将属性划分为“连续属性”(continuous attribute 和“离散属性”(categorical attribute)，前者在定义域上有无穷多个可能的取值，后者在定义域上是有限个取值。然而，在讨论距离计算时，属性上是否定义了“序”关系更为重要．例如定义域为 $\lbrace 1,2,3 \rbrace$ 的离散属性与连续属性的性质更接近一些， 能直接在属性值上计算距离：“1”与“2”比较接近、与“3”比较远，这样的属性称为“有序属性”(ordinal attribute); 而定义域为｛飞机，火车，轮船｝这样的离散属性则不能直接在属性值上计算距离，称为“无序属性”(non-ordinal attribute)。显然， 闵可夫斯基距离可用于有序属性。</p>
 <p>对无序属性可采用 VDM (Value Difference Metric) [Stanfill and Waltz, 1986]。</p>
 </blockquote>
 <p>令 $ m<em>{u,a} $ 表示在属性 $u$ 上取值为 $a$ 的样本数，$m</em>{u, a, i}$ 表示在第 $i$ 个样本簇中在属性 $u$ 上取值为 $a$ 的样本数，$k$ 为样本簇数，则属性 $u$ 上两个离散值 $a$ 与 $b$ 之间的 VDM 距离为：</p>
 <script type="math/tex; mode=display">
 VDM_{q}(a, b)=\sum^{k}_{i=1}\bigg|\frac{m_{u,a,i}}{m_{u,a}}-\frac{m_{u,b,i}}{m_{u,b}}\bigg|^{p}.</script><p>（这里的 $p$ 同闵可夫斯基距离中的 $p$ 一样）</p>
-<p><strong>(3) 闵可夫斯基距离与 VDM 混合距离</strong></p>
-<p>假设有 $n<em>{c}$ 个有序属性，$n-n</em>{c}$ 个无序属性，有序属性排列在无序属性之前：</p>
+<h3 id="闵可夫斯基距离与 VDM 混合距离"><a href="# 闵可夫斯基距离与 VDM 混合距离" class="headerlink" title="闵可夫斯基距离与 VDM 混合距离"></a>闵可夫斯基距离与 VDM 混合距离 </h3><p> 假设有 $n<em>{c}$ 个有序属性，$n-n</em>{c}$ 个无序属性，有序属性排列在无序属性之前：</p>
 <script type="math/tex; mode=display">
-MinkovDM_{p}(x_{i}, x_{j})=\bigg(\sum^{n_{c}}_{u=1}|x_{i,u}-x_{j,u}|^{p}+\sum^{n}_{u=n_{c}+1}VDM_{p}(x_{i,u},x_{j,u})\bigg)^{\frac{1}{p}}</script><p><strong>(4) 加权闵可夫斯基距离</strong></p>
-<p>当样本在空间中不同属性的重要性不同时：</p>
+MinkovDM_{p}(x_{i}, x_{j})=\bigg(\sum^{n_{c}}_{u=1}|x_{i,u}-x_{j,u}|^{p}+\sum^{n}_{u=n_{c}+1}VDM_{p}(x_{i,u},x_{j,u})\bigg)^{\frac{1}{p}}</script><h3 id="加权闵可夫斯基距离"><a href="# 加权闵可夫斯基距离" class="headerlink" title="加权闵可夫斯基距离"></a>加权闵可夫斯基距离 </h3><p> 当样本在空间中不同属性的重要性不同时：</p>
 <script type="math/tex; mode=display">
 dist_{wmk}(x_{i}, x_{j})=(w_{1}\cdot|x_{i1}-x_{j1}|^{p}+w_{2}\cdot|x_{i2}-x_{j2}|^{p}+\ldots+w_{n}\cdot|x_{in}-x_{jn}|^{p})^{\frac{1}{p}}</script><p>其中: 权重 $w<em>{i} \geqslant 0(i=1, 2, \ldots, p)$ 表示不同属性的重要性，通常 $\sum</em>{i=1}^{n}w_{i}=1$.</p>
 <hr>
@@ -353,7 +321,7 @@ dist_{wmk}(x_{i}, x_{j})=(w_{1}\cdot|x_{i1}-x_{j1}|^{p}+w_{2}\cdot|x_{i2}-x_{j2}
 </ul>
 </li>
 </ul>
-<h3 id="K 均值聚类 -K-means"><a href="#K 均值聚类 -K-means" class="headerlink" title="K 均值聚类 (K-means)"></a>K 均值聚类(K-means)</h3><h4 id="算法介绍"><a href="# 算法介绍" class="headerlink" title="算法介绍"></a> 算法介绍 </h4><p> 给定样本集 $D= \lbrace x<em>{1}, x</em>{2}, \ldots, x<em>{n} \rbrace$, K-means 算法针对聚类所得簇划分 $C= \lbrace C</em>{1}, C<em>{2}, \ldots, C</em>{k} \rbrace$ , 最小化平方误差:</p>
+<h3 id="K 均值聚类（K-means）"><a href="#K 均值聚类（K-means）" class="headerlink" title="K 均值聚类（K-means）"></a>K 均值聚类（K-means）</h3><h4 id="算法介绍"><a href="# 算法介绍" class="headerlink" title="算法介绍"></a>算法介绍 </h4><p> 给定样本集 $D= \lbrace x<em>{1}, x</em>{2}, \ldots, x<em>{n} \rbrace$, K-means 算法针对聚类所得簇划分 $C= \lbrace C</em>{1}, C<em>{2}, \ldots, C</em>{k} \rbrace$ , 最小化平方误差:</p>
 <script type="math/tex; mode=display">
 E = \sum^{k}_{i=1}\sum_{x \in C_{i}}|x-\mu_{i}|_{2}^{2}</script><p>其中 $\mu<em>{i}$ 是簇 $C</em>{i}$ 的均值向量：</p>
 <script type="math/tex; mode=display">
@@ -391,14 +359,14 @@ E = \sum^{k}_{i=1}\sum_{x \in C_{i}}|x-\mu_{i}|_{2}^{2}</script><p>其中 $\mu<e
 <p>After a little bit of exploration, I found that Petal.Length and Petal.Width were similar among the same species but varied considerably between different species, as demonstrated below:</p>
 <figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">library</span>(ggplot2)</div><div class="line">ggplot(iris, aes(Petal.Length, Petal.Width, color = Species)) + geom_point()</div></pre></td></tr></table></figure>
 <p><img src="https://farm1.staticflickr.com/33/31680514905_7dba9b551a_o.jpg" alt=""></p>
-<h2 id="Clustering-1"><a href="#Clustering-1" class="headerlink" title="Clustering"></a>Clustering</h2><figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">set.seed(<span class="number">20</span>)</div><div class="line">irisCluster &lt;- kmeans(iris[, <span class="number">3</span>:<span class="number">4</span>], centers = <span class="number">3</span>, nstart = <span class="number">20</span>)</div><div class="line">irisCluster</div></pre></td></tr></table></figure>
+<h3 id="Clustering"><a href="#Clustering" class="headerlink" title="Clustering"></a>Clustering</h3><figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">set.seed(<span class="number">20</span>)</div><div class="line">irisCluster &lt;- kmeans(iris[, <span class="number">3</span>:<span class="number">4</span>], centers = <span class="number">3</span>, nstart = <span class="number">20</span>)</div><div class="line">irisCluster</div></pre></td></tr></table></figure>
 <figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">K-means clustering with <span class="number">3</span> clusters of sizes <span class="number">50</span>, <span class="number">52</span>, <span class="number">48</span></div><div class="line"></div><div class="line">Cluster means:</div><div class="line">  Petal.Length Petal.Width</div><div class="line"><span class="number">1</span>     <span class="number">1.462000</span>    <span class="number">0.246000</span></div><div class="line"><span class="number">2</span>     <span class="number">4.269231</span>    <span class="number">1.342308</span></div><div class="line"><span class="number">3</span>     <span class="number">5.595833</span>    <span class="number">2.037500</span></div><div class="line"></div><div class="line">Clustering vector:</div><div class="line">  [<span class="number">1</span>] <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span></div><div class="line"> [<span class="number">33</span>] <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">2</span> <span class="number">2</span> <span class="number">2</span> <span class="number">2</span> <span class="number">2</span> <span class="number">2</span> <span class="number">2</span> <span class="number">2</span> <span class="number">2</span> <span class="number">2</span> <span class="number">2</span> <span class="number">2</span> <span class="number">2</span> <span class="number">2</span></div><div class="line"> [<span class="number">65</span>] <span class="number">2</span> <span class="number">2</span> <span class="number">2</span> <span class="number">2</span> <span class="number">2</span> <span class="number">2</span> <span class="number">2</span> <span class="number">2</span> <span class="number">2</span> <span class="number">2</span> <span class="number">2</span> <span class="number">2</span> <span class="number">2</span> <span class="number">3</span> <span class="number">2</span> <span class="number">2</span> <span class="number">2</span> <span class="number">2</span> <span class="number">2</span> <span class="number">3</span> <span class="number">2</span> <span class="number">2</span> <span class="number">2</span> <span class="number">2</span> <span class="number">2</span> <span class="number">2</span> <span class="number">2</span> <span class="number">2</span> <span class="number">2</span> <span class="number">2</span> <span class="number">2</span> <span class="number">2</span></div><div class="line"> [<span class="number">97</span>] <span class="number">2</span> <span class="number">2</span> <span class="number">2</span> <span class="number">2</span> <span class="number">3</span> <span class="number">3</span> <span class="number">3</span> <span class="number">3</span> <span class="number">3</span> <span class="number">3</span> <span class="number">2</span> <span class="number">3</span> <span class="number">3</span> <span class="number">3</span> <span class="number">3</span> <span class="number">3</span> <span class="number">3</span> <span class="number">3</span> <span class="number">3</span> <span class="number">3</span> <span class="number">3</span> <span class="number">3</span> <span class="number">3</span> <span class="number">2</span> <span class="number">3</span> <span class="number">3</span> <span class="number">3</span> <span class="number">3</span> <span class="number">3</span> <span class="number">3</span> <span class="number">2</span> <span class="number">3</span></div><div class="line">[<span class="number">129</span>] <span class="number">3</span> <span class="number">3</span> <span class="number">3</span> <span class="number">3</span> <span class="number">3</span> <span class="number">3</span> <span class="number">3</span> <span class="number">3</span> <span class="number">3</span> <span class="number">3</span> <span class="number">2</span> <span class="number">3</span> <span class="number">3</span> <span class="number">3</span> <span class="number">3</span> <span class="number">3</span> <span class="number">3</span> <span class="number">3</span> <span class="number">3</span> <span class="number">3</span> <span class="number">3</span> <span class="number">3</span></div><div class="line"></div><div class="line">Within cluster sum of squares by cluster:</div><div class="line">[<span class="number">1</span>]  <span class="number">2.02200</span> <span class="number">13.05769</span> <span class="number">16.29167</span></div><div class="line"> (between_SS / total_SS =  <span class="number">94.3</span> %)</div><div class="line"></div><div class="line">Available components:</div><div class="line"></div><div class="line">[<span class="number">1</span>] <span class="string">"cluster"</span>      <span class="string">"centers"</span>      <span class="string">"totss"</span>        <span class="string">"withinss"</span>    </div><div class="line">[<span class="number">5</span>] <span class="string">"tot.withinss"</span> <span class="string">"betweenss"</span>    <span class="string">"size"</span>         <span class="string">"iter"</span>        </div><div class="line">[<span class="number">9</span>] <span class="string">"ifault"</span></div></pre></td></tr></table></figure>
 <figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">table(irisCluster$cluster, iris$Species)</div></pre></td></tr></table></figure>
 <figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"> </div><div class="line">  setosa versicolor virginica</div><div class="line"><span class="number">1</span>     <span class="number">50</span>          <span class="number">0</span>         <span class="number">0</span></div><div class="line"><span class="number">2</span>      <span class="number">0</span>         <span class="number">48</span>         <span class="number">4</span></div><div class="line"><span class="number">3</span>      <span class="number">0</span>          <span class="number">2</span>        <span class="number">46</span></div></pre></td></tr></table></figure>
 <figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; irisCluster$cluster &lt;- as.factor(irisCluster$cluster)</div><div class="line">&gt; ggplot(iris, aes(Petal.Length, Petal.Width, color = irisCluster$cluster)) + geom_point()</div></pre></td></tr></table></figure>
 <p><img src="https://farm1.staticflickr.com/353/31565301411_fc7281b525_o.jpg" alt=""></p>
 <hr>
-<h3 id="学习向量量化聚类 -Learning-vector-Quantization"><a href="# 学习向量量化聚类 -Learning-vector-Quantization" class="headerlink" title="学习向量量化聚类 (Learning vector Quantization)"></a> 学习向量量化聚类 (Learning vector Quantization)</h3><h4 id="算法介绍 -1"><a href="# 算法介绍 -1" class="headerlink" title="算法介绍"></a> 算法介绍</h4><p><strong>LVQ 假设数据样本带有类别标记, 学习过程利用样本的这些监督信息来辅助聚类。</strong></p>
+<h3 id="学习向量量化聚类（Learning-vector-Quantization）"><a href="# 学习向量量化聚类（Learning-vector-Quantization）" class="headerlink" title="学习向量量化聚类（Learning vector Quantization）"></a>学习向量量化聚类（Learning vector Quantization）</h3><h4 id="算法介绍 -1"><a href="# 算法介绍 -1" class="headerlink" title="算法介绍"></a>算法介绍</h4><p><strong>LVQ 假设数据样本带有类别标记, 学习过程利用样本的这些监督信息来辅助聚类。</strong></p>
 <p>给定样本集 $D=\lbrace (x<em>{1}, y</em>{1}), (x<em>{2}, y</em>{2}), \ldots, (x<em>{m}, y</em>{m}) \rbrace$, 每个样本 $x<em>{j}$ 是由 $n$ 个属性描述的特征向量 $(x</em>{j1}; x<em>{j2}; \ldots; x</em>{jn})$,$y<em>{j} \in \mathcal{Y}$ 是样本 $x</em>{j}$ 的类别标记. LVQ 的目标是学得一组 $n$ 维原型向量 $ \lbrace p<em>{1}, p</em>{2}, \ldots, p<em>{q} \rbrace$, 每个原型向量代表一个聚类簇，簇标记为 $t</em>{i}\in \mathcal{Y}$.</p>
 <p><strong>算法</strong></p>
 <blockquote>
@@ -451,24 +419,24 @@ R_{i}= \lbrace x \in \mathcal{X} \ |\ ||x-p_{i}||_{2} \leqslant ||x-p_{i'}||_{2}
 </ul>
 </li>
 </ul>
-<h4 id="2- 算法实现"><a href="#2- 算法实现" class="headerlink" title="(2) 算法实现"></a><strong>(2) 算法实现 </strong></h4><h4 id="3- 补充"><a href="#3- 补充" class="headerlink" title="(3) 补充"></a><strong>(3) 补充</strong></h4><h6 id="竞争型学习"><a href="# 竞争型学习" class="headerlink" title="竞争型学习"></a> 竞争型学习 </h6><p> 竞争型学习是神经网络中一种常见的无监督学习策略，在使用该策略时，网络的输出神经元相互竞争，每一时刻仅有一个竞争获胜的神经元被激活，其他神经元的状态被抑制。这种机制亦称为”胜者通吃”(winner-take-all)原则。</p>
-<h6 id="ART 网络"><a href="#ART 网络" class="headerlink" title="ART 网络"></a>ART 网络</h6><p>ART(Adaptive Resonance Theory, 自适应谐振理论）网络「Carpenter and Grossberg, 1987」是竞争型学习的重要代表。该网络由比较层、识别层、识别阈值和重置模块构成。其中，比较层负责接收输入样本，并将其传递给识别层神经元。识别层每个神经元对应一个模式类（模式类可以认为是某类别的“子类”），神经元数目可在训练过程中动态增长以增加新的模式类。</p>
+<h4 id="算法实现"><a href="# 算法实现" class="headerlink" title="算法实现"></a>算法实现 </h4><h4 id="补充"><a href="# 补充" class="headerlink" title="补充"></a> 补充 </h4><h5 id="竞争型学习"><a href="# 竞争型学习" class="headerlink" title="竞争型学习"></a> 竞争型学习 </h5><p> 竞争型学习是神经网络中一种常见的无监督学习策略，在使用该策略时，网络的输出神经元相互竞争，每一时刻仅有一个竞争获胜的神经元被激活，其他神经元的状态被抑制。这种机制亦称为”胜者通吃”(winner-take-all)原则。</p>
+<h5 id="ART- 网络"><a href="#ART- 网络" class="headerlink" title="ART 网络"></a>ART 网络</h5><p>ART(Adaptive Resonance Theory, 自适应谐振理论）网络「Carpenter and Grossberg, 1987」是竞争型学习的重要代表。该网络由比较层、识别层、识别阈值和重置模块构成。其中，比较层负责接收输入样本，并将其传递给识别层神经元。识别层每个神经元对应一个模式类（模式类可以认为是某类别的“子类”），神经元数目可在训练过程中动态增长以增加新的模式类。</p>
 <p>在接收到比较层的输入信号后，识别层神经元之间相互竞争以产生获胜神经元。竞争的最简单方式是，计算输入向量与每个识别层神经元所对应的模式类的代表向量之间的距离，距离最小者胜．获胜神经元将向其他识别层神经元发送信号，抑制其激活。若输入向量与获胜神经元所对应的代表向量之间的相似度大于识别阈值，则当前输入样本将被归为该代表向量所属类别，同时，网络 连接权将会更新，使得以后在接收到相似输入样本时该模式类会计算出更大的相似度，从而使该获胜神经元有更大可能获胜；若相似度不大于识别阈值，则重置模块将在识别层增设一个新的神经元，其代表向量就设置为当前输入向量。</p>
 <p>显然，识别阈值对 ART 网络的性能有重要影响。当识别阈值较高时，输入样本将会被分成比较多、比较精细的模式类，而如果识别阈值较低，则会产生比较少、比较粗略的模式类。</p>
 <p>ART 比较好地缓解了竞争型学习中的“可塑性一稳定性窘境”(stability— plasticity dilemma)，可塑性是指神经网络要有学习新知识的能力，而稳定性则是指神经网络在学习新知识时要保持对旧知识的记忆．这就使得 ART 网络具有一个很重要的优点：可进行 <strong> 增量学习（incremental learning）</strong>或 <strong> 在线学习（online learning)</strong>。</p>
 <p>早期的 ART 网络只能处理布尔型输入数据，此后 ART 发展成了一个算法族，包括能处理实值输入的 ART2 网络、结合模糊处理的 FuzzyART 网络，以及可进行监督学习的 ARTMAP 网络等。 </p>
-<h6 id="SOM 网络"><a href="#SOM 网络" class="headerlink" title="SOM 网络"></a>SOM 网络</h6><p>SOM(Self-Organizing Map，自组织映射）网络「Kohollen, 1982」是一种竞争学习型的无监督神经网络，它能将高维输入数据映射到低维空间（通常为二维），同时保持输入数据在高维空间的拓扑结构，即将高维空间中相似的样本点映射到网络输出层中的邻近神经元。</p>
+<h5 id="SOM- 网络"><a href="#SOM- 网络" class="headerlink" title="SOM 网络"></a>SOM 网络</h5><p>SOM(Self-Organizing Map，自组织映射）网络「Kohollen, 1982」是一种竞争学习型的无监督神经网络，它能将高维输入数据映射到低维空间（通常为二维），同时保持输入数据在高维空间的拓扑结构，即将高维空间中相似的样本点映射到网络输出层中的邻近神经元。</p>
 <p><img src="https://farm6.staticflickr.com/5569/31429001070_b16d937809_o.png" alt=""></p>
 <p>如图所示，SOM 网络中的输出层神经元以矩阵方式排列在二维空间中，每个神经元都拥有一个权向量，网络在接收输入向量后，将会确定输出层获胜神经元，它决定了该输入向量在低维空间中的位置。SOM 的训练目标就是为每个输出层神经元找到合适的权向量，以达到保持拓扑结构的目的。 SOM 的训练过程很简单：在接收到一个训练样本后，每个输出层神经元会计算该样本与自身携带的权向量之间的距离，距离最近的神经元成为竞争获胜者，称为最佳匹配单元（best matching unit)。然后，最佳匹配单元及其邻近神经元的权向量将被调整，以使得这些权向量与当前输入样本的距离缩小。这个过程不断迭代，直至收敛。</p>
 <hr>
-<h4 id="2-1-3- 高斯混合聚类 -Mixture-of-Gaussian"><a href="#2-1-3- 高斯混合聚类 -Mixture-of-Gaussian" class="headerlink" title="2.1.3 高斯混合聚类 (Mixture-of-Gaussian)"></a><strong>2.1.3 高斯混合聚类(Mixture-of-Gaussian)</strong></h4><h5 id="1- 算法介绍"><a href="#1- 算法介绍" class="headerlink" title="(1) 算法介绍"></a><strong>(1) 算法介绍</strong></h5><p> 与 $k$ 均值、LVQ 用原型向量来刻画聚类结构不同，<strong>高斯混合聚类 (Mixture-of-Gaussian) 采用概率模型来表达聚类原型</strong>。</p>
-<h6 id="I- 多元 - 高斯分布："><a href="#I- 多元 - 高斯分布：" class="headerlink" title="(I) (多元)高斯分布："></a><strong>(I) (多元)高斯分布：</strong></h6><p>对 $n$ 维样本空间 $\mathcal{X}$ 中的随机向量 $x$，若 $x$ 服从 (多元) 高斯分布，其概率密度函数为：</p>
+<h3 id="高斯混合聚类（Mixture-of-Gaussian）"><a href="# 高斯混合聚类（Mixture-of-Gaussian）" class="headerlink" title="高斯混合聚类（Mixture-of-Gaussian）"></a>高斯混合聚类（Mixture-of-Gaussian）</h3><h4 id="算法介绍 -2"><a href="# 算法介绍 -2" class="headerlink" title="算法介绍"></a>算法介绍 </h4><p> 与 $k$ 均值、LVQ 用原型向量来刻画聚类结构不同，<strong>高斯混合聚类 (Mixture-of-Gaussian) 采用概率模型来表达聚类原型</strong>。</p>
+<h5 id="多元 - 高斯分布："><a href="# 多元 - 高斯分布：" class="headerlink" title="(多元)高斯分布："></a>(多元)高斯分布：</h5><p>对 $n$ 维样本空间 $\mathcal{X}$ 中的随机向量 $x$，若 $x$ 服从 (多元) 高斯分布，其概率密度函数为：</p>
 <script type="math/tex; mode=display">
 p(x| \mu, \Sigma)=\frac{1}{(2\pi)^{\frac{n}{2}}|\Sigma|^{\frac{1}{2}}} e^{- \frac{1}{2} (x-\mu)^{T} \Sigma^{-1} (x-\mu)}</script><p>其中：$\mu​$ 是 $n​$ 维均值向量，$\Sigma​$ 是 $n \times n​$ 协方差矩阵。($\Sigma​$：对称正定矩阵；$|\Sigma|​$：$\Sigma​$ 的行列式；$\Sigma^{1}​$：$\Sigma​$ 的逆矩阵   )</p>
-<h6 id="II- 多元 - 高斯混合分布："><a href="#II- 多元 - 高斯混合分布：" class="headerlink" title="(II) (多元)高斯混合分布："></a><strong>(II) (多元)高斯混合分布：</strong></h6><p>对 $n$ 维样本空间 $\mathcal{X}$ 中的随机向量 $x$, 若 $x$ 服从 (多元) 高斯混合分布, 其概率密度函数为：</p>
+<h5 id="多元 - 高斯混合分布："><a href="# 多元 - 高斯混合分布：" class="headerlink" title="(多元)高斯混合分布："></a>(多元)高斯混合分布：</h5><p>对 $n$ 维样本空间 $\mathcal{X}$ 中的随机向量 $x$, 若 $x$ 服从 (多元) 高斯混合分布, 其概率密度函数为：</p>
 <script type="math/tex; mode=display">
 p_{\mathcal{M}}(x)=\sum_{i=1}^{k}\alpha_{i} \cdot p(x| \mu_{i}, \Sigma_{i})</script><p>该分布由 $k$ 个混合成分组成，每个成分对应一个 (多元) 高斯分布, 其中：$\mu<em>{i}$, $\Sigma</em>{i}$ 是第 $i$ 个高斯混合成分的参数, 而 $\alpha<em>{i}$ 为相应的“混合系数”(mixture coeffcient), $\sum</em>{i=1}^{k}\alpha_{i}=1$.</p>
-<h6 id="III- 样本集的生成模型："><a href="#III- 样本集的生成模型：" class="headerlink" title="(III) 样本集的生成模型："></a><strong>(III) 样本集的生成模型：</strong></h6><p>假设样本集 $D= \lbrace x<em>{1}, x</em>{2}, \ldots, x_{n} \rbrace $ 的生成过程由高斯混合分布给出：</p>
+<h5 id="样本集的生成模型："><a href="# 样本集的生成模型：" class="headerlink" title="样本集的生成模型："></a>样本集的生成模型：</h5><p>假设样本集 $D= \lbrace x<em>{1}, x</em>{2}, \ldots, x_{n} \rbrace $ 的生成过程由高斯混合分布给出：</p>
 <ul>
 <li><p>首先：根据 $\alpha<em>{1}, \alpha</em>{2}, \ldots,\alpha<em>{k}$ 定义的先验分布选择高斯混合成分，其中 $\alpha</em>{i}$ 为选择第 $i$ 个混合成分的概率;</p>
 </li>
@@ -485,7 +453,7 @@ P_{\mathcal{M}}(z_{j}=i|x_{j}) &=\frac{P(z_{j}=i) \cdot p_{\mathcal{M}}(x_{j}|z_
 & =\frac{\alpha_{i}\cdot p(x_{j}|\mu_{i},\Sigma_{i})}{\sum^{k}_{l=1}\alpha_{l}\cdot p(x_{j}|\mu_{l},\Sigma_{l})}
 \end{align*}</script><p>$P<em>{\mathcal{M}}(z</em>{j}=i|x<em>{j})$ 给出了样本 $x</em>{j}$ 由第 $i$ 个高斯混合成分生成的后验概率, 记：</p>
 <script type="math/tex; mode=display">
-\gamma_{ji}=P_{\mathcal{M}}(z_{j}=i|x_{j}) \quad (i=1, 2, \ldots,k)</script><h6 id="VI- 高斯混合聚类策略："><a href="#VI- 高斯混合聚类策略：" class="headerlink" title="(VI) 高斯混合聚类策略："></a><strong>(VI) 高斯混合聚类策略：</strong></h6><ul>
+\gamma_{ji}=P_{\mathcal{M}}(z_{j}=i|x_{j}) \quad (i=1, 2, \ldots,k)</script><h5 id="高斯混合聚类策略："><a href="# 高斯混合聚类策略：" class="headerlink" title="高斯混合聚类策略："></a>高斯混合聚类策略：</h5><ul>
 <li>若 (多元) 高斯混合分布 $p_{\mathcal{M}}(x)$ 已知，高斯混合聚类将把样本集 $D$ 划分为 $k$ 个簇<script type="math/tex; mode=display">
 C= \lbrace C_{1}, C_{2}, \ldots,C_{k} \rbrace</script></li>
 </ul>
@@ -505,7 +473,7 @@ LL(D) & = ln\Big(\prod^{n}_{j=1}p_{\mathcal{M}}(x_{j})\Big) \cr
 \mu_{i} & = \frac{\sum^{n}_{j=1}\gamma_{ji}x_{j}}{\sum^{n}_{j=1}\gamma{ji}} \cr
 \Sigma_{i} & = \frac{\sum^{n}_{j=1}\gamma_{ji}(x_{j}-\mu_{i})(x_{j}-\mu_{i})^{T}}{\sum^{n}_{j=1}\gamma_{ji}} \cr
 \alpha_{i} &= \frac{1}{n}\sum^{n}_{j=1}\gamma_{ji}
-\end{align}</script><h6 id="V- 算法："><a href="#V- 算法：" class="headerlink" title="(V) 算法："></a><strong>(V) 算法：</strong></h6><blockquote>
+\end{align}</script><h5 id="算法："><a href="# 算法：" class="headerlink" title="算法："></a>算法：</h5><blockquote>
 <p><strong>输入:</strong><br>样本集: $D= \lbrace x<em>{1}, x</em>{2}, \ldots, x_{n} \rbrace$;<br>高斯混合成分个数 $k$.<br><strong>过程: </strong></p>
 <ol>
 <li>初始化高斯混合分布的模型参数 : $\lbrace (\alpha<em>{i},\mu</em>{i}, \Sigma_{i})|1 \leqslant i \leqslant k \rbrace$</li>
@@ -528,8 +496,8 @@ LL(D) & = ln\Big(\prod^{n}_{j=1}p_{\mathcal{M}}(x_{j})\Big) \cr
 <li><strong>end for</strong><br><strong>输出:</strong> 簇划分 $C={C<em>{1}, C</em>{2}, \ldots, C_{k}}$</li>
 </ol>
 </blockquote>
-<h5 id="2- 算法实现 -1"><a href="#2- 算法实现 -1" class="headerlink" title="(2) 算法实现"></a><strong>(2) 算法实现</strong></h5><hr>
-<h2 id="各聚类算法过程"><a href="# 各聚类算法过程" class="headerlink" title="各聚类算法过程"></a><strong>各聚类算法过程 </strong></h2><p> 使用西瓜数据集合：</p>
+<h4 id="算法实现 -1"><a href="# 算法实现 -1" class="headerlink" title="算法实现"></a>算法实现</h4><hr>
+<h1 id="各聚类算法过程"><a href="# 各聚类算法过程" class="headerlink" title="各聚类算法过程"></a><strong>各聚类算法过程 </strong></h1><p> 使用西瓜数据集合：</p>
 <script type="math/tex; mode=display">
 \begin{array}{ccc|ccc|ccc}
 \hline
@@ -546,7 +514,7 @@ LL(D) & = ln\Big(\prod^{n}_{j=1}p_{\mathcal{M}}(x_{j})\Big) \cr
 9 & 0.666 & 0.091 & 19 & 0.339 & 0.241 & 29 & 0.725 & 0.445 \cr
 10 & 0.243 & 0.267 & 20 & 0282 & 0.257 & 30 & 0.446 & 0.459 \cr
 \end{array}</script><p>（其中编号为 9~21 的类别是”坏瓜”，其他样本的类别是”好瓜”） </p>
-<h4 id="使用 -k- 均值算法"><a href="# 使用 -k- 均值算法" class="headerlink" title="使用 $k$ 均值算法"></a>使用 $k$ 均值算法 </h4><p> 假定聚类簇数 $k=3$，算法开始时随机选取的三个样本 $x<em>{6},x</em>{12},x_{27}$ 作为初始均值向量，即</p>
+<h2 id="使用 -k- 均值算法"><a href="# 使用 -k- 均值算法" class="headerlink" title="使用 $k$ 均值算法"></a>使用 $k$ 均值算法 </h2><p> 假定聚类簇数 $k=3$，算法开始时随机选取的三个样本 $x<em>{6},x</em>{12},x_{27}$ 作为初始均值向量，即</p>
 <script type="math/tex; mode=display">
 \mu_{1} = (0.403;0.237), \mu_{2} = (0.343;0.099),\mu_{3} = (0.532;0.472).</script><p>考察样本 $x<em>{1}=(0.697;0.460)$，它与当前均值向量 $\mu</em>{1},\mu<em>{2},\mu</em>{3}$ 的距离分别是 0.369，0.506，0.166，因此 $x<em>{1}$ 将被划入簇 $C</em>{3}$ 中。类似的，对数据集中的所有样本考察一遍后，可得当前簇划分为：</p>
 <script type="math/tex; mode=display">
@@ -558,7 +526,7 @@ C_{3} & = \lbrace x_{1},x_{2},x_{3},x_{4},x_{21},x_{22},x_{24},x_{25},x_{26},x_{
 <script type="math/tex; mode=display">
 \mu_{1}^{'} = (0.473;0.214), \mu_{2}^{'} = (0.394;0.066),\mu_{3}^{'} = (0.623;0.388).</script><p>更新当前均值向量后，不断重复上述过程，如图所示，第五轮迭代产生的结果与第四轮迭代结果相同，于是算法停止，得到最终的簇划分，其中样本点与均值向量分别用”●”与”+”表示，红色虚线显示出簇划分。</p>
 <p><img src="https://farm1.staticflickr.com/403/30990399723_0db34a3cde_o.png" alt=""></p>
-<h4 id="使用学习向量量化"><a href="# 使用学习向量量化" class="headerlink" title="使用学习向量量化"></a>使用学习向量量化 </h4><p> 令数据集中编号为 9-21 的样本的类别标记为 $c<em>{2}$ ，其他样本的类别标记为 $c</em>{1}$ 。假定 $q=5$，即学习目标是找到 5 个原型向量 $p<em>{1},p</em>{2},p<em>{3},p</em>{4},p<em>{5}$ ，并假定其对应的类别标记分别为 $c</em>{1},c<em>{2},c</em>{2},c<em>{1},c</em>{1}$ 。</p>
+<h2 id="使用学习向量量化"><a href="# 使用学习向量量化" class="headerlink" title="使用学习向量量化"></a>使用学习向量量化 </h2><p> 令数据集中编号为 9-21 的样本的类别标记为 $c<em>{2}$ ，其他样本的类别标记为 $c</em>{1}$ 。假定 $q=5$，即学习目标是找到 5 个原型向量 $p<em>{1},p</em>{2},p<em>{3},p</em>{4},p<em>{5}$ ，并假定其对应的类别标记分别为 $c</em>{1},c<em>{2},c</em>{2},c<em>{1},c</em>{1}$ 。</p>
 <p>算法开始时，根据样本的类别标记和簇的预设类别标记，对原型向量进行随机初始化，假定初始化为样本 $x<em>{5},x</em>{12},x<em>{18},x</em>{23},x<em>{29}$ 。在第一轮迭代中，假定随机选取的样本为 $x</em>{1}$ ，该样本与当前原型向量 $p<em>{1},p</em>{2},p<em>{3},p</em>{4},p<em>{5}$ 的距离分别为 $0.283,0.506,0.434,0.260,0.032$ 。由于 $p</em>{5}$ 与 $x<em>{1}$ 距离最近且两者具有相同的类别标记 $c</em>{2}$ ，假定学习率 $\eta = 0.1$ ，则 LVQ 更新 $p_{5}$ 得到新原型向量：</p>
 <script type="math/tex; mode=display">
 \begin{align}
@@ -567,7 +535,7 @@ p^{'} & = p_{5} + \eta \cdot (x_{1} - p_{5}) \cr
       & = (0.722;0.442).
 \end{align}</script><p>将 $p<em>{5}$ 更新为 $p^{‘}$ 后，不断重复上述过程，不同轮数之后的聚类结果如下图所示，其中 $c</em>{1}$ ， $c_{2}$ 类别样本点与原型向量分别用”●”,”○”与”+”表示，红色虚线显示出聚类形成的 Voronoi 剖分。</p>
 <p><img src="https://farm1.staticflickr.com/715/31427609470_fe9357f0cc_o.png" alt=""></p>
-<h4 id="使用高斯混合聚类"><a href="# 使用高斯混合聚类" class="headerlink" title="使用高斯混合聚类"></a>使用高斯混合聚类 </h4><p> 令高斯混合成分的个数 $k=3$。算法开始时，假定将高斯混合分布的模型参数初始化为：$\alpha<em>{1} = \alpha</em>{2} = \alpha<em>{3} = \frac{1}{3}$；$\mu</em>{1} = x<em>{6}$，$\mu</em>{2}=x<em>{22}$，$\mu</em>{3} = x<em>{27}$；$\Sigma</em>{1} = \Sigma<em>{2} = \Sigma</em>{3} = \binom{0.1 \ 0.0}{0.0 \ 0.1}$。</p>
+<h2 id="使用高斯混合聚类"><a href="# 使用高斯混合聚类" class="headerlink" title="使用高斯混合聚类"></a>使用高斯混合聚类 </h2><p> 令高斯混合成分的个数 $k=3$。算法开始时，假定将高斯混合分布的模型参数初始化为：$\alpha<em>{1} = \alpha</em>{2} = \alpha<em>{3} = \frac{1}{3}$；$\mu</em>{1} = x<em>{6}$，$\mu</em>{2}=x<em>{22}$，$\mu</em>{3} = x<em>{27}$；$\Sigma</em>{1} = \Sigma<em>{2} = \Sigma</em>{3} = \binom{0.1 \ 0.0}{0.0 \ 0.1}$。</p>
 <p>在第一轮迭代中，先计算样本由各混合成分生成的后验概率。</p>
 ]]></content>
     
