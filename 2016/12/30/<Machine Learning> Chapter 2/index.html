@@ -122,7 +122,7 @@
 <meta property="og:image" content="https://farm1.staticflickr.com/595/30795620304_a815c4ccff_o.png">
 <meta property="og:image" content="https://farm1.staticflickr.com/663/30795629194_9a7a48bc13_o.png">
 <meta property="og:image" content="https://farm1.staticflickr.com/733/31637250505_65b565e6c6_o.png">
-<meta property="og:updated_time" content="2017-07-27T05:58:43.000Z">
+<meta property="og:updated_time" content="2017-07-27T06:09:02.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="♞「Machine Learning」 Chapter 2">
 <meta name="twitter:description" content="本文是关于周志华「Machine Learning」这本书的 Chapter 2 的学习笔记。">
@@ -553,7 +553,7 @@ D=D_1 \cup  D_2 \cup ... \cup D_k, D_i \cap  D_j = \varnothing (i \neq j)</scrip
 <p>“自助法”是一个比较好的解决方案，它直接以自助采样法为基础[Efron and Tibshirani,1993]。给定包含 $m$ 个样本的数据集 $D$ ，我们对它进行采样产生数据集 $D’$ ：每次随机从 $D$ 中挑选一个样本，将其拷贝放入 $D’$ ，然后再将该样本放回初始数据集 $D$ 中，使得该样本在下次采样时仍有可能被采到；这个过程重复执行 $m$ 次后，我们就得到了包含了 $m$ 个样本的数据集 $D’$ ，这就是自助采样的结果。显然， $D$ 中有一部分样本会在 $D’$ 中多次出现，而另一部分样本不出现。可以做一个简单的估计，样本在 $m$ 次采样中始终不被采到的概率是 $(1-1/m)^m$ ，取极限得到</p>
 <script type="math/tex; mode=display">
 \lim_{m\rightarrow \infty}\left (1-\frac{1}{m}\right )^{m} \mapsto \frac{1}{e} \approx 0.368</script><p>($e$ 是自然常数。)</p>
-<p>即通过自助采样，初始数据集 $D$ 中约有 36.8％ 的样本未出现在采样数据集 $D’$ 中。于是我们可将 $D’$ 用作训练集， $D\D’$ 用作测试集；这样，实际评估的模型与期望评估的模型都使用 $m$ 个训练样本，而我们仍有数据总量约 1/3 的、没在训练集中出现的样本用于测试。这样的测试结果，亦称 <strong>“包外估计”(out-of-bag estimate)</strong>. <strong> 自助法在数据集较小、难以有效划分训练 / 测试集时很有用 </strong>（优点）；此外，自助法能从初始数据集中产生多个不同的训练集，这对集成学习等方法有很大的好处。 <strong> 然而，自助法产生的数据集改变了初始数据集的分布，这会引入估计偏差</strong>（缺点）。因此，在初始数据量足够时，留出法和交叉验证法更加常用一些。</p>
+<p>即通过自助采样，初始数据集 $D$ 中约有 36.8％ 的样本未出现在采样数据集 $D’$ 中。于是我们可将 $D’$ 用作训练集， $D-D’$ 用作测试集；这样，实际评估的模型与期望评估的模型都使用 $m$ 个训练样本，而我们仍有数据总量约 1/3 的、没在训练集中出现的样本用于测试。这样的测试结果，亦称 <strong>“包外估计”(out-of-bag estimate)</strong>. <strong> 自助法在数据集较小、难以有效划分训练 / 测试集时很有用 </strong>（优点）；此外，自助法能从初始数据集中产生多个不同的训练集，这对集成学习等方法有很大的好处。 <strong> 然而，自助法产生的数据集改变了初始数据集的分布，这会引入估计偏差</strong>（缺点）。因此，在初始数据量足够时，留出法和交叉验证法更加常用一些。</p>
 <hr>
 <h2 id="性能度量"><a href="# 性能度量" class="headerlink" title="性能度量"></a>性能度量</h2><ul>
 <li><p>性能度量是任务需求的体现，在对比不同模型的能力时，使用不同的性能度量往往会导致不同的评判结果，所以这以为这模型的“好坏”是相对的，什么样的模型是好的，其实不仅仅取决于算法和数据，更是取决于任务需求。</p>
@@ -779,7 +779,9 @@ E_{cost} = \frac{m^+ \times (1-TPR) \times cost_{01}+m^- \times FPR \times cost_
 <blockquote>
 <p>7. 试证明任意一条 ROC 曲线都有一条代价曲线与之对应，反之亦然。</p>
 </blockquote>
-<p>由定义可以知道 TPR 与 FPR 都是由 0 上升到 1 ，那么 FNR 则是由 1 下降到 0 。<br>每条 ROC 曲线都会对应一条代价曲线，由于第一条代价线段的是 (0,0) , (1,1) ，最后是 (0,1) , (1,0) ,<br>所有代价线段总会有一块公共区域，这个区域就是期望总体代价，而这块区域的边界就是代价曲线，且肯定从 (0,0) 到 (1,0) 。<br>在有限个样本情况下，ROC 是一条折线，此时根据代价曲线无法还原 ROC 曲线。但若是理论上有无限个样本，ROC 是一条连续的折线，代价曲线也是连续的折线，每个点的切线可以求出 TPR 与 FNR，从而得到唯一的 ROC 曲线。</p>
+<p>由定义可以知道 TPR 与 FPR 都是由 0 上升到 1 ，那么 FNR 则是由 1 下降到 0 。 </p>
+<p>每条 ROC 曲线都会对应一条代价曲线，由于第一条代价线段的是 (0,0) , (1,1) ，最后是 (0,1) , (1,0) , 所有代价线段总会有一块公共区域，这个区域就是期望总体代价，而这块区域的边界就是代价曲线，且肯定从 (0,0) 到 (1,0) 。 </p>
+<p>在有限个样本情况下，ROC 是一条折线，此时根据代价曲线无法还原 ROC 曲线。但若是理论上有无限个样本，ROC 是一条连续的折线，代价曲线也是连续的折线，每个点的切线可以求出 TPR 与 FNR，从而得到唯一的 ROC 曲线。</p>
 <hr>
 
       
