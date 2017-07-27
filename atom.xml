@@ -83,7 +83,7 @@
     <link href="http://randolph.pro/2016/12/30/%3CMachine%20Learning%3E%20Chapter%202/"/>
     <id>http://randolph.pro/2016/12/30/&lt;Machine Learning&gt; Chapter 2/</id>
     <published>2016-12-29T16:00:00.000Z</published>
-    <updated>2017-07-27T05:56:30.000Z</updated>
+    <updated>2017-07-27T05:58:43.000Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fhxi0z29mdj30sg11c77u.jpg" alt=""></p>
 <p>关于该书的其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/Book-「Machine-Learning」/">「Machine Learning」</a></p>
@@ -317,11 +317,11 @@ Err(x) = [f(x)-\frac{1}{k}\sum_{i=1}^{k}f(x_{i})]^2 + \frac{\delta ^2}{k}+\delta
 <p><img src="https://farm1.staticflickr.com/663/30795629194_9a7a48bc13_o.png" alt=""></p>
 <p>每次留出一个 fold 用来做“验证集”来计算误差，当 K 设置很大时，每个 fold 都会有很少的数据，小数据集更容易有噪音，所以小的数据集会有大的 Bias ，同时 K 个 fold 代表 K 组数据分别训练一个模型，求平均后 Variance 会很小；相反如果 K 比较小的话，每个 fold 数据相对来说还是很多的，所以 Bias 相对较小，但是由于总模型数较小，所以 Variance 还是比较大的。</p>
 <hr>
-<h2 id="Correct-errors-in-printing"><a href="#Correct-errors-in-printing" class="headerlink" title="Correct errors in printing:"></a>Correct errors in printing:</h2><ul>
+<h1 id="Correct-errors-in-printing"><a href="#Correct-errors-in-printing" class="headerlink" title="Correct errors in printing:"></a>Correct errors in printing:</h1><ul>
 <li>暂无</li>
 </ul>
 <hr>
-<h2 id="Practice"><a href="#Practice" class="headerlink" title="Practice:"></a>Practice:</h2><blockquote>
+<h1 id="Practice"><a href="#Practice" class="headerlink" title="Practice:"></a>Practice:</h1><blockquote>
 <p>2. 数据集包含 100 个样本，其中正、反例各一半，假定学习算法所产生的模型是将新样本预测为训练样本数较多的类别（训练样本数相同时进行随机猜测），试给出用 10 折交叉验证法和留一法分别对错误率进行评估所得的结果。</p>
 </blockquote>
 <ul>
