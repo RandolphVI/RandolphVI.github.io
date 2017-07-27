@@ -906,7 +906,7 @@ E_{cost} = \frac{m^+ \times (1-TPR) \times cost_{01}+m^- \times FPR \times cost_
     <link href="http://randolph.pro/2016/12/26/%3CMachine%20Learning%3E%20Chapter%201/"/>
     <id>http://randolph.pro/2016/12/26/&lt;Machine Learning&gt; Chapter 1/</id>
     <published>2016-12-25T16:00:00.000Z</published>
-    <updated>2017-07-27T00:57:35.000Z</updated>
+    <updated>2017-07-27T08:55:48.000Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fhxi0z29mdj30sg11c77u.jpg" alt=""></p>
 <p>关于该书的其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/Book-「Machine-Learning」/">「Machine Learning」</a></p>
@@ -960,7 +960,7 @@ E_{cost} = \frac{m^+ \times (1-TPR) \times cost_{01}+m^- \times FPR \times cost_
 <p><code>好瓜 ⟺ ((色泽 = \*) ∧ (根蒂 = 蜷缩) ∧ (敲声 = \*)) ∨ ((色泽 = 乌黑) ∧ (根蒂 = \*) ∧ (敲声 = 沉闷))</code></p>
 <p>会把 <strong>(色泽 = 青绿) ∧ (根蒂 = 蜷缩) ∧ (敲声 = 清脆)</strong> 以及 <strong>(色泽 = 乌黑) ∧ (根蒂 = 硬挺) ∧ (敲声 = 沉闷)</strong> 都分类为“好瓜”。若使用最多包含 $k$ 个合取式的析合范式来表达表 1.1 西瓜分类问题的假设空间，试估算共有多少种可能的假设。 </p>
 </blockquote>
-<p>（提示：注意冗余情况， 如 $(A=a) \vee (A=*)$ 与 $(A=*)$ 等价。） </p>
+<p>（提示：注意冗余情况， 如 <script type="math/tex">(A=a) \vee (A=*)</script> 与 $(A=*)$ 等价。） </p>
 <p>表 1.1 包含 4 个样例， 3 种属性，假设空间中有 $3 \times 4 \times 4 + 1 = 49 $ 种假设。在不考虑沉余的情况下，最多包含 $k$ 个合取式来表达假设空间，显然 $k$ 的最大值是 49，每次从中选出 $k$ 个来组成析合式，共 $ \sum C_{49}^k = 249 $ 种可能。（但是其中包含了很多沉余的情况）</p>
 <p>如果考虑沉余的情况：<br>在这里忽略空集，一个原因是并不是太明白空集是否应该加入析合式，另外就算需要加入，求出了前面 48 种假设的组合，可以很容易求出加入空集后的组合数（每种可能都可以加上空集，再加上 1 种空集单独的情况）。 </p>
 <p>48 种假设中： </p>
