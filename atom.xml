@@ -83,7 +83,7 @@
     <link href="http://randolph.pro/2016/12/30/%3CMachine%20Learning%3E%20Chapter%202/"/>
     <id>http://randolph.pro/2016/12/30/&lt;Machine Learning&gt; Chapter 2/</id>
     <published>2016-12-29T16:00:00.000Z</published>
-    <updated>2017-07-27T00:49:00.000Z</updated>
+    <updated>2017-07-27T00:58:36.000Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fhxi0z29mdj30sg11c77u.jpg" alt=""></p>
 <p>关于该书的其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/Book-「Machine-Learning」/">「Machine Learning」</a></p>
@@ -113,8 +113,8 @@
 <p>欠拟合比较容易克服，例如在决策树学习中扩展分支、在神经网络学习中增加训练轮数等，而过拟合则很麻烦。然而过拟合是机器学习面临的关键障碍，各类学习算法都必然带有一些针对过拟合的措施，过拟合是无法彻底避免的，我们所能做的只是“缓解”，或者说减小其风险。</p>
 <p><strong>机器学习面临的问题通常是 NP 难甚至更难，而有效的学习算法必然是在多项式时间内运行完成，若可以彻底避免过拟合，则通过经验误差最小化就能获得最优解，这就意味着我们构造性地证明了「 P=NP 」；因此，只要我们是相信「 P≠NP 」，过拟合就不可避免。</strong></p>
 <hr>
-<h2 id="评估方法"><a href="# 评估方法" class="headerlink" title="评估方法."></a>评估方法.</h2><p>假设我们现有一个包含 $m$ 个样例的数据集 $D = \left \lbrace (x_1,y_1),(x_2,y_2),…,(x_m,y_m) \right \rbrace$ ，我们需要对数据集 $D$ 进行适当的处理，从中划分出训练集 $S$ 以及测试集 $T$ 。那么有以下几种划分方法：</p>
-<h3 id="留出法 -hold-out"><a href="# 留出法 -hold-out" class="headerlink" title="留出法 (hold-out)."></a> 留出法(hold-out).</h3><ul>
+<h2 id="评估方法"><a href="# 评估方法" class="headerlink" title="评估方法"></a>评估方法 </h2><p> 假设我们现有一个包含 $m$ 个样例的数据集 $D = \left \lbrace (x_1,y_1),(x_2,y_2),…,(x_m,y_m) \right \rbrace$ ，我们需要对数据集 $D$ 进行适当的处理，从中划分出训练集 $S$ 以及测试集 $T$ 。那么有以下几种划分方法：</p>
+<h3 id="留出法 -hold-out"><a href="# 留出法 -hold-out" class="headerlink" title="留出法 (hold-out)"></a> 留出法(hold-out)</h3><ul>
 <li><p>需要注意的是，训练 / 测试集的划分要尽可能保持数据分布的一致性，避免因数据划分过程引入额外的偏差而对最终结果产生影响。</p>
 </li>
 <li><p>单次使用留出法得到的估计结果往往不够稳定可靠谱，在使用留出法时，一般要采用若干次随机划分、重复进行实验评估后取平均值作为留出法的评估结果。例如进行 100 次随机划分，每次产生一个训练 / 测试集用于实验评估， 100 次后就得到 100 个结果，而留出法返回的则是这 100 个结果的平均值。</p>
@@ -124,7 +124,7 @@
 <li>可从“偏差一方差”的角度来理解：测试集小时，评估结果的方差较大；训练集小时，评估结果的偏差较大。 </li>
 <li>一般而言，测试集至少应含 30 个样例 「 Mitchell, 1997 」 。</li>
 </ul>
-<h3 id="交叉验证法 -cross-validation"><a href="# 交叉验证法 -cross-validation" class="headerlink" title="交叉验证法 (cross validation)."></a> 交叉验证法 (cross validation).</h3><p> 其做法是将数据集 $D$ 划分为 $k$ 个大小相似的互斥子集，即</p>
+<h3 id="交叉验证法 -cross-validation"><a href="# 交叉验证法 -cross-validation" class="headerlink" title="交叉验证法 (cross validation)"></a> 交叉验证法 (cross validation)</h3><p> 其做法是将数据集 $D$ 划分为 $k$ 个大小相似的互斥子集，即</p>
 <script type="math/tex; mode=display">
 D=D_1 \cup  D_2 \cup ... \cup D_k, D_i \cap  D_j = \varnothing (i \neq j)</script><p>每个子集 $D$ 都尽可能保持数据分布的一致性，即从 $D$ 中通过分层采样得到。然后，每次用 $k-1$ 个子集的并集作为训练集，余下的那个子集作为测试集；这样就可获得 $k$ 组训练 / 测试集，从而可进行 $k$ 次训练和测试，最终返回的是这 $k$ 个测试结果的均值。</p>
 <ul>
@@ -140,7 +140,7 @@ D=D_1 \cup  D_2 \cup ... \cup D_k, D_i \cap  D_j = \varnothing (i \neq j)</scrip
 \lim_{m\rightarrow \infty}\left (1-\frac{1}{m}\right )^{m} \mapsto \frac{1}{e} \approx 0.368</script><p>($e$ 是自然常数。)</p>
 <p>即通过自助采样，初始数据集 $D$ 中约有 36.8％ 的样本未出现在采样数据集 $D’$ 中。于是我们可将 $D’$ 用作训练集， $D\D’$ 用作测试集；这样，实际评估的模型与期望评估的模型都使用 $m$ 个训练样本，而我们仍有数据总量约 1/3 的、没在训练集中出现的样本用于测试。这样的测试结果，亦称 <strong>“包外估计”(out-of-bag estimate)</strong>. <strong> 自助法在数据集较小、难以有效划分训练 / 测试集时很有用 </strong>（优点）；此外，自助法能从初始数据集中产生多个不同的训练集，这对集成学习等方法有很大的好处。 <strong> 然而，自助法产生的数据集改变了初始数据集的分布，这会引入估计偏差</strong>（缺点）。因此，在初始数据量足够时，留出法和交叉验证法更加常用一些。</p>
 <hr>
-<h2 id="性能度量"><a href="# 性能度量" class="headerlink" title="性能度量."></a>性能度量.</h2><ul>
+<h2 id="性能度量"><a href="# 性能度量" class="headerlink" title="性能度量"></a>性能度量</h2><ul>
 <li><p>性能度量是任务需求的体现，在对比不同模型的能力时，使用不同的性能度量往往会导致不同的评判结果，所以这以为这模型的“好坏”是相对的，什么样的模型是好的，其实不仅仅取决于算法和数据，更是取决于任务需求。</p>
 </li>
 <li><p>在预测任务中，给定样例集 $D = \left \lbrace (x_1,y_1),(x_2,y_2),…,(x_m,y_m) \right \rbrace$ ，其中 $y_i$ 是示例 $x_i$ 的真实标记．要评估学习器 $f$ 的性能，就要把学习器预测结果 $f(x)$ 与真实标记 $y$ 进行比较。 </p>
@@ -390,7 +390,7 @@ E_{cost} = \frac{m^+ \times (1-TPR) \times cost_{01}+m^- \times FPR \times cost_
     <link href="http://randolph.pro/2016/12/26/%3CMachine%20Learning%3E%20Chapter%201/"/>
     <id>http://randolph.pro/2016/12/26/&lt;Machine Learning&gt; Chapter 1/</id>
     <published>2016-12-25T16:00:00.000Z</published>
-    <updated>2017-07-27T00:43:45.000Z</updated>
+    <updated>2017-07-27T00:57:35.000Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fhxi0z29mdj30sg11c77u.jpg" alt=""></p>
 <p>关于该书的其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/Book-「Machine-Learning」/">「Machine Learning」</a></p>
@@ -404,7 +404,7 @@ E_{cost} = \frac{m^+ \times (1-TPR) \times cost_{01}+m^- \times FPR \times cost_
 <h2 id="归纳偏好"><a href="# 归纳偏好" class="headerlink" title="归纳偏好"></a>归纳偏好 </h2><p> 任何一个有效的及其学习算法必有其归纳偏好，否则它将被假设空间中看似在训练集上“等效”的假设所迷惑，而无法产生正确的学习结果。可以想象，如果没有偏好，我们的西瓜学习算法产生的模型每次在进行预测时随机抽选训练集上的等效假设，那么对这个新瓜“（色泽 = 青绿；根蒂 = 蜷缩；敲声 = 沉闷）”，模型告诉我们它是好的，但是时而告诉我们它是不好的，这样的学习结果显然没有意义。</p>
 <p>事实上，归纳偏好对应了学习算法本身所作出的关于“什么样的模型更好”的假设。在具体的现实问题中，这个假设是否成立，即算法的归纳偏好是否与问题本身匹配，大多数时候直接决定了算法能否取得好的性能。</p>
 <hr>
-<h2 id="奥卡姆剃刀"><a href="# 奥卡姆剃刀" class="headerlink" title="奥卡姆剃刀."></a>奥卡姆剃刀.</h2><ul>
+<h2 id="奥卡姆剃刀"><a href="# 奥卡姆剃刀" class="headerlink" title="奥卡姆剃刀"></a>奥卡姆剃刀</h2><ul>
 <li><p>“奥卡姆剃刀”（Occam’s razor）是一种常用的、自然科学研究中最基本的原则，即“若有多个假设与观察一致，则选择最简单的那个”。</p>
 </li>
 <li><p>然而，奥卡姆剃刀并非唯一可行的原则。书中给出了一个例子进行了解释：</p>
@@ -1105,7 +1105,7 @@ AC & (1,2)(-2),(0,1)(-1),(0,1)(-1),(0,1)(-1),(2,1)(-1),(EOB)(0,0)
     <link href="http://randolph.pro/2015/11/13/%3CWeb%20Scraping%20with%20Python%3E%20Chapter%203/"/>
     <id>http://randolph.pro/2015/11/13/&lt;Web Scraping with Python&gt; Chapter 3/</id>
     <published>2015-11-12T16:00:00.000Z</published>
-    <updated>2017-07-27T00:45:43.000Z</updated>
+    <updated>2017-07-27T00:54:55.000Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fhwh5fcvm3j30t612ah43.jpg" alt=""></p>
 <p> 关于该书的其他学习笔记系列：<a href="http://randolph.pro/categories/Web-Scraping/Book-「Web-Scraping-with-Python」/">「Web Scraping with Python」</a></p>
@@ -1113,7 +1113,7 @@ AC & (1,2)(-2),(0,1)(-1),(0,1)(-1),(0,1)(-1),(2,1)(-1),(EOB)(0,0)
 <li><strong>urlparse module</strong></li>
 </ul>
 <hr>
-<h1 id="Key"><a href="#Key" class="headerlink" title="Key:"></a>Key:</h1><h2 id="Think-First"><a href="#Think-First" class="headerlink" title="Think First."></a>Think First.</h2><blockquote>
+<h1 id="Key"><a href="#Key" class="headerlink" title="Key:"></a>Key:</h1><h2 id="Think-First"><a href="#Think-First" class="headerlink" title="Think First"></a>Think First</h2><blockquote>
 <p>What data am I trying to gather? Can this be accomplished by scraping just a few predefined websites (almost always the easier option), or does my crawler need to be able to discover new websites I might not know about?<br> 我需要收集哪些数据？这些数据可以通过采集几个已经确定的网站（永远是最简单的做法）完成吗？或者我需要通过爬虫发现那些我可能不知道的网站从而获取我想要的信息吗？</p>
 <p>When my crawler reaches a particular website, will it immediately follow the next outbound link to a new website, or will it stick around for a while and drill down into the current website?<br> 当我的爬虫到了某一个网站，它是立即顺着下一个出站链接跳转到下一个新网站，还是在网站上呆一会，深入采集网站的内容？</p>
 <p>Are there any conditions under which I would not want to scrape a particular site? Am I interested in non-English content?<br> 有没有我不想采集的一些网站？我对非英文网站的内容感兴趣么？</p>
