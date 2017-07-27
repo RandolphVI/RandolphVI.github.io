@@ -83,7 +83,7 @@
     <link href="http://randolph.pro/2016/12/30/%3CMachine%20Learning%3E%20Chapter%202/"/>
     <id>http://randolph.pro/2016/12/30/&lt;Machine Learning&gt; Chapter 2/</id>
     <published>2016-12-29T16:00:00.000Z</published>
-    <updated>2017-07-27T06:09:02.000Z</updated>
+    <updated>2017-07-27T06:19:44.000Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fhxi0z29mdj30sg11c77u.jpg" alt=""></p>
 <p>关于该书的其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/Book-「Machine-Learning」/">「Machine Learning」</a></p>
@@ -176,7 +176,7 @@ acc(f;D) = \frac{1}{m}\sum_{i=1}^{m}\mathbb{I}(f(x_{i}) = y_{i})=1-E(f;D)</scrip
 <th></th>
 <th></th>
 <th>实际值</th>
-<th></th>
+<th>实际值</th>
 </tr>
 </thead>
 <tbody>
@@ -193,7 +193,7 @@ acc(f;D) = \frac{1}{m}\sum_{i=1}^{m}\mathbb{I}(f(x_{i}) = y_{i})=1-E(f;D)</scrip
 <td>实际是 Negative，预测成 Positive 的样本数，又叫 false positive(FP)</td>
 </tr>
 <tr>
-<td></td>
+<td><strong>预测值</strong></td>
 <td>Negative</td>
 <td>实际是 Positive，预测成 Negative 的样本数，又叫 false negative(FN)</td>
 <td>实际是 Negative，预测成 Negative 的样本数，又叫 true negative(TN)</td>
