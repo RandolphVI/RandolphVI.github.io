@@ -83,7 +83,7 @@
     <link href="http://randolph.pro/2016/12/30/%3CMachine%20Learning%3E%20Chapter%202/"/>
     <id>http://randolph.pro/2016/12/30/&lt;Machine Learning&gt; Chapter 2/</id>
     <published>2016-12-29T16:00:00.000Z</published>
-    <updated>2017-07-27T06:41:08.000Z</updated>
+    <updated>2017-07-27T07:06:13.000Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fhxi0z29mdj30sg11c77u.jpg" alt=""></p>
 <p>关于该书的其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/Book-「Machine-Learning」/">「Machine Learning」</a></p>
@@ -219,7 +219,7 @@ R = \frac{TP}{TP+FN}</script><p>正如天下“没有免费的午餐”理论所
 <p>“ P-R 曲线”正是描述查准 / 查全率变化的曲线，P-R 曲线定义如下：根据学习器的预测结果（一般为一个实值或概率）对测试样本进行排序，将最可能是“正例”的样本排在前面，最不可能是“正例”的排在后面，按此顺序逐个把样本作为“正例”进行预测，每次计算出当前的 P 值和 R 值，如下图所示：</p>
 <p><img src="https://farm6.staticflickr.com/5567/31598563736_1791303905_o.png" alt=""></p>
 <p>P-R 曲线如何评估呢？若一个学习器 A 的 P-R 曲线被另一个学习器 B 的 P-R 曲线完全包住，则称： B 的性能优于 A 。若 A 和 B 的曲线发生了交叉，则谁的曲线下的面积大，谁的性能更优。但一般来说，曲线下的面积是很难进行估算的，所以衍生出了<strong>“平衡点”</strong>（Break-Event Point，简称 BEP ），即当 P=R 时的取值，平衡点的取值越高，性能更优。</p>
-<p>P 和 R 指标有时会出现矛盾的情况，这样就需要综合考虑他们，最常见的方法就是 F-Measure ，又称 F-Score 。F-Measure 是 P 和 R 的加权调和平均，即：</p>
+<p>$P$ 和 $R$ 指标有时会出现矛盾的情况，这样就需要综合考虑他们，最常见的方法就是 F-Measure ，又称 F-Score 。F-Measure 是 $P$ 和 $R$ 的加权调和平均，即：</p>
 <script type="math/tex; mode=display">
 \frac{1}{F_{\beta}}  = \frac{1}{2}\cdot (\frac{1}{P}+\frac{1}{R})</script><p>也可以写成：</p>
 <script type="math/tex; mode=display">
@@ -228,7 +228,7 @@ F1  = \frac{2\times P \times R}{P+R}=\frac{2\times TP}{N + TP -TN}</script><p>(�
 <li>在一些应用中，对查准率和查全率的重视程度有所不同。例如在商品推荐系统中，为了尽可能少打扰用户，更希望推荐内容确是用户感兴趣的，此时查准率更重要；而在逃犯信息检索系统中，更希望尽可能少漏掉逃犯，此时查全率更重要。$F1$ 度量的一般形式— $F_\beta $ ，能让我们表达出对查准率／查全率的不同偏好，它定义为：</li>
 </ul>
 <script type="math/tex; mode=display">
-F_{\beta}  = \frac{(1+\beta^2) \times P \times R}{(\beta^2 \times P) + R}</script><p><strong>其中 $\beta &gt; 0$ 度量了查全率对查准率的相对重要性[Van Rijsbergen, 1979]。</strong></p>
+F_{\beta}  = \frac{(1+\beta^2) \times P \times R}{(\beta^2 \times P) + R}</script><p><strong>其中 $\beta &gt; 0$ 度量了查全率对查准率的相对重要性 [Van Rijsbergen, 1979]。</strong></p>
 <p><strong>$\beta = 1$ 时退化为标准的 $F1$ ； $\beta &gt; 1$ 时查全率有更大影响； $\beta &lt; 1$ 时查准率有更大影响。</strong></p>
 <p>有时候我们会有多个二分类混淆矩阵，例如：多次训练或者在多个数据集上训练，那么估算全局性能的方法有两种，分为宏观和微观。</p>
 <ul>
@@ -255,28 +255,28 @@ TPR = \frac{TP}{TP+FN}</script></li>
 <script type="math/tex; mode=display">
 FPR = \frac{FP}{TN+FP}</script><p><img src="https://farm1.staticflickr.com/141/31490389422_1b83a2b146_o.png" alt=""></p>
 </li>
-<li><p>简单分析图像，可以得知：当 $FN=0$ 时，$TN$ 也必须为 0 ，反之也成立，我们可以画一个队列，试着使用不同的截断点（即阈值）去分割队列，来分析曲线的形状，(0,0) 表示将所有的样本预测为负例，(1,1) 则表示将所有的样本预测为正例，(0,1) 表示正例全部出现在负例之前的理想情况，(1,0) 则表示负例全部出现在正例之前的最差情况。</p>
+<li><p>简单分析图像，可以得知：当 $FN=0$ 时，$TN$ 也必须为 $0$ ，反之也成立，我们可以画一个队列，试着使用不同的截断点（即阈值）去分割队列，来分析曲线的形状，$(0,0)$ 表示将所有的样本预测为负例，$(1,1)$ 则表示将所有的样本预测为正例，$(0,1)$ 表示正例全部出现在负例之前的理想情况，$(1,0)$ 则表示负例全部出现在正例之前的最差情况。</p>
 </li>
 </ul>
 <p>现实中的任务通常都是有限个测试样本，因此只能绘制出近似 ROC 曲线。</p>
-<p>绘制方法：首先根据测试样本的评估值对测试样本排序，接着按照以下规则进行绘制:</p>
-<p>绘制出如图 (b) 所示的近似 ROC 曲线，给定 $m^+$ 个正例和 $m^-$ 个反例，根据学习器预测结果对样例进行排序，然后把分类阈值设为最大，即把所有样例均预测为反例，此时真正例率和假正例率均为 0，在坐标 (0,0) 处 标记一个点然后，将分类阈值依次设为每个样例的预测值，即依次将每个样例划分为正例。设前一个标记点坐标为 $(x,y)$ ，当前若为真正例，则对应标记点的坐标为 $(x,y + \frac{1}{m^+})$ ：当前若为假正例，则对应标记点的坐标为 $(x + \frac{1}{m^-},y)$ ，然后用线段连接相邻点即得。</p>
+<p>绘制方法：首先根据测试样本的评估值对测试样本排序，接着按照以下规则进行绘制：</p>
+<p>绘制出如图 (b) 所示的近似 ROC 曲线，给定 $m^+$ 个正例和 $m^-$ 个反例，根据学习器预测结果对样例进行排序，然后把分类阈值设为最大，即把所有样例均预测为反例，此时真正例率和假正例率均为 $0$，在坐标 $(0,0)$ 处 标记一个点然后，将分类阈值依次设为每个样例的预测值，即依次将每个样例划分为正例。设前一个标记点坐标为 $(x,y)$ ，当前若为真正例，则对应标记点的坐标为 $(x,y + \frac{1}{m^+})$ ：当前若为假正例，则对应标记点的坐标为 $(x + \frac{1}{m^-},y)$ ，然后用线段连接相邻点即得。</p>
 <p>同样地，进行模型的性能比较时，若一个学习器 A 的 ROC 曲线被另一个学习器 B 的 ROC 曲线完全包住，则称 B 的性能优于 A 。若 A 和 B 的曲线发生了交叉，则谁的曲线下的面积大，谁的性能更优。ROC 曲线下的面积定义为<strong>AUC（Area Uder ROC Curve）</strong>，不同于 P-R 曲线下的面积，这里的 AUC 是可估算的，即 AOC 曲线下每一个小矩形的面积之和。易知：AUC 越大，证明排序的质量越好，AUC 为 1 时，证明所有正例排在了负例的前面，AUC 为 0 时，所有的负例排在了正例的前面。</p>
 <script type="math/tex; mode=display">
 AUC = \frac{1}{2}\sum_{i=1}^{m-1}(x_{i+1}-x_{i})\cdot (y_{i}+y_{i+1})</script><h3 id="代价敏感错误率与代价曲线"><a href="# 代价敏感错误率与代价曲线" class="headerlink" title="代价敏感错误率与代价曲线"></a>代价敏感错误率与代价曲线 </h3><p> 上面的方法中，将学习器的犯错同等对待，但在现实生活中，将正例预测成假例与将假例预测成正例的代价常常是不一样的，例如：将无疾病–&gt; 有疾病只是增多了检查，但有疾病–&gt; 无疾病却是增加了生命危险，二者的“代价”明显是不同的。以二分类为例，由此引入了<strong>“代价矩阵”（cost matrix）</strong>。</p>
 <p><img src="https://farm1.staticflickr.com/256/31490416932_57f610e40d_o.png" alt=""></p>
 <p>在非均等错误代价下，我们希望的是最小化“总体代价”，这样“代价敏感”的错误率为：</p>
 <script type="math/tex; mode=display">
-E(f;D;cost) = \frac{1}{m}(\sum_{x_{i}\in D^{+}}\mathbb(f(x_{i})\neq y_{i})\times cost_{01}+\sum_{x_{i}\in D^{-}}\mathbb(f(x_{i})\neq y_{i})\times cost_{10})</script><p>同样对于 ROC 曲线，在非均等错误代价下，演变成了 <strong>“代价曲线”</strong>，代价曲线横轴是取值在 [0,1] 之间的正例概率代价，式中 $p$ 表示正例的概率，纵轴是取值为 [0,1] 的归一化代价。</p>
+E(f;D;cost) = \frac{1}{m}(\sum_{x_{i}\in D^{+}}\mathbb(f(x_{i})\neq y_{i})\times cost_{01}+\sum_{x_{i}\in D^{-}}\mathbb(f(x_{i})\neq y_{i})\times cost_{10})</script><p>同样对于 ROC 曲线，在非均等错误代价下，演变成了<strong>“代价曲线”</strong>，代价曲线横轴是取值在 $[0,1]$ 之间的正例概率代价，式中 $p$ 表示正例的概率，纵轴是取值为 $[0,1]$ 的归一化代价。</p>
 <script type="math/tex; mode=display">
 P(+)cost = \frac{p \times cost_{01}}{p \times cost_{01}+ (1-p)\times cost_{10}}</script><script type="math/tex; mode=display">
-cost_{norm} = \frac{FNR \times p \times cost_{01} + FPR \times (1-p) \times cost_{10}}{p \times cost_{01}+ (1-p)\times cost_{10}}</script><p>代价曲线的绘制很简单：设 ROC 曲线上一点的坐标为 (TPR，FPR) ，则可相应计算出 FNR ，然后在代价平面上绘制一条从 (0，FPR) 到 (1，FNR) 的线段，线段下的面积即表示了该条件下的期望总体代价；如此将 ROC 曲线土的每个点转化为代价平面上的一条线段，然后取所有线段的下界，围成的面积即为在所有条件下学习器的期望总体代价，如图所示：</p>
+cost_{norm} = \frac{FNR \times p \times cost_{01} + FPR \times (1-p) \times cost_{10}}{p \times cost_{01}+ (1-p)\times cost_{10}}</script><p>代价曲线的绘制很简单：设 ROC 曲线上一点的坐标为 $(TPR，FPR)$ ，则可相应计算出 $FNR$ ，然后在代价平面上绘制一条从 $(0，FPR)$ 到 $(1，FNR)$ 的线段，线段下的面积即表示了该条件下的期望总体代价；如此将 ROC 曲线土的每个点转化为代价平面上的一条线段，然后取所有线段的下界，围成的面积即为在所有条件下学习器的期望总体代价，如图所示：</p>
 <p><img src="https://farm6.staticflickr.com/5762/31637147675_4ebdb0d453_o.png" alt=""></p>
 <h3 id="代价敏感错误率与代价曲线 -1"><a href="# 代价敏感错误率与代价曲线 -1" class="headerlink" title="代价敏感错误率与代价曲线"></a>代价敏感错误率与代价曲线 </h3><h3 id="偏差与方差"><a href="# 偏差与方差" class="headerlink" title="偏差与方差"></a> 偏差与方差 </h3><p> 理解 Bias 与 Variance 之间的权衡，有监督学习中，预测误差的来源主要有两部分，分别为 <strong>Bias</strong> 与 <strong>Variance</strong>，模型的性能取决于 bias 与 variance 的 tradeoff，理解 bias 与 variance 有助于我们诊断模型的错误，避免 over-fitting 或者 under-fitting。</p>
 <p>我们知道，同样的算法在不同的数据集上得到的模型结果很可能不同，尽管数据集来自于同一个分部。对于观测数据 $X$ 以及待预测的变量 $Y$ ，假设两者服从 $Y$ = $f(X) + \varepsilon $ ， $ \varepsilon $ 为噪声，其服从的 $N(0,\delta  _{\varepsilon}^2)$ ，预测任务中需要得到 $Y$ 值，首先在数据集上 $D$ 上通过算法学习一个近似 $f(X)$ 的模型 $\hat{f}(X)$ 来预测得到 $X$ 的输出。给定 $X$ 一个观测值 $x$ ，待预测变量 $y = f(x) + \varepsilon$ 。</p>
 <ul>
-<li>对于样本数量相同的不同训练集模型 $\hat{f}(X)$ 的期望输出为： $E[\hat{f}(X) ]$ .</li>
-<li>对于样本数量相同的不同训练集模型产生的方差为： $E[\hat{f}(X)-E[\hat{f}(X)]]^2$ .</li>
+<li>对于样本数量相同的不同训练集模型 $\hat{f}(X)$ 的期望输出为： $E[\hat{f}(X) ]$ 。</li>
+<li>对于样本数量相同的不同训练集模型产生的方差为： $E[\hat{f}(X)-E[\hat{f}(X)]]^2$ 。</li>
 </ul>
 <p>将模型的误差分解，采用均方损失，模型 $\hat{f}(X)$ 在点 $x$ 的整体预测误差为真实值与模型预测值之间的误差：</p>
 <script type="math/tex; mode=display">
@@ -309,7 +309,7 @@ Error = Bias^2 + Variance + Noises</script><p>对于预测模型问题，如果�
 <p><img src="https://farm6.staticflickr.com/5585/30826966253_eff65097a8_o.png" alt=""></p>
 <p>低 Bias 与低 Variance 才会得到低 Error，但低 Bias 与低 Variance 往往是不能兼得的。如果要降低模型的 Bias，就一定程度上会提高模型的 Variance，反之亦然。这里以 K-NN 为例，看一些 K-NN 中 Bias 与 Variance 与其参数 K 的关系，在 K-NN 中，误差形式如下：</p>
 <script type="math/tex; mode=display">
-Err(x) = [f(x)-\frac{1}{k}\sum_{i=1}^{k}f(x_{i})]^2 + \frac{\delta ^2}{k}+\delta ^2</script><p>这里 $x<em>{1}，x</em>{2}，…，x_{k}$ 是 $x$ 在训练数据集中最近的 $k$ 个邻居，当 $k$ 取值很小的时候，Bias 很低，但是 Variance 会比较高。但随着 $k$ 的增大，Bias 变高，Variance 降低，这种现象被称为偏差 - 方差窘境（bias-variance dilemma）。</p>
+Err(x) = [f(x)-\frac{1}{k}\sum_{i=1}^{k}f(x_{i})]^2 + \frac{\delta ^2}{k}+\delta ^2</script><p>这里 $x_{1}，x_{2}，…，x_{k}$ 是 $x$ 在训练数据集中最近的 $k$ 个邻居，当 $k$ 取值很小的时候，Bias 很低，但是 Variance 会比较高。但随着 $k$ 的增大，Bias 变高，Variance 降低，这种现象被称为偏差 - 方差窘境（bias-variance dilemma）。</p>
 <p><strong>因为预测模型试图用有限的训练样本上去得到一个用来预测全数据集的模型，为了降低模型的误差率，就要尽量使模型在训练数据集上更加“准确”，这样做往往会增加 Model Complexity ，但却忽略模型在全数据集的泛化能力，模型在训练数据集的 Bias 减少了，但是对于训练数据集中没有出现的数据，模型对其预测就会很不稳定，这样就会造成高 Variance ，这也就是常说的 over-fitting ，为了避免 over-fitting，就不能完全依赖于有限的训练数据，这时可以加入一些先验信息，先验信息在模型求解的过程中会增加一些限制，提高模型的稳定程度，同时减少 Model Complexity，进而可以降低 Variance，但是由于“不信任”训练数据，会使模型的 Bias 增大, 或者训练不足时，模型拟合能力不够，训练数据的扰动不足以使模型拟合其真实情况，这时候 Bias 太大，模型对训练数据的预测能力就会下降，这便是 under-fitting 了，所以需要要 Bias 与 Variance 之间 寻找一个 tradeoff。</strong></p>
 <p>因为 Noise 是不可避免的，这里忽略 Noise ，根据 Bias 、Variance 与 Model  Complexity 之间的关系，可以得到下图左所示的图形，该图表示在训练数据上几个量之间的关系，为了找到最优的模型，</p>
 <p>在训练集中 Bias 下降与 Variance 上升的过程中来找到所谓的  tradeoff ，这时的 Model Complexity 是适中的，找到了这个 tradeoff ，在全数据集或者预测集上的预测集上的表现如下图右所示，所以 Bias 与 Variance 需要适中，才会得到在训练集与测试集误差都小的模型。</p>
