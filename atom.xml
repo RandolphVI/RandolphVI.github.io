@@ -83,18 +83,18 @@
     <link href="http://randolph.pro/2017/01/03/%3CMachine%20Learning%3E%20Clustering/"/>
     <id>http://randolph.pro/2017/01/03/&lt;Machine Learning&gt; Clustering/</id>
     <published>2017-01-02T16:00:00.000Z</published>
-    <updated>2017-07-27T08:38:49.000Z</updated>
+    <updated>2017-07-27T08:42:36.000Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fhxi0z29mdj30sg11c77u.jpg" alt=""></p>
 <p>关于该书的其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/Book-「Machine-Learning」/">「Machine Learning」</a></p>
-<h1 id="Clustering"><a href="#Clustering" class="headerlink" title="Clustering"></a>Clustering</h1><h1 id="聚类介绍："><a href="# 聚类介绍：" class="headerlink" title="聚类介绍："></a>聚类介绍：</h1><ul>
+<h1 id="Clustering"><a href="#Clustering" class="headerlink" title="Clustering"></a>Clustering</h1><h1 id="聚类介绍"><a href="# 聚类介绍" class="headerlink" title="聚类介绍"></a>聚类介绍</h1><ul>
 <li>聚类是从数据集中挖掘相似观测值集合的方法.</li>
 <li>聚类试图将数据集中的样本划分为若干个通常是不相交的子集，每个子集称为一个“簇”(cluster)。通过这样的划分，每个簇可能对应于一些潜在的概念(类别)。</li>
 <li>聚类过程仅能自动形成簇结构，簇所对应的概念语义需由使用者自己来把握。</li>
 <li>聚类既能作为一个单独的过程用于寻找数据内在的分布结构，也可以作为分类等其他学习任务的前驱过程。</li>
 </ul>
 <hr>
-<h3 id="1-1- 聚类算法："><a href="#1-1- 聚类算法：" class="headerlink" title="1.1 聚类算法："></a><strong>1.1 聚类算法：</strong></h3><p><strong>角度 I：</strong></p>
+<h2 id="聚类算法"><a href="# 聚类算法" class="headerlink" title="聚类算法"></a>聚类算法 </h2><p><strong> 角度 I：</strong></p>
 <ul>
 <li><strong>基于原型的聚类(Prototype-based Clustering)</strong><ul>
 <li><strong>K 均值聚类(K-means)</strong></li>
@@ -123,7 +123,7 @@
 <li><strong>其他聚类方法: 谱聚类, Chameleon, Canopy…</strong></li>
 </ul>
 <hr>
-<h3 id="1-2- 聚类数据设置："><a href="#1-2- 聚类数据设置：" class="headerlink" title="1.2 聚类数据设置："></a><strong>1.2 聚类数据设置：</strong></h3><p>假定样本集 $ D $ 包含 $n$ 个无标记样本:</p>
+<h2 id="聚类数据设置"><a href="# 聚类数据设置" class="headerlink" title="聚类数据设置"></a>聚类数据设置 </h2><p> 假定样本集 $ D $ 包含 $n$ 个无标记样本:</p>
 <script type="math/tex; mode=display">
 D = \{x_1, x_2, \ldots, x_n \}</script><p>每个样本是一个 $p$ 维特征向量:</p>
 <script type="math/tex; mode=display">
@@ -137,7 +137,7 @@ x_i=(x_{i1}; x_{i2}; \ldots; x_{ip})</script><p>聚类算法将样本集 $D$ 划
 x_{i} \in C_{\lambda_{i}}</script><p>于是，聚类的结果可用包含 $n$ 个元素的簇标记向量表示</p>
 <script type="math/tex; mode=display">
 \lambda=(\lambda_{1}; \lambda_{2}, \ldots, \lambda_{n})</script><hr>
-<h3 id="1-3- 聚类性能度量："><a href="#1-3- 聚类性能度量：" class="headerlink" title="1.3 聚类性能度量："></a><strong>1.3 聚类性能度量：</strong></h3><p><strong>聚类性能度量亦称聚类“有效性指标”(validity index).</strong></p>
+<h2 id="聚类性能度量"><a href="# 聚类性能度量" class="headerlink" title="聚类性能度量"></a>聚类性能度量 </h2><p><strong> 聚类性能度量亦称聚类“有效性指标”(validity index).</strong></p>
 <p><strong>设置聚类性能度量的目的:</strong></p>
 <ul>
 <li>对聚类结果，通过某种性能度量来评估其好坏；</li>
@@ -213,7 +213,7 @@ ARI  = \frac{Rand \ Index - expected \ index}{maximum \ index - expected \ index
 <p>进行进一步的展开推导后：</p>
 <script type="math/tex; mode=display">
 API = \frac{\frac{a+d}{a+b+c+d} - \frac{(a+b)(a+c)+(c+d)(b+d)}{(a+b+c+d)^2}}{\frac{(a+b)(a+c)+(c+d)(b+d)}{(a+b+c+d)^2}}</script><p>ARI 系数结果分布在 [-1,1] 区间，负数代表结果不好，越接近于 1 意味着聚类结果与真实情况越吻合。个人总结，ARI 系数对于任意数量的聚类中心和样本数，随机聚类的 ARI 都非常接近于 0。ARI 相比于 RI 好在，它是负数的时候就说明我们自己的模型很糟糕，有个更加相对明确的评判标准。(从广义的角度上来说，ARI 衡量的是两个数据分布的吻合程度)</p>
-<h2 id="举个具体例子计算 ARI"><a href="# 举个具体例子计算 ARI" class="headerlink" title="举个具体例子计算 ARI"></a>举个具体例子计算 ARI</h2><p>Let $n<em>{ij}$ be the number of objects that are in both class $u</em>{i}$ and cluster $v<em>{j}$. Let $n</em>{i.}$ and $n<em>{.j}$ be the number of objects in class $u</em>{i}$ and cluster $v_{j}$ respectively.The notations are illustrated in Table below:</p>
+<h1 id="举个具体例子计算 -ARI"><a href="# 举个具体例子计算 -ARI" class="headerlink" title="举个具体例子计算 ARI"></a>举个具体例子计算 ARI</h1><p>Let $n<em>{ij}$ be the number of objects that are in both class $u</em>{i}$ and cluster $v<em>{j}$. Let $n</em>{i.}$ and $n<em>{.j}$ be the number of objects in class $u</em>{i}$ and cluster $v_{j}$ respectively.The notations are illustrated in Table below:</p>
 <script type="math/tex; mode=display">
 \begin{array}{c|cccc|c}
 Class \ Cluster & v_{1}  & v_{2} & ... & v_{C} & Sums \cr
@@ -292,7 +292,7 @@ DI=\underset{1 \leqslant i \leqslant k}{min}\bigg\{\underset{j \neq i}{min}\bigg
 <p>Being defined in this way, the <em>DI</em> depends on $k$, the number of clusters in the set. If the number of clusters is not known apriori, the $k$ for which the <em>DI</em> is the highest can be chosen as the number of clusters. There is also some flexibility when it comes to the definition of d(x,y) where any of the well known metrics can be used, like <a href="https://en.wikipedia.org/wiki/Manhattan_distance" target="_blank" rel="external">Manhattan distance</a> or <a href="https://en.wikipedia.org/wiki/Euclidean_distance" target="_blank" rel="external">Euclidean distance</a> based on the geometry of the clustering problem. <strong>This formulation has a peculiar problem, in that if one of the clusters is badly behaved, where the others are tightly packed, since the denominator contains a ‘max’ term instead of an average term, the Dunn Index for that set of clusters will be uncharacteristically low. This is thus some sort of a worst case indicator, and has to be kept in mind.</strong></p>
 </blockquote>
 <p>DI 系数结果为非负数，值越大意味着簇间距离越大，同时簇内距离越小。个人总结，DI 系数计算的是，任意两个簇的最短距离（簇间）除以任意簇中的最大距离（簇内），其优点是对于离散点的聚类评测效果不错，但缺点是对于环状分布评测效果比较差。还有上述重点提到的，因为分母采用的是取一个 max 距离而不是取平均值 average，所以会出现一个奇怪的问题，对于某个聚类效果特别差的一个簇，它可能”一个老鼠屎坏了一锅粥”这种，导致 DI 系数会特别低，这也是当我们需要使用 DI 系数时，对于某些聚类表现非常差的簇需要注意的原因。</p>
-<h3 id="1-4- 聚类距离计算"><a href="#1-4- 聚类距离计算" class="headerlink" title="1.4 聚类距离计算"></a><strong>1.4 聚类距离计算 </strong></h3><p><strong> 距离度量 (distance measure) 函数 $dist(,)$ 需满足的基本性质：</strong></p>
+<h2 id="聚类距离计算"><a href="# 聚类距离计算" class="headerlink" title="聚类距离计算"></a>聚类距离计算 </h2><p><strong> 距离度量 (distance measure) 函数 $dist(,)$ 需满足的基本性质：</strong></p>
 <ul>
 <li><strong>非负性</strong>：$dist(x<em>{i}, x</em>{j}) \geqslant 0$</li>
 <li><strong>同一性</strong>：$dist(x<em>{i}, x</em>{j})=0$ 当且仅当 $x<em>{i}=x</em>{j}$</li>
@@ -329,7 +329,7 @@ MinkovDM_{p}(x_{i}, x_{j})=\bigg(\sum^{n_{c}}_{u=1}|x_{i,u}-x_{j,u}|^{p}+\sum^{n
 <script type="math/tex; mode=display">
 dist_{wmk}(x_{i}, x_{j})=(w_{1}\cdot|x_{i1}-x_{j1}|^{p}+w_{2}\cdot|x_{i2}-x_{j2}|^{p}+\ldots+w_{n}\cdot|x_{in}-x_{jn}|^{p})^{\frac{1}{p}}</script><p>其中: 权重 $w<em>{i} \geqslant 0(i=1, 2, \ldots, p)$ 表示不同属性的重要性，通常 $\sum</em>{i=1}^{n}w_{i}=1$.</p>
 <hr>
-<h2 id="2- 聚类算法介绍及实现"><a href="#2- 聚类算法介绍及实现" class="headerlink" title="2 聚类算法介绍及实现"></a><strong>2 聚类算法介绍及实现 </strong></h2><p><strong> 聚类算法类型：</strong></p>
+<h1 id="聚类算法介绍及实现"><a href="# 聚类算法介绍及实现" class="headerlink" title="聚类算法介绍及实现"></a>聚类算法介绍及实现 </h1><p><strong> 聚类算法类型：</strong></p>
 <ul>
 <li><p><strong>基于原型的聚类(Prototype-based Clustering)</strong></p>
 <ul>
@@ -344,7 +344,7 @@ dist_{wmk}(x_{i}, x_{j})=(w_{1}\cdot|x_{i1}-x_{j1}|^{p}+w_{2}\cdot|x_{i2}-x_{j2}
 </li>
 </ul>
 <hr>
-<h3 id="2-1- 基于原型的聚类"><a href="#2-1- 基于原型的聚类" class="headerlink" title="2.1 基于原型的聚类"></a><strong>2.1 基于原型的聚类 </strong></h3><p><strong> 基于原型的聚类(Prototype-based Clustering), 此类算法假设聚类结构能通过一组原形刻画. 通常情况下, 算法先对原型进行初始化, 然后对原型进行迭代更新求解, 采用不同的原型表示, 不同的求解方式, 将产生不同的算法.</strong></p>
+<h2 id="基于原型的聚类"><a href="# 基于原型的聚类" class="headerlink" title="基于原型的聚类"></a>基于原型的聚类 </h2><p><strong> 基于原型的聚类(Prototype-based Clustering), 此类算法假设聚类结构能通过一组原形刻画. 通常情况下, 算法先对原型进行初始化, 然后对原型进行迭代更新求解, 采用不同的原型表示, 不同的求解方式, 将产生不同的算法.</strong></p>
 <ul>
 <li><strong>基于原型的聚类(Prototype-based Clustering)</strong><ul>
 <li><strong>K 均值聚类(K-means)</strong></li>
@@ -353,7 +353,7 @@ dist_{wmk}(x_{i}, x_{j})=(w_{1}\cdot|x_{i1}-x_{j1}|^{p}+w_{2}\cdot|x_{i2}-x_{j2}
 </ul>
 </li>
 </ul>
-<h4 id="2-1-1-K 均值聚类 -K-means"><a href="#2-1-1-K 均值聚类 -K-means" class="headerlink" title="2.1.1 K 均值聚类 (K-means)"></a><strong>2.1.1 K 均值聚类(K-means)</strong></h4><h5 id="1- 算法介绍"><a href="#1- 算法介绍" class="headerlink" title="(1) 算法介绍"></a><strong>(1) 算法介绍</strong></h5><p> 给定样本集 $D= \lbrace x<em>{1}, x</em>{2}, \ldots, x<em>{n} \rbrace$, K-means 算法针对聚类所得簇划分 $C= \lbrace C</em>{1}, C<em>{2}, \ldots, C</em>{k} \rbrace$ , 最小化平方误差:</p>
+<h3 id="K 均值聚类 -K-means"><a href="#K 均值聚类 -K-means" class="headerlink" title="K 均值聚类 (K-means)"></a>K 均值聚类(K-means)</h3><h4 id="算法介绍"><a href="# 算法介绍" class="headerlink" title="算法介绍"></a> 算法介绍 </h4><p> 给定样本集 $D= \lbrace x<em>{1}, x</em>{2}, \ldots, x<em>{n} \rbrace$, K-means 算法针对聚类所得簇划分 $C= \lbrace C</em>{1}, C<em>{2}, \ldots, C</em>{k} \rbrace$ , 最小化平方误差:</p>
 <script type="math/tex; mode=display">
 E = \sum^{k}_{i=1}\sum_{x \in C_{i}}|x-\mu_{i}|_{2}^{2}</script><p>其中 $\mu<em>{i}$ 是簇 $C</em>{i}$ 的均值向量：</p>
 <script type="math/tex; mode=display">
@@ -385,20 +385,20 @@ E = \sum^{k}_{i=1}\sum_{x \in C_{i}}|x-\mu_{i}|_{2}^{2}</script><p>其中 $\mu<e
 </ol>
 <p><strong>输出:</strong>  簇划分 $C= \lbrace C<em>{1}, C</em>{2}, \ldots, C_{k} \rbrace $.</p>
 </blockquote>
-<h5 id="2- 算法实现 -（R 语言）"><a href="#2- 算法实现 -（R 语言）" class="headerlink" title="(2) 算法实现 （R 语言）"></a><strong>(2) 算法实现 （R 语言）</strong></h5><p>Python 的实现可以参考《Programming Collective Intelligence》 Chapter 3 那篇文章。</p>
+<h4 id="算法实现 -（R 语言）"><a href="# 算法实现 -（R 语言）" class="headerlink" title="算法实现 （R 语言）"></a>算法实现 （R 语言）</h4><p>Python 的实现可以参考《Programming Collective Intelligence》 Chapter 3 那篇文章。</p>
 <figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">head(iris)</div></pre></td></tr></table></figure>
 <figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">  Sepal.Length Sepal.Width Petal.Length Petal.Width Species</div><div class="line"><span class="number">1</span>          <span class="number">5.1</span>         <span class="number">3.5</span>          <span class="number">1.4</span>         <span class="number">0.2</span>  setosa</div><div class="line"><span class="number">2</span>          <span class="number">4.9</span>         <span class="number">3.0</span>          <span class="number">1.4</span>         <span class="number">0.2</span>  setosa</div><div class="line"><span class="number">3</span>          <span class="number">4.7</span>         <span class="number">3.2</span>          <span class="number">1.3</span>         <span class="number">0.2</span>  setosa</div><div class="line"><span class="number">4</span>          <span class="number">4.6</span>         <span class="number">3.1</span>          <span class="number">1.5</span>         <span class="number">0.2</span>  setosa</div><div class="line"><span class="number">5</span>          <span class="number">5.0</span>         <span class="number">3.6</span>          <span class="number">1.4</span>         <span class="number">0.2</span>  setosa</div><div class="line"><span class="number">6</span>          <span class="number">5.4</span>         <span class="number">3.9</span>          <span class="number">1.7</span>         <span class="number">0.4</span>  setosa</div></pre></td></tr></table></figure>
 <p>After a little bit of exploration, I found that Petal.Length and Petal.Width were similar among the same species but varied considerably between different species, as demonstrated below:</p>
 <figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">library</span>(ggplot2)</div><div class="line">ggplot(iris, aes(Petal.Length, Petal.Width, color = Species)) + geom_point()</div></pre></td></tr></table></figure>
 <p><img src="https://farm1.staticflickr.com/33/31680514905_7dba9b551a_o.jpg" alt=""></p>
-<h3 id="Clustering-1"><a href="#Clustering-1" class="headerlink" title="Clustering"></a><strong>Clustering</strong></h3><figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">set.seed(<span class="number">20</span>)</div><div class="line">irisCluster &lt;- kmeans(iris[, <span class="number">3</span>:<span class="number">4</span>], centers = <span class="number">3</span>, nstart = <span class="number">20</span>)</div><div class="line">irisCluster</div></pre></td></tr></table></figure>
+<h2 id="Clustering-1"><a href="#Clustering-1" class="headerlink" title="Clustering"></a>Clustering</h2><figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">set.seed(<span class="number">20</span>)</div><div class="line">irisCluster &lt;- kmeans(iris[, <span class="number">3</span>:<span class="number">4</span>], centers = <span class="number">3</span>, nstart = <span class="number">20</span>)</div><div class="line">irisCluster</div></pre></td></tr></table></figure>
 <figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">K-means clustering with <span class="number">3</span> clusters of sizes <span class="number">50</span>, <span class="number">52</span>, <span class="number">48</span></div><div class="line"></div><div class="line">Cluster means:</div><div class="line">  Petal.Length Petal.Width</div><div class="line"><span class="number">1</span>     <span class="number">1.462000</span>    <span class="number">0.246000</span></div><div class="line"><span class="number">2</span>     <span class="number">4.269231</span>    <span class="number">1.342308</span></div><div class="line"><span class="number">3</span>     <span class="number">5.595833</span>    <span class="number">2.037500</span></div><div class="line"></div><div class="line">Clustering vector:</div><div class="line">  [<span class="number">1</span>] <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span></div><div class="line"> [<span class="number">33</span>] <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">2</span> <span class="number">2</span> <span class="number">2</span> <span class="number">2</span> <span class="number">2</span> <span class="number">2</span> <span class="number">2</span> <span class="number">2</span> <span class="number">2</span> <span class="number">2</span> <span class="number">2</span> <span class="number">2</span> <span class="number">2</span> <span class="number">2</span></div><div class="line"> [<span class="number">65</span>] <span class="number">2</span> <span class="number">2</span> <span class="number">2</span> <span class="number">2</span> <span class="number">2</span> <span class="number">2</span> <span class="number">2</span> <span class="number">2</span> <span class="number">2</span> <span class="number">2</span> <span class="number">2</span> <span class="number">2</span> <span class="number">2</span> <span class="number">3</span> <span class="number">2</span> <span class="number">2</span> <span class="number">2</span> <span class="number">2</span> <span class="number">2</span> <span class="number">3</span> <span class="number">2</span> <span class="number">2</span> <span class="number">2</span> <span class="number">2</span> <span class="number">2</span> <span class="number">2</span> <span class="number">2</span> <span class="number">2</span> <span class="number">2</span> <span class="number">2</span> <span class="number">2</span> <span class="number">2</span></div><div class="line"> [<span class="number">97</span>] <span class="number">2</span> <span class="number">2</span> <span class="number">2</span> <span class="number">2</span> <span class="number">3</span> <span class="number">3</span> <span class="number">3</span> <span class="number">3</span> <span class="number">3</span> <span class="number">3</span> <span class="number">2</span> <span class="number">3</span> <span class="number">3</span> <span class="number">3</span> <span class="number">3</span> <span class="number">3</span> <span class="number">3</span> <span class="number">3</span> <span class="number">3</span> <span class="number">3</span> <span class="number">3</span> <span class="number">3</span> <span class="number">3</span> <span class="number">2</span> <span class="number">3</span> <span class="number">3</span> <span class="number">3</span> <span class="number">3</span> <span class="number">3</span> <span class="number">3</span> <span class="number">2</span> <span class="number">3</span></div><div class="line">[<span class="number">129</span>] <span class="number">3</span> <span class="number">3</span> <span class="number">3</span> <span class="number">3</span> <span class="number">3</span> <span class="number">3</span> <span class="number">3</span> <span class="number">3</span> <span class="number">3</span> <span class="number">3</span> <span class="number">2</span> <span class="number">3</span> <span class="number">3</span> <span class="number">3</span> <span class="number">3</span> <span class="number">3</span> <span class="number">3</span> <span class="number">3</span> <span class="number">3</span> <span class="number">3</span> <span class="number">3</span> <span class="number">3</span></div><div class="line"></div><div class="line">Within cluster sum of squares by cluster:</div><div class="line">[<span class="number">1</span>]  <span class="number">2.02200</span> <span class="number">13.05769</span> <span class="number">16.29167</span></div><div class="line"> (between_SS / total_SS =  <span class="number">94.3</span> %)</div><div class="line"></div><div class="line">Available components:</div><div class="line"></div><div class="line">[<span class="number">1</span>] <span class="string">"cluster"</span>      <span class="string">"centers"</span>      <span class="string">"totss"</span>        <span class="string">"withinss"</span>    </div><div class="line">[<span class="number">5</span>] <span class="string">"tot.withinss"</span> <span class="string">"betweenss"</span>    <span class="string">"size"</span>         <span class="string">"iter"</span>        </div><div class="line">[<span class="number">9</span>] <span class="string">"ifault"</span></div></pre></td></tr></table></figure>
 <figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">table(irisCluster$cluster, iris$Species)</div></pre></td></tr></table></figure>
 <figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"> </div><div class="line">  setosa versicolor virginica</div><div class="line"><span class="number">1</span>     <span class="number">50</span>          <span class="number">0</span>         <span class="number">0</span></div><div class="line"><span class="number">2</span>      <span class="number">0</span>         <span class="number">48</span>         <span class="number">4</span></div><div class="line"><span class="number">3</span>      <span class="number">0</span>          <span class="number">2</span>        <span class="number">46</span></div></pre></td></tr></table></figure>
 <figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; irisCluster$cluster &lt;- as.factor(irisCluster$cluster)</div><div class="line">&gt; ggplot(iris, aes(Petal.Length, Petal.Width, color = irisCluster$cluster)) + geom_point()</div></pre></td></tr></table></figure>
 <p><img src="https://farm1.staticflickr.com/353/31565301411_fc7281b525_o.jpg" alt=""></p>
 <hr>
-<h4 id="2-1-2- 学习向量量化聚类 -Learning-vector-Quantization"><a href="#2-1-2- 学习向量量化聚类 -Learning-vector-Quantization" class="headerlink" title="2.1.2 学习向量量化聚类(Learning vector Quantization)"></a><strong>2.1.2 学习向量量化聚类(Learning vector Quantization)</strong></h4><h5 id="1- 算法介绍 -1"><a href="#1- 算法介绍 -1" class="headerlink" title="(1) 算法介绍"></a><strong>(1) 算法介绍</strong></h5><p><strong>LVQ 假设数据样本带有类别标记, 学习过程利用样本的这些监督信息来辅助聚类。</strong></p>
+<h3 id="学习向量量化聚类 -Learning-vector-Quantization"><a href="# 学习向量量化聚类 -Learning-vector-Quantization" class="headerlink" title="学习向量量化聚类 (Learning vector Quantization)"></a> 学习向量量化聚类 (Learning vector Quantization)</h3><h4 id="算法介绍 -1"><a href="# 算法介绍 -1" class="headerlink" title="算法介绍"></a> 算法介绍</h4><p><strong>LVQ 假设数据样本带有类别标记, 学习过程利用样本的这些监督信息来辅助聚类。</strong></p>
 <p>给定样本集 $D=\lbrace (x<em>{1}, y</em>{1}), (x<em>{2}, y</em>{2}), \ldots, (x<em>{m}, y</em>{m}) \rbrace$, 每个样本 $x<em>{j}$ 是由 $n$ 个属性描述的特征向量 $(x</em>{j1}; x<em>{j2}; \ldots; x</em>{jn})$,$y<em>{j} \in \mathcal{Y}$ 是样本 $x</em>{j}$ 的类别标记. LVQ 的目标是学得一组 $n$ 维原型向量 $ \lbrace p<em>{1}, p</em>{2}, \ldots, p<em>{q} \rbrace$, 每个原型向量代表一个聚类簇，簇标记为 $t</em>{i}\in \mathcal{Y}$.</p>
 <p><strong>算法</strong></p>
 <blockquote>
@@ -451,7 +451,7 @@ R_{i}= \lbrace x \in \mathcal{X} \ |\ ||x-p_{i}||_{2} \leqslant ||x-p_{i'}||_{2}
 </ul>
 </li>
 </ul>
-<h5 id="2- 算法实现"><a href="#2- 算法实现" class="headerlink" title="(2) 算法实现"></a><strong>(2) 算法实现 </strong></h5><h5 id="3- 补充"><a href="#3- 补充" class="headerlink" title="(3) 补充"></a><strong>(3) 补充</strong></h5><h6 id="竞争型学习"><a href="# 竞争型学习" class="headerlink" title="竞争型学习"></a> 竞争型学习 </h6><p> 竞争型学习是神经网络中一种常见的无监督学习策略，在使用该策略时，网络的输出神经元相互竞争，每一时刻仅有一个竞争获胜的神经元被激活，其他神经元的状态被抑制。这种机制亦称为”胜者通吃”(winner-take-all)原则。</p>
+<h4 id="2- 算法实现"><a href="#2- 算法实现" class="headerlink" title="(2) 算法实现"></a><strong>(2) 算法实现 </strong></h4><h4 id="3- 补充"><a href="#3- 补充" class="headerlink" title="(3) 补充"></a><strong>(3) 补充</strong></h4><h6 id="竞争型学习"><a href="# 竞争型学习" class="headerlink" title="竞争型学习"></a> 竞争型学习 </h6><p> 竞争型学习是神经网络中一种常见的无监督学习策略，在使用该策略时，网络的输出神经元相互竞争，每一时刻仅有一个竞争获胜的神经元被激活，其他神经元的状态被抑制。这种机制亦称为”胜者通吃”(winner-take-all)原则。</p>
 <h6 id="ART 网络"><a href="#ART 网络" class="headerlink" title="ART 网络"></a>ART 网络</h6><p>ART(Adaptive Resonance Theory, 自适应谐振理论）网络「Carpenter and Grossberg, 1987」是竞争型学习的重要代表。该网络由比较层、识别层、识别阈值和重置模块构成。其中，比较层负责接收输入样本，并将其传递给识别层神经元。识别层每个神经元对应一个模式类（模式类可以认为是某类别的“子类”），神经元数目可在训练过程中动态增长以增加新的模式类。</p>
 <p>在接收到比较层的输入信号后，识别层神经元之间相互竞争以产生获胜神经元。竞争的最简单方式是，计算输入向量与每个识别层神经元所对应的模式类的代表向量之间的距离，距离最小者胜．获胜神经元将向其他识别层神经元发送信号，抑制其激活。若输入向量与获胜神经元所对应的代表向量之间的相似度大于识别阈值，则当前输入样本将被归为该代表向量所属类别，同时，网络 连接权将会更新，使得以后在接收到相似输入样本时该模式类会计算出更大的相似度，从而使该获胜神经元有更大可能获胜；若相似度不大于识别阈值，则重置模块将在识别层增设一个新的神经元，其代表向量就设置为当前输入向量。</p>
 <p>显然，识别阈值对 ART 网络的性能有重要影响。当识别阈值较高时，输入样本将会被分成比较多、比较精细的模式类，而如果识别阈值较低，则会产生比较少、比较粗略的模式类。</p>
@@ -461,7 +461,7 @@ R_{i}= \lbrace x \in \mathcal{X} \ |\ ||x-p_{i}||_{2} \leqslant ||x-p_{i'}||_{2}
 <p><img src="https://farm6.staticflickr.com/5569/31429001070_b16d937809_o.png" alt=""></p>
 <p>如图所示，SOM 网络中的输出层神经元以矩阵方式排列在二维空间中，每个神经元都拥有一个权向量，网络在接收输入向量后，将会确定输出层获胜神经元，它决定了该输入向量在低维空间中的位置。SOM 的训练目标就是为每个输出层神经元找到合适的权向量，以达到保持拓扑结构的目的。 SOM 的训练过程很简单：在接收到一个训练样本后，每个输出层神经元会计算该样本与自身携带的权向量之间的距离，距离最近的神经元成为竞争获胜者，称为最佳匹配单元（best matching unit)。然后，最佳匹配单元及其邻近神经元的权向量将被调整，以使得这些权向量与当前输入样本的距离缩小。这个过程不断迭代，直至收敛。</p>
 <hr>
-<h4 id="2-1-3- 高斯混合聚类 -Mixture-of-Gaussian"><a href="#2-1-3- 高斯混合聚类 -Mixture-of-Gaussian" class="headerlink" title="2.1.3 高斯混合聚类 (Mixture-of-Gaussian)"></a><strong>2.1.3 高斯混合聚类(Mixture-of-Gaussian)</strong></h4><h5 id="1- 算法介绍 -2"><a href="#1- 算法介绍 -2" class="headerlink" title="(1) 算法介绍"></a><strong>(1) 算法介绍</strong></h5><p> 与 $k$ 均值、LVQ 用原型向量来刻画聚类结构不同，<strong>高斯混合聚类 (Mixture-of-Gaussian) 采用概率模型来表达聚类原型</strong>。</p>
+<h4 id="2-1-3- 高斯混合聚类 -Mixture-of-Gaussian"><a href="#2-1-3- 高斯混合聚类 -Mixture-of-Gaussian" class="headerlink" title="2.1.3 高斯混合聚类 (Mixture-of-Gaussian)"></a><strong>2.1.3 高斯混合聚类(Mixture-of-Gaussian)</strong></h4><h5 id="1- 算法介绍"><a href="#1- 算法介绍" class="headerlink" title="(1) 算法介绍"></a><strong>(1) 算法介绍</strong></h5><p> 与 $k$ 均值、LVQ 用原型向量来刻画聚类结构不同，<strong>高斯混合聚类 (Mixture-of-Gaussian) 采用概率模型来表达聚类原型</strong>。</p>
 <h6 id="I- 多元 - 高斯分布："><a href="#I- 多元 - 高斯分布：" class="headerlink" title="(I) (多元)高斯分布："></a><strong>(I) (多元)高斯分布：</strong></h6><p>对 $n$ 维样本空间 $\mathcal{X}$ 中的随机向量 $x$，若 $x$ 服从 (多元) 高斯分布，其概率密度函数为：</p>
 <script type="math/tex; mode=display">
 p(x| \mu, \Sigma)=\frac{1}{(2\pi)^{\frac{n}{2}}|\Sigma|^{\frac{1}{2}}} e^{- \frac{1}{2} (x-\mu)^{T} \Sigma^{-1} (x-\mu)}</script><p>其中：$\mu​$ 是 $n​$ 维均值向量，$\Sigma​$ 是 $n \times n​$ 协方差矩阵。($\Sigma​$：对称正定矩阵；$|\Sigma|​$：$\Sigma​$ 的行列式；$\Sigma^{1}​$：$\Sigma​$ 的逆矩阵   )</p>
@@ -1621,7 +1621,7 @@ AC & (1,2)(-2),(0,1)(-1),(0,1)(-1),(0,1)(-1),(2,1)(-1),(EOB)(0,0)
     <link href="http://randolph.pro/2015/11/13/%3CWeb%20Scraping%20with%20Python%3E%20Chapter%203/"/>
     <id>http://randolph.pro/2015/11/13/&lt;Web Scraping with Python&gt; Chapter 3/</id>
     <published>2015-11-12T16:00:00.000Z</published>
-    <updated>2017-07-27T00:54:55.000Z</updated>
+    <updated>2017-07-27T08:46:19.000Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fhwh5fcvm3j30t612ah43.jpg" alt=""></p>
 <p> 关于该书的其他学习笔记系列：<a href="http://randolph.pro/categories/Web-Scraping/Book-「Web-Scraping-with-Python」/">「Web Scraping with Python」</a></p>
@@ -1663,7 +1663,8 @@ AC & (1,2)(-2),(0,1)(-1),(0,1)(-1),(0,1)(-1),(2,1)(-1),(EOB)(0,0)
 </li>
 <li><p>The mapping was added to six version 1.5.0; make sure you have that version or newer.</p>
 </li>
-<li><p>Mac comes with six version 1.4.1 pre-installed in the path:  /System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python and this will interfere with any version you install in site-packages (which is listed last in the sys.path).</p>
+<li><p>Mac comes with six version 1.4.1 pre-installed in the path:  </p>
+<p>/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python and this will interfere with any version you install in site-packages (which is listed last in the sys.path).</p>
 <p>The best work-around is to use a virtualenv and install your own version of six into that, together with whatever else you need for this project. Create a new virtualenv for new projects.</p>
 </li>
 <li><p>If you absolutely have to install this at the system level, then for this specific project you’ll have to remove the /System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python path:</p>

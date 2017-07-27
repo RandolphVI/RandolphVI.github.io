@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://randolph.pro/2015/11/13/%3CWeb%20Scraping%20with%20Python%3E%20Chapter%203/</loc>
+    
+    <lastmod>2017-07-27T08:46:19.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://randolph.pro/2017/01/03/%3CMachine%20Learning%3E%20Clustering/</loc>
     
-    <lastmod>2017-07-27T08:38:49.000Z</lastmod>
+    <lastmod>2017-07-27T08:42:36.000Z</lastmod>
     
   </url>
   
@@ -19,13 +26,6 @@
     <loc>http://randolph.pro/2016/12/26/%3CMachine%20Learning%3E%20Chapter%201/</loc>
     
     <lastmod>2017-07-27T00:57:35.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://randolph.pro/2015/11/13/%3CWeb%20Scraping%20with%20Python%3E%20Chapter%203/</loc>
-    
-    <lastmod>2017-07-27T00:54:55.000Z</lastmod>
     
   </url>
   
