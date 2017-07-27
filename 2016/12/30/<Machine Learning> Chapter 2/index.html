@@ -122,7 +122,7 @@
 <meta property="og:image" content="https://farm1.staticflickr.com/595/30795620304_a815c4ccff_o.png">
 <meta property="og:image" content="https://farm1.staticflickr.com/663/30795629194_9a7a48bc13_o.png">
 <meta property="og:image" content="https://farm1.staticflickr.com/733/31637250505_65b565e6c6_o.png">
-<meta property="og:updated_time" content="2017-07-27T07:06:13.000Z">
+<meta property="og:updated_time" content="2017-07-27T07:10:27.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="♞「Machine Learning」 Chapter 2">
 <meta name="twitter:description" content="本文是关于周志华「Machine Learning」这本书的 Chapter 2 的学习笔记。">
@@ -721,7 +721,7 @@ Error = Bias^2 + Variance + Noises</script><p>对于预测模型问题，如果�
 <p><img src="https://farm6.staticflickr.com/5585/30826966253_eff65097a8_o.png" alt=""></p>
 <p>低 Bias 与低 Variance 才会得到低 Error，但低 Bias 与低 Variance 往往是不能兼得的。如果要降低模型的 Bias，就一定程度上会提高模型的 Variance，反之亦然。这里以 K-NN 为例，看一些 K-NN 中 Bias 与 Variance 与其参数 K 的关系，在 K-NN 中，误差形式如下：</p>
 <script type="math/tex; mode=display">
-Err(x) = [f(x)-\frac{1}{k}\sum_{i=1}^{k}f(x_{i})]^2 + \frac{\delta ^2}{k}+\delta ^2</script><p>这里 $x_{1}，x_{2}，…，x_{k}$ 是 $x$ 在训练数据集中最近的 $k$ 个邻居，当 $k$ 取值很小的时候，Bias 很低，但是 Variance 会比较高。但随着 $k$ 的增大，Bias 变高，Variance 降低，这种现象被称为偏差 - 方差窘境（bias-variance dilemma）。</p>
+Err(x) = [f(x)-\frac{1}{k}\sum_{i=1}^{k}f(x_{i})]^2 + \frac{\delta ^2}{k}+\delta ^2</script><p>这里 $x_{1}，x_{2}，…，x_{k}$ 是 $x$ 在训练数据集中最近的 $k$ 个邻居，当 $k$ 取值很小的时候，Bias 很低，但是 Variance 会比较高。但随着 $k$ 的增大，Bias 变高，Variance 降低，这种现象被称为 <strong> 偏差 - 方差窘境（bias-variance dilemma）</strong>。</p>
 <p><strong>因为预测模型试图用有限的训练样本上去得到一个用来预测全数据集的模型，为了降低模型的误差率，就要尽量使模型在训练数据集上更加“准确”，这样做往往会增加 Model Complexity ，但却忽略模型在全数据集的泛化能力，模型在训练数据集的 Bias 减少了，但是对于训练数据集中没有出现的数据，模型对其预测就会很不稳定，这样就会造成高 Variance ，这也就是常说的 over-fitting ，为了避免 over-fitting，就不能完全依赖于有限的训练数据，这时可以加入一些先验信息，先验信息在模型求解的过程中会增加一些限制，提高模型的稳定程度，同时减少 Model Complexity，进而可以降低 Variance，但是由于“不信任”训练数据，会使模型的 Bias 增大, 或者训练不足时，模型拟合能力不够，训练数据的扰动不足以使模型拟合其真实情况，这时候 Bias 太大，模型对训练数据的预测能力就会下降，这便是 under-fitting 了，所以需要要 Bias 与 Variance 之间 寻找一个 tradeoff。</strong></p>
 <p>因为 Noise 是不可避免的，这里忽略 Noise ，根据 Bias 、Variance 与 Model  Complexity 之间的关系，可以得到下图左所示的图形，该图表示在训练数据上几个量之间的关系，为了找到最优的模型，</p>
 <p>在训练集中 Bias 下降与 Variance 上升的过程中来找到所谓的  tradeoff ，这时的 Model Complexity 是适中的，找到了这个 tradeoff ，在全数据集或者预测集上的预测集上的表现如下图右所示，所以 Bias 与 Variance 需要适中，才会得到在训练集与测试集误差都小的模型。</p>
@@ -781,7 +781,7 @@ E_{cost} = \frac{m^+ \times (1-TPR) \times cost_{01}+m^- \times FPR \times cost_
 <p>7. 试证明任意一条 ROC 曲线都有一条代价曲线与之对应，反之亦然。</p>
 </blockquote>
 <p>由定义可以知道 TPR 与 FPR 都是由 0 上升到 1 ，那么 FNR 则是由 1 下降到 0 。 </p>
-<p>每条 ROC 曲线都会对应一条代价曲线，由于第一条代价线段的是 (0,0) , (1,1) ，最后是 (0,1) , (1,0) , 所有代价线段总会有一块公共区域，这个区域就是期望总体代价，而这块区域的边界就是代价曲线，且肯定从 (0,0) 到 (1,0) 。 </p>
+<p>每条 ROC 曲线都会对应一条代价曲线，由于第一条代价线段的是 $(0,0)$ , $(1,1)$ ，最后是 $(0,1)$ , $(1,0)$ , 所有代价线段总会有一块公共区域，这个区域就是期望总体代价，而这块区域的边界就是代价曲线，且肯定从 $(0,0)$ 到 $(1,0)$ 。 </p>
 <p>在有限个样本情况下，ROC 是一条折线，此时根据代价曲线无法还原 ROC 曲线。但若是理论上有无限个样本，ROC 是一条连续的折线，代价曲线也是连续的折线，每个点的切线可以求出 TPR 与 FNR，从而得到唯一的 ROC 曲线。</p>
 <hr>
 
