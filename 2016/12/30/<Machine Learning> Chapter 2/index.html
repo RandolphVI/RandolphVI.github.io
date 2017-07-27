@@ -122,7 +122,7 @@
 <meta property="og:image" content="https://farm1.staticflickr.com/595/30795620304_a815c4ccff_o.png">
 <meta property="og:image" content="https://farm1.staticflickr.com/663/30795629194_9a7a48bc13_o.png">
 <meta property="og:image" content="https://farm1.staticflickr.com/733/31637250505_65b565e6c6_o.png">
-<meta property="og:updated_time" content="2017-07-27T07:10:27.000Z">
+<meta property="og:updated_time" content="2017-07-27T09:13:19.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="♞「Machine Learning」 Chapter 2">
 <meta name="twitter:description" content="本文是关于周志华「Machine Learning」这本书的 Chapter 2 的学习笔记。">
@@ -545,7 +545,7 @@ D=D_1 \cup  D_2 \cup ... \cup D_k, D_i \cap  D_j = \varnothing (i \neq j)</scrip
 <li><strong>显然，交叉验证法评估结果的稳定性和保真性在很大程度上取决于 $k$ 的取值，为强调这一点，通常把交叉验证法称为“ $k$ 折交叉验证”($k$-fold cross validation)。</strong>  $k$ 最常用的取值是 10 ，此时称为 10 折交叉验证；其他常用的 $k$ 值有 5 、 20 等。下图是经典的 10 折交叉验证的示意图：</li>
 </ul>
 <p><img src="https://farm6.staticflickr.com/5556/31263252700_81d0f5a7d0_o.png" alt=""></p>
-<p>与留出法相似，将数据集 $D$ 划分为 $k$ 个子集同样存在多种划分方式。为减小因样本划分不同而引入的差别， $k$ 折交叉验证通常要随机使用不同的划分重复 $p​$ 次，最终的评估结果是这 $p$ 次 $k$ 折交叉验证结果的均值，例如常见的有 “ 10 次 10 折交叉验证”。</p>
+<p>与留出法相似，将数据集 $D$ 划分为 $k$ 个子集同样存在多种划分方式。为减小因样本划分不同而引入的差别， $k$ 折交叉验证通常要随机使用不同的划分重复 $p$ 次，最终的评估结果是这 $p$ 次 $k$ 折交叉验证结果的均值，例如常见的有 “ 10 次 10 折交叉验证”。</p>
 <p>“ 10 次 10 折交又验证法”与“ 100 次留出法”都是进行了 100 次训练 / 测试。</p>
 <h3 id="留一法 -Leave-One-Out"><a href="# 留一法 -Leave-One-Out" class="headerlink" title="留一法 (Leave-One-Out)"></a> 留一法 (Leave-One-Out)</h3><p> 假定数据集 $D$ 中包含 $m$ 个样本，若令 $k=m$ 。则得到了交叉验证法的一个特例：留一法（Leave-One-Out，简称 LOO )。显然，留一法不受随机样本划分方式的影响，因为 $m$ 个样本只有唯一的方式划分为 $m$ 个子集，每个子集包含一个样本。</p>
 <p>留一法使用的训练集与初始数据集相比只少了一个样本，这就使得在绝大多数情况下，留一法中被实际评估的模型与期望评估的用 $D$ 训练出的模型很相似。<strong>因此，留一法的评估结果往往被认为比较准确 </strong>（优点）。然而，留一法也有其缺陷：<strong> 在数据集比较大时，训练 $m$ 个模型的计算开销可能是难以忍受的（例如数据集包含一百万个样本，则需训练一百万个模型），而这还是在未考虑算法调参的情况下</strong>（缺点）。另外，留一法的估计结果也未必永远比其他评估方法准确；“没有免费的午餐”定理对实验评估方法同样适用。</p>
@@ -685,7 +685,7 @@ P(+)cost = \frac{p \times cost_{01}}{p \times cost_{01}+ (1-p)\times cost_{10}}<
 cost_{norm} = \frac{FNR \times p \times cost_{01} + FPR \times (1-p) \times cost_{10}}{p \times cost_{01}+ (1-p)\times cost_{10}}</script><p>代价曲线的绘制很简单：设 ROC 曲线上一点的坐标为 $(TPR，FPR)$ ，则可相应计算出 $FNR$ ，然后在代价平面上绘制一条从 $(0，FPR)$ 到 $(1，FNR)$ 的线段，线段下的面积即表示了该条件下的期望总体代价；如此将 ROC 曲线土的每个点转化为代价平面上的一条线段，然后取所有线段的下界，围成的面积即为在所有条件下学习器的期望总体代价，如图所示：</p>
 <p><img src="https://farm6.staticflickr.com/5762/31637147675_4ebdb0d453_o.png" alt=""></p>
 <h3 id="代价敏感错误率与代价曲线 -1"><a href="# 代价敏感错误率与代价曲线 -1" class="headerlink" title="代价敏感错误率与代价曲线"></a>代价敏感错误率与代价曲线 </h3><h3 id="偏差与方差"><a href="# 偏差与方差" class="headerlink" title="偏差与方差"></a> 偏差与方差 </h3><p> 理解 Bias 与 Variance 之间的权衡，有监督学习中，预测误差的来源主要有两部分，分别为 <strong>Bias</strong> 与 <strong>Variance</strong>，模型的性能取决于 bias 与 variance 的 tradeoff，理解 bias 与 variance 有助于我们诊断模型的错误，避免 over-fitting 或者 under-fitting。</p>
-<p>我们知道，同样的算法在不同的数据集上得到的模型结果很可能不同，尽管数据集来自于同一个分部。对于观测数据 $X$ 以及待预测的变量 $Y$ ，假设两者服从 $Y$ = $f(X) + \varepsilon $ ， $ \varepsilon $ 为噪声，其服从的 $N(0,\delta  _{\varepsilon}^2)$ ，预测任务中需要得到 $Y$ 值，首先在数据集上 $D$ 上通过算法学习一个近似 $f(X)$ 的模型 $\hat{f}(X)$ 来预测得到 $X$ 的输出。给定 $X$ 一个观测值 $x$ ，待预测变量 $y = f(x) + \varepsilon$ 。</p>
+<p>我们知道，同样的算法在不同的数据集上得到的模型结果很可能不同，尽管数据集来自于同一个分部。对于观测数据 $X$ 以及待预测的变量 $Y$ ，假设两者服从 $Y = f(X) + \varepsilon$ ， $\varepsilon$ 为噪声，其服从的 $N(0,\delta  _{\varepsilon}^2)$ ，预测任务中需要得到 $Y$ 值，首先在数据集上 $D$ 上通过算法学习一个近似 $f(X)$ 的模型 $\hat{f}(X)$ 来预测得到 $X$ 的输出。给定 $X$ 一个观测值 $x$ ，待预测变量 $y = f(x) + \varepsilon$ 。</p>
 <ul>
 <li>对于样本数量相同的不同训练集模型 $\hat{f}(X)$ 的期望输出为： $E[\hat{f}(X) ]$ 。</li>
 <li>对于样本数量相同的不同训练集模型产生的方差为： $E[\hat{f}(X)-E[\hat{f}(X)]]^2$ 。</li>
