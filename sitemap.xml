@@ -2,16 +2,44 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://randolph.pro/2015/12/13/%3CWeb%20Scraping%20with%20Python%3E%20Other-smtplib%20&%20email/</loc>
+    <loc>http://randolph.pro/2016/12/30/%3CMachine%20Learning%3E%20Chapter%202/</loc>
     
-    <lastmod>2017-07-27T00:40:03.000Z</lastmod>
+    <lastmod>2017-07-27T00:49:00.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://randolph.pro/2015/11/02/%3CWeb%20Scraping%20with%20Python%3E%20Chapter%201%20&%202/</loc>
+    
+    <lastmod>2017-07-27T00:46:14.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://randolph.pro/2015/11/13/%3CWeb%20Scraping%20with%20Python%3E%20Chapter%203/</loc>
     
-    <lastmod>2017-07-27T00:31:17.000Z</lastmod>
+    <lastmod>2017-07-27T00:45:43.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://randolph.pro/2015/11/27/%3CWeb%20Scraping%20with%20Python%3E%20Chapter%204%20&%205/</loc>
+    
+    <lastmod>2017-07-27T00:45:17.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://randolph.pro/2016/12/26/%3CMachine%20Learning%3E%20Chapter%201/</loc>
+    
+    <lastmod>2017-07-27T00:43:45.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://randolph.pro/2015/12/13/%3CWeb%20Scraping%20with%20Python%3E%20Other-smtplib%20&%20email/</loc>
+    
+    <lastmod>2017-07-27T00:40:03.000Z</lastmod>
     
   </url>
   
@@ -37,13 +65,6 @@
   </url>
   
   <url>
-    <loc>http://randolph.pro/2016/12/26/%3CMachine%20Learning%3E%20Chapter%201/</loc>
-    
-    <lastmod>2017-07-27T00:19:09.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://randolph.pro/2015/09/11/%3CNatural%20Language%20Processing%20with%20Python%3E%20Chapter%201%20&%202/</loc>
     
     <lastmod>2017-07-26T11:00:48.000Z</lastmod>
@@ -51,23 +72,9 @@
   </url>
   
   <url>
-    <loc>http://randolph.pro/2015/11/27/%3CWeb%20Scraping%20with%20Python%3E%20Chapter%204%20&%205/</loc>
-    
-    <lastmod>2017-07-26T10:51:52.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://randolph.pro/2016/03/19/%3CProgramming%20Collective%20Intelligence%3E%20Chapter%203/</loc>
     
     <lastmod>2017-07-26T10:37:36.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://randolph.pro/2015/11/02/%3CWeb%20Scraping%20with%20Python%3E%20Chapter%201%20&%202/</loc>
-    
-    <lastmod>2017-07-26T10:37:24.000Z</lastmod>
     
   </url>
   

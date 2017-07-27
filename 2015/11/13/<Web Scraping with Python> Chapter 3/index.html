@@ -111,7 +111,7 @@
 <meta property="og:description" content="本文是关于「Web Scraping with Python」这本书的 Chapter 3 的学习笔记。">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNc79gy1fhwh5fcvm3j30t612ah43.jpg">
-<meta property="og:updated_time" content="2017-07-27T00:31:17.000Z">
+<meta property="og:updated_time" content="2017-07-27T00:45:43.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="♞「Web Scraping with Python」 Chapter 3">
 <meta name="twitter:description" content="本文是关于「Web Scraping with Python」这本书的 Chapter 3 的学习笔记。">
@@ -492,7 +492,7 @@
 <li><strong>urlparse module</strong></li>
 </ul>
 <hr>
-<h1 id="Key："><a href="#Key：" class="headerlink" title="Key："></a>Key：</h1><h2 id="Think-First"><a href="#Think-First" class="headerlink" title="Think First."></a>Think First.</h2><blockquote>
+<h1 id="Key"><a href="#Key" class="headerlink" title="Key:"></a>Key:</h1><h2 id="Think-First"><a href="#Think-First" class="headerlink" title="Think First."></a>Think First.</h2><blockquote>
 <p>What data am I trying to gather? Can this be accomplished by scraping just a few predefined websites (almost always the easier option), or does my crawler need to be able to discover new websites I might not know about?<br> 我需要收集哪些数据？这些数据可以通过采集几个已经确定的网站（永远是最简单的做法）完成吗？或者我需要通过爬虫发现那些我可能不知道的网站从而获取我想要的信息吗？</p>
 <p>When my crawler reaches a particular website, will it immediately follow the next outbound link to a new website, or will it stick around for a while and drill down into the current website?<br> 当我的爬虫到了某一个网站，它是立即顺着下一个出站链接跳转到下一个新网站，还是在网站上呆一会，深入采集网站的内容？</p>
 <p>Are there any conditions under which I would not want to scrape a particular site? Am I interested in non-English content?<br> 有没有我不想采集的一些网站？我对非英文网站的内容感兴趣么？</p>
@@ -509,7 +509,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ scrapy crawl article -o articles.csv -t csv</div><div class="line">$ scrapy crawl article -o articles.json -t json</div><div class="line">$ scrapy crawl article -o articles.xml -t xml</div></pre></td></tr></table></figure>
 <p> 当然我们也可以自己定义 Item 对象，把结果写入我们需要的一个文件或者数据库中，只要在爬虫的 parse 部分增加相应的代码即可。<br>Scrapy 是处理网络数据采集相关问题的利器。它可以自动收集所有 URL，然后和指定的规则进行比较；确保所有的 URL 是唯一的；根据需求对相关的 URL 进行标准化；以及到更深层的页面中递归查询。</p>
 <hr>
-<h1 id="Need-to-know："><a href="#Need-to-know：" class="headerlink" title="Need to know："></a>Need to know：</h1><p> 在「用 Scrapy 采集」的模块中：</p>
+<h1 id="Need-to-know"><a href="#Need-to-know" class="headerlink" title="Need to know:"></a>Need to know:</h1><p> 在「用 Scrapy 采集」的模块中：</p>
 <p> 我们需要下载 <strong><code>scrapy</code></strong> 这一个 package。<strong>「 这个 package 不支持 python3.x 和 python2.6，只能使用 python2.7 。」</strong></p>
 <p> 我的尝试：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ sudo pip install scrapy</div><div class="line">Could not find <span class="keyword">function</span> xmlCheckVersion <span class="keyword">in</span> library libxml2. Is libxml2 installed? </div><div class="line">Perhaps try: xcode-select --install</div></pre></td></tr></table></figure>
@@ -575,7 +575,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">New Scrapy project <span class="string">'wikiSpider'</span> created <span class="keyword">in</span>:</div><div class="line">	/Users/randolph/PycharmProjects/Scraping/wikiSpider</div><div class="line">You can start your first spider with:</div><div class="line">	<span class="built_in">cd</span> wikiSpider</div><div class="line">	scrapy genspider example example.com</div></pre></td></tr></table></figure>
 <p> 成功！scrapy is ready to go!</p>
 <hr>
-<h1 id="Correct-errors-in-printing："><a href="#Correct-errors-in-printing：" class="headerlink" title="Correct errors in printing："></a>Correct errors in printing：</h1><ul>
+<h1 id="Correct-errors-in-printing"><a href="#Correct-errors-in-printing" class="headerlink" title="Correct errors in printing:"></a>Correct errors in printing:</h1><ul>
 <li><strong> 暂无 </strong></li>
 </ul>
 <hr>
@@ -719,7 +719,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">Posts</span>
               </a>
             </div>
@@ -849,7 +849,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Related"><span class="nav-number">1.</span> <span class="nav-text">Related</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Key："><span class="nav-number">2.</span> <span class="nav-text">Key：</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Think-First"><span class="nav-number">2.1.</span> <span class="nav-text">Think First.</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#urlparse-module"><span class="nav-number">2.2.</span> <span class="nav-text">urlparse module</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#urlparse-function"><span class="nav-number">2.2.1.</span> <span class="nav-text">urlparse function</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#scrapy"><span class="nav-number">2.3.</span> <span class="nav-text">scrapy</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Need-to-know："><span class="nav-number">3.</span> <span class="nav-text">Need to know：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Correct-errors-in-printing："><span class="nav-number">4.</span> <span class="nav-text">Correct errors in printing：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Practice"><span class="nav-number">5.</span> <span class="nav-text">Practice:</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Related"><span class="nav-number">1.</span> <span class="nav-text">Related</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Key"><span class="nav-number">2.</span> <span class="nav-text">Key:</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Think-First"><span class="nav-number">2.1.</span> <span class="nav-text">Think First.</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#urlparse-module"><span class="nav-number">2.2.</span> <span class="nav-text">urlparse module</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#urlparse-function"><span class="nav-number">2.2.1.</span> <span class="nav-text">urlparse function</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#scrapy"><span class="nav-number">2.3.</span> <span class="nav-text">scrapy</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Need-to-know"><span class="nav-number">3.</span> <span class="nav-text">Need to know:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Correct-errors-in-printing"><span class="nav-number">4.</span> <span class="nav-text">Correct errors in printing:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Practice"><span class="nav-number">5.</span> <span class="nav-text">Practice:</span></a></li></ol></div>
             
 
           </div>

@@ -111,7 +111,7 @@
 <meta property="og:description" content="本文是关于「Web Scraping with Python」这本书的 Chapter 4 &amp; 5 的学习笔记。">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNc79gy1fhwh5fcvm3j30t612ah43.jpg">
-<meta property="og:updated_time" content="2017-07-26T10:51:52.000Z">
+<meta property="og:updated_time" content="2017-07-27T00:45:17.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="♞「Web Scraping with Python」 Chapter 4 &amp; 5">
 <meta name="twitter:description" content="本文是关于「Web Scraping with Python」这本书的 Chapter 4 &amp; 5 的学习笔记。">
@@ -509,7 +509,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">fruit,cost</div><div class="line">apple,1.00</div><div class="line">banana,0.30</div><div class="line">pear,1.25</div></pre></td></tr></table></figure>
 <p> 网络数据采集的一个常用功能就是获取 HTML 表格并写入 CSV 文件。</p>
 <hr>
-<h1 id="Need-to-Know："><a href="#Need-to-Know：" class="headerlink" title="Need to Know："></a>Need to Know：</h1><h2 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h2><p><a href="http://dev.mysql.com/downloads/mysql/" target="_blank" rel="external"><strong>The download page</strong></a></p>
+<h1 id="Need-to-Know"><a href="#Need-to-Know" class="headerlink" title="Need to Know:"></a>Need to Know:</h1><h2 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h2><p><a href="http://dev.mysql.com/downloads/mysql/" target="_blank" rel="external"><strong>The download page</strong></a></p>
 <p> 下载 .dmg 安装包，在 MySQL5.7.x 版本之后，安装的时候会随机分配一个初始密码！这非常重要，例如 root@localhost: <strong>;,aLs&amp;%%4ziE</strong> 密码很复杂，最好先复制下来，等会更改密码的时候需要用到。</p>
 <p> 安装完成之后，可以在系统偏好设置中看到多出了一个 MySQL，我们可以通过其来开关 MySQL 服务器，当然我们可以通过命令行输入来控制。<br> 打开服务器，在命令行输入：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">alias</span> mysql=/usr/<span class="built_in">local</span>/mysql/bin/mysql</span></div><div class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">alias</span> mysqladmin=/usr/<span class="built_in">local</span>/mysql/bin/mysqladmin</span></div></pre></td></tr></table></figure>
@@ -540,11 +540,11 @@
 <li> 最后需要注意的是 finally 语句是在程序主循环的外面，代码的最底下。这样做可以保证，无论程序执行过程中如何发生中断或抛出异常（当然，因为网络很复杂，我们需要随时准备遭遇异常），光标和连接都会在程序结束前立即关闭。无论我们是在采集网络还是在处理一个打开连接的数据库，用 <strong><code>try...finally</code></strong> 都是一个好主意。</li>
 </ul>
 <hr>
-<h1 id="Correct-errors-in-printing："><a href="#Correct-errors-in-printing：" class="headerlink" title="Correct errors in printing："></a>Correct errors in printing：</h1><ul>
+<h1 id="Correct-errors-in-printing"><a href="#Correct-errors-in-printing" class="headerlink" title="Correct errors in printing:"></a>Correct errors in printing:</h1><ul>
 <li><strong> 暂无 </strong></li>
 </ul>
 <hr>
-<h1 id="Practice："><a href="#Practice：" class="headerlink" title="Practice："></a>Practice：</h1><ul>
+<h1 id="Practice"><a href="#Practice" class="headerlink" title="Practice:"></a>Practice:</h1><ul>
 <li><strong> 暂无 </strong></li>
 </ul>
 
@@ -683,7 +683,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">Posts</span>
               </a>
             </div>
@@ -813,7 +813,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Related"><span class="nav-number">1.</span> <span class="nav-text">Related</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Key："><span class="nav-number">2.</span> <span class="nav-text">Key：</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Parsing-JSON"><span class="nav-number">2.1.</span> <span class="nav-text">Parsing JSON?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Download-Page-Source"><span class="nav-number">2.2.</span> <span class="nav-text">Download Page Source</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Storing-Data-to-CSV"><span class="nav-number">2.3.</span> <span class="nav-text">Storing Data to CSV</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Need-to-Know："><span class="nav-number">3.</span> <span class="nav-text">Need to Know：</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#MySQL"><span class="nav-number">3.1.</span> <span class="nav-text">MySQL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Integrating-with-Python"><span class="nav-number">3.2.</span> <span class="nav-text">Integrating with Python</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Correct-errors-in-printing："><span class="nav-number">4.</span> <span class="nav-text">Correct errors in printing：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Practice："><span class="nav-number">5.</span> <span class="nav-text">Practice：</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Related"><span class="nav-number">1.</span> <span class="nav-text">Related</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Key："><span class="nav-number">2.</span> <span class="nav-text">Key：</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Parsing-JSON"><span class="nav-number">2.1.</span> <span class="nav-text">Parsing JSON?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Download-Page-Source"><span class="nav-number">2.2.</span> <span class="nav-text">Download Page Source</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Storing-Data-to-CSV"><span class="nav-number">2.3.</span> <span class="nav-text">Storing Data to CSV</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Need-to-Know"><span class="nav-number">3.</span> <span class="nav-text">Need to Know:</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#MySQL"><span class="nav-number">3.1.</span> <span class="nav-text">MySQL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Integrating-with-Python"><span class="nav-number">3.2.</span> <span class="nav-text">Integrating with Python</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Correct-errors-in-printing"><span class="nav-number">4.</span> <span class="nav-text">Correct errors in printing:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Practice"><span class="nav-number">5.</span> <span class="nav-text">Practice:</span></a></li></ol></div>
             
 
           </div>

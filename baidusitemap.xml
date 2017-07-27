@@ -4,12 +4,37 @@
 
     
   <url>
-    <loc>http://randolph.pro/2015/12/13/%3CWeb%20Scraping%20with%20Python%3E%20Other-smtplib%20&%20email/</loc>
-    <lastmod>2017-07-27T00:40:03.000Z</lastmod>
+    <loc>http://randolph.pro/2016/12/30/%3CMachine%20Learning%3E%20Chapter%202/</loc>
+    <lastmod>2017-07-27T00:49:00.000Z</lastmod>
     <data>
         <display>
-        <title>「Web Scraping 」smtplib & email module</title>
-        <pubTime>2015-12-12T16:00:00.000Z</pubTime>
+        <title>♞「Machine Learning」 Chapter 2</title>
+        <pubTime>2016-12-29T16:00:00.000Z</pubTime>
+        
+        <tag>Python</tag>
+         
+        <tag>Machine Learning</tag>
+         
+         
+           
+             
+              <breadCrumb title="Machine Learning" url="http://randolph.pro/categories/Machine-Learning/"/>
+          
+             
+              <breadCrumb title="Book:「Machine Learning」" url="http://randolph.pro/categories/Machine-Learning/Book-%E3%80%8CMachine-Learning%E3%80%8D/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://randolph.pro/2015/11/02/%3CWeb%20Scraping%20with%20Python%3E%20Chapter%201%20&%202/</loc>
+    <lastmod>2017-07-27T00:46:14.000Z</lastmod>
+    <data>
+        <display>
+        <title>♞「Web Scraping with Python」 Chapter 1 & 2</title>
+        <pubTime>2015-11-01T16:00:00.000Z</pubTime>
         
         <tag>Python</tag>
          
@@ -20,6 +45,9 @@
              
               <breadCrumb title="Web Scraping" url="http://randolph.pro/categories/Web-Scraping/"/>
           
+             
+              <breadCrumb title="Book:「Web Scraping with Python」" url="http://randolph.pro/categories/Web-Scraping/Book-%E3%80%8CWeb-Scraping-with-Python%E3%80%8D/"/>
+          
         </display>
     </data>
     </url>
@@ -27,7 +55,7 @@
     
   <url>
     <loc>http://randolph.pro/2015/11/13/%3CWeb%20Scraping%20with%20Python%3E%20Chapter%203/</loc>
-    <lastmod>2017-07-27T00:31:17.000Z</lastmod>
+    <lastmod>2017-07-27T00:45:43.000Z</lastmod>
     <data>
         <display>
         <title>♞「Web Scraping with Python」 Chapter 3</title>
@@ -44,6 +72,78 @@
           
              
               <breadCrumb title="Book:「Web Scraping with Python」" url="http://randolph.pro/categories/Web-Scraping/Book-%E3%80%8CWeb-Scraping-with-Python%E3%80%8D/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://randolph.pro/2015/11/27/%3CWeb%20Scraping%20with%20Python%3E%20Chapter%204%20&%205/</loc>
+    <lastmod>2017-07-27T00:45:17.000Z</lastmod>
+    <data>
+        <display>
+        <title>♞「Web Scraping with Python」 Chapter 4 & 5</title>
+        <pubTime>2015-11-26T16:00:00.000Z</pubTime>
+        
+        <tag>Python</tag>
+         
+        <tag>Web Scraping</tag>
+         
+         
+           
+             
+              <breadCrumb title="Web Scraping" url="http://randolph.pro/categories/Web-Scraping/"/>
+          
+             
+              <breadCrumb title="Book:「Web Scraping with Python」" url="http://randolph.pro/categories/Web-Scraping/Book-%E3%80%8CWeb-Scraping-with-Python%E3%80%8D/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://randolph.pro/2016/12/26/%3CMachine%20Learning%3E%20Chapter%201/</loc>
+    <lastmod>2017-07-27T00:43:45.000Z</lastmod>
+    <data>
+        <display>
+        <title>♞「Machine Learning」 Chapter 1</title>
+        <pubTime>2016-12-25T16:00:00.000Z</pubTime>
+        
+        <tag>Python</tag>
+         
+        <tag>Machine Learning</tag>
+         
+         
+           
+             
+              <breadCrumb title="Machine Learning" url="http://randolph.pro/categories/Machine-Learning/"/>
+          
+             
+              <breadCrumb title="Book:「Machine Learning」" url="http://randolph.pro/categories/Machine-Learning/Book-%E3%80%8CMachine-Learning%E3%80%8D/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://randolph.pro/2015/12/13/%3CWeb%20Scraping%20with%20Python%3E%20Other-smtplib%20&%20email/</loc>
+    <lastmod>2017-07-27T00:40:03.000Z</lastmod>
+    <data>
+        <display>
+        <title>「Web Scraping 」smtplib & email module</title>
+        <pubTime>2015-12-12T16:00:00.000Z</pubTime>
+        
+        <tag>Python</tag>
+         
+        <tag>Web Scraping</tag>
+         
+         
+           
+             
+              <breadCrumb title="Web Scraping" url="http://randolph.pro/categories/Web-Scraping/"/>
           
         </display>
     </data>
@@ -123,31 +223,6 @@
 
     
   <url>
-    <loc>http://randolph.pro/2016/12/26/%3CMachine%20Learning%3E%20Chapter%201/</loc>
-    <lastmod>2017-07-27T00:19:09.000Z</lastmod>
-    <data>
-        <display>
-        <title>♞「Machine Learning」 Chapter 1</title>
-        <pubTime>2016-12-25T16:00:00.000Z</pubTime>
-        
-        <tag>Python</tag>
-         
-        <tag>Machine Learning</tag>
-         
-         
-           
-             
-              <breadCrumb title="Machine Learning" url="http://randolph.pro/categories/Machine-Learning/"/>
-          
-             
-              <breadCrumb title="Book:「Machine Learning」" url="http://randolph.pro/categories/Machine-Learning/Book-%E3%80%8CMachine-Learning%E3%80%8D/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://randolph.pro/2015/09/11/%3CNatural%20Language%20Processing%20with%20Python%3E%20Chapter%201%20&%202/</loc>
     <lastmod>2017-07-26T11:00:48.000Z</lastmod>
     <data>
@@ -173,31 +248,6 @@
 
     
   <url>
-    <loc>http://randolph.pro/2015/11/27/%3CWeb%20Scraping%20with%20Python%3E%20Chapter%204%20&%205/</loc>
-    <lastmod>2017-07-26T10:51:52.000Z</lastmod>
-    <data>
-        <display>
-        <title>♞「Web Scraping with Python」 Chapter 4 & 5</title>
-        <pubTime>2015-11-26T16:00:00.000Z</pubTime>
-        
-        <tag>Python</tag>
-         
-        <tag>Web Scraping</tag>
-         
-         
-           
-             
-              <breadCrumb title="Web Scraping" url="http://randolph.pro/categories/Web-Scraping/"/>
-          
-             
-              <breadCrumb title="Book:「Web Scraping with Python」" url="http://randolph.pro/categories/Web-Scraping/Book-%E3%80%8CWeb-Scraping-with-Python%E3%80%8D/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://randolph.pro/2016/03/19/%3CProgramming%20Collective%20Intelligence%3E%20Chapter%203/</loc>
     <lastmod>2017-07-26T10:37:36.000Z</lastmod>
     <data>
@@ -216,31 +266,6 @@
           
              
               <breadCrumb title="Book:「Programming Collective Intelligence」" url="http://randolph.pro/categories/Machine-Learning/Book-%E3%80%8CProgramming-Collective-Intelligence%E3%80%8D/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://randolph.pro/2015/11/02/%3CWeb%20Scraping%20with%20Python%3E%20Chapter%201%20&%202/</loc>
-    <lastmod>2017-07-26T10:37:24.000Z</lastmod>
-    <data>
-        <display>
-        <title>♞「Web Scraping with Python」 Chapter 1 & 2</title>
-        <pubTime>2015-11-01T16:00:00.000Z</pubTime>
-        
-        <tag>Python</tag>
-         
-        <tag>Web Scraping</tag>
-         
-         
-           
-             
-              <breadCrumb title="Web Scraping" url="http://randolph.pro/categories/Web-Scraping/"/>
-          
-             
-              <breadCrumb title="Book:「Web Scraping with Python」" url="http://randolph.pro/categories/Web-Scraping/Book-%E3%80%8CWeb-Scraping-with-Python%E3%80%8D/"/>
           
         </display>
     </data>
