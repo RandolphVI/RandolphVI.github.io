@@ -83,7 +83,7 @@
     <link href="http://randolph.pro/2017/01/03/%3CMachine%20Learning%3E%20Clustering/"/>
     <id>http://randolph.pro/2017/01/03/&lt;Machine Learning&gt; Clustering/</id>
     <published>2017-01-02T16:00:00.000Z</published>
-    <updated>2017-07-28T05:45:27.000Z</updated>
+    <updated>2017-07-28T05:48:48.000Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fhxi0z29mdj30sg11c77u.jpg" alt=""></p>
 <p>关于该书的其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/Book-「Machine-Learning」/">「Machine Learning」</a></p>
@@ -96,20 +96,20 @@
 <hr>
 <h2 id="聚类算法"><a href="# 聚类算法" class="headerlink" title="聚类算法"></a>聚类算法 </h2><p><strong> 角度 I：</strong></p>
 <ul>
-<li><strong>基于原型的聚类(Prototype-based Clustering)</strong><ul>
-<li><strong>K 均值聚类(K-means)</strong></li>
-<li><strong>学习向量量化聚类(Learning Vector Quantization)</strong></li>
-<li><strong>高斯混合模型聚类 (Gaussian Mixture Model)</strong></li>
+<li><strong>基于原型的聚类（Prototype-based Clustering）</strong><ul>
+<li><strong>K 均值聚类（K-means）</strong></li>
+<li><strong>学习向量量化聚类（Learning Vector Quantization）</strong></li>
+<li><strong>高斯混合模型聚类 （Gaussian Mixture Model）</strong></li>
 </ul>
 </li>
-<li><strong>基于密度的聚类 (Density-based Clustering)</strong><ul>
-<li><strong>DBSCAN (Density-Based Spatial Clustering of Application with Noise)</strong></li>
-<li><strong>OPTICS (Ordering Points To Identify the Clustering Structure)</strong></li>
+<li><strong>基于密度的聚类 （Density-based Clustering）</strong><ul>
+<li><strong>DBSCAN （Density-Based Spatial Clustering of Application with Noise）</strong></li>
+<li><strong>OPTICS （Ordering Points To Identify the Clustering Structure）</strong></li>
 </ul>
 </li>
-<li><strong>层次聚类 (Hierarchical Clustering)</strong></li>
-<li><strong>基于模型的聚类 (Model-based Clustering)</strong><ul>
-<li><strong>混合回归模型 (Mixture Regression Model)</strong></li>
+<li><strong>层次聚类 （Hierarchical Clustering）</strong></li>
+<li><strong>基于模型的聚类 （Model-based Clustering）</strong><ul>
+<li><strong>混合回归模型 （Mixture Regression Model）</strong></li>
 </ul>
 </li>
 </ul>
