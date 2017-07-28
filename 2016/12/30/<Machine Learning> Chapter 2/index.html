@@ -122,7 +122,7 @@
 <meta property="og:image" content="https://farm1.staticflickr.com/595/30795620304_a815c4ccff_o.png">
 <meta property="og:image" content="https://farm1.staticflickr.com/663/30795629194_9a7a48bc13_o.png">
 <meta property="og:image" content="https://farm1.staticflickr.com/733/31637250505_65b565e6c6_o.png">
-<meta property="og:updated_time" content="2017-07-28T07:51:29.000Z">
+<meta property="og:updated_time" content="2017-07-28T08:36:30.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="♞「Machine Learning」 Chapter 2">
 <meta name="twitter:description" content="本文是关于周志华「Machine Learning」这本书的 Chapter 2 的学习笔记。">
@@ -550,7 +550,7 @@ D=D_1 \cup  D_2 \cup ... \cup D_k, D_i \cap  D_j = \varnothing (i \neq j)</scrip
 <h3 id="留一法 -Leave-One-Out"><a href="# 留一法 -Leave-One-Out" class="headerlink" title="留一法 (Leave-One-Out)"></a> 留一法 (Leave-One-Out)</h3><p> 假定数据集 $D$ 中包含 $m$ 个样本，若令 $k=m$ 。则得到了交叉验证法的一个特例：留一法（Leave-One-Out，简称 LOO )。显然，留一法不受随机样本划分方式的影响，因为 $m$ 个样本只有唯一的方式划分为 $m$ 个子集，每个子集包含一个样本。</p>
 <p>留一法使用的训练集与初始数据集相比只少了一个样本，这就使得在绝大多数情况下，留一法中被实际评估的模型与期望评估的用 $D$ 训练出的模型很相似。<strong>因此，留一法的评估结果往往被认为比较准确 </strong>（优点）。然而，留一法也有其缺陷：<strong> 在数据集比较大时，训练 $m$ 个模型的计算开销可能是难以忍受的（例如数据集包含一百万个样本，则需训练一百万个模型），而这还是在未考虑算法调参的情况下</strong>（缺点）。另外，留一法的估计结果也未必永远比其他评估方法准确；“没有免费的午餐”定理对实验评估方法同样适用。</p>
 <h3 id="自主法 -Bootstrapping"><a href="# 自主法 -Bootstrapping" class="headerlink" title="自主法 (Bootstrapping)"></a> 自主法 (Bootstrapping)</h3><p> 我们希望评估的是用 $D$ 训练出的模型。但在留出法和交叉验证法中，由于保留了一部分样本用于测试，因此实际评估的模型所使用的训练集比 $D$ 小，这必然会引入一些因训练样本规模不同而导致的估计偏差。留一法受训练样本规模变化的影响较小，但计算复杂度又太高了。有没有什么办法可以减少训练样本规模不同造成的影响，同时还能比较高效地进行实验估计呢？ </p>
-<p>“自助法”是一个比较好的解决方案，它直接以自助采样法为基础[Efron and Tibshirani,1993]。给定包含 $m$ 个样本的数据集 $D$ ，我们对它进行采样产生数据集 $D’$ ：每次随机从 $D$ 中挑选一个样本，将其拷贝放入 $D’$ ，然后再将该样本放回初始数据集 $D$ 中，使得该样本在下次采样时仍有可能被采到；这个过程重复执行 $m$ 次后，我们就得到了包含了 $m$ 个样本的数据集 $D’$ ，这就是自助采样的结果。显然， $D$ 中有一部分样本会在 $D’$ 中多次出现，而另一部分样本不出现。可以做一个简单的估计，样本在 $m$ 次采样中始终不被采到的概率是 $(1-1/m)^m$ ，取极限得到</p>
+<p>“自助法”是一个比较好的解决方案，它直接以自助采样法为基础「Efron and Tibshirani,1993」。给定包含 $m$ 个样本的数据集 $D$ ，我们对它进行采样产生数据集 $D’$ ：每次随机从 $D$ 中挑选一个样本，将其拷贝放入 $D’$ ，然后再将该样本放回初始数据集 $D$ 中，使得该样本在下次采样时仍有可能被采到；这个过程重复执行 $m$ 次后，我们就得到了包含了 $m$ 个样本的数据集 $D’$ ，这就是自助采样的结果。显然， $D$ 中有一部分样本会在 $D’$ 中多次出现，而另一部分样本不出现。可以做一个简单的估计，样本在 $m$ 次采样中始终不被采到的概率是 $(1-1/m)^m$ ，取极限得到</p>
 <script type="math/tex; mode=display">
 \lim_{m\rightarrow \infty}\left (1-\frac{1}{m}\right )^{m} \mapsto \frac{1}{e} \approx 0.368</script><p>($e$ 是自然常数。)</p>
 <p>即通过自助采样，初始数据集 $D$ 中约有 36.8％ 的样本未出现在采样数据集 $D’$ 中。于是我们可将 $D’$ 用作训练集， $D-D’$ 用作测试集；这样，实际评估的模型与期望评估的模型都使用 $m$ 个训练样本，而我们仍有数据总量约 1/3 的、没在训练集中出现的样本用于测试。这样的测试结果，亦称 <strong>“包外估计”(out-of-bag estimate)</strong>. <strong> 自助法在数据集较小、难以有效划分训练 / 测试集时很有用 </strong>（优点）；此外，自助法能从初始数据集中产生多个不同的训练集，这对集成学习等方法有很大的好处。 <strong> 然而，自助法产生的数据集改变了初始数据集的分布，这会引入估计偏差</strong>（缺点）。因此，在初始数据量足够时，留出法和交叉验证法更加常用一些。</p>
@@ -640,7 +640,7 @@ F1  = \frac{2\times P \times R}{P+R}=\frac{2\times TP}{N + TP -TN}</script><p>(�
 <li>在一些应用中，对查准率和查全率的重视程度有所不同。例如在商品推荐系统中，为了尽可能少打扰用户，更希望推荐内容确是用户感兴趣的，此时查准率更重要；而在逃犯信息检索系统中，更希望尽可能少漏掉逃犯，此时查全率更重要。$F1$ 度量的一般形式— $F_\beta $ ，能让我们表达出对查准率／查全率的不同偏好，它定义为：</li>
 </ul>
 <script type="math/tex; mode=display">
-F_{\beta}  = \frac{(1+\beta^2) \times P \times R}{(\beta^2 \times P) + R}</script><p><strong>其中 $\beta &gt; 0$ 度量了查全率对查准率的相对重要性 [Van Rijsbergen, 1979]。</strong></p>
+F_{\beta}  = \frac{(1+\beta^2) \times P \times R}{(\beta^2 \times P) + R}</script><p><strong>其中 $\beta &gt; 0$ 度量了查全率对查准率的相对重要性「Van Rijsbergen, 1979」。</strong></p>
 <p><strong>$\beta = 1$ 时退化为标准的 $F1$ ； $\beta &gt; 1$ 时查全率有更大影响； $\beta &lt; 1$ 时查准率有更大影响。</strong></p>
 <p>有时候我们会有多个二分类混淆矩阵，例如：多次训练或者在多个数据集上训练，那么估算全局性能的方法有两种，分为宏观和微观。</p>
 <ul>
