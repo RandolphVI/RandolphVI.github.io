@@ -83,9 +83,9 @@
     <link href="http://randolph.pro/2017/01/03/%3CMachine%20Learning%3E%20Clustering/"/>
     <id>http://randolph.pro/2017/01/03/&lt;Machine Learning&gt; Clustering/</id>
     <published>2017-01-02T16:00:00.000Z</published>
-    <updated>2017-07-28T07:35:25.000Z</updated>
+    <updated>2017-07-28T07:53:47.000Z</updated>
     
-    <content type="html"><![CDATA[<p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fhxi0z29mdj30sg11c77u.jpg" alt=""></p>
+    <content type="html"><![CDATA[<p><img src="https://farm5.staticflickr.com/4307/36174772306_62cfbc8cd6_o.jpg" alt=""></p>
 <p>关于该书的其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/Book-「Machine-Learning」/">「Machine Learning」</a></p>
 <h1 id="聚类介绍"><a href="# 聚类介绍" class="headerlink" title="聚类介绍"></a>聚类介绍</h1><ul>
 <li>聚类是从数据集中挖掘相似观测值集合的方法.</li>
@@ -325,7 +325,7 @@ dist_{wmk}(x_{i}, x_{j})=(w_{1}\cdot|x_{i1}-x_{j1}|^{p}+w_{2}\cdot|x_{i2}-x_{j2}
 E = \sum^{k}_{i=1}\sum_{x \in C_{i}}|x-\mu_{i}|_{2}^{2}</script><p>其中 <script type="math/tex">\mu_{i}</script> 是簇 <script type="math/tex">C_{i}</script> 的均值向量：</p>
 <script type="math/tex; mode=display">
 \mu_{i}=\frac{1}{|C_{i}|}\sum_{x \in C_{i}}x</script><p>直观上看, $E$ 在一定程度上刻画了簇内样本围绕均值向量的紧密程度, $E$ 值越小簇内样本相似度越高。但最小化 $E$ 不容易，是一个 NP 难问题, K-means 算法采用了贪心策略，通过迭代优化来近似求解 $E$ 的最小值。具体算法如下：</p>
-<p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fhzmu2igk6j30x20no0zo.jpg" alt="$k$ 均值算法"></p>
+<p><img src="https://farm5.staticflickr.com/4303/36049857562_cf0480eb62_o.png" alt="$k$ 均值算法"></p>
 <h4 id="算法实现 -（R 语言）"><a href="# 算法实现 -（R 语言）" class="headerlink" title="算法实现 （R 语言）"></a>算法实现 （R 语言）</h4><p>Python 的实现可以参考<a href="http://randolph.pro/2016/03/19/%3CProgramming%20Collective%20Intelligence%3E%20Chapter%203/">「Programming Collective Intelligence」 Chapter 3</a> 这篇文章。</p>
 <figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">head(iris)</div></pre></td></tr></table></figure>
 <figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">  Sepal.Length Sepal.Width Petal.Length Petal.Width Species</div><div class="line"><span class="number">1</span>          <span class="number">5.1</span>         <span class="number">3.5</span>          <span class="number">1.4</span>         <span class="number">0.2</span>  setosa</div><div class="line"><span class="number">2</span>          <span class="number">4.9</span>         <span class="number">3.0</span>          <span class="number">1.4</span>         <span class="number">0.2</span>  setosa</div><div class="line"><span class="number">3</span>          <span class="number">4.7</span>         <span class="number">3.2</span>          <span class="number">1.3</span>         <span class="number">0.2</span>  setosa</div><div class="line"><span class="number">4</span>          <span class="number">4.6</span>         <span class="number">3.1</span>          <span class="number">1.5</span>         <span class="number">0.2</span>  setosa</div><div class="line"><span class="number">5</span>          <span class="number">5.0</span>         <span class="number">3.6</span>          <span class="number">1.4</span>         <span class="number">0.2</span>  setosa</div><div class="line"><span class="number">6</span>          <span class="number">5.4</span>         <span class="number">3.9</span>          <span class="number">1.7</span>         <span class="number">0.4</span>  setosa</div></pre></td></tr></table></figure>
@@ -341,29 +341,7 @@ E = \sum^{k}_{i=1}\sum_{x \in C_{i}}|x-\mu_{i}|_{2}^{2}</script><p>其中 <scrip
 <hr>
 <h3 id="学习向量量化聚类（Learning-vector-Quantization）"><a href="# 学习向量量化聚类（Learning-vector-Quantization）" class="headerlink" title="学习向量量化聚类（Learning vector Quantization）"></a>学习向量量化聚类（Learning vector Quantization）</h3><h4 id="算法介绍 -1"><a href="# 算法介绍 -1" class="headerlink" title="算法介绍"></a>算法介绍</h4><p><strong>LVQ 假设数据样本带有类别标记, 学习过程利用样本的这些监督信息来辅助聚类。</strong></p>
 <p>给定样本集 <script type="math/tex">D=\lbrace (x_{1}, y_{1}), (x_{2}, y_{2}), \ldots, (x_{m}, y_{m}) \rbrace</script>, 每个样本 <script type="math/tex">x_{j}</script> 是由 $n$ 个属性描述的特征向量 <script type="math/tex">(x_{j1}; x_{j2}; \ldots; x_{jn})</script>,<script type="math/tex">y_{j} \in \mathcal{Y}</script> 是样本 <script type="math/tex">x_{j}</script> 的类别标记. LVQ 的目标是学得一组 $n$ 维原型向量<script type="math/tex">\lbrace p_{1}, p_{2}, \ldots, p_{q} \rbrace</script>, 每个原型向量代表一个聚类簇，簇标记为<script type="math/tex">t_{i}\in \mathcal{Y}</script>.</p>
-<p><strong>算法</strong></p>
-<blockquote>
-<p><strong>输入:</strong> </p>
-<p>样本集: $D={(x<em>{1}, y</em>{1}), (x<em>{2}, y</em>{2}), \ldots, (x<em>{n}, y</em>{n})}$;</p>
-<p>原型向量个数 $q$, 各原型向量预设的类标记 ${t<em>{1}, t</em>{2}, \ldots, t_{q}}$;</p>
-<p>学习率 $\eta \in (0,1)$.</p>
-<p><strong>过程: </strong></p>
-<ol>
-<li>初始化一组原型向量:$ \lbrace p<em>{1}, p</em>{2},\ldots,p_{q} \rbrace$</li>
-<li><strong>repeat</strong></li>
-<li>​    从样本集中随机选取样本 $(x<em>{j}, y</em>{j})$;</li>
-<li>​    计算样本 $x<em>{j}$ 与 $p</em>{i} (1 \leqslant i \leqslant q)$ 的距离: $d<em>{ji}=|x</em>{j}-p<em>{i}|</em>{2}$;</li>
-<li>​    找出与 $x<em>{j}$ 距离最近的原型向量 $p</em>{i^{<em>}}$, $i^{</em>}=arg \ min<em>{i \in \lbrace 1, 2, \ldots, q \rbrace}d</em>{ji}$;</li>
-<li>​    <strong>if</strong> $y<em>{j}=t</em>{i^{<em>}}$ <em>*then</em></em></li>
-<li>​        $p’ = p<em>{i^{*}} + \eta \cdot (x</em>{j}-p_{i^{*}})$</li>
-<li>​   <strong>else</strong></li>
-<li>​        $p’ = p<em>{i^{*}} - \eta \cdot (x</em>{j}-p_{i^{*}})$</li>
-<li>​   <strong>end if</strong></li>
-<li>​   将原型向量 $p_{i^{*}}$ 更新为 $p’$</li>
-<li>​<strong>until</strong> 满足停止条件（例如达到最大迭代轮数）</li>
-</ol>
-<p><strong>输出:</strong> 原型向量 $ \lbrace p<em>{1}, p</em>{2}, \ldots, p_{q} \rbrace$,</p>
-</blockquote>
+<p><img src="https://farm5.staticflickr.com/4320/36049858912_c400743b7f_o.png" alt="学习向量量化方法"></p>
 <p><strong>算法解释</strong></p>
 <ul>
 <li>算法第 1 行：对原型向量进行初始化。例如：对第 $i,i=(1,2,\ldots,q)$ 个簇, 可以从类别标记为 $t_{i}$ 的样本中随机选取一个作为原型向量。</li>
@@ -534,9 +512,9 @@ p^{'} & = p_{5} + \eta \cdot (x_{1} - p_{5}) \cr
     <link href="http://randolph.pro/2016/12/30/%3CMachine%20Learning%3E%20Chapter%202/"/>
     <id>http://randolph.pro/2016/12/30/&lt;Machine Learning&gt; Chapter 2/</id>
     <published>2016-12-29T16:00:00.000Z</published>
-    <updated>2017-07-27T09:13:19.000Z</updated>
+    <updated>2017-07-28T07:51:29.000Z</updated>
     
-    <content type="html"><![CDATA[<p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fhxi0z29mdj30sg11c77u.jpg" alt=""></p>
+    <content type="html"><![CDATA[<p><img src="https://farm5.staticflickr.com/4307/36174772306_62cfbc8cd6_o.jpg" alt=""></p>
 <p>关于该书的其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/Book-「Machine-Learning」/">「Machine Learning」</a></p>
 <h1 id="Related"><a href="#Related" class="headerlink" title="Related"></a>Related</h1><ul>
 <li><strong>过拟合与欠拟合</strong></li>
@@ -847,9 +825,9 @@ E_{cost} = \frac{m^+ \times (1-TPR) \times cost_{01}+m^- \times FPR \times cost_
     <link href="http://randolph.pro/2016/12/26/%3CMachine%20Learning%3E%20Chapter%201/"/>
     <id>http://randolph.pro/2016/12/26/&lt;Machine Learning&gt; Chapter 1/</id>
     <published>2016-12-25T16:00:00.000Z</published>
-    <updated>2017-07-27T08:55:48.000Z</updated>
+    <updated>2017-07-28T07:51:15.000Z</updated>
     
-    <content type="html"><![CDATA[<p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fhxi0z29mdj30sg11c77u.jpg" alt=""></p>
+    <content type="html"><![CDATA[<p><img src="https://farm5.staticflickr.com/4307/36174772306_62cfbc8cd6_o.jpg" alt=""></p>
 <p>关于该书的其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/Book-「Machine-Learning」/">「Machine Learning」</a></p>
 <h1 id="Related"><a href="#Related" class="headerlink" title="Related"></a>Related</h1><ul>
 <li><strong>归纳偏好</strong></li>
@@ -1178,9 +1156,9 @@ AC & (1,2)(-2),(0,1)(-1),(0,1)(-1),(0,1)(-1),(2,1)(-1),(EOB)(0,0)
     <link href="http://randolph.pro/2016/03/19/%3CProgramming%20Collective%20Intelligence%3E%20Chapter%203/"/>
     <id>http://randolph.pro/2016/03/19/&lt;Programming Collective Intelligence&gt; Chapter 3/</id>
     <published>2016-03-18T16:00:00.000Z</published>
-    <updated>2017-07-26T10:37:36.000Z</updated>
+    <updated>2017-07-28T07:50:14.000Z</updated>
     
-    <content type="html"><![CDATA[<p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fhu94m6p9zj30t612ah7b.jpg" alt=""></p>
+    <content type="html"><![CDATA[<p><img src="https://farm5.staticflickr.com/4306/36216231065_8a7e508f9e_o.jpg" alt=""></p>
 <p>关于该书的其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/Book-「Programming-Collective-Intelligence」/">「Programming Collective Intelligence」</a></p>
 <h1 id="Related"><a href="#Related" class="headerlink" title="Related"></a>Related</h1><ul>
 <li><strong>皮尔逊相关系数</strong></li>
@@ -1293,9 +1271,9 @@ AC & (1,2)(-2),(0,1)(-1),(0,1)(-1),(0,1)(-1),(2,1)(-1),(EOB)(0,0)
     <link href="http://randolph.pro/2016/03/12/%3CProgramming%20Collective%20Intelligence%3E%20Chapter%201%20&amp;%202/"/>
     <id>http://randolph.pro/2016/03/12/&lt;Programming Collective Intelligence&gt; Chapter 1 &amp; 2/</id>
     <published>2016-03-11T16:00:00.000Z</published>
-    <updated>2017-07-27T00:29:46.000Z</updated>
+    <updated>2017-07-28T07:49:53.000Z</updated>
     
-    <content type="html"><![CDATA[<p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fhu94m6p9zj30t612ah7b.jpg" alt=""></p>
+    <content type="html"><![CDATA[<p><img src="https://farm5.staticflickr.com/4306/36216231065_8a7e508f9e_o.jpg" alt=""></p>
 <p>关于该书的其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/Book-「Programming-Collective-Intelligence」/">「Programming Collective Intelligence」</a></p>
 <h1 id="Related"><a href="#Related" class="headerlink" title="Related"></a>Related</h1><ul>
 <li><strong>欧几里得距离评价</strong></li>
@@ -1475,9 +1453,9 @@ AC & (1,2)(-2),(0,1)(-1),(0,1)(-1),(0,1)(-1),(2,1)(-1),(EOB)(0,0)
     <link href="http://randolph.pro/2015/11/27/%3CWeb%20Scraping%20with%20Python%3E%20Chapter%204%20&amp;%205/"/>
     <id>http://randolph.pro/2015/11/27/&lt;Web Scraping with Python&gt; Chapter 4 &amp; 5/</id>
     <published>2015-11-26T16:00:00.000Z</published>
-    <updated>2017-07-27T00:45:17.000Z</updated>
+    <updated>2017-07-28T07:48:44.000Z</updated>
     
-    <content type="html"><![CDATA[<p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fhwh5fcvm3j30t612ah43.jpg" alt=""></p>
+    <content type="html"><![CDATA[<p><img src="https://farm5.staticflickr.com/4316/36049777032_f975ed0941_o.jpg" alt=""></p>
 <p> 关于该书的其他学习笔记系列：<a href="http://randolph.pro/categories/Web-Scraping/Book-「Web-Scraping-with-Python」/">「Web Scraping with Python」</a></p>
 <h1 id="Related"><a href="#Related" class="headerlink" title="Related"></a>Related</h1><ul>
 <li><strong>Parsing JSON</strong></li>
@@ -1562,9 +1540,9 @@ AC & (1,2)(-2),(0,1)(-1),(0,1)(-1),(0,1)(-1),(2,1)(-1),(EOB)(0,0)
     <link href="http://randolph.pro/2015/11/13/%3CWeb%20Scraping%20with%20Python%3E%20Chapter%203/"/>
     <id>http://randolph.pro/2015/11/13/&lt;Web Scraping with Python&gt; Chapter 3/</id>
     <published>2015-11-12T16:00:00.000Z</published>
-    <updated>2017-07-27T08:49:13.000Z</updated>
+    <updated>2017-07-28T07:48:27.000Z</updated>
     
-    <content type="html"><![CDATA[<p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fhwh5fcvm3j30t612ah43.jpg" alt=""></p>
+    <content type="html"><![CDATA[<p><img src="https://farm5.staticflickr.com/4316/36049777032_f975ed0941_o.jpg" alt=""></p>
 <p> 关于该书的其他学习笔记系列：<a href="http://randolph.pro/categories/Web-Scraping/Book-「Web-Scraping-with-Python」/">「Web Scraping with Python」</a></p>
 <h1 id="Related"><a href="#Related" class="headerlink" title="Related"></a>Related</h1><ul>
 <li><strong>urlparse module</strong></li>
@@ -1687,9 +1665,9 @@ AC & (1,2)(-2),(0,1)(-1),(0,1)(-1),(0,1)(-1),(2,1)(-1),(EOB)(0,0)
     <link href="http://randolph.pro/2015/11/02/%3CWeb%20Scraping%20with%20Python%3E%20Chapter%201%20&amp;%202/"/>
     <id>http://randolph.pro/2015/11/02/&lt;Web Scraping with Python&gt; Chapter 1 &amp; 2/</id>
     <published>2015-11-01T16:00:00.000Z</published>
-    <updated>2017-07-27T00:46:14.000Z</updated>
+    <updated>2017-07-28T07:48:07.000Z</updated>
     
-    <content type="html"><![CDATA[<p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fhwh5fcvm3j30t612ah43.jpg" alt=""></p>
+    <content type="html"><![CDATA[<p><img src="https://farm5.staticflickr.com/4316/36049777032_f975ed0941_o.jpg" alt=""></p>
 <p>关于该书的其他学习笔记系列：<a href="http://randolph.pro/categories/Web-Scraping/Book-「Web-Scraping-with-Python」/">「Web Scraping with Python」</a></p>
 <h1 id="Related"><a href="#Related" class="headerlink" title="Related"></a>Related</h1><ul>
 <li><strong>BeautifulSoup package</strong></li>
@@ -1787,9 +1765,9 @@ AC & (1,2)(-2),(0,1)(-1),(0,1)(-1),(0,1)(-1),(2,1)(-1),(EOB)(0,0)
     <link href="http://randolph.pro/2015/09/17/%3CNatural%20Language%20Processing%20with%20Python%3E%20Chapter%203/"/>
     <id>http://randolph.pro/2015/09/17/&lt;Natural Language Processing with Python&gt; Chapter 3/</id>
     <published>2015-09-16T16:00:00.000Z</published>
-    <updated>2017-07-27T00:28:23.000Z</updated>
+    <updated>2017-07-28T07:47:27.000Z</updated>
     
-    <content type="html"><![CDATA[<p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fhu96awavpj30yg1cp1kx.jpg" alt=""></p>
+    <content type="html"><![CDATA[<p><img src="https://farm5.staticflickr.com/4327/35823201720_84f3fa0d21_o.jpg" alt=""></p>
 <p>关于该书的其他学习笔记系列：<a href="http://randolph.pro/categories/NLP/Book-「NLP-with-Python」/">「NLP with Python」</a></p>
 <h1 id="Related"><a href="#Related" class="headerlink" title="Related"></a>Related</h1><ul>
 <li><strong>The NLP Pipeline</strong></li>
@@ -2080,9 +2058,9 @@ P(\mathrm{d} E) = exp(\mathrm{d}E/kT)</script><p>其中 <strong><em>k</em></stro
     <link href="http://randolph.pro/2015/09/11/%3CNatural%20Language%20Processing%20with%20Python%3E%20Chapter%201%20&amp;%202/"/>
     <id>http://randolph.pro/2015/09/11/&lt;Natural Language Processing with Python&gt; Chapter 1 &amp; 2/</id>
     <published>2015-09-10T16:00:00.000Z</published>
-    <updated>2017-07-26T11:00:48.000Z</updated>
+    <updated>2017-07-28T07:46:42.000Z</updated>
     
-    <content type="html"><![CDATA[<p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fhu96awavpj30yg1cp1kx.jpg" alt=""></p>
+    <content type="html"><![CDATA[<p><img src="https://farm5.staticflickr.com/4327/35823201720_84f3fa0d21_o.jpg" alt=""></p>
 <p>关于该书的其他学习笔记系列：<a href="http://randolph.pro/categories/NLP/Book-「NLP-with-Python」/">「NLP with Python」</a></p>
 <h1 id="Related"><a href="#Related" class="headerlink" title="Related"></a>Related</h1><ul>
 <li><strong>NLTK</strong></li>
