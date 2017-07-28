@@ -83,7 +83,7 @@
     <link href="http://randolph.pro/2017/01/03/%3CMachine%20Learning%3E%20Clustering/"/>
     <id>http://randolph.pro/2017/01/03/&lt;Machine Learning&gt; Clustering/</id>
     <published>2017-01-02T16:00:00.000Z</published>
-    <updated>2017-07-28T07:09:41.000Z</updated>
+    <updated>2017-07-28T07:10:04.000Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fhxi0z29mdj30sg11c77u.jpg" alt=""></p>
 <p>关于该书的其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/Book-「Machine-Learning」/">「Machine Learning」</a></p>
@@ -335,7 +335,7 @@ E = \sum^{k}_{i=1}\sum_{x \in C_{i}}|x-\mu_{i}|_{2}^{2}</script><p>其中 <scrip
 </blockquote>
 <p>&gt;</p>
 <blockquote>
-<p><strong>输出:</strong>  簇划分 $C= \lbrace C<em>{1}, C</em>{2}, \ldots, C_{k} \rbrace $.</p>
+<p><strong>输出:</strong>  簇划分 <script type="math/tex">C= \lbrace C_{1}, C_{2}, \ldots, C_{k} \rbrace</script>.</p>
 </blockquote>
 <h4 id="算法实现 -（R 语言）"><a href="# 算法实现 -（R 语言）" class="headerlink" title="算法实现 （R 语言）"></a>算法实现 （R 语言）</h4><p>Python 的实现可以参考《Programming Collective Intelligence》 Chapter 3 那篇文章。</p>
 <figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">head(iris)</div></pre></td></tr></table></figure>
