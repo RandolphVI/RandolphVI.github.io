@@ -4,6 +4,31 @@
 
     
   <url>
+    <loc>http://randolph.pro/2017/01/03/%3CMachine%20Learning%3E%20Clustering/</loc>
+    <lastmod>2017-07-28T08:55:52.000Z</lastmod>
+    <data>
+        <display>
+        <title>♞「Machine Learning」 Clustering</title>
+        <pubTime>2017-01-02T16:00:00.000Z</pubTime>
+        
+        <tag>Python</tag>
+         
+        <tag>Machine Learning</tag>
+         
+         
+           
+             
+              <breadCrumb title="Machine Learning" url="http://randolph.pro/categories/Machine-Learning/"/>
+          
+             
+              <breadCrumb title="Book:「Machine Learning」" url="http://randolph.pro/categories/Machine-Learning/Book-%E3%80%8CMachine-Learning%E3%80%8D/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://randolph.pro/2016/03/19/%3CProgramming%20Collective%20Intelligence%3E%20Chapter%203/</loc>
     <lastmod>2017-07-28T08:45:00.000Z</lastmod>
     <data>
@@ -35,31 +60,6 @@
         <display>
         <title>♞「Machine Learning」 Chapter 2</title>
         <pubTime>2016-12-29T16:00:00.000Z</pubTime>
-        
-        <tag>Python</tag>
-         
-        <tag>Machine Learning</tag>
-         
-         
-           
-             
-              <breadCrumb title="Machine Learning" url="http://randolph.pro/categories/Machine-Learning/"/>
-          
-             
-              <breadCrumb title="Book:「Machine Learning」" url="http://randolph.pro/categories/Machine-Learning/Book-%E3%80%8CMachine-Learning%E3%80%8D/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://randolph.pro/2017/01/03/%3CMachine%20Learning%3E%20Clustering/</loc>
-    <lastmod>2017-07-28T08:29:30.000Z</lastmod>
-    <data>
-        <display>
-        <title>♞「Machine Learning」 Clustering</title>
-        <pubTime>2017-01-02T16:00:00.000Z</pubTime>
         
         <tag>Python</tag>
          
