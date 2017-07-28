@@ -83,7 +83,7 @@
     <link href="http://randolph.pro/2017/01/03/%3CMachine%20Learning%3E%20Clustering/"/>
     <id>http://randolph.pro/2017/01/03/&lt;Machine Learning&gt; Clustering/</id>
     <published>2017-01-02T16:00:00.000Z</published>
-    <updated>2017-07-28T07:11:51.000Z</updated>
+    <updated>2017-07-28T07:13:06.000Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fhxi0z29mdj30sg11c77u.jpg" alt=""></p>
 <p>关于该书的其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/Book-「Machine-Learning」/">「Machine Learning」</a></p>
@@ -331,10 +331,25 @@ E = \sum^{k}_{i=1}\sum_{x \in C_{i}}|x-\mu_{i}|_{2}^{2}</script><p>其中 <scrip
 <p>样本集： <script type="math/tex">D= \lbrace x_{1}, x_{2}, \ldots, x_{n} \rbrace</script>;</p>
 <p>聚类簇数： $k$.</p>
 <p><strong>过程： </strong></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;</span><span class="bash"> 1. 从中随机取出 <span class="variable">$k</span>$ 个样本作为初始均值向量： $$ \lbrace \mu_&#123;1&#125;, \mu_&#123;2&#125;, \ldots,\mu_&#123;k&#125; \rbrace $$</span></div><div class="line"><span class="meta">&gt;</span><span class="bash"> 2. **repeat**</span></div><div class="line"><span class="meta">&gt;</span><span class="bash"> 3. ​    令 <span class="variable">$C_</span>&#123;i&#125;=\emptyset (1 \leqslant i \leqslant k)$</span></div><div class="line"><span class="meta">&gt;</span><span class="bash"> 4. ​    **<span class="keyword">for</span>** <span class="variable">$j</span>=1, 2, \ldots, n$  **<span class="keyword">do</span>**</span></div><div class="line"><span class="meta">&gt;</span><span class="bash"> 5. ​        计算样本 <span class="variable">$x_</span>&#123;j&#125;$ 与各均值向量 $\mu_&#123;i&#125; (1 \leqslant i \leqslant k)$ 的距离: <span class="variable">$d_</span>&#123;ji&#125;=|x_&#123;j&#125;-\mu_&#123;i&#125;|_&#123;2&#125;$;</span></div><div class="line"><span class="meta">&gt;</span><span class="bash"> 6. ​        根据距离最近的均值向量确定 <span class="variable">$x_</span>&#123;j&#125;$ 的簇标记 $\lambda_&#123;j&#125;=arg \ min_&#123;i \<span class="keyword">in</span> \lbrace 1, 2, \ldots, k \rbrace &#125;d_&#123;ji&#125;$;</span></div><div class="line"><span class="meta">&gt;</span><span class="bash"> 7. ​        将样本 <span class="variable">$x_</span>&#123;j&#125;$ 划入相应的簇: <span class="variable">$C_</span>&#123;\lambda_&#123;j&#125;&#125;=C_&#123;\lambda_&#123;j&#125;&#125; \cup &#123;x_&#123;j&#125;&#125;$;</span></div><div class="line"><span class="meta">&gt;</span><span class="bash"> 8. ​    **end <span class="keyword">for</span>**</span></div><div class="line"><span class="meta">&gt;</span><span class="bash"> 9. ​    **<span class="keyword">for</span>** <span class="variable">$i</span>=1, 2, \ldots, k$  **<span class="keyword">do</span>**</span></div><div class="line"><span class="meta">&gt;</span><span class="bash"> 10. ​        计算新均值向量: $\mu_&#123;i&#125;^&#123;<span class="string">'&#125;=\frac&#123;1&#125;&#123;|C_&#123;i&#125;|&#125;\sum_&#123;x \in C_&#123;i&#125;&#125;x$;</span></span></div><div class="line"><span class="meta">&gt;</span><span class="bash"><span class="string"> 11. ​        **if** $\mu_&#123;i&#125;^&#123;'</span>&#125; \neq \mu_&#123;i&#125;$  **<span class="keyword">then</span>**</span></div><div class="line"><span class="meta">&gt;</span><span class="bash"> 12. ​            将当前均值向量 $\mu+&#123;i&#125;$ 更新为 $\mu_&#123;i&#125;^&#123;<span class="string">'&#125;$</span></span></div><div class="line"><span class="meta">&gt;</span><span class="bash"><span class="string"> 13. ​        **else**</span></span></div><div class="line"><span class="meta">&gt;</span><span class="bash"><span class="string"> 14. ​            保持当前均值向量不变</span></span></div><div class="line"><span class="meta">&gt;</span><span class="bash"><span class="string"> 15. ​        **end if**</span></span></div><div class="line"><span class="meta">&gt;</span><span class="bash"><span class="string"> 16. ​    **end for**</span></span></div><div class="line"><span class="meta">&gt;</span><span class="bash"><span class="string"> 17. **until** 当前均值向量均未更新</span></span></div><div class="line"><span class="meta">&gt;</span><span class="bash"><span class="string"></span></span></div></pre></td></tr></table></figure>
-</blockquote>
-<p>&gt;</p>
-<blockquote>
+<ol>
+<li>从中随机取出 $k$ 个样本作为初始均值向量： <script type="math/tex">\lbrace \mu_{1}, \mu_{2}, \ldots,\mu_{k} \rbrace</script></li>
+<li><strong>repeat</strong></li>
+<li>​    令 $C_{i}=\emptyset (1 \leqslant i \leqslant k)$</li>
+<li>​    <strong>for</strong> $j=1, 2, \ldots, n$  <strong>do</strong></li>
+<li>​        计算样本 $x<em>{j}$ 与各均值向量 $\mu</em>{i} (1 \leqslant i \leqslant k)$ 的距离: $d<em>{ji}=|x</em>{j}-\mu<em>{i}|</em>{2}$;</li>
+<li>​        根据距离最近的均值向量确定 $x<em>{j}$ 的簇标记 $\lambda</em>{j}=arg \ min<em>{i \in \lbrace 1, 2, \ldots, k \rbrace}d</em>{ji}$;</li>
+<li>​        将样本 $x<em>{j}$ 划入相应的簇: $C</em>{\lambda<em>{j}}=C</em>{\lambda<em>{j}} \cup {x</em>{j}}$;</li>
+<li>​    <strong>end for</strong></li>
+<li>​    <strong>for</strong> $i=1, 2, \ldots, k$  <strong>do</strong></li>
+<li>​        计算新均值向量: $\mu<em>{i}^{‘}=\frac{1}{|C</em>{i}|}\sum<em>{x \in C</em>{i}}x$;</li>
+<li>​        <strong>if</strong> $\mu<em>{i}^{‘} \neq \mu</em>{i}$  <strong>then</strong></li>
+<li>​            将当前均值向量 $\mu+{i}$ 更新为 $\mu_{i}^{‘}$</li>
+<li>​        <strong>else</strong></li>
+<li>​            保持当前均值向量不变</li>
+<li>​        <strong>end if</strong></li>
+<li>​    <strong>end for</strong></li>
+<li><strong>until</strong> 当前均值向量均未更新</li>
+</ol>
 <p><strong>输出:</strong>  簇划分 <script type="math/tex">C= \lbrace C_{1}, C_{2}, \ldots, C_{k} \rbrace</script>.</p>
 </blockquote>
 <h4 id="算法实现 -（R 语言）"><a href="# 算法实现 -（R 语言）" class="headerlink" title="算法实现 （R 语言）"></a>算法实现 （R 语言）</h4><p>Python 的实现可以参考<a href="http://randolph.pro/2016/03/19/%3CProgramming%20Collective%20Intelligence%3E%20Chapter%203/">「Programming Collective Intelligence」 Chapter 3</a> 这篇文章。</p>
