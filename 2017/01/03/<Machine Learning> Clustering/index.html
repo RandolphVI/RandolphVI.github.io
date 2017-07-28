@@ -116,7 +116,7 @@
 <meta property="og:image" content="https://farm6.staticflickr.com/5569/31429001070_b16d937809_o.png">
 <meta property="og:image" content="https://farm1.staticflickr.com/403/30990399723_0db34a3cde_o.png">
 <meta property="og:image" content="https://farm1.staticflickr.com/715/31427609470_fe9357f0cc_o.png">
-<meta property="og:updated_time" content="2017-07-28T06:20:57.000Z">
+<meta property="og:updated_time" content="2017-07-28T06:22:47.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="♞「Machine Learning」 Clustering">
 <meta name="twitter:description" content="本文是关于周志华「Machine Learning」这本书的 Clustering 的学习笔记。">
@@ -453,7 +453,7 @@
                   <i class="fa fa-file-word-o"></i>
                 </span>
                 <span title="Words count in article">
-                  9,184
+                  9,163
                 </span>
                 <span> words </span>
                 
@@ -468,7 +468,7 @@
                   <i class="fa fa-clock-o"></i>
                 </span>
                 <span title="Reading time">
-                  40
+                  39
                 </span>
                 <span> mins </span>
               
@@ -691,16 +691,16 @@ DI=\underset{1 \leqslant i \leqslant k}{min}\bigg\{\underset{j \neq i}{min}\bigg
 <script type="math/tex; mode=display">
 dist_{mk}(x_{i}, x_{j})=\bigg(\sum_{u=1}^{n}|x_{iu}-x_{ju}|^{p}\bigg)^{\frac{1}{p}}</script><h3 id="VDM-Value-Difference-Metric"><a href="#VDM-Value-Difference-Metric" class="headerlink" title="VDM(Value Difference Metric)"></a>VDM(Value Difference Metric)</h3><blockquote>
 <p>我们常将属性划分为“连续属性”（continuous attribute）和“离散属性”（categorical attribute），前者在定义域上有无穷多个可能的取值，后者在定义域上是有限个取值。然而，在讨论距离计算时，属性上是否定义了“序”关系更为重要．例如定义域为 $\lbrace 1,2,3 \rbrace$ 的离散属性与连续属性的性质更接近一些， 能直接在属性值上计算距离：“1”与“2”比较接近、与“3”比较远，这样的属性称为“有序属性”（ordinal attribute）; 而定义域为｛飞机，火车，轮船｝这样的离散属性则不能直接在属性值上计算距离，称为“无序属性”（non-ordinal attribute）。显然， 闵可夫斯基距离可用于有序属性。</p>
-<p>对无序属性可采用 VDM(Value Difference Metric) [Stanfill and Waltz, 1986]。</p>
+<p>对无序属性可采用 VDM（Value Difference Metric） [Stanfill and Waltz, 1986]。</p>
 </blockquote>
 <p>令 <script type="math/tex">m_{u,a}</script> 表示在属性 $u$ 上取值为 $a$ 的样本数，<script type="math/tex">m_{u, a, i}</script> 表示在第 $i$ 个样本簇中在属性 $u$ 上取值为 $a$ 的样本数，$k$ 为样本簇数，则属性 $u$ 上两个离散值 $a$ 与 $b$ 之间的 VDM 距离为：</p>
 <script type="math/tex; mode=display">
 VDM_{q}(a, b)=\sum^{k}_{i=1}\bigg|\frac{m_{u,a,i}}{m_{u,a}}-\frac{m_{u,b,i}}{m_{u,b}}\bigg|^{p}.</script><p>（这里的 $p$ 同闵可夫斯基距离中的 $p$ 一样）</p>
-<h3 id="闵可夫斯基距离与 VDM 混合距离"><a href="# 闵可夫斯基距离与 VDM 混合距离" class="headerlink" title="闵可夫斯基距离与 VDM 混合距离"></a>闵可夫斯基距离与 VDM 混合距离 </h3><p> 假设有 $n<em>{c}$ 个有序属性，$n-n</em>{c}$ 个无序属性，有序属性排列在无序属性之前：</p>
+<h3 id="闵可夫斯基距离与 VDM 混合距离"><a href="# 闵可夫斯基距离与 VDM 混合距离" class="headerlink" title="闵可夫斯基距离与 VDM 混合距离"></a>闵可夫斯基距离与 VDM 混合距离 </h3><p> 假设有 <script type="math/tex">n_{c}</script> 个有序属性，<script type="math/tex">n-n_{c}</script> 个无序属性，有序属性排列在无序属性之前：</p>
 <script type="math/tex; mode=display">
 MinkovDM_{p}(x_{i}, x_{j})=\bigg(\sum^{n_{c}}_{u=1}|x_{i,u}-x_{j,u}|^{p}+\sum^{n}_{u=n_{c}+1}VDM_{p}(x_{i,u},x_{j,u})\bigg)^{\frac{1}{p}}</script><h3 id="加权闵可夫斯基距离"><a href="# 加权闵可夫斯基距离" class="headerlink" title="加权闵可夫斯基距离"></a>加权闵可夫斯基距离 </h3><p> 当样本在空间中不同属性的重要性不同时：</p>
 <script type="math/tex; mode=display">
-dist_{wmk}(x_{i}, x_{j})=(w_{1}\cdot|x_{i1}-x_{j1}|^{p}+w_{2}\cdot|x_{i2}-x_{j2}|^{p}+\ldots+w_{n}\cdot|x_{in}-x_{jn}|^{p})^{\frac{1}{p}}</script><p>其中: 权重 $w<em>{i} \geqslant 0(i=1, 2, \ldots, p)$ 表示不同属性的重要性，通常 $\sum</em>{i=1}^{n}w_{i}=1$.</p>
+dist_{wmk}(x_{i}, x_{j})=(w_{1}\cdot|x_{i1}-x_{j1}|^{p}+w_{2}\cdot|x_{i2}-x_{j2}|^{p}+\ldots+w_{n}\cdot|x_{in}-x_{jn}|^{p})^{\frac{1}{p}}</script><p>其中: 权重<script type="math/tex">w_{i} \geqslant 0(i=1, 2, \ldots, p)</script> 表示不同属性的重要性，通常 <script type="math/tex">\sum_{i=1}^{n}w_{i}=1</script>.</p>
 <hr>
 <h1 id="聚类算法介绍及实现"><a href="# 聚类算法介绍及实现" class="headerlink" title="聚类算法介绍及实现"></a>聚类算法介绍及实现 </h1><p><strong> 聚类算法类型：</strong></p>
 <ul>
