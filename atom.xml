@@ -83,7 +83,7 @@
     <link href="http://randolph.pro/2017/01/03/%3CMachine%20Learning%3E%20Clustering/"/>
     <id>http://randolph.pro/2017/01/03/&lt;Machine Learning&gt; Clustering/</id>
     <published>2017-01-02T16:00:00.000Z</published>
-    <updated>2017-07-28T08:25:46.000Z</updated>
+    <updated>2017-07-28T08:25:59.000Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://farm5.staticflickr.com/4307/36174772306_62cfbc8cd6_o.jpg" alt=""></p>
 <p>关于该书的其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/Book-「Machine-Learning」/">「Machine Learning」</a></p>
@@ -366,7 +366,7 @@ p'= p_{i^{*}} - \eta \cdot (x_{j}-p_{i^{*}})</script>​       $p^{‘}$ 与 $x_
 <li>算法第 12 行：若算法的停止条件已满足(例如已达到最大迭代轮数，或原型向量更新很小甚至不再更新)，则将当前原型向量作为最终结果返回。</li>
 <li>在学得一组原型向量 <script type="math/tex">\lbrace p_{1}, p_{2}, \ldots, p_{q} \rbrace</script> 后即可实现对样本空间 <script type="math/tex">\mathcal{X}</script> 的簇划分。<ul>
 <li>对任意样本 $x$, 他将被划入与其距离最近的原型向量所代表的簇中，每个原型向量<script type="math/tex">p_{i}</script> 定义了与之相关的一个区域 <script type="math/tex">R_{i}</script>，该区域中每个样本与 <script type="math/tex">p_{i}</script> 的距离不大于他与其他原型向量 <script type="math/tex">p_{i'} (i \neq i')</script>，即 <script type="math/tex; mode=display">
-R_{i}= \lbrace x \in \mathcal{X} \ |\ ||x-p_{i}||_{2} \leqslant ||x-p_{i'}||_{2}, i \neq i'\rbrace</script>​       由此形成了对样本空间 $\mathcal{X}$ 的簇划分 <script type="math/tex">{R_{1}, R_{2}, \ldots, R_{q}}</script>，该划分通常称为“Voronoi 剖分”(Voronoi tessellation)。</li>
+R_{i}= \lbrace x \in \mathcal{X} \ |\ ||x-p_{i}||_{2} \leqslant ||x-p_{i'}||_{2}, i \neq i'\rbrace</script>​       由此形成了对样本空间 $\mathcal{X}$ 的簇划分 <script type="math/tex">{R_{1}, R_{2}, \ldots, R_{q}}</script>，该划分通常称为“Voronoi 剖分”（Voronoi tessellation）。</li>
 </ul>
 </li>
 </ul>
