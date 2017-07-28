@@ -83,7 +83,7 @@
     <link href="http://randolph.pro/2017/01/03/%3CMachine%20Learning%3E%20Clustering/"/>
     <id>http://randolph.pro/2017/01/03/&lt;Machine Learning&gt; Clustering/</id>
     <published>2017-01-02T16:00:00.000Z</published>
-    <updated>2017-07-28T06:02:49.000Z</updated>
+    <updated>2017-07-28T06:05:59.000Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fhxi0z29mdj30sg11c77u.jpg" alt=""></p>
 <p>关于该书的其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/Book-「Machine-Learning」/">「Machine Learning」</a></p>
@@ -266,10 +266,10 @@ DI=\underset{1 \leqslant i \leqslant k}{min}\bigg\{\underset{j \neq i}{min}\bigg
 <p>DI 系数结果为非负数，值越大意味着簇间距离越大，同时簇内距离越小。个人总结，DI 系数计算的是，任意两个簇的最短距离（簇间）除以任意簇中的最大距离（簇内），其优点是对于离散点的聚类评测效果不错，但缺点是对于环状分布评测效果比较差。还有上述重点提到的，因为分母采用的是取一个 max 距离而不是取平均值 average，所以会出现一个奇怪的问题，对于某个聚类效果特别差的一个簇，它可能”一个老鼠屎坏了一锅粥”这种，导致 DI 系数会特别低，这也是当我们需要使用 DI 系数时，对于某些聚类表现非常差的簇需要注意的原因。</p>
 <h2 id="聚类距离计算"><a href="# 聚类距离计算" class="headerlink" title="聚类距离计算"></a>聚类距离计算 </h2><p><strong> 距离度量 (distance measure) 函数 $dist(,)$ 需满足的基本性质：</strong></p>
 <ul>
-<li><strong>非负性</strong>：$dist(x<em>{i}, x</em>{j}) \geqslant 0$</li>
-<li><strong>同一性</strong>：$dist(x<em>{i}, x</em>{j})=0$ 当且仅当 $x<em>{i}=x</em>{j}$</li>
-<li><strong>对称性</strong>：$dist(x<em>{i}, x</em>{j})=dist(x<em>{j}, x</em>{i})$</li>
-<li><strong>直递性</strong>：$dist(x<em>{i}, x</em>{j}) \leqslant dist(x<em>{i}, x</em>{k}) + dist(x<em>{k}, x</em>{j})$ (可不满足)</li>
+<li><strong>非负性</strong>：<script type="math/tex">dist(x_{i}, x_{j}) \geqslant 0</script></li>
+<li><strong>同一性</strong>：<script type="math/tex">dist(x_{i}, x_{j})=0</script> 当且仅当 <script type="math/tex">x_{i}=x_{j}</script></li>
+<li><strong>对称性</strong>：<script type="math/tex">dist(x_{i}, x_{j})=dist(x_{j}, x_{i})</script></li>
+<li><strong>直递性</strong>：<script type="math/tex">dist(x_{i}, x_{j}) \leqslant dist(x_{i}, x_{k}) + dist(x_{k}, x_{j})</script> (可不满足)</li>
 </ul>
 <p><strong>变量属性：</strong></p>
 <ul>
@@ -282,8 +282,7 @@ DI=\underset{1 \leqslant i \leqslant k}{min}\bigg\{\underset{j \neq i}{min}\bigg
 <li>混合属性：闵可夫斯基距离 与 VDM 混合距离</li>
 </ul>
 <h3 id="闵可夫斯基距离（Minkowski-distance）"><a href="# 闵可夫斯基距离（Minkowski-distance）" class="headerlink" title="闵可夫斯基距离（Minkowski distance）"></a>闵可夫斯基距离（Minkowski distance）</h3><p>样本：</p>
-<p>$x<em>{i}=(x</em>{i1}, x<em>{i2}, \ldots, x</em>{in})$ 与 $x<em>{j}=(x</em>{j1}, x<em>{j2}, \ldots, x</em>{jn})$</p>
-<script type="math/tex; mode=display">
+<script type="math/tex; mode=display">x_{i}=(x_{i1}, x_{i2}, \ldots, x_{in})$$ 与 $$x_{j}=(x_{j1}, x_{j2}, \ldots, x_{jn})</script><script type="math/tex; mode=display">
 dist_{mk}(x_{i}, x_{j})=\bigg(\sum_{u=1}^{n}|x_{iu}-x_{ju}|^{p}\bigg)^{\frac{1}{p}}</script><h3 id="VDM-Value-Difference-Metric"><a href="#VDM-Value-Difference-Metric" class="headerlink" title="VDM(Value Difference Metric)"></a>VDM(Value Difference Metric)</h3><blockquote>
 <p>我们常将属性划分为“连续属性”(continuous attribute 和“离散属性”(categorical attribute)，前者在定义域上有无穷多个可能的取值，后者在定义域上是有限个取值。然而，在讨论距离计算时，属性上是否定义了“序”关系更为重要．例如定义域为 $\lbrace 1,2,3 \rbrace$ 的离散属性与连续属性的性质更接近一些， 能直接在属性值上计算距离：“1”与“2”比较接近、与“3”比较远，这样的属性称为“有序属性”(ordinal attribute); 而定义域为｛飞机，火车，轮船｝这样的离散属性则不能直接在属性值上计算距离，称为“无序属性”(non-ordinal attribute)。显然， 闵可夫斯基距离可用于有序属性。</p>
 <p>对无序属性可采用 VDM (Value Difference Metric) [Stanfill and Waltz, 1986]。</p>
