@@ -116,7 +116,7 @@
 <meta property="og:image" content="https://farm6.staticflickr.com/5569/31429001070_b16d937809_o.png">
 <meta property="og:image" content="https://farm1.staticflickr.com/403/30990399723_0db34a3cde_o.png">
 <meta property="og:image" content="https://farm1.staticflickr.com/715/31427609470_fe9357f0cc_o.png">
-<meta property="og:updated_time" content="2017-07-28T05:57:30.000Z">
+<meta property="og:updated_time" content="2017-07-28T06:00:20.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="♞「Machine Learning」 Clustering">
 <meta name="twitter:description" content="本文是关于周志华「Machine Learning」这本书的 Clustering 的学习笔记。">
@@ -453,7 +453,7 @@
                   <i class="fa fa-file-word-o"></i>
                 </span>
                 <span title="Words count in article">
-                  9,284
+                  9,258
                 </span>
                 <span> words </span>
                 
@@ -631,7 +631,7 @@ Sums & 2 & 3 & 5 & n = 10  \cr
 <p>$d$ is defined as the number of pairs of objects that are not in the same class in $U$ and not in the same cluster in $V$. Since <script type="math/tex">a + b + c + d = \binom{n}{2}</script>, <script type="math/tex">d = \binom{10}{2} -7 - 6 - 7 = 25</script>.</p>
 <p>The Rand Index for comparing the two partitions in Example is $\frac{7+25}{45} = 0.711$, while the adjusted Rand Index is 0.311.</p>
 <p><strong>The Rand index is much higher than the adjusted Rand index, which is typical. Since the Rand index lies between 0 and 1, the expected value of the Rand index (although not a constant value) must be greater than or equal to 0.On the other hand, the expected value of the adjusted Rand index has value zero and the maximum value of the adjusted Rand is  also 1. Hence, there is a wider range of values that the adjusted Rand index can take on, thus increasing the sensitivity of the index.</strong></p>
-<h3 id="内部指标"><a href="# 内部指标" class="headerlink" title="内部指标"></a>内部指标 </h3><p> 根据聚类结果的簇划分 $(C={C<em>{1}, C</em>{2}, \ldots, C_{k}})$ , 定义：</p>
+<h3 id="内部指标"><a href="# 内部指标" class="headerlink" title="内部指标"></a>内部指标 </h3><p> 根据聚类结果的簇划分 <script type="math/tex">(C={C_{1}, C_{2}, \ldots, C_{k}})</script> , 定义：</p>
 <ul>
 <li>簇 $C$ 内样本间的平均距离</li>
 </ul>
@@ -640,16 +640,16 @@ avg(C)=\frac{2}{|C|(|C|-1)}\sum_{1<i<j<|C|}dist(x_{i}, x_{j})</script><ul>
 <li><p>簇 $C$ 内样本间的最远距离</p>
 <script type="math/tex; mode=display">
 diam(C)=max_{1<i<j<|C|}dist(x_{i}, x_{j})</script></li>
-<li><p>簇 $C<em>{i}$ 与簇 $C</em>{j}$ 最近样本间的距离</p>
+<li><p>簇 <script type="math/tex">C_{i}</script> 与簇 <script type="math/tex">C_{j}</script> 最近样本间的距离</p>
 <script type="math/tex; mode=display">
 d{min}(C_{i}, C_{j})=min_{1<i<j<|C|}dist(x_{i}, x_{j})</script></li>
-<li>簇 $C<em>{i}$ 与簇 $C</em>{j}$ 中心点间的距离<script type="math/tex; mode=display">
+<li>簇 <script type="math/tex">C_{i}</script> 与簇 <script type="math/tex">C_{j}</script> 中心点间的距离<script type="math/tex; mode=display">
 d_{cen}(C_{i}, C_{j})=dist(\mu_{i}, \mu_{j})</script></li>
 </ul>
 <p>其中：</p>
 <ul>
 <li>$dist(,)$ 是两个样本之间的距离</li>
-<li>$\mu$ 是簇 $C$ 的中心点 $\mu=\frac{1}{|C|}\sum<em>{1&lt;i&lt;|C|}x</em>{i}$</li>
+<li>$\mu$ 是簇 $C$ 的中心点 <script type="math/tex">\mu=\frac{1}{|C|}\sum_{1<i<|C|}x_{i}</script></li>
 </ul>
 <h4 id="CP-Compactness"><a href="#CP-Compactness" class="headerlink" title="CP(Compactness)"></a>CP(Compactness)</h4><script type="math/tex; mode=display">
 \begin{align}
