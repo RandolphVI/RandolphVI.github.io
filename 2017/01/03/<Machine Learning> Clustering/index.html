@@ -116,7 +116,7 @@
 <meta property="og:image" content="https://farm6.staticflickr.com/5569/31429001070_b16d937809_o.png">
 <meta property="og:image" content="https://farm1.staticflickr.com/403/30990399723_0db34a3cde_o.png">
 <meta property="og:image" content="https://farm1.staticflickr.com/715/31427609470_fe9357f0cc_o.png">
-<meta property="og:updated_time" content="2017-07-28T05:55:16.000Z">
+<meta property="og:updated_time" content="2017-07-28T05:57:30.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="♞「Machine Learning」 Clustering">
 <meta name="twitter:description" content="本文是关于周志华「Machine Learning」这本书的 Clustering 的学习笔记。">
@@ -453,7 +453,7 @@
                   <i class="fa fa-file-word-o"></i>
                 </span>
                 <span title="Words count in article">
-                  9,367
+                  9,284
                 </span>
                 <span> words </span>
                 
@@ -468,7 +468,7 @@
                   <i class="fa fa-clock-o"></i>
                 </span>
                 <span title="Reading time">
-                  41
+                  40
                 </span>
                 <span> mins </span>
               
@@ -625,10 +625,10 @@ u_{2} & 1 & 2 &  1 & 4  \cr
 u_{3} & 0 & 0 &  4 & 4  \cr
 \hline
 Sums & 2 & 3 & 5 & n = 10  \cr
-\end{array}</script><p>$a$ is defined as the number of pairs of objects in the same class $U$ and same cluster in $V$,hence $a$ can be written as $\sum<em>{i,j} \binom{n</em>{ij}}{2}$.In Example,$a = \binom{2}{2} + \binom{4}{2} = 7$(所有不超过 2 的都不需要考虑，因为 $\binom{1}{2} = 0$).</p>
-<p>$b$ is defined as the number of pairs of objects in the same class in $U$ but not in the same cluster in $V$.In terms of the notation in Table, $b$ can be writtern as $\sum<em>{i}\binom{n</em>{i.}}{2}-\sum<em>{i,j}\binom{n</em>{ij}}{2}$. In Example, $b = \binom{2}{2} + \binom{4}{2} + \binom{4}{2} - 7 = 6$.</p>
-<p>Similarly, $c$ is defined as the number of pairs of objects in the same cluster in $V$ but not in the same class in $U$, so $c$ can be writtern as $\sum<em>{j}\binom{n</em>{.j}}{2}-\sum<em>{i,j}\binom{n</em>{ij}}{2} = \binom{2}{2} + \binom{3}{2} + \binom{5}{2} -7 = 7$.</p>
-<p>$d$ is defined as the number of pairs of objects that are not in the same class in $U$ and not in the same cluster in $V$. Since $a + b + c + d = \binom{n}{2}$, $d = \binom{10}{2} -7 - 6 - 7 = 25$.</p>
+\end{array}</script><p>$a$ is defined as the number of pairs of objects in the same class $U$ and same cluster in $V$,hence $a$ can be written as <script type="math/tex">\sum_{i,j} \binom{n_{ij}}{2}</script>.In Example,<script type="math/tex">a = \binom{2}{2} + \binom{4}{2} = 7</script>(所有不超过 2 的都不需要考虑，因为<script type="math/tex">\binom{1}{2} = 0</script>).</p>
+<p>$b$ is defined as the number of pairs of objects in the same class in $U$ but not in the same cluster in $V$.In terms of the notation in Table, $b$ can be writtern as <script type="math/tex">\sum_{i}\binom{n_{i.}}{2}-\sum_{i,j}\binom{n_{ij}}{2}</script>. In Example, <script type="math/tex">b = \binom{2}{2} + \binom{4}{2} + \binom{4}{2} - 7 = 6</script>.</p>
+<p>Similarly, $c$ is defined as the number of pairs of objects in the same cluster in $V$ but not in the same class in $U$, so $c$ can be writtern as <script type="math/tex">\sum_{j}\binom{n_{.j}}{2}-\sum_{i,j}\binom{n_{ij}}{2} = \binom{2}{2} + \binom{3}{2} + \binom{5}{2} -7 = 7</script>.</p>
+<p>$d$ is defined as the number of pairs of objects that are not in the same class in $U$ and not in the same cluster in $V$. Since <script type="math/tex">a + b + c + d = \binom{n}{2}</script>, <script type="math/tex">d = \binom{10}{2} -7 - 6 - 7 = 25</script>.</p>
 <p>The Rand Index for comparing the two partitions in Example is $\frac{7+25}{45} = 0.711$, while the adjusted Rand Index is 0.311.</p>
 <p><strong>The Rand index is much higher than the adjusted Rand index, which is typical. Since the Rand index lies between 0 and 1, the expected value of the Rand index (although not a constant value) must be greater than or equal to 0.On the other hand, the expected value of the adjusted Rand index has value zero and the maximum value of the adjusted Rand is  also 1. Hence, there is a wider range of values that the adjusted Rand index can take on, thus increasing the sensitivity of the index.</strong></p>
 <h3 id="内部指标"><a href="# 内部指标" class="headerlink" title="内部指标"></a>内部指标 </h3><p> 根据聚类结果的簇划分 $(C={C<em>{1}, C</em>{2}, \ldots, C_{k}})$ , 定义：</p>
