@@ -116,8 +116,10 @@
 <meta property="og:image" content="https://farm1.staticflickr.com/353/31565301411_fc7281b525_o.jpg">
 <meta property="og:image" content="https://farm5.staticflickr.com/4320/36049858912_c400743b7f_o.png">
 <meta property="og:image" content="https://farm6.staticflickr.com/5569/31429001070_b16d937809_o.png">
+<meta property="og:image" content="https://farm5.staticflickr.com/4295/35824129960_2e09d0a8b8_o.png">
+<meta property="og:image" content="https://farm1.staticflickr.com/403/30990399723_0db34a3cde_o.png">
 <meta property="og:image" content="https://farm1.staticflickr.com/715/31427609470_fe9357f0cc_o.png">
-<meta property="og:updated_time" content="2017-07-28T09:07:06.000Z">
+<meta property="og:updated_time" content="2017-07-28T09:10:24.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="♞「Machine Learning」 Clustering">
 <meta name="twitter:description" content="本文是关于周志华「Machine Learning」这本书的 Clustering 的学习笔记。">
@@ -454,7 +456,7 @@
                   <i class="fa fa-file-word-o"></i>
                 </span>
                 <span title="Words count in article">
-                  8,027
+                  8,183
                 </span>
                 <span> words </span>
                 
@@ -469,7 +471,7 @@
                   <i class="fa fa-clock-o"></i>
                 </span>
                 <span title="Reading time">
-                  35
+                  34
                 </span>
                 <span> mins </span>
               
@@ -811,59 +813,67 @@ P(z{j}=i)=\alpha{i} \quad (i=1, 2, \ldots,k).</script><p>由 Bayesian 定理得 
 \begin{align*}
 P_{\mathcal{M}}(z_{j}=i|x_{j}) &=\frac{P(z_{j}=i) \cdot p_{\mathcal{M}}(x_{j}|z_{j}=i)}{p_{\mathcal{M}}(x_{j})} \cr
 & =\frac{\alpha_{i}\cdot p(x_{j}|\mu_{i},\Sigma_{i})}{\sum^{k}_{l=1}\alpha_{l}\cdot p(x_{j}|\mu_{l},\Sigma_{l})}
-\end{align*}</script><script type="math/tex; mode=display">P_{\mathcal{M}}(z_{j}=i|x_{j})$$ 给出了样本 $$x_{j}$$ 由第 $i$ 个高斯混合成分生成的后验概率， 记：</script><p>\gamma<em>{ji}=P</em>{\mathcal{M}}(z<em>{j}=i|x</em>{j}) \quad (i=1, 2, \ldots,k)</p>
+\end{align*}</script><p>可知，<script type="math/tex">P_{\mathcal{M}}(z_{j}=i|x_{j})</script> 给出了样本 <script type="math/tex">x_{j}</script> 由第 $i$ 个高斯混合成分生成的后验概率， 记：</p>
 <script type="math/tex; mode=display">
-
-##### 高斯混合聚类策略：
-
-*   若 (多元) 高斯混合分布 $p_{\mathcal{M}}(x)$ 已知，高斯混合聚类将把样本集 $D$ 划分为 $k$ 个簇</script><p>C= \lbrace C<em>{1}, C</em>{2}, \ldots,C_{k} \rbrace</p>
+\gamma_{ji}=P_{\mathcal{M}}(z_{j}=i|x_{j}) \quad (i=1, 2, \ldots,k)</script><h5 id="高斯混合聚类策略："><a href="# 高斯混合聚类策略：" class="headerlink" title="高斯混合聚类策略："></a>高斯混合聚类策略：</h5><ul>
+<li>若 (多元) 高斯混合分布 $p_{\mathcal{M}}(x)$ 已知，高斯混合聚类将把样本集 $D$ 划分为 $k$ 个簇<script type="math/tex; mode=display">
+C= \lbrace C_{1}, C_{2}, \ldots,C_{k} \rbrace</script></li>
+</ul>
+<p>每个样本 <script type="math/tex">x_{j}</script> 的簇标记 <script type="math/tex">\lambda_{j}</script> 为:</p>
 <script type="math/tex; mode=display">
-
-每个样本 $$x_{j}$$ 的簇标记 $$\lambda_{j}$$ 为:</script><p>\lambda<em>{j}=arg \underset{i \in {1, 2, \ldots,k}}{max}\gamma</em>{ji}</p>
+\lambda_{j}=arg \underset{i \in {1, 2, \ldots,k}}{max}\gamma_{ji}</script><ul>
+<li>(多元)高斯混合分布 <script type="math/tex">p_{\mathcal{M}}(x)</script> 参数 <script type="math/tex">\lbrace (\alpha_{i},\mu_{i}, \Sigma_{i})|1 \leqslant i \leqslant k \rbrace</script> 的求解采用极大似然估计(MLE):</li>
+</ul>
+<p>给定样本集 $D$, 最大化 (对数) 似然函数：</p>
 <script type="math/tex; mode=display">
-*   (多元)高斯混合分布 $$p_{\mathcal{M}}(x)$$ 参数 $$\lbrace (\alpha_{i},\mu_{i}, \Sigma_{i})|1 \leqslant i \leqslant k \rbrace$$ 的求解采用极大似然估计(MLE):
-
-给定样本集 $D$, 最大化 (对数) 似然函数：</script><p>\begin{align<em>}<br>LL(D) &amp; = ln\Big(\prod^{n}<em>{j=1}p</em>{\mathcal{M}}(x<em>{j})\Big) \cr<br>&amp;=\sum^{n}</em>{j=1}\Big(\sum^{k}<em>{i=1}\alpha</em>{i}\cdot p(x<em>{j}|\mu</em>{i}, \Sigma_{i})\Big)<br>\end{align</em>}</p>
+\begin{align*}
+LL(D) & = ln\Big(\prod^{n}_{j=1}p_{\mathcal{M}}(x_{j})\Big) \cr
+&=\sum^{n}_{j=1}\Big(\sum^{k}_{i=1}\alpha_{i}\cdot p(x_{j}|\mu_{i}, \Sigma_{i})\Big)
+\end{align*}</script><p>MLE 解为：</p>
 <script type="math/tex; mode=display">
-MLE 解为：</script><p>\begin{align}<br>\mu<em>{i} &amp; = \frac{\sum^{n}</em>{j=1}\gamma<em>{ji}x</em>{j}}{\sum^{n}<em>{j=1}\gamma{ji}} \cr<br>\Sigma</em>{i} &amp; = \frac{\sum^{n}<em>{j=1}\gamma</em>{ji}(x<em>{j}-\mu</em>{i})(x<em>{j}-\mu</em>{i})^{T}}{\sum^{n}<em>{j=1}\gamma</em>{ji}} \cr<br>\alpha<em>{i} &amp;= \frac{1}{n}\sum^{n}</em>{j=1}\gamma_{ji}<br>\end{align}</p>
+\begin{align}
+\mu_{i} & = \frac{\sum^{n}_{j=1}\gamma_{ji}x_{j}}{\sum^{n}_{j=1}\gamma{ji}} \cr
+\Sigma_{i} & = \frac{\sum^{n}_{j=1}\gamma_{ji}(x_{j}-\mu_{i})(x_{j}-\mu_{i})^{T}}{\sum^{n}_{j=1}\gamma_{ji}} \cr
+\alpha_{i} &= \frac{1}{n}\sum^{n}_{j=1}\gamma_{ji}
+\end{align}</script><p>具体算法如下：<br><img src="https://farm5.staticflickr.com/4295/35824129960_2e09d0a8b8_o.png" alt="高斯混合聚类算法"></p>
+<h4 id="算法实现 -1"><a href="# 算法实现 -1" class="headerlink" title="算法实现"></a>算法实现</h4><hr>
+<h1 id="各聚类算法过程"><a href="# 各聚类算法过程" class="headerlink" title="各聚类算法过程"></a><strong>各聚类算法过程 </strong></h1><p> 使用西瓜数据集合：</p>
 <script type="math/tex; mode=display">
-
-具体算法如下：
-![高斯混合聚类算法](https://farm5.staticflickr.com/4295/35824129960_2e09d0a8b8_o.png)
-
-#### 算法实现
-
----
-
-
-
-# ** 各聚类算法过程 **
-
-使用西瓜数据集合：</script><p>\begin{array}{ccc|ccc|ccc}<br>\hline<br>编号 &amp; 密度 &amp; 含糖率 &amp; 编号 &amp; 密度 &amp; 含糖率 &amp; 编号 &amp; 密度 &amp; 含糖率 \cr<br>\hline<br>1 &amp; 0.697 &amp; 0.460 &amp; 11 &amp; 0.245 &amp; 0.057 &amp; 21 &amp; 0.748 &amp; 0.232 \cr<br>2 &amp; 0.774 &amp; 0.376 &amp; 12 &amp; 0.343 &amp; 0.099 &amp; 22 &amp; 0.714 &amp; 0.346 \cr<br>3 &amp; 0.634 &amp; 0.264 &amp; 13 &amp; 0.639 &amp; 0.161 &amp; 23 &amp; 0.483 &amp; 0.312 \cr<br>4 &amp; 0.608 &amp; 0.318 &amp; 14 &amp; 0.657 &amp; 0.198 &amp; 24 &amp; 0.478 &amp; 0.437 \cr<br>5 &amp; 0.556 &amp; 0.215 &amp; 15 &amp; 0.360 &amp; 0.370 &amp; 25 &amp; 0.525 &amp; 0.369 \cr<br>6 &amp; 0.403 &amp; 0.237 &amp; 16 &amp; 0.593 &amp; 0.042 &amp; 26 &amp; 0.751 &amp; 0.489 \cr<br>7 &amp; 0.481 &amp; 0.149 &amp; 17 &amp; 0.719 &amp; 0.103 &amp; 27 &amp; 0.532 &amp; 0.472 \cr<br>8 &amp; 0.437 &amp; 0.211 &amp; 18 &amp; 0.359 &amp; 0.188 &amp; 28 &amp; 0.473 &amp; 0.376 \cr<br>9 &amp; 0.666 &amp; 0.091 &amp; 19 &amp; 0.339 &amp; 0.241 &amp; 29 &amp; 0.725 &amp; 0.445 \cr<br>10 &amp; 0.243 &amp; 0.267 &amp; 20 &amp; 0282 &amp; 0.257 &amp; 30 &amp; 0.446 &amp; 0.459 \cr<br>\end{array}</p>
+\begin{array}{ccc|ccc|ccc}
+\hline
+编号 & 密度 & 含糖率 & 编号 & 密度 & 含糖率 & 编号 & 密度 & 含糖率 \cr
+\hline
+1 & 0.697 & 0.460 & 11 & 0.245 & 0.057 & 21 & 0.748 & 0.232 \cr
+2 & 0.774 & 0.376 & 12 & 0.343 & 0.099 & 22 & 0.714 & 0.346 \cr
+3 & 0.634 & 0.264 & 13 & 0.639 & 0.161 & 23 & 0.483 & 0.312 \cr
+4 & 0.608 & 0.318 & 14 & 0.657 & 0.198 & 24 & 0.478 & 0.437 \cr
+5 & 0.556 & 0.215 & 15 & 0.360 & 0.370 & 25 & 0.525 & 0.369 \cr
+6 & 0.403 & 0.237 & 16 & 0.593 & 0.042 & 26 & 0.751 & 0.489 \cr
+7 & 0.481 & 0.149 & 17 & 0.719 & 0.103 & 27 & 0.532 & 0.472 \cr
+8 & 0.437 & 0.211 & 18 & 0.359 & 0.188 & 28 & 0.473 & 0.376 \cr
+9 & 0.666 & 0.091 & 19 & 0.339 & 0.241 & 29 & 0.725 & 0.445 \cr
+10 & 0.243 & 0.267 & 20 & 0282 & 0.257 & 30 & 0.446 & 0.459 \cr
+\end{array}</script><p>（其中编号为 9~21 的类别是”坏瓜”，其他样本的类别是”好瓜”） </p>
+<h2 id="使用 -k- 均值算法"><a href="# 使用 -k- 均值算法" class="headerlink" title="使用 $k$ 均值算法"></a>使用 $k$ 均值算法 </h2><p> 假定聚类簇数 $k=3$，算法开始时随机选取的三个样本 $x<em>{6},x</em>{12},x_{27}$ 作为初始均值向量，即</p>
 <script type="math/tex; mode=display">
-
-（其中编号为 9~21 的类别是 "坏瓜"，其他样本的类别是 "好瓜"） 
-
-## 使用 $k$ 均值算法
-
-假定聚类簇数 $k=3$，算法开始时随机选取的三个样本 $x_{6},x_{12},x_{27}$ 作为初始均值向量，即</script><p>\mu<em>{1} = (0.403;0.237), \mu</em>{2} = (0.343;0.099),\mu_{3} = (0.532;0.472).</p>
+\mu_{1} = (0.403;0.237), \mu_{2} = (0.343;0.099),\mu_{3} = (0.532;0.472).</script><p>考察样本 $x<em>{1}=(0.697;0.460)$，它与当前均值向量 $\mu</em>{1},\mu<em>{2},\mu</em>{3}$ 的距离分别是 0.369，0.506，0.166，因此 $x<em>{1}$ 将被划入簇 $C</em>{3}$ 中。类似的，对数据集中的所有样本考察一遍后，可得当前簇划分为：</p>
 <script type="math/tex; mode=display">
-考察样本 $x_{1}=(0.697;0.460)$，它与当前均值向量 $\mu_{1},\mu_{2},\mu_{3}$ 的距离分别是 0.369，0.506，0.166，因此 $x_{1}$ 将被划入簇 $C_{3}$ 中。类似的，对数据集中的所有样本考察一遍后，可得当前簇划分为：</script><p>\begin{align}<br>C<em>{1} &amp; = \lbrace x</em>{5},x<em>{6},x</em>{7},x<em>{8},x</em>{9},x<em>{10},x</em>{13},x<em>{14},x</em>{15},x<em>{17},x</em>{18},x<em>{19},x</em>{20},x<em>{23} \rbrace; \cr<br>C</em>{2} &amp; = \lbrace x<em>{11},x</em>{12},x<em>{16} \rbrace; \cr<br>C</em>{3} &amp; = \lbrace x<em>{1},x</em>{2},x<em>{3},x</em>{4},x<em>{21},x</em>{22},x<em>{24},x</em>{25},x<em>{26},x</em>{27},x<em>{28},x</em>{29},x_{30} \rbrace<br>\end{align}</p>
+\begin{align}
+C_{1} & = \lbrace x_{5},x_{6},x_{7},x_{8},x_{9},x_{10},x_{13},x_{14},x_{15},x_{17},x_{18},x_{19},x_{20},x_{23} \rbrace; \cr
+C_{2} & = \lbrace x_{11},x_{12},x_{16} \rbrace; \cr
+C_{3} & = \lbrace x_{1},x_{2},x_{3},x_{4},x_{21},x_{22},x_{24},x_{25},x_{26},x_{27},x_{28},x_{29},x_{30} \rbrace
+\end{align}</script><p>于是，可以从 $C<em>{1},C</em>{2},C_{3}$ 分别求出新的均值向量</p>
 <script type="math/tex; mode=display">
-于是，可以从 $C_{1},C_{2},C_{3}$ 分别求出新的均值向量</script><p>\mu<em>{1}^{‘} = (0.473;0.214), \mu</em>{2}^{‘} = (0.394;0.066),\mu_{3}^{‘} = (0.623;0.388).</p>
+\mu_{1}^{'} = (0.473;0.214), \mu_{2}^{'} = (0.394;0.066),\mu_{3}^{'} = (0.623;0.388).</script><p>更新当前均值向量后，不断重复上述过程，如图所示，第五轮迭代产生的结果与第四轮迭代结果相同，于是算法停止，得到最终的簇划分，其中样本点与均值向量分别用”●”与”+”表示，红色虚线显示出簇划分。</p>
+<p><img src="https://farm1.staticflickr.com/403/30990399723_0db34a3cde_o.png" alt=""></p>
+<h2 id="使用学习向量量化"><a href="# 使用学习向量量化" class="headerlink" title="使用学习向量量化"></a>使用学习向量量化 </h2><p> 令数据集中编号为 9-21 的样本的类别标记为 $c<em>{2}$ ，其他样本的类别标记为 $c</em>{1}$ 。假定 $q=5$，即学习目标是找到 5 个原型向量 $p<em>{1},p</em>{2},p<em>{3},p</em>{4},p<em>{5}$ ，并假定其对应的类别标记分别为 $c</em>{1},c<em>{2},c</em>{2},c<em>{1},c</em>{1}$ 。</p>
+<p>算法开始时，根据样本的类别标记和簇的预设类别标记，对原型向量进行随机初始化，假定初始化为样本 $x<em>{5},x</em>{12},x<em>{18},x</em>{23},x<em>{29}$ 。在第一轮迭代中，假定随机选取的样本为 $x</em>{1}$ ，该样本与当前原型向量 $p<em>{1},p</em>{2},p<em>{3},p</em>{4},p<em>{5}$ 的距离分别为 $0.283,0.506,0.434,0.260,0.032$ 。由于 $p</em>{5}$ 与 $x<em>{1}$ 距离最近且两者具有相同的类别标记 $c</em>{2}$ ，假定学习率 $\eta = 0.1$ ，则 LVQ 更新 $p_{5}$ 得到新原型向量：</p>
 <script type="math/tex; mode=display">
-更新当前均值向量后，不断重复上述过程，如图所示，第五轮迭代产生的结果与第四轮迭代结果相同，于是算法停止，得到最终的簇划分，其中样本点与均值向量分别用 "●" 与 "+" 表示，红色虚线显示出簇划分。
-
-![](https://farm1.staticflickr.com/403/30990399723_0db34a3cde_o.png)
-
-
-
-## 使用学习向量量化
-
-令数据集中编号为 9-21 的样本的类别标记为 $c_{2}$ ，其他样本的类别标记为 $c_{1}$ 。假定 $q=5$，即学习目标是找到 5 个原型向量 $p_{1},p_{2},p_{3},p_{4},p_{5}$ ，并假定其对应的类别标记分别为 $c_{1},c_{2},c_{2},c_{1},c_{1}$ 。
-
-算法开始时，根据样本的类别标记和簇的预设类别标记，对原型向量进行随机初始化，假定初始化为样本 $x_{5},x_{12},x_{18},x_{23},x_{29}$ 。在第一轮迭代中，假定随机选取的样本为 $x_{1}$ ，该样本与当前原型向量 $p_{1},p_{2},p_{3},p_{4},p_{5}$ 的距离分别为 $0.283,0.506,0.434,0.260,0.032$ 。由于 $p_{5}$ 与 $x_{1}$ 距离最近且两者具有相同的类别标记 $c_{2}$ ，假定学习率 $\eta = 0.1$ ，则 LVQ 更新 $p_{5}$ 得到新原型向量：</script><p>\begin{align}<br>p^{‘} &amp; = p<em>{5} + \eta \cdot (x</em>{1} - p_{5}) \cr<br>      &amp; = (0.725;0.445) + 0.1 \cdot ((0.697;0.460) - (0.725;0.445)) \cr<br>      &amp; = (0.722;0.442).<br>\end{align}</p>
-<p>$$<br>将 $p<em>{5}$ 更新为 $p^{‘}$ 后，不断重复上述过程，不同轮数之后的聚类结果如下图所示，其中 $c</em>{1}$ ， $c_{2}$ 类别样本点与原型向量分别用”●”,”○”与”+”表示，红色虚线显示出聚类形成的 Voronoi 剖分。</p>
+\begin{align}
+p^{'} & = p_{5} + \eta \cdot (x_{1} - p_{5}) \cr
+      & = (0.725;0.445) + 0.1 \cdot ((0.697;0.460) - (0.725;0.445)) \cr
+      & = (0.722;0.442).
+\end{align}</script><p>将 $p<em>{5}$ 更新为 $p^{‘}$ 后，不断重复上述过程，不同轮数之后的聚类结果如下图所示，其中 $c</em>{1}$ ， $c_{2}$ 类别样本点与原型向量分别用”●”,”○”与”+”表示，红色虚线显示出聚类形成的 Voronoi 剖分。</p>
 <p><img src="https://farm1.staticflickr.com/715/31427609470_fe9357f0cc_o.png" alt=""></p>
 <h2 id="使用高斯混合聚类"><a href="# 使用高斯混合聚类" class="headerlink" title="使用高斯混合聚类"></a>使用高斯混合聚类 </h2><p> 令高斯混合成分的个数 $k=3$。算法开始时，假定将高斯混合分布的模型参数初始化为：$\alpha<em>{1} = \alpha</em>{2} = \alpha<em>{3} = \frac{1}{3}$；$\mu</em>{1} = x<em>{6}$，$\mu</em>{2}=x<em>{22}$，$\mu</em>{3} = x<em>{27}$；$\Sigma</em>{1} = \Sigma<em>{2} = \Sigma</em>{3} = \binom{0.1 \ 0.0}{0.0 \ 0.1}$。</p>
 <p>在第一轮迭代中，先计算样本由各混合成分生成的后验概率。</p>
@@ -1133,7 +1143,7 @@ MLE 解为：</script><p>\begin{align}<br>\mu<em>{i} &amp; = \frac{\sum^{n}</em>
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#聚类介绍"><span class="nav-number">1.</span> <span class="nav-text">聚类介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#聚类算法"><span class="nav-number">1.1.</span> <span class="nav-text">聚类算法 </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#聚类数据设置"><span class="nav-number">1.2.</span> <span class="nav-text">聚类数据设置 </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#聚类性能度量"><span class="nav-number">1.3.</span> <span class="nav-text">聚类性能度量 </span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#外部指标"><span class="nav-number">1.3.1.</span> <span class="nav-text">外部指标 </span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#JC-Jaccard-Coefficient"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">JC(Jaccard Coefficient)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#FMI-Fowlkes-and-Mallows-Index"><span class="nav-number">1.3.1.2.</span> <span class="nav-text">FMI(Fowlkes and Mallows Index)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#RI-Rand-Index"><span class="nav-number">1.3.1.3.</span> <span class="nav-text">RI(Rand Index)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ARI-Adjusted-Rand-Index"><span class="nav-number">1.3.1.4.</span> <span class="nav-text">ARI(Adjusted Rand Index)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#举个具体例子计算 -ARI"><span class="nav-number">1.3.1.5.</span> <span class="nav-text">举个具体例子计算 ARI</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内部指标"><span class="nav-number">1.3.2.</span> <span class="nav-text">内部指标 </span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#CP-Compactness"><span class="nav-number">1.3.2.1.</span> <span class="nav-text">CP(Compactness)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SP-Separation"><span class="nav-number">1.3.2.2.</span> <span class="nav-text">SP(Separation)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DBI-Davies-Bouldin-Index"><span class="nav-number">1.3.2.3.</span> <span class="nav-text">DBI(Davies-Bouldin Index)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DI-Dunn-Index"><span class="nav-number">1.3.2.4.</span> <span class="nav-text">DI(Dunn Index)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#聚类距离计算"><span class="nav-number">1.4.</span> <span class="nav-text">聚类距离计算 </span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#闵可夫斯基距离（Minkowski-distance）"><span class="nav-number">1.4.1.</span> <span class="nav-text">闵可夫斯基距离（Minkowski distance）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#VDM-Value-Difference-Metric"><span class="nav-number">1.4.2.</span> <span class="nav-text">VDM(Value Difference Metric)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#闵可夫斯基距离与 VDM 混合距离"><span class="nav-number">1.4.3.</span> <span class="nav-text">闵可夫斯基距离与 VDM 混合距离 </span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#加权闵可夫斯基距离"><span class="nav-number">1.4.4.</span> <span class="nav-text">加权闵可夫斯基距离 </span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#聚类算法介绍及实现"><span class="nav-number">2.</span> <span class="nav-text">聚类算法介绍及实现 </span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基于原型的聚类"><span class="nav-number">2.1.</span> <span class="nav-text">基于原型的聚类 </span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#K 均值聚类（K-means）"><span class="nav-number">2.1.1.</span> <span class="nav-text">K 均值聚类（K-means）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#算法介绍"><span class="nav-number">2.1.1.1.</span> <span class="nav-text">算法介绍 </span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法实现 -（R 语言）"><span class="nav-number">2.1.1.2.</span> <span class="nav-text">算法实现 （R 语言）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#学习向量量化聚类（Learning-vector-Quantization）"><span class="nav-number">2.1.2.</span> <span class="nav-text">学习向量量化聚类（Learning vector Quantization）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#算法介绍 -1"><span class="nav-number">2.1.2.1.</span> <span class="nav-text">算法介绍</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法实现"><span class="nav-number">2.1.2.2.</span> <span class="nav-text">算法实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#补充"><span class="nav-number">2.1.2.3.</span> <span class="nav-text">补充 </span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#竞争型学习"><span class="nav-number">2.1.2.3.1.</span> <span class="nav-text"> 竞争型学习 </span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ART- 网络"><span class="nav-number">2.1.2.3.2.</span> <span class="nav-text">ART 网络</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#SOM- 网络"><span class="nav-number">2.1.2.3.3.</span> <span class="nav-text">SOM 网络</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#高斯混合聚类（Mixture-of-Gaussian）"><span class="nav-number">2.1.3.</span> <span class="nav-text">高斯混合聚类（Mixture-of-Gaussian）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#算法介绍 -2"><span class="nav-number">2.1.3.1.</span> <span class="nav-text">算法介绍 </span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#多元 - 高斯分布："><span class="nav-number">2.1.3.1.1.</span> <span class="nav-text">(多元)高斯分布：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#多元 - 高斯混合分布："><span class="nav-number">2.1.3.1.2.</span> <span class="nav-text">(多元)高斯混合分布：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#样本集的生成模型："><span class="nav-number">2.1.3.1.3.</span> <span class="nav-text">样本集的生成模型：</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用高斯混合聚类"><span class="nav-number">2.2.</span> <span class="nav-text">使用高斯混合聚类 </span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#聚类介绍"><span class="nav-number">1.</span> <span class="nav-text">聚类介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#聚类算法"><span class="nav-number">1.1.</span> <span class="nav-text">聚类算法 </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#聚类数据设置"><span class="nav-number">1.2.</span> <span class="nav-text">聚类数据设置 </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#聚类性能度量"><span class="nav-number">1.3.</span> <span class="nav-text">聚类性能度量 </span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#外部指标"><span class="nav-number">1.3.1.</span> <span class="nav-text">外部指标 </span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#JC-Jaccard-Coefficient"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">JC(Jaccard Coefficient)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#FMI-Fowlkes-and-Mallows-Index"><span class="nav-number">1.3.1.2.</span> <span class="nav-text">FMI(Fowlkes and Mallows Index)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#RI-Rand-Index"><span class="nav-number">1.3.1.3.</span> <span class="nav-text">RI(Rand Index)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ARI-Adjusted-Rand-Index"><span class="nav-number">1.3.1.4.</span> <span class="nav-text">ARI(Adjusted Rand Index)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#举个具体例子计算 -ARI"><span class="nav-number">1.3.1.5.</span> <span class="nav-text">举个具体例子计算 ARI</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内部指标"><span class="nav-number">1.3.2.</span> <span class="nav-text">内部指标 </span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#CP-Compactness"><span class="nav-number">1.3.2.1.</span> <span class="nav-text">CP(Compactness)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SP-Separation"><span class="nav-number">1.3.2.2.</span> <span class="nav-text">SP(Separation)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DBI-Davies-Bouldin-Index"><span class="nav-number">1.3.2.3.</span> <span class="nav-text">DBI(Davies-Bouldin Index)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DI-Dunn-Index"><span class="nav-number">1.3.2.4.</span> <span class="nav-text">DI(Dunn Index)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#聚类距离计算"><span class="nav-number">1.4.</span> <span class="nav-text">聚类距离计算 </span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#闵可夫斯基距离（Minkowski-distance）"><span class="nav-number">1.4.1.</span> <span class="nav-text">闵可夫斯基距离（Minkowski distance）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#VDM-Value-Difference-Metric"><span class="nav-number">1.4.2.</span> <span class="nav-text">VDM(Value Difference Metric)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#闵可夫斯基距离与 VDM 混合距离"><span class="nav-number">1.4.3.</span> <span class="nav-text">闵可夫斯基距离与 VDM 混合距离 </span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#加权闵可夫斯基距离"><span class="nav-number">1.4.4.</span> <span class="nav-text">加权闵可夫斯基距离 </span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#聚类算法介绍及实现"><span class="nav-number">2.</span> <span class="nav-text">聚类算法介绍及实现 </span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基于原型的聚类"><span class="nav-number">2.1.</span> <span class="nav-text">基于原型的聚类 </span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#K 均值聚类（K-means）"><span class="nav-number">2.1.1.</span> <span class="nav-text">K 均值聚类（K-means）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#算法介绍"><span class="nav-number">2.1.1.1.</span> <span class="nav-text">算法介绍 </span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法实现 -（R 语言）"><span class="nav-number">2.1.1.2.</span> <span class="nav-text">算法实现 （R 语言）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#学习向量量化聚类（Learning-vector-Quantization）"><span class="nav-number">2.1.2.</span> <span class="nav-text">学习向量量化聚类（Learning vector Quantization）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#算法介绍 -1"><span class="nav-number">2.1.2.1.</span> <span class="nav-text">算法介绍</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法实现"><span class="nav-number">2.1.2.2.</span> <span class="nav-text">算法实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#补充"><span class="nav-number">2.1.2.3.</span> <span class="nav-text">补充 </span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#竞争型学习"><span class="nav-number">2.1.2.3.1.</span> <span class="nav-text"> 竞争型学习 </span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ART- 网络"><span class="nav-number">2.1.2.3.2.</span> <span class="nav-text">ART 网络</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#SOM- 网络"><span class="nav-number">2.1.2.3.3.</span> <span class="nav-text">SOM 网络</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#高斯混合聚类（Mixture-of-Gaussian）"><span class="nav-number">2.1.3.</span> <span class="nav-text">高斯混合聚类（Mixture-of-Gaussian）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#算法介绍 -2"><span class="nav-number">2.1.3.1.</span> <span class="nav-text">算法介绍 </span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#多元 - 高斯分布："><span class="nav-number">2.1.3.1.1.</span> <span class="nav-text">(多元)高斯分布：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#多元 - 高斯混合分布："><span class="nav-number">2.1.3.1.2.</span> <span class="nav-text">(多元)高斯混合分布：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#样本集的生成模型："><span class="nav-number">2.1.3.1.3.</span> <span class="nav-text">样本集的生成模型：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#高斯混合聚类策略："><span class="nav-number">2.1.3.1.4.</span> <span class="nav-text">高斯混合聚类策略：</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法实现 -1"><span class="nav-number">2.1.3.2.</span> <span class="nav-text">算法实现</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#各聚类算法过程"><span class="nav-number">3.</span> <span class="nav-text">各聚类算法过程 </span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用 -k- 均值算法"><span class="nav-number">3.1.</span> <span class="nav-text">使用 $k$ 均值算法 </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用学习向量量化"><span class="nav-number">3.2.</span> <span class="nav-text">使用学习向量量化 </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用高斯混合聚类"><span class="nav-number">3.3.</span> <span class="nav-text">使用高斯混合聚类 </span></a></li></ol></li></ol></div>
             
 
           </div>
