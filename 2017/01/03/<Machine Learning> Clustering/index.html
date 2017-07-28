@@ -117,7 +117,7 @@
 <meta property="og:image" content="https://farm5.staticflickr.com/4320/36049858912_c400743b7f_o.png">
 <meta property="og:image" content="https://farm6.staticflickr.com/5569/31429001070_b16d937809_o.png">
 <meta property="og:image" content="https://farm1.staticflickr.com/715/31427609470_fe9357f0cc_o.png">
-<meta property="og:updated_time" content="2017-07-28T08:59:43.000Z">
+<meta property="og:updated_time" content="2017-07-28T09:00:51.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="♞「Machine Learning」 Clustering">
 <meta name="twitter:description" content="本文是关于周志华「Machine Learning」这本书的 Clustering 的学习笔记。">
@@ -454,7 +454,7 @@
                   <i class="fa fa-file-word-o"></i>
                 </span>
                 <span title="Words count in article">
-                  8,021
+                  8,027
                 </span>
                 <span> words </span>
                 
@@ -748,6 +748,7 @@ E = \sum^{k}_{i=1}\sum_{x \in C_{i}}|x-\mu_{i}|_{2}^{2}</script><p>其中 <scrip
 <hr>
 <h3 id="学习向量量化聚类（Learning-vector-Quantization）"><a href="# 学习向量量化聚类（Learning-vector-Quantization）" class="headerlink" title="学习向量量化聚类（Learning vector Quantization）"></a>学习向量量化聚类（Learning vector Quantization）</h3><h4 id="算法介绍 -1"><a href="# 算法介绍 -1" class="headerlink" title="算法介绍"></a>算法介绍</h4><p><strong>LVQ 假设数据样本带有类别标记，学习过程利用样本的这些监督信息来辅助聚类。</strong></p>
 <p>给定样本集 <script type="math/tex">D=\lbrace (x_{1}, y_{1}), (x_{2}, y_{2}), \ldots, (x_{m}, y_{m}) \rbrace</script>，每个样本 <script type="math/tex">x_{j}</script> 是由 $n$ 个属性描述的特征向量 <script type="math/tex">(x_{j1}; x_{j2}; \ldots; x_{jn})</script>,<script type="math/tex">y_{j} \in \mathcal{Y}</script> 是样本 <script type="math/tex">x_{j}</script> 的类别标记。LVQ 的目标是学得一组 $n$ 维原型向量<script type="math/tex">\lbrace p_{1}, p_{2}, \ldots, p_{q} \rbrace</script>, 每个原型向量代表一个聚类簇，簇标记为<script type="math/tex">t_{i}\in \mathcal{Y}</script>。</p>
+<p>具体算法如下：</p>
 <p><img src="https://farm5.staticflickr.com/4320/36049858912_c400743b7f_o.png" alt="学习向量量化方法"></p>
 <p><strong>算法解释</strong></p>
 <ul>
@@ -827,6 +828,7 @@ P_{\mathcal{M}}(z_{j}=i|x_{j}) &=\frac{P(z_{j}=i) \cdot p_{\mathcal{M}}(x_{j}|z_
 MLE 解为：</script><p>\begin{align}<br>\mu<em>{i} &amp; = \frac{\sum^{n}</em>{j=1}\gamma<em>{ji}x</em>{j}}{\sum^{n}<em>{j=1}\gamma{ji}} \cr<br>\Sigma</em>{i} &amp; = \frac{\sum^{n}<em>{j=1}\gamma</em>{ji}(x<em>{j}-\mu</em>{i})(x<em>{j}-\mu</em>{i})^{T}}{\sum^{n}<em>{j=1}\gamma</em>{ji}} \cr<br>\alpha<em>{i} &amp;= \frac{1}{n}\sum^{n}</em>{j=1}\gamma_{ji}<br>\end{align}</p>
 <script type="math/tex; mode=display">
 
+具体算法如下：
 ![高斯混合聚类算法](https://farm5.staticflickr.com/4295/35824129960_2e09d0a8b8_o.png)
 
 #### 算法实现
