@@ -83,7 +83,7 @@
     <link href="http://randolph.pro/2017/01/03/%3CMachine%20Learning%3E%20Clustering/"/>
     <id>http://randolph.pro/2017/01/03/&lt;Machine Learning&gt; Clustering/</id>
     <published>2017-01-02T16:00:00.000Z</published>
-    <updated>2017-07-28T08:09:35.000Z</updated>
+    <updated>2017-07-28T08:15:23.000Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://farm5.staticflickr.com/4307/36174772306_62cfbc8cd6_o.jpg" alt=""></p>
 <p>关于该书的其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/Book-「Machine-Learning」/">「Machine Learning」</a></p>
@@ -284,7 +284,7 @@ DI=\underset{1 \leqslant i \leqslant k}{min}\bigg\{\underset{j \neq i}{min}\bigg
 <h3 id="闵可夫斯基距离（Minkowski-distance）"><a href="# 闵可夫斯基距离（Minkowski-distance）" class="headerlink" title="闵可夫斯基距离（Minkowski distance）"></a>闵可夫斯基距离（Minkowski distance）</h3><p>样本：<script type="math/tex">x_{i}=(x_{i1}, x_{i2}, \ldots, x_{in})</script> 与 <script type="math/tex">x_{j}=(x_{j1}, x_{j2}, \ldots, x_{jn})</script></p>
 <script type="math/tex; mode=display">
 dist_{mk}(x_{i}, x_{j})=\bigg(\sum_{u=1}^{n}|x_{iu}-x_{ju}|^{p}\bigg)^{\frac{1}{p}}</script><h3 id="VDM-Value-Difference-Metric"><a href="#VDM-Value-Difference-Metric" class="headerlink" title="VDM(Value Difference Metric)"></a>VDM(Value Difference Metric)</h3><blockquote>
-<p>我们常将属性划分为“连续属性”（continuous attribute）和“离散属性”（categorical attribute），前者在定义域上有无穷多个可能的取值，后者在定义域上是有限个取值。然而，在讨论距离计算时，属性上是否定义了“序”关系更为重要．例如定义域为 $\lbrace 1,2,3 \rbrace$ 的离散属性与连续属性的性质更接近一些， 能直接在属性值上计算距离：“1”与“2”比较接近、与“3”比较远，这样的属性称为“有序属性”（ordinal attribute）; 而定义域为｛飞机，火车，轮船｝这样的离散属性则不能直接在属性值上计算距离，称为“无序属性”（non-ordinal attribute）。显然， 闵可夫斯基距离可用于有序属性。</p>
+<p>我们常将属性划分为“连续属性”（continuous attribute）和“离散属性”（categorical attribute），前者在定义域上有无穷多个可能的取值，后者在定义域上是有限个取值。然而，在讨论距离计算时，属性上是否定义了“序”关系更为重要。例如定义域为 $\lbrace 1,2,3 \rbrace$ 的离散属性与连续属性的性质更接近一些， 能直接在属性值上计算距离：“1”与“2”比较接近、与“3”比较远，这样的属性称为“有序属性”（ordinal attribute）; 而定义域为｛飞机，火车，轮船｝这样的离散属性则不能直接在属性值上计算距离，称为“无序属性”（non-ordinal attribute）。显然， 闵可夫斯基距离可用于有序属性。</p>
 <p>对无序属性可采用 VDM（Value Difference Metric） [Stanfill and Waltz, 1986]。</p>
 </blockquote>
 <p>令 <script type="math/tex">m_{u,a}</script> 表示在属性 $u$ 上取值为 $a$ 的样本数，<script type="math/tex">m_{u, a, i}</script> 表示在第 $i$ 个样本簇中在属性 $u$ 上取值为 $a$ 的样本数，$k$ 为样本簇数，则属性 $u$ 上两个离散值 $a$ 与 $b$ 之间的 VDM 距离为：</p>
@@ -294,7 +294,7 @@ VDM_{q}(a, b)=\sum^{k}_{i=1}\bigg|\frac{m_{u,a,i}}{m_{u,a}}-\frac{m_{u,b,i}}{m_{
 <script type="math/tex; mode=display">
 MinkovDM_{p}(x_{i}, x_{j})=\bigg(\sum^{n_{c}}_{u=1}|x_{i,u}-x_{j,u}|^{p}+\sum^{n}_{u=n_{c}+1}VDM_{p}(x_{i,u},x_{j,u})\bigg)^{\frac{1}{p}}</script><h3 id="加权闵可夫斯基距离"><a href="# 加权闵可夫斯基距离" class="headerlink" title="加权闵可夫斯基距离"></a>加权闵可夫斯基距离 </h3><p> 当样本在空间中不同属性的重要性不同时：</p>
 <script type="math/tex; mode=display">
-dist_{wmk}(x_{i}, x_{j})=(w_{1}\cdot|x_{i1}-x_{j1}|^{p}+w_{2}\cdot|x_{i2}-x_{j2}|^{p}+\ldots+w_{n}\cdot|x_{in}-x_{jn}|^{p})^{\frac{1}{p}}</script><p>其中： 权重<script type="math/tex">w_{i} \geqslant 0(i=1, 2, \ldots, p)</script> 表示不同属性的重要性，通常 <script type="math/tex">\sum_{i=1}^{n}w_{i}=1</script>.</p>
+dist_{wmk}(x_{i}, x_{j})=(w_{1}\cdot|x_{i1}-x_{j1}|^{p}+w_{2}\cdot|x_{i2}-x_{j2}|^{p}+\ldots+w_{n}\cdot|x_{in}-x_{jn}|^{p})^{\frac{1}{p}}</script><p>其中： 权重<script type="math/tex">w_{i} \geqslant 0(i=1, 2, \ldots, p)</script> 表示不同属性的重要性，通常 <script type="math/tex">\sum_{i=1}^{n}w_{i}=1</script>。</p>
 <hr>
 <h1 id="聚类算法介绍及实现"><a href="# 聚类算法介绍及实现" class="headerlink" title="聚类算法介绍及实现"></a>聚类算法介绍及实现 </h1><p><strong> 聚类算法类型：</strong></p>
 <ul>
@@ -320,7 +320,7 @@ dist_{wmk}(x_{i}, x_{j})=(w_{1}\cdot|x_{i1}-x_{j1}|^{p}+w_{2}\cdot|x_{i2}-x_{j2}
 </ul>
 </li>
 </ul>
-<h3 id="K 均值聚类（K-means）"><a href="#K 均值聚类（K-means）" class="headerlink" title="K 均值聚类（K-means）"></a>K 均值聚类（K-means）</h3><h4 id="算法介绍"><a href="# 算法介绍" class="headerlink" title="算法介绍"></a>算法介绍 </h4><p> 给定样本集 <script type="math/tex">D= \lbrace x_{1}, x_{2}, \ldots, x_{n} \rbrace</script>， K-means 算法针对聚类所得簇划分 <script type="math/tex">C= \lbrace C_{1}, C_{2}, \ldots, C_{k} \rbrace</script> , 最小化平方误差：</p>
+<h3 id="K 均值聚类（K-means）"><a href="#K 均值聚类（K-means）" class="headerlink" title="K 均值聚类（K-means）"></a>K 均值聚类（K-means）</h3><h4 id="算法介绍"><a href="# 算法介绍" class="headerlink" title="算法介绍"></a>算法介绍 </h4><p> 给定样本集 <script type="math/tex">D= \lbrace x_{1}, x_{2}, \ldots, x_{n} \rbrace</script>， K-means 算法针对聚类所得簇划分 <script type="math/tex">C= \lbrace C_{1}, C_{2}, \ldots, C_{k} \rbrace</script>，最小化平方误差：</p>
 <script type="math/tex; mode=display">
 E = \sum^{k}_{i=1}\sum_{x \in C_{i}}|x-\mu_{i}|_{2}^{2}</script><p>其中 <script type="math/tex">\mu_{i}</script> 是簇 <script type="math/tex">C_{i}</script> 的均值向量：</p>
 <script type="math/tex; mode=display">
@@ -329,7 +329,7 @@ E = \sum^{k}_{i=1}\sum_{x \in C_{i}}|x-\mu_{i}|_{2}^{2}</script><p>其中 <scrip
 <h4 id="算法实现 -（R 语言）"><a href="# 算法实现 -（R 语言）" class="headerlink" title="算法实现 （R 语言）"></a>算法实现 （R 语言）</h4><p>Python 的实现可以参考<a href="http://randolph.pro/2016/03/19/%3CProgramming%20Collective%20Intelligence%3E%20Chapter%203/">「Programming Collective Intelligence」 Chapter 3</a> 这篇文章。</p>
 <figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">head(iris)</div></pre></td></tr></table></figure>
 <figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">  Sepal.Length Sepal.Width Petal.Length Petal.Width Species</div><div class="line"><span class="number">1</span>          <span class="number">5.1</span>         <span class="number">3.5</span>          <span class="number">1.4</span>         <span class="number">0.2</span>  setosa</div><div class="line"><span class="number">2</span>          <span class="number">4.9</span>         <span class="number">3.0</span>          <span class="number">1.4</span>         <span class="number">0.2</span>  setosa</div><div class="line"><span class="number">3</span>          <span class="number">4.7</span>         <span class="number">3.2</span>          <span class="number">1.3</span>         <span class="number">0.2</span>  setosa</div><div class="line"><span class="number">4</span>          <span class="number">4.6</span>         <span class="number">3.1</span>          <span class="number">1.5</span>         <span class="number">0.2</span>  setosa</div><div class="line"><span class="number">5</span>          <span class="number">5.0</span>         <span class="number">3.6</span>          <span class="number">1.4</span>         <span class="number">0.2</span>  setosa</div><div class="line"><span class="number">6</span>          <span class="number">5.4</span>         <span class="number">3.9</span>          <span class="number">1.7</span>         <span class="number">0.4</span>  setosa</div></pre></td></tr></table></figure>
-<p>After a little bit of exploration, I found that Petal.Length and Petal.Width were similar among the same species but varied considerably between different species, as demonstrated below:</p>
+<p>After a little bit of exploration, I found that Petal.Length and Petal. Width were similar among the same species but varied considerably between different species, as demonstrated below:</p>
 <figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">library</span>(ggplot2)</div><div class="line">ggplot(iris, aes(Petal.Length, Petal.Width, color = Species)) + geom_point()</div></pre></td></tr></table></figure>
 <p><img src="https://farm1.staticflickr.com/33/31680514905_7dba9b551a_o.jpg" alt=""></p>
 <figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">set.seed(<span class="number">20</span>)</div><div class="line">irisCluster &lt;- kmeans(iris[, <span class="number">3</span>:<span class="number">4</span>], centers = <span class="number">3</span>, nstart = <span class="number">20</span>)</div><div class="line">irisCluster</div></pre></td></tr></table></figure>
@@ -339,8 +339,8 @@ E = \sum^{k}_{i=1}\sum_{x \in C_{i}}|x-\mu_{i}|_{2}^{2}</script><p>其中 <scrip
 <figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; irisCluster$cluster &lt;- as.factor(irisCluster$cluster)</div><div class="line">&gt; ggplot(iris, aes(Petal.Length, Petal.Width, color = irisCluster$cluster)) + geom_point()</div></pre></td></tr></table></figure>
 <p><img src="https://farm1.staticflickr.com/353/31565301411_fc7281b525_o.jpg" alt=""></p>
 <hr>
-<h3 id="学习向量量化聚类（Learning-vector-Quantization）"><a href="# 学习向量量化聚类（Learning-vector-Quantization）" class="headerlink" title="学习向量量化聚类（Learning vector Quantization）"></a>学习向量量化聚类（Learning vector Quantization）</h3><h4 id="算法介绍 -1"><a href="# 算法介绍 -1" class="headerlink" title="算法介绍"></a>算法介绍</h4><p><strong>LVQ 假设数据样本带有类别标记, 学习过程利用样本的这些监督信息来辅助聚类。</strong></p>
-<p>给定样本集 <script type="math/tex">D=\lbrace (x_{1}, y_{1}), (x_{2}, y_{2}), \ldots, (x_{m}, y_{m}) \rbrace</script>, 每个样本 <script type="math/tex">x_{j}</script> 是由 $n$ 个属性描述的特征向量 <script type="math/tex">(x_{j1}; x_{j2}; \ldots; x_{jn})</script>,<script type="math/tex">y_{j} \in \mathcal{Y}</script> 是样本 <script type="math/tex">x_{j}</script> 的类别标记. LVQ 的目标是学得一组 $n$ 维原型向量<script type="math/tex">\lbrace p_{1}, p_{2}, \ldots, p_{q} \rbrace</script>, 每个原型向量代表一个聚类簇，簇标记为<script type="math/tex">t_{i}\in \mathcal{Y}</script>.</p>
+<h3 id="学习向量量化聚类（Learning-vector-Quantization）"><a href="# 学习向量量化聚类（Learning-vector-Quantization）" class="headerlink" title="学习向量量化聚类（Learning vector Quantization）"></a>学习向量量化聚类（Learning vector Quantization）</h3><h4 id="算法介绍 -1"><a href="# 算法介绍 -1" class="headerlink" title="算法介绍"></a>算法介绍</h4><p><strong>LVQ 假设数据样本带有类别标记，学习过程利用样本的这些监督信息来辅助聚类。</strong></p>
+<p>给定样本集 <script type="math/tex">D=\lbrace (x_{1}, y_{1}), (x_{2}, y_{2}), \ldots, (x_{m}, y_{m}) \rbrace</script>，每个样本 <script type="math/tex">x_{j}</script> 是由 $n$ 个属性描述的特征向量 <script type="math/tex">(x_{j1}; x_{j2}; \ldots; x_{jn})</script>,<script type="math/tex">y_{j} \in \mathcal{Y}</script> 是样本 <script type="math/tex">x_{j}</script> 的类别标记。LVQ 的目标是学得一组 $n$ 维原型向量<script type="math/tex">\lbrace p_{1}, p_{2}, \ldots, p_{q} \rbrace</script>, 每个原型向量代表一个聚类簇，簇标记为<script type="math/tex">t_{i}\in \mathcal{Y}</script>。</p>
 <p><img src="https://farm5.staticflickr.com/4320/36049858912_c400743b7f_o.png" alt="学习向量量化方法"></p>
 <p><strong>算法解释</strong></p>
 <ul>
