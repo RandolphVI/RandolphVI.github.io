@@ -83,7 +83,7 @@
     <link href="http://randolph.pro/2017/01/03/%3CMachine%20Learning%3E%20Clustering/"/>
     <id>http://randolph.pro/2017/01/03/&lt;Machine Learning&gt; Clustering/</id>
     <published>2017-01-02T16:00:00.000Z</published>
-    <updated>2017-07-28T06:18:00.000Z</updated>
+    <updated>2017-07-28T06:20:57.000Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fhxi0z29mdj30sg11c77u.jpg" alt=""></p>
 <p>关于该书的其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/Book-「Machine-Learning」/">「Machine Learning」</a></p>
@@ -264,7 +264,7 @@ DI=\underset{1 \leqslant i \leqslant k}{min}\bigg\{\underset{j \neq i}{min}\bigg
 <p>Being defined in this way, the <em>DI</em> depends on $k$, the number of clusters in the set. If the number of clusters is not known apriori, the $k$ for which the <em>DI</em> is the highest can be chosen as the number of clusters. There is also some flexibility when it comes to the definition of d(x,y) where any of the well known metrics can be used, like <a href="https://en.wikipedia.org/wiki/Manhattan_distance" target="_blank" rel="external">Manhattan distance</a> or <a href="https://en.wikipedia.org/wiki/Euclidean_distance" target="_blank" rel="external">Euclidean distance</a> based on the geometry of the clustering problem. <strong>This formulation has a peculiar problem, in that if one of the clusters is badly behaved, where the others are tightly packed, since the denominator contains a ‘max’ term instead of an average term, the Dunn Index for that set of clusters will be uncharacteristically low. This is thus some sort of a worst case indicator, and has to be kept in mind.</strong></p>
 </blockquote>
 <p>DI 系数结果为非负数，值越大意味着簇间距离越大，同时簇内距离越小。个人总结，DI 系数计算的是，任意两个簇的最短距离（簇间）除以任意簇中的最大距离（簇内），其优点是对于离散点的聚类评测效果不错，但缺点是对于环状分布评测效果比较差。还有上述重点提到的，因为分母采用的是取一个 max 距离而不是取平均值 average，所以会出现一个奇怪的问题，对于某个聚类效果特别差的一个簇，它可能”一个老鼠屎坏了一锅粥”这种，导致 DI 系数会特别低，这也是当我们需要使用 DI 系数时，对于某些聚类表现非常差的簇需要注意的原因。</p>
-<h2 id="聚类距离计算"><a href="# 聚类距离计算" class="headerlink" title="聚类距离计算"></a>聚类距离计算 </h2><p><strong> 距离度量 (distance measure) 函数 $dist(,)$ 需满足的基本性质：</strong></p>
+<h2 id="聚类距离计算"><a href="# 聚类距离计算" class="headerlink" title="聚类距离计算"></a>聚类距离计算 </h2><p><strong> 距离度量（distance measure）函数 $dist(,)$ 需满足的基本性质：</strong></p>
 <ul>
 <li><strong>非负性</strong>：<script type="math/tex">dist(x_{i}, x_{j}) \geqslant 0</script></li>
 <li><strong>同一性</strong>：<script type="math/tex">dist(x_{i}, x_{j})=0</script> 当且仅当 <script type="math/tex">x_{i}=x_{j}</script></li>
@@ -285,9 +285,9 @@ DI=\underset{1 \leqslant i \leqslant k}{min}\bigg\{\underset{j \neq i}{min}\bigg
 <script type="math/tex; mode=display">
 dist_{mk}(x_{i}, x_{j})=\bigg(\sum_{u=1}^{n}|x_{iu}-x_{ju}|^{p}\bigg)^{\frac{1}{p}}</script><h3 id="VDM-Value-Difference-Metric"><a href="#VDM-Value-Difference-Metric" class="headerlink" title="VDM(Value Difference Metric)"></a>VDM(Value Difference Metric)</h3><blockquote>
 <p>我们常将属性划分为“连续属性”（continuous attribute）和“离散属性”（categorical attribute），前者在定义域上有无穷多个可能的取值，后者在定义域上是有限个取值。然而，在讨论距离计算时，属性上是否定义了“序”关系更为重要．例如定义域为 $\lbrace 1,2,3 \rbrace$ 的离散属性与连续属性的性质更接近一些， 能直接在属性值上计算距离：“1”与“2”比较接近、与“3”比较远，这样的属性称为“有序属性”（ordinal attribute）; 而定义域为｛飞机，火车，轮船｝这样的离散属性则不能直接在属性值上计算距离，称为“无序属性”（non-ordinal attribute）。显然， 闵可夫斯基距离可用于有序属性。</p>
-<p>对无序属性可采用 VDM (Value Difference Metric) [Stanfill and Waltz, 1986]。</p>
+<p>对无序属性可采用 VDM(Value Difference Metric) [Stanfill and Waltz, 1986]。</p>
 </blockquote>
-<p>令 $ m<em>{u,a} $ 表示在属性 $u$ 上取值为 $a$ 的样本数，$m</em>{u, a, i}$ 表示在第 $i$ 个样本簇中在属性 $u$ 上取值为 $a$ 的样本数，$k$ 为样本簇数，则属性 $u$ 上两个离散值 $a$ 与 $b$ 之间的 VDM 距离为：</p>
+<p>令 <script type="math/tex">m_{u,a}</script> 表示在属性 $u$ 上取值为 $a$ 的样本数，<script type="math/tex">m_{u, a, i}</script> 表示在第 $i$ 个样本簇中在属性 $u$ 上取值为 $a$ 的样本数，$k$ 为样本簇数，则属性 $u$ 上两个离散值 $a$ 与 $b$ 之间的 VDM 距离为：</p>
 <script type="math/tex; mode=display">
 VDM_{q}(a, b)=\sum^{k}_{i=1}\bigg|\frac{m_{u,a,i}}{m_{u,a}}-\frac{m_{u,b,i}}{m_{u,b}}\bigg|^{p}.</script><p>（这里的 $p$ 同闵可夫斯基距离中的 $p$ 一样）</p>
 <h3 id="闵可夫斯基距离与 VDM 混合距离"><a href="# 闵可夫斯基距离与 VDM 混合距离" class="headerlink" title="闵可夫斯基距离与 VDM 混合距离"></a>闵可夫斯基距离与 VDM 混合距离 </h3><p> 假设有 $n<em>{c}$ 个有序属性，$n-n</em>{c}$ 个无序属性，有序属性排列在无序属性之前：</p>
