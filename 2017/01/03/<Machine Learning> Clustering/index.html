@@ -116,7 +116,7 @@
 <meta property="og:image" content="https://farm6.staticflickr.com/5569/31429001070_b16d937809_o.png">
 <meta property="og:image" content="https://farm1.staticflickr.com/403/30990399723_0db34a3cde_o.png">
 <meta property="og:image" content="https://farm1.staticflickr.com/715/31427609470_fe9357f0cc_o.png">
-<meta property="og:updated_time" content="2017-07-28T05:48:48.000Z">
+<meta property="og:updated_time" content="2017-07-28T05:55:16.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="♞「Machine Learning」 Clustering">
 <meta name="twitter:description" content="本文是关于周志华「Machine Learning」这本书的 Clustering 的学习笔记。">
@@ -453,7 +453,7 @@
                   <i class="fa fa-file-word-o"></i>
                 </span>
                 <span title="Words count in article">
-                  9,381
+                  9,367
                 </span>
                 <span> words </span>
                 
@@ -521,12 +521,12 @@
 </ul>
 <p><strong>角度 II：</strong></p>
 <ul>
-<li><strong>基于中心的聚类: kmeans 聚类</strong></li>
-<li><strong>基于分布的聚类: GMM 聚类</strong></li>
-<li><strong>基于密度的聚类: DBSCAN, OPTICS</strong></li>
-<li><strong>基于连通性的聚类: 层次聚类</strong></li>
-<li><strong>基于模型的聚类: Miture Regression Model</strong></li>
-<li><strong>其他聚类方法: 谱聚类, Chameleon, Canopy…</strong></li>
+<li><strong>基于中心的聚类： kmeans 聚类</strong></li>
+<li><strong>基于分布的聚类： GMM 聚类</strong></li>
+<li><strong>基于密度的聚类： DBSCAN, OPTICS</strong></li>
+<li><strong>基于连通性的聚类： 层次聚类</strong></li>
+<li><strong>基于模型的聚类： Miture Regression Model</strong></li>
+<li><strong>其他聚类方法： 谱聚类, Chameleon, Canopy…</strong></li>
 </ul>
 <hr>
 <h2 id="聚类数据设置"><a href="# 聚类数据设置" class="headerlink" title="聚类数据设置"></a>聚类数据设置 </h2><p> 假定样本集 $ D $ 包含 $n$ 个无标记样本：</p>
@@ -603,8 +603,8 @@ RI = \frac{a+d}{a+b+c+d}</script><p>RI 系数的结果分布在 $[0,1]$ 区间�
 ARI  = \frac{Rand \ Index - expected \ index}{maximum \ index - expected \ index} = \frac{RI - E(RI)}{1-E(RI)}</script></blockquote>
 <p>进行进一步的展开推导后：</p>
 <script type="math/tex; mode=display">
-API = \frac{\frac{a+d}{a+b+c+d} - \frac{(a+b)(a+c)+(c+d)(b+d)}{(a+b+c+d)^2}}{\frac{(a+b)(a+c)+(c+d)(b+d)}{(a+b+c+d)^2}}</script><p>ARI 系数结果分布在 $[-1,1]$ 区间，负数代表结果不好，越接近于 1 意味着聚类结果与真实情况越吻合。个人总结，ARI 系数对于任意数量的聚类中心和样本数，随机聚类的 ARI 都非常接近于 0。ARI 相比于 RI 好在，它是负数的时候就说明我们自己的模型很糟糕，有个更加相对明确的评判标准。(从广义的角度上来说，ARI 衡量的是两个数据分布的吻合程度)</p>
-<h4 id="举个具体例子计算 -ARI"><a href="# 举个具体例子计算 -ARI" class="headerlink" title="举个具体例子计算 ARI"></a>举个具体例子计算 ARI</h4><p>Let $n<em>{ij}$ be the number of objects that are in both class $u</em>{i}$ and cluster $v<em>{j}$. Let $n</em>{i.}$ and $n<em>{.j}$ be the number of objects in class $u</em>{i}$ and cluster $v_{j}$ respectively.The notations are illustrated in Table below:</p>
+API = \frac{\frac{a+d}{a+b+c+d} - \frac{(a+b)(a+c)+(c+d)(b+d)}{(a+b+c+d)^2}}{\frac{(a+b)(a+c)+(c+d)(b+d)}{(a+b+c+d)^2}}</script><p>ARI 系数结果分布在 $[-1,1]$ 区间，负数代表结果不好，越接近于 1 意味着聚类结果与真实情况越吻合。个人总结，ARI 系数对于任意数量的聚类中心和样本数，随机聚类的 ARI 都非常接近于 0。ARI 相比于 RI 好在，它是负数的时候就说明我们自己的模型很糟糕，有个更加相对明确的评判标准。（从广义的角度上来说，ARI 衡量的是两个数据分布的吻合程度）</p>
+<h4 id="举个具体例子计算 -ARI"><a href="# 举个具体例子计算 -ARI" class="headerlink" title="举个具体例子计算 ARI"></a>举个具体例子计算 ARI</h4><p>Let <script type="math/tex">n_{ij}</script> be the number of objects that are in both class <script type="math/tex">u_{i}</script> and cluster <script type="math/tex">v_{j}</script>. Let <script type="math/tex">n_{i.}</script> and <script type="math/tex">n_{.j}</script> be the number of objects in class <script type="math/tex">u_{i}</script> and cluster <script type="math/tex">v_{j}</script> respectively.The notations are illustrated in Table below:</p>
 <script type="math/tex; mode=display">
 \begin{array}{c|cccc|c}
 Class \ Cluster & v_{1}  & v_{2} & ... & v_{C} & Sums \cr
