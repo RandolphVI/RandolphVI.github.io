@@ -83,7 +83,7 @@
     <link href="http://randolph.pro/2017/01/03/%3CMachine%20Learning%3E%20Clustering/"/>
     <id>http://randolph.pro/2017/01/03/&lt;Machine Learning&gt; Clustering/</id>
     <published>2017-01-02T16:00:00.000Z</published>
-    <updated>2017-07-28T06:08:38.000Z</updated>
+    <updated>2017-07-28T06:18:00.000Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fhxi0z29mdj30sg11c77u.jpg" alt=""></p>
 <p>关于该书的其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/Book-「Machine-Learning」/">「Machine Learning」</a></p>
@@ -132,7 +132,7 @@ x_i=(x_{i1}; x_{i2}; \ldots; x_{ip})</script><p>聚类算法将样本集 $D$ 划
 \{C_l|l=1, 2, \ldots, k\}</script><p>其中， <script type="math/tex">(C_{l^{'}} \cap_{l^{'} \neq l} C_{l} = \emptyset)</script> 且 <script type="math/tex">(D=\cup_{l=1}^{k}C_{l})</script></p>
 <p>相应的，用</p>
 <script type="math/tex; mode=display">
-\lambda_{i} \in {1, 2, \ldots, k}</script><p>表示样本 $x_{i}$ 的“簇标记”(cluster label), 即：</p>
+\lambda_{i} \in {1, 2, \ldots, k}</script><p>表示样本 $x_{i}$ 的“簇标记”（cluster label）, 即：</p>
 <script type="math/tex; mode=display">
 x_{i} \in C_{\lambda_{i}}</script><p>于是，聚类的结果可用包含 $n$ 个元素的簇标记向量表示：</p>
 <script type="math/tex; mode=display">
@@ -284,7 +284,7 @@ DI=\underset{1 \leqslant i \leqslant k}{min}\bigg\{\underset{j \neq i}{min}\bigg
 <h3 id="闵可夫斯基距离（Minkowski-distance）"><a href="# 闵可夫斯基距离（Minkowski-distance）" class="headerlink" title="闵可夫斯基距离（Minkowski distance）"></a>闵可夫斯基距离（Minkowski distance）</h3><p>样本：<script type="math/tex">x_{i}=(x_{i1}, x_{i2}, \ldots, x_{in})</script> 与 <script type="math/tex">x_{j}=(x_{j1}, x_{j2}, \ldots, x_{jn})</script></p>
 <script type="math/tex; mode=display">
 dist_{mk}(x_{i}, x_{j})=\bigg(\sum_{u=1}^{n}|x_{iu}-x_{ju}|^{p}\bigg)^{\frac{1}{p}}</script><h3 id="VDM-Value-Difference-Metric"><a href="#VDM-Value-Difference-Metric" class="headerlink" title="VDM(Value Difference Metric)"></a>VDM(Value Difference Metric)</h3><blockquote>
-<p>我们常将属性划分为“连续属性”(continuous attribute 和“离散属性”(categorical attribute)，前者在定义域上有无穷多个可能的取值，后者在定义域上是有限个取值。然而，在讨论距离计算时，属性上是否定义了“序”关系更为重要．例如定义域为 $\lbrace 1,2,3 \rbrace$ 的离散属性与连续属性的性质更接近一些， 能直接在属性值上计算距离：“1”与“2”比较接近、与“3”比较远，这样的属性称为“有序属性”(ordinal attribute); 而定义域为｛飞机，火车，轮船｝这样的离散属性则不能直接在属性值上计算距离，称为“无序属性”(non-ordinal attribute)。显然， 闵可夫斯基距离可用于有序属性。</p>
+<p>我们常将属性划分为“连续属性”（continuous attribute）和“离散属性”（categorical attribute），前者在定义域上有无穷多个可能的取值，后者在定义域上是有限个取值。然而，在讨论距离计算时，属性上是否定义了“序”关系更为重要．例如定义域为 $\lbrace 1,2,3 \rbrace$ 的离散属性与连续属性的性质更接近一些， 能直接在属性值上计算距离：“1”与“2”比较接近、与“3”比较远，这样的属性称为“有序属性”（ordinal attribute）; 而定义域为｛飞机，火车，轮船｝这样的离散属性则不能直接在属性值上计算距离，称为“无序属性”（non-ordinal attribute）。显然， 闵可夫斯基距离可用于有序属性。</p>
 <p>对无序属性可采用 VDM (Value Difference Metric) [Stanfill and Waltz, 1986]。</p>
 </blockquote>
 <p>令 $ m<em>{u,a} $ 表示在属性 $u$ 上取值为 $a$ 的样本数，$m</em>{u, a, i}$ 表示在第 $i$ 个样本簇中在属性 $u$ 上取值为 $a$ 的样本数，$k$ 为样本簇数，则属性 $u$ 上两个离散值 $a$ 与 $b$ 之间的 VDM 距离为：</p>
@@ -298,25 +298,25 @@ dist_{wmk}(x_{i}, x_{j})=(w_{1}\cdot|x_{i1}-x_{j1}|^{p}+w_{2}\cdot|x_{i2}-x_{j2}
 <hr>
 <h1 id="聚类算法介绍及实现"><a href="# 聚类算法介绍及实现" class="headerlink" title="聚类算法介绍及实现"></a>聚类算法介绍及实现 </h1><p><strong> 聚类算法类型：</strong></p>
 <ul>
-<li><p><strong>基于原型的聚类(Prototype-based Clustering)</strong></p>
+<li><p><strong>基于原型的聚类（Prototype-based Clustering）</strong></p>
 <ul>
-<li><strong>K 均值聚类(K-means)</strong></li>
-<li><strong>学习向量量化聚类(Learning vector Quantization)</strong></li>
-<li><strong>高斯混合聚类(Mixture-of-Gaussian)</strong></li>
+<li><strong>K 均值聚类（K-means）</strong></li>
+<li><strong>学习向量量化聚类（Learning vector Quantization）</strong></li>
+<li><strong>高斯混合聚类（Mixture-of-Gaussian）</strong></li>
 </ul>
 </li>
-<li><p><strong>基于密度的聚类(Density-based Clustering)</strong></p>
+<li><p><strong>基于密度的聚类（Density-based Clustering）</strong></p>
 </li>
-<li><p><strong>层次聚类(Hierarchical Clustering)</strong></p>
+<li><p><strong>层次聚类（Hierarchical Clustering）</strong></p>
 </li>
 </ul>
 <hr>
-<h2 id="基于原型的聚类"><a href="# 基于原型的聚类" class="headerlink" title="基于原型的聚类"></a>基于原型的聚类 </h2><p><strong> 基于原型的聚类(Prototype-based Clustering), 此类算法假设聚类结构能通过一组原形刻画. 通常情况下, 算法先对原型进行初始化, 然后对原型进行迭代更新求解, 采用不同的原型表示, 不同的求解方式, 将产生不同的算法.</strong></p>
+<h2 id="基于原型的聚类"><a href="# 基于原型的聚类" class="headerlink" title="基于原型的聚类"></a>基于原型的聚类 </h2><p><strong> 基于原型的聚类（Prototype-based Clustering）, 此类算法假设聚类结构能通过一组原形刻画. 通常情况下, 算法先对原型进行初始化, 然后对原型进行迭代更新求解, 采用不同的原型表示, 不同的求解方式, 将产生不同的算法.</strong></p>
 <ul>
-<li><strong>基于原型的聚类(Prototype-based Clustering)</strong><ul>
-<li><strong>K 均值聚类(K-means)</strong></li>
-<li><strong>学习向量量化聚类(Learning vector Quantization)</strong></li>
-<li><strong>高斯混合聚类(Mixture-of-Gaussian)</strong></li>
+<li><strong>基于原型的聚类（Prototype-based Clustering）</strong><ul>
+<li><strong>K 均值聚类（K-means）</strong></li>
+<li><strong>学习向量量化聚类（Learning vector Quantization）</strong></li>
+<li><strong>高斯混合聚类（Mixture-of-Gaussian）</strong></li>
 </ul>
 </li>
 </ul>
