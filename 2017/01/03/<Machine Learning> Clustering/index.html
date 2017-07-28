@@ -116,7 +116,7 @@
 <meta property="og:image" content="https://farm6.staticflickr.com/5569/31429001070_b16d937809_o.png">
 <meta property="og:image" content="https://farm1.staticflickr.com/403/30990399723_0db34a3cde_o.png">
 <meta property="og:image" content="https://farm1.staticflickr.com/715/31427609470_fe9357f0cc_o.png">
-<meta property="og:updated_time" content="2017-07-28T06:00:20.000Z">
+<meta property="og:updated_time" content="2017-07-28T06:02:49.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="♞「Machine Learning」 Clustering">
 <meta name="twitter:description" content="本文是关于周志华「Machine Learning」这本书的 Clustering 的学习笔记。">
@@ -453,7 +453,7 @@
                   <i class="fa fa-file-word-o"></i>
                 </span>
                 <span title="Words count in article">
-                  9,258
+                  9,252
                 </span>
                 <span> words </span>
                 
@@ -663,7 +663,7 @@ DBI=\frac{1}{k}\sum^{k}_{i=1}\underset{j \neq i}{max}\bigg(\frac{avg(C_{i})+avg(
 <blockquote>
 <p>These conditions constrain the index so defined to be symmetric and non-negative. Due to the way it is defined, as a function of the ratio of the within cluster scatter, to the between cluster separation, a lower value will mean that the clustering is better. <strong>It happens to be the average similarity between each cluster and its most similar one, averaged over all the clusters, where the similarity is defined as $S_{i}$ above.</strong> This affirms the idea that no cluster has to be similar to another, and hence the best clustering scheme essentially minimizes the Davies–Bouldin index. This index thus defined is an average over all the $i$ clusters, and hence a good measure of deciding how many clusters actually exists in the data is to plot it against the number of clusters it is calculated over. The number <em>i</em> for which this value is the lowest is a good measure of the number of clusters the data could be ideally classified into. This has applications in deciding the value of $k$ in the <a href="https://en.wikipedia.org/wiki/Kmeans" target="_blank" rel="external">kmeans</a> algorithm, where the value of k is not known apriori. </p>
 </blockquote>
-<p>DBI 系数结果为非负数，值越小意味着簇内距离越小，同时簇间距离越大。个人总结，DBI 其实就是将几个 $d<em>{max}$ 的值叠加，当我们模型最后聚集了多少个 Cluster 簇，就会出现多少个 $d</em>{max}$，这些 $d_{max}$ 值叠加的结果越小，说明我们模型的聚类越合理。可以通过 DBI 系数来确定 k-means 中 $k$ 的最佳值，即不同的 $k$ 值对应不同的 DBI 结果，选取 DBI 结果最小时对应的 $k$ 值，意味着此时这样划分 $k$ 个簇是最合理，效果最佳的。其缺点是，因为使用的是欧式距离，所以对于环状分布，聚类评测比较糟糕。</p>
+<p>DBI 系数结果为非负数，值越小意味着簇内距离越小，同时簇间距离越大。个人总结，DBI 其实就是将几个 <script type="math/tex">d_{max}</script> 的值叠加，当我们模型最后聚集了多少个 Cluster 簇，就会出现多少个 <script type="math/tex">d_{max}</script>，这些<script type="math/tex">d_{max}</script> 值叠加的结果越小，说明我们模型的聚类越合理。可以通过 DBI 系数来确定 k-means 中 $k$ 的最佳值，即不同的 $k$ 值对应不同的 DBI 结果，选取 DBI 结果最小时对应的 $k$ 值，意味着此时这样划分 $k$ 个簇是最合理，效果最佳的。其缺点是，因为使用的是欧式距离，所以对于环状分布，聚类评测比较糟糕。</p>
 <h4 id="DI-Dunn-Index"><a href="#DI-Dunn-Index" class="headerlink" title="DI(Dunn Index)"></a>DI(Dunn Index)</h4><script type="math/tex; mode=display">
 DI=\underset{1 \leqslant i \leqslant k}{min}\bigg\{\underset{j \neq i}{min}\bigg(\frac{d_{min}(C_{i}, C_{j})}{max_{1 \leqslant l \leqslant k}diam(C_{l})}\bigg)\bigg\}</script><p>关于 DI 系数的数学解释及实际意义，可以参考 Wiki 对应词条：<a href="https://en.wikipedia.org/wiki/Dunn_index" target="_blank" rel="external">Dunn Index</a>.</p>
 <blockquote>
