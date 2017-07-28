@@ -83,7 +83,7 @@
     <link href="http://randolph.pro/2017/01/03/%3CMachine%20Learning%3E%20Clustering/"/>
     <id>http://randolph.pro/2017/01/03/&lt;Machine Learning&gt; Clustering/</id>
     <published>2017-01-02T16:00:00.000Z</published>
-    <updated>2017-07-28T05:43:45.000Z</updated>
+    <updated>2017-07-28T05:45:27.000Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fhxi0z29mdj30sg11c77u.jpg" alt=""></p>
 <p>关于该书的其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/Book-「Machine-Learning」/">「Machine Learning」</a></p>
@@ -167,7 +167,7 @@ d & = |DD|, DD =\left \{(x_i,x_j)|(\lambda_i \neq \lambda_j, \lambda_i^* \neq  \
 <li>集合 $DS$ 包含了在 $V$ 中隶属于不同簇且在 $U$ 中也隶属于相同簇的样本对；</li>
 <li>集合 $DD$ 包含了在 $V$ 中隶属于不同簇且在 $U$ 中也隶属于不同簇的样本对；</li>
 </ul>
-<p>这样，由于每个样本对 $((x<em>{i}, x</em>{j})(i&lt;j))$ 仅能出现在一个集合中，因此有：</p>
+<p>这样，由于每个样本对 <script type="math/tex">((x_{i}, x_{j})(i<j))</script> 仅能出现在一个集合中，因此有：</p>
 <script type="math/tex; mode=display">
 a+b+c+d=n(n-1)/2</script><h4 id="JC-Jaccard-Coefficient"><a href="#JC-Jaccard-Coefficient" class="headerlink" title="JC(Jaccard Coefficient)"></a>JC(Jaccard Coefficient)</h4><script type="math/tex; mode=display">
 JC = \frac{a}{a+b+c}</script><p>JC 系数的结果分布在 $[0,1]$ 区间，值越大越好。个人总结，JC 系数是一个比较“爱憎分明”的相似性度量指标，对于聚类效果越好的模型的 JC 计算结果会很好，对于聚类效果越差的模型的 JC 计算结果会很差。关于 JC 系数的数学解释及实际意义，可以参考 Wiki 对应词条，讲的非常清晰：<a href="https://en.wikipedia.org/wiki/Jaccard_index" target="_blank" rel="external">Jaccard index</a>.</p>
