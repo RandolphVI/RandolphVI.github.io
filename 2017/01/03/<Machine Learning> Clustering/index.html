@@ -116,7 +116,7 @@
 <meta property="og:image" content="https://farm6.staticflickr.com/5569/31429001070_b16d937809_o.png">
 <meta property="og:image" content="https://farm1.staticflickr.com/403/30990399723_0db34a3cde_o.png">
 <meta property="og:image" content="https://farm1.staticflickr.com/715/31427609470_fe9357f0cc_o.png">
-<meta property="og:updated_time" content="2017-07-28T07:13:06.000Z">
+<meta property="og:updated_time" content="2017-07-28T07:16:53.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="♞「Machine Learning」 Clustering">
 <meta name="twitter:description" content="本文是关于周志华「Machine Learning」这本书的 Clustering 的学习笔记。">
@@ -453,7 +453,7 @@
                   <i class="fa fa-file-word-o"></i>
                 </span>
                 <span title="Words count in article">
-                  9,110
+                  9,093
                 </span>
                 <span> words </span>
                 
@@ -737,26 +737,8 @@ E = \sum^{k}_{i=1}\sum_{x \in C_{i}}|x-\mu_{i}|_{2}^{2}</script><p>其中 <scrip
 <p>样本集： <script type="math/tex">D= \lbrace x_{1}, x_{2}, \ldots, x_{n} \rbrace</script>;</p>
 <p>聚类簇数： $k$.</p>
 <p><strong>过程： </strong></p>
-<ol>
-<li>从中随机取出 $k$ 个样本作为初始均值向量： <script type="math/tex">\lbrace \mu_{1}, \mu_{2}, \ldots,\mu_{k} \rbrace</script></li>
-<li><strong>repeat</strong></li>
-<li>​    令 $C_{i}=\emptyset (1 \leqslant i \leqslant k)$</li>
-<li>​    <strong>for</strong> $j=1, 2, \ldots, n$  <strong>do</strong></li>
-<li>​        计算样本 $x<em>{j}$ 与各均值向量 $\mu</em>{i} (1 \leqslant i \leqslant k)$ 的距离: $d<em>{ji}=|x</em>{j}-\mu<em>{i}|</em>{2}$;</li>
-<li>​        根据距离最近的均值向量确定 $x<em>{j}$ 的簇标记 $\lambda</em>{j}=arg \ min<em>{i \in \lbrace 1, 2, \ldots, k \rbrace}d</em>{ji}$;</li>
-<li>​        将样本 $x<em>{j}$ 划入相应的簇: $C</em>{\lambda<em>{j}}=C</em>{\lambda<em>{j}} \cup {x</em>{j}}$;</li>
-<li>​    <strong>end for</strong></li>
-<li>​    <strong>for</strong> $i=1, 2, \ldots, k$  <strong>do</strong></li>
-<li>​        计算新均值向量: $\mu<em>{i}^{‘}=\frac{1}{|C</em>{i}|}\sum<em>{x \in C</em>{i}}x$;</li>
-<li>​        <strong>if</strong> $\mu<em>{i}^{‘} \neq \mu</em>{i}$  <strong>then</strong></li>
-<li>​            将当前均值向量 $\mu+{i}$ 更新为 $\mu_{i}^{‘}$</li>
-<li>​        <strong>else</strong></li>
-<li>​            保持当前均值向量不变</li>
-<li>​        <strong>end if</strong></li>
-<li>​    <strong>end for</strong></li>
-<li><strong>until</strong> 当前均值向量均未更新</li>
-</ol>
-<p><strong>输出:</strong>  簇划分 <script type="math/tex">C= \lbrace C_{1}, C_{2}, \ldots, C_{k} \rbrace</script>.</p>
+<p>从中随机取出 $k$ 个样本作为初始均值向量： <script type="math/tex">\lbrace \mu_{1}, \mu_{2}, \ldots,\mu_{k} \rbrace</script><br><strong>repeat</strong><br>    令 $C<em>{i}=\emptyset (1 \leqslant i \leqslant k)$<br>    <strong>for</strong> $j=1, 2, \ldots, n$  <strong>do</strong><br>        计算样本 $x</em>{j}$ 与各均值向量 $\mu<em>{i} (1 \leqslant i \leqslant k)$ 的距离: $d</em>{ji}=|x<em>{j}-\mu</em>{i}|<em>{2}$;<br>        根据距离最近的均值向量确定 $x</em>{j}$ 的簇标记 $\lambda<em>{j}=arg \ min</em>{i \in \lbrace 1, 2, \ldots, k \rbrace}d<em>{ji}$;<br>        将样本 $x</em>{j}$ 划入相应的簇: $C<em>{\lambda</em>{j}}=C<em>{\lambda</em>{j}} \cup {x<em>{j}}$;<br>    <strong>end for</strong><br>    <strong>for</strong> $i=1, 2, \ldots, k$  <strong>do</strong><br>        计算新均值向量: $\mu</em>{i}^{‘}=\frac{1}{|C<em>{i}|}\sum</em>{x \in C<em>{i}}x$;<br>        <strong>if</strong> $\mu</em>{i}^{‘} \neq \mu<em>{i}$  <strong>then</strong><br>            将当前均值向量 $\mu+{i}$ 更新为 $\mu</em>{i}^{‘}$<br>        <strong>else</strong><br>            保持当前均值向量不变<br>        <strong>end if</strong><br>    <strong>end for</strong><br><strong>until</strong> 当前均值向量均未更新</p>
+<p><strong>输出：</strong>  簇划分 <script type="math/tex">C= \lbrace C_{1}, C_{2}, \ldots, C_{k} \rbrace</script>.</p>
 </blockquote>
 <h4 id="算法实现 -（R 语言）"><a href="# 算法实现 -（R 语言）" class="headerlink" title="算法实现 （R 语言）"></a>算法实现 （R 语言）</h4><p>Python 的实现可以参考<a href="http://randolph.pro/2016/03/19/%3CProgramming%20Collective%20Intelligence%3E%20Chapter%203/">「Programming Collective Intelligence」 Chapter 3</a> 这篇文章。</p>
 <figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">head(iris)</div></pre></td></tr></table></figure>
