@@ -116,7 +116,7 @@
 <meta property="og:image" content="https://farm6.staticflickr.com/5569/31429001070_b16d937809_o.png">
 <meta property="og:image" content="https://farm1.staticflickr.com/403/30990399723_0db34a3cde_o.png">
 <meta property="og:image" content="https://farm1.staticflickr.com/715/31427609470_fe9357f0cc_o.png">
-<meta property="og:updated_time" content="2017-07-28T06:22:47.000Z">
+<meta property="og:updated_time" content="2017-07-28T06:31:04.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="♞「Machine Learning」 Clustering">
 <meta name="twitter:description" content="本文是关于周志华「Machine Learning」这本书的 Clustering 的学习笔记。">
@@ -453,7 +453,7 @@
                   <i class="fa fa-file-word-o"></i>
                 </span>
                 <span title="Words count in article">
-                  9,163
+                  9,139
                 </span>
                 <span> words </span>
                 
@@ -576,7 +576,7 @@ d & = |DD|, DD =\left \{(x_i,x_j)|(\lambda_i \neq \lambda_j, \lambda_i^* \neq  \
 <p>这样，由于每个样本对 <script type="math/tex">((x_{i}, x_{j})(i<j))</script> 仅能出现在一个集合中，因此有：</p>
 <script type="math/tex; mode=display">
 a+b+c+d=n(n-1)/2</script><h4 id="JC-Jaccard-Coefficient"><a href="#JC-Jaccard-Coefficient" class="headerlink" title="JC(Jaccard Coefficient)"></a>JC(Jaccard Coefficient)</h4><script type="math/tex; mode=display">
-JC = \frac{a}{a+b+c}</script><p>JC 系数的结果分布在 $[0,1]$ 区间，值越大越好。个人总结，JC 系数是一个比较“爱憎分明”的相似性度量指标，对于聚类效果越好的模型的 JC 计算结果会很好，对于聚类效果越差的模型的 JC 计算结果会很差。关于 JC 系数的数学解释及实际意义，可以参考 Wiki 对应词条，讲的非常清晰：<a href="https://en.wikipedia.org/wiki/Jaccard_index" target="_blank" rel="external">Jaccard index</a>.</p>
+JC = \frac{a}{a+b+c}</script><p>JC 系数的结果分布在 $[0,1]$ 区间，值越大越好。个人总结，JC 系数是一个比较“爱憎分明”的相似性度量指标，对于聚类效果越好的模型的 JC 计算结果会很好，对于聚类效果越差的模型的 JC 计算结果会很差。关于 JC 系数的数学解释及实际意义，可以参考 Wiki 对应词条，讲的非常清晰：<a href="https://en.wikipedia.org/wiki/Jaccard_index" target="_blank" rel="external">Jaccard index</a>。</p>
 <p>在此我摘取其中的重点：</p>
 <blockquote>
 <p>When used for binary attributes, the Jaccard index is very similar to the Simple matching coefficient. The main difference is that the SMC has the term $M_{00}$ in its numerator and denominator, whereas the Jaccard index does not. Thus, the SMC compares the number of matches with the entire set of the possible attributes, whereas the Jaccard index only compares it to tshe attributes that have been chosen by at least A or B.</p>
@@ -587,7 +587,7 @@ JC = \frac{a}{a+b+c}</script><p>JC 系数的结果分布在 $[0,1]$ 区间，值
 </blockquote>
 <p>上段重点的大体意思是：JC 的一个适用场景，例如商场或者电商（亚马逊）的用户们，在买东西的时候，我们对其相似性进行判断的时候，SMC（Simple Matching Coefficient）简单匹配系数并不太适用，是因为 SMC 中添加了（两个顾客都不感兴趣的商品这一信息），而 JC 并没有考虑这一部分。对于琳琅满目的商品信息而言，两个顾客不感兴趣的商品应该远远多于他们感兴趣的商品，简而言之，如果将顾客对所有的商品向量进行标记，感兴趣的为 1，不感兴趣的为 0，那么得到的这个向量应当是一个非常稀疏的。在这种情况下，如果使用 SMC，势必会导致结果很小，但是实际上我们完全可以不考虑两个顾客都不感兴趣的内容，而是考虑两个顾客感兴趣的商品信息之和，对其进行计算，相对于 SMC，得到的结果会好解释许多。就像那句话说的，<strong>JC 就好比是一个局域性的“相似性”比较的衡量指标，而 SMC 就好比是要考虑整个宏观宇宙之下的“相似性”比较</strong>。</p>
 <h4 id="FMI-Fowlkes-and-Mallows-Index"><a href="#FMI-Fowlkes-and-Mallows-Index" class="headerlink" title="FMI(Fowlkes and Mallows Index)"></a>FMI(Fowlkes and Mallows Index)</h4><script type="math/tex; mode=display">
-FMI = \sqrt{\frac{a}{a+b}\cdot \frac{a}{a+c}}</script><p>FMI 系数的结果分布在 $[0,1]$ 区间，值越大越好。个人总结，FMI 系数是一个比较“温文儒雅”的相似性度量指标，对于聚类效果特别好的模型的 FMI 计算结果不会好得特别夸张，对于聚类效果特别越差的模型的 FMI 计算结果也不会差得特别夸张。同样，FMI 系数的数学解释及实际意义，对应的 Wiki 词条：<a href="https://en.wikipedia.org/wiki/Fowlkes–Mallows_index" target="_blank" rel="external">Fowlkes–Mallows index</a>.</p>
+FMI = \sqrt{\frac{a}{a+b}\cdot \frac{a}{a+c}}</script><p>FMI 系数的结果分布在 $[0,1]$ 区间，值越大越好。个人总结，FMI 系数是一个比较“温文儒雅”的相似性度量指标，对于聚类效果特别好的模型的 FMI 计算结果不会好得特别夸张，对于聚类效果特别越差的模型的 FMI 计算结果也不会差得特别夸张。同样，FMI 系数的数学解释及实际意义，对应的 Wiki 词条：<a href="https://en.wikipedia.org/wiki/Fowlkes–Mallows_index" target="_blank" rel="external">Fowlkes–Mallows index</a>。</p>
 <p>在此我摘取其中的重点：</p>
 <blockquote>
 <p>Since the index is directly proportional to the number of true positives, a higher index means greater similarity between the two clusterings used to determine the index. <strong>One of the most basic thing to test the validity of this index is to compare two clusterings that are unrelated to each other.</strong> Fowlkes and Mallows showed that on using two unrelated clusterings, the value of this index approaches zero as the number of total data points chosen for clustering increase; whereas the value for the Rand index for the same data quickly approaches making Fowlkes–Mallows index a much more accurate representation for unrelated data. <strong>This index also performs well if noise is added to an existing dataset and their similarity compared. Fowlkes and Mallows showed that the value of the index decreases as the component of the noise increases.</strong> The index also showed similarity even when the noisy dataset had a different number of clusters than the clusters of the original dataset. Thus making it a reliable tool for measuring similarity between two clusters.</p>
@@ -595,7 +595,7 @@ FMI = \sqrt{\frac{a}{a+b}\cdot \frac{a}{a+c}}</script><p>FMI 系数的结果分�
 <p>上段重点的大体意思是：“衡量一个相似性度量指标是否可靠，应当将对于两个完全不相关簇的研究也作为重要的判定基础之一”，这样讲可能太绕了，解释一下就是如果我们对一个相似性度量指标的可靠性进行判断，不仅仅需要：我们的模型与’参考模型’两个模型越相似（聚类效果越好），指标系数越大（或越小）；同样的，我们的模型与’参考模型’越不相似（聚类效果越差），指标系数也应该呈现一个单调变大（或变小）的趋势。</p>
 <p>FMI 与其他相似性度量指标的区别是，特别是与 JC 系数对比，JC 系数 $[0,1]$ 的特点是假如我们的模型聚类效果越好，结果就越趋向于 1，反之，如果我们的模型聚类效果越不好，结果就越趋向于 0；而 FMI $[0,1]$ 则不会显得那么“爱憎分明”，因为在 $[0,1]$ 范围内根号运算的存在，使得模型越好的结果不会好得特别夸张，但是模型越差的结果也不会显得特别夸张，因为根号运算起到一个“缓冲 ”的作用。另外一点，就是 FMI 系数对于含有噪声的数据集的判定效果仍然不错。</p>
 <h4 id="RI-Rand-Index"><a href="#RI-Rand-Index" class="headerlink" title="RI(Rand Index)"></a>RI(Rand Index)</h4><script type="math/tex; mode=display">
-RI = \frac{a+d}{a+b+c+d}</script><p>RI 系数的结果分布在 $[0,1]$ 区间，值越大越好。关于 RI 系数的数学解释及实际意义，可以参考 Wiki 对应词条，重点是要看它的改进指标 ARI：<a href="https://en.wikipedia.org/wiki/Rand_index" target="_blank" rel="external">Rand  index</a>.</p>
+RI = \frac{a+d}{a+b+c+d}</script><p>RI 系数的结果分布在 $[0,1]$ 区间，值越大越好。关于 RI 系数的数学解释及实际意义，可以参考 Wiki 对应词条，重点是要看它的改进指标 ARI：<a href="https://en.wikipedia.org/wiki/Rand_index" target="_blank" rel="external">Rand  index</a>。</p>
 <h4 id="ARI-Adjusted-Rand-Index"><a href="#ARI-Adjusted-Rand-Index" class="headerlink" title="ARI(Adjusted Rand Index)"></a>ARI(Adjusted Rand Index)</h4><p>  在 <strong>RI (Rand Index)</strong> 的评判基础上，为了实现“在聚类结果随机产生的情况下，指标应该接近零”，<strong>ARI（Adjusted Rand Index)</strong>系数被提出，它具有更高的区分度。</p>
 <blockquote>
 <p>A problem with the Rand index is that the expected value of the Rand index of two random partitions does not take a constant value (say zero). The adjusted Rand index proposed by [Hubert and Arabie, 1985] assumes the generalized hypergeometric distribution as the model of randomness, i.e., the $U$ and $V$ partitions are picked at random such that the number of objects in the classes and clusters are fixed.</p>
@@ -659,13 +659,13 @@ d_{cen}(C_{i}, C_{j})=dist(\mu_{i}, \mu_{j})</script></li>
 <h4 id="SP-Separation"><a href="#SP-Separation" class="headerlink" title="SP(Separation)"></a>SP(Separation)</h4><script type="math/tex; mode=display">
 SP=\frac{2}{k^2-k}\sum^{k}_{i=1}\sum^{k}_{j=i+1} d_{cen}(\mu_{i}, \mu_{j})</script><p>SP 间隔性，其计算的是各簇中心两两之间的平均距离，值越高意味着簇间距离越远，缺点是没有考虑簇内效果。</p>
 <h4 id="DBI-Davies-Bouldin-Index"><a href="#DBI-Davies-Bouldin-Index" class="headerlink" title="DBI(Davies-Bouldin Index)"></a>DBI(Davies-Bouldin Index)</h4><script type="math/tex; mode=display">
-DBI=\frac{1}{k}\sum^{k}_{i=1}\underset{j \neq i}{max}\bigg(\frac{avg(C_{i})+avg(C_{j})}{d_{cen}(\mu_{i}, \mu_{j})}\bigg)</script><p>关于 DBI 系数的数学解释及实际意义，可以参考 Wiki 对应词条：<a href="https://en.wikipedia.org/wiki/Davies–Bouldin_index" target="_blank" rel="external">Davies-Bouldin Index</a>.</p>
+DBI=\frac{1}{k}\sum^{k}_{i=1}\underset{j \neq i}{max}\bigg(\frac{avg(C_{i})+avg(C_{j})}{d_{cen}(\mu_{i}, \mu_{j})}\bigg)</script><p>关于 DBI 系数的数学解释及实际意义，可以参考 Wiki 对应词条：<a href="https://en.wikipedia.org/wiki/Davies–Bouldin_index" target="_blank" rel="external">Davies-Bouldin Index</a>。</p>
 <blockquote>
 <p>These conditions constrain the index so defined to be symmetric and non-negative. Due to the way it is defined, as a function of the ratio of the within cluster scatter, to the between cluster separation, a lower value will mean that the clustering is better. <strong>It happens to be the average similarity between each cluster and its most similar one, averaged over all the clusters, where the similarity is defined as $S_{i}$ above.</strong> This affirms the idea that no cluster has to be similar to another, and hence the best clustering scheme essentially minimizes the Davies–Bouldin index. This index thus defined is an average over all the $i$ clusters, and hence a good measure of deciding how many clusters actually exists in the data is to plot it against the number of clusters it is calculated over. The number <em>i</em> for which this value is the lowest is a good measure of the number of clusters the data could be ideally classified into. This has applications in deciding the value of $k$ in the <a href="https://en.wikipedia.org/wiki/Kmeans" target="_blank" rel="external">kmeans</a> algorithm, where the value of k is not known apriori. </p>
 </blockquote>
 <p>DBI 系数结果为非负数，值越小意味着簇内距离越小，同时簇间距离越大。个人总结，DBI 其实就是将几个 <script type="math/tex">d_{max}</script> 的值叠加，当我们模型最后聚集了多少个 Cluster 簇，就会出现多少个 <script type="math/tex">d_{max}</script>，这些<script type="math/tex">d_{max}</script> 值叠加的结果越小，说明我们模型的聚类越合理。可以通过 DBI 系数来确定 k-means 中 $k$ 的最佳值，即不同的 $k$ 值对应不同的 DBI 结果，选取 DBI 结果最小时对应的 $k$ 值，意味着此时这样划分 $k$ 个簇是最合理，效果最佳的。其缺点是，因为使用的是欧式距离，所以对于环状分布，聚类评测比较糟糕。</p>
 <h4 id="DI-Dunn-Index"><a href="#DI-Dunn-Index" class="headerlink" title="DI(Dunn Index)"></a>DI(Dunn Index)</h4><script type="math/tex; mode=display">
-DI=\underset{1 \leqslant i \leqslant k}{min}\bigg\{\underset{j \neq i}{min}\bigg(\frac{d_{min}(C_{i}, C_{j})}{max_{1 \leqslant l \leqslant k}diam(C_{l})}\bigg)\bigg\}</script><p>关于 DI 系数的数学解释及实际意义，可以参考 Wiki 对应词条：<a href="https://en.wikipedia.org/wiki/Dunn_index" target="_blank" rel="external">Dunn Index</a>.</p>
+DI=\underset{1 \leqslant i \leqslant k}{min}\bigg\{\underset{j \neq i}{min}\bigg(\frac{d_{min}(C_{i}, C_{j})}{max_{1 \leqslant l \leqslant k}diam(C_{l})}\bigg)\bigg\}</script><p>关于 DI 系数的数学解释及实际意义，可以参考 Wiki 对应词条：<a href="https://en.wikipedia.org/wiki/Dunn_index" target="_blank" rel="external">Dunn Index</a>。</p>
 <blockquote>
 <p>Being defined in this way, the <em>DI</em> depends on $k$, the number of clusters in the set. If the number of clusters is not known apriori, the $k$ for which the <em>DI</em> is the highest can be chosen as the number of clusters. There is also some flexibility when it comes to the definition of d(x,y) where any of the well known metrics can be used, like <a href="https://en.wikipedia.org/wiki/Manhattan_distance" target="_blank" rel="external">Manhattan distance</a> or <a href="https://en.wikipedia.org/wiki/Euclidean_distance" target="_blank" rel="external">Euclidean distance</a> based on the geometry of the clustering problem. <strong>This formulation has a peculiar problem, in that if one of the clusters is badly behaved, where the others are tightly packed, since the denominator contains a ‘max’ term instead of an average term, the Dunn Index for that set of clusters will be uncharacteristically low. This is thus some sort of a worst case indicator, and has to be kept in mind.</strong></p>
 </blockquote>
@@ -679,9 +679,9 @@ DI=\underset{1 \leqslant i \leqslant k}{min}\bigg\{\underset{j \neq i}{min}\bigg
 </ul>
 <p><strong>变量属性：</strong></p>
 <ul>
-<li>连续属性: 闵可夫斯基距离</li>
+<li>连续属性： 闵可夫斯基距离</li>
 <li>离散属性<ul>
-<li>有序属性: 闵可夫斯基距离</li>
+<li>有序属性： 闵可夫斯基距离</li>
 <li>无序属性：VDM (Value Difference Metric)</li>
 </ul>
 </li>
@@ -700,7 +700,7 @@ VDM_{q}(a, b)=\sum^{k}_{i=1}\bigg|\frac{m_{u,a,i}}{m_{u,a}}-\frac{m_{u,b,i}}{m_{
 <script type="math/tex; mode=display">
 MinkovDM_{p}(x_{i}, x_{j})=\bigg(\sum^{n_{c}}_{u=1}|x_{i,u}-x_{j,u}|^{p}+\sum^{n}_{u=n_{c}+1}VDM_{p}(x_{i,u},x_{j,u})\bigg)^{\frac{1}{p}}</script><h3 id="加权闵可夫斯基距离"><a href="# 加权闵可夫斯基距离" class="headerlink" title="加权闵可夫斯基距离"></a>加权闵可夫斯基距离 </h3><p> 当样本在空间中不同属性的重要性不同时：</p>
 <script type="math/tex; mode=display">
-dist_{wmk}(x_{i}, x_{j})=(w_{1}\cdot|x_{i1}-x_{j1}|^{p}+w_{2}\cdot|x_{i2}-x_{j2}|^{p}+\ldots+w_{n}\cdot|x_{in}-x_{jn}|^{p})^{\frac{1}{p}}</script><p>其中: 权重<script type="math/tex">w_{i} \geqslant 0(i=1, 2, \ldots, p)</script> 表示不同属性的重要性，通常 <script type="math/tex">\sum_{i=1}^{n}w_{i}=1</script>.</p>
+dist_{wmk}(x_{i}, x_{j})=(w_{1}\cdot|x_{i1}-x_{j1}|^{p}+w_{2}\cdot|x_{i2}-x_{j2}|^{p}+\ldots+w_{n}\cdot|x_{in}-x_{jn}|^{p})^{\frac{1}{p}}</script><p>其中： 权重<script type="math/tex">w_{i} \geqslant 0(i=1, 2, \ldots, p)</script> 表示不同属性的重要性，通常 <script type="math/tex">\sum_{i=1}^{n}w_{i}=1</script>.</p>
 <hr>
 <h1 id="聚类算法介绍及实现"><a href="# 聚类算法介绍及实现" class="headerlink" title="聚类算法介绍及实现"></a>聚类算法介绍及实现 </h1><p><strong> 聚类算法类型：</strong></p>
 <ul>
@@ -717,7 +717,7 @@ dist_{wmk}(x_{i}, x_{j})=(w_{1}\cdot|x_{i1}-x_{j1}|^{p}+w_{2}\cdot|x_{i2}-x_{j2}
 </li>
 </ul>
 <hr>
-<h2 id="基于原型的聚类"><a href="# 基于原型的聚类" class="headerlink" title="基于原型的聚类"></a>基于原型的聚类 </h2><p><strong> 基于原型的聚类（Prototype-based Clustering）, 此类算法假设聚类结构能通过一组原形刻画. 通常情况下, 算法先对原型进行初始化, 然后对原型进行迭代更新求解, 采用不同的原型表示, 不同的求解方式, 将产生不同的算法.</strong></p>
+<h2 id="基于原型的聚类"><a href="# 基于原型的聚类" class="headerlink" title="基于原型的聚类"></a>基于原型的聚类 </h2><p><strong> 基于原型的聚类（Prototype-based Clustering），此类算法假设聚类结构能通过一组原形刻画。通常情况下，算法先对原型进行初始化，然后对原型进行迭代更新求解，采用不同的原型表示，不同的求解方式，将产生不同的算法。</strong></p>
 <ul>
 <li><strong>基于原型的聚类（Prototype-based Clustering）</strong><ul>
 <li><strong>K 均值聚类（K-means）</strong></li>
@@ -726,14 +726,14 @@ dist_{wmk}(x_{i}, x_{j})=(w_{1}\cdot|x_{i1}-x_{j1}|^{p}+w_{2}\cdot|x_{i2}-x_{j2}
 </ul>
 </li>
 </ul>
-<h3 id="K 均值聚类（K-means）"><a href="#K 均值聚类（K-means）" class="headerlink" title="K 均值聚类（K-means）"></a>K 均值聚类（K-means）</h3><h4 id="算法介绍"><a href="# 算法介绍" class="headerlink" title="算法介绍"></a>算法介绍 </h4><p> 给定样本集 $D= \lbrace x<em>{1}, x</em>{2}, \ldots, x<em>{n} \rbrace$, K-means 算法针对聚类所得簇划分 $C= \lbrace C</em>{1}, C<em>{2}, \ldots, C</em>{k} \rbrace$ , 最小化平方误差:</p>
+<h3 id="K 均值聚类（K-means）"><a href="#K 均值聚类（K-means）" class="headerlink" title="K 均值聚类（K-means）"></a>K 均值聚类（K-means）</h3><h4 id="算法介绍"><a href="# 算法介绍" class="headerlink" title="算法介绍"></a>算法介绍 </h4><p> 给定样本集 <script type="math/tex">D= \lbrace x_{1}, x_{2}, \ldots, x_{n} \rbrace</script>, K-means 算法针对聚类所得簇划分 <script type="math/tex">C= \lbrace C_{1}, C_{2}, \ldots, C_{k} \rbrace</script> , 最小化平方误差：</p>
 <script type="math/tex; mode=display">
-E = \sum^{k}_{i=1}\sum_{x \in C_{i}}|x-\mu_{i}|_{2}^{2}</script><p>其中 $\mu<em>{i}$ 是簇 $C</em>{i}$ 的均值向量：</p>
+E = \sum^{k}_{i=1}\sum_{x \in C_{i}}|x-\mu_{i}|_{2}^{2}</script><p>其中 <script type="math/tex">\mu_{i}</script> 是簇 <script type="math/tex">C_{i}</script> 的均值向量：</p>
 <script type="math/tex; mode=display">
 \mu_{i}=\frac{1}{|C_{i}|}\sum_{x \in C_{i}}x</script><p>直观上看, $E$ 在一定程度上刻画了簇内样本围绕均值向量的紧密程度, $E$ 值越小簇内样本相似度越高。但最小化 $E$ 不容易，是一个 NP 难问题, K-means 算法采用了贪心策略，通过迭代优化来近似求解 $E$ 的最小值。具体算法如下：</p>
 <p><strong>算法</strong></p>
 <blockquote>
-<p><strong>输入:</strong></p>
+<p><strong>输入：</strong></p>
 <p>样本集: $D= \lbrace x<em>{1}, x</em>{2}, \ldots, x_{n} \rbrace $;</p>
 <p>聚类簇数: $k$.</p>
 <p><strong>过程: </strong></p>
