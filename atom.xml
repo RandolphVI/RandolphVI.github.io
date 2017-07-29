@@ -83,7 +83,7 @@
     <link href="http://randolph.pro/2017/01/03/%3CMachine%20Learning%3E%20Clustering/"/>
     <id>http://randolph.pro/2017/01/03/&lt;Machine Learning&gt; Clustering/</id>
     <published>2017-01-02T16:00:00.000Z</published>
-    <updated>2017-07-29T04:18:20.000Z</updated>
+    <updated>2017-07-29T04:24:46.000Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://farm5.staticflickr.com/4307/36174772306_62cfbc8cd6_o.jpg" alt=""></p>
 <p>关于该书的其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/Book-「Machine-Learning」/">「Machine Learning」</a></p>
@@ -383,15 +383,15 @@ R_{i}= \lbrace x \in \mathcal{X} \ |\ ||x-p_{i}||_{2} \leqslant ||x-p_{i'}||_{2}
 <p>如图所示，SOM 网络中的输出层神经元以矩阵方式排列在二维空间中，每个神经元都拥有一个权向量，网络在接收输入向量后，将会确定输出层获胜神经元，它决定了该输入向量在低维空间中的位置。SOM 的训练目标就是为每个输出层神经元找到合适的权向量，以达到保持拓扑结构的目的。 SOM 的训练过程很简单：在接收到一个训练样本后，每个输出层神经元会计算该样本与自身携带的权向量之间的距离，距离最近的神经元成为竞争获胜者，称为最佳匹配单元（best matching unit)。然后，最佳匹配单元及其邻近神经元的权向量将被调整，以使得这些权向量与当前输入样本的距离缩小。这个过程不断迭代，直至收敛。</p>
 <hr>
 <h3 id="高斯混合聚类（Mixture-of-Gaussian）"><a href="# 高斯混合聚类（Mixture-of-Gaussian）" class="headerlink" title="高斯混合聚类（Mixture-of-Gaussian）"></a>高斯混合聚类（Mixture-of-Gaussian）</h3><h4 id="算法介绍 -2"><a href="# 算法介绍 -2" class="headerlink" title="算法介绍"></a>算法介绍 </h4><p> 与 $k$ 均值、LVQ 用原型向量来刻画聚类结构不同，<strong>高斯混合聚类 (Mixture-of-Gaussian) 采用概率模型来表达聚类原型</strong>。</p>
-<h5 id="多元 - 高斯分布："><a href="# 多元 - 高斯分布：" class="headerlink" title="(多元)高斯分布："></a>(多元)高斯分布：</h5><p>对 $n$ 维样本空间 $\mathcal{X}$ 中的随机向量 $x$，若 $x$ 服从 (多元) 高斯分布，其概率密度函数为：</p>
+<h5 id="（多元）高斯分布："><a href="#（多元）高斯分布：" class="headerlink" title="（多元）高斯分布："></a>（多元）高斯分布：</h5><p>对 $n$ 维样本空间 $\mathcal{X}$ 中的随机向量 $x$，若 $x$ 服从 (多元) 高斯分布，其概率密度函数为：</p>
 <script type="math/tex; mode=display">
 p(x| \mu, \Sigma)=\frac{1}{(2\pi)^{\frac{n}{2}}|\Sigma|^{\frac{1}{2}}} e^{- \frac{1}{2} (x-\mu)^{T} \Sigma^{-1} (x-\mu)}</script><p>其中：$\mu​$ 是 $n​$ 维均值向量，$\Sigma​$ 是 $n \times n​$ 协方差矩阵。($\Sigma​$：对称正定矩阵；$|\Sigma|​$：$\Sigma​$ 的行列式；$\Sigma^{-1}​$：$\Sigma​$ 的逆矩阵)</p>
-<h5 id="多元 - 高斯混合分布："><a href="# 多元 - 高斯混合分布：" class="headerlink" title="(多元)高斯混合分布："></a>(多元)高斯混合分布：</h5><p>对 $n$ 维样本空间 $\mathcal{X}$ 中的随机向量 $x$，若 $x$ 服从 (多元) 高斯混合分布，其概率密度函数为：</p>
+<h5 id="（多元）高斯混合分布："><a href="#（多元）高斯混合分布：" class="headerlink" title="（多元）高斯混合分布："></a>（多元）高斯混合分布：</h5><p>对 $n$ 维样本空间 $\mathcal{X}$ 中的随机向量 $x$，若 $x$ 服从（多元）高斯混合分布，其概率密度函数为：</p>
 <script type="math/tex; mode=display">
-p_{\mathcal{M}}(x)=\sum_{i=1}^{k}\alpha_{i} \cdot p(x| \mu_{i}, \Sigma_{i})</script><p>该分布由 $k$ 个混合成分组成，每个成分对应一个 (多元) 高斯分布，其中：<script type="math/tex">\mu_{i}</script>, <script type="math/tex">\Sigma_{i}</script> 是第 $i$ 个高斯混合成分的参数， 而 <script type="math/tex">\alpha_{i}</script> 为相应的“混合系数”(mixture coeffcient)， <script type="math/tex">\sum_{i=1}^{k}\alpha_{i}=1</script>。</p>
+p_{\mathcal{M}}(x)=\sum_{i=1}^{k}\alpha_{i} \cdot p(x| \mu_{i}, \Sigma_{i})</script><p>该分布由 $k$ 个混合成分组成，每个成分对应一个（多元）高斯分布，其中：<script type="math/tex">\mu_{i}</script>, <script type="math/tex">\Sigma_{i}</script> 是第 $i$ 个高斯混合成分的参数， 而 <script type="math/tex">\alpha_{i}</script> 为相应的“混合系数”(mixture coeffcient)， <script type="math/tex">\sum_{i=1}^{k}\alpha_{i}=1</script>。</p>
 <h5 id="样本集的生成模型："><a href="# 样本集的生成模型：" class="headerlink" title="样本集的生成模型："></a>样本集的生成模型：</h5><p>假设样本集 <script type="math/tex">D= \lbrace x_{1}, x_{2}, \ldots, x_{n} \rbrace</script> 的生成过程由高斯混合分布给出：</p>
 <ul>
-<li><p>首先：根据 <script type="math/tex">\alpha_{1}, \alpha_{2}, \ldots,\alpha_{k}</script> 定义的先验分布选择高斯混合成分，其中 <script type="math/tex">\alpha_{i}</script> 为选择第 $i$ 个混合成分的概率;</p>
+<li><p>首先：根据 <script type="math/tex">\alpha_{1}, \alpha_{2}, \ldots,\alpha_{k}</script> 定义的先验分布选择高斯混合成分，其中 <script type="math/tex">\alpha_{i}</script> 为选择第 $i$ 个混合成分的概率；</p>
 </li>
 <li><p>然后：根据被选择的混合成分的概率密度函数进行采样， 生成相应的样本。</p>
 </li>
@@ -407,15 +407,15 @@ P_{\mathcal{M}}(z_{j}=i|x_{j}) &=\frac{P(z_{j}=i) \cdot p_{\mathcal{M}}(x_{j}|z_
 \end{align*}</script><p>可知，<script type="math/tex">P_{\mathcal{M}}(z_{j}=i|x_{j})</script> 给出了样本 <script type="math/tex">x_{j}</script> 由第 $i$ 个高斯混合成分生成的后验概率，记：</p>
 <script type="math/tex; mode=display">
 \gamma_{ji}=P_{\mathcal{M}}(z_{j}=i|x_{j}) \quad (i=1, 2, \ldots,k)</script><h5 id="高斯混合聚类策略："><a href="# 高斯混合聚类策略：" class="headerlink" title="高斯混合聚类策略："></a>高斯混合聚类策略：</h5><ul>
-<li>若 (多元) 高斯混合分布 $p_{\mathcal{M}}(x)$ 已知，高斯混合聚类将把样本集 $D$ 划分为 $k$ 个簇<script type="math/tex; mode=display">
+<li>若（多元）高斯混合分布 $p_{\mathcal{M}}(x)$ 已知，高斯混合聚类将把样本集 $D$ 划分为 $k$ 个簇：<script type="math/tex; mode=display">
 C= \lbrace C_{1}, C_{2}, \ldots,C_{k} \rbrace</script></li>
 </ul>
 <p>每个样本 <script type="math/tex">x_{j}</script> 的簇标记 <script type="math/tex">\lambda_{j}</script> 为:</p>
 <script type="math/tex; mode=display">
 \lambda_{j}=arg \underset{i \in {1, 2, \ldots,k}}{max}\gamma_{ji}</script><ul>
-<li>(多元)高斯混合分布 <script type="math/tex">p_{\mathcal{M}}(x)</script> 参数 <script type="math/tex">\lbrace (\alpha_{i},\mu_{i}, \Sigma_{i})|1 \leqslant i \leqslant k \rbrace</script> 的求解采用极大似然估计(MLE):</li>
+<li>（多元）高斯混合分布 <script type="math/tex">p_{\mathcal{M}}(x)</script> 参数 <script type="math/tex">\lbrace (\alpha_{i},\mu_{i}, \Sigma_{i})|1 \leqslant i \leqslant k \rbrace</script> 的求解采用极大似然估计(MLE):</li>
 </ul>
-<p>给定样本集 $D$， 最大化 (对数) 似然函数：</p>
+<p>给定样本集 $D$， 最大化（对数）似然函数：</p>
 <script type="math/tex; mode=display">
 \begin{align*}
 LL(D) & = ln\Big(\prod^{n}_{j=1}p_{\mathcal{M}}(x_{j})\Big) \cr
