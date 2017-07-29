@@ -83,7 +83,7 @@
     <link href="http://randolph.pro/2017/01/03/%3CMachine%20Learning%3E%20Clustering/"/>
     <id>http://randolph.pro/2017/01/03/&lt;Machine Learning&gt; Clustering/</id>
     <published>2017-01-02T16:00:00.000Z</published>
-    <updated>2017-07-29T04:24:46.000Z</updated>
+    <updated>2017-07-29T04:27:36.000Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://farm5.staticflickr.com/4307/36174772306_62cfbc8cd6_o.jpg" alt=""></p>
 <p>关于该书的其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/Book-「Machine-Learning」/">「Machine Learning」</a></p>
@@ -446,15 +446,15 @@ LL(D) & = ln\Big(\prod^{n}_{j=1}p_{\mathcal{M}}(x_{j})\Big) \cr
 9 & 0.666 & 0.091 & 19 & 0.339 & 0.241 & 29 & 0.725 & 0.445 \cr
 10 & 0.243 & 0.267 & 20 & 0282 & 0.257 & 30 & 0.446 & 0.459 \cr
 \end{array}</script><p>（其中编号为 9~21 的类别是”坏瓜”，其他样本的类别是”好瓜”） </p>
-<h2 id="使用 -k- 均值算法"><a href="# 使用 -k- 均值算法" class="headerlink" title="使用 $k$ 均值算法"></a>使用 $k$ 均值算法 </h2><p> 假定聚类簇数 $k=3$，算法开始时随机选取的三个样本 <script type="math/tex">x_{6},x_{12},x_{27}</script> 作为初始均值向量，即</p>
+<h2 id="使用 -k- 均值算法"><a href="# 使用 -k- 均值算法" class="headerlink" title="使用 $k$ 均值算法"></a>使用 $k$ 均值算法 </h2><p> 假定聚类簇数 $k=3$，算法开始时随机选取的三个样本 <script type="math/tex">x_{6},x_{12},x_{27}</script> 作为初始均值向量，即：</p>
 <script type="math/tex; mode=display">
-\mu_{1} = (0.403;0.237), \mu_{2} = (0.343;0.099),\mu_{3} = (0.532;0.472).</script><p>考察样本 <script type="math/tex">x_{1}=(0.697;0.460)</script>，它与当前均值向量<script type="math/tex">\mu_{1},\mu_{2},\mu_{3}</script> 的距离分别是 <script type="math/tex">0.369, 0.506, 0.166</script>，因此<script type="math/tex">x_{1}</script> 将被划入簇 <script type="math/tex">C_{3}</script> 中。类似的，对数据集中的所有样本考察一遍后，可得当前簇划分为：</p>
+\mu_{1} = (0.403;0.237), \mu_{2} = (0.343;0.099),\mu_{3} = (0.532;0.472).</script><p>考察样本 <script type="math/tex">x_{1}=(0.697;0.460)</script>，它与当前均值向量 <script type="math/tex">\mu_{1},\mu_{2},\mu_{3}</script>的距离分别是<script type="math/tex">0.369, 0.506, 0.166</script>，因此 <script type="math/tex">x_{1}</script> 将被划入簇 <script type="math/tex">C_{3}</script> 中。类似的，对数据集中的所有样本考察一遍后，可得当前簇划分为：</p>
 <script type="math/tex; mode=display">
 \begin{align}
 C_{1} & = \lbrace x_{5},x_{6},x_{7},x_{8},x_{9},x_{10},x_{13},x_{14},x_{15},x_{17},x_{18},x_{19},x_{20},x_{23} \rbrace; \cr
 C_{2} & = \lbrace x_{11},x_{12},x_{16} \rbrace; \cr
 C_{3} & = \lbrace x_{1},x_{2},x_{3},x_{4},x_{21},x_{22},x_{24},x_{25},x_{26},x_{27},x_{28},x_{29},x_{30} \rbrace
-\end{align}</script><p>于是，可以从 <script type="math/tex">C_{1},C_{2},C_{3}</script> 分别求出新的均值向量</p>
+\end{align}</script><p>于是，可以从 <script type="math/tex">C_{1},C_{2},C_{3}</script> 分别求出新的均值向量：</p>
 <script type="math/tex; mode=display">
 \mu_{1}^{'} = (0.473;0.214), \mu_{2}^{'} = (0.394;0.066),\mu_{3}^{'} = (0.623;0.388).</script><p>更新当前均值向量后，不断重复上述过程，如图所示，第五轮迭代产生的结果与第四轮迭代结果相同，于是算法停止，得到最终的簇划分，其中样本点与均值向量分别用”●”与”+”表示，红色虚线显示出簇划分。</p>
 <p><img src="https://farm1.staticflickr.com/403/30990399723_0db34a3cde_o.png" alt=""></p>
