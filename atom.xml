@@ -83,7 +83,7 @@
     <link href="http://randolph.pro/2017/01/03/%3CMachine%20Learning%3E%20Clustering/"/>
     <id>http://randolph.pro/2017/01/03/&lt;Machine Learning&gt; Clustering/</id>
     <published>2017-01-02T16:00:00.000Z</published>
-    <updated>2017-07-28T09:12:31.000Z</updated>
+    <updated>2017-07-29T04:01:38.000Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://farm5.staticflickr.com/4307/36174772306_62cfbc8cd6_o.jpg" alt=""></p>
 <p>关于该书的其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/Book-「Machine-Learning」/">「Machine Learning」</a></p>
@@ -448,26 +448,26 @@ LL(D) & = ln\Big(\prod^{n}_{j=1}p_{\mathcal{M}}(x_{j})\Big) \cr
 \end{array}</script><p>（其中编号为 9~21 的类别是”坏瓜”，其他样本的类别是”好瓜”） </p>
 <h2 id="使用 -k- 均值算法"><a href="# 使用 -k- 均值算法" class="headerlink" title="使用 $k$ 均值算法"></a>使用 $k$ 均值算法 </h2><p> 假定聚类簇数 $k=3$，算法开始时随机选取的三个样本 <script type="math/tex">x_{6},x_{12},x_{27}</script> 作为初始均值向量，即</p>
 <script type="math/tex; mode=display">
-\mu_{1} = (0.403;0.237), \mu_{2} = (0.343;0.099),\mu_{3} = (0.532;0.472).</script><p>考察样本 <script type="math/tex">x_{1}=(0.697;0.460)</script>，它与当前均值向量<script type="math/tex">\mu_{1},\mu_{2},\mu_{3}</script> 的距离分别是 0.369，0.506，0.166，因此 <script type="math/tex">x_{1}</script> 将被划入簇 <script type="math/tex">C_{3}</script> 中。类似的，对数据集中的所有样本考察一遍后，可得当前簇划分为：</p>
+\mu_{1} = (0.403;0.237), \mu_{2} = (0.343;0.099),\mu_{3} = (0.532;0.472).</script><p>考察样本 <script type="math/tex">x_{1}=(0.697;0.460)</script>，它与当前均值向量<script type="math/tex">\mu_{1},\mu_{2},\mu_{3}</script> 的距离分别是 <script type="math/tex">0.369, 0.506, 0.166</script>，因此<script type="math/tex">x_{1}</script> 将被划入簇 <script type="math/tex">C_{3}</script> 中。类似的，对数据集中的所有样本考察一遍后，可得当前簇划分为：</p>
 <script type="math/tex; mode=display">
 \begin{align}
 C_{1} & = \lbrace x_{5},x_{6},x_{7},x_{8},x_{9},x_{10},x_{13},x_{14},x_{15},x_{17},x_{18},x_{19},x_{20},x_{23} \rbrace; \cr
 C_{2} & = \lbrace x_{11},x_{12},x_{16} \rbrace; \cr
 C_{3} & = \lbrace x_{1},x_{2},x_{3},x_{4},x_{21},x_{22},x_{24},x_{25},x_{26},x_{27},x_{28},x_{29},x_{30} \rbrace
-\end{align}</script><p>于是，可以从 $C<em>{1},C</em>{2},C_{3}$ 分别求出新的均值向量</p>
+\end{align}</script><p>于是，可以从 <script type="math/tex">C_{1},C_{2},C_{3}</script> 分别求出新的均值向量</p>
 <script type="math/tex; mode=display">
 \mu_{1}^{'} = (0.473;0.214), \mu_{2}^{'} = (0.394;0.066),\mu_{3}^{'} = (0.623;0.388).</script><p>更新当前均值向量后，不断重复上述过程，如图所示，第五轮迭代产生的结果与第四轮迭代结果相同，于是算法停止，得到最终的簇划分，其中样本点与均值向量分别用”●”与”+”表示，红色虚线显示出簇划分。</p>
 <p><img src="https://farm1.staticflickr.com/403/30990399723_0db34a3cde_o.png" alt=""></p>
-<h2 id="使用学习向量量化"><a href="# 使用学习向量量化" class="headerlink" title="使用学习向量量化"></a>使用学习向量量化 </h2><p> 令数据集中编号为 9-21 的样本的类别标记为 $c<em>{2}$ ，其他样本的类别标记为 $c</em>{1}$ 。假定 $q=5$，即学习目标是找到 5 个原型向量 $p<em>{1},p</em>{2},p<em>{3},p</em>{4},p<em>{5}$ ，并假定其对应的类别标记分别为 $c</em>{1},c<em>{2},c</em>{2},c<em>{1},c</em>{1}$ 。</p>
-<p>算法开始时，根据样本的类别标记和簇的预设类别标记，对原型向量进行随机初始化，假定初始化为样本 $x<em>{5},x</em>{12},x<em>{18},x</em>{23},x<em>{29}$ 。在第一轮迭代中，假定随机选取的样本为 $x</em>{1}$ ，该样本与当前原型向量 $p<em>{1},p</em>{2},p<em>{3},p</em>{4},p<em>{5}$ 的距离分别为 $0.283,0.506,0.434,0.260,0.032$ 。由于 $p</em>{5}$ 与 $x<em>{1}$ 距离最近且两者具有相同的类别标记 $c</em>{2}$ ，假定学习率 $\eta = 0.1$ ，则 LVQ 更新 $p_{5}$ 得到新原型向量：</p>
+<h2 id="使用学习向量量化"><a href="# 使用学习向量量化" class="headerlink" title="使用学习向量量化"></a>使用学习向量量化 </h2><p> 令数据集中编号为 9-21 的样本的类别标记为 <script type="math/tex">c_{2}</script> ，其他样本的类别标记为 <script type="math/tex">c_{1}</script>。假定 $q=5$，即学习目标是找到 5 个原型向量 <script type="math/tex">p_{1},p_{2},p_{3},p_{4},p_{5}</script>，并假定其对应的类别标记分别为<script type="math/tex">c_{1},c_{2},c_{2},c_{1},c_{1}</script> 。</p>
+<p>算法开始时，根据样本的类别标记和簇的预设类别标记，对原型向量进行随机初始化，假定初始化为样本 <script type="math/tex">x_{5},x_{12},x_{18},x_{23},x_{29}</script> 。在第一轮迭代中，假定随机选取的样本为 <script type="math/tex">x_{1}</script> ，该样本与当前原型向量 <script type="math/tex">p_{1},p_{2},p_{3},p_{4},p_{5}</script> 的距离分别为 <script type="math/tex">0.283, 0.506, 0.434, 0.260, 0.032</script> 。由于 <script type="math/tex">p_{5}</script> 与 <script type="math/tex">x_{1}</script> 距离最近且两者具有相同的类别标记 <script type="math/tex">c_{2}</script> ，假定学习率 $\eta = 0.1$ ，则 LVQ 更新 <script type="math/tex">p_{5}</script> 得到新原型向量：</p>
 <script type="math/tex; mode=display">
 \begin{align}
 p^{'} & = p_{5} + \eta \cdot (x_{1} - p_{5}) \cr
       & = (0.725;0.445) + 0.1 \cdot ((0.697;0.460) - (0.725;0.445)) \cr
       & = (0.722;0.442).
-\end{align}</script><p>将 $p<em>{5}$ 更新为 $p^{‘}$ 后，不断重复上述过程，不同轮数之后的聚类结果如下图所示，其中 $c</em>{1}$ ， $c_{2}$ 类别样本点与原型向量分别用”●”,”○”与”+”表示，红色虚线显示出聚类形成的 Voronoi 剖分。</p>
+\end{align}</script><p>将 <script type="math/tex">p_{5}</script> 更新为 <script type="math/tex">p^{'}</script> 后，不断重复上述过程，不同轮数之后的聚类结果如下图所示，其中 <script type="math/tex">c_{1}</script> ， <script type="math/tex">c_{2}</script> 类别样本点与原型向量分别用”●”,”○”与”+”表示，红色虚线显示出聚类形成的 Voronoi 剖分。</p>
 <p><img src="https://farm1.staticflickr.com/715/31427609470_fe9357f0cc_o.png" alt=""></p>
-<h2 id="使用高斯混合聚类"><a href="# 使用高斯混合聚类" class="headerlink" title="使用高斯混合聚类"></a>使用高斯混合聚类 </h2><p> 令高斯混合成分的个数 $k=3$。算法开始时，假定将高斯混合分布的模型参数初始化为：$\alpha<em>{1} = \alpha</em>{2} = \alpha<em>{3} = \frac{1}{3}$；$\mu</em>{1} = x<em>{6}$，$\mu</em>{2}=x<em>{22}$，$\mu</em>{3} = x<em>{27}$；$\Sigma</em>{1} = \Sigma<em>{2} = \Sigma</em>{3} = \binom{0.1 \ 0.0}{0.0 \ 0.1}$。</p>
+<h2 id="使用高斯混合聚类"><a href="# 使用高斯混合聚类" class="headerlink" title="使用高斯混合聚类"></a>使用高斯混合聚类 </h2><p> 令高斯混合成分的个数 $k=3$。算法开始时，假定将高斯混合分布的模型参数初始化为：<script type="math/tex">\alpha_{1} = \alpha_{2} = \alpha_{3} = \frac{1}{3}</script>；<script type="math/tex">\mu_{1} = x_{6}</script>，<script type="math/tex">\mu_{2}=x_{22}</script>，<script type="math/tex">\mu_{3} = x_{27}</script>；<script type="math/tex">\Sigma_{1} = \Sigma_{2} = \Sigma_{3} = \binom{0.1 \ 0.0}{0.0 \ 0.1}</script>。</p>
 <p>在第一轮迭代中，先计算样本由各混合成分生成的后验概率。</p>
 ]]></content>
     
