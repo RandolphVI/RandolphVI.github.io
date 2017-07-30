@@ -111,7 +111,7 @@
 <meta property="og:description" content="本文介绍了 Factorization Machines 隐因子分解机模型，包括模型数学知识介绍以及与其他模型的对比。">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://farm5.staticflickr.com/4300/35460446383_aafc34ca3c_o.jpg">
-<meta property="og:updated_time" content="2017-07-30T14:54:25.000Z">
+<meta property="og:updated_time" content="2017-07-30T15:10:59.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="「Machine Learning」 Factorization Machines">
 <meta name="twitter:description" content="本文介绍了 Factorization Machines 隐因子分解机模型，包括模型数学知识介绍以及与其他模型的对比。">
@@ -437,7 +437,7 @@
                   <i class="fa fa-file-word-o"></i>
                 </span>
                 <span title="Words count in article">
-                  731
+                  669
                 </span>
                 <span> words </span>
                 
@@ -477,51 +477,33 @@
       
         <p><img src="https://farm5.staticflickr.com/4300/35460446383_aafc34ca3c_o.jpg" alt=""></p>
 <p> 有关 Machine Learning 其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/">「Machine Learning」</a></p>
-<h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>Factorization Machines (FM)，可译为“隐因子分解机”，由 Steffen Rendle 于 2010 年提出，并发布开源工具 libFM 。他凭借 FM 单个模型，他在 KDD Cup 2012 上，取得 Track1 的第 2 名和 Track2 的第 3 名。</p>
+<h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>Factorization Machines（FM），可译为“隐因子分解机”，由 Steffen Rendle 于 2010 年提出，并发布开源工具 <strong>libFM</strong> 。他凭借 FM 单个模型，他在 KDD Cup 2012 上，取得 Track1 的第 2 名和 Track2 的第 3 名。</p>
 <h1 id="Compared-with-Other-Models"><a href="#Compared-with-Other-Models" class="headerlink" title="Compared with Other Models"></a>Compared with Other Models</h1><ul>
 <li> 在数据非常稀疏时（如推荐系统），SVM 不能取得很好的效果。</li>
 <li> 对带非线性核函数的 SVM，需要在对偶问题上进行求解。</li>
 <li> 目前还有很多不同的 factorization models ，比如 matrix factorization 和一些特殊的模型 SVD++, PITF, FPMC。这些模型的一个缺点是它们只适用于某些特定的输入数据，优化算法也需要根据问题专门设计。</li>
 <li>FM 适用于实数值的特征向量。并且经过一些变换，可以看出 FM 囊括了以上方法。</li>
 </ul>
-<h1 id="Related"><a href="#Related" class="headerlink" title="Related"></a>Related</h1><ul>
-<li><p> 首先考虑线性模型 </p>
+<h1 id="Related"><a href="#Related" class="headerlink" title="Related"></a>Related</h1><p> 首先考虑线性模型：</p>
 <script type="math/tex; mode=display">
-\hat y (x) = w_0 + w_1x_1 + w_2x_2+ \dots + w_nx_n = w_0 + \sum_{i=1}^{n}w_ix_i</script></li>
-<li><p> 各特征分量之间是相互孤立的。</p>
-</li>
-<li><p>$\hat y(x)$ 仅考虑单个的特征分量，而没有考虑特征分量之间的相互关系。</p>
-</li>
-<li><p> 考虑任意两个特征分量之间的关系 </p>
+\hat y (x) = w_0 + w_1x_1 + w_2x_2+ \dots + w_nx_n = w_0 + \sum_{i=1}^{n}w_ix_i</script><p> 各特征分量之间是相互孤立的。</p>
+<p>$\hat y(x)$ 仅考虑单个的特征分量，而没有考虑特征分量之间的相互关系。</p>
+<p> 考虑任意两个特征分量之间的关系：</p>
 <script type="math/tex; mode=display">
-\hat y (x) := w_0 +  \sum_{i=1}^{n}w_ix_i + \sum_{i=1}^{n-1}\sum_{j=i+1}^{n}W_{ij}x_ix_j</script></li>
-<li><p> 在数据高度系数的场景中，上述模型由很大的缺陷：</p>
-<ul>
-<li><p> 当 $x<em>i$ 与 $x_j$ 未出现过交互时，不能对相应的参数 $w</em>{ij}$ 进行估计， $w_{ij}$ 一定为 0 .</p>
-</li>
-<li><p> 对每个维度的特征分量 $x_i$ ，引入 </p>
+\hat y (x) := w_0 +  \sum_{i=1}^{n}w_ix_i + \sum_{i=1}^{n-1}\sum_{j=i+1}^{n}W_{ij}x_ix_j</script><p> 在数据高度系数的场景中，上述模型由很大的缺陷：</p>
+<p> 当 <script type="math/tex">x_i</script> 与 <script type="math/tex">x_j</script> 未出现过交互时，不能对相应的参数 <script type="math/tex">w_{ij}</script> 进行估计， <script type="math/tex">w_{ij}</script> 一定为 0 。</p>
+<p> 对每个维度的特征分量 $x_i$ ，引入：</p>
 <script type="math/tex; mode=display">
-v_i = (v_{i1},v_{i2}, \dots ,v_{ik})^T \epsilon \ \mathbb{R} ^k, \ i = 1,2,\dots,n</script></li>
-<li><p> 改写 $w_{ij}$ :</p>
+v_i = (v_{i1},v_{i2}, \dots ,v_{ik})^T \epsilon \ \mathbb{R} ^k, \ i = 1,2,\dots,n</script><p> 改写 $w_{ij}$ :</p>
 <script type="math/tex; mode=display">
-\hat w_{ij} = v_i^Tv_j := \sum_{l=1}^{k}v_{il}v_{jl}</script></li>
-<li><p> 协同过滤思想 </p>
-</li>
-</ul>
-</li>
-<li><p><strong>2-way FM</strong></p>
-<script type="math/tex; mode=display">
+\hat w_{ij} = v_i^Tv_j := \sum_{l=1}^{k}v_{il}v_{jl}</script><h2 id="2-way-FM"><a href="#2-way-FM" class="headerlink" title="2-way FM"></a>2-way FM</h2><script type="math/tex; mode=display">
 \hat y(x) := w_0 + \sum_{i=1}^{n}w_ix_i + \sum_{i=1}^{n-1}\sum_{j=i+1}^{n}\left \langle  v_i, v_j\right \rangle x_ix_j</script><script type="math/tex; mode=display">
 w_0 \ \epsilon\  \mathbb{R},w \ \epsilon\  \mathbb{R}^n, V \ \epsilon\  \mathbb{R}^{n\times k}</script><script type="math/tex; mode=display">
 \left \langle  v_i, v_j\right \rangle := \sum_{f=1}^{k}v_{i,f} \cdot v_{j,f}</script><ul>
-<li>$v_i$ 用 $k$ 个因子描述第 $i$ 个变量 </li>
-<li> 正整数 $k$ 是超参，决定了分解的维度 </li>
+<li>$v_i$ 用 $k$ 个因子描述第 $i$ 个变量。</li>
+<li> 正整数 $k$ 是超参，决定了分解的维度。</li>
 </ul>
-</li>
-</ul>
-<ul>
-<li><p><strong> 复杂度分析 </strong></p>
-<p>FM 模型中需要估计的参数包括 $w<em>0 \ \epsilon\  \mathbb{R},w \ \epsilon\  \mathbb{R}^n, V \ \epsilon\  \mathbb{R}^{n\times k}$  ，共 $1+n+n*k$ 个，$w</em>{0}$ 为整体的偏置量，$w$ 对特征向量的各个分量的强度进行建模，$V$ 对特征向量中任意两个分量之间的关系进行建模。</p>
+<h2 id="Complexity-analysis"><a href="#Complexity-analysis" class="headerlink" title="Complexity analysis"></a>Complexity analysis</h2><p>FM 模型中需要估计的参数包括 <script type="math/tex">w_0 \ \epsilon\  \mathbb{R},w \ \epsilon\  \mathbb{R}^n, V \ \epsilon\  \mathbb{R}^{n\times k}</script>，共 <script type="math/tex">1+n+n*k</script> 个，<script type="math/tex">w_{0}</script> 为整体的偏置量，$w$ 对特征向量的各个分量的强度进行建模，$V$ 对特征向量中任意两个分量之间的关系进行建模。</p>
 <p> 直观上看，上述模型的计算复杂度是 $O(kn^2)$ ，但是经过下面的改写后：</p>
 <script type="math/tex; mode=display">
 \begin{align}
@@ -531,27 +513,16 @@ w_0 \ \epsilon\  \mathbb{R},w \ \epsilon\  \mathbb{R}^n, V \ \epsilon\  \mathbb{
 =& \frac{1}{2} \sum_{f=1}^{k} \left(\left( \sum_{i=1}^{n}v_{i,f}x_{i}\right) \left(\sum_{j=1}^{n}v_{j,f}x_{j}\right) - \sum_{i=1}^{n}v_{i,f}^2 x_{i}^2\right) \cr
 =& \frac{1}{2}  \sum_{f=1}^{k} \left(\left( \sum_{i=1}^{n}v_{i,f}x_{i}\right)^2 - \sum_{i=1}^{n}v_{i,f}^2 x_{i}^2\right)\cr
 \end{align}</script><p> 计算复杂度经过改写后降低到线性的 $O(kn)$ 。</p>
-</li>
-<li><p> 多阶 FM 方程（d-way FM）</p>
-<p> 方程同时刻画 $l(1 \leq l \leq d)$ 个特征向量之间的相互关系。</p>
+<h2 id="d-way-FM"><a href="#d-way-FM" class="headerlink" title="d-way FM"></a>d-way FM</h2><p> 方程同时刻画 $l(1 \leq l \leq d)$ 个特征向量之间的相互关系。</p>
 <script type="math/tex; mode=display">
-\hat y(x) := w_0 + \sum_{i=1}^{n}w_ix_i + \sum_{l=2}^{d}\sum_{i_{1}=1}^{n}\dots \sum_{i_{t} = i_{t-1}+1}^{n}\left (\prod_{j=1}^{l}x_{i_{j}} \right)\left (\prod_{f=1}^{k_{l}}\prod_{j=1}^{l}v_{i_{j},f}^{(l)} \right)</script></li>
-<li><p><strong> 解决问题 </strong></p>
-<ul>
-<li><p> 最小化优化目标函数 </p>
+\hat y(x) := w_0 + \sum_{i=1}^{n}w_ix_i + \sum_{l=2}^{d}\sum_{i_{1}=1}^{n}\dots \sum_{i_{t} = i_{t-1}+1}^{n}\left (\prod_{j=1}^{l}x_{i_{j}} \right)\left (\prod_{f=1}^{k_{l}}\prod_{j=1}^{l}v_{i_{j},f}^{(l)} \right)</script><h2 id="Problem-Solving"><a href="#Problem-Solving" class="headerlink" title="Problem Solving"></a>Problem Solving</h2><p> 最小化优化目标函数：</p>
 <script type="math/tex; mode=display">
-L = \sum_{i=1}^{N} loss(\hat y(x^{(i)}),y^{(i)})</script></li>
-<li><p> 回归问题，损失函数可取为最小平方误差，即 </p>
+L = \sum_{i=1}^{N} loss(\hat y(x^{(i)}),y^{(i)})</script><p> 回归问题，损失函数可取为最小平方误差，即：</p>
 <script type="math/tex; mode=display">
-l^{LS}(y_1,y_2) := (y_1-y_2)^2</script></li>
-<li><p> 二分类问题，损失函数可为 hinge loss 函数或 logistic loss 函数 </p>
+l^{LS}(y_1,y_2) := (y_1-y_2)^2</script><p> 二分类问题，损失函数可为 hinge loss 函数或 logistic loss 函数：</p>
 <script type="math/tex; mode=display">
 l^{C}(y_1,y_2) := -ln\sigma (y_1y_2)</script><script type="math/tex; mode=display">
-\sigma (x) = \frac{1}{1+e^{-x}}</script></li>
-</ul>
-</li>
-<li><p><strong> 学习算法 </strong></p>
-<ul>
+\sigma (x) = \frac{1}{1+e^{-x}}</script><h2 id="Algorithm"><a href="#Algorithm" class="headerlink" title="Algorithm"></a>Algorithm</h2><ul>
 <li><p><strong> 随机梯度下降法 (StochasticGradient Descent, SGD)</strong></p>
 </li>
 <li><p><strong> 交替最小二乘法 (AlternatingLeast-Squares, ALS)</strong></p>
@@ -559,9 +530,7 @@ l^{C}(y_1,y_2) := -ln\sigma (y_1y_2)</script><script type="math/tex; mode=displa
 <li><p><strong> 马尔可夫链蒙特卡洛法 (MarkovChain Monte Carlo, MCMC)</strong></p>
 </li>
 </ul>
-</li>
-<li><p><strong>Multilinearity</strong></p>
-<p>FM 的一个重要性质—multilinearity，对于 FM 的任意参数 $\theta$ ，存在两个与 $\theta $ 的取值无关的函数 $g(\theta)$ 和 $h(\theta)$ 使得：</p>
+<h2 id="Multilinearity"><a href="#Multilinearity" class="headerlink" title="Multilinearity"></a>Multilinearity</h2><p>FM 的一个重要性质—<strong>Multilinearity</strong>，对于 FM 的任意参数 $\theta$ ，存在两个与 $\theta $ 的取值无关的函数 $g(\theta)$ 和 $h(\theta)$ 使得：</p>
 <script type="math/tex; mode=display">
 \hat y(x) = g_{\theta}(x) + \theta h_{\theta}(x) \qquad \forall\theta \in \Theta</script><p> 其中：</p>
 <script type="math/tex; mode=display">
@@ -570,20 +539,12 @@ h_{\theta}(x) = \frac{\partial \hat y(x)}{\partial \theta} =
 1,  & \text{if $\theta$ is $w_{0}$} \\
 x_{l}, & \text{if $\theta$ is $w_{l}$}  \\
 x_{l}\sum_{j \neq l}v_{j,f}x_{f}, & \text{if $\theta$ is $v_{l,f}$}
-\end{cases}</script></li>
-</ul>
-<p>​        $g(\theta)$ 相对复杂，计算时，使用 $g<em>{\theta}(x) = \hat y(x) - \theta h</em>{\theta}(x)$ 代替。</p>
-<ul>
-<li><p><strong> 最优化问题 </strong></p>
-<p> 最小化损失函数的和 </p>
+\end{cases}</script><p>$g(\theta)$ 相对复杂，计算时，使用 <script type="math/tex">g_{\theta}(x) = \hat y(x) - \theta h_{\theta}(x)</script> 代替。</p>
+<h2 id="Optimization"><a href="#Optimization" class="headerlink" title="Optimization"></a>Optimization</h2><p> 最小化损失函数的和：</p>
 <script type="math/tex; mode=display">
-OPT(S) := argmin \sum_{(x, y) \in S} l(\hat y(x \mid \Theta), y)</script><p> 加入 L2 正则 </p>
+OPT(S) := argmin \sum_{(x, y) \in S} l(\hat y(x \mid \Theta), y)</script><p> 加入 L2 正则：</p>
 <script type="math/tex; mode=display">
-OPTREG(S,\lambda) := argmin\left(\sum_{(x, y)\in S}l(\hat y(x \mid \Theta), y) + \sum_{\theta \in \Theta}\lambda_{\theta}\theta^2\right)</script></li>
-<li><p><strong> 梯度 </strong></p>
-<p>​</p>
-</li>
-</ul>
+OPTREG(S,\lambda) := argmin\left(\sum_{(x, y)\in S}l(\hat y(x \mid \Theta), y) + \sum_{\theta \in \Theta}\lambda_{\theta}\theta^2\right)</script><h2 id="Gradient"><a href="#Gradient" class="headerlink" title="Gradient"></a>Gradient</h2><p>  ​</p>
 
       
     </div>
@@ -848,7 +809,7 @@ OPTREG(S,\lambda) := argmin\left(\sum_{(x, y)\in S}l(\hat y(x \mid \Theta), y) +
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Compared-with-Other-Models"><span class="nav-number">2.</span> <span class="nav-text">Compared with Other Models</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Related"><span class="nav-number">3.</span> <span class="nav-text">Related</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Compared-with-Other-Models"><span class="nav-number">2.</span> <span class="nav-text">Compared with Other Models</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Related"><span class="nav-number">3.</span> <span class="nav-text">Related</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-way-FM"><span class="nav-number">3.1.</span> <span class="nav-text">2-way FM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Complexity-analysis"><span class="nav-number">3.2.</span> <span class="nav-text">Complexity analysis</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#d-way-FM"><span class="nav-number">3.3.</span> <span class="nav-text">d-way FM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Problem-Solving"><span class="nav-number">3.4.</span> <span class="nav-text">Problem Solving</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Algorithm"><span class="nav-number">3.5.</span> <span class="nav-text">Algorithm</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Multilinearity"><span class="nav-number">3.6.</span> <span class="nav-text">Multilinearity</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Optimization"><span class="nav-number">3.7.</span> <span class="nav-text">Optimization</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Gradient"><span class="nav-number">3.8.</span> <span class="nav-text">Gradient</span></a></li></ol></li></ol></div>
             
 
           </div>
