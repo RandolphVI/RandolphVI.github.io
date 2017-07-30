@@ -111,7 +111,7 @@
 <meta property="og:description" content="本文介绍了 Factorization Machines 隐因子分解机模型，包括模型数学知识介绍以及与其他模型的对比。">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://farm5.staticflickr.com/4300/35460446383_aafc34ca3c_o.jpg">
-<meta property="og:updated_time" content="2017-07-30T15:15:24.000Z">
+<meta property="og:updated_time" content="2017-07-30T15:25:49.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="「Machine Learning」 Factorization Machines">
 <meta name="twitter:description" content="本文介绍了 Factorization Machines 隐因子分解机模型，包括模型数学知识介绍以及与其他模型的对比。">
@@ -513,7 +513,7 @@ w_0 \ \epsilon\  \mathbb{R},w \ \epsilon\  \mathbb{R}^n, V \ \epsilon\  \mathbb{
 =& \frac{1}{2} \sum_{f=1}^{k} \left(\left( \sum_{i=1}^{n}v_{i,f}x_{i}\right) \left(\sum_{j=1}^{n}v_{j,f}x_{j}\right) - \sum_{i=1}^{n}v_{i,f}^2 x_{i}^2\right) \cr
 =& \frac{1}{2}  \sum_{f=1}^{k} \left(\left( \sum_{i=1}^{n}v_{i,f}x_{i}\right)^2 - \sum_{i=1}^{n}v_{i,f}^2 x_{i}^2\right)\cr
 \end{align}</script><p> 计算复杂度经过改写后降低到线性的 $O(kn)$ 。</p>
-<h2 id="d-way-FM"><a href="#d-way-FM" class="headerlink" title="d-way FM"></a>d-way FM</h2><p> 方程同时刻画 $l(1 \leq l \leq d)$ 个特征向量之间的相互关系。</p>
+<h2 id="d-way-FM"><a href="#d-way-FM" class="headerlink" title="d-way FM"></a>d-way FM</h2><p> 方程同时刻画 $l(1 \leq l \leq d)$ 个特征向量之间的相互关系：</p>
 <script type="math/tex; mode=display">
 \hat y(x) := w_0 + \sum_{i=1}^{n}w_ix_i + \sum_{l=2}^{d}\sum_{i_{1}=1}^{n}\dots \sum_{i_{t} = i_{t-1}+1}^{n}\left (\prod_{j=1}^{l}x_{i_{j}} \right)\left (\prod_{f=1}^{k_{l}}\prod_{j=1}^{l}v_{i_{j},f}^{(l)} \right)</script><h2 id="Problem-Solving"><a href="#Problem-Solving" class="headerlink" title="Problem Solving"></a>Problem Solving</h2><p> 最小化优化目标函数：</p>
 <script type="math/tex; mode=display">
