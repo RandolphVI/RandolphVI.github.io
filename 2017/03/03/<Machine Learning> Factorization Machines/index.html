@@ -111,7 +111,7 @@
 <meta property="og:description" content="本文介绍了 Factorization Machines 隐因子分解机模型，包括模型数学知识介绍以及与其他模型的对比。">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://farm5.staticflickr.com/4300/35460446383_aafc34ca3c_o.jpg">
-<meta property="og:updated_time" content="2017-07-30T15:10:59.000Z">
+<meta property="og:updated_time" content="2017-07-30T15:15:24.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="「Machine Learning」 Factorization Machines">
 <meta name="twitter:description" content="本文介绍了 Factorization Machines 隐因子分解机模型，包括模型数学知识介绍以及与其他模型的对比。">
@@ -437,7 +437,7 @@
                   <i class="fa fa-file-word-o"></i>
                 </span>
                 <span title="Words count in article">
-                  669
+                  673
                 </span>
                 <span> words </span>
                 
@@ -492,7 +492,7 @@
 <script type="math/tex; mode=display">
 \hat y (x) := w_0 +  \sum_{i=1}^{n}w_ix_i + \sum_{i=1}^{n-1}\sum_{j=i+1}^{n}W_{ij}x_ix_j</script><p> 在数据高度系数的场景中，上述模型由很大的缺陷：</p>
 <p> 当 <script type="math/tex">x_i</script> 与 <script type="math/tex">x_j</script> 未出现过交互时，不能对相应的参数 <script type="math/tex">w_{ij}</script> 进行估计， <script type="math/tex">w_{ij}</script> 一定为 0 。</p>
-<p> 对每个维度的特征分量 $x_i$ ，引入：</p>
+<p> 因此，需要对每个维度的特征分量 $x_i$ ，引入：</p>
 <script type="math/tex; mode=display">
 v_i = (v_{i1},v_{i2}, \dots ,v_{ik})^T \epsilon \ \mathbb{R} ^k, \ i = 1,2,\dots,n</script><p> 改写 $w_{ij}$ :</p>
 <script type="math/tex; mode=display">
@@ -503,7 +503,7 @@ w_0 \ \epsilon\  \mathbb{R},w \ \epsilon\  \mathbb{R}^n, V \ \epsilon\  \mathbb{
 <li>$v_i$ 用 $k$ 个因子描述第 $i$ 个变量。</li>
 <li> 正整数 $k$ 是超参，决定了分解的维度。</li>
 </ul>
-<h2 id="Complexity-analysis"><a href="#Complexity-analysis" class="headerlink" title="Complexity analysis"></a>Complexity analysis</h2><p>FM 模型中需要估计的参数包括 <script type="math/tex">w_0 \ \epsilon\  \mathbb{R},w \ \epsilon\  \mathbb{R}^n, V \ \epsilon\  \mathbb{R}^{n\times k}</script>，共 <script type="math/tex">1+n+n*k</script> 个，<script type="math/tex">w_{0}</script> 为整体的偏置量，$w$ 对特征向量的各个分量的强度进行建模，$V$ 对特征向量中任意两个分量之间的关系进行建模。</p>
+<h2 id="Complexity-Analysis"><a href="#Complexity-Analysis" class="headerlink" title="Complexity Analysis"></a>Complexity Analysis</h2><p>FM 模型中需要估计的参数包括 <script type="math/tex">w_0 \ \epsilon\  \mathbb{R},w \ \epsilon\  \mathbb{R}^n, V \ \epsilon\  \mathbb{R}^{n\times k}</script>，共 <script type="math/tex">1+n+n*k</script> 个，<script type="math/tex">w_{0}</script> 为整体的偏置量，$w$ 对特征向量的各个分量的强度进行建模，$V$ 对特征向量中任意两个分量之间的关系进行建模。</p>
 <p> 直观上看，上述模型的计算复杂度是 $O(kn^2)$ ，但是经过下面的改写后：</p>
 <script type="math/tex; mode=display">
 \begin{align}
@@ -809,7 +809,7 @@ OPTREG(S,\lambda) := argmin\left(\sum_{(x, y)\in S}l(\hat y(x \mid \Theta), y) +
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Compared-with-Other-Models"><span class="nav-number">2.</span> <span class="nav-text">Compared with Other Models</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Related"><span class="nav-number">3.</span> <span class="nav-text">Related</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-way-FM"><span class="nav-number">3.1.</span> <span class="nav-text">2-way FM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Complexity-analysis"><span class="nav-number">3.2.</span> <span class="nav-text">Complexity analysis</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#d-way-FM"><span class="nav-number">3.3.</span> <span class="nav-text">d-way FM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Problem-Solving"><span class="nav-number">3.4.</span> <span class="nav-text">Problem Solving</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Algorithm"><span class="nav-number">3.5.</span> <span class="nav-text">Algorithm</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Multilinearity"><span class="nav-number">3.6.</span> <span class="nav-text">Multilinearity</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Optimization"><span class="nav-number">3.7.</span> <span class="nav-text">Optimization</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Gradient"><span class="nav-number">3.8.</span> <span class="nav-text">Gradient</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Compared-with-Other-Models"><span class="nav-number">2.</span> <span class="nav-text">Compared with Other Models</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Related"><span class="nav-number">3.</span> <span class="nav-text">Related</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-way-FM"><span class="nav-number">3.1.</span> <span class="nav-text">2-way FM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Complexity-Analysis"><span class="nav-number">3.2.</span> <span class="nav-text">Complexity Analysis</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#d-way-FM"><span class="nav-number">3.3.</span> <span class="nav-text">d-way FM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Problem-Solving"><span class="nav-number">3.4.</span> <span class="nav-text">Problem Solving</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Algorithm"><span class="nav-number">3.5.</span> <span class="nav-text">Algorithm</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Multilinearity"><span class="nav-number">3.6.</span> <span class="nav-text">Multilinearity</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Optimization"><span class="nav-number">3.7.</span> <span class="nav-text">Optimization</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Gradient"><span class="nav-number">3.8.</span> <span class="nav-text">Gradient</span></a></li></ol></li></ol></div>
             
 
           </div>

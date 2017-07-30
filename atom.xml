@@ -83,7 +83,7 @@
     <link href="http://randolph.pro/2017/03/03/%3CMachine%20Learning%3E%20Factorization%20Machines/"/>
     <id>http://randolph.pro/2017/03/03/&lt;Machine Learning&gt; Factorization Machines/</id>
     <published>2017-03-02T16:00:00.000Z</published>
-    <updated>2017-07-30T15:10:59.000Z</updated>
+    <updated>2017-07-30T15:15:24.000Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://farm5.staticflickr.com/4300/35460446383_aafc34ca3c_o.jpg" alt=""></p>
 <p> 有关 Machine Learning 其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/">「Machine Learning」</a></p>
@@ -102,7 +102,7 @@
 <script type="math/tex; mode=display">
 \hat y (x) := w_0 +  \sum_{i=1}^{n}w_ix_i + \sum_{i=1}^{n-1}\sum_{j=i+1}^{n}W_{ij}x_ix_j</script><p> 在数据高度系数的场景中，上述模型由很大的缺陷：</p>
 <p> 当 <script type="math/tex">x_i</script> 与 <script type="math/tex">x_j</script> 未出现过交互时，不能对相应的参数 <script type="math/tex">w_{ij}</script> 进行估计， <script type="math/tex">w_{ij}</script> 一定为 0 。</p>
-<p> 对每个维度的特征分量 $x_i$ ，引入：</p>
+<p> 因此，需要对每个维度的特征分量 $x_i$ ，引入：</p>
 <script type="math/tex; mode=display">
 v_i = (v_{i1},v_{i2}, \dots ,v_{ik})^T \epsilon \ \mathbb{R} ^k, \ i = 1,2,\dots,n</script><p> 改写 $w_{ij}$ :</p>
 <script type="math/tex; mode=display">
@@ -113,7 +113,7 @@ w_0 \ \epsilon\  \mathbb{R},w \ \epsilon\  \mathbb{R}^n, V \ \epsilon\  \mathbb{
 <li>$v_i$ 用 $k$ 个因子描述第 $i$ 个变量。</li>
 <li> 正整数 $k$ 是超参，决定了分解的维度。</li>
 </ul>
-<h2 id="Complexity-analysis"><a href="#Complexity-analysis" class="headerlink" title="Complexity analysis"></a>Complexity analysis</h2><p>FM 模型中需要估计的参数包括 <script type="math/tex">w_0 \ \epsilon\  \mathbb{R},w \ \epsilon\  \mathbb{R}^n, V \ \epsilon\  \mathbb{R}^{n\times k}</script>，共 <script type="math/tex">1+n+n*k</script> 个，<script type="math/tex">w_{0}</script> 为整体的偏置量，$w$ 对特征向量的各个分量的强度进行建模，$V$ 对特征向量中任意两个分量之间的关系进行建模。</p>
+<h2 id="Complexity-Analysis"><a href="#Complexity-Analysis" class="headerlink" title="Complexity Analysis"></a>Complexity Analysis</h2><p>FM 模型中需要估计的参数包括 <script type="math/tex">w_0 \ \epsilon\  \mathbb{R},w \ \epsilon\  \mathbb{R}^n, V \ \epsilon\  \mathbb{R}^{n\times k}</script>，共 <script type="math/tex">1+n+n*k</script> 个，<script type="math/tex">w_{0}</script> 为整体的偏置量，$w$ 对特征向量的各个分量的强度进行建模，$V$ 对特征向量中任意两个分量之间的关系进行建模。</p>
 <p> 直观上看，上述模型的计算复杂度是 $O(kn^2)$ ，但是经过下面的改写后：</p>
 <script type="math/tex; mode=display">
 \begin{align}
