@@ -102,19 +102,19 @@
 
 
 
-<meta name="description" content="本文介绍了 Factorization Machines 隐因子分解机模型，包括。">
+<meta name="description" content="本文介绍了 Factorization Machines 隐因子分解机模型，包括模型数学知识介绍以及与其他模型的对比。">
 <meta name="keywords" content="Machine Learning">
 <meta property="og:type" content="article">
 <meta property="og:title" content="「Machine Learning」 Factorization Machines">
 <meta property="og:url" content="http://randolph.pro/2017/03/03/<Machine Learning> Factorization Machines/index.html">
 <meta property="og:site_name" content="黃某人">
-<meta property="og:description" content="本文介绍了 Factorization Machines 隐因子分解机模型，包括。">
+<meta property="og:description" content="本文介绍了 Factorization Machines 隐因子分解机模型，包括模型数学知识介绍以及与其他模型的对比。">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://farm5.staticflickr.com/4300/35460446383_aafc34ca3c_o.jpg">
-<meta property="og:updated_time" content="2017-07-30T14:47:00.000Z">
+<meta property="og:updated_time" content="2017-07-30T14:54:25.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="「Machine Learning」 Factorization Machines">
-<meta name="twitter:description" content="本文介绍了 Factorization Machines 隐因子分解机模型，包括。">
+<meta name="twitter:description" content="本文介绍了 Factorization Machines 隐因子分解机模型，包括模型数学知识介绍以及与其他模型的对比。">
 <meta name="twitter:image" content="https://farm5.staticflickr.com/4300/35460446383_aafc34ca3c_o.jpg">
 
 
@@ -437,7 +437,7 @@
                   <i class="fa fa-file-word-o"></i>
                 </span>
                 <span title="Words count in article">
-                  737
+                  731
                 </span>
                 <span> words </span>
                 
@@ -461,7 +461,7 @@
 
           
               <div class="post-description">
-                  本文介绍了 Factorization Machines 隐因子分解机模型，包括。
+                  本文介绍了 Factorization Machines 隐因子分解机模型，包括模型数学知识介绍以及与其他模型的对比。
               </div>
           
 
@@ -476,15 +476,15 @@
 
       
         <p><img src="https://farm5.staticflickr.com/4300/35460446383_aafc34ca3c_o.jpg" alt=""></p>
-<p> 有关 Machine Learning 其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/Book-「Machine-Learning」/">「Machine Learning」</a></p>
-<h1 id="简介"><a href="# 简介" class="headerlink" title="简介"></a> 简介 </h1><p>Factorization Machines (FM)，可译为“隐因子分解机”，由 Steffen Rendle 于 2010 年提出，并发布开源工具 libFM 。他凭借 FM 单个模型，他在 KDD Cup 2012 上，取得 Track1 的第 2 名和 Track2 的第 3 名。</p>
-<h1 id="与其他模型的对比"><a href="# 与其他模型的对比" class="headerlink" title="与其他模型的对比"></a> 与其他模型的对比 </h1><ul>
+<p> 有关 Machine Learning 其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/">「Machine Learning」</a></p>
+<h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>Factorization Machines (FM)，可译为“隐因子分解机”，由 Steffen Rendle 于 2010 年提出，并发布开源工具 libFM 。他凭借 FM 单个模型，他在 KDD Cup 2012 上，取得 Track1 的第 2 名和 Track2 的第 3 名。</p>
+<h1 id="Compared-with-Other-Models"><a href="#Compared-with-Other-Models" class="headerlink" title="Compared with Other Models"></a>Compared with Other Models</h1><ul>
 <li> 在数据非常稀疏时（如推荐系统），SVM 不能取得很好的效果。</li>
 <li> 对带非线性核函数的 SVM，需要在对偶问题上进行求解。</li>
 <li> 目前还有很多不同的 factorization models ，比如 matrix factorization 和一些特殊的模型 SVD++, PITF, FPMC。这些模型的一个缺点是它们只适用于某些特定的输入数据，优化算法也需要根据问题专门设计。</li>
 <li>FM 适用于实数值的特征向量。并且经过一些变换，可以看出 FM 囊括了以上方法。</li>
 </ul>
-<h1 id="模型"><a href="# 模型" class="headerlink" title="模型"></a> 模型 </h1><ul>
+<h1 id="Related"><a href="#Related" class="headerlink" title="Related"></a>Related</h1><ul>
 <li><p> 首先考虑线性模型 </p>
 <script type="math/tex; mode=display">
 \hat y (x) = w_0 + w_1x_1 + w_2x_2+ \dots + w_nx_n = w_0 + \sum_{i=1}^{n}w_ix_i</script></li>
@@ -848,7 +848,7 @@ OPTREG(S,\lambda) := argmin\left(\sum_{(x, y)\in S}l(\hat y(x \mid \Theta), y) +
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text"> 简介 </span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#与其他模型的对比"><span class="nav-number">2.</span> <span class="nav-text"> 与其他模型的对比 </span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#模型"><span class="nav-number">3.</span> <span class="nav-text"> 模型 </span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Compared-with-Other-Models"><span class="nav-number">2.</span> <span class="nav-text">Compared with Other Models</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Related"><span class="nav-number">3.</span> <span class="nav-text">Related</span></a></li></ol></div>
             
 
           </div>
