@@ -116,7 +116,7 @@
 <meta property="og:image" content="https://farm1.staticflickr.com/289/31521619731_530a2ab0bd_o.png">
 <meta property="og:image" content="https://farm1.staticflickr.com/458/30795845494_a42900cc19_o.png">
 <meta property="og:image" content="https://farm1.staticflickr.com/458/30795845494_a42900cc19_o.png">
-<meta property="og:updated_time" content="2017-07-31T08:12:27.000Z">
+<meta property="og:updated_time" content="2017-07-31T08:16:59.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="♞「Machine Learning」 Classification - KNN &amp; kd Tree">
 <meta name="twitter:description" content="本文是关于周志华「Machine Learning」这本书的 Classification - KNN &amp; kd Tree 的学习笔记。">
@@ -453,7 +453,7 @@
                   <i class="fa fa-file-word-o"></i>
                 </span>
                 <span title="Words count in article">
-                  4,865
+                  4,867
                 </span>
                 <span> words </span>
                 
@@ -642,7 +642,7 @@ d(x,y) =\sqrt{\sum_{i=1}^{n}\frac{(x_{i} - y_{i})^2}{s_{i}^2}}</script><p>可以
 <p>步骤是：</p>
 <ol>
 <li>将 trainingDigits 目录中的文件内容存储在列表中 <strong><code>trainingFileList</code></strong>，然后可以得到目录中有多少文件，并将其存储在变量<strong><code>m</code></strong> 中。 </li>
-<li>接着，创建一个 m 行 1024（32<em>32）列的训练矩阵，该矩阵的每行数据都存储一个图像信息 <strong><code>trainingMat</code></strong>（用到前面定义到的<em>*<code>img2vector()</code></em></em> 函数）。</li>
+<li>接着，创建一个 m 行 $1024$（$32 \times 32$）列的训练矩阵，该矩阵的每行数据都存储一个图像信息 <strong><code>trainingMat</code></strong>（用到前面定义到的<strong><code>img2vector()</code></strong> 函数）。</li>
 <li>从文件名中解析出分类数字，将所有图像类别信息存储在 <strong><code>hwLabels</code></strong> 向量中。（例如 0_0.txt 的类别就是‘0’）</li>
 <li>对剩下的 testDigits 目录中的测试数据进行上述 1，2，3 操作，但是不同的是，我们并不将测试数据的图像信息载入到新的矩阵当中，而是使用前面定义的 <strong><code>classify0()</code></strong> 函数测试该目录下的每个数据文件。</li>
 </ol>
