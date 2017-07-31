@@ -116,7 +116,7 @@
 <meta property="og:image" content="https://farm1.staticflickr.com/289/31521619731_530a2ab0bd_o.png">
 <meta property="og:image" content="https://farm1.staticflickr.com/458/30795845494_a42900cc19_o.png">
 <meta property="og:image" content="https://farm1.staticflickr.com/458/30795845494_a42900cc19_o.png">
-<meta property="og:updated_time" content="2017-07-31T00:34:23.000Z">
+<meta property="og:updated_time" content="2017-07-31T07:31:05.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="♞「Machine Learning」 Classification - KNN &amp; kd Tree">
 <meta name="twitter:description" content="本文是关于周志华「Machine Learning」这本书的 Classification - KNN &amp; kd Tree 的学习笔记。">
@@ -553,9 +553,7 @@ d(x,y) =\sqrt{\sum_{i=1}^{n}\frac{(x_{i} - y_{i})^2}{s_{i}^2}}</script><p>可以
 </li>
 </ul>
 <hr>
-<h1 id="分类决策规则"><a href="# 分类决策规则" class="headerlink" title="分类决策规则"></a>分类决策规则</h1><ul>
-<li>$k$- 邻近法中的分类决策规则往往是“投票法”（多数表决），即由输入实例的 $k$ 个邻近的训练实例中的多数类决定输入实例的类。</li>
-</ul>
+<h1 id="分类决策规则"><a href="# 分类决策规则" class="headerlink" title="分类决策规则"></a>分类决策规则</h1><p>$k$- 邻近法中的分类决策规则往往是“投票法”（多数表决），即由输入实例的 $k$ 个邻近的训练实例中的多数类决定输入实例的类。</p>
 <p>因为算法思想简单，我们可以用很多方法实现它，这时效率就是我们需要慎重考虑的事情，最简单的自然是求出测试样本和训练集所有点的距离然后排序选择前 $k$ 个，这个是 $O(n(\log n))$ 的，而其实从 $N$ 个数据找前 $k$ 个数据是一个很常见的算法题，可以用最大堆（最小堆）实现，其效率是 $O(n(\log k))$ 的，而最广泛的算法是使用 $kd$ 树来减少扫描的点。</p>
 <p>目前常用的解决方法是事先对已知样本点进行剪辑，事先去除对分类作用不大的样本。该算法比较适用于样本容量比较大的类域的自动分类，而那些样本容量较小的类域采用这种算法比较容易产生误分。</p>
 <p><strong>KNN 算法不仅可以用于分类，还可以用于回归。</strong>通过找出一个样本的 $k$ 个最近邻居，将这些邻居的属性的平均值赋给该样本，就可以得到该样本的属性。更有用的方法是将不同距离的邻居对该样本产生的影响给予不同的权值（weight），如权值与距离成正比。</p>
