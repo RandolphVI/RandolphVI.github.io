@@ -171,11 +171,11 @@ OPTREG(S,\lambda) := argmin\left(\sum_{(x, y)\in S}l(\hat y(x \mid \Theta), y) +
   </entry>
   
   <entry>
-    <title>♞「Machine Learning」 Classification</title>
+    <title>♞「Machine Learning」 Classification - KNN &amp; kd Tree</title>
     <link href="http://randolph.pro/2017/01/14/%3CMachine%20Learning%3E%20Classification-%20KNN%20&amp;%20kd%20Tree/"/>
     <id>http://randolph.pro/2017/01/14/&lt;Machine Learning&gt; Classification- KNN &amp; kd Tree/</id>
     <published>2017-01-13T16:00:00.000Z</published>
-    <updated>2017-07-31T00:26:04.000Z</updated>
+    <updated>2017-07-31T00:26:22.000Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://farm5.staticflickr.com/4307/36174772306_62cfbc8cd6_o.jpg" alt=""></p>
 <p>关于该书的其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/Book-「Machine-Learning」/">「Machine Learning」</a></p>
@@ -344,7 +344,7 @@ d(x,y) =\sqrt{\sum_{i=1}^{n}\frac{(x_{i} - y_{i})^2}{s_{i}^2}}</script><p>可以
     
     <summary type="html">
     
-      本文是关于周志华「Machine Learning」这本书的 Classification 的学习笔记。
+      本文是关于周志华「Machine Learning」这本书的 Classification - KNN &amp; kd Tree 的学习笔记。
     
     </summary>
     
