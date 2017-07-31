@@ -116,7 +116,7 @@
 <meta property="og:image" content="https://farm1.staticflickr.com/289/31521619731_530a2ab0bd_o.png">
 <meta property="og:image" content="https://farm1.staticflickr.com/458/30795845494_a42900cc19_o.png">
 <meta property="og:image" content="https://farm1.staticflickr.com/458/30795845494_a42900cc19_o.png">
-<meta property="og:updated_time" content="2017-07-31T08:06:46.000Z">
+<meta property="og:updated_time" content="2017-07-31T08:12:27.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="♞「Machine Learning」 Classification - KNN &amp; kd Tree">
 <meta name="twitter:description" content="本文是关于周志华「Machine Learning」这本书的 Classification - KNN &amp; kd Tree 的学习笔记。">
@@ -602,7 +602,7 @@ d(x,y) =\sqrt{\sum_{i=1}^{n}\frac{(x_{i} - y_{i})^2}{s_{i}^2}}</script><p>可以
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sortedDistIndicies = distances.argsort()</div></pre></td></tr></table></figure>
 <p>这句代码的意思便是返回一组索引值，这个索引值分别对应原数组中的点，但是是根据离未知点从最近到最远来排序，只用使用这个索引值就可以找到对应的已知类别数据中的一个点，从而得到该点标签。</p>
 <p>举个例子：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; a = array([1, 9, 7, 8, 10, 2, 0, 3])</div><div class="line">&gt;&gt;&gt; a</div><div class="line">array([1,  9,  7,  8, 10,  2,  0,  3])</div><div class="line">&gt;&gt;&gt; b = a.argsort()</div><div class="line">&gt;&gt;&gt; b</div><div class="line">array([6, 0, 5, 7, 2, 3, 1, 4])</div></pre></td></tr></table></figure>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; a = array([<span class="number">1</span>, <span class="number">9</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">10</span>, <span class="number">2</span>, <span class="number">0</span>, <span class="number">3</span>])</div><div class="line">&gt;&gt;&gt; a</div><div class="line">array([<span class="number">1</span>,  <span class="number">9</span>,  <span class="number">7</span>,  <span class="number">8</span>, <span class="number">10</span>,  <span class="number">2</span>,  <span class="number">0</span>,  <span class="number">3</span>])</div><div class="line">&gt;&gt;&gt; b = a.argsort()</div><div class="line">&gt;&gt;&gt; b</div><div class="line">array([<span class="number">6</span>, <span class="number">0</span>, <span class="number">5</span>, <span class="number">7</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">1</span>, <span class="number">4</span>])</div></pre></td></tr></table></figure>
 <p>此时我们已经使用 $k$- 邻近算法构造了一个分类器，这个分类器可以处理二分类别任务，也可以处理多类别任务（labels 添加多个标签）。对于分类任务而言，评估分类器好坏的标准，最常用的便是错误率与精度，当然还有其他的评判标准，这里就不展开赘述。接下来在现实具体任务中来使用我们的 $k$- 邻近算法分类器。</p>
 <hr>
 <h2 id="Improving-matches-from-a-dating-site-with-kNN"><a href="#Improving-matches-from-a-dating-site-with-kNN" class="headerlink" title="Improving matches from a dating site with kNN"></a>Improving matches from a dating site with kNN</h2><p>约会数据 datingTestSet.txt 中包括 3 种 <strong><code>feature</code></strong> 与 1 个<strong><code>label</code></strong>:</p>
