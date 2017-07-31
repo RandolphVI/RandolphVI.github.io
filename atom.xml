@@ -360,9 +360,9 @@ d(x,y) =\sqrt{\sum_{i=1}^{n}\frac{(x_{i} - y_{i})^2}{s_{i}^2}}</script><p>可以
       <category term="Book:「Machine Learning」" scheme="http://randolph.pro/categories/Machine-Learning/Book-%E3%80%8CMachine-Learning%E3%80%8D/"/>
     
     
-      <category term="Python" scheme="http://randolph.pro/tags/Python/"/>
-    
       <category term="Machine Learning" scheme="http://randolph.pro/tags/Machine-Learning/"/>
+    
+      <category term="Python" scheme="http://randolph.pro/tags/Python/"/>
     
   </entry>
   
@@ -371,7 +371,7 @@ d(x,y) =\sqrt{\sum_{i=1}^{n}\frac{(x_{i} - y_{i})^2}{s_{i}^2}}</script><p>可以
     <link href="http://randolph.pro/2017/01/03/%3CMachine%20Learning%3E%20Clustering/"/>
     <id>http://randolph.pro/2017/01/03/&lt;Machine Learning&gt; Clustering/</id>
     <published>2017-01-02T16:00:00.000Z</published>
-    <updated>2017-07-29T04:27:36.000Z</updated>
+    <updated>2017-07-30T15:30:18.000Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://farm5.staticflickr.com/4307/36174772306_62cfbc8cd6_o.jpg" alt=""></p>
 <p>关于该书的其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/Book-「Machine-Learning」/">「Machine Learning」</a></p>
@@ -770,9 +770,9 @@ p^{'} & = p_{5} + \eta \cdot (x_{1} - p_{5}) \cr
       <category term="Book:「Machine Learning」" scheme="http://randolph.pro/categories/Machine-Learning/Book-%E3%80%8CMachine-Learning%E3%80%8D/"/>
     
     
-      <category term="Python" scheme="http://randolph.pro/tags/Python/"/>
-    
       <category term="Machine Learning" scheme="http://randolph.pro/tags/Machine-Learning/"/>
+    
+      <category term="Python" scheme="http://randolph.pro/tags/Python/"/>
     
   </entry>
   
@@ -1083,9 +1083,9 @@ E_{cost} = \frac{m^+ \times (1-TPR) \times cost_{01}+m^- \times FPR \times cost_
       <category term="Book:「Machine Learning」" scheme="http://randolph.pro/categories/Machine-Learning/Book-%E3%80%8CMachine-Learning%E3%80%8D/"/>
     
     
-      <category term="Python" scheme="http://randolph.pro/tags/Python/"/>
-    
       <category term="Machine Learning" scheme="http://randolph.pro/tags/Machine-Learning/"/>
+    
+      <category term="Python" scheme="http://randolph.pro/tags/Python/"/>
     
   </entry>
   
@@ -1192,9 +1192,9 @@ E_{cost} = \frac{m^+ \times (1-TPR) \times cost_{01}+m^- \times FPR \times cost_
       <category term="Book:「Machine Learning」" scheme="http://randolph.pro/categories/Machine-Learning/Book-%E3%80%8CMachine-Learning%E3%80%8D/"/>
     
     
-      <category term="Python" scheme="http://randolph.pro/tags/Python/"/>
-    
       <category term="Machine Learning" scheme="http://randolph.pro/tags/Machine-Learning/"/>
+    
+      <category term="Python" scheme="http://randolph.pro/tags/Python/"/>
     
   </entry>
   
@@ -1529,9 +1529,9 @@ AC & (1,2)(-2),(0,1)(-1),(0,1)(-1),(0,1)(-1),(2,1)(-1),(EOB)(0,0)
       <category term="Book:「Programming Collective Intelligence」" scheme="http://randolph.pro/categories/Machine-Learning/Book-%E3%80%8CProgramming-Collective-Intelligence%E3%80%8D/"/>
     
     
-      <category term="Python" scheme="http://randolph.pro/tags/Python/"/>
-    
       <category term="Machine Learning" scheme="http://randolph.pro/tags/Machine-Learning/"/>
+    
+      <category term="Python" scheme="http://randolph.pro/tags/Python/"/>
     
   </entry>
   
@@ -1639,9 +1639,9 @@ AC & (1,2)(-2),(0,1)(-1),(0,1)(-1),(0,1)(-1),(2,1)(-1),(EOB)(0,0)
       <category term="Book:「Programming Collective Intelligence」" scheme="http://randolph.pro/categories/Machine-Learning/Book-%E3%80%8CProgramming-Collective-Intelligence%E3%80%8D/"/>
     
     
-      <category term="Python" scheme="http://randolph.pro/tags/Python/"/>
-    
       <category term="Machine Learning" scheme="http://randolph.pro/tags/Machine-Learning/"/>
+    
+      <category term="Python" scheme="http://randolph.pro/tags/Python/"/>
     
   </entry>
   
@@ -2316,9 +2316,9 @@ P(\mathrm{d} E) = exp(\mathrm{d}E/kT)</script><p>其中 <strong><em>k</em></stro
       <category term="Book:「NLP with Python」" scheme="http://randolph.pro/categories/NLP/Book-%E3%80%8CNLP-with-Python%E3%80%8D/"/>
     
     
-      <category term="NLP" scheme="http://randolph.pro/tags/NLP/"/>
-    
       <category term="Python" scheme="http://randolph.pro/tags/Python/"/>
+    
+      <category term="NLP" scheme="http://randolph.pro/tags/NLP/"/>
     
   </entry>
   
@@ -2512,9 +2512,9 @@ P(\mathrm{d} E) = exp(\mathrm{d}E/kT)</script><p>其中 <strong><em>k</em></stro
       <category term="Book:「NLP with Python」" scheme="http://randolph.pro/categories/NLP/Book-%E3%80%8CNLP-with-Python%E3%80%8D/"/>
     
     
-      <category term="NLP" scheme="http://randolph.pro/tags/NLP/"/>
-    
       <category term="Python" scheme="http://randolph.pro/tags/Python/"/>
+    
+      <category term="NLP" scheme="http://randolph.pro/tags/NLP/"/>
     
   </entry>
   
