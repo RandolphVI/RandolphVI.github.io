@@ -4,6 +4,28 @@
 
     
   <url>
+    <loc>http://randolph.pro/2016/04/15/%3CComputer%20Vision%3E%20JPEG%20Compression/</loc>
+    <lastmod>2017-08-01T03:26:23.000Z</lastmod>
+    <data>
+        <display>
+        <title>「Computer Vision」 JPEG Compression</title>
+        <pubTime>2016-04-14T16:00:00.000Z</pubTime>
+        
+        <tag>Computer Vision</tag>
+         
+        <tag>Python</tag>
+         
+         
+           
+             
+              <breadCrumb title="Computer Vision" url="http://randolph.pro/categories/Computer-Vision/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://randolph.pro/2017/01/14/%3CMachine%20Learning%3E%20Classification-%20KNN%20&%20kd%20Tree/</loc>
     <lastmod>2017-07-31T08:16:59.000Z</lastmod>
     <data>
@@ -314,28 +336,6 @@
            
              
               <breadCrumb title="Web Scraping" url="http://randolph.pro/categories/Web-Scraping/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://randolph.pro/2016/04/15/%3CComputer%20Vision%3E%20JPEG%20Compression/</loc>
-    <lastmod>2017-07-27T00:25:19.000Z</lastmod>
-    <data>
-        <display>
-        <title>「Computer Vision」 JPEG Compression</title>
-        <pubTime>2016-04-14T16:00:00.000Z</pubTime>
-        
-        <tag>Computer Vision</tag>
-         
-        <tag>Python</tag>
-         
-         
-           
-             
-              <breadCrumb title="Computer Vision" url="http://randolph.pro/categories/Computer-Vision/"/>
           
         </display>
     </data>
