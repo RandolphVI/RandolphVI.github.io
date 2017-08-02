@@ -177,7 +177,7 @@ OPTREG(S,\lambda) := argmin\left(\sum_{(x, y)\in S}l(\hat y(x \mid \Theta), y) +
     <link href="http://randolph.pro/2017/03/01/%3CTensorFlow%3E%20Dropout%20Introduction/"/>
     <id>http://randolph.pro/2017/03/01/&lt;TensorFlow&gt; Dropout Introduction/</id>
     <published>2017-02-28T16:00:00.000Z</published>
-    <updated>2017-08-02T05:34:01.000Z</updated>
+    <updated>2017-08-02T05:35:15.000Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://farm5.staticflickr.com/4311/35518114883_a08b640e43_o.jpg" alt=""></p>
 <p>有关 Machine Learning 其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/">「Machine Learning」</a><br>有关 Papers 其他论文学习笔记系列：<a href="">「Papers」</a></p>
@@ -366,8 +366,12 @@ h_{n} = (\overrightarrow{r_{n}} \odot \overrightarrow{w_{n}})^{T}\overrightarrow
     
       <category term="Machine Learning" scheme="http://randolph.pro/categories/Machine-Learning/"/>
     
+      <category term="Papers" scheme="http://randolph.pro/categories/Machine-Learning/Papers/"/>
+    
     
       <category term="Machine Learning" scheme="http://randolph.pro/tags/Machine-Learning/"/>
+    
+      <category term="Papers" scheme="http://randolph.pro/tags/Papers/"/>
     
   </entry>
   

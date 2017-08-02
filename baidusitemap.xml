@@ -5,7 +5,7 @@
     
   <url>
     <loc>http://randolph.pro/2017/03/01/%3CTensorFlow%3E%20Dropout%20Introduction/</loc>
-    <lastmod>2017-08-02T05:34:01.000Z</lastmod>
+    <lastmod>2017-08-02T05:35:15.000Z</lastmod>
     <data>
         <display>
         <title>♜「Papers」 About Dropout</title>
@@ -13,10 +13,15 @@
         
         <tag>Machine Learning</tag>
          
+        <tag>Papers</tag>
+         
          
            
              
               <breadCrumb title="Machine Learning" url="http://randolph.pro/categories/Machine-Learning/"/>
+          
+             
+              <breadCrumb title="Papers" url="http://randolph.pro/categories/Machine-Learning/Papers/"/>
           
         </display>
     </data>
