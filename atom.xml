@@ -173,33 +173,37 @@ OPTREG(S,\lambda) := argmin\left(\sum_{(x, y)\in S}l(\hat y(x \mid \Theta), y) +
   </entry>
   
   <entry>
-    <title>「TensorFlow」 Dropout</title>
+    <title>♜「Papers」 About Dropout</title>
     <link href="http://randolph.pro/2017/03/01/%3CTensorFlow%3E%20Dropout%20Introduction/"/>
     <id>http://randolph.pro/2017/03/01/&lt;TensorFlow&gt; Dropout Introduction/</id>
     <published>2017-02-28T16:00:00.000Z</published>
-    <updated>2017-08-02T04:44:47.000Z</updated>
+    <updated>2017-08-02T05:34:01.000Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="Dropout"><a href="#Dropout" class="headerlink" title="Dropout"></a>Dropout</h1><p>开篇明义，dropout 是指在深度学习网络的训练过程中，对于神经网络单元，按照一定的概率将其暂时从网络中丢弃。注意是暂时，对于随机梯度下降来说，由于是随机丢弃，故而每一个 mini-batch 都在训练不同的网络。</p>
+    <content type="html"><![CDATA[<p><img src="https://farm5.staticflickr.com/4311/35518114883_a08b640e43_o.jpg" alt=""></p>
+<p>有关 Machine Learning 其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/">「Machine Learning」</a><br>有关 Papers 其他论文学习笔记系列：<a href="">「Papers」</a></p>
+<h1 id="Dropout"><a href="#Dropout" class="headerlink" title="Dropout"></a>Dropout</h1><p>开篇明义，dropout 是指在深度学习网络的训练过程中，对于神经网络单元，按照 <strong> 一定的概率 </strong> 将其 <strong> 暂时 </strong> 从网络中丢弃。注意是暂时，对于随机梯度下降来说，由于是随机丢弃，故而每一个 mini-batch 都在训练不同的网络。</p>
 <p>Dropout 是 CNN 中防止过拟合提高效果的一个大杀器，但对于其为何有效，却众说纷纭。在下读到两篇代表性的论文，代表两种不同的观点，特此分享给大家。</p>
-<h1 id="组合派"><a href="# 组合派" class="headerlink" title="组合派"></a>组合派 </h1><p> 参考文献中第一篇中的观点，Hinton 老大爷提出来的，关于 Hinton 在深度学习界的地位我就不再赘述了，光是这地位，估计这一派的观点就是“武当少林”了。注意，派名是我自己起的，各位勿笑。</p>
+<h1 id="组合派"><a href="# 组合派" class="headerlink" title="组合派"></a>组合派 </h1><p> 参考文献中第一篇中的观点，Hinton 在 2014 年提出的。</p>
 <h2 id="观点"><a href="# 观点" class="headerlink" title="观点"></a>观点 </h2><p> 该论文从神经网络的难题出发，一步一步引出 dropout 为何有效的解释。大规模的神经网络有两个缺点：</p>
 <ul>
 <li>费时</li>
 <li>容易过拟合</li>
 </ul>
-<p>这两个缺点真是抱在深度学习大腿上的两个大包袱，一左一右，相得益彰，额不，臭气相投。过拟合是很多机器学习的通病，过拟合了，得到的模型基本就废了。而为了解决过拟合问题，一般会采用 ensemble 方法，即训练多个模型做组合，此时，费时就成为一个大问题，不仅训练起来费时，测试起来多个模型也很费时。总之，几乎形成了一个死锁。</p>
+<p>这两个缺点是深度学习上的两大瓶颈，过拟合是很多机器学习的通病，过拟合了，得到的模型基本就废了。而为了解决过拟合问题，一般会采用 ensemble 方法，即训练多个模型做组合，此时，费时就成为一个大问题，不仅训练起来费时，测试起来多个模型也很费时。总之，几乎形成了一个死锁。</p>
 <p>Dropout 的出现很好的可以解决这个问题，每次做完 dropout，相当于从原始的网络中找到一个更瘦的网络，如下图所示：</p>
 <p><img src="https://farm4.staticflickr.com/3878/33037649431_ab442383e2_o.png" alt=""></p>
 <p>因而，对于一个有 $N$ 个节点的神经网络，有了 dropout 后，就可以看做是 $2^n$ 个模型的集合了，但此时要训练的参数数目却是不变的，这就解脱了费时的问题。</p>
-<h2 id="动机论"><a href="# 动机论" class="headerlink" title="动机论"></a>动机论 </h2><p> 虽然直观上看 dropout 是 ensemble 在分类性能上的一个近似，然而实际中，dropout 毕竟还是在一个神经网络上进行的，只训练出了一套模型参数。那么他到底是因何而有效呢？这就要从动机上进行分析了。论文中作者对 dropout 的动机做了一个十分精彩的类比：</p>
+<h2 id="Motivation"><a href="#Motivation" class="headerlink" title="Motivation"></a>Motivation</h2><p>虽然直观上看 dropout 是 ensemble 在分类性能上的一个近似，然而实际中，dropout 毕竟还是在一个神经网络上进行的，只训练出了一套模型参数。那么他到底是因何而有效呢？这就要从动机上进行分析了。论文中作者对 dropout 的动机做了一个十分精彩的类比：</p>
+<blockquote>
 <p>在自然界中，在中大型动物中，一般是有性繁殖，有性繁殖是指后代的基因从父母两方各继承一半。但是从直观上看，似乎无性繁殖更加合理，因为无性繁殖可以保留大段大段的优秀基因。而有性繁殖则将基因随机拆了又拆，破坏了大段基因的联合适应性。</p>
 <p>但是自然选择中毕竟没有选择无性繁殖，而选择了有性繁殖，须知物竞天择，适者生存。我们先做一个假设，那就是基因的力量在于混合的能力而非单个基因的能力。不管是有性繁殖还是无性繁殖都得遵循这个假设。为了证明有性繁殖的强大，我们先看一个概率学小知识。</p>
-<p>比如要搞一次恐怖袭击，两种方式： </p>
+</blockquote>
+<p>比如要进行一个实验，两种方式： </p>
 <ul>
-<li>集中 50 人，让这 50 个人准确分工，搞一次大爆破。 </li>
-<li>将 50 人分成 10 组，每组 5 人，分头行事，去随便什么地方搞点动作，成功一次就算。</li>
+<li>集中 50 人，让这 50 个人准确分工，集合一起完成这个实验。 </li>
+<li>将 50 人分成 10 组，每组 5 人，分组实验，只要存在一组实验成功就算实验成功。</li>
 </ul>
-<p>哪一个成功的概率比较大？ 显然是后者。因为将一个大团队作战变成了游击战。</p>
+<p>哪一个成功的概率比较大？ 显然是后者。</p>
 <p>那么，类比过来，有性繁殖的方式不仅仅可以将优秀的基因传下来，还可以降低基因之间的联合适应性，使得复杂的大段大段基因联合适应性变成比较小的一个一个小段基因的联合适应性。</p>
 <p>Dropout 也能达到同样的效果，它强迫一个神经单元，和随机挑选出来的其他神经单元共同工作，达到好的效果。消除减弱了神经元节点间的联合适应性，增强了泛化能力。</p>
 <p>个人补充一点：那就是植物和微生物大多采用无性繁殖，因为他们的生存环境的变化很小，因而不需要太强的适应新环境的能力，所以保留大段大段优秀的基因适应当前环境就足够了。而高等动物却不一样，要准备随时适应新的环境，因而将基因之间的联合适应性变成一个一个小的，更能提高生存的概率。</p>
@@ -238,11 +242,11 @@ y_{i}^{(l+1)} & = f(z_{i}^{(l+1)})
 <ul>
 <li>提前终止（当验证集上的效果变差的时候）</li>
 <li>L1 和 L2 正则化加权</li>
-<li>soft weight sharing</li>
-<li>dropout</li>
+<li>Soft Weight Sharing</li>
+<li>Dropout</li>
 </ul>
 </li>
-<li><p>dropout 率的选择</p>
+<li><p>Dropout 率的选择</p>
 <ul>
 <li>经过交叉验证，隐含节点 dropout 率等于 0.5 的时候效果最好，原因是 0.5 的时候 dropout 随机生成的网络结构最多。</li>
 <li>Dropout 也可以被用作一种添加噪声的方法，直接对 input 进行操作。输入层设为更接近 1 的数。使得输入变化不会太大（0.8）。</li>
@@ -250,9 +254,9 @@ y_{i}^{(l+1)} & = f(z_{i}^{(l+1)})
 </li>
 <li><p>训练过程 </p>
 <ul>
-<li>对参数 w 的训练进行球形限制(max-normalization)，对 dropout 的训练非常有用。</li>
+<li>对参数 w 的训练进行球形限制（max-normalization），对 dropout 的训练非常有用。</li>
 <li>球形半径 c 是一个需要调整的参数。可以使用验证集进行参数调优。</li>
-<li>Dropout 自己虽然也很牛，但是 dropout、max-normalization、large decaying learning rates and high momentum 组合起来效果更好，比如 max-norm regularization 就可以防止大的 learning rate 导致的参数 blow up。</li>
+<li>Dropout 单独使用效果不错，但是 <strong>dropout</strong>、<strong>max-normalization</strong>、<strong>large decaying learning rates</strong> 以及 <strong>high momentum</strong> 组合起来效果更好，比如 max-norm regularization 就可以防止大的 learning rate 导致的参数 blow up。</li>
 <li>使用 pretraining 方法也可以帮助 dropout 训练参数，在使用 dropout 时，要将所有参数都乘以 $\frac{1}{p}$。</li>
 </ul>
 </li>
@@ -360,16 +364,10 @@ h_{n} = (\overrightarrow{r_{n}} \odot \overrightarrow{w_{n}})^{T}\overrightarrow
     
     </summary>
     
-      <category term="TensorFlow" scheme="http://randolph.pro/categories/TensorFlow/"/>
+      <category term="Machine Learning" scheme="http://randolph.pro/categories/Machine-Learning/"/>
     
-    
-      <category term="Python" scheme="http://randolph.pro/tags/Python/"/>
     
       <category term="Machine Learning" scheme="http://randolph.pro/tags/Machine-Learning/"/>
-    
-      <category term="TensorFlow" scheme="http://randolph.pro/tags/TensorFlow/"/>
-    
-      <category term="WeChat" scheme="http://randolph.pro/tags/WeChat/"/>
     
   </entry>
   
