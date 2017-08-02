@@ -70,9 +70,9 @@
       <category term="TensorFlow" scheme="http://randolph.pro/categories/TensorFlow/"/>
     
     
-      <category term="Python" scheme="http://randolph.pro/tags/Python/"/>
-    
       <category term="Machine Learning" scheme="http://randolph.pro/tags/Machine-Learning/"/>
+    
+      <category term="Python" scheme="http://randolph.pro/tags/Python/"/>
     
       <category term="TensorFlow" scheme="http://randolph.pro/tags/TensorFlow/"/>
     
@@ -177,7 +177,7 @@ OPTREG(S,\lambda) := argmin\left(\sum_{(x, y)\in S}l(\hat y(x \mid \Theta), y) +
     <link href="http://randolph.pro/2017/03/01/%3CTensorFlow%3E%20Dropout%20Introduction/"/>
     <id>http://randolph.pro/2017/03/01/&lt;TensorFlow&gt; Dropout Introduction/</id>
     <published>2017-02-28T16:00:00.000Z</published>
-    <updated>2017-08-02T05:39:52.000Z</updated>
+    <updated>2017-08-02T05:43:59.000Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://farm5.staticflickr.com/4311/35518114883_a08b640e43_o.jpg" alt=""></p>
 <p>有关 Machine Learning 其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/">「Machine Learning」</a><br>有关 Papers 其他论文学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/Papers/">「Papers」</a></p>
@@ -565,9 +565,9 @@ d(x,y) =\sqrt{\sum_{i=1}^{n}\frac{(x_{i} - y_{i})^2}{s_{i}^2}}</script><p>可以
       <category term="Book:「Machine Learning」" scheme="http://randolph.pro/categories/Machine-Learning/Book-%E3%80%8CMachine-Learning%E3%80%8D/"/>
     
     
-      <category term="Python" scheme="http://randolph.pro/tags/Python/"/>
-    
       <category term="Machine Learning" scheme="http://randolph.pro/tags/Machine-Learning/"/>
+    
+      <category term="Python" scheme="http://randolph.pro/tags/Python/"/>
     
   </entry>
   
@@ -975,9 +975,9 @@ p^{'} & = p_{5} + \eta \cdot (x_{1} - p_{5}) \cr
       <category term="Book:「Machine Learning」" scheme="http://randolph.pro/categories/Machine-Learning/Book-%E3%80%8CMachine-Learning%E3%80%8D/"/>
     
     
-      <category term="Python" scheme="http://randolph.pro/tags/Python/"/>
-    
       <category term="Machine Learning" scheme="http://randolph.pro/tags/Machine-Learning/"/>
+    
+      <category term="Python" scheme="http://randolph.pro/tags/Python/"/>
     
   </entry>
   
@@ -1288,9 +1288,9 @@ E_{cost} = \frac{m^+ \times (1-TPR) \times cost_{01}+m^- \times FPR \times cost_
       <category term="Book:「Machine Learning」" scheme="http://randolph.pro/categories/Machine-Learning/Book-%E3%80%8CMachine-Learning%E3%80%8D/"/>
     
     
-      <category term="Python" scheme="http://randolph.pro/tags/Python/"/>
-    
       <category term="Machine Learning" scheme="http://randolph.pro/tags/Machine-Learning/"/>
+    
+      <category term="Python" scheme="http://randolph.pro/tags/Python/"/>
     
   </entry>
   
@@ -1397,9 +1397,9 @@ E_{cost} = \frac{m^+ \times (1-TPR) \times cost_{01}+m^- \times FPR \times cost_
       <category term="Book:「Machine Learning」" scheme="http://randolph.pro/categories/Machine-Learning/Book-%E3%80%8CMachine-Learning%E3%80%8D/"/>
     
     
-      <category term="Python" scheme="http://randolph.pro/tags/Python/"/>
-    
       <category term="Machine Learning" scheme="http://randolph.pro/tags/Machine-Learning/"/>
+    
+      <category term="Python" scheme="http://randolph.pro/tags/Python/"/>
     
   </entry>
   
@@ -1619,9 +1619,9 @@ AC & (1,2)(-2),(0,1)(-1),(0,1)(-1),(0,1)(-1),(2,1)(-1),(EOB)(0,0)
       <category term="Computer Vision" scheme="http://randolph.pro/categories/Computer-Vision/"/>
     
     
-      <category term="Computer Vision" scheme="http://randolph.pro/tags/Computer-Vision/"/>
-    
       <category term="Python" scheme="http://randolph.pro/tags/Python/"/>
+    
+      <category term="Computer Vision" scheme="http://randolph.pro/tags/Computer-Vision/"/>
     
   </entry>
   
@@ -1734,9 +1734,9 @@ AC & (1,2)(-2),(0,1)(-1),(0,1)(-1),(0,1)(-1),(2,1)(-1),(EOB)(0,0)
       <category term="Book:「Programming Collective Intelligence」" scheme="http://randolph.pro/categories/Machine-Learning/Book-%E3%80%8CProgramming-Collective-Intelligence%E3%80%8D/"/>
     
     
-      <category term="Python" scheme="http://randolph.pro/tags/Python/"/>
-    
       <category term="Machine Learning" scheme="http://randolph.pro/tags/Machine-Learning/"/>
+    
+      <category term="Python" scheme="http://randolph.pro/tags/Python/"/>
     
   </entry>
   
@@ -1844,9 +1844,9 @@ AC & (1,2)(-2),(0,1)(-1),(0,1)(-1),(0,1)(-1),(2,1)(-1),(EOB)(0,0)
       <category term="Book:「Programming Collective Intelligence」" scheme="http://randolph.pro/categories/Machine-Learning/Book-%E3%80%8CProgramming-Collective-Intelligence%E3%80%8D/"/>
     
     
-      <category term="Python" scheme="http://randolph.pro/tags/Python/"/>
-    
       <category term="Machine Learning" scheme="http://randolph.pro/tags/Machine-Learning/"/>
+    
+      <category term="Python" scheme="http://randolph.pro/tags/Python/"/>
     
   </entry>
   
