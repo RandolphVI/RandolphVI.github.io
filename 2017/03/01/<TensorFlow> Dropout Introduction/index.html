@@ -116,7 +116,7 @@
 <meta property="og:image" content="https://farm3.staticflickr.com/2588/32782576600_aefb2c6586_o.png">
 <meta property="og:image" content="https://farm4.staticflickr.com/3817/33123833046_48bf6f3dba_o.png">
 <meta property="og:image" content="https://farm3.staticflickr.com/2517/33185584305_9d146f80be_o.png">
-<meta property="og:updated_time" content="2017-08-02T05:43:59.000Z">
+<meta property="og:updated_time" content="2017-08-02T05:52:54.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="♜「Papers」 About Dropout">
 <meta name="twitter:description" content="Dropout 是 CNN 中防止过拟合提高效果的一个大杀器，但对于其为何有效，却众说纷纭。">
@@ -453,7 +453,7 @@
                   <i class="fa fa-file-word-o"></i>
                 </span>
                 <span title="Words count in article">
-                  3,073
+                  3,596
                 </span>
                 <span> words </span>
                 
@@ -468,7 +468,7 @@
                   <i class="fa fa-clock-o"></i>
                 </span>
                 <span title="Reading time">
-                  11
+                  14
                 </span>
                 <span> mins </span>
               
@@ -507,9 +507,13 @@
 <p>因而，对于一个有 $N$ 个节点的神经网络，有了 dropout 后，就可以看做是 $2^n$ 个模型的集合了，但此时要训练的参数数目却是不变的，这就解脱了费时的问题。</p>
 <h2 id="Motivation"><a href="#Motivation" class="headerlink" title="Motivation"></a>Motivation</h2><p>虽然直观上看 dropout 是 ensemble 在分类性能上的一个近似，然而实际中，dropout 毕竟还是在一个神经网络上进行的，只训练出了一套模型参数。那么他到底是因何而有效呢？这就要从动机上进行分析了。论文中作者对 dropout 的动机做了一个十分精彩的类比：</p>
 <blockquote>
+<p>A motivation for dropout comes from a theory of the role of sex in evolution (Livnat et al., 2010). Sexual reproduction involves taking half the genes of one parent and half of the other, adding a very small amount of random mutation, and combining them to produce an offspring. The asexual alternative is to create an offspring with a slightly mutated copy of the parent’s genes. It seems plausible that asexual reproduction should be a better way to optimize individual fitness because a good set of genes that have come to work well together can be passed on directly to the offspring. On the other hand, sexual reproduction is likely to break up these co-adapted sets of genes, especially if these sets are large and, intuitively, this should decrease the fitness of organisms that have already evolved complicated co- adaptations. However, sexual reproduction is the way most advanced organisms evolved.</p>
+<p>One possible explanation for the superiority of sexual reproduction is that, over the long term, the criterion for natural selection may not be individual fitness but rather mix-ability of genes. The ability of a set of genes to be able to work well with another random set of genes makes them more robust. Since a gene cannot rely on a large set of partners to be present at all times, it must learn to do something useful on its own or in collaboration with a small number of other genes. According to this theory, the role of sexual reproduction is not just to allow useful new genes to spread throughout the population, but also to facilitate this process by reducing complex co-adaptations that would reduce the chance of a new gene improving the fitness of an individual. Similarly, each hidden unit in a neural network trained with dropout must learn to work with a randomly chosen sample of other units. This should make each hidden unit more robust and drive it towards creating useful features on its own without relying on other hidden units to correct its mistakes. However, the hidden units within a layer will still learn to do different things from each other. One might imagine that the net would become robust against dropout by making many copies of each hidden unit, but this is a poor solution for exactly the same reason as replica codes are a poor way to deal with a noisy channel.</p>
+<p>A closely related, but slightly different motivation for dropout comes from thinking about successful conspiracies. Ten conspiracies each involving five people is probably a better way to create havoc than one big conspiracy that requires fifty people to all play their parts correctly. If conditions do not change and there is plenty of time for rehearsal, a big conspiracy can work well, but with non-stationary conditions, the smaller the conspiracy the greater its chance of still working. Complex co-adaptations can be trained to work well on a training set, but on novel test data they are far more likely to fail than multiple simpler co-adaptations that achieve the same thing.</p>
+</blockquote>
+<p>大概的意思，讲的是：</p>
 <p>在自然界中，在中大型动物中，一般是有性繁殖，有性繁殖是指后代的基因从父母两方各继承一半。但是从直观上看，似乎无性繁殖更加合理，因为无性繁殖可以保留大段大段的优秀基因。而有性繁殖则将基因随机拆了又拆，破坏了大段基因的联合适应性。</p>
 <p>但是自然选择中毕竟没有选择无性繁殖，而选择了有性繁殖，须知物竞天择，适者生存。我们先做一个假设，那就是基因的力量在于混合的能力而非单个基因的能力。不管是有性繁殖还是无性繁殖都得遵循这个假设。为了证明有性繁殖的强大，我们先看一个概率学小知识。</p>
-</blockquote>
 <p>比如要进行一个实验，两种方式： </p>
 <ul>
 <li>集中 50 人，让这 50 个人准确分工，集合一起完成这个实验。 </li>
