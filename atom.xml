@@ -177,10 +177,10 @@ OPTREG(S,\lambda) := argmin\left(\sum_{(x, y)\in S}l(\hat y(x \mid \Theta), y) +
     <link href="http://randolph.pro/2017/03/01/%3CTensorFlow%3E%20Dropout%20Introduction/"/>
     <id>http://randolph.pro/2017/03/01/&lt;TensorFlow&gt; Dropout Introduction/</id>
     <published>2017-02-28T16:00:00.000Z</published>
-    <updated>2017-08-02T05:35:15.000Z</updated>
+    <updated>2017-08-02T05:39:52.000Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://farm5.staticflickr.com/4311/35518114883_a08b640e43_o.jpg" alt=""></p>
-<p>有关 Machine Learning 其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/">「Machine Learning」</a><br>有关 Papers 其他论文学习笔记系列：<a href="">「Papers」</a></p>
+<p>有关 Machine Learning 其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/">「Machine Learning」</a><br>有关 Papers 其他论文学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/Papers/">「Papers」</a></p>
 <h1 id="Dropout"><a href="#Dropout" class="headerlink" title="Dropout"></a>Dropout</h1><p>开篇明义，dropout 是指在深度学习网络的训练过程中，对于神经网络单元，按照 <strong> 一定的概率 </strong> 将其 <strong> 暂时 </strong> 从网络中丢弃。注意是暂时，对于随机梯度下降来说，由于是随机丢弃，故而每一个 mini-batch 都在训练不同的网络。</p>
 <p>Dropout 是 CNN 中防止过拟合提高效果的一个大杀器，但对于其为何有效，却众说纷纭。在下读到两篇代表性的论文，代表两种不同的观点，特此分享给大家。</p>
 <h1 id="组合派"><a href="# 组合派" class="headerlink" title="组合派"></a>组合派 </h1><p> 参考文献中第一篇中的观点，Hinton 在 2014 年提出的。</p>
