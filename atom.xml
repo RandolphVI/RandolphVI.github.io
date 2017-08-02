@@ -177,7 +177,7 @@ OPTREG(S,\lambda) := argmin\left(\sum_{(x, y)\in S}l(\hat y(x \mid \Theta), y) +
     <link href="http://randolph.pro/2017/03/01/%3CTensorFlow%3E%20Dropout%20Introduction/"/>
     <id>http://randolph.pro/2017/03/01/&lt;TensorFlow&gt; Dropout Introduction/</id>
     <published>2017-02-28T16:00:00.000Z</published>
-    <updated>2017-08-02T05:58:37.000Z</updated>
+    <updated>2017-08-02T06:32:37.000Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://farm5.staticflickr.com/4311/35518114883_a08b640e43_o.jpg" alt=""></p>
 <p>有关 Machine Learning 其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/">「Machine Learning」</a><br>有关 Papers 其他论文学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/Papers/">「Papers」</a></p>
@@ -202,10 +202,10 @@ OPTREG(S,\lambda) := argmin\left(\sum_{(x, y)\in S}l(\hat y(x \mid \Theta), y) +
 <p>大概的意思，讲的是：</p>
 <p>在自然界中，在中大型动物中，一般是有性繁殖，有性繁殖是指后代的基因从父母两方各继承一半。但是从直观上看，似乎无性繁殖更加合理，因为无性繁殖可以保留大段大段的优秀基因。而有性繁殖则将基因随机拆了又拆，破坏了大段基因的联合适应性。</p>
 <p>但是自然选择中毕竟没有选择无性繁殖，而选择了有性繁殖，须知物竞天择，适者生存。我们先做一个假设，那就是基因的力量在于混合的能力而非单个基因的能力。不管是有性繁殖还是无性繁殖都得遵循这个假设。为了证明有性繁殖的强大，我们先看一个概率学小知识。</p>
-<p>比如要进行一个实验，两种方式： </p>
+<p>比如要搞一次恐怖袭击，两种方式： </p>
 <ul>
-<li>集中 50 人，让这 50 个人准确分工，集合一起完成这个实验。 </li>
-<li>将 50 人分成 10 组，每组 5 人，分组实验，只要存在一组实验成功就算实验成功。</li>
+<li>集中 50 人，让这 50 个人准确分工，搞一次大爆破。 </li>
+<li>将 50 人分成 10 组，每组 5 人，分头行事，去随便什么地方搞点动作，成功一次就算。</li>
 </ul>
 <p>哪一个成功的概率比较大？ 显然是后者。</p>
 <p>那么，类比过来，有性繁殖的方式不仅仅可以将优秀的基因传下来，还可以降低基因之间的联合适应性，使得复杂的大段大段基因联合适应性变成比较小的一个一个小段基因的联合适应性。</p>
