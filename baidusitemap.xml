@@ -4,6 +4,50 @@
 
     
   <url>
+    <loc>http://randolph.pro/2016/04/15/%3CComputer%20Vision%3E%20JPEG%20Compression/</loc>
+    <lastmod>2017-08-03T02:27:29.000Z</lastmod>
+    <data>
+        <display>
+        <title>「Computer Vision」 JPEG Compression</title>
+        <pubTime>2016-04-14T16:00:00.000Z</pubTime>
+        
+        <tag>Python</tag>
+         
+        <tag>Computer Vision</tag>
+         
+         
+           
+             
+              <breadCrumb title="Computer Vision" url="http://randolph.pro/categories/Computer-Vision/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://randolph.pro/2015/12/13/%3CWeb%20Scraping%20with%20Python%3E%20Other-smtplib%20&%20email/</loc>
+    <lastmod>2017-08-03T02:27:02.000Z</lastmod>
+    <data>
+        <display>
+        <title>「Web Scraping with Python」smtplib & email module</title>
+        <pubTime>2015-12-12T16:00:00.000Z</pubTime>
+        
+        <tag>Python</tag>
+         
+        <tag>Web Scraping</tag>
+         
+         
+           
+             
+              <breadCrumb title="Web Scraping" url="http://randolph.pro/categories/Web-Scraping/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://randolph.pro/2017/01/14/%3CMachine%20Learning%3E%20Classification-%20KNN%20&%20kd%20Tree/</loc>
     <lastmod>2017-08-03T02:18:37.000Z</lastmod>
     <data>
@@ -97,28 +141,6 @@
            
              
               <breadCrumb title="TensorFlow" url="http://randolph.pro/categories/TensorFlow/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://randolph.pro/2016/04/15/%3CComputer%20Vision%3E%20JPEG%20Compression/</loc>
-    <lastmod>2017-08-01T03:26:23.000Z</lastmod>
-    <data>
-        <display>
-        <title>「Computer Vision」 JPEG Compression</title>
-        <pubTime>2016-04-14T16:00:00.000Z</pubTime>
-        
-        <tag>Python</tag>
-         
-        <tag>Computer Vision</tag>
-         
-         
-           
-             
-              <breadCrumb title="Computer Vision" url="http://randolph.pro/categories/Computer-Vision/"/>
           
         </display>
     </data>
@@ -389,28 +411,6 @@
           
              
               <breadCrumb title="Book:「NLP with Python」" url="http://randolph.pro/categories/NLP/Book-%E3%80%8CNLP-with-Python%E3%80%8D/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://randolph.pro/2015/12/13/%3CWeb%20Scraping%20with%20Python%3E%20Other-smtplib%20&%20email/</loc>
-    <lastmod>2017-07-27T00:40:03.000Z</lastmod>
-    <data>
-        <display>
-        <title>「Web Scraping 」smtplib & email module</title>
-        <pubTime>2015-12-12T16:00:00.000Z</pubTime>
-        
-        <tag>Python</tag>
-         
-        <tag>Web Scraping</tag>
-         
-         
-           
-             
-              <breadCrumb title="Web Scraping" url="http://randolph.pro/categories/Web-Scraping/"/>
           
         </display>
     </data>

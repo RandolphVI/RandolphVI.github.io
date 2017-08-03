@@ -1495,9 +1495,11 @@ E_{cost} = \frac{m^+ \times (1-TPR) \times cost_{01}+m^- \times FPR \times cost_
     <link href="http://randolph.pro/2016/04/15/%3CComputer%20Vision%3E%20JPEG%20Compression/"/>
     <id>http://randolph.pro/2016/04/15/&lt;Computer Vision&gt; JPEG Compression/</id>
     <published>2016-04-14T16:00:00.000Z</published>
-    <updated>2017-08-01T03:26:23.000Z</updated>
+    <updated>2017-08-03T02:27:29.000Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="Related"><a href="#Related" class="headerlink" title="Related"></a>Related</h1><ul>
+    <content type="html"><![CDATA[<p><img src="https://farm5.staticflickr.com/4432/35506833264_65d70af92c_o.jpg" alt=""></p>
+<p>关于「Computer Vision」该书的其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/Book-「Machine-Learning」/">「Computer Vision」</a></p>
+<h1 id="Related"><a href="#Related" class="headerlink" title="Related"></a>Related</h1><ul>
 <li><strong>颜色模式转换：RBG to YUV</strong></li>
 <li><strong>采样 &amp; 分块</strong></li>
 <li><strong>DCT 离散余弦变换</strong></li>
@@ -1938,13 +1940,15 @@ AC & (1,2)(-2),(0,1)(-1),(0,1)(-1),(0,1)(-1),(2,1)(-1),(EOB)(0,0)
   </entry>
   
   <entry>
-    <title>「Web Scraping 」smtplib &amp; email module</title>
+    <title>「Web Scraping with Python」smtplib &amp; email module</title>
     <link href="http://randolph.pro/2015/12/13/%3CWeb%20Scraping%20with%20Python%3E%20Other-smtplib%20&amp;%20email/"/>
     <id>http://randolph.pro/2015/12/13/&lt;Web Scraping with Python&gt; Other-smtplib &amp; email/</id>
     <published>2015-12-12T16:00:00.000Z</published>
-    <updated>2017-07-27T00:40:03.000Z</updated>
+    <updated>2017-08-03T02:27:02.000Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="Related"><a href="#Related" class="headerlink" title="Related"></a>Related</h1><ul>
+    <content type="html"><![CDATA[<p><img src="https://farm5.staticflickr.com/4316/36049777032_f975ed0941_o.jpg" alt=""></p>
+<p>关于「Web Scraping with Python」该书的其他学习笔记系列：<a href="http://randolph.pro/categories/Web-Scraping/Book-「Web-Scraping-with-Python」/">「Web Scraping with Python」</a></p>
+<h1 id="Related"><a href="#Related" class="headerlink" title="Related"></a>Related</h1><ul>
 <li><strong>smtplib module</strong></li>
 <li><strong>email module</strong></li>
 </ul>
