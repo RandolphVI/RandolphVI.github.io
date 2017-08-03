@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://randolph.pro/2017/03/07/%3CTensorflow%3E%20Tensorboard/</loc>
+    
+    <lastmod>2017-08-03T02:12:48.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://randolph.pro/2017/03/01/%3CTensorFlow%3E%20Dropout%20Introduction/</loc>
     
     <lastmod>2017-08-02T06:32:37.000Z</lastmod>
