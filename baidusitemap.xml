@@ -4,6 +4,31 @@
 
     
   <url>
+    <loc>http://randolph.pro/2017/01/14/%3CMachine%20Learning%3E%20Classification-%20KNN%20&%20kd%20Tree/</loc>
+    <lastmod>2017-08-03T02:18:37.000Z</lastmod>
+    <data>
+        <display>
+        <title>♞「Machine Learning」 Classification - KNN & kd Tree</title>
+        <pubTime>2017-01-13T16:00:00.000Z</pubTime>
+        
+        <tag>Machine Learning</tag>
+         
+        <tag>Python</tag>
+         
+         
+           
+             
+              <breadCrumb title="Machine Learning" url="http://randolph.pro/categories/Machine-Learning/"/>
+          
+             
+              <breadCrumb title="Book:「Machine Learning」" url="http://randolph.pro/categories/Machine-Learning/Book-%E3%80%8CMachine-Learning%E3%80%8D/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://randolph.pro/2017/03/07/%3CTensorflow%3E%20Tensorboard/</loc>
     <lastmod>2017-08-03T02:12:48.000Z</lastmod>
     <data>
@@ -94,31 +119,6 @@
            
              
               <breadCrumb title="Computer Vision" url="http://randolph.pro/categories/Computer-Vision/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://randolph.pro/2017/01/14/%3CMachine%20Learning%3E%20Classification-%20KNN%20&%20kd%20Tree/</loc>
-    <lastmod>2017-07-31T08:16:59.000Z</lastmod>
-    <data>
-        <display>
-        <title>♞「Machine Learning」 Classification - KNN & kd Tree</title>
-        <pubTime>2017-01-13T16:00:00.000Z</pubTime>
-        
-        <tag>Machine Learning</tag>
-         
-        <tag>Python</tag>
-         
-         
-           
-             
-              <breadCrumb title="Machine Learning" url="http://randolph.pro/categories/Machine-Learning/"/>
-          
-             
-              <breadCrumb title="Book:「Machine Learning」" url="http://randolph.pro/categories/Machine-Learning/Book-%E3%80%8CMachine-Learning%E3%80%8D/"/>
           
         </display>
     </data>

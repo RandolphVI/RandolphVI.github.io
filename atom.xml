@@ -467,7 +467,7 @@ h_{n} = (\overrightarrow{r_{n}} \odot \overrightarrow{w_{n}})^{T}\overrightarrow
     <link href="http://randolph.pro/2017/01/14/%3CMachine%20Learning%3E%20Classification-%20KNN%20&amp;%20kd%20Tree/"/>
     <id>http://randolph.pro/2017/01/14/&lt;Machine Learning&gt; Classification- KNN &amp; kd Tree/</id>
     <published>2017-01-13T16:00:00.000Z</published>
-    <updated>2017-07-31T08:16:59.000Z</updated>
+    <updated>2017-08-03T02:18:37.000Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://farm5.staticflickr.com/4307/36174772306_62cfbc8cd6_o.jpg" alt=""></p>
 <p>关于该书的其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/Book-「Machine-Learning」/">「Machine Learning」</a></p>
@@ -481,7 +481,7 @@ h_{n} = (\overrightarrow{r_{n}} \odot \overrightarrow{w_{n}})^{T}\overrightarrow
 <p>此篇主要讲 $k$- 邻近算法在分类问题中的应用。</p>
 <p>它的工作原理是： 存在一个样本数据合集 $S$，也称作训练样本集，并且样本集中每个数据都存在标签，即我们知道样本集中每一数据与所属分的对应关系。输入没有标签的新数据后，将新数据的每个特征与样本集中数据对应的特征进行比较（<strong>距离度量 </strong>），然后算法提取样本集中 $k$ 个特征最相似数据（最近邻）的分类标签（<strong>$k$ 值的选择</strong>）。最后，选择 $k$ 个最相似数据中出现次数最多的分类（<strong> 分类决策规则</strong>），作为新数据的分类。</p>
 <p>$k$- 邻近模型由三个基本要素—- 距离度量、$k$ 值的选择和分类决策规定决定。</p>
-<h1 id="距离度量"><a href="# 距离度量" class="headerlink" title="距离度量"></a>距离度量 </h1><p> 一般使用的是欧氏距离，我们也可以根据自己的需求选择其他距离，比如更一般的 $L_p$ 距离，也称为 Minkowski 距离。</p>
+<h1 id="距离度量"><a href="# 距离度量" class="headerlink" title="距离度量"></a>距离度量 </h1><p> 一般使用的是欧氏距离，我们也可以根据自己的需求选择其他距离，比如更一般的 $L_p$ 距离，也称为<strong>Minkowski 距离</strong>。</p>
 <p>这里 $L_p$ 距离中，$p \geq 1$，当 $p=1$ 时，称为曼哈顿距离；当 $p=2$ 时，称为欧式距离；当 $p=\infty$ 时，它是各个坐标距离的最大值，即切比雪夫距离。</p>
 <p>设特征空间 $X$ 是 $n$ 维实数向量空间 $R^n$，$x_i$，$x_j$ $\in$ $X$，$x_i = (x_i^{(1)}，x_i^{(2)}，…，x_i^{(n)})^T$，$x_j = (x_j^{(1)}，x_j^{(2)}，…，x_j^{(n)})^T$，$x_i$，$x_j$ 的 $L_p$ 距离（Minkowski 距离）定义为：</p>
 <script type="math/tex; mode=display">
@@ -568,10 +568,10 @@ d(x,y) =\sqrt{\sum_{i=1}^{n}\frac{(x_{i} - y_{i})^2}{s_{i}^2}}</script><p>可以
 <li>reps 的类型可以是 <strong><code>tuple, list, dict, int, bool</code></strong> 但不可以是<strong><code>float, string, matrix</code></strong>。</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">diffMat = tile(inX, (dataSetSize, <span class="number">1</span>)) - dataSet</div></pre></td></tr></table></figure>
-<p><strong><code>inX</code></strong>是我们的未知类别集中的一个点的输入向量（形式为 $[x_i,y_i]$），也就是我们需要进行分类的一个点。<br><strong><code>dataSetSize</code></strong>是我们已知类别数据集的大小。</p>
+<p><strong><code>inX</code></strong>是我们的未知类别集中的一个点的输入向量（形式为 <script type="math/tex">[x_i,y_i]</script>），也就是我们需要进行分类的一个点。<br><strong><code>dataSetSize</code></strong> 是我们已知类别数据集的大小。</p>
 <p>这句代码的目的便是生成一个这样的矩阵<strong><code>matrix</code></strong>:</p>
 <script type="math/tex; mode=display">
-[[\Delta x_1, \Delta y_1],[\Delta x_2, \Delta y_2],[\Delta x_3, \Delta y_3],...,[\Delta x_{datasize}, \Delta y_{datasize}]]</script><p>很明显，矩阵中存储的就是，未知点与已知类别数据集中的所有点的 <strong><em>x</em></strong> 与<strong><em>y</em></strong>坐标差值。</p>
+[[\Delta x_1, \Delta y_1],[\Delta x_2, \Delta y_2],[\Delta x_3, \Delta y_3],...,[\Delta x_{datasize}, \Delta y_{datasize}]]</script><p>很明显，矩阵中存储的就是，未知点与已知类别数据集中的所有点的 $x$ 与 $y$ 坐标差值。</p>
 <hr>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sqDistances = sqDiffMat.sum(axis = <span class="number">1</span>)</div></pre></td></tr></table></figure>
 <p>这句代码就是进一步生成的这样的矩阵，用作下一步计算点与点之间距离用：</p>
@@ -591,7 +591,7 @@ d(x,y) =\sqrt{\sum_{i=1}^{n}\frac{(x_{i} - y_{i})^2}{s_{i}^2}}</script><p>可以
 <ol>
 <li>打开约会文件，得到文件的行数，即一共多少条数据。</li>
 <li>创建一个大小合适的矩阵，并以零填充，这里简化设置矩阵的维度为 3，我们也可以按照自己的实际需求增加相应代码来适应变化的维度输入值。(这里维度为 3 的时候，<strong><code>returnMat=[[0,0,0],[0,0,0],...,[0,0,0]]</code></strong>)</li>
-<li>循环处理每一条数据，<code>line.strip()</code>截取掉所有的回车字符，然后使用 tab 字符 \t 将上一步得到的整行数据分割成一个元素列表，存储到特征矩阵 <strong><code>returnMat</code></strong> 中。</li>
+<li>循环处理每一条数据，<strong><code>line.strip()</code></strong>截取掉所有的回车字符，然后使用 tab 字符 \t 将上一步得到的整行数据分割成一个元素列表，存储到特征矩阵 <strong><code>returnMat</code></strong> 中。</li>
 <li>原约会文件的每条数据的最后一项（是否喜欢），单独存储到标签向量<strong><code>classLabelVector</code></strong>，作为类别。</li>
 <li>返回得到特征矩阵 <strong><code>returnMat</code></strong> 与标签向量<strong><code>classLabelVector</code></strong>。</li>
 </ol>

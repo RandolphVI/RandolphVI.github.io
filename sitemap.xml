@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://randolph.pro/2017/01/14/%3CMachine%20Learning%3E%20Classification-%20KNN%20&%20kd%20Tree/</loc>
+    
+    <lastmod>2017-08-03T02:18:37.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://randolph.pro/2017/03/07/%3CTensorflow%3E%20Tensorboard/</loc>
     
     <lastmod>2017-08-03T02:12:48.000Z</lastmod>
@@ -26,13 +33,6 @@
     <loc>http://randolph.pro/2016/04/15/%3CComputer%20Vision%3E%20JPEG%20Compression/</loc>
     
     <lastmod>2017-08-01T03:26:23.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://randolph.pro/2017/01/14/%3CMachine%20Learning%3E%20Classification-%20KNN%20&%20kd%20Tree/</loc>
-    
-    <lastmod>2017-07-31T08:16:59.000Z</lastmod>
     
   </url>
   
