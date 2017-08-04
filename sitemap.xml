@@ -2,6 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://randolph.pro/2017/03/07/%3CTensorflow%3E%20Tensorboard/</loc>
+    
+    <lastmod>2017-08-03T02:37:23.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://randolph.pro/2017/03/13/%3CTensorflow%3E%20Use%20WeChat%20to%20Monitor%20Your%20Network/</loc>
+    
+    <lastmod>2017-08-03T02:37:20.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://randolph.pro/2017/03/01/%3CTensorFlow%3E%20Dropout%20Introduction/</loc>
+    
+    <lastmod>2017-08-03T02:36:46.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://randolph.pro/2016/04/15/%3CComputer%20Vision%3E%20JPEG%20Compression/</loc>
     
     <lastmod>2017-08-03T02:27:29.000Z</lastmod>
@@ -18,28 +39,7 @@
   <url>
     <loc>http://randolph.pro/2017/01/14/%3CMachine%20Learning%3E%20Classification-%20KNN%20&%20kd%20Tree/</loc>
     
-    <lastmod>2017-08-03T02:18:37.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://randolph.pro/2017/03/07/%3CTensorflow%3E%20Tensorboard/</loc>
-    
-    <lastmod>2017-08-03T02:12:48.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://randolph.pro/2017/03/01/%3CTensorFlow%3E%20Dropout%20Introduction/</loc>
-    
-    <lastmod>2017-08-02T06:32:37.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://randolph.pro/2017/03/13/%3CTensorflow%3E%20Use%20WeChat%20to%20Monitor%20Your%20Network/</loc>
-    
-    <lastmod>2017-08-02T04:41:07.000Z</lastmod>
+    <lastmod>2017-08-03T02:23:34.000Z</lastmod>
     
   </url>
   
@@ -138,6 +138,13 @@
     <loc>http://randolph.pro/about/index.html</loc>
     
     <lastmod>2017-07-19T06:05:23.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://randolph.pro/2017/03/13/%3CTensorFlow%3E%20CNN%20Introduction/</loc>
+    
+    <lastmod>2017-03-13T09:33:47.000Z</lastmod>
     
   </url>
   

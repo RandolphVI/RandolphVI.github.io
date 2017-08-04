@@ -4,6 +4,81 @@
 
     
   <url>
+    <loc>http://randolph.pro/2017/03/07/%3CTensorflow%3E%20Tensorboard/</loc>
+    <lastmod>2017-08-03T02:37:23.000Z</lastmod>
+    <data>
+        <display>
+        <title>「TensorFlow」 Tensorboard</title>
+        <pubTime>2017-03-06T16:00:00.000Z</pubTime>
+        
+        <tag>Python</tag>
+         
+        <tag>Machine Learning</tag>
+         
+        <tag>TensorFlow</tag>
+         
+         
+           
+             
+              <breadCrumb title="TensorFlow" url="http://randolph.pro/categories/TensorFlow/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://randolph.pro/2017/03/13/%3CTensorflow%3E%20Use%20WeChat%20to%20Monitor%20Your%20Network/</loc>
+    <lastmod>2017-08-03T02:37:20.000Z</lastmod>
+    <data>
+        <display>
+        <title>「TensorFlow」 Use WeChat to Monitor Your Network</title>
+        <pubTime>2017-03-12T16:00:00.000Z</pubTime>
+        
+        <tag>Python</tag>
+         
+        <tag>Machine Learning</tag>
+         
+        <tag>TensorFlow</tag>
+         
+        <tag>WeChat</tag>
+         
+         
+           
+             
+              <breadCrumb title="TensorFlow" url="http://randolph.pro/categories/TensorFlow/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://randolph.pro/2017/03/01/%3CTensorFlow%3E%20Dropout%20Introduction/</loc>
+    <lastmod>2017-08-03T02:36:46.000Z</lastmod>
+    <data>
+        <display>
+        <title>♜「Papers」 About Dropout</title>
+        <pubTime>2017-02-28T16:00:00.000Z</pubTime>
+        
+        <tag>Machine Learning</tag>
+         
+        <tag>Papers</tag>
+         
+         
+           
+             
+              <breadCrumb title="Machine Learning" url="http://randolph.pro/categories/Machine-Learning/"/>
+          
+             
+              <breadCrumb title="Papers" url="http://randolph.pro/categories/Machine-Learning/Papers/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://randolph.pro/2016/04/15/%3CComputer%20Vision%3E%20JPEG%20Compression/</loc>
     <lastmod>2017-08-03T02:27:29.000Z</lastmod>
     <data>
@@ -11,9 +86,9 @@
         <title>「Computer Vision」 JPEG Compression</title>
         <pubTime>2016-04-14T16:00:00.000Z</pubTime>
         
-        <tag>Python</tag>
-         
         <tag>Computer Vision</tag>
+         
+        <tag>Python</tag>
          
          
            
@@ -49,15 +124,15 @@
     
   <url>
     <loc>http://randolph.pro/2017/01/14/%3CMachine%20Learning%3E%20Classification-%20KNN%20&%20kd%20Tree/</loc>
-    <lastmod>2017-08-03T02:18:37.000Z</lastmod>
+    <lastmod>2017-08-03T02:23:34.000Z</lastmod>
     <data>
         <display>
         <title>♞「Machine Learning」 Classification - KNN & kd Tree</title>
         <pubTime>2017-01-13T16:00:00.000Z</pubTime>
         
-        <tag>Machine Learning</tag>
-         
         <tag>Python</tag>
+         
+        <tag>Machine Learning</tag>
          
          
            
@@ -73,81 +148,6 @@
 
     
   <url>
-    <loc>http://randolph.pro/2017/03/07/%3CTensorflow%3E%20Tensorboard/</loc>
-    <lastmod>2017-08-03T02:12:48.000Z</lastmod>
-    <data>
-        <display>
-        <title>「TensorFlow」 Tensorboard</title>
-        <pubTime>2017-03-06T16:00:00.000Z</pubTime>
-        
-        <tag>Machine Learning</tag>
-         
-        <tag>Python</tag>
-         
-        <tag>TensorFlow</tag>
-         
-         
-           
-             
-              <breadCrumb title="TensorFlow" url="http://randolph.pro/categories/TensorFlow/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://randolph.pro/2017/03/01/%3CTensorFlow%3E%20Dropout%20Introduction/</loc>
-    <lastmod>2017-08-02T06:32:37.000Z</lastmod>
-    <data>
-        <display>
-        <title>♜「Papers」 About Dropout</title>
-        <pubTime>2017-02-28T16:00:00.000Z</pubTime>
-        
-        <tag>Machine Learning</tag>
-         
-        <tag>Papers</tag>
-         
-         
-           
-             
-              <breadCrumb title="Machine Learning" url="http://randolph.pro/categories/Machine-Learning/"/>
-          
-             
-              <breadCrumb title="Papers" url="http://randolph.pro/categories/Machine-Learning/Papers/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://randolph.pro/2017/03/13/%3CTensorflow%3E%20Use%20WeChat%20to%20Monitor%20Your%20Network/</loc>
-    <lastmod>2017-08-02T04:41:07.000Z</lastmod>
-    <data>
-        <display>
-        <title>「TensorFlow」 Use WeChat to Monitor Your Network</title>
-        <pubTime>2017-03-12T16:00:00.000Z</pubTime>
-        
-        <tag>Machine Learning</tag>
-         
-        <tag>Python</tag>
-         
-        <tag>TensorFlow</tag>
-         
-        <tag>WeChat</tag>
-         
-         
-           
-             
-              <breadCrumb title="TensorFlow" url="http://randolph.pro/categories/TensorFlow/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://randolph.pro/2017/01/03/%3CMachine%20Learning%3E%20Clustering/</loc>
     <lastmod>2017-07-30T15:30:18.000Z</lastmod>
     <data>
@@ -155,9 +155,9 @@
         <title>♞「Machine Learning」 Clustering</title>
         <pubTime>2017-01-02T16:00:00.000Z</pubTime>
         
-        <tag>Machine Learning</tag>
-         
         <tag>Python</tag>
+         
+        <tag>Machine Learning</tag>
          
          
            
@@ -200,9 +200,9 @@
         <title>♞「Programming Collective Intelligence」 Chapter 3</title>
         <pubTime>2016-03-18T16:00:00.000Z</pubTime>
         
-        <tag>Machine Learning</tag>
-         
         <tag>Python</tag>
+         
+        <tag>Machine Learning</tag>
          
          
            
@@ -225,9 +225,9 @@
         <title>♞「Machine Learning」 Chapter 2</title>
         <pubTime>2016-12-29T16:00:00.000Z</pubTime>
         
-        <tag>Machine Learning</tag>
-         
         <tag>Python</tag>
+         
+        <tag>Machine Learning</tag>
          
          
            
@@ -250,9 +250,9 @@
         <title>♞「Machine Learning」 Chapter 1</title>
         <pubTime>2016-12-25T16:00:00.000Z</pubTime>
         
-        <tag>Machine Learning</tag>
-         
         <tag>Python</tag>
+         
+        <tag>Machine Learning</tag>
          
          
            
@@ -275,9 +275,9 @@
         <title>♞「Programming Collective Intelligence」 Chapter 1 & 2</title>
         <pubTime>2016-03-11T16:00:00.000Z</pubTime>
         
-        <tag>Machine Learning</tag>
-         
         <tag>Python</tag>
+         
+        <tag>Machine Learning</tag>
          
          
            
@@ -419,4 +419,19 @@
     
     
     
+    
+  <url>
+    <loc>http://randolph.pro/2017/03/13/%3CTensorFlow%3E%20CNN%20Introduction/</loc>
+    <lastmod>2017-03-13T09:33:47.000Z</lastmod>
+    <data>
+        <display>
+        <title></title>
+        <pubTime>2017-03-13T09:33:47.000Z</pubTime>
+        
+         
+           
+        </display>
+    </data>
+    </url>
+
 </urlset>
