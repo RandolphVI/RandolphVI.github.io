@@ -4,32 +4,8 @@
 
     
   <url>
-    <loc>http://randolph.pro/2017/03/07/%E3%80%8CTensorFlow%E3%80%8D%20Tensorboard/</loc>
-    <lastmod>2017-08-06T13:23:55.000Z</lastmod>
-    <data>
-        <display>
-        <title>「TensorFlow」 Tensorboard</title>
-        <pubTime>2017-03-06T16:00:00.000Z</pubTime>
-        
-        <tag>Python</tag>
-         
-        <tag>Machine Learning</tag>
-         
-        <tag>TensorFlow</tag>
-         
-         
-           
-             
-              <breadCrumb title="TensorFlow" url="http://randolph.pro/categories/TensorFlow/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://randolph.pro/2017/03/13/%E3%80%8CTensorFlow%E3%80%8D%20Use%20WeChat%20to%20Monitor%20Your%20Network/</loc>
-    <lastmod>2017-08-06T13:20:05.000Z</lastmod>
+    <lastmod>2017-08-06T13:29:18.000Z</lastmod>
     <data>
         <display>
         <title>「TensorFlow」 Use WeChat to Monitor Your Network</title>
@@ -42,6 +18,30 @@
         <tag>TensorFlow</tag>
          
         <tag>WeChat</tag>
+         
+         
+           
+             
+              <breadCrumb title="TensorFlow" url="http://randolph.pro/categories/TensorFlow/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://randolph.pro/2017/03/07/%E3%80%8CTensorFlow%E3%80%8D%20Tensorboard/</loc>
+    <lastmod>2017-08-06T13:28:03.000Z</lastmod>
+    <data>
+        <display>
+        <title>「TensorFlow」 Tensorboard</title>
+        <pubTime>2017-03-06T16:00:00.000Z</pubTime>
+        
+        <tag>Python</tag>
+         
+        <tag>Machine Learning</tag>
+         
+        <tag>TensorFlow</tag>
          
          
            

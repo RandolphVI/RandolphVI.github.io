@@ -113,7 +113,7 @@
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://farm4.staticflickr.com/3767/32574547714_59711d3f0b_o.jpg">
 <meta property="og:image" content="https://farm4.staticflickr.com/3687/33417461155_a448845f98_o.png">
-<meta property="og:updated_time" content="2017-08-06T13:20:05.000Z">
+<meta property="og:updated_time" content="2017-08-06T13:29:18.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="「TensorFlow」 Use WeChat to Monitor Your Network">
 <meta name="twitter:description" content="平时，大家自己的机器模型在训练期间（特别是深度网络），训练时间通常几小时到十几小时不等，甚至可能会花上好几天，那么在这段时间，你们又会干些什么事情呢？作为程序员，这里提供一个「有趣的」方式，用你的微信来监控你的模型在训练期间的一举一动。">
@@ -439,7 +439,7 @@
                   <i class="fa fa-file-word-o"></i>
                 </span>
                 <span title="Words count in article">
-                  1,704
+                  1,702
                 </span>
                 <span> words </span>
                 
@@ -504,9 +504,9 @@
 <p> 说明：</p>
 <ol>
 <li> 首先我导入了 itchat 和 threading。</li>
-<li> 在原先所有 <code>print</code> 消息的地方，都添加了 <code>itchat.send()</code> 来输出我们的模型训练日志。</li>
-<li> 加了一个带锁的状态量 <code>running</code> 用来做为发送微信消息的运行开关。</li>
-<li> 写了一个 itchat 的 handler（就是上图）。其作用就是当程序运行，我们需要在微信中，对自己的微信号发送「开始」，模型才会开始训练，为了防止信息阻塞，所以要用到 <code>threading</code> 将其放在另一个线程当中。在训练的过程中，如果我们觉得结果已到达我们自己的预期，可以微信发送「停止」来停止模型的训练过程。</li>
+<li> 在原先所有 <strong><code>print</code></strong> 消息的地方，都添加了 <strong><code>itchat.send()</code></strong> 来输出我们的模型训练日志。</li>
+<li> 加了一个带锁的状态量 <strong><code>running</code></strong> 用来做为发送微信消息的运行开关。</li>
+<li> 写了一个 itchat 的 handler（就是上图）。其作用就是当程序运行，我们需要在微信中，对自己的微信号发送「开始」，模型才会开始训练，为了防止信息阻塞，所以要用到 <strong><code>threading</code></strong> 将其放在另一个线程当中。在训练的过程中，如果我们觉得结果已到达我们自己的预期，可以微信发送「停止」来停止模型的训练过程。</li>
 </ol>
 <p><strong> 另外，脚本刚开始运行时，程序会弹出一个包含二维码的图片，我们需要通过微信来扫描该二维码，来登陆微信并启动 itchat 的服务。</strong></p>
 <p> 程序是包含了 Tensorboard 绘图的，所以等模型训练好，我们依然是可以通过 Tensorboard 来更加详细地查看我们模型的训练过程。 </p>
@@ -514,7 +514,7 @@
 <p> 如果看过 itchat 那个连接的读者，可以了解到 itchat 同样是可以发送图片信息的，所以我们可以写额外的脚本在训练的过程中每隔 100 次迭代， plot 到目前为止 loss，acc 等指标的趋势图。在此，我就不再进行拓展了。</p>
 <p> 关于各个模块的作用，以及各个变量的意义，我在此就不再赘述了。</p>
 <p> 如果有读者对于 CNN 卷积神经网络有些陌生或者是遗忘，可以参考我的另外一篇文章 <a href="http://www.jianshu.com/p/95c79381ab4f" target="_blank" rel="external">CNN on TensorFlow</a>。</p>
-<p> 如果读者对 Tensorboard 有所遗忘，可以参考我的另一篇文章 <a href="http://www.jianshu.com/p/b5caf4d5ce3e" target="_blank" rel="external">「TensorFlow 1.0」 Tensorboard</a>。</p>
+<p> 如果读者对 Tensorboard 有所遗忘，可以参考我的另一篇文章 <a href="http://randolph.pro/2017/03/07/「TensorFlow」%20Tensorboard/">「TensorFlow」 Tensorboard</a>。</p>
 
       
     </div>
