@@ -1,0 +1,1286 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="baidu-site-verification" content="IYvqjZ3csg" />
+<meta name="google-site-verification" content="o9GDuh4E6CmwFpEqUYW7VMmq_fysc1_3PpSQSNWSD8Y" />
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-mac-osx.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Python,NLP," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="黃某人" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="本文是关于「Natural Language Processing with Python」这本书的 Chapter 1 &amp; 2 的学习笔记。">
+<meta name="keywords" content="Python,NLP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="♞「NLP with Python」 Chapter 1 &amp; 2">
+<meta property="og:url" content="http://randolph.pro/2015/09/11/♞「NLP with Python」 Chapter 1 & 2/index.html">
+<meta property="og:site_name" content="黃某人">
+<meta property="og:description" content="本文是关于「Natural Language Processing with Python」这本书的 Chapter 1 &amp; 2 的学习笔记。">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://farm5.staticflickr.com/4327/35823201720_84f3fa0d21_o.jpg">
+<meta property="og:image" content="https://farm1.staticflickr.com/445/31263100710_d839312795_o.png">
+<meta property="og:image" content="https://farm1.staticflickr.com/474/31598383846_537809b299_o.png">
+<meta property="og:updated_time" content="2017-08-06T13:17:50.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="♞「NLP with Python」 Chapter 1 &amp; 2">
+<meta name="twitter:description" content="本文是关于「Natural Language Processing with Python」这本书的 Chapter 1 &amp; 2 的学习笔记。">
+<meta name="twitter:image" content="https://farm5.staticflickr.com/4327/35823201720_84f3fa0d21_o.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"hide","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: 'KGO9YVRPZZ',
+      apiKey: 'dcf60767769bda7791ae195caf3dfb10',
+      indexName: 'Randolph',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://randolph.pro/2015/09/11/♞「NLP with Python」 Chapter 1 & 2/"/>
+
+
+
+
+
+  <title>♞「NLP with Python」 Chapter 1 & 2 | 黃某人</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?80985281ddae6899cfd57ad9d458b284";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">黃某人</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">痴</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://randolph.pro/2015/09/11/♞「NLP with Python」 Chapter 1 & 2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Randolph">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="黃某人">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">♞「NLP with Python」 Chapter 1 & 2</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-plus-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-09-11T00:00:00+08:00">
+                2015-09-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/NLP/" itemprop="url" rel="index">
+                    <span itemprop="name">NLP</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/NLP/Book-「NLP-with-Python」/" itemprop="url" rel="index">
+                    <span itemprop="name">Book:「NLP with Python」</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2015/09/11/♞「NLP with Python」 Chapter 1 & 2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2015/09/11/♞「NLP with Python」 Chapter 1 & 2/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2015/09/11/♞「NLP with Python」 Chapter 1 & 2/" class="leancloud_visitors" data-flag-title="♞「NLP with Python」 Chapter 1 & 2">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-fire"></i>
+               </span>
+               <span class="leancloud-visitors-count"></span>
+               <span>℃</span>
+               <span class="post-meta-divider">|</span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                <span title="Words count in article">
+                  1,578
+                </span>
+                <span> words </span>
+                
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                <span title="Reading time">
+                  7
+                </span>
+                <span> mins </span>
+              
+            </div>
+          
+
+          
+              <div class="post-description">
+                  本文是关于「Natural Language Processing with Python」这本书的 Chapter 1 & 2 的学习笔记。
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="https://farm5.staticflickr.com/4327/35823201720_84f3fa0d21_o.jpg" alt=""></p>
+<p>有关该书的其他学习笔记系列：<a href="http://randolph.pro/categories/NLP/Book-「NLP-with-Python」/">Book:「NLP with Python」</a></p>
+<h1 id="Related"><a href="#Related" class="headerlink" title="Related"></a>Related</h1><ul>
+<li><strong>NLTK</strong></li>
+<li><strong>concordance() function</strong></li>
+<li><strong>Word Sense Disambiguation &amp; Pronoun Resolution</strong></li>
+<li><strong>Text Corpus Structure</strong></li>
+<li><strong>WordNet</strong></li>
+</ul>
+<hr>
+<h1 id="Key"><a href="#Key" class="headerlink" title="Key:"></a>Key:</h1><h2 id="What’s-NTLK"><a href="#What’s-NTLK" class="headerlink" title="What’s NTLK?"></a><strong>What’s NTLK?</strong></h2><p>NTLK 是一个自然语言工具包，最初创建于 2001 年，最初是宾州大学计算机与信息科学系计算语言学课程的一部分，大部分 NLP 研究者入门的首选 tool。</p>
+<p>另外，这本书是关于用 Python 进行自然语言处理的一本入门书，基本上可以看做是 NLTK 这个库的 HandBook，使用的方法均是 nltk 库中的方法。如果希望查阅 API 文档或者是下载安装 NLTK，可以前往 <a href="http://www.nltk.org" target="_blank" rel="external"> 官方网站 </a> 下载，官网上提供和的 API 文档涵盖了工具包中的每一个模块、类和函数，详细说明了各种参数，以及用法示例，在此不再赘述。</p>
+<ul>
+<li><strong>简单介绍一下 NLTK 的几个重要的模块以及功能描述：</strong></li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>语言处理任务</th>
+<th>NLTK 模块</th>
+<th>功能描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>获取语料库</td>
+<td>nltk.corpus</td>
+<td>语料库和字典的标准化接口</td>
+</tr>
+<tr>
+<td>字符串处理</td>
+<td>nltk.tokenize, nltk.stem</td>
+<td>分词、句子分解、提取主干</td>
+</tr>
+<tr>
+<td>搭配探究</td>
+<td>nltk.collocations</td>
+<td>t- 检验、卡方、点互信息</td>
+</tr>
+<tr>
+<td>词性标识符</td>
+<td>nltk.tag</td>
+<td>n-gram、backoff、Brill、HMM、TnT</td>
+</tr>
+<tr>
+<td>分类</td>
+<td>nltk.classify，nltk.cluster</td>
+<td>决策树、最大熵、朴素贝叶斯、EM、k-means</td>
+</tr>
+<tr>
+<td>分块</td>
+<td>nltk.chunk</td>
+<td>正则表达式、n-gram、命名实体</td>
+</tr>
+<tr>
+<td>解析</td>
+<td>nltk.parse</td>
+<td>图表、基于特征、一致性、概率性、依赖项</td>
+</tr>
+<tr>
+<td>语义解释</td>
+<td>nltk.sem，nltk.inference</td>
+<td>ℷ 演算、一阶逻辑、模型检验</td>
+</tr>
+<tr>
+<td>指标评测</td>
+<td>nltk.metrice</td>
+<td>精度、召回率、协议系数</td>
+</tr>
+<tr>
+<td>概率与估计</td>
+<td>nltk.probability</td>
+<td>频率分布、平滑概率分布</td>
+</tr>
+<tr>
+<td>应用</td>
+<td>nltk.app，nltk.chat</td>
+<td>图形化的关键词排序、分析器、WordNet 查看器、聊天机器人</td>
+</tr>
+<tr>
+<td>语言学领域的工作</td>
+<td>nltk.toolbox</td>
+<td>处理 SIL 数据格式的工具箱</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr>
+<h2 id="concordance-function"><a href="#concordance-function" class="headerlink" title="concordance function"></a>concordance <strong>function</strong></h2><ul>
+<li><strong><code>concordance()</code></strong> 函数：这个函数挺有意思的，是 nltk 下的一个函数，可以显示指定单词的出现情况（使用这个函数，指定单词的大小写不敏感），同时还可以显示一些上下文。下面是该函数的使用场景（其中 text1 的内容是 nltk.book 导入后中的 text1）:</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; text1.concordance(&quot;monstrous&quot;)</div><div class="line">    Building index...</div><div class="line">    Displaying 11 of 11 matches:</div><div class="line">    ong the former , one was of a most monstrous size . ... This came towards us ,</div><div class="line">    ON OF THE PSALMS . &quot; Touching that monstrous bulk of the whale or ork we have r</div><div class="line">    ll over with a heathenish array of monstrous clubs and spears . Some were thick</div><div class="line">    d as you gazed , and wondered what monstrous cannibal and savage could ever hav</div><div class="line">    that has survived the flood ; most monstrous and most mountainous ! That Himmal</div><div class="line">    they might scout at Moby Dick as a monstrous fable , or still worse and more de</div><div class="line">    th of Radney .&apos;&quot; CHAPTER 55 Of the monstrous Pictures of Whales . I shall ere l</div><div class="line">    ing Scenes . In connexion with the monstrous pictures of whales , I am strongly</div><div class="line">    ere to enter upon those still more monstrous stories of them which are to be fo</div></pre></td></tr></table></figure>
+<p>这个函数的具体实现如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">concordance</span><span class="params">(self, word, width=<span class="number">79</span>, lines=<span class="number">25</span>)</span>:</span></div><div class="line">    <span class="string">"""</span></div><div class="line">    Print a concordance for ``word`` with the specified context window.</div><div class="line">    Word matching is not case-sensitive.</div><div class="line">    :seealso: ``ConcordanceIndex``</div><div class="line">"""</div><div class="line">    </div><div class="line">    <span class="keyword">if</span> <span class="string">'_concordance_index'</span> <span class="keyword">not</span> <span class="keyword">in</span> self.__dict__:</div><div class="line">        print(<span class="string">"Building index..."</span>)</div><div class="line">        self._concordance_index = ConcordanceIndex(self.tokens,</div><div class="line">                                                   key=<span class="keyword">lambda</span> s:s.lower())</div><div class="line"></div><div class="line">    self._concordance_index.print_concordance(word, width, lines)</div></pre></td></tr></table></figure>
+<hr>
+<h2 id="Word-Sense-Disambiguation-amp-Pronoun-Resolution"><a href="#Word-Sense-Disambiguation-amp-Pronoun-Resolution" class="headerlink" title="Word Sense Disambiguation &amp; Pronoun Resolution"></a>Word Sense Disambiguation &amp; Pronoun Resolution</h2><ul>
+<li>Word Sense Disambiguation</li>
+</ul>
+<p>词义消歧，简而言之，我们需要做的就是分析出特定上下文中的词被赋予的是哪个意思。例如：</p>
+<blockquote>
+<p>a. <strong>serve</strong>: help with food or drink; hold an office; put ball into  play </p>
+<p>b. <strong>dish</strong>: plate; course of a meal; communications device</p>
+</blockquote>
+<ul>
+<li>Pronoun Resolution</li>
+</ul>
+<p>指代消解，是解决“词义消歧”的一个手段，解决“谁对谁做了什么”，即检测动词的主语和宾语，另外还有 <strong> 语义角色标注</strong>（semantic role labing）— 确定名词短语如何与动词相关联（如代理、受事、工具等）。</p>
+<hr>
+<h2 id="Text-Corpus-Structure"><a href="#Text-Corpus-Structure" class="headerlink" title="Text Corpus Structure"></a>Text Corpus Structure</h2><p>以下是几种常见的语料库结构：<br><img src="https://farm1.staticflickr.com/445/31263100710_d839312795_o.png" alt=""></p>
+<ul>
+<li>最简单的一种语料库是一些孤立的没有什么特别结构的文本集合；</li>
+<li>一些语料库按如文体（布朗语料库）等分类成组织结构；</li>
+<li>一些分类会重叠，如主题类别（路透社语料库）；</li>
+<li>另外一些语料库可以表示随时间变化，语言用法的改变（就职演说语料库）；</li>
+</ul>
+<hr>
+<h2 id="WordNet"><a href="#WordNet" class="headerlink" title="WordNet"></a>WordNet</h2><ul>
+<li>Senses and Synonyms.（意义与同义词）</li>
+<li>Synonyms and Synset.（同义词集与词条）</li>
+<li>The WordNet Hierarchy.（WordNet 的层次结构）</li>
+</ul>
+<blockquote>
+<p>WordNet synsets correspond to abstract concepts, and they don’t always have corre- sponding words in English. These concepts are linked together in a hierarchy. Some concepts are very general, such as Entity, State, Event; these are called unique begin- ners or root synsets. Others, such as gas guzzler and hatchback, are much more specific.</p>
+</blockquote>
+<p>WordNet 概念的层次片段：每个节点对应一个同义词集；边表示上位词 / 下位词关系，即上级概念与从属概念的关系。<br><img src="https://farm1.staticflickr.com/474/31598383846_537809b299_o.png" alt=""></p>
+<ul>
+<li>Hyponyms and Hypernyms.（下位词与上位词）</li>
+<li>Antonyms.（反义词）</li>
+</ul>
+<hr>
+<h1 id="Correct-errors-in-printing"><a href="#Correct-errors-in-printing" class="headerlink" title="Correct errors in printing:"></a>Correct errors in printing:</h1><ul>
+<li>P19:</li>
+</ul>
+<p>在 「Your Trun」 的那块内容中：</p>
+<blockquote>
+<p>使用 text2 尝试前面频率分布的例子。…如果得到的是错误信息：NameError: name ‘FreqDist’is not defined，则需要在一开始输入  <strong><code>from nltk.book import *</code></strong>。</p>
+</blockquote>
+<p>需更正为：</p>
+<blockquote>
+<p>使用 text2 尝试前面频率分布的例子。…如果得到的是错误信息：NameError: name ‘FreqDist’is not defined，则需要在一开始输入 <strong><code>from nltk import *</code></strong>。</p>
+</blockquote>
+<p><strong>原因：<code>nltk.book</code> 中并不存在 <code>FreqDist()</code> 这一 function.</strong></p>
+<hr>
+<ul>
+<li>P48:</li>
+</ul>
+<p>在 「Inaugural Address Corpus」 的那块代码部分中：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; cfd = nltk.ConditionalFreqDist(</div><div class="line">...           (target, file[:4])</div><div class="line">...           <span class="keyword">for</span> fileid <span class="keyword">in</span> inaugural.fileids()</div></pre></td></tr></table></figure></p>
+<p>需更正为：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; cfd = nltk.ConditionalFreqDist(</div><div class="line">...           (target, fileid[:4])</div><div class="line">...           <span class="keyword">for</span> fileid <span class="keyword">in</span> inaugural.fileids()</div></pre></td></tr></table></figure>
+<hr>
+<h1 id="Practice"><a href="#Practice" class="headerlink" title="Practice:"></a>Practice:</h1><blockquote>
+<p>6.○ In the discussion of comparative wordlists, we created an object called <strong>translate</strong>, which you could look up using words in both German and Italian in order to get corresponding words in English. What problem might arise with this approach? Can you suggest a way to avoid this problem?</p>
+</blockquote>
+<ul>
+<li>如果输入错误（不存在的词语或者其他没有通过 <strong><code>translate.update(dict(xx))</code></strong> 加入字典的语言词语，则会引发 <strong>KeyError</strong>）。其中一个解决办法是，添加一个错误处理情况。</li>
+</ul>
+<blockquote>
+<p>8.◑ Define a conditional frequency distribution over the Names Corpus that allows you to see which initial letters are more frequent for males versus females (see Figure 2-7).</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; cfd = nltk.ConditionalFreqDist(</div><div class="line">...            (fileid, name[1]</div><div class="line">...            <span class="keyword">for</span> fileid <span class="keyword">in</span> names.fileids()</div><div class="line">...            <span class="keyword">for</span> name <span class="keyword">in</span> names.words(fileid))</div></pre></td></tr></table></figure>
+<blockquote>
+<p>14.◑ Define a function <strong><code>supergloss(s)</code></strong> that takes a synset s as its argument and returns a string consisting of the concatenation of the definition of <strong>s</strong>, and the definitions of all the hypernyms and hyponyms of <strong>s</strong>.</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">supergloss</span><span class="params">(s)</span>:</span></div><div class="line">    s = wn.synset(<span class="string">'s'</span>)</div><div class="line">    hyponyms_of_s = s.hyponyms()</div><div class="line">    hypernyms_of_s = s.hypernyms()</div><div class="line">    <span class="keyword">return</span> str(s) + str(hyponyms_of_s) + str(hypernyms_of_s)</div></pre></td></tr></table></figure>
+<blockquote>
+<p>17.◑ Write a function that finds the 50 most frequently occurring words of a text that are not stopwords.</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">most_fifty_words</span><span class="params">(text)</span>:</span></div><div class="line">    stopwords = nltk.corpus.stopwords.words(<span class="string">'english'</span>)</div><div class="line">    content = [w <span class="keyword">for</span> w <span class="keyword">in</span> text <span class="keyword">if</span> w.lower() <span class="keyword">not</span> <span class="keyword">in</span> stopwords]</div><div class="line">    fdist = FreqDist(content)</div><div class="line">    vocabulary = list(fdist.keys())</div><div class="line">    <span class="keyword">return</span> vocabulary[:<span class="number">50</span>]</div></pre></td></tr></table></figure>
+<hr>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Python/" rel="tag"># Python</a>
+          
+            <a href="/tags/NLP/" rel="tag"># NLP</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/09/17/♞「NLP with Python」 Chapter 3/" rel="prev" title="♞「NLP with Python」 Chapter 3">
+                ♞「NLP with Python」 Chapter 3 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="Randolph" />
+          <p class="site-author-name" itemprop="name">Randolph</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+           
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-name">Posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">Categories</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">Tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/RandolphVI" target="_blank" title="Github">
+                  
+                    <i class="fa fa-fw fa-github-alt"></i>
+                  
+                  Github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.linkedin.com/in/威-黄-88060b74/" target="_blank" title="LinkedIn">
+                  
+                    <i class="fa fa-fw fa-linkedin"></i>
+                  
+                  LinkedIn
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://music.163.com/#/user/home?id=57901575" target="_blank" title="Music">
+                  
+                    <i class="fa fa-fw fa-music"></i>
+                  
+                  Music
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://steamcommunity.com/id/Chinawolfman/" target="_blank" title="Steam">
+                  
+                    <i class="fa fa-fw fa-steam"></i>
+                  
+                  Steam
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.tensorflow.org" title="TensorFlow" target="_blank">TensorFlow</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.kaggle.com" title="Kaggle" target="_blank">Kaggle</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://leetcode.com" title="LeetCode" target="_blank">LeetCode</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://weekly.codetengu.com" title="CodeTengu" target="_blank">CodeTengu</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+        
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=320 height=150 src="//music.163.com/outchain/player?type=0&id=752986314&auto=1&height=90"></iframe>
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Related"><span class="nav-number">1.</span> <span class="nav-text">Related</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Key"><span class="nav-number">2.</span> <span class="nav-text">Key:</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#What’s-NTLK"><span class="nav-number">2.1.</span> <span class="nav-text">What’s NTLK?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#concordance-function"><span class="nav-number">2.2.</span> <span class="nav-text">concordance function</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Word-Sense-Disambiguation-amp-Pronoun-Resolution"><span class="nav-number">2.3.</span> <span class="nav-text">Word Sense Disambiguation & Pronoun Resolution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Text-Corpus-Structure"><span class="nav-number">2.4.</span> <span class="nav-text">Text Corpus Structure</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#WordNet"><span class="nav-number">2.5.</span> <span class="nav-text">WordNet</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Correct-errors-in-printing"><span class="nav-number">3.</span> <span class="nav-text">Correct errors in printing:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Practice"><span class="nav-number">4.</span> <span class="nav-text">Practice:</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="motto" >
+  <span class="motto">「莫怕真理无穷 进一寸便有进一寸的欢喜」</span>
+</div>
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  
+  <span class="author" itemprop="copyrightHolder">Randolph</span>
+  
+</div>
+
+<!--  -->
+<!-- <div class="powered-by"> -->
+<!--   Powered by <a class="theme-link" href="https://hexo.io">Hexo</a> -->
+<!-- </div> -->
+<!--  -->
+<!-- <div class="theme-info"> -->
+<!--   Theme - -->
+<!--   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next"> -->
+<!--     NexT.Mist -->
+<!--   </a> -->
+<!-- </div> -->
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 鸿儒之顾
+      <span class="stop">:</span>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv" style="display: inline;"></span>
+      
+    </span>
+    
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 管中窥豹
+      <span class="stop">:</span>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://randolphvi.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://randolph.pro/2015/09/11/♞「NLP with Python」 Chapter 1 & 2/';
+          this.page.identifier = '2015/09/11/♞「NLP with Python」 Chapter 1 & 2/';
+          this.page.title = '♞「NLP with Python」 Chapter 1 & 2';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://randolphvi.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.1"></script>
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("rlX1ugcCzQRlB8ljks0eiIKp-gzGzoHsz", "kpFrsFctrAimlBvhHvlgWnhV");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+
+
+  
+
+  
+
+  
+  
+
+
+  
+
+  
+
+</body>
+</html>

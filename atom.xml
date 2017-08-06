@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://randolph.pro/"/>
-  <updated>2017-08-03T02:37:20.000Z</updated>
+  <updated>2017-08-06T13:20:05.000Z</updated>
   <id>http://randolph.pro/</id>
   
   <author>
@@ -17,12 +17,13 @@
   
   <entry>
     <title>「TensorFlow」 Use WeChat to Monitor Your Network</title>
-    <link href="http://randolph.pro/2017/03/13/%3CTensorflow%3E%20Use%20WeChat%20to%20Monitor%20Your%20Network/"/>
-    <id>http://randolph.pro/2017/03/13/&lt;Tensorflow&gt; Use WeChat to Monitor Your Network/</id>
+    <link href="http://randolph.pro/2017/03/13/%E3%80%8CTensorFlow%E3%80%8D%20Use%20WeChat%20to%20Monitor%20Your%20Network/"/>
+    <id>http://randolph.pro/2017/03/13/「TensorFlow」 Use WeChat to Monitor Your Network/</id>
     <published>2017-03-12T16:00:00.000Z</published>
-    <updated>2017-08-03T02:37:20.000Z</updated>
+    <updated>2017-08-06T13:20:05.000Z</updated>
     
-    <content type="html"><![CDATA[<p> 大概的效果是：</p>
+    <content type="html"><![CDATA[<p> 有关「TensorFlow」的其他学习笔记系列：<a href="http://randolph.pro/categories/TensorFlow/">「TensorFlow」</a></p>
+<p> 大概的效果是：</p>
 <p><img src="https://farm4.staticflickr.com/3767/32574547714_59711d3f0b_o.jpg" alt=""></p>
 <p> 程序用到的主角是 Python 中的微信个人号接口 <strong>itchat</strong>。<a href="https://itchat.readthedocs.io/zh/latest/" target="_blank" rel="external">What’s itchat?</a> （itchat 的介绍及安装过程）</p>
 <p> 这次，我们要监控的模型是先前提到过的 <a href="http://www.jianshu.com/p/b5caf4d5ce3e" target="_blank" rel="external"> 基于 MNIST 手写体数据集的「CNN」模型 </a>。</p>
@@ -82,12 +83,13 @@
   
   <entry>
     <title>「TensorFlow」 Tensorboard</title>
-    <link href="http://randolph.pro/2017/03/07/%3CTensorflow%3E%20Tensorboard/"/>
-    <id>http://randolph.pro/2017/03/07/&lt;Tensorflow&gt; Tensorboard/</id>
+    <link href="http://randolph.pro/2017/03/07/%E3%80%8CTensorFlow%E3%80%8D%20Tensorboard/"/>
+    <id>http://randolph.pro/2017/03/07/「TensorFlow」 Tensorboard/</id>
     <published>2017-03-06T16:00:00.000Z</published>
-    <updated>2017-08-03T02:37:23.000Z</updated>
+    <updated>2017-08-06T13:23:55.000Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://farm5.staticflickr.com/4399/36206153111_6662041dd1_o.png" alt=""></p>
+<p>有关「TensorFlow」的其他学习笔记系列：<a href="http://randolph.pro/categories/TensorFlow/">「TensorFlow」</a></p>
 <h1 id="TensorFlow-Tensorboard"><a href="#TensorFlow-Tensorboard" class="headerlink" title="TensorFlow Tensorboard"></a>TensorFlow Tensorboard</h1><p>Tensorboard 可以看做是我们构建的 Graph 的可视化工具，对于我们初学者理解网络架构、每层网络的细节都是很有帮助的。由于前几天刚接触 TensorFlow，所以在尝试学习 Tensorboard 的过程中，遇到了一些问题。在此基础上，参考了 TensorFlow 官方的 Tensorboard Tutorials 以及网上的一些文章。由于前不久 TensorFlow 1.0 刚发布，网上的一些学习资源或者是 tensorboard 代码在新的版本中并不适用，所以自己改写并实现了官方网站上提及的三个实例的 Tensorboard 版本：</p>
 <ol>
 <li>最基础简单的「Linear Model」</li>
@@ -144,6 +146,7 @@
 </li>
 </ul>
 <p>关于各个模块的作用，以及各个变量的意义，开篇已经提及，我在此就不再赘述了。</p>
+<p>代码文件放置在我的 Github 对应的 repository 当中: <a href="https://github.com/RandolphVI/TensorFlow-Learning" target="_blank" rel="external">「TensorFlow Learning」</a></p>
 <p>另外，在自己的机器模型在训练期间（特别是深度网络），训练时间通常几小时到十几小时不等，甚至可能会花上好几天，那么在这段时间，你们又会干些什么事情呢？作为程序员，这里提供一个「有趣的」方式，可以使用你的微信来监控你的模型在训练期间的一举一动，具体做法参考我的另一篇文章 <a href="http://randolph.pro/2017/03/13/%3CTensorflow%3E%20Use%20WeChat%20to%20Monitor%20Your%20Network/">「TensorFlow」Use WeChat to Monitor Your Network</a></p>
 ]]></content>
     
@@ -166,13 +169,13 @@
   
   <entry>
     <title>「Machine Learning」 Factorization Machines</title>
-    <link href="http://randolph.pro/2017/03/03/%3CMachine%20Learning%3E%20Factorization%20Machines/"/>
-    <id>http://randolph.pro/2017/03/03/&lt;Machine Learning&gt; Factorization Machines/</id>
+    <link href="http://randolph.pro/2017/03/03/%E3%80%8CMachine%20Learning%E3%80%8D%20Factorization%20Machines/"/>
+    <id>http://randolph.pro/2017/03/03/「Machine Learning」 Factorization Machines/</id>
     <published>2017-03-02T16:00:00.000Z</published>
-    <updated>2017-07-30T15:25:49.000Z</updated>
+    <updated>2017-08-06T12:57:41.000Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://farm5.staticflickr.com/4300/35460446383_aafc34ca3c_o.jpg" alt=""></p>
-<p> 有关 Machine Learning 其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/">「Machine Learning」</a></p>
+<p> 有关「Machine Learning」的其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/">「Machine Learning」</a></p>
 <h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>Factorization Machines（FM），可译为“隐因子分解机”，由 Steffen Rendle 于 2010 年提出，并发布开源工具 <strong>libFM</strong> 。他凭借 FM 单个模型，他在 KDD Cup 2012 上，取得 Track1 的第 2 名和 Track2 的第 3 名。</p>
 <h1 id="Compared-with-Other-Models"><a href="#Compared-with-Other-Models" class="headerlink" title="Compared with Other Models"></a>Compared with Other Models</h1><ul>
 <li> 在数据非常稀疏时（如推荐系统），SVM 不能取得很好的效果。</li>
@@ -258,13 +261,13 @@ OPTREG(S,\lambda) := argmin\left(\sum_{(x, y)\in S}l(\hat y(x \mid \Theta), y) +
   
   <entry>
     <title>♜「Papers」 About Dropout</title>
-    <link href="http://randolph.pro/2017/03/01/%3CTensorFlow%3E%20Dropout%20Introduction/"/>
-    <id>http://randolph.pro/2017/03/01/&lt;TensorFlow&gt; Dropout Introduction/</id>
+    <link href="http://randolph.pro/2017/03/01/%E2%99%9C%E3%80%8CPapers%E3%80%8D%20About%20Dropout/"/>
+    <id>http://randolph.pro/2017/03/01/♜「Papers」 About Dropout/</id>
     <published>2017-02-28T16:00:00.000Z</published>
-    <updated>2017-08-03T02:36:46.000Z</updated>
+    <updated>2017-08-06T12:56:57.000Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://farm5.staticflickr.com/4373/35507009504_3298ce3029_o.jpg" alt=""></p>
-<p>有关 Machine Learning 其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/">「Machine Learning」</a><br>有关 Papers 其他论文学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/Papers/">「Papers」</a></p>
+<p>有关「Machine Learning」的其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/">「Machine Learning」</a><br>有关「Papers」的其他论文学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/Papers/">「Papers」</a></p>
 <h1 id="Dropout"><a href="#Dropout" class="headerlink" title="Dropout"></a>Dropout</h1><p>开篇明义，dropout 是指在深度学习网络的训练过程中，对于神经网络单元，按照 <strong> 一定的概率 </strong> 将其 <strong> 暂时 </strong> 从网络中丢弃。注意是暂时，对于随机梯度下降来说，由于是随机丢弃，故而每一个 mini-batch 都在训练不同的网络。</p>
 <p>Dropout 是 CNN 中防止过拟合提高效果的一个大杀器，但对于其为何有效，却众说纷纭。在下读到两篇代表性的论文，代表两种不同的观点，特此分享给大家。</p>
 <h1 id="组合派"><a href="# 组合派" class="headerlink" title="组合派"></a>组合派 </h1><p> 参考文献中第一篇中的观点，Hinton 在 2014 年提出的。</p>
@@ -465,13 +468,13 @@ h_{n} = (\overrightarrow{r_{n}} \odot \overrightarrow{w_{n}})^{T}\overrightarrow
   
   <entry>
     <title>♞「Machine Learning」 Classification - KNN &amp; kd Tree</title>
-    <link href="http://randolph.pro/2017/01/14/%3CMachine%20Learning%3E%20Classification-%20KNN%20&amp;%20kd%20Tree/"/>
-    <id>http://randolph.pro/2017/01/14/&lt;Machine Learning&gt; Classification- KNN &amp; kd Tree/</id>
+    <link href="http://randolph.pro/2017/01/14/%E2%99%9E%E3%80%8CMachine%20Learning%E3%80%8D%20Classification%20-%20KNN%20&amp;%20kd%20Tree/"/>
+    <id>http://randolph.pro/2017/01/14/♞「Machine Learning」 Classification - KNN &amp; kd Tree/</id>
     <published>2017-01-13T16:00:00.000Z</published>
-    <updated>2017-08-03T02:23:34.000Z</updated>
+    <updated>2017-08-06T13:18:34.000Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://farm5.staticflickr.com/4307/36174772306_62cfbc8cd6_o.jpg" alt=""></p>
-<p>关于该书的其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/Book-「Machine-Learning」/">「Machine Learning」</a></p>
+<p>有关该书的其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/Book-「Machine-Learning」/">Book:「Machine Learning」</a></p>
 <h1 id="Related"><a href="#Related" class="headerlink" title="Related"></a>Related</h1><ul>
 <li>kNN</li>
 <li>线性扫描实现 kNN 算法</li>
@@ -661,13 +664,13 @@ d(x,y) =\sqrt{\sum_{i=1}^{n}\frac{(x_{i} - y_{i})^2}{s_{i}^2}}</script><p>可以
   
   <entry>
     <title>♞「Machine Learning」 Clustering</title>
-    <link href="http://randolph.pro/2017/01/03/%3CMachine%20Learning%3E%20Clustering/"/>
-    <id>http://randolph.pro/2017/01/03/&lt;Machine Learning&gt; Clustering/</id>
+    <link href="http://randolph.pro/2017/01/03/%E2%99%9E%E3%80%8CMachine%20Learning%E3%80%8D%20Clustering/"/>
+    <id>http://randolph.pro/2017/01/03/♞「Machine Learning」 Clustering/</id>
     <published>2017-01-02T16:00:00.000Z</published>
-    <updated>2017-07-30T15:30:18.000Z</updated>
+    <updated>2017-08-06T13:18:31.000Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://farm5.staticflickr.com/4307/36174772306_62cfbc8cd6_o.jpg" alt=""></p>
-<p>关于该书的其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/Book-「Machine-Learning」/">「Machine Learning」</a></p>
+<p>有关该书的其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/Book-「Machine-Learning」/">Book:「Machine Learning」</a></p>
 <h1 id="聚类介绍"><a href="# 聚类介绍" class="headerlink" title="聚类介绍"></a>聚类介绍</h1><ul>
 <li>聚类是从数据集中挖掘相似观测值集合的方法。</li>
 <li>聚类试图将数据集中的样本划分为若干个通常是不相交的子集，每个子集称为一个“簇”（cluster）。通过这样的划分，每个簇可能对应于一些潜在的概念（类别）。</li>
@@ -1071,13 +1074,13 @@ p^{'} & = p_{5} + \eta \cdot (x_{1} - p_{5}) \cr
   
   <entry>
     <title>♞「Machine Learning」 Chapter 2</title>
-    <link href="http://randolph.pro/2016/12/30/%3CMachine%20Learning%3E%20Chapter%202/"/>
-    <id>http://randolph.pro/2016/12/30/&lt;Machine Learning&gt; Chapter 2/</id>
+    <link href="http://randolph.pro/2016/12/30/%E2%99%9E%E3%80%8CMachine%20Learning%E3%80%8D%20Chapter%202/"/>
+    <id>http://randolph.pro/2016/12/30/♞「Machine Learning」 Chapter 2/</id>
     <published>2016-12-29T16:00:00.000Z</published>
-    <updated>2017-07-28T08:36:30.000Z</updated>
+    <updated>2017-08-06T13:18:38.000Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://farm5.staticflickr.com/4307/36174772306_62cfbc8cd6_o.jpg" alt=""></p>
-<p>关于该书的其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/Book-「Machine-Learning」/">「Machine Learning」</a></p>
+<p>有关该书的其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/Book-「Machine-Learning」/">Book:「Machine Learning」</a></p>
 <h1 id="Related"><a href="#Related" class="headerlink" title="Related"></a>Related</h1><ul>
 <li><strong>过拟合与欠拟合</strong></li>
 <li><strong>评估方法</strong><ul>
@@ -1384,13 +1387,13 @@ E_{cost} = \frac{m^+ \times (1-TPR) \times cost_{01}+m^- \times FPR \times cost_
   
   <entry>
     <title>♞「Machine Learning」 Chapter 1</title>
-    <link href="http://randolph.pro/2016/12/26/%3CMachine%20Learning%3E%20Chapter%201/"/>
-    <id>http://randolph.pro/2016/12/26/&lt;Machine Learning&gt; Chapter 1/</id>
+    <link href="http://randolph.pro/2016/12/26/%E2%99%9E%E3%80%8CMachine%20Learning%E3%80%8D%20Chapter%201/"/>
+    <id>http://randolph.pro/2016/12/26/♞「Machine Learning」 Chapter 1/</id>
     <published>2016-12-25T16:00:00.000Z</published>
-    <updated>2017-07-28T07:51:15.000Z</updated>
+    <updated>2017-08-06T13:18:42.000Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://farm5.staticflickr.com/4307/36174772306_62cfbc8cd6_o.jpg" alt=""></p>
-<p>关于该书的其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/Book-「Machine-Learning」/">「Machine Learning」</a></p>
+<p>有关该书的其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/Book-「Machine-Learning」/">Book:「Machine Learning」</a></p>
 <h1 id="Related"><a href="#Related" class="headerlink" title="Related"></a>Related</h1><ul>
 <li><strong>归纳偏好</strong></li>
 <li><strong>奥卡姆剃刀（Occam’s razor）</strong></li>
@@ -1493,13 +1496,13 @@ E_{cost} = \frac{m^+ \times (1-TPR) \times cost_{01}+m^- \times FPR \times cost_
   
   <entry>
     <title>「Computer Vision」 JPEG Compression</title>
-    <link href="http://randolph.pro/2016/04/15/%3CComputer%20Vision%3E%20JPEG%20Compression/"/>
-    <id>http://randolph.pro/2016/04/15/&lt;Computer Vision&gt; JPEG Compression/</id>
+    <link href="http://randolph.pro/2016/04/15/%E3%80%8CComputer%20Vision%E3%80%8D%20JPEG%20Compression/"/>
+    <id>http://randolph.pro/2016/04/15/「Computer Vision」 JPEG Compression/</id>
     <published>2016-04-14T16:00:00.000Z</published>
-    <updated>2017-08-06T12:45:45.000Z</updated>
+    <updated>2017-08-06T13:18:52.000Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://farm5.staticflickr.com/4432/35506833264_65d70af92c_o.jpg" alt=""></p>
-<p>关于「Computer Vision」的其他学习笔记系列：<a href="http://randolph.pro/categories/Computer-Vision/">「Computer Vision」</a></p>
+<p>有关「Computer Vision」的其他学习笔记系列：<a href="http://randolph.pro/categories/Computer-Vision/">「Computer Vision」</a></p>
 <h1 id="Related"><a href="#Related" class="headerlink" title="Related"></a>Related</h1><ul>
 <li><strong>颜色模式转换：RBG to YUV</strong></li>
 <li><strong>采样 &amp; 分块</strong></li>
@@ -1717,13 +1720,13 @@ AC & (1,2)(-2),(0,1)(-1),(0,1)(-1),(0,1)(-1),(2,1)(-1),(EOB)(0,0)
   
   <entry>
     <title>♞「Programming Collective Intelligence」 Chapter 3</title>
-    <link href="http://randolph.pro/2016/03/19/%3CProgramming%20Collective%20Intelligence%3E%20Chapter%203/"/>
-    <id>http://randolph.pro/2016/03/19/&lt;Programming Collective Intelligence&gt; Chapter 3/</id>
+    <link href="http://randolph.pro/2016/03/19/%E2%99%9E%E3%80%8CProgramming%20Collective%20Intelligence%E3%80%8D%20Chapter%203/"/>
+    <id>http://randolph.pro/2016/03/19/♞「Programming Collective Intelligence」 Chapter 3/</id>
     <published>2016-03-18T16:00:00.000Z</published>
-    <updated>2017-07-28T08:45:00.000Z</updated>
+    <updated>2017-08-06T13:18:18.000Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://farm5.staticflickr.com/4306/36216231065_8a7e508f9e_o.jpg" alt=""></p>
-<p>关于该书的其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/Book-「Programming-Collective-Intelligence」/">「Programming Collective Intelligence」</a></p>
+<p>有关该书的其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/Book-「Programming-Collective-Intelligence」/">Book:「Programming Collective Intelligence」</a></p>
 <h1 id="Related"><a href="#Related" class="headerlink" title="Related"></a>Related</h1><ul>
 <li><strong>皮尔逊相关系数</strong></li>
 <li><strong>分级聚类</strong></li>
@@ -1832,13 +1835,13 @@ AC & (1,2)(-2),(0,1)(-1),(0,1)(-1),(0,1)(-1),(2,1)(-1),(EOB)(0,0)
   
   <entry>
     <title>♞「Programming Collective Intelligence」 Chapter 1 &amp; 2</title>
-    <link href="http://randolph.pro/2016/03/12/%3CProgramming%20Collective%20Intelligence%3E%20Chapter%201%20&amp;%202/"/>
-    <id>http://randolph.pro/2016/03/12/&lt;Programming Collective Intelligence&gt; Chapter 1 &amp; 2/</id>
+    <link href="http://randolph.pro/2016/03/12/%E2%99%9E%E3%80%8CProgramming%20Collective%20Intelligence%E3%80%8D%20Chapter%201%20&amp;%202/"/>
+    <id>http://randolph.pro/2016/03/12/♞「Programming Collective Intelligence」 Chapter 1 &amp; 2/</id>
     <published>2016-03-11T16:00:00.000Z</published>
-    <updated>2017-07-28T07:49:53.000Z</updated>
+    <updated>2017-08-06T13:18:21.000Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://farm5.staticflickr.com/4306/36216231065_8a7e508f9e_o.jpg" alt=""></p>
-<p>关于该书的其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/Book-「Programming-Collective-Intelligence」/">「Programming Collective Intelligence」</a></p>
+<p>有关该书的其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/Book-「Programming-Collective-Intelligence」/">Book:「Programming Collective Intelligence」</a></p>
 <h1 id="Related"><a href="#Related" class="headerlink" title="Related"></a>Related</h1><ul>
 <li><strong>欧几里得距离评价</strong></li>
 <li><strong>皮尔逊相关度评价</strong></li>
@@ -1941,14 +1944,14 @@ AC & (1,2)(-2),(0,1)(-1),(0,1)(-1),(0,1)(-1),(2,1)(-1),(EOB)(0,0)
   </entry>
   
   <entry>
-    <title>「Web Scraping with Python」smtplib &amp; email module</title>
-    <link href="http://randolph.pro/2015/12/13/%3CWeb%20Scraping%20with%20Python%3E%20Other-smtplib%20&amp;%20email/"/>
-    <id>http://randolph.pro/2015/12/13/&lt;Web Scraping with Python&gt; Other-smtplib &amp; email/</id>
+    <title>♞「Web Scraping with Python」smtplib &amp; email module</title>
+    <link href="http://randolph.pro/2015/12/13/%E2%99%9E%E3%80%8CWeb%20Scraping%20with%20Python%E3%80%8Dsmtplib%20&amp;%20email%20module/"/>
+    <id>http://randolph.pro/2015/12/13/♞「Web Scraping with Python」smtplib &amp; email module/</id>
     <published>2015-12-12T16:00:00.000Z</published>
-    <updated>2017-08-03T02:27:02.000Z</updated>
+    <updated>2017-08-06T13:17:54.000Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://farm5.staticflickr.com/4316/36049777032_f975ed0941_o.jpg" alt=""></p>
-<p>关于「Web Scraping with Python」该书的其他学习笔记系列：<a href="http://randolph.pro/categories/Web-Scraping/Book-「Web-Scraping-with-Python」/">「Web Scraping with Python」</a></p>
+<p>有关该书的其他学习笔记系列：<a href="http://randolph.pro/categories/Web-Scraping/Book-「Web-Scraping-with-Python」/">Book:「Web Scraping with Python」</a></p>
 <h1 id="Related"><a href="#Related" class="headerlink" title="Related"></a>Related</h1><ul>
 <li><strong>smtplib module</strong></li>
 <li><strong>email module</strong></li>
@@ -2007,6 +2010,8 @@ AC & (1,2)(-2),(0,1)(-1),(0,1)(-1),(0,1)(-1),(2,1)(-1),(EOB)(0,0)
     
       <category term="Web Scraping" scheme="http://randolph.pro/categories/Web-Scraping/"/>
     
+      <category term="Book:「Web Scraping with Python」" scheme="http://randolph.pro/categories/Web-Scraping/Book-%E3%80%8CWeb-Scraping-with-Python%E3%80%8D/"/>
+    
     
       <category term="Python" scheme="http://randolph.pro/tags/Python/"/>
     
@@ -2016,13 +2021,13 @@ AC & (1,2)(-2),(0,1)(-1),(0,1)(-1),(0,1)(-1),(2,1)(-1),(EOB)(0,0)
   
   <entry>
     <title>♞「Web Scraping with Python」 Chapter 4 &amp; 5</title>
-    <link href="http://randolph.pro/2015/11/27/%3CWeb%20Scraping%20with%20Python%3E%20Chapter%204%20&amp;%205/"/>
-    <id>http://randolph.pro/2015/11/27/&lt;Web Scraping with Python&gt; Chapter 4 &amp; 5/</id>
+    <link href="http://randolph.pro/2015/11/27/%E2%99%9E%E3%80%8CWeb%20Scraping%20with%20Python%E3%80%8D%20Chapter%204%20&amp;%205/"/>
+    <id>http://randolph.pro/2015/11/27/♞「Web Scraping with Python」 Chapter 4 &amp; 5/</id>
     <published>2015-11-26T16:00:00.000Z</published>
-    <updated>2017-07-28T07:48:44.000Z</updated>
+    <updated>2017-08-06T13:18:04.000Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://farm5.staticflickr.com/4316/36049777032_f975ed0941_o.jpg" alt=""></p>
-<p> 关于该书的其他学习笔记系列：<a href="http://randolph.pro/categories/Web-Scraping/Book-「Web-Scraping-with-Python」/">「Web Scraping with Python」</a></p>
+<p> 有关该书的其他学习笔记系列：<a href="http://randolph.pro/categories/Web-Scraping/Book-「Web-Scraping-with-Python」/">Book:「Web Scraping with Python」</a></p>
 <h1 id="Related"><a href="#Related" class="headerlink" title="Related"></a>Related</h1><ul>
 <li><strong>Parsing JSON</strong></li>
 <li><strong>Storing Data to CSV</strong></li>
@@ -2103,13 +2108,13 @@ AC & (1,2)(-2),(0,1)(-1),(0,1)(-1),(0,1)(-1),(2,1)(-1),(EOB)(0,0)
   
   <entry>
     <title>♞「Web Scraping with Python」 Chapter 3</title>
-    <link href="http://randolph.pro/2015/11/13/%3CWeb%20Scraping%20with%20Python%3E%20Chapter%203/"/>
-    <id>http://randolph.pro/2015/11/13/&lt;Web Scraping with Python&gt; Chapter 3/</id>
+    <link href="http://randolph.pro/2015/11/13/%E2%99%9E%E3%80%8CWeb%20Scraping%20with%20Python%E3%80%8D%20Chapter%203/"/>
+    <id>http://randolph.pro/2015/11/13/♞「Web Scraping with Python」 Chapter 3/</id>
     <published>2015-11-12T16:00:00.000Z</published>
-    <updated>2017-07-28T07:48:27.000Z</updated>
+    <updated>2017-08-06T13:18:07.000Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://farm5.staticflickr.com/4316/36049777032_f975ed0941_o.jpg" alt=""></p>
-<p> 关于该书的其他学习笔记系列：<a href="http://randolph.pro/categories/Web-Scraping/Book-「Web-Scraping-with-Python」/">「Web Scraping with Python」</a></p>
+<p> 有关该书的其他学习笔记系列：<a href="http://randolph.pro/categories/Web-Scraping/Book-「Web-Scraping-with-Python」/">Book:「Web Scraping with Python」</a></p>
 <h1 id="Related"><a href="#Related" class="headerlink" title="Related"></a>Related</h1><ul>
 <li><strong>urlparse module</strong></li>
 </ul>
@@ -2228,13 +2233,13 @@ AC & (1,2)(-2),(0,1)(-1),(0,1)(-1),(0,1)(-1),(2,1)(-1),(EOB)(0,0)
   
   <entry>
     <title>♞「Web Scraping with Python」 Chapter 1 &amp; 2</title>
-    <link href="http://randolph.pro/2015/11/02/%3CWeb%20Scraping%20with%20Python%3E%20Chapter%201%20&amp;%202/"/>
-    <id>http://randolph.pro/2015/11/02/&lt;Web Scraping with Python&gt; Chapter 1 &amp; 2/</id>
+    <link href="http://randolph.pro/2015/11/02/%E2%99%9E%E3%80%8CWeb%20Scraping%20with%20Python%E3%80%8D%20Chapter%201%20&amp;%202/"/>
+    <id>http://randolph.pro/2015/11/02/♞「Web Scraping with Python」 Chapter 1 &amp; 2/</id>
     <published>2015-11-01T16:00:00.000Z</published>
-    <updated>2017-07-28T07:48:07.000Z</updated>
+    <updated>2017-08-06T13:18:11.000Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://farm5.staticflickr.com/4316/36049777032_f975ed0941_o.jpg" alt=""></p>
-<p>关于该书的其他学习笔记系列：<a href="http://randolph.pro/categories/Web-Scraping/Book-「Web-Scraping-with-Python」/">「Web Scraping with Python」</a></p>
+<p>有关该书的其他学习笔记系列：<a href="http://randolph.pro/categories/Web-Scraping/Book-「Web-Scraping-with-Python」/">Book:「Web Scraping with Python」</a></p>
 <h1 id="Related"><a href="#Related" class="headerlink" title="Related"></a>Related</h1><ul>
 <li><strong>BeautifulSoup package</strong></li>
 <li><strong>Navigating Trees</strong> </li>
@@ -2328,13 +2333,13 @@ AC & (1,2)(-2),(0,1)(-1),(0,1)(-1),(0,1)(-1),(2,1)(-1),(EOB)(0,0)
   
   <entry>
     <title>♞「NLP with Python」 Chapter 3</title>
-    <link href="http://randolph.pro/2015/09/17/%3CNatural%20Language%20Processing%20with%20Python%3E%20Chapter%203/"/>
-    <id>http://randolph.pro/2015/09/17/&lt;Natural Language Processing with Python&gt; Chapter 3/</id>
+    <link href="http://randolph.pro/2015/09/17/%E2%99%9E%E3%80%8CNLP%20with%20Python%E3%80%8D%20Chapter%203/"/>
+    <id>http://randolph.pro/2015/09/17/♞「NLP with Python」 Chapter 3/</id>
     <published>2015-09-16T16:00:00.000Z</published>
-    <updated>2017-07-28T07:47:27.000Z</updated>
+    <updated>2017-08-06T13:18:25.000Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://farm5.staticflickr.com/4327/35823201720_84f3fa0d21_o.jpg" alt=""></p>
-<p>关于该书的其他学习笔记系列：<a href="http://randolph.pro/categories/NLP/Book-「NLP-with-Python」/">「NLP with Python」</a></p>
+<p>有关该书的其他学习笔记系列：<a href="http://randolph.pro/categories/NLP/Book-「NLP-with-Python」/">Book:「NLP with Python」</a></p>
 <h1 id="Related"><a href="#Related" class="headerlink" title="Related"></a>Related</h1><ul>
 <li><strong>The NLP Pipeline</strong></li>
 <li><strong>Basic Operations with Strings</strong></li>
@@ -2621,13 +2626,13 @@ P(\mathrm{d} E) = exp(\mathrm{d}E/kT)</script><p>其中 <strong><em>k</em></stro
   
   <entry>
     <title>♞「NLP with Python」 Chapter 1 &amp; 2</title>
-    <link href="http://randolph.pro/2015/09/11/%3CNatural%20Language%20Processing%20with%20Python%3E%20Chapter%201%20&amp;%202/"/>
-    <id>http://randolph.pro/2015/09/11/&lt;Natural Language Processing with Python&gt; Chapter 1 &amp; 2/</id>
+    <link href="http://randolph.pro/2015/09/11/%E2%99%9E%E3%80%8CNLP%20with%20Python%E3%80%8D%20Chapter%201%20&amp;%202/"/>
+    <id>http://randolph.pro/2015/09/11/♞「NLP with Python」 Chapter 1 &amp; 2/</id>
     <published>2015-09-10T16:00:00.000Z</published>
-    <updated>2017-07-28T07:46:42.000Z</updated>
+    <updated>2017-08-06T13:17:50.000Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://farm5.staticflickr.com/4327/35823201720_84f3fa0d21_o.jpg" alt=""></p>
-<p>关于该书的其他学习笔记系列：<a href="http://randolph.pro/categories/NLP/Book-「NLP-with-Python」/">「NLP with Python」</a></p>
+<p>有关该书的其他学习笔记系列：<a href="http://randolph.pro/categories/NLP/Book-「NLP-with-Python」/">Book:「NLP with Python」</a></p>
 <h1 id="Related"><a href="#Related" class="headerlink" title="Related"></a>Related</h1><ul>
 <li><strong>NLTK</strong></li>
 <li><strong>concordance() function</strong></li>
