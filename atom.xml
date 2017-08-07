@@ -83,8 +83,8 @@
   
   <entry>
     <title>♜「Papers」 About Text Classification based on CNN</title>
-    <link href="http://randolph.pro/2017/03/10/%E2%99%9C%E3%80%8CPapers%E3%80%8DAbout%20Dropout/"/>
-    <id>http://randolph.pro/2017/03/10/♜「Papers」About Dropout/</id>
+    <link href="http://randolph.pro/2017/03/10/%E2%99%9C%E3%80%8CPapers%E3%80%8DAbout%20Text%20Classification%20based%20on%20CNN/"/>
+    <id>http://randolph.pro/2017/03/10/♜「Papers」About Text Classification based on CNN/</id>
     <published>2017-03-09T16:00:00.000Z</published>
     <updated>2017-08-07T14:14:08.000Z</updated>
     
@@ -354,8 +354,8 @@ OPTREG(S,\lambda) := argmin\left(\sum_{(x, y)\in S}l(\hat y(x \mid \Theta), y) +
   
   <entry>
     <title>♜「Papers」 About Dropout</title>
-    <link href="http://randolph.pro/2017/03/01/%E2%99%9C%E3%80%8CPapers%E3%80%8D%20About%20Dropout/"/>
-    <id>http://randolph.pro/2017/03/01/♜「Papers」 About Dropout/</id>
+    <link href="http://randolph.pro/2017/03/01/%E2%99%9C%E3%80%8CPapers%E3%80%8DAbout%20Dropout/"/>
+    <id>http://randolph.pro/2017/03/01/♜「Papers」About Dropout/</id>
     <published>2017-02-28T16:00:00.000Z</published>
     <updated>2017-08-06T12:56:57.000Z</updated>
     
