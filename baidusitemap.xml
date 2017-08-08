@@ -4,24 +4,19 @@
 
     
   <url>
-    <loc>http://randolph.pro/2017/03/10/%E2%99%9C%E3%80%8CPapers%E3%80%8DAbout%20Text%20Classification%20based%20on%20CNN/</loc>
-    <lastmod>2017-08-07T14:14:08.000Z</lastmod>
+    <loc>http://randolph.pro/2017/03/07/%E3%80%8CTensorFlow%E3%80%8DCNN%20Introduction/</loc>
+    <lastmod>2017-08-08T13:37:56.000Z</lastmod>
     <data>
         <display>
-        <title>♜「Papers」 About Text Classification based on CNN</title>
-        <pubTime>2017-03-09T16:00:00.000Z</pubTime>
+        <title>「Machine Learning」 CNN Introduction</title>
+        <pubTime>2017-03-06T16:00:00.000Z</pubTime>
         
         <tag>Machine Learning</tag>
-         
-        <tag>Papers</tag>
          
          
            
              
               <breadCrumb title="Machine Learning" url="http://randolph.pro/categories/Machine-Learning/"/>
-          
-             
-              <breadCrumb title="Papers" url="http://randolph.pro/categories/Machine-Learning/Papers/"/>
           
         </display>
     </data>
@@ -29,12 +24,36 @@
 
     
   <url>
-    <loc>http://randolph.pro/2017/03/13/%E3%80%8CTensorFlow%E3%80%8D%20Use%20WeChat%20to%20Monitor%20Your%20Network/</loc>
-    <lastmod>2017-08-06T13:29:18.000Z</lastmod>
+    <loc>http://randolph.pro/2017/03/13/%E3%80%8CTensorFlow%E3%80%8D%20Tensorboard/</loc>
+    <lastmod>2017-08-08T13:34:13.000Z</lastmod>
+    <data>
+        <display>
+        <title>「TensorFlow」 Tensorboard</title>
+        <pubTime>2017-03-12T16:00:00.000Z</pubTime>
+        
+        <tag>Python</tag>
+         
+        <tag>Machine Learning</tag>
+         
+        <tag>TensorFlow</tag>
+         
+         
+           
+             
+              <breadCrumb title="TensorFlow" url="http://randolph.pro/categories/TensorFlow/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://randolph.pro/2017/03/17/%E3%80%8CTensorFlow%E3%80%8D%20Use%20WeChat%20to%20Monitor%20Your%20Network/</loc>
+    <lastmod>2017-08-08T13:33:21.000Z</lastmod>
     <data>
         <display>
         <title>「TensorFlow」 Use WeChat to Monitor Your Network</title>
-        <pubTime>2017-03-12T16:00:00.000Z</pubTime>
+        <pubTime>2017-03-16T16:00:00.000Z</pubTime>
         
         <tag>Python</tag>
          
@@ -55,23 +74,24 @@
 
     
   <url>
-    <loc>http://randolph.pro/2017/03/07/%E3%80%8CTensorFlow%E3%80%8D%20Tensorboard/</loc>
-    <lastmod>2017-08-06T13:28:03.000Z</lastmod>
+    <loc>http://randolph.pro/2017/03/10/%E2%99%9C%E3%80%8CPapers%E3%80%8DAbout%20Text%20Classification%20based%20on%20CNN/</loc>
+    <lastmod>2017-08-07T14:14:08.000Z</lastmod>
     <data>
         <display>
-        <title>「TensorFlow」 Tensorboard</title>
-        <pubTime>2017-03-06T16:00:00.000Z</pubTime>
+        <title>♜「Papers」 About Text Classification based on CNN</title>
+        <pubTime>2017-03-09T16:00:00.000Z</pubTime>
         
-        <tag>Python</tag>
-         
         <tag>Machine Learning</tag>
          
-        <tag>TensorFlow</tag>
+        <tag>Papers</tag>
          
          
            
              
-              <breadCrumb title="TensorFlow" url="http://randolph.pro/categories/TensorFlow/"/>
+              <breadCrumb title="Machine Learning" url="http://randolph.pro/categories/Machine-Learning/"/>
+          
+             
+              <breadCrumb title="Papers" url="http://randolph.pro/categories/Machine-Learning/Papers/"/>
           
         </display>
     </data>
