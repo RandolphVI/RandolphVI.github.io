@@ -2,6 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://randolph.pro/2017/01/03/%E2%99%9E%E3%80%8CMachine%20Learning%E3%80%8D%20Clustering/</loc>
+    
+    <lastmod>2017-08-09T14:09:34.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://randolph.pro/2015/09/17/%E2%99%9E%E3%80%8CNLP%20with%20Python%E3%80%8D%20Chapter%203/</loc>
+    
+    <lastmod>2017-08-09T14:09:00.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://randolph.pro/2016/04/15/%E3%80%8CComputer%20Vision%E3%80%8D%20JPEG%20Compression/</loc>
+    
+    <lastmod>2017-08-09T14:07:07.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://randolph.pro/2017/03/07/%E3%80%8CTensorFlow%E3%80%8DCNN%20Introduction/</loc>
     
     <lastmod>2017-08-08T13:37:56.000Z</lastmod>
@@ -16,7 +37,7 @@
   </url>
   
   <url>
-    <loc>http://randolph.pro/2017/03/17/%E3%80%8CTensorFlow%E3%80%8D%20Use%20WeChat%20to%20Monitor%20Your%20Network/</loc>
+    <loc>http://randolph.pro/2017/03/17/%E3%80%8CTensorFlow%E3%80%8DUse%20WeChat%20to%20Monitor%20Your%20Network/</loc>
     
     <lastmod>2017-08-08T13:33:21.000Z</lastmod>
     
@@ -26,13 +47,6 @@
     <loc>http://randolph.pro/2017/03/10/%E2%99%9C%E3%80%8CPapers%E3%80%8DAbout%20Text%20Classification%20based%20on%20CNN/</loc>
     
     <lastmod>2017-08-07T14:14:08.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://randolph.pro/2016/04/15/%E3%80%8CComputer%20Vision%E3%80%8D%20JPEG%20Compression/</loc>
-    
-    <lastmod>2017-08-06T13:18:52.000Z</lastmod>
     
   </url>
   
@@ -54,20 +68,6 @@
     <loc>http://randolph.pro/2017/01/14/%E2%99%9E%E3%80%8CMachine%20Learning%E3%80%8D%20Classification%20-%20KNN%20&%20kd%20Tree/</loc>
     
     <lastmod>2017-08-06T13:18:34.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://randolph.pro/2017/01/03/%E2%99%9E%E3%80%8CMachine%20Learning%E3%80%8D%20Clustering/</loc>
-    
-    <lastmod>2017-08-06T13:18:31.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://randolph.pro/2015/09/17/%E2%99%9E%E3%80%8CNLP%20with%20Python%E3%80%8D%20Chapter%203/</loc>
-    
-    <lastmod>2017-08-06T13:18:25.000Z</lastmod>
     
   </url>
   

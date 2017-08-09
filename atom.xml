@@ -17,8 +17,8 @@
   
   <entry>
     <title>「TensorFlow」 Use WeChat to Monitor Your Network</title>
-    <link href="http://randolph.pro/2017/03/17/%E3%80%8CTensorFlow%E3%80%8D%20Use%20WeChat%20to%20Monitor%20Your%20Network/"/>
-    <id>http://randolph.pro/2017/03/17/「TensorFlow」 Use WeChat to Monitor Your Network/</id>
+    <link href="http://randolph.pro/2017/03/17/%E3%80%8CTensorFlow%E3%80%8DUse%20WeChat%20to%20Monitor%20Your%20Network/"/>
+    <id>http://randolph.pro/2017/03/17/「TensorFlow」Use WeChat to Monitor Your Network/</id>
     <published>2017-03-16T16:00:00.000Z</published>
     <updated>2017-08-08T13:33:21.000Z</updated>
     
@@ -970,7 +970,7 @@ d(x,y) =\sqrt{\sum_{i=1}^{n}\frac{(x_{i} - y_{i})^2}{s_{i}^2}}</script><p>可以
     <link href="http://randolph.pro/2017/01/03/%E2%99%9E%E3%80%8CMachine%20Learning%E3%80%8D%20Clustering/"/>
     <id>http://randolph.pro/2017/01/03/♞「Machine Learning」 Clustering/</id>
     <published>2017-01-02T16:00:00.000Z</published>
-    <updated>2017-08-06T13:18:31.000Z</updated>
+    <updated>2017-08-09T14:09:34.000Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://farm5.staticflickr.com/4307/36174772306_62cfbc8cd6_o.jpg" alt=""></p>
 <p>有关该书的其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/Book-「Machine-Learning」/">Book:「Machine Learning」</a></p>
@@ -1802,7 +1802,7 @@ E_{cost} = \frac{m^+ \times (1-TPR) \times cost_{01}+m^- \times FPR \times cost_
     <link href="http://randolph.pro/2016/04/15/%E3%80%8CComputer%20Vision%E3%80%8D%20JPEG%20Compression/"/>
     <id>http://randolph.pro/2016/04/15/「Computer Vision」 JPEG Compression/</id>
     <published>2016-04-14T16:00:00.000Z</published>
-    <updated>2017-08-06T13:18:52.000Z</updated>
+    <updated>2017-08-09T14:07:07.000Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://farm5.staticflickr.com/4432/35506833264_65d70af92c_o.jpg" alt=""></p>
 <p>有关「Computer Vision」的其他学习笔记系列：<a href="http://randolph.pro/categories/Computer-Vision/">「Computer Vision」</a></p>
@@ -2012,7 +2012,9 @@ AC & (1,2)(-2),(0,1)(-1),(0,1)(-1),(0,1)(-1),(2,1)(-1),(EOB)(0,0)
     
     </summary>
     
-      <category term="Computer Vision" scheme="http://randolph.pro/categories/Computer-Vision/"/>
+      <category term="Machine Learning" scheme="http://randolph.pro/categories/Machine-Learning/"/>
+    
+      <category term="Computer Vision" scheme="http://randolph.pro/categories/Machine-Learning/Computer-Vision/"/>
     
     
       <category term="Computer Vision" scheme="http://randolph.pro/tags/Computer-Vision/"/>
@@ -2639,7 +2641,7 @@ AC & (1,2)(-2),(0,1)(-1),(0,1)(-1),(0,1)(-1),(2,1)(-1),(EOB)(0,0)
     <link href="http://randolph.pro/2015/09/17/%E2%99%9E%E3%80%8CNLP%20with%20Python%E3%80%8D%20Chapter%203/"/>
     <id>http://randolph.pro/2015/09/17/♞「NLP with Python」 Chapter 3/</id>
     <published>2015-09-16T16:00:00.000Z</published>
-    <updated>2017-08-06T13:18:25.000Z</updated>
+    <updated>2017-08-09T14:09:00.000Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://farm5.staticflickr.com/4327/35823201720_84f3fa0d21_o.jpg" alt=""></p>
 <p>有关该书的其他学习笔记系列：<a href="http://randolph.pro/categories/NLP/Book-「NLP-with-Python」/">Book:「NLP with Python」</a></p>
@@ -2916,14 +2918,18 @@ P(\mathrm{d} E) = exp(\mathrm{d}E/kT)</script><p>其中 <strong><em>k</em></stro
     
     </summary>
     
-      <category term="NLP" scheme="http://randolph.pro/categories/NLP/"/>
+      <category term="Machine Learning" scheme="http://randolph.pro/categories/Machine-Learning/"/>
     
-      <category term="Book:「NLP with Python」" scheme="http://randolph.pro/categories/NLP/Book-%E3%80%8CNLP-with-Python%E3%80%8D/"/>
+      <category term="Natural Language Processing" scheme="http://randolph.pro/categories/Machine-Learning/Natural-Language-Processing/"/>
+    
+      <category term="Book:「NLP with Python」" scheme="http://randolph.pro/categories/Machine-Learning/Natural-Language-Processing/Book-%E3%80%8CNLP-with-Python%E3%80%8D/"/>
     
     
       <category term="Python" scheme="http://randolph.pro/tags/Python/"/>
     
-      <category term="NLP" scheme="http://randolph.pro/tags/NLP/"/>
+      <category term="Machine Learning" scheme="http://randolph.pro/tags/Machine-Learning/"/>
+    
+      <category term="Natural Language Processing" scheme="http://randolph.pro/tags/Natural-Language-Processing/"/>
     
   </entry>
   
