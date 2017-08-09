@@ -72,9 +72,9 @@
       <category term="TensorFlow" scheme="http://randolph.pro/categories/TensorFlow/"/>
     
     
-      <category term="Python" scheme="http://randolph.pro/tags/Python/"/>
-    
       <category term="Machine Learning" scheme="http://randolph.pro/tags/Machine-Learning/"/>
+    
+      <category term="Python" scheme="http://randolph.pro/tags/Python/"/>
     
       <category term="TensorFlow" scheme="http://randolph.pro/tags/TensorFlow/"/>
     
@@ -160,9 +160,9 @@
       <category term="TensorFlow" scheme="http://randolph.pro/categories/TensorFlow/"/>
     
     
-      <category term="Python" scheme="http://randolph.pro/tags/Python/"/>
-    
       <category term="Machine Learning" scheme="http://randolph.pro/tags/Machine-Learning/"/>
+    
+      <category term="Python" scheme="http://randolph.pro/tags/Python/"/>
     
       <category term="TensorFlow" scheme="http://randolph.pro/tags/TensorFlow/"/>
     
@@ -173,7 +173,7 @@
     <link href="http://randolph.pro/2017/03/10/%E2%99%9C%E3%80%8CPapers%E3%80%8DAbout%20Text%20Classification%20based%20on%20CNN/"/>
     <id>http://randolph.pro/2017/03/10/♜「Papers」About Text Classification based on CNN/</id>
     <published>2017-03-09T16:00:00.000Z</published>
-    <updated>2017-08-07T14:14:08.000Z</updated>
+    <updated>2017-08-08T13:34:55.000Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://farm5.staticflickr.com/4373/35507009504_3298ce3029_o.jpg" alt=""></p>
 <p>有关「Machine Learning」的其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/">「Machine Learning」</a><br>有关「Papers」的其他论文学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/Papers/">「Papers」</a></p>
@@ -959,9 +959,9 @@ d(x,y) =\sqrt{\sum_{i=1}^{n}\frac{(x_{i} - y_{i})^2}{s_{i}^2}}</script><p>可以
       <category term="Book:「Machine Learning」" scheme="http://randolph.pro/categories/Machine-Learning/Book-%E3%80%8CMachine-Learning%E3%80%8D/"/>
     
     
-      <category term="Python" scheme="http://randolph.pro/tags/Python/"/>
-    
       <category term="Machine Learning" scheme="http://randolph.pro/tags/Machine-Learning/"/>
+    
+      <category term="Python" scheme="http://randolph.pro/tags/Python/"/>
     
   </entry>
   
@@ -1369,9 +1369,9 @@ p^{'} & = p_{5} + \eta \cdot (x_{1} - p_{5}) \cr
       <category term="Book:「Machine Learning」" scheme="http://randolph.pro/categories/Machine-Learning/Book-%E3%80%8CMachine-Learning%E3%80%8D/"/>
     
     
-      <category term="Python" scheme="http://randolph.pro/tags/Python/"/>
-    
       <category term="Machine Learning" scheme="http://randolph.pro/tags/Machine-Learning/"/>
+    
+      <category term="Python" scheme="http://randolph.pro/tags/Python/"/>
     
   </entry>
   
@@ -1682,9 +1682,9 @@ E_{cost} = \frac{m^+ \times (1-TPR) \times cost_{01}+m^- \times FPR \times cost_
       <category term="Book:「Machine Learning」" scheme="http://randolph.pro/categories/Machine-Learning/Book-%E3%80%8CMachine-Learning%E3%80%8D/"/>
     
     
-      <category term="Python" scheme="http://randolph.pro/tags/Python/"/>
-    
       <category term="Machine Learning" scheme="http://randolph.pro/tags/Machine-Learning/"/>
+    
+      <category term="Python" scheme="http://randolph.pro/tags/Python/"/>
     
   </entry>
   
@@ -1791,9 +1791,9 @@ E_{cost} = \frac{m^+ \times (1-TPR) \times cost_{01}+m^- \times FPR \times cost_
       <category term="Book:「Machine Learning」" scheme="http://randolph.pro/categories/Machine-Learning/Book-%E3%80%8CMachine-Learning%E3%80%8D/"/>
     
     
-      <category term="Python" scheme="http://randolph.pro/tags/Python/"/>
-    
       <category term="Machine Learning" scheme="http://randolph.pro/tags/Machine-Learning/"/>
+    
+      <category term="Python" scheme="http://randolph.pro/tags/Python/"/>
     
   </entry>
   
@@ -2017,9 +2017,9 @@ AC & (1,2)(-2),(0,1)(-1),(0,1)(-1),(0,1)(-1),(2,1)(-1),(EOB)(0,0)
       <category term="Computer Vision" scheme="http://randolph.pro/categories/Machine-Learning/Computer-Vision/"/>
     
     
-      <category term="Computer Vision" scheme="http://randolph.pro/tags/Computer-Vision/"/>
-    
       <category term="Python" scheme="http://randolph.pro/tags/Python/"/>
+    
+      <category term="Computer Vision" scheme="http://randolph.pro/tags/Computer-Vision/"/>
     
   </entry>
   
@@ -2132,9 +2132,9 @@ AC & (1,2)(-2),(0,1)(-1),(0,1)(-1),(0,1)(-1),(2,1)(-1),(EOB)(0,0)
       <category term="Book:「Programming Collective Intelligence」" scheme="http://randolph.pro/categories/Machine-Learning/Book-%E3%80%8CProgramming-Collective-Intelligence%E3%80%8D/"/>
     
     
-      <category term="Python" scheme="http://randolph.pro/tags/Python/"/>
-    
       <category term="Machine Learning" scheme="http://randolph.pro/tags/Machine-Learning/"/>
+    
+      <category term="Python" scheme="http://randolph.pro/tags/Python/"/>
     
   </entry>
   
@@ -2242,9 +2242,9 @@ AC & (1,2)(-2),(0,1)(-1),(0,1)(-1),(0,1)(-1),(2,1)(-1),(EOB)(0,0)
       <category term="Book:「Programming Collective Intelligence」" scheme="http://randolph.pro/categories/Machine-Learning/Book-%E3%80%8CProgramming-Collective-Intelligence%E3%80%8D/"/>
     
     
-      <category term="Python" scheme="http://randolph.pro/tags/Python/"/>
-    
       <category term="Machine Learning" scheme="http://randolph.pro/tags/Machine-Learning/"/>
+    
+      <category term="Python" scheme="http://randolph.pro/tags/Python/"/>
     
   </entry>
   
@@ -2925,207 +2925,11 @@ P(\mathrm{d} E) = exp(\mathrm{d}E/kT)</script><p>其中 <strong><em>k</em></stro
       <category term="Book:「NLP with Python」" scheme="http://randolph.pro/categories/Machine-Learning/Natural-Language-Processing/Book-%E3%80%8CNLP-with-Python%E3%80%8D/"/>
     
     
-      <category term="Python" scheme="http://randolph.pro/tags/Python/"/>
-    
       <category term="Machine Learning" scheme="http://randolph.pro/tags/Machine-Learning/"/>
     
-      <category term="Natural Language Processing" scheme="http://randolph.pro/tags/Natural-Language-Processing/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>♞「NLP with Python」 Chapter 1 &amp; 2</title>
-    <link href="http://randolph.pro/2015/09/11/%E2%99%9E%E3%80%8CNLP%20with%20Python%E3%80%8D%20Chapter%201%20&amp;%202/"/>
-    <id>http://randolph.pro/2015/09/11/♞「NLP with Python」 Chapter 1 &amp; 2/</id>
-    <published>2015-09-10T16:00:00.000Z</published>
-    <updated>2017-08-06T13:17:50.000Z</updated>
-    
-    <content type="html"><![CDATA[<p><img src="https://farm5.staticflickr.com/4327/35823201720_84f3fa0d21_o.jpg" alt=""></p>
-<p>有关该书的其他学习笔记系列：<a href="http://randolph.pro/categories/NLP/Book-「NLP-with-Python」/">Book:「NLP with Python」</a></p>
-<h1 id="Related"><a href="#Related" class="headerlink" title="Related"></a>Related</h1><ul>
-<li><strong>NLTK</strong></li>
-<li><strong>concordance() function</strong></li>
-<li><strong>Word Sense Disambiguation &amp; Pronoun Resolution</strong></li>
-<li><strong>Text Corpus Structure</strong></li>
-<li><strong>WordNet</strong></li>
-</ul>
-<hr>
-<h1 id="Key"><a href="#Key" class="headerlink" title="Key:"></a>Key:</h1><h2 id="What’s-NTLK"><a href="#What’s-NTLK" class="headerlink" title="What’s NTLK?"></a><strong>What’s NTLK?</strong></h2><p>NTLK 是一个自然语言工具包，最初创建于 2001 年，最初是宾州大学计算机与信息科学系计算语言学课程的一部分，大部分 NLP 研究者入门的首选 tool。</p>
-<p>另外，这本书是关于用 Python 进行自然语言处理的一本入门书，基本上可以看做是 NLTK 这个库的 HandBook，使用的方法均是 nltk 库中的方法。如果希望查阅 API 文档或者是下载安装 NLTK，可以前往 <a href="http://www.nltk.org" target="_blank" rel="external"> 官方网站 </a> 下载，官网上提供和的 API 文档涵盖了工具包中的每一个模块、类和函数，详细说明了各种参数，以及用法示例，在此不再赘述。</p>
-<ul>
-<li><strong>简单介绍一下 NLTK 的几个重要的模块以及功能描述：</strong></li>
-</ul>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th>语言处理任务</th>
-<th>NLTK 模块</th>
-<th>功能描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>获取语料库</td>
-<td>nltk.corpus</td>
-<td>语料库和字典的标准化接口</td>
-</tr>
-<tr>
-<td>字符串处理</td>
-<td>nltk.tokenize, nltk.stem</td>
-<td>分词、句子分解、提取主干</td>
-</tr>
-<tr>
-<td>搭配探究</td>
-<td>nltk.collocations</td>
-<td>t- 检验、卡方、点互信息</td>
-</tr>
-<tr>
-<td>词性标识符</td>
-<td>nltk.tag</td>
-<td>n-gram、backoff、Brill、HMM、TnT</td>
-</tr>
-<tr>
-<td>分类</td>
-<td>nltk.classify，nltk.cluster</td>
-<td>决策树、最大熵、朴素贝叶斯、EM、k-means</td>
-</tr>
-<tr>
-<td>分块</td>
-<td>nltk.chunk</td>
-<td>正则表达式、n-gram、命名实体</td>
-</tr>
-<tr>
-<td>解析</td>
-<td>nltk.parse</td>
-<td>图表、基于特征、一致性、概率性、依赖项</td>
-</tr>
-<tr>
-<td>语义解释</td>
-<td>nltk.sem，nltk.inference</td>
-<td>ℷ 演算、一阶逻辑、模型检验</td>
-</tr>
-<tr>
-<td>指标评测</td>
-<td>nltk.metrice</td>
-<td>精度、召回率、协议系数</td>
-</tr>
-<tr>
-<td>概率与估计</td>
-<td>nltk.probability</td>
-<td>频率分布、平滑概率分布</td>
-</tr>
-<tr>
-<td>应用</td>
-<td>nltk.app，nltk.chat</td>
-<td>图形化的关键词排序、分析器、WordNet 查看器、聊天机器人</td>
-</tr>
-<tr>
-<td>语言学领域的工作</td>
-<td>nltk.toolbox</td>
-<td>处理 SIL 数据格式的工具箱</td>
-</tr>
-</tbody>
-</table>
-</div>
-<hr>
-<h2 id="concordance-function"><a href="#concordance-function" class="headerlink" title="concordance function"></a>concordance <strong>function</strong></h2><ul>
-<li><strong><code>concordance()</code></strong> 函数：这个函数挺有意思的，是 nltk 下的一个函数，可以显示指定单词的出现情况（使用这个函数，指定单词的大小写不敏感），同时还可以显示一些上下文。下面是该函数的使用场景（其中 text1 的内容是 nltk.book 导入后中的 text1）:</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; text1.concordance(&quot;monstrous&quot;)</div><div class="line">    Building index...</div><div class="line">    Displaying 11 of 11 matches:</div><div class="line">    ong the former , one was of a most monstrous size . ... This came towards us ,</div><div class="line">    ON OF THE PSALMS . &quot; Touching that monstrous bulk of the whale or ork we have r</div><div class="line">    ll over with a heathenish array of monstrous clubs and spears . Some were thick</div><div class="line">    d as you gazed , and wondered what monstrous cannibal and savage could ever hav</div><div class="line">    that has survived the flood ; most monstrous and most mountainous ! That Himmal</div><div class="line">    they might scout at Moby Dick as a monstrous fable , or still worse and more de</div><div class="line">    th of Radney .&apos;&quot; CHAPTER 55 Of the monstrous Pictures of Whales . I shall ere l</div><div class="line">    ing Scenes . In connexion with the monstrous pictures of whales , I am strongly</div><div class="line">    ere to enter upon those still more monstrous stories of them which are to be fo</div></pre></td></tr></table></figure>
-<p>这个函数的具体实现如下：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">concordance</span><span class="params">(self, word, width=<span class="number">79</span>, lines=<span class="number">25</span>)</span>:</span></div><div class="line">    <span class="string">"""</span></div><div class="line">    Print a concordance for ``word`` with the specified context window.</div><div class="line">    Word matching is not case-sensitive.</div><div class="line">    :seealso: ``ConcordanceIndex``</div><div class="line">"""</div><div class="line">    </div><div class="line">    <span class="keyword">if</span> <span class="string">'_concordance_index'</span> <span class="keyword">not</span> <span class="keyword">in</span> self.__dict__:</div><div class="line">        print(<span class="string">"Building index..."</span>)</div><div class="line">        self._concordance_index = ConcordanceIndex(self.tokens,</div><div class="line">                                                   key=<span class="keyword">lambda</span> s:s.lower())</div><div class="line"></div><div class="line">    self._concordance_index.print_concordance(word, width, lines)</div></pre></td></tr></table></figure>
-<hr>
-<h2 id="Word-Sense-Disambiguation-amp-Pronoun-Resolution"><a href="#Word-Sense-Disambiguation-amp-Pronoun-Resolution" class="headerlink" title="Word Sense Disambiguation &amp; Pronoun Resolution"></a>Word Sense Disambiguation &amp; Pronoun Resolution</h2><ul>
-<li>Word Sense Disambiguation</li>
-</ul>
-<p>词义消歧，简而言之，我们需要做的就是分析出特定上下文中的词被赋予的是哪个意思。例如：</p>
-<blockquote>
-<p>a. <strong>serve</strong>: help with food or drink; hold an office; put ball into  play </p>
-<p>b. <strong>dish</strong>: plate; course of a meal; communications device</p>
-</blockquote>
-<ul>
-<li>Pronoun Resolution</li>
-</ul>
-<p>指代消解，是解决“词义消歧”的一个手段，解决“谁对谁做了什么”，即检测动词的主语和宾语，另外还有 <strong> 语义角色标注</strong>（semantic role labing）— 确定名词短语如何与动词相关联（如代理、受事、工具等）。</p>
-<hr>
-<h2 id="Text-Corpus-Structure"><a href="#Text-Corpus-Structure" class="headerlink" title="Text Corpus Structure"></a>Text Corpus Structure</h2><p>以下是几种常见的语料库结构：<br><img src="https://farm1.staticflickr.com/445/31263100710_d839312795_o.png" alt=""></p>
-<ul>
-<li>最简单的一种语料库是一些孤立的没有什么特别结构的文本集合；</li>
-<li>一些语料库按如文体（布朗语料库）等分类成组织结构；</li>
-<li>一些分类会重叠，如主题类别（路透社语料库）；</li>
-<li>另外一些语料库可以表示随时间变化，语言用法的改变（就职演说语料库）；</li>
-</ul>
-<hr>
-<h2 id="WordNet"><a href="#WordNet" class="headerlink" title="WordNet"></a>WordNet</h2><ul>
-<li>Senses and Synonyms.（意义与同义词）</li>
-<li>Synonyms and Synset.（同义词集与词条）</li>
-<li>The WordNet Hierarchy.（WordNet 的层次结构）</li>
-</ul>
-<blockquote>
-<p>WordNet synsets correspond to abstract concepts, and they don’t always have corre- sponding words in English. These concepts are linked together in a hierarchy. Some concepts are very general, such as Entity, State, Event; these are called unique begin- ners or root synsets. Others, such as gas guzzler and hatchback, are much more specific.</p>
-</blockquote>
-<p>WordNet 概念的层次片段：每个节点对应一个同义词集；边表示上位词 / 下位词关系，即上级概念与从属概念的关系。<br><img src="https://farm1.staticflickr.com/474/31598383846_537809b299_o.png" alt=""></p>
-<ul>
-<li>Hyponyms and Hypernyms.（下位词与上位词）</li>
-<li>Antonyms.（反义词）</li>
-</ul>
-<hr>
-<h1 id="Correct-errors-in-printing"><a href="#Correct-errors-in-printing" class="headerlink" title="Correct errors in printing:"></a>Correct errors in printing:</h1><ul>
-<li>P19:</li>
-</ul>
-<p>在 「Your Trun」 的那块内容中：</p>
-<blockquote>
-<p>使用 text2 尝试前面频率分布的例子。…如果得到的是错误信息：NameError: name ‘FreqDist’is not defined，则需要在一开始输入  <strong><code>from nltk.book import *</code></strong>。</p>
-</blockquote>
-<p>需更正为：</p>
-<blockquote>
-<p>使用 text2 尝试前面频率分布的例子。…如果得到的是错误信息：NameError: name ‘FreqDist’is not defined，则需要在一开始输入 <strong><code>from nltk import *</code></strong>。</p>
-</blockquote>
-<p><strong>原因：<code>nltk.book</code> 中并不存在 <code>FreqDist()</code> 这一 function.</strong></p>
-<hr>
-<ul>
-<li>P48:</li>
-</ul>
-<p>在 「Inaugural Address Corpus」 的那块代码部分中：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; cfd = nltk.ConditionalFreqDist(</div><div class="line">...           (target, file[:4])</div><div class="line">...           <span class="keyword">for</span> fileid <span class="keyword">in</span> inaugural.fileids()</div></pre></td></tr></table></figure></p>
-<p>需更正为：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; cfd = nltk.ConditionalFreqDist(</div><div class="line">...           (target, fileid[:4])</div><div class="line">...           <span class="keyword">for</span> fileid <span class="keyword">in</span> inaugural.fileids()</div></pre></td></tr></table></figure>
-<hr>
-<h1 id="Practice"><a href="#Practice" class="headerlink" title="Practice:"></a>Practice:</h1><blockquote>
-<p>6.○ In the discussion of comparative wordlists, we created an object called <strong>translate</strong>, which you could look up using words in both German and Italian in order to get corresponding words in English. What problem might arise with this approach? Can you suggest a way to avoid this problem?</p>
-</blockquote>
-<ul>
-<li>如果输入错误（不存在的词语或者其他没有通过 <strong><code>translate.update(dict(xx))</code></strong> 加入字典的语言词语，则会引发 <strong>KeyError</strong>）。其中一个解决办法是，添加一个错误处理情况。</li>
-</ul>
-<blockquote>
-<p>8.◑ Define a conditional frequency distribution over the Names Corpus that allows you to see which initial letters are more frequent for males versus females (see Figure 2-7).</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; cfd = nltk.ConditionalFreqDist(</div><div class="line">...            (fileid, name[1]</div><div class="line">...            <span class="keyword">for</span> fileid <span class="keyword">in</span> names.fileids()</div><div class="line">...            <span class="keyword">for</span> name <span class="keyword">in</span> names.words(fileid))</div></pre></td></tr></table></figure>
-<blockquote>
-<p>14.◑ Define a function <strong><code>supergloss(s)</code></strong> that takes a synset s as its argument and returns a string consisting of the concatenation of the definition of <strong>s</strong>, and the definitions of all the hypernyms and hyponyms of <strong>s</strong>.</p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">supergloss</span><span class="params">(s)</span>:</span></div><div class="line">    s = wn.synset(<span class="string">'s'</span>)</div><div class="line">    hyponyms_of_s = s.hyponyms()</div><div class="line">    hypernyms_of_s = s.hypernyms()</div><div class="line">    <span class="keyword">return</span> str(s) + str(hyponyms_of_s) + str(hypernyms_of_s)</div></pre></td></tr></table></figure>
-<blockquote>
-<p>17.◑ Write a function that finds the 50 most frequently occurring words of a text that are not stopwords.</p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">most_fifty_words</span><span class="params">(text)</span>:</span></div><div class="line">    stopwords = nltk.corpus.stopwords.words(<span class="string">'english'</span>)</div><div class="line">    content = [w <span class="keyword">for</span> w <span class="keyword">in</span> text <span class="keyword">if</span> w.lower() <span class="keyword">not</span> <span class="keyword">in</span> stopwords]</div><div class="line">    fdist = FreqDist(content)</div><div class="line">    vocabulary = list(fdist.keys())</div><div class="line">    <span class="keyword">return</span> vocabulary[:<span class="number">50</span>]</div></pre></td></tr></table></figure>
-<hr>
-]]></content>
-    
-    <summary type="html">
-    
-      本文是关于「Natural Language Processing with Python」这本书的 Chapter 1 &amp; 2 的学习笔记。
-    
-    </summary>
-    
-      <category term="NLP" scheme="http://randolph.pro/categories/NLP/"/>
-    
-      <category term="Book:「NLP with Python」" scheme="http://randolph.pro/categories/NLP/Book-%E3%80%8CNLP-with-Python%E3%80%8D/"/>
-    
-    
       <category term="Python" scheme="http://randolph.pro/tags/Python/"/>
     
-      <category term="NLP" scheme="http://randolph.pro/tags/NLP/"/>
+      <category term="Natural Language Processing" scheme="http://randolph.pro/tags/Natural-Language-Processing/"/>
     
   </entry>
   
