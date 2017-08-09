@@ -85,7 +85,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Machine Learning,Papers," />
+  <meta name="keywords" content="Machine Learning,Python,Natural Language Processing," />
 
 
 
@@ -103,24 +103,22 @@
 
 
 
-<meta name="description" content="Dropout 是 CNN 中防止过拟合提高效果的一个大杀器，但对于其为何有效，却众说纷纭。">
-<meta name="keywords" content="Machine Learning,Papers">
+<meta name="description" content="本文是关于「Natural Language Processing with Python」这本书的 Chapter 1 &amp; 2 的学习笔记。">
+<meta name="keywords" content="Machine Learning,Python,Natural Language Processing">
 <meta property="og:type" content="article">
-<meta property="og:title" content="♜「Papers」 About Dropout">
-<meta property="og:url" content="http://randolph.pro/2017/03/01/♜「Papers」About Dropout/index.html">
+<meta property="og:title" content="♞「NLP with Python」 Chapter 1 &amp; 2">
+<meta property="og:url" content="http://randolph.pro/2015/09/11/♞「NLP with Python」 Chapter 1 & 2/index.html">
 <meta property="og:site_name" content="黃某人">
-<meta property="og:description" content="Dropout 是 CNN 中防止过拟合提高效果的一个大杀器，但对于其为何有效，却众说纷纭。">
+<meta property="og:description" content="本文是关于「Natural Language Processing with Python」这本书的 Chapter 1 &amp; 2 的学习笔记。">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="https://farm5.staticflickr.com/4373/35507009504_3298ce3029_o.jpg">
-<meta property="og:image" content="https://farm4.staticflickr.com/3878/33037649431_ab442383e2_o.png">
-<meta property="og:image" content="https://farm3.staticflickr.com/2588/32782576600_aefb2c6586_o.png">
-<meta property="og:image" content="https://farm4.staticflickr.com/3817/33123833046_48bf6f3dba_o.png">
-<meta property="og:image" content="https://farm3.staticflickr.com/2517/33185584305_9d146f80be_o.png">
-<meta property="og:updated_time" content="2017-08-06T12:56:57.000Z">
+<meta property="og:image" content="https://farm5.staticflickr.com/4327/35823201720_84f3fa0d21_o.jpg">
+<meta property="og:image" content="https://farm1.staticflickr.com/445/31263100710_d839312795_o.png">
+<meta property="og:image" content="https://farm1.staticflickr.com/474/31598383846_537809b299_o.png">
+<meta property="og:updated_time" content="2017-08-09T14:13:59.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="♜「Papers」 About Dropout">
-<meta name="twitter:description" content="Dropout 是 CNN 中防止过拟合提高效果的一个大杀器，但对于其为何有效，却众说纷纭。">
-<meta name="twitter:image" content="https://farm5.staticflickr.com/4373/35507009504_3298ce3029_o.jpg">
+<meta name="twitter:title" content="♞「NLP with Python」 Chapter 1 &amp; 2">
+<meta name="twitter:description" content="本文是关于「Natural Language Processing with Python」这本书的 Chapter 1 &amp; 2 的学习笔记。">
+<meta name="twitter:image" content="https://farm5.staticflickr.com/4327/35823201720_84f3fa0d21_o.jpg">
 
 
 
@@ -148,13 +146,13 @@
 
 
 
-  <link rel="canonical" href="http://randolph.pro/2017/03/01/♜「Papers」About Dropout/"/>
+  <link rel="canonical" href="http://randolph.pro/2015/09/11/♞「NLP with Python」 Chapter 1 & 2/"/>
 
 
 
 
 
-  <title>♜「Papers」 About Dropout | 黃某人</title>
+  <title>♞「NLP with Python」 Chapter 1 & 2 | 黃某人</title>
   
 
 
@@ -341,7 +339,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://randolph.pro/2017/03/01/♜「Papers」About Dropout/">
+    <link itemprop="mainEntityOfPage" href="http://randolph.pro/2015/09/11/♞「NLP with Python」 Chapter 1 & 2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Randolph">
@@ -358,7 +356,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">♜「Papers」 About Dropout</h2>
+          <h2 class="post-title" itemprop="name headline">♞「NLP with Python」 Chapter 1 & 2</h2>
         
 
         <div class="post-meta">
@@ -370,8 +368,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-01T00:00:00+08:00">
-                2017-03-01
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-09-11T00:00:00+08:00">
+                2015-09-11
               </time>
             
 
@@ -404,8 +402,19 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Machine-Learning/Papers/" itemprop="url" rel="index">
-                    <span itemprop="name">Papers</span>
+                  <a href="/categories/Machine-Learning/Natural-Language-Processing/" itemprop="url" rel="index">
+                    <span itemprop="name">Natural Language Processing</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Machine-Learning/Natural-Language-Processing/Book-「NLP-with-Python」/" itemprop="url" rel="index">
+                    <span itemprop="name">Book:「NLP with Python」</span>
                   </a>
                 </span>
 
@@ -422,9 +431,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/03/01/♜「Papers」About Dropout/#comments" itemprop="discussionUrl">
+                <a href="/2015/09/11/♞「NLP with Python」 Chapter 1 & 2/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/03/01/♜「Papers」About Dropout/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2015/09/11/♞「NLP with Python」 Chapter 1 & 2/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -432,7 +441,7 @@
 
           
           
-             <span id="/2017/03/01/♜「Papers」About Dropout/" class="leancloud_visitors" data-flag-title="♜「Papers」 About Dropout">
+             <span id="/2015/09/11/♞「NLP with Python」 Chapter 1 & 2/" class="leancloud_visitors" data-flag-title="♞「NLP with Python」 Chapter 1 & 2">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-fire"></i>
@@ -453,7 +462,7 @@
                   <i class="fa fa-file-word-o"></i>
                 </span>
                 <span title="Words count in article">
-                  3,596
+                  1,578
                 </span>
                 <span> words </span>
                 
@@ -468,7 +477,7 @@
                   <i class="fa fa-clock-o"></i>
                 </span>
                 <span title="Reading time">
-                  14
+                  7
                 </span>
                 <span> mins </span>
               
@@ -477,7 +486,7 @@
 
           
               <div class="post-description">
-                  Dropout 是 CNN 中防止过拟合提高效果的一个大杀器，但对于其为何有效，却众说纷纭。
+                  本文是关于「Natural Language Processing with Python」这本书的 Chapter 1 & 2 的学习笔记。
               </div>
           
 
@@ -491,187 +500,176 @@
       
 
       
-        <p><img src="https://farm5.staticflickr.com/4373/35507009504_3298ce3029_o.jpg" alt=""></p>
-<p>有关「Machine Learning」的其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/">「Machine Learning」</a><br>有关「Papers」的其他论文学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/Papers/">「Papers」</a></p>
-<h1 id="Dropout"><a href="#Dropout" class="headerlink" title="Dropout"></a>Dropout</h1><p>开篇明义，dropout 是指在深度学习网络的训练过程中，对于神经网络单元，按照 <strong> 一定的概率 </strong> 将其 <strong> 暂时 </strong> 从网络中丢弃。注意是暂时，对于随机梯度下降来说，由于是随机丢弃，故而每一个 mini-batch 都在训练不同的网络。</p>
-<p>Dropout 是 CNN 中防止过拟合提高效果的一个大杀器，但对于其为何有效，却众说纷纭。在下读到两篇代表性的论文，代表两种不同的观点，特此分享给大家。</p>
-<h1 id="组合派"><a href="# 组合派" class="headerlink" title="组合派"></a>组合派 </h1><p> 参考文献中第一篇中的观点，Hinton 在 2014 年提出的。</p>
-<h2 id="观点"><a href="# 观点" class="headerlink" title="观点"></a>观点 </h2><p> 该论文从神经网络的难题出发，一步一步引出 dropout 为何有效的解释。大规模的神经网络有两个缺点：</p>
-<ul>
-<li>费时</li>
-<li>容易过拟合</li>
+        <p><img src="https://farm5.staticflickr.com/4327/35823201720_84f3fa0d21_o.jpg" alt=""></p>
+<p>有关该书的其他学习笔记系列：<a href="http://randolph.pro/categories/NLP/Book-「NLP-with-Python」/">Book:「NLP with Python」</a></p>
+<h1 id="Related"><a href="#Related" class="headerlink" title="Related"></a>Related</h1><ul>
+<li><strong>NLTK</strong></li>
+<li><strong>concordance() function</strong></li>
+<li><strong>Word Sense Disambiguation &amp; Pronoun Resolution</strong></li>
+<li><strong>Text Corpus Structure</strong></li>
+<li><strong>WordNet</strong></li>
 </ul>
-<p>这两个缺点是深度学习上的两大瓶颈，过拟合是很多机器学习的通病，过拟合了，得到的模型基本就废了。而为了解决过拟合问题，一般会采用 ensemble 方法，即训练多个模型做组合，此时，费时就成为一个大问题，不仅训练起来费时，测试起来多个模型也很费时。总之，几乎形成了一个死锁。</p>
-<p>Dropout 的出现很好的可以解决这个问题，每次做完 dropout，相当于从原始的网络中找到一个更瘦的网络，如下图所示：</p>
-<p><img src="https://farm4.staticflickr.com/3878/33037649431_ab442383e2_o.png" alt=""></p>
-<p>因而，对于一个有 $N$ 个节点的神经网络，有了 dropout 后，就可以看做是 $2^n$ 个模型的集合了，但此时要训练的参数数目却是不变的，这就解脱了费时的问题。</p>
-<h2 id="Motivation"><a href="#Motivation" class="headerlink" title="Motivation"></a>Motivation</h2><p>虽然直观上看 dropout 是 ensemble 在分类性能上的一个近似，然而实际中，dropout 毕竟还是在一个神经网络上进行的，只训练出了一套模型参数。那么他到底是因何而有效呢？这就要从动机上进行分析了。论文中作者对 dropout 的动机做了一个十分精彩的类比：</p>
+<hr>
+<h1 id="Key"><a href="#Key" class="headerlink" title="Key:"></a>Key:</h1><h2 id="What’s-NTLK"><a href="#What’s-NTLK" class="headerlink" title="What’s NTLK?"></a><strong>What’s NTLK?</strong></h2><p>NTLK 是一个自然语言工具包，最初创建于 2001 年，最初是宾州大学计算机与信息科学系计算语言学课程的一部分，大部分 NLP 研究者入门的首选 tool。</p>
+<p>另外，这本书是关于用 Python 进行自然语言处理的一本入门书，基本上可以看做是 NLTK 这个库的 HandBook，使用的方法均是 nltk 库中的方法。如果希望查阅 API 文档或者是下载安装 NLTK，可以前往 <a href="http://www.nltk.org" target="_blank" rel="external"> 官方网站 </a> 下载，官网上提供和的 API 文档涵盖了工具包中的每一个模块、类和函数，详细说明了各种参数，以及用法示例，在此不再赘述。</p>
+<ul>
+<li><strong>简单介绍一下 NLTK 的几个重要的模块以及功能描述：</strong></li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>语言处理任务</th>
+<th>NLTK 模块</th>
+<th>功能描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>获取语料库</td>
+<td>nltk.corpus</td>
+<td>语料库和字典的标准化接口</td>
+</tr>
+<tr>
+<td>字符串处理</td>
+<td>nltk.tokenize, nltk.stem</td>
+<td>分词、句子分解、提取主干</td>
+</tr>
+<tr>
+<td>搭配探究</td>
+<td>nltk.collocations</td>
+<td>t- 检验、卡方、点互信息</td>
+</tr>
+<tr>
+<td>词性标识符</td>
+<td>nltk.tag</td>
+<td>n-gram、backoff、Brill、HMM、TnT</td>
+</tr>
+<tr>
+<td>分类</td>
+<td>nltk.classify，nltk.cluster</td>
+<td>决策树、最大熵、朴素贝叶斯、EM、k-means</td>
+</tr>
+<tr>
+<td>分块</td>
+<td>nltk.chunk</td>
+<td>正则表达式、n-gram、命名实体</td>
+</tr>
+<tr>
+<td>解析</td>
+<td>nltk.parse</td>
+<td>图表、基于特征、一致性、概率性、依赖项</td>
+</tr>
+<tr>
+<td>语义解释</td>
+<td>nltk.sem，nltk.inference</td>
+<td>ℷ 演算、一阶逻辑、模型检验</td>
+</tr>
+<tr>
+<td>指标评测</td>
+<td>nltk.metrice</td>
+<td>精度、召回率、协议系数</td>
+</tr>
+<tr>
+<td>概率与估计</td>
+<td>nltk.probability</td>
+<td>频率分布、平滑概率分布</td>
+</tr>
+<tr>
+<td>应用</td>
+<td>nltk.app，nltk.chat</td>
+<td>图形化的关键词排序、分析器、WordNet 查看器、聊天机器人</td>
+</tr>
+<tr>
+<td>语言学领域的工作</td>
+<td>nltk.toolbox</td>
+<td>处理 SIL 数据格式的工具箱</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr>
+<h2 id="concordance-function"><a href="#concordance-function" class="headerlink" title="concordance function"></a>concordance <strong>function</strong></h2><ul>
+<li><strong><code>concordance()</code></strong> 函数：这个函数挺有意思的，是 nltk 下的一个函数，可以显示指定单词的出现情况（使用这个函数，指定单词的大小写不敏感），同时还可以显示一些上下文。下面是该函数的使用场景（其中 text1 的内容是 nltk.book 导入后中的 text1）:</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; text1.concordance(&quot;monstrous&quot;)</div><div class="line">    Building index...</div><div class="line">    Displaying 11 of 11 matches:</div><div class="line">    ong the former , one was of a most monstrous size . ... This came towards us ,</div><div class="line">    ON OF THE PSALMS . &quot; Touching that monstrous bulk of the whale or ork we have r</div><div class="line">    ll over with a heathenish array of monstrous clubs and spears . Some were thick</div><div class="line">    d as you gazed , and wondered what monstrous cannibal and savage could ever hav</div><div class="line">    that has survived the flood ; most monstrous and most mountainous ! That Himmal</div><div class="line">    they might scout at Moby Dick as a monstrous fable , or still worse and more de</div><div class="line">    th of Radney .&apos;&quot; CHAPTER 55 Of the monstrous Pictures of Whales . I shall ere l</div><div class="line">    ing Scenes . In connexion with the monstrous pictures of whales , I am strongly</div><div class="line">    ere to enter upon those still more monstrous stories of them which are to be fo</div></pre></td></tr></table></figure>
+<p>这个函数的具体实现如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">concordance</span><span class="params">(self, word, width=<span class="number">79</span>, lines=<span class="number">25</span>)</span>:</span></div><div class="line">    <span class="string">"""</span></div><div class="line">    Print a concordance for ``word`` with the specified context window.</div><div class="line">    Word matching is not case-sensitive.</div><div class="line">    :seealso: ``ConcordanceIndex``</div><div class="line">"""</div><div class="line">    </div><div class="line">    <span class="keyword">if</span> <span class="string">'_concordance_index'</span> <span class="keyword">not</span> <span class="keyword">in</span> self.__dict__:</div><div class="line">        print(<span class="string">"Building index..."</span>)</div><div class="line">        self._concordance_index = ConcordanceIndex(self.tokens,</div><div class="line">                                                   key=<span class="keyword">lambda</span> s:s.lower())</div><div class="line"></div><div class="line">    self._concordance_index.print_concordance(word, width, lines)</div></pre></td></tr></table></figure>
+<hr>
+<h2 id="Word-Sense-Disambiguation-amp-Pronoun-Resolution"><a href="#Word-Sense-Disambiguation-amp-Pronoun-Resolution" class="headerlink" title="Word Sense Disambiguation &amp; Pronoun Resolution"></a>Word Sense Disambiguation &amp; Pronoun Resolution</h2><ul>
+<li>Word Sense Disambiguation</li>
+</ul>
+<p>词义消歧，简而言之，我们需要做的就是分析出特定上下文中的词被赋予的是哪个意思。例如：</p>
 <blockquote>
-<p>A motivation for dropout comes from a theory of the role of sex in evolution (Livnat et al., 2010). Sexual reproduction involves taking half the genes of one parent and half of the other, adding a very small amount of random mutation, and combining them to produce an offspring. The asexual alternative is to create an offspring with a slightly mutated copy of the parent’s genes. It seems plausible that asexual reproduction should be a better way to optimize individual fitness because a good set of genes that have come to work well together can be passed on directly to the offspring. On the other hand, sexual reproduction is likely to break up these co-adapted sets of genes, especially if these sets are large and, intuitively, this should decrease the fitness of organisms that have already evolved complicated co- adaptations. However, sexual reproduction is the way most advanced organisms evolved.</p>
-<p><strong>One possible explanation for the superiority of sexual reproduction is that, over the long term, the criterion for natural selection may not be individual fitness but rather mix-ability of genes.</strong> The ability of a set of genes to be able to work well with another random set of genes makes them more robust. Since a gene cannot rely on a large set of partners to be present at all times, it must learn to do something useful on its own or in collaboration with a small number of other genes. <strong>According to this theory, the role of sexual reproduction is not just to allow useful new genes to spread throughout the population, but also to facilitate this process by reducing complex co-adaptations that would reduce the chance of a new gene improving the fitness of an individual.</strong> Similarly, each hidden unit in a neural network trained with dropout must learn to work with a randomly chosen sample of other units. This should make each hidden unit more robust and drive it towards creating useful features on its own without relying on other hidden units to correct its mistakes. However, the hidden units within a layer will still learn to do different things from each other. One might imagine that the net would become robust against dropout by making many copies of each hidden unit, but this is a poor solution for exactly the same reason as replica codes are a poor way to deal with a noisy channel.</p>
-<p>A closely related, but slightly different motivation for dropout comes from thinking about successful conspiracies. Ten conspiracies each involving five people is probably a better way to create havoc than one big conspiracy that requires fifty people to all play their parts correctly. If conditions do not change and there is plenty of time for rehearsal, a big conspiracy can work well, but with non-stationary conditions, the smaller the conspiracy the greater its chance of still working. Complex co-adaptations can be trained to work well on a training set, but on novel test data they are far more likely to fail than multiple simpler co-adaptations that achieve the same thing.</p>
+<p>a. <strong>serve</strong>: help with food or drink; hold an office; put ball into  play </p>
+<p>b. <strong>dish</strong>: plate; course of a meal; communications device</p>
 </blockquote>
-<p>大概的意思，讲的是：</p>
-<p>在自然界中，在中大型动物中，一般是有性繁殖，有性繁殖是指后代的基因从父母两方各继承一半。但是从直观上看，似乎无性繁殖更加合理，因为无性繁殖可以保留大段大段的优秀基因。而有性繁殖则将基因随机拆了又拆，破坏了大段基因的联合适应性。</p>
-<p>但是自然选择中毕竟没有选择无性繁殖，而选择了有性繁殖，须知物竞天择，适者生存。我们先做一个假设，那就是基因的力量在于混合的能力而非单个基因的能力。不管是有性繁殖还是无性繁殖都得遵循这个假设。为了证明有性繁殖的强大，我们先看一个概率学小知识。</p>
-<p>比如要搞一次恐怖袭击，两种方式： </p>
 <ul>
-<li>集中 50 人，让这 50 个人准确分工，搞一次大爆破。 </li>
-<li>将 50 人分成 10 组，每组 5 人，分头行事，去随便什么地方搞点动作，成功一次就算。</li>
+<li>Pronoun Resolution</li>
 </ul>
-<p>哪一个成功的概率比较大？ 显然是后者。</p>
-<p>那么，类比过来，有性繁殖的方式不仅仅可以将优秀的基因传下来，还可以降低基因之间的联合适应性，使得复杂的大段大段基因联合适应性变成比较小的一个一个小段基因的联合适应性。</p>
-<p>Dropout 也能达到同样的效果，它强迫一个神经单元，和随机挑选出来的其他神经单元共同工作，达到好的效果。消除减弱了神经元节点间的联合适应性，增强了泛化能力。</p>
-<p>个人补充一点：那就是植物和微生物大多采用无性繁殖，因为他们的生存环境的变化很小，因而不需要太强的适应新环境的能力，所以保留大段大段优秀的基因适应当前环境就足够了。而高等动物却不一样，要准备随时适应新的环境，因而将基因之间的联合适应性变成一个一个小的，更能提高生存的概率。</p>
-<h2 id="Dropout 带来的模型的变化"><a href="#Dropout 带来的模型的变化" class="headerlink" title="Dropout 带来的模型的变化"></a>Dropout 带来的模型的变化 </h2><p> 而为了达到 ensemble 的特性，有了 dropout 后，神经网络的训练和预测就会发生一些变化。</p>
+<p>指代消解，是解决“词义消歧”的一个手段，解决“谁对谁做了什么”，即检测动词的主语和宾语，另外还有 <strong> 语义角色标注</strong>（semantic role labing）— 确定名词短语如何与动词相关联（如代理、受事、工具等）。</p>
+<hr>
+<h2 id="Text-Corpus-Structure"><a href="#Text-Corpus-Structure" class="headerlink" title="Text Corpus Structure"></a>Text Corpus Structure</h2><p>以下是几种常见的语料库结构：<br><img src="https://farm1.staticflickr.com/445/31263100710_d839312795_o.png" alt=""></p>
 <ul>
-<li><p>训练层面</p>
-<p>无可避免的，训练网络的每个单元要添加一道概率流程。 </p>
-<p><img src="https://farm3.staticflickr.com/2588/32782576600_aefb2c6586_o.png" alt=""></p>
-<p>对应的公式变化如下如下：</p>
-<ul>
-<li><p>没有 dropout 的神经网络 </p>
-<script type="math/tex; mode=display">
-\begin{align}
-z_{i}^{(l+1)} & = w_{i}^{(l+1)}y^{l} + b_{i}^{(l+1)} \cr
-y_{i}^{(l+1)} & = f(z_{i}^{(l+1)})
-\end{align}</script><p>​</p>
-</li>
-<li><p>有 dropout 的神经网络 </p>
-<script type="math/tex; mode=display">
-\begin{align}
-r_{i}^{(l)} & \sim Bernoulli(p) \cr
-\tilde{y}^{(l)} & = r^{(l)}*y^{(l)}\cr
-z_{i}^{(l+1)} & = w_{i}^{(l+1)} \tilde{y}^{l} + b_{i}^{(l+1)} \cr
-y_{i}^{(l+1)} & = f(z_{i}^{(l+1)})
-\end{align}</script><p>​</p>
-</li>
+<li>最简单的一种语料库是一些孤立的没有什么特别结构的文本集合；</li>
+<li>一些语料库按如文体（布朗语料库）等分类成组织结构；</li>
+<li>一些分类会重叠，如主题类别（路透社语料库）；</li>
+<li>另外一些语料库可以表示随时间变化，语言用法的改变（就职演说语料库）；</li>
 </ul>
-</li>
-<li><p>测试层面</p>
-<p>预测的时候，每一个单元的参数要预乘以 $p$。</p>
-<p><img src="https://farm4.staticflickr.com/3817/33123833046_48bf6f3dba_o.png" alt=""> </p>
-</li>
+<hr>
+<h2 id="WordNet"><a href="#WordNet" class="headerlink" title="WordNet"></a>WordNet</h2><ul>
+<li>Senses and Synonyms.（意义与同义词）</li>
+<li>Synonyms and Synset.（同义词集与词条）</li>
+<li>The WordNet Hierarchy.（WordNet 的层次结构）</li>
 </ul>
-<h2 id="论文中的其他技术点"><a href="# 论文中的其他技术点" class="headerlink" title="论文中的其他技术点"></a>论文中的其他技术点</h2><ul>
-<li><p>防止过拟合的方法：</p>
-<ul>
-<li>提前终止（当验证集上的效果变差的时候）</li>
-<li>L1 和 L2 正则化加权</li>
-<li>Soft Weight Sharing</li>
-<li>Dropout</li>
-</ul>
-</li>
-<li><p>Dropout 率的选择</p>
-<ul>
-<li>经过交叉验证，隐含节点 dropout 率等于 0.5 的时候效果最好，原因是 0.5 的时候 dropout 随机生成的网络结构最多。</li>
-<li>Dropout 也可以被用作一种添加噪声的方法，直接对 input 进行操作。输入层设为更接近 1 的数。使得输入变化不会太大（0.8）。</li>
-</ul>
-</li>
-<li><p>训练过程 </p>
-<ul>
-<li>对参数 w 的训练进行球形限制（max-normalization），对 dropout 的训练非常有用。</li>
-<li>球形半径 c 是一个需要调整的参数。可以使用验证集进行参数调优。</li>
-<li>Dropout 单独使用效果不错，但是 <strong>dropout</strong>、<strong>max-normalization</strong>、<strong>large decaying learning rates</strong> 以及 <strong>high momentum</strong> 组合起来效果更好，比如 max-norm regularization 就可以防止大的 learning rate 导致的参数 blow up。</li>
-<li>使用 pretraining 方法也可以帮助 dropout 训练参数，在使用 dropout 时，要将所有参数都乘以 $\frac{1}{p}$。</li>
-</ul>
-</li>
-<li><p>部分实验结论</p>
-<p>该论文的实验部分很丰富，有大量的评测数据。</p>
-<ul>
-<li><p>maxout 神经网络中得另一种方法，Cifar-10 上超越 dropout</p>
-</li>
-<li><p>文本分类上，dropout 效果提升有限，分析原因可能是 Reuters-RCV1 数据量足够大，过拟合并不是模型的主要问题</p>
-</li>
-<li><p>dropout 与其他 standerd regularizers 的对比 </p>
-</li>
-<li><ul>
-<li>L2 weight decay</li>
-<li>lasso</li>
-<li>KL-sparsity</li>
-<li>max-norm regularization</li>
-<li>dropout</li>
-</ul>
-</li>
-<li><p>特征学习 </p>
-<ul>
-<li>标准神经网络，节点之间的相关性使得他们可以合作去 fix 其他节点中得噪声，但这些合作并不能在 unseen data 上泛化，于是，过拟合，dropout 破坏了这种相关性。在 autoencoder 上，有 dropout 的算法更能学习有意义的特征（不过只能从直观上，不能量化）。</li>
-<li>产生的向量具有稀疏性。</li>
-<li>保持隐含节点数目不变，dropout 率变化；保持激活的隐节点数目不变，隐节点数目变化。</li>
-</ul>
-</li>
-<li><p>数据量小的时候，dropout 效果不好，数据量大了，dropout 效果好</p>
-</li>
-<li><p>模型均值预测</p>
-<ul>
-<li>使用 weight-scaling 来做预测的均值化</li>
-<li>使用 mente-carlo 方法来做预测。即对每个样本根据 dropout 率先 sample 出来 k 个 net，然后做预测，k 越大，效果越好。</li>
-</ul>
-</li>
-<li><p>Multiplicative Gaussian Noise </p>
-<p>使用高斯分布的 dropou t 而不是伯努利模型 dropout</p>
-</li>
-<li><p>dropout 的缺点就在于训练时间是没有 dropout 网络的 2-3 倍。</p>
-</li>
-</ul>
-</li>
-</ul>
-<p>&gt;</p>
 <blockquote>
-<p>进一步需要了解的知识点</p>
-<ul>
-<li>dropout RBM</li>
-<li>Marginalizing Dropout </li>
-<li>具体来说就是将随机化的 dropout 变为确定性的，比如对于 Logistic 回归，其 dropout 相当于加了一个正则化项</li>
-<li>Bayesian neural network 对稀疏数据特别有用，比如 medical diagnosis, genetics, drug discovery and other computational biology applications</li>
-</ul>
+<p>WordNet synsets correspond to abstract concepts, and they don’t always have corre- sponding words in English. These concepts are linked together in a hierarchy. Some concepts are very general, such as Entity, State, Event; these are called unique begin- ners or root synsets. Others, such as gas guzzler and hatchback, are much more specific.</p>
 </blockquote>
-<h1 id="噪声派"><a href="# 噪声派" class="headerlink" title="噪声派"></a>噪声派 </h1><p> 参考文献中第二篇论文中得观点，也很强有力。</p>
-<h2 id="观点 -1"><a href="# 观点 -1" class="headerlink" title="观点"></a>观点 </h2><p> 观点十分明确，就是对于每一个 dropout 后的网络，进行训练时，相当于做了 Data Augmentation，因为，总可以找到一个样本，使得在原始的网络上也能达到 dropout 单元后的效果。 比如，对于某一层，dropout 一些单元后，形成的结果是<code>(1.5,0,2.5,0,1,2,0)</code>，其中 0 是被 drop 的单元，那么总能找到一个样本，使得结果也是如此。这样，每一次 dropout 其实都相当于增加了样本。</p>
-<h2 id="稀疏性"><a href="# 稀疏性" class="headerlink" title="稀疏性"></a>稀疏性 </h2><h3 id="知识点 A"><a href="# 知识点 A" class="headerlink" title="知识点 A"></a> 知识点 A</h3><p>首先，先了解一个知识点：</p>
+<p>WordNet 概念的层次片段：每个节点对应一个同义词集；边表示上位词 / 下位词关系，即上级概念与从属概念的关系。<br><img src="https://farm1.staticflickr.com/474/31598383846_537809b299_o.png" alt=""></p>
+<ul>
+<li>Hyponyms and Hypernyms.（下位词与上位词）</li>
+<li>Antonyms.（反义词）</li>
+</ul>
+<hr>
+<h1 id="Correct-errors-in-printing"><a href="#Correct-errors-in-printing" class="headerlink" title="Correct errors in printing:"></a>Correct errors in printing:</h1><ul>
+<li>P19:</li>
+</ul>
+<p>在 「Your Trun」 的那块内容中：</p>
 <blockquote>
-<p>When the data points belonging to a particular class are distributed along a linear manifold, or sub-space, of the input space, it is enough to learn a single set of features which can span the entire manifold. But when the data is distributed along a highly non-linear and discontinuous manifold, the best way to represent such a distribution is to learn features which can explicitly represent small local regions of the input space, effectively “tiling” the space to define non-linear decision boundaries.</p>
+<p>使用 text2 尝试前面频率分布的例子。…如果得到的是错误信息：NameError: name ‘FreqDist’is not defined，则需要在一开始输入  <strong><code>from nltk.book import *</code></strong>。</p>
 </blockquote>
-<p>大致含义就是： </p>
-<p>在线性空间中，学习一个整个空间的特征集合是足够的，但是当数据分布在非线性不连续的空间中得时候，则学习局部空间的特征集合会比较好。</p>
-<h3 id="知识点 B"><a href="# 知识点 B" class="headerlink" title="知识点 B"></a>知识点 B</h3><p>假设有一堆数据，这些数据由 $M$ 个不同的非连续性簇表示，给定 $K$ 个数据。那么一个有效的特征表示是将输入的每个簇映射为特征以后，簇之间的重叠度最低。使用 $A$ 来表示每个簇的特征表示中激活的维度集合。重叠度是指两个不同的簇的 $A<em>{i}$ 和 $A</em>{j}$ 之间的 Jaccard 相似度最小，那么：</p>
-<ul>
-<li>当 $K$ 足够大时，即便 $A$ 也很大，也可以学习到最小的重叠度</li>
-<li>当 $K$ 小，$M$ 大时，学习到最小的重叠度的方法就是减小 $A$ 的大小，也就是稀疏性</li>
-</ul>
-<p>上述的解释可能是有点太专业化，比较拗口。主旨意思是这样，我们要把不同的类别区分出来，就要是学习到的特征区分度比较大，在数据量足够的情况下不会发生过拟合的行为，不用担心。但当数据量小的时候，可以通过稀疏性，来增加特征的区分度。</p>
+<p>需更正为：</p>
 <blockquote>
-<p>因而有意思的假设来了，使用了 dropout 后，相当于得到更多的局部簇，同等的数据下，簇变多了，因而为了使区分性变大，就使得稀疏性变大。</p>
+<p>使用 text2 尝试前面频率分布的例子。…如果得到的是错误信息：NameError: name ‘FreqDist’is not defined，则需要在一开始输入 <strong><code>from nltk import *</code></strong>。</p>
 </blockquote>
-<p>为了验证这个数据，论文还做了一个实验，如下图：</p>
-<p><img src="https://farm3.staticflickr.com/2517/33185584305_9d146f80be_o.png" alt=""></p>
-<p>该实验使用了一个模拟数据，即在一个圆上，有 15000 个点，将这个圆分为若干个弧，在一个弧上的属于同一个类，一共 10 个类，即不同的弧也可能属于同一个类。改变弧的大小，就可以使属于同一类的弧变多。</p>
-<p>实验结论就是当弧长变大时，簇数目变少，稀疏度变低。与假设相符合。</p>
-<p>个人观点：该假设不仅仅解释了 dropout 何以导致稀疏性，还解释了 dropout 因为使局部簇的更加显露出来，而根据知识点 A 可得，使局部簇显露出来是 dropout 能防止过拟合的原因，而稀疏性只是其外在表现。</p>
-<h2 id="论文中的其他技术知识点"><a href="# 论文中的其他技术知识点" class="headerlink" title="论文中的其他技术知识点"></a>论文中的其他技术知识点</h2><ul>
-<li><p>将 dropout 映射回得样本训练一个完整的网络，可以达到 dropout 的效果。</p>
-</li>
-<li><p>Dropout 由固定值变为一个区间，可以提高效果。</p>
-</li>
-<li><p>将 dropout 后的表示映射回输入空间时，并不能找到一个样本 x* 使得所有层都能满足 dropout 的结果，但可以为每一层都找到一个样本，这样，对于每一个 dropout，都可以找到一组样本可以模拟结果。</p>
-</li>
-<li><p>dropout 对应的还有一个 dropConnect，公式如下：</p>
+<p><strong>原因：<code>nltk.book</code> 中并不存在 <code>FreqDist()</code> 这一 function.</strong></p>
+<hr>
 <ul>
-<li><p>dropout</p>
-<script type="math/tex; mode=display">
-h_{n} = \overrightarrow{w_{n}}^{T}(\overrightarrow{r} \odot \overrightarrow{x}) + b_{n}</script><p>​</p>
-</li>
-<li><p>dropConnect</p>
-<script type="math/tex; mode=display">
-h_{n} = (\overrightarrow{r_{n}} \odot \overrightarrow{w_{n}})^{T}\overrightarrow{x} + b_{n}</script><p>​</p>
-</li>
+<li>P48:</li>
 </ul>
-</li>
-<li><p>试验中，纯二值化的特征的效果也非常好，说明了稀疏表示在进行空间分区的假设是成立的，一个特征是否被激活表示该样本是否在一个子空间中。</p>
-</li>
+<p>在 「Inaugural Address Corpus」 的那块代码部分中：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; cfd = nltk.ConditionalFreqDist(</div><div class="line">...           (target, file[:4])</div><div class="line">...           <span class="keyword">for</span> fileid <span class="keyword">in</span> inaugural.fileids()</div></pre></td></tr></table></figure></p>
+<p>需更正为：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; cfd = nltk.ConditionalFreqDist(</div><div class="line">...           (target, fileid[:4])</div><div class="line">...           <span class="keyword">for</span> fileid <span class="keyword">in</span> inaugural.fileids()</div></pre></td></tr></table></figure>
+<hr>
+<h1 id="Practice"><a href="#Practice" class="headerlink" title="Practice:"></a>Practice:</h1><blockquote>
+<p>6.○ In the discussion of comparative wordlists, we created an object called <strong>translate</strong>, which you could look up using words in both German and Italian in order to get corresponding words in English. What problem might arise with this approach? Can you suggest a way to avoid this problem?</p>
+</blockquote>
+<ul>
+<li>如果输入错误（不存在的词语或者其他没有通过 <strong><code>translate.update(dict(xx))</code></strong> 加入字典的语言词语，则会引发 <strong>KeyError</strong>）。其中一个解决办法是，添加一个错误处理情况。</li>
 </ul>
-<h1 id="参考文献"><a href="# 参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p>[1]. Srivastava N, Hinton G, Krizhevsky A, et al. Dropout: A simple way to prevent neural networks from overfitting[J]. The Journal of Machine Learning Research, 2014, 15(1): 1929-1958.</p>
-<p>[2]. Dropout as data augmentation. <a href="http://arxiv.org/abs/1506.08700" target="_blank" rel="external">http://arxiv.org/abs/1506.08700</a></p>
+<blockquote>
+<p>8.◑ Define a conditional frequency distribution over the Names Corpus that allows you to see which initial letters are more frequent for males versus females (see Figure 2-7).</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; cfd = nltk.ConditionalFreqDist(</div><div class="line">...            (fileid, name[1]</div><div class="line">...            <span class="keyword">for</span> fileid <span class="keyword">in</span> names.fileids()</div><div class="line">...            <span class="keyword">for</span> name <span class="keyword">in</span> names.words(fileid))</div></pre></td></tr></table></figure>
+<blockquote>
+<p>14.◑ Define a function <strong><code>supergloss(s)</code></strong> that takes a synset s as its argument and returns a string consisting of the concatenation of the definition of <strong>s</strong>, and the definitions of all the hypernyms and hyponyms of <strong>s</strong>.</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">supergloss</span><span class="params">(s)</span>:</span></div><div class="line">    s = wn.synset(<span class="string">'s'</span>)</div><div class="line">    hyponyms_of_s = s.hyponyms()</div><div class="line">    hypernyms_of_s = s.hypernyms()</div><div class="line">    <span class="keyword">return</span> str(s) + str(hyponyms_of_s) + str(hypernyms_of_s)</div></pre></td></tr></table></figure>
+<blockquote>
+<p>17.◑ Write a function that finds the 50 most frequently occurring words of a text that are not stopwords.</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">most_fifty_words</span><span class="params">(text)</span>:</span></div><div class="line">    stopwords = nltk.corpus.stopwords.words(<span class="string">'english'</span>)</div><div class="line">    content = [w <span class="keyword">for</span> w <span class="keyword">in</span> text <span class="keyword">if</span> w.lower() <span class="keyword">not</span> <span class="keyword">in</span> stopwords]</div><div class="line">    fdist = FreqDist(content)</div><div class="line">    vocabulary = list(fdist.keys())</div><div class="line">    <span class="keyword">return</span> vocabulary[:<span class="number">50</span>]</div></pre></td></tr></table></figure>
+<hr>
 
       
     </div>
@@ -703,7 +701,9 @@ h_{n} = (\overrightarrow{r_{n}} \odot \overrightarrow{w_{n}})^{T}\overrightarrow
           
             <a href="/tags/Machine-Learning/" rel="tag"># Machine Learning</a>
           
-            <a href="/tags/Papers/" rel="tag"># Papers</a>
+            <a href="/tags/Python/" rel="tag"># Python</a>
+          
+            <a href="/tags/Natural-Language-Processing/" rel="tag"># Natural Language Processing</a>
           
         </div>
       
@@ -716,18 +716,14 @@ h_{n} = (\overrightarrow{r_{n}} \odot \overrightarrow{w_{n}})^{T}\overrightarrow
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/01/14/♞「Machine Learning」 Classification - KNN & kd Tree/" rel="next" title="♞「Machine Learning」 Classification - KNN & kd Tree">
-                <i class="fa fa-chevron-left"></i> ♞「Machine Learning」 Classification - KNN & kd Tree
-              </a>
-            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/03/03/「Machine Learning」 Factorization Machines/" rel="prev" title="「Machine Learning」 Factorization Machines">
-                「Machine Learning」 Factorization Machines <i class="fa fa-chevron-right"></i>
+              <a href="/2015/09/17/♞「NLP with Python」 Chapter 3/" rel="prev" title="♞「NLP with Python」 Chapter 3">
+                ♞「NLP with Python」 Chapter 3 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -938,7 +934,7 @@ h_{n} = (\overrightarrow{r_{n}} \odot \overrightarrow{w_{n}})^{T}\overrightarrow
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Dropout"><span class="nav-number">1.</span> <span class="nav-text">Dropout</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#组合派"><span class="nav-number">2.</span> <span class="nav-text">组合派 </span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#观点"><span class="nav-number">2.1.</span> <span class="nav-text">观点 </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Motivation"><span class="nav-number">2.2.</span> <span class="nav-text">Motivation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Dropout 带来的模型的变化"><span class="nav-number">2.3.</span> <span class="nav-text">Dropout 带来的模型的变化 </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#论文中的其他技术点"><span class="nav-number">2.4.</span> <span class="nav-text">论文中的其他技术点</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#噪声派"><span class="nav-number">3.</span> <span class="nav-text">噪声派 </span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#观点 -1"><span class="nav-number">3.1.</span> <span class="nav-text">观点 </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#稀疏性"><span class="nav-number">3.2.</span> <span class="nav-text">稀疏性 </span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#知识点 A"><span class="nav-number">3.2.1.</span> <span class="nav-text"> 知识点 A</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#知识点 B"><span class="nav-number">3.2.2.</span> <span class="nav-text">知识点 B</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#论文中的其他技术知识点"><span class="nav-number">3.3.</span> <span class="nav-text">论文中的其他技术知识点</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考文献"><span class="nav-number">4.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Related"><span class="nav-number">1.</span> <span class="nav-text">Related</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Key"><span class="nav-number">2.</span> <span class="nav-text">Key:</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#What’s-NTLK"><span class="nav-number">2.1.</span> <span class="nav-text">What’s NTLK?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#concordance-function"><span class="nav-number">2.2.</span> <span class="nav-text">concordance function</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Word-Sense-Disambiguation-amp-Pronoun-Resolution"><span class="nav-number">2.3.</span> <span class="nav-text">Word Sense Disambiguation & Pronoun Resolution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Text-Corpus-Structure"><span class="nav-number">2.4.</span> <span class="nav-text">Text Corpus Structure</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#WordNet"><span class="nav-number">2.5.</span> <span class="nav-text">WordNet</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Correct-errors-in-printing"><span class="nav-number">3.</span> <span class="nav-text">Correct errors in printing:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Practice"><span class="nav-number">4.</span> <span class="nav-text">Practice:</span></a></li></ol></div>
             
 
           </div>
@@ -1111,9 +1107,9 @@ h_{n} = (\overrightarrow{r_{n}} \odot \overrightarrow{w_{n}})^{T}\overrightarrow
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://randolph.pro/2017/03/01/♜「Papers」About Dropout/';
-          this.page.identifier = '2017/03/01/♜「Papers」About Dropout/';
-          this.page.title = '♜「Papers」 About Dropout';
+          this.page.url = 'http://randolph.pro/2015/09/11/♞「NLP with Python」 Chapter 1 & 2/';
+          this.page.identifier = '2015/09/11/♞「NLP with Python」 Chapter 1 & 2/';
+          this.page.title = '♞「NLP with Python」 Chapter 1 & 2';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://randolphvi.disqus.com/embed.js';
