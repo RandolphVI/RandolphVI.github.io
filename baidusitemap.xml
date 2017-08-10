@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://randolph.pro/2017/03/07/%E3%80%8CTensorFlow%E3%80%8DCNN%20Introduction/</loc>
+    <lastmod>2017-08-10T13:53:37.000Z</lastmod>
+    <data>
+        <display>
+        <title>「Machine Learning」 CNN Introduction</title>
+        <pubTime>2017-03-06T16:00:00.000Z</pubTime>
+        
+        <tag>Machine Learning</tag>
+         
+         
+           
+             
+              <breadCrumb title="Machine Learning" url="http://randolph.pro/categories/Machine-Learning/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://randolph.pro/2016/04/15/%E3%80%8CComputer%20Vision%E3%80%8D%20JPEG%20Compression/</loc>
     <lastmod>2017-08-09T14:21:51.000Z</lastmod>
     <data>
@@ -107,26 +127,6 @@
           
              
               <breadCrumb title="Book:「Machine Learning」" url="http://randolph.pro/categories/Machine-Learning/Book-%E3%80%8CMachine-Learning%E3%80%8D/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://randolph.pro/2017/03/07/%E3%80%8CTensorFlow%E3%80%8DCNN%20Introduction/</loc>
-    <lastmod>2017-08-08T13:37:56.000Z</lastmod>
-    <data>
-        <display>
-        <title>「Machine Learning」 CNN Introduction</title>
-        <pubTime>2017-03-06T16:00:00.000Z</pubTime>
-        
-        <tag>Machine Learning</tag>
-         
-         
-           
-             
-              <breadCrumb title="Machine Learning" url="http://randolph.pro/categories/Machine-Learning/"/>
           
         </display>
     </data>
