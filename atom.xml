@@ -263,12 +263,12 @@ c_{i} = f(w⋅x_{i:i+h-1}+b)</script><p><code>conv2d()</code> 得到的其实是
   
   <entry>
     <title>「Machine Learning」 CNN Introduction</title>
-    <link href="http://randolph.pro/2017/03/07/%E3%80%8CTensorFlow%E3%80%8DCNN%20Introduction/"/>
-    <id>http://randolph.pro/2017/03/07/「TensorFlow」CNN Introduction/</id>
+    <link href="http://randolph.pro/2017/03/07/%E3%80%8CMachine%20Learning%E3%80%8D%20CNN%20Introduction/"/>
+    <id>http://randolph.pro/2017/03/07/「Machine Learning」 CNN Introduction/</id>
     <published>2017-03-06T16:00:00.000Z</published>
-    <updated>2017-08-10T13:53:37.000Z</updated>
+    <updated>2017-08-11T10:13:31.000Z</updated>
     
-    <content type="html"><![CDATA[<p><img src="https://farm5.staticflickr.com/4399/36206153111_6662041dd1_o.png" alt=""></p>
+    <content type="html"><![CDATA[<p><img src="https://farm5.staticflickr.com/4300/35460446383_aafc34ca3c_o.jpg" alt=""></p>
 <p>有关「Machine Learning」的其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/">「Machine Learning」</a></p>
 <h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>在 20 世纪 60 年代，Hubel 和 Wiesel 在研究猫脑皮层中用于局部敏感和方向选择的神经元时发现其独特的网络结构可以有效地降低反馈神经网络的复杂性，继而出了卷积神经网络（Convolutional Neural Networks- 简称 CNN）。<br>卷积神经网络（Convolutional Neural Network）虽然很早被出，但是却是近些年才得以发展起来并引起广泛重视的。它是深度学习技术中极具代表的网络结构之一，也是近些年语音分析和图像识别领域的研究热点，后来发现其在 NLP 自然语言处理上的效果同样不俗。它以其特有的局部连接、权值共享网络结构，有效地降低了深度神经网络模型的复杂度，极大地减少了权值的数量。</p>
 <h2 id="Build-a-Multilayer-Convolutional-Network"><a href="#Build-a-Multilayer-Convolutional-Network" class="headerlink" title="Build a Multilayer Convolutional Network"></a>Build a Multilayer Convolutional Network</h2><p>在 CNN 卷积神经网络中，主要有四个操作：</p>
