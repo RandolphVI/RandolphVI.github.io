@@ -134,7 +134,7 @@
 <meta property="og:image" content="https://farm4.staticflickr.com/3934/32186606394_d904c8de2e_o.png">
 <meta property="og:image" content="https://farm1.staticflickr.com/682/32186608014_f69038eb43_o.png">
 <meta property="og:image" content="https://farm3.staticflickr.com/2830/32216998463_c7897cf1d5_o.png">
-<meta property="og:updated_time" content="2017-08-11T10:13:31.000Z">
+<meta property="og:updated_time" content="2017-08-12T14:30:16.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="「Machine Learning」 CNN Introduction">
 <meta name="twitter:description" content="本文主要介绍 Deep Learning 中的 CNN 卷积神经网络。">
@@ -460,7 +460,7 @@
                   <i class="fa fa-file-word-o"></i>
                 </span>
                 <span title="Words count in article">
-                  5,996
+                  6,098
                 </span>
                 <span> words </span>
                 
@@ -500,7 +500,10 @@
       
         <p><img src="https://farm5.staticflickr.com/4300/35460446383_aafc34ca3c_o.jpg" alt=""></p>
 <p>有关「Machine Learning」的其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/">「Machine Learning」</a></p>
-<h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>在 20 世纪 60 年代，Hubel 和 Wiesel 在研究猫脑皮层中用于局部敏感和方向选择的神经元时发现其独特的网络结构可以有效地降低反馈神经网络的复杂性，继而出了卷积神经网络（Convolutional Neural Networks- 简称 CNN）。<br>卷积神经网络（Convolutional Neural Network）虽然很早被出，但是却是近些年才得以发展起来并引起广泛重视的。它是深度学习技术中极具代表的网络结构之一，也是近些年语音分析和图像识别领域的研究热点，后来发现其在 NLP 自然语言处理上的效果同样不俗。它以其特有的局部连接、权值共享网络结构，有效地降低了深度神经网络模型的复杂度，极大地减少了权值的数量。</p>
+<h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>在 20 世纪 60 年代，Hubel 和 Wiesel 在研究猫脑皮层中用于局部敏感和方向选择的神经元时发现其独特的网络结构可以有效地降低反馈神经网络的复杂性，继而出了卷积神经网络（Convolutional Neural Networks- 简称 CNN）。</p>
+<p>卷积神经网络（Convolutional Neural Network）虽然很早被出，但是却是近些年才得以发展起来并引起广泛重视的。它是深度学习技术中极具代表的网络结构之一，也是近些年语音分析和图像识别领域的研究热点，后来发现其在 NLP 自然语言处理上的效果同样不俗。它以其特有的局部连接、权值共享网络结构，有效地降低了深度神经网络模型的复杂度，极大地减少了权值的数量。</p>
+<h2 id="Perceptron"><a href="#Perceptron" class="headerlink" title="Perceptron"></a>Perceptron</h2><p>在理解 CNN 卷积神经网络之前，有必要了解神经网络的机制以及缺点，而其中典型的神经元网络就是 MLP （Multi-Layer Perceptron）多层感知器。</p>
+<p>而多层感知器中的 Multi-Layer 是针对单层感知器（Perceptron）而言，单层感知器是最简单的前馈人工神经网络，就是通常人们所说的“神经元”。 </p>
 <h2 id="Build-a-Multilayer-Convolutional-Network"><a href="#Build-a-Multilayer-Convolutional-Network" class="headerlink" title="Build a Multilayer Convolutional Network"></a>Build a Multilayer Convolutional Network</h2><p>在 CNN 卷积神经网络中，主要有四个操作：</p>
 <ol>
 <li>卷积</li>
@@ -950,7 +953,7 @@ Output = Max(zero, Input)</script><ol>
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Build-a-Multilayer-Convolutional-Network"><span class="nav-number">1.1.</span> <span class="nav-text">Build a Multilayer Convolutional Network</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#What’s-CNN"><span class="nav-number">1.2.</span> <span class="nav-text">What’s CNN</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Convolution"><span class="nav-number">1.2.1.</span> <span class="nav-text">Convolution</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ReLU"><span class="nav-number">1.2.2.</span> <span class="nav-text">ReLU</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ReLU 的种类"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">ReLU 的种类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#效果"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">效果 </span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#参考文献"><span class="nav-number">1.2.2.3.</span> <span class="nav-text">参考文献</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Pooling"><span class="nav-number">1.2.3.</span> <span class="nav-text">Pooling</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Connect"><span class="nav-number">1.2.4.</span> <span class="nav-text">Connect</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Use-Backpropagation-to-Train-whole-network"><span class="nav-number">1.2.5.</span> <span class="nav-text">Use Backpropagation to Train whole network</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Visualization-on-CNN"><span class="nav-number">1.2.6.</span> <span class="nav-text">Visualization on CNN</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Other-ConvNet"><span class="nav-number">1.2.7.</span> <span class="nav-text">Other ConvNet</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Perceptron"><span class="nav-number">1.1.</span> <span class="nav-text">Perceptron</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Build-a-Multilayer-Convolutional-Network"><span class="nav-number">1.2.</span> <span class="nav-text">Build a Multilayer Convolutional Network</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#What’s-CNN"><span class="nav-number">1.3.</span> <span class="nav-text">What’s CNN</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Convolution"><span class="nav-number">1.3.1.</span> <span class="nav-text">Convolution</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ReLU"><span class="nav-number">1.3.2.</span> <span class="nav-text">ReLU</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ReLU 的种类"><span class="nav-number">1.3.2.1.</span> <span class="nav-text">ReLU 的种类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#效果"><span class="nav-number">1.3.2.2.</span> <span class="nav-text">效果 </span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#参考文献"><span class="nav-number">1.3.2.3.</span> <span class="nav-text">参考文献</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Pooling"><span class="nav-number">1.3.3.</span> <span class="nav-text">Pooling</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Connect"><span class="nav-number">1.3.4.</span> <span class="nav-text">Connect</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Use-Backpropagation-to-Train-whole-network"><span class="nav-number">1.3.5.</span> <span class="nav-text">Use Backpropagation to Train whole network</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Visualization-on-CNN"><span class="nav-number">1.3.6.</span> <span class="nav-text">Visualization on CNN</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Other-ConvNet"><span class="nav-number">1.3.7.</span> <span class="nav-text">Other ConvNet</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
