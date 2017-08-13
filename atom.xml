@@ -1697,7 +1697,7 @@ E_{cost} = \frac{m^+ \times (1-TPR) \times cost_{01}+m^- \times FPR \times cost_
     <link href="http://randolph.pro/2016/12/26/%E2%99%9E%E3%80%8CMachine%20Learning%E3%80%8D%20Chapter%201/"/>
     <id>http://randolph.pro/2016/12/26/♞「Machine Learning」 Chapter 1/</id>
     <published>2016-12-25T16:00:00.000Z</published>
-    <updated>2017-08-13T15:47:31.000Z</updated>
+    <updated>2017-08-13T15:49:57.000Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://farm5.staticflickr.com/4307/36174772306_62cfbc8cd6_o.jpg" alt=""></p>
 <p>有关该书的其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/Book-「Machine-Learning」/">Book:「Machine Learning」</a></p>
@@ -1767,32 +1767,38 @@ E_{cost} = \frac{m^+ \times (1-TPR) \times cost_{01}+m^- \times FPR \times cost_
 <td style="text-align:center">8. 色泽 = 乌黑 根蒂 = 稍蜷 敲声 = 沉闷</td>
 </tr>
 <tr>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
+<td style="text-align:center">9. 色泽 = 青绿 根蒂 = 蜷缩 敲声 =*</td>
+<td style="text-align:center">10. 色泽 = 青绿 根蒂 = 稍蜷 敲声 =*</td>
+<td style="text-align:center">11. 色泽 = 乌黑 根蒂 = 蜷缩 敲声 =*</td>
+<td style="text-align:center">12. 色泽 = 乌黑 根蒂 = 稍蜷 敲声 =*</td>
 </tr>
 <tr>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
+<td style="text-align:center">13. 色泽 = 青绿 根蒂 =* 敲声 = 浊响</td>
+<td style="text-align:center">14. 色泽 = 青绿 根蒂 =* 敲声 = 沉闷</td>
+<td style="text-align:center">15. 色泽 = 乌黑 根蒂 =* 敲声 = 浊响</td>
+<td style="text-align:center">16. 色泽 = 乌黑 根蒂 =* 敲声 = 沉闷</td>
 </tr>
 <tr>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
+<td style="text-align:center">17. 色泽 =* 根蒂 = 蜷缩 敲声 = 浊响</td>
+<td style="text-align:center">18. 色泽 =* 根蒂 = 蜷缩 敲声 = 沉闷</td>
+<td style="text-align:center">19. 色泽 =* 根蒂 = 稍蜷 敲声 = 浊响</td>
+<td style="text-align:center">20. 色泽 =* 根蒂 = 稍蜷 敲声 = 沉闷</td>
 </tr>
 <tr>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
+<td style="text-align:center">21. 色泽 = 青绿 根蒂 =<em> 敲声 =</em></td>
+<td style="text-align:center">22. 色泽 = 乌黑 根蒂 =<em> 敲声 =</em></td>
+<td style="text-align:center">23. 色泽 =<em> 根蒂 = 蜷缩 敲声 =</em></td>
+<td style="text-align:center">24. 色泽 =<em> 根蒂 = 稍蜷 敲声 =</em></td>
+</tr>
+<tr>
+<td style="text-align:center">25. 色泽 =<em> 根蒂 =</em> 敲声 = 浊响</td>
+<td style="text-align:center">26. 色泽 =<em> 根蒂 =</em> 敲声 = 沉闷</td>
+<td style="text-align:center">27. 色泽 =<em> 根蒂 =</em> 敲声 =*</td>
+<td style="text-align:center">28. 空集Ø</td>
 </tr>
 </tbody>
 </table>
 </div>
-<p>9. 色泽 = 青绿 根蒂 = 蜷缩 敲声 =<em><br>10. 色泽 = 青绿 根蒂 = 稍蜷 敲声 =</em><br>11. 色泽 = 乌黑 根蒂 = 蜷缩 敲声 =<em><br>12. 色泽 = 乌黑 根蒂 = 稍蜷 敲声 =</em><br>13. 色泽 = 青绿 根蒂 =<em> 敲声 = 浊响<br>14. 色泽 = 青绿 根蒂 =</em> 敲声 = 沉闷<br>15. 色泽 = 乌黑 根蒂 =<em> 敲声 = 浊响<br>16. 色泽 = 乌黑 根蒂 =</em> 敲声 = 沉闷<br>17. 色泽 =<em> 根蒂 = 蜷缩 敲声 = 浊响<br>18. 色泽 =</em> 根蒂 = 蜷缩 敲声 = 沉闷<br>19. 色泽 =<em> 根蒂 = 稍蜷 敲声 = 浊响<br>20. 色泽 =</em> 根蒂 = 稍蜷 敲声 = 沉闷<br>21. 色泽 = 青绿 根蒂 =<em> 敲声 =</em><br>22. 色泽 = 乌黑 根蒂 =<em> 敲声 =</em><br>23. 色泽 =<em> 根蒂 = 蜷缩 敲声 =</em><br>24. 色泽 =<em> 根蒂 = 稍蜷 敲声 =</em><br>25. 色泽 =<em> 根蒂 =</em> 敲声 = 浊响<br>26. 色泽 =<em> 根蒂 =</em> 敲声 = 沉闷<br>27. 色泽 =<em> 根蒂 =</em> 敲声 =*<br>28. 空集Ø </p>
 <ul>
 <li>在该 28 种假设中根据 <code> 好瓜 ⟺ ((色泽 = 青绿) ∧ (根蒂 = 蜷缩) ∧ (敲声 = 浊响))</code>这条正例的数据删除数据，得到最后的版本空间为：</li>
 </ul>
