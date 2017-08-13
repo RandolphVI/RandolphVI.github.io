@@ -1697,7 +1697,7 @@ E_{cost} = \frac{m^+ \times (1-TPR) \times cost_{01}+m^- \times FPR \times cost_
     <link href="http://randolph.pro/2016/12/26/%E2%99%9E%E3%80%8CMachine%20Learning%E3%80%8D%20Chapter%201/"/>
     <id>http://randolph.pro/2016/12/26/♞「Machine Learning」 Chapter 1/</id>
     <published>2016-12-25T16:00:00.000Z</published>
-    <updated>2017-08-13T14:10:48.000Z</updated>
+    <updated>2017-08-13T15:42:58.000Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://farm5.staticflickr.com/4307/36174772306_62cfbc8cd6_o.jpg" alt=""></p>
 <p>有关该书的其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/Book-「Machine-Learning」/">Book:「Machine Learning」</a></p>
@@ -1741,7 +1741,37 @@ E_{cost} = \frac{m^+ \times (1-TPR) \times cost_{01}+m^- \times FPR \times cost_
 </ol>
 </blockquote>
 <ul>
-<li>数据集有 3 个属性，每个属性 2 种取值，一共 $ 3 \times 3 \times 3 + 1 = 28 $ 种假设：<br>大是非得失</li>
+<li>数据集有 3 个属性，每个属性 2 种取值，一共 $ 3 \times 3 \times 3 + 1 = 28 $ 种假设：</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Tables</th>
+<th style="text-align:center">Are</th>
+<th style="text-align:right">Cool</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>col 3 is</td>
+<td style="text-align:center">right-aligned</td>
+<td style="text-align:right">$1600</td>
+</tr>
+<tr>
+<td>col 2 is</td>
+<td style="text-align:center">centered</td>
+<td style="text-align:right">$12</td>
+</tr>
+<tr>
+<td>zebra stripes</td>
+<td style="text-align:center">are neat</td>
+<td style="text-align:right">$1</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
 <li>在该 28 种假设中根据 <code> 好瓜 ⟺ ((色泽 = 青绿) ∧ (根蒂 = 蜷缩) ∧ (敲声 = 浊响))</code>这条正例的数据删除数据，得到最后的版本空间为：</li>
 </ul>
 <hr>
