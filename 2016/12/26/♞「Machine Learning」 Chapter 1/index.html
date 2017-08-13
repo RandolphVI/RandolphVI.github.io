@@ -112,7 +112,7 @@
 <meta property="og:description" content="本文是关于周志华「Machine Learning」这本书的 Chapter 1 的学习笔记。">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://farm5.staticflickr.com/4307/36174772306_62cfbc8cd6_o.jpg">
-<meta property="og:updated_time" content="2017-08-06T13:18:42.000Z">
+<meta property="og:updated_time" content="2017-08-13T12:16:23.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="♞「Machine Learning」 Chapter 1">
 <meta name="twitter:description" content="本文是关于周志华「Machine Learning」这本书的 Chapter 1 的学习笔记。">
@@ -449,7 +449,7 @@
                   <i class="fa fa-file-word-o"></i>
                 </span>
                 <span title="Words count in article">
-                  3,030
+                  3,374
                 </span>
                 <span> words </span>
                 
@@ -464,7 +464,7 @@
                   <i class="fa fa-clock-o"></i>
                 </span>
                 <span title="Reading time">
-                  12
+                  13
                 </span>
                 <span> mins </span>
               
@@ -529,14 +529,19 @@
 </ol>
 </blockquote>
 <ul>
-<li>数据集有 3 个属性，每个属性 2 种取值，一共 $ 3 \times 3 \times 3 + 1 = 28 $ 种假设。</li>
+<li><p>数据集有 3 个属性，每个属性 2 种取值，一共 $ 3 \times 3 \times 3 + 1 = 28 $ 种假设：</p>
+<p>| <strong>1. 色泽 = 青绿 根蒂 = 蜷缩 敲声 = 浊响</strong> | <strong>2. 色泽 = 青绿 根蒂 = 蜷缩 敲声 = 沉闷</strong> | <strong>3. 色泽 = 青绿 根蒂 = 稍蜷 敲声 = 浊响</strong> | <strong>4. 色泽 = 青绿 根蒂 = 稍蜷 敲声 = 沉闷</strong> |<br>| ———————————- | ———————————- | ———————————- | ———————————- |<br>| <strong>5. 色泽 = 乌黑 根蒂 = 蜷缩 敲声 = 浊响</strong> | <strong>6. 色泽 = 乌黑 根蒂 = 蜷缩 敲声 = 沉闷</strong> | <strong>7. 色泽 = 乌黑 根蒂 = 稍蜷 敲声 = 浊响</strong> | <strong>8. 色泽 = 乌黑 根蒂 = 稍蜷 敲声 = 沉闷</strong> |<br>| <strong>9. 色泽 = 青绿 根蒂 = 蜷缩 敲声 =*</strong>  | <strong>10. 色泽 = 青绿 根蒂 = 稍蜷 敲声 =*</strong> | <strong>11. 色泽 = 乌黑 根蒂 = 蜷缩 敲声 =*</strong> | <strong>12. 色泽 = 乌黑 根蒂 = 稍蜷 敲声 =*</strong> |<br>| <strong>13. 色泽 = 青绿 根蒂 =* 敲声 = 浊响</strong> | <strong>14. 色泽 = 青绿 根蒂 =* 敲声 = 沉闷</strong> | <strong>15. 色泽 = 乌黑 根蒂 =* 敲声 = 浊响</strong> | <strong>16. 色泽 = 乌黑 根蒂 =* 敲声 = 沉闷</strong> |<br>| <strong>17. 色泽 =* 根蒂 = 蜷缩 敲声 = 浊响</strong> | <strong>18. 色泽 =* 根蒂 = 蜷缩 敲声 = 沉闷</strong> | <strong>19. 色泽 =* 根蒂 = 稍蜷 敲声 = 浊响</strong> | <strong>20. 色泽 =* 根蒂 = 稍蜷 敲声 = 沉闷</strong> |<br>| <strong>21. 色泽 = 青绿 根蒂 =<em> 敲声 =</em></strong>  | <strong>22. 色泽 = 乌黑 根蒂 =<em> 敲声 =</em></strong>  | <strong>23. 色泽 =<em> 根蒂 = 蜷缩 敲声 =</em></strong>  | <strong>24. 色泽 =<em> 根蒂 = 稍蜷 敲声 =</em></strong>  |<br>| <strong>25. 色泽 =<em> 根蒂 =</em> 敲声 = 浊响</strong>  | <strong>26. 色泽 =<em> 根蒂 =</em> 敲声 = 沉闷</strong>  | <strong>27. 色泽 =<em> 根蒂 =</em> 敲声 =*</strong>   | <strong>28. 空集Ø</strong>              |</p>
+<p>​</p>
+</li>
+<li><p>在该 28 种假设中根据 <code> 好瓜 ⟺ ((色泽 = 青绿) ∧ (根蒂 = 蜷缩) ∧ (敲声 = 浊响))</code>这条正例的数据删除数据，得到最后的版本空间为：</p>
+</li>
 </ul>
 <hr>
 <blockquote>
 <ol>
 <li>与使用单个合取式来进行假设表示相比，用“析合范式”将使得假设空间具有更强的表示能力。例如：</li>
 </ol>
-<p><code>好瓜 ⟺ ((色泽 = \*) ∧ (根蒂 = 蜷缩) ∧ (敲声 = \*)) ∨ ((色泽 = 乌黑) ∧ (根蒂 = \*) ∧ (敲声 = 沉闷))</code></p>
+<p><code>好瓜 ⟺ ((色泽 = *) ∧ (根蒂 = 蜷缩) ∧ (敲声 = *)) ∨ ((色泽 = 乌黑) ∧ (根蒂 = *) ∧ (敲声 = 沉闷))</code></p>
 <p>会把 <strong>(色泽 = 青绿) ∧ (根蒂 = 蜷缩) ∧ (敲声 = 清脆)</strong> 以及 <strong>(色泽 = 乌黑) ∧ (根蒂 = 硬挺) ∧ (敲声 = 沉闷)</strong> 都分类为“好瓜”。若使用最多包含 $k$ 个合取式的析合范式来表达表 1.1 西瓜分类问题的假设空间，试估算共有多少种可能的假设。 </p>
 </blockquote>
 <p>（提示：注意冗余情况， 如 <script type="math/tex">(A=a) \vee (A=*)</script> 与 $(A=*)$ 等价。） </p>

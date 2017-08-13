@@ -4,6 +4,31 @@
 
     
   <url>
+    <loc>http://randolph.pro/2016/12/26/%E2%99%9E%E3%80%8CMachine%20Learning%E3%80%8D%20Chapter%201/</loc>
+    <lastmod>2017-08-13T12:16:23.000Z</lastmod>
+    <data>
+        <display>
+        <title>♞「Machine Learning」 Chapter 1</title>
+        <pubTime>2016-12-25T16:00:00.000Z</pubTime>
+        
+        <tag>Machine Learning</tag>
+         
+        <tag>Python</tag>
+         
+         
+           
+             
+              <breadCrumb title="Machine Learning" url="http://randolph.pro/categories/Machine-Learning/"/>
+          
+             
+              <breadCrumb title="Book:「Machine Learning」" url="http://randolph.pro/categories/Machine-Learning/Book-%E3%80%8CMachine-Learning%E3%80%8D/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://randolph.pro/2017/03/07/%E3%80%8CMachine%20Learning%E3%80%8D%20CNN%20Introduction/</loc>
     <lastmod>2017-08-12T14:30:16.000Z</lastmod>
     <data>
@@ -202,31 +227,6 @@
            
              
               <breadCrumb title="TensorFlow" url="http://randolph.pro/categories/TensorFlow/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://randolph.pro/2016/12/26/%E2%99%9E%E3%80%8CMachine%20Learning%E3%80%8D%20Chapter%201/</loc>
-    <lastmod>2017-08-06T13:18:42.000Z</lastmod>
-    <data>
-        <display>
-        <title>♞「Machine Learning」 Chapter 1</title>
-        <pubTime>2016-12-25T16:00:00.000Z</pubTime>
-        
-        <tag>Machine Learning</tag>
-         
-        <tag>Python</tag>
-         
-         
-           
-             
-              <breadCrumb title="Machine Learning" url="http://randolph.pro/categories/Machine-Learning/"/>
-          
-             
-              <breadCrumb title="Book:「Machine Learning」" url="http://randolph.pro/categories/Machine-Learning/Book-%E3%80%8CMachine-Learning%E3%80%8D/"/>
           
         </display>
     </data>
