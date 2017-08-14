@@ -394,7 +394,7 @@ table {
   border-spacing: 0;
   border: 1px solid #ddd;
   font-size: 14px;
-  table-layout: fixed;
+  table-layout: auto;
   word-wrap: break-all;
 }
 table>tbody>tr:nth-of-type(odd) {
@@ -434,11 +434,11 @@ body {
 .header-inner {
   margin: 0 auto;
   padding: 100px 0 70px;
-  width: 1000px;
+  width: 900px;
 }
 @media (min-width: 1600px) {
   .container .header-inner {
-    width: 900px;
+    width: 1100px;
   }
 }
 .main {
@@ -446,11 +446,11 @@ body {
 }
 .main-inner {
   margin: 0 auto;
-  width: 1000px;
+  width: 900px;
 }
 @media (min-width: 1600px) {
   .container .main-inner {
-    width: 900px;
+    width: 1100px;
   }
 }
 .footer {
@@ -463,11 +463,11 @@ body {
 .footer-inner {
   box-sizing: border-box;
   margin: 20px auto;
-  width: 1000px;
+  width: 900px;
 }
 @media (min-width: 1600px) {
   .container .footer-inner {
-    width: 900px;
+    width: 1100px;
   }
 }
 pre,
@@ -1125,7 +1125,7 @@ pre .javascript .function {
 .posts-expand {
   padding-top: 40px;
 }
-@media (max-width: 1060px) {
+@media (max-width: 1280px) {
   .posts-expand {
     margin: 0 20px;
   }
@@ -1597,6 +1597,14 @@ pre .javascript .function {
   max-width: 96px;
   height: auto;
   border: 2px solid #333;
+/*头像圆形*/
+  border-radius: 80px;
+  -webkit-border-radius: 80px;
+  -moz-border-radius: 80px;
+/* 鼠标经过头像旋转360度 */
+  -webkit-transition: -webkit-transform 1.5s ease-out;
+  -moz-transition: -moz-transform 1.5s ease-out;
+  transition: transform 1.5s ease-out;
 }
 .site-author-name {
   margin: 5px 0 0;
@@ -1609,6 +1617,16 @@ pre .javascript .function {
   text-align: center;
   font-size: 14px;
   color: #999;
+}
+img:hover {
+/* 鼠标经过头像旋转360度 */
+  -webkit-transform: rotateZ(360deg);
+  -moz-transform: rotateZ(360deg);
+  -webkit-transform: rotateZ(360deg);
+  -moz-transform: rotateZ(360deg);
+  -ms-transform: rotateZ(360deg);
+  -o-transform: rotateZ(360deg);
+  transform: rotateZ(360deg);
 }
 .site-state {
   overflow: hidden;
@@ -1678,7 +1696,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #99fff9;
+  background: #e8ffe4;
 }
 .links-of-blogroll {
   font-size: 13px;
