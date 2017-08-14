@@ -1697,7 +1697,7 @@ E_{cost} = \frac{m^+ \times (1-TPR) \times cost_{01}+m^- \times FPR \times cost_
     <link href="http://randolph.pro/2016/12/26/%E2%99%9E%E3%80%8CMachine%20Learning%E3%80%8D%20Chapter%201/"/>
     <id>http://randolph.pro/2016/12/26/♞「Machine Learning」 Chapter 1/</id>
     <published>2016-12-25T16:00:00.000Z</published>
-    <updated>2017-08-14T03:04:35.000Z</updated>
+    <updated>2017-08-14T03:07:04.000Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://farm5.staticflickr.com/4307/36174772306_62cfbc8cd6_o.jpg" alt=""></p>
 <p>有关该书的其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/Book-「Machine-Learning」/">Book:「Machine Learning」</a></p>
@@ -1736,9 +1736,7 @@ E_{cost} = \frac{m^+ \times (1-TPR) \times cost_{01}+m^- \times FPR \times cost_
 </ul>
 <hr>
 <h1 id="Practice"><a href="#Practice" class="headerlink" title="Practice:"></a>Practice:</h1><blockquote>
-<ol>
-<li>表 1.1 中若只包含编号为 1 和 4 的两个样例，试给出相应的版本空间.</li>
-</ol>
+<p>1. 表 1.1 中若只包含编号为 1 和 4 的两个样例，试给出相应的版本空间.</p>
 </blockquote>
 <ul>
 <li>数据集有 3 个属性，每个属性 2 种取值，一共 $ 3 \times 3 \times 3 + 1 = 28 $ 种假设：</li>
@@ -1834,9 +1832,7 @@ E_{cost} = \frac{m^+ \times (1-TPR) \times cost_{01}+m^- \times FPR \times cost_
 <p><img src="https://farm5.staticflickr.com/4366/36147851030_43e856f6b2_o.png" alt=""></p>
 <hr>
 <blockquote>
-<ol>
-<li>与使用单个合取式来进行假设表示相比，用“析合范式”将使得假设空间具有更强的表示能力。例如：</li>
-</ol>
+<p>2. 与使用单个合取式来进行假设表示相比，用“析合范式”将使得假设空间具有更强的表示能力。例如：</p>
 <p><code>好瓜 ⟺ ((色泽 = *) ∧ (根蒂 = 蜷缩) ∧ (敲声 = *)) ∨ ((色泽 = 乌黑) ∧ (根蒂 = *) ∧ (敲声 = 沉闷))</code></p>
 <p>会把 <strong>(色泽 = 青绿) ∧ (根蒂 = 蜷缩) ∧ (敲声 = 清脆)</strong> 以及 <strong>(色泽 = 乌黑) ∧ (根蒂 = 硬挺) ∧ (敲声 = 沉闷)</strong> 都分类为“好瓜”。若使用最多包含 $k$ 个合取式的析合范式来表达表 1.1 西瓜分类问题的假设空间，试估算共有多少种可能的假设。 </p>
 </blockquote>
