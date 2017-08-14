@@ -115,6 +115,7 @@
 <meta property="og:image" content="https://farm1.staticflickr.com/445/31598501856_151da1837a_o.png">
 <meta property="og:image" content="https://farm6.staticflickr.com/5556/31263252700_81d0f5a7d0_o.png">
 <meta property="og:image" content="https://farm1.staticflickr.com/531/31635512885_c29ced14ac_o.png">
+<meta property="og:image" content="https://farm5.staticflickr.com/4386/36563815415_834d585fb3_o.png">
 <meta property="og:image" content="https://farm6.staticflickr.com/5567/31598563736_1791303905_o.png">
 <meta property="og:image" content="https://farm1.staticflickr.com/141/31490389422_1b83a2b146_o.png">
 <meta property="og:image" content="https://farm1.staticflickr.com/256/31490416932_57f610e40d_o.png">
@@ -123,7 +124,7 @@
 <meta property="og:image" content="https://farm1.staticflickr.com/595/30795620304_a815c4ccff_o.png">
 <meta property="og:image" content="https://farm1.staticflickr.com/663/30795629194_9a7a48bc13_o.png">
 <meta property="og:image" content="https://farm1.staticflickr.com/733/31637250505_65b565e6c6_o.png">
-<meta property="og:updated_time" content="2017-08-06T13:18:38.000Z">
+<meta property="og:updated_time" content="2017-08-14T12:37:34.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="♞「Machine Learning」 Chapter 2">
 <meta name="twitter:description" content="本文是关于周志华「Machine Learning」这本书的 Chapter 2 的学习笔记。">
@@ -460,7 +461,7 @@
                   <i class="fa fa-file-word-o"></i>
                 </span>
                 <span title="Words count in article">
-                  7,381
+                  7,277
                 </span>
                 <span> words </span>
                 
@@ -582,44 +583,7 @@ E(f;D) = \frac{1}{m}\sum_{i=1}^{m}\mathbb{I}(f(x_i) \neq y_i)</script><ul>
 acc(f;D) = \frac{1}{m}\sum_{i=1}^{m}\mathbb{I}(f(x_{i}) = y_{i})=1-E(f;D)</script><h3 id="查准率、查全率与 -F1"><a href="# 查准率、查全率与 -F1" class="headerlink" title="查准率、查全率与 F1"></a>查准率、查全率与 F1</h3><p>错误率和精度虽然常用，但不能满足所有的需求，例如：在推荐系统中，我们只关心推送给用户的内容用户是否感兴趣（即 <strong> 查准率 </strong>），或者说所有用户感兴趣的内容我们推送出来了多少（即<strong> 查全率</strong>）。因此，使用查准 / 查全率更适合描述这类问题。对于二分类问题，分类结果混淆矩阵与查准 / 查全率定义如下：</p>
 <p><img src="https://farm1.staticflickr.com/531/31635512885_c29ced14ac_o.png" alt=""></p>
 <p>补上一个表，方便理解：</p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-<th>实际值</th>
-<th>实际值</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td></td>
-<td>样本总数 N</td>
-<td>Positive</td>
-<td>Negative</td>
-</tr>
-<tr>
-<td><strong>预测值</strong></td>
-<td>Positive</td>
-<td>实际是 Positive，预测成 Positive 的样本数，又叫 true positive(TP)</td>
-<td>实际是 Negative，预测成 Positive 的样本数，又叫 false positive(FP)</td>
-</tr>
-<tr>
-<td><strong>预测值</strong></td>
-<td>Negative</td>
-<td>实际是 Positive，预测成 Negative 的样本数，又叫 false negative(FN)</td>
-<td>实际是 Negative，预测成 Negative 的样本数，又叫 true negative(TN)</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td>实际是 Positive 样本数 =TP+FN</td>
-<td>实际是 Negative 样本数 =FP+TN</td>
-</tr>
-</tbody>
-</table>
-</div>
+<p><img src="https://farm5.staticflickr.com/4386/36563815415_834d585fb3_o.png" alt=""></p>
 <ul>
 <li>查准率：</li>
 </ul>

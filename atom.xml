@@ -1384,7 +1384,7 @@ p^{'} & = p_{5} + \eta \cdot (x_{1} - p_{5}) \cr
     <link href="http://randolph.pro/2016/12/30/%E2%99%9E%E3%80%8CMachine%20Learning%E3%80%8D%20Chapter%202/"/>
     <id>http://randolph.pro/2016/12/30/♞「Machine Learning」 Chapter 2/</id>
     <published>2016-12-29T16:00:00.000Z</published>
-    <updated>2017-08-06T13:18:38.000Z</updated>
+    <updated>2017-08-14T12:37:34.000Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://farm5.staticflickr.com/4307/36174772306_62cfbc8cd6_o.jpg" alt=""></p>
 <p>有关该书的其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/Book-「Machine-Learning」/">Book:「Machine Learning」</a></p>
@@ -1470,44 +1470,7 @@ E(f;D) = \frac{1}{m}\sum_{i=1}^{m}\mathbb{I}(f(x_i) \neq y_i)</script><ul>
 acc(f;D) = \frac{1}{m}\sum_{i=1}^{m}\mathbb{I}(f(x_{i}) = y_{i})=1-E(f;D)</script><h3 id="查准率、查全率与 -F1"><a href="# 查准率、查全率与 -F1" class="headerlink" title="查准率、查全率与 F1"></a>查准率、查全率与 F1</h3><p>错误率和精度虽然常用，但不能满足所有的需求，例如：在推荐系统中，我们只关心推送给用户的内容用户是否感兴趣（即 <strong> 查准率 </strong>），或者说所有用户感兴趣的内容我们推送出来了多少（即<strong> 查全率</strong>）。因此，使用查准 / 查全率更适合描述这类问题。对于二分类问题，分类结果混淆矩阵与查准 / 查全率定义如下：</p>
 <p><img src="https://farm1.staticflickr.com/531/31635512885_c29ced14ac_o.png" alt=""></p>
 <p>补上一个表，方便理解：</p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-<th>实际值</th>
-<th>实际值</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td></td>
-<td>样本总数 N</td>
-<td>Positive</td>
-<td>Negative</td>
-</tr>
-<tr>
-<td><strong>预测值</strong></td>
-<td>Positive</td>
-<td>实际是 Positive，预测成 Positive 的样本数，又叫 true positive(TP)</td>
-<td>实际是 Negative，预测成 Positive 的样本数，又叫 false positive(FP)</td>
-</tr>
-<tr>
-<td><strong>预测值</strong></td>
-<td>Negative</td>
-<td>实际是 Positive，预测成 Negative 的样本数，又叫 false negative(FN)</td>
-<td>实际是 Negative，预测成 Negative 的样本数，又叫 true negative(TN)</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td>实际是 Positive 样本数 =TP+FN</td>
-<td>实际是 Negative 样本数 =FP+TN</td>
-</tr>
-</tbody>
-</table>
-</div>
+<p><img src="https://farm5.staticflickr.com/4386/36563815415_834d585fb3_o.png" alt=""></p>
 <ul>
 <li>查准率：</li>
 </ul>
