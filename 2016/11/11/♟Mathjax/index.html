@@ -112,7 +112,7 @@
 <meta property="og:description" content="本文是关于 MathJax 的一些写法。">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://melissanotes.github.io/Docs/assets/MathJax-Quick-Memo-51ba3.png?v=1475994320721">
-<meta property="og:updated_time" content="2017-08-15T09:58:46.000Z">
+<meta property="og:updated_time" content="2017-08-15T12:39:20.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="♟「Tools」 MathJax">
 <meta name="twitter:description" content="本文是关于 MathJax 的一些写法。">
@@ -671,9 +671,11 @@
 <li>不可见括号，使用 <code>\left.</code> 和<code>\right.</code>表示，<code>\left. x\right.</code>：$\left. x\right.$。</li>
 </ul>
 <p>需要注意的是，原始的符号不会随着公式的变大而缩放，比如 <code>\frac{1}{2}</code>：$\frac{1}{2}$。可以使用<code>\left(... \right)</code> 进行缩放，如下：</p>
-<p><code>\{\sum_{i=0}^{n}i^2 = \frac {(n^2+n)(2n+1)}{6} \}</code></p>
+<center>`\{\sum_{i=0}^{n}i^2 = \frac {(n^2+n)(2n+1)}{6} \}`</center>
+
 <script type="math/tex; mode=display">
-\{\sum_{i=0}^{n}i^2 = \frac {(n^2+n)(2n+1)}{6} \}</script><p><code>\left\{\sum_{i=0}^{n}i^2 = \frac {(n^2+n)(2n+1)}{6} \right\}</code></p>
+\{\sum_{i=0}^{n}i^2 = \frac {(n^2+n)(2n+1)}{6} \}</script><center>`\left\{\sum_{i=0}^{n}i^2 = \frac {(n^2+n)(2n+1)}{6} \right\}`</center>
+
 <script type="math/tex; mode=display">
 \left\{\sum_{i=0}^{n}i^2 = \frac {(n^2+n)(2n+1)}{6} \right\}</script><h2 id="求和 -amp- 积分"><a href="# 求和 -amp- 积分" class="headerlink" title="求和 &amp; 积分"></a>求和 &amp; 积分</h2><ul>
 <li><code>\sum</code>用来表示求和符号，上标表示上限，下标表示下限。如，<code>\sum_{i=1}^{n}i^2</code>：$\sum_{i=1}^{n}i^2$；</li>
