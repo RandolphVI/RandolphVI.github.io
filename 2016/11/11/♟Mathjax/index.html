@@ -111,7 +111,7 @@
 <meta property="og:site_name" content="黃某人">
 <meta property="og:description" content="本文是关于 MathJax 的一些写法。">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2017-08-15T14:53:27.000Z">
+<meta property="og:updated_time" content="2017-08-15T14:55:44.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="♟「Tools」 MathJax">
 <meta name="twitter:description" content="本文是关于 MathJax 的一些写法。">
@@ -436,7 +436,7 @@
                   <i class="fa fa-file-word-o"></i>
                 </span>
                 <span title="Words count in article">
-                  3,145
+                  3,157
                 </span>
                 <span> words </span>
                 
@@ -803,7 +803,7 @@
 <li><code>\dot {xy}</code>：$\dot {xy}$；</li>
 <li><code>\ddot {xy}</code>：$\ddot {xy}$。</li>
 </ul>
-<h1 id="表格"><a href="# 表格" class="headerlink" title="表格"></a>表格 </h1><p> 可以使用 <code>\$$\begin{array}{列样式}…\end{array}\$$</code>的方式来创建表格。</p>
+<h1 id="表格"><a href="# 表格" class="headerlink" title="表格"></a>表格 </h1><p> 可以使用 $$$\begin{array}{列样式}…\end{array}$$$ 的方式来创建表格。</p>
 <ul>
 <li>其中 <code> 列样式 </code>，可以使用<code>c</code>、<code>l</code>、<code>r</code> 分别表示 <code> 居中 </code>、<code> 左对齐 </code>、<code> 右对齐</code>。</li>
 <li>每行之间使用 <code>\\</code> 来分隔（本来是 <code>\</code>，但是在 Markdown 中第一个 <code>\</code> 被解释为转义字符，所以需要使用 <code>\\</code>），每列之间使用 <code>&amp;</code> 来分隔。</li>
@@ -811,7 +811,9 @@
 </ul>
 <p>例如：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">$$</div><div class="line">\begin&#123;array&#125;&#123;c|lcr&#125;</div><div class="line">n &amp; \text&#123;Left&#125; &amp; \text&#123;Center&#125; &amp; \text&#123;Right&#125; \\</div><div class="line">\hline</div><div class="line">1 &amp; 0.24 &amp; 1 &amp; 125 \\</div><div class="line">2 &amp; -1 &amp; 189 &amp; -8 \\</div><div class="line">3 &amp; -20 &amp; 2000 &amp; 1+10i \\</div><div class="line">\end&#123;array&#125;</div><div class="line">$$</div></pre></td></tr></table></figure>
-<h1 id="矩阵"><a href="# 矩阵" class="headerlink" title="矩阵"></a>矩阵 </h1><h2 id="基础用法"><a href="# 基础用法" class="headerlink" title="基础用法"></a> 基础用法 </h2><p> 使用 <figure class="highlight plain"><figcaption><span>`\\` 作为行分隔符，`&` 使用列分隔符。</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"> 例如：</div><div class="line"></div><div class="line">```text</div><div class="line">$$</div><div class="line">\begin&#123;matrix&#125;</div><div class="line">1 &amp; x &amp; x^2 \\</div><div class="line">1 &amp; y &amp; y^2 \\</div><div class="line">1 &amp; z &amp; z^2 \\</div><div class="line">\end&#123;matrix&#125;</div><div class="line">$$</div></pre></td></tr></table></figure></p>
+<h1 id="矩阵"><a href="# 矩阵" class="headerlink" title="矩阵"></a>矩阵 </h1><h2 id="基础用法"><a href="# 基础用法" class="headerlink" title="基础用法"></a> 基础用法 </h2><p> 使用 $$$\begin{matrix}…\end{matrix}$$$ 来表示矩阵，同样使用 <code>\\</code>作为行分隔符，<code>&amp;</code>使用列分隔符。</p>
+<p>例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">$$</div><div class="line">\begin&#123;matrix&#125;</div><div class="line">1 &amp; x &amp; x^2 \\</div><div class="line">1 &amp; y &amp; y^2 \\</div><div class="line">1 &amp; z &amp; z^2 \\</div><div class="line">\end&#123;matrix&#125;</div><div class="line">$$</div></pre></td></tr></table></figure>
 <h2 id="矩阵中的括号"><a href="# 矩阵中的括号" class="headerlink" title="矩阵中的括号"></a>矩阵中的括号 </h2><p> 如果要加括号，可以使用 <code>\left</code> 和<code>\right</code>，也可以使用特殊的<code>Matrix</code>，例如：</p>
 <ul>
 <li>单独加括号</li>
