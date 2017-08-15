@@ -112,7 +112,7 @@
 <meta property="og:description" content="本文是关于 MathJax 的一些写法。">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://melissanotes.github.io/Docs/assets/MathJax-Quick-Memo-51ba3.png?v=1475994320721">
-<meta property="og:updated_time" content="2017-08-15T09:25:03.000Z">
+<meta property="og:updated_time" content="2017-08-15T09:30:21.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="♟「Tools」 MathJax">
 <meta name="twitter:description" content="本文是关于 MathJax 的一些写法。">
@@ -438,7 +438,7 @@
                   <i class="fa fa-file-word-o"></i>
                 </span>
                 <span title="Words count in article">
-                  3,053
+                  3,055
                 </span>
                 <span> words </span>
                 
@@ -661,7 +661,7 @@
 </tbody>
 </table>
 </div>
-<h2 id="上标 -amp- 下标"><a href="# 上标 -amp- 下标" class="headerlink" title="上标 &amp; 下标"></a>上标 &amp; 下标 </h2><p> 上标和下标分别用 <code>^</code> 和<code>_</code>，如 <code>x_i^2</code>：<script type="math/tex">x_i^2</script>，但是<code>^</code> 和<code>_</code>分别只对下一个数起作用，比如 <code>10^10</code> 会得到 10101010 而不是 10101010 ，这事需要用 <code>{...}</code> 把要组合的数组合起来，也就是<code>10^{10}</code>。总之，加了大括号总归不会错。</p>
+<h2 id="上标 -amp- 下标"><a href="# 上标 -amp- 下标" class="headerlink" title="上标 &amp; 下标"></a>上标 &amp; 下标 </h2><p> 上标和下标分别用 <code>^</code> 和<code>_</code>，如 <code>x_i^2</code>：<script type="math/tex">x_i^2</script>，但是<code>^</code> 和<code>_</code>分别只对下一个数起作用，比如 <code>10^10</code> 会得到 $10^10$ 而不是 $10^{10}$，这事需要用 <code>{...}</code> 把要组合的数组合起来，也就是<code>10^{10}</code>。总之，加了大括号总归不会错。</p>
 <h2 id="括号"><a href="# 括号" class="headerlink" title="括号"></a>括号</h2><ul>
 <li>小括号和方括号，就用原始的 <code>()</code> 和<code>[]</code>:$(2+2)$ $[3+3]$；</li>
 <li>大括号，由于大括号用来 <code> 分组 </code>，所以如果要在公式里面加大括号就使用<code>\{</code> 和<code>\}</code>或者用 <code>\lbrace</code> 和<code>\rbrace</code>来表示。如<code>\{a*b\}</code>:${a∗b}$，<code>\lbrace a*b \rbrace</code>: $\lbrace a*b \rbrace$ ；</li>

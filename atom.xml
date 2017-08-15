@@ -1855,7 +1855,7 @@ E_{cost} = \frac{m^+ \times (1-TPR) \times cost_{01}+m^- \times FPR \times cost_
     <link href="http://randolph.pro/2016/11/11/%E2%99%9FMathjax/"/>
     <id>http://randolph.pro/2016/11/11/♟Mathjax/</id>
     <published>2016-11-10T16:00:00.000Z</published>
-    <updated>2017-08-15T09:25:03.000Z</updated>
+    <updated>2017-08-15T09:30:21.000Z</updated>
     
     <content type="html"><![CDATA[<h1 id="基础"><a href="# 基础" class="headerlink" title="基础"></a>基础</h1><hr>
 <h2 id="希腊字母"><a href="# 希腊字母" class="headerlink" title="希腊字母"></a>希腊字母 </h2><p> 具体见下表：</p>
@@ -2042,7 +2042,7 @@ E_{cost} = \frac{m^+ \times (1-TPR) \times cost_{01}+m^- \times FPR \times cost_
 </tbody>
 </table>
 </div>
-<h2 id="上标 -amp- 下标"><a href="# 上标 -amp- 下标" class="headerlink" title="上标 &amp; 下标"></a>上标 &amp; 下标 </h2><p> 上标和下标分别用 <code>^</code> 和<code>_</code>，如 <code>x_i^2</code>：<script type="math/tex">x_i^2</script>，但是<code>^</code> 和<code>_</code>分别只对下一个数起作用，比如 <code>10^10</code> 会得到 10101010 而不是 10101010 ，这事需要用 <code>{...}</code> 把要组合的数组合起来，也就是<code>10^{10}</code>。总之，加了大括号总归不会错。</p>
+<h2 id="上标 -amp- 下标"><a href="# 上标 -amp- 下标" class="headerlink" title="上标 &amp; 下标"></a>上标 &amp; 下标 </h2><p> 上标和下标分别用 <code>^</code> 和<code>_</code>，如 <code>x_i^2</code>：<script type="math/tex">x_i^2</script>，但是<code>^</code> 和<code>_</code>分别只对下一个数起作用，比如 <code>10^10</code> 会得到 $10^10$ 而不是 $10^{10}$，这事需要用 <code>{...}</code> 把要组合的数组合起来，也就是<code>10^{10}</code>。总之，加了大括号总归不会错。</p>
 <h2 id="括号"><a href="# 括号" class="headerlink" title="括号"></a>括号</h2><ul>
 <li>小括号和方括号，就用原始的 <code>()</code> 和<code>[]</code>:$(2+2)$ $[3+3]$；</li>
 <li>大括号，由于大括号用来 <code> 分组 </code>，所以如果要在公式里面加大括号就使用<code>\{</code> 和<code>\}</code>或者用 <code>\lbrace</code> 和<code>\rbrace</code>来表示。如<code>\{a*b\}</code>:${a∗b}$，<code>\lbrace a*b \rbrace</code>: $\lbrace a*b \rbrace$ ；</li>
