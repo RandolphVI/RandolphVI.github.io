@@ -112,7 +112,7 @@
 <meta property="og:description" content="本文是关于 MathJax 的一些写法。">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://melissanotes.github.io/Docs/assets/MathJax-Quick-Memo-51ba3.png?v=1475994320721">
-<meta property="og:updated_time" content="2017-08-15T12:43:59.000Z">
+<meta property="og:updated_time" content="2017-08-15T12:54:39.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="♟「Tools」 MathJax">
 <meta name="twitter:description" content="本文是关于 MathJax 的一些写法。">
@@ -438,7 +438,7 @@
                   <i class="fa fa-file-word-o"></i>
                 </span>
                 <span title="Words count in article">
-                  3,028
+                  3,107
                 </span>
                 <span> words </span>
                 
@@ -453,7 +453,7 @@
                   <i class="fa fa-clock-o"></i>
                 </span>
                 <span title="Reading time">
-                  15
+                  16
                 </span>
                 <span> mins </span>
               
@@ -661,7 +661,8 @@
 </tbody>
 </table>
 </div>
-<h2 id="上标 -amp- 下标"><a href="# 上标 -amp- 下标" class="headerlink" title="上标 &amp; 下标"></a>上标 &amp; 下标 </h2><p> 上标和下标分别用 <code>^</code> 和<code>_</code>，如 <code>x_i^2</code>：<script type="math/tex">x_i^2</script>，但是<code>^</code> 和<code>_</code>分别只对下一个数起作用，比如 <code>10^10</code> 会得到 $10^10$ 而不是 $10^{10}$，这时需要使用<code>{...}</code>，也就是<code>10^{10}</code>。总之，加了大括号总归不会错。</p>
+<h2 id="上标 -amp- 下标"><a href="# 上标 -amp- 下标" class="headerlink" title="上标 &amp; 下标"></a>上标 &amp; 下标 </h2><p> 上标和下标分别用 <code>^</code> 和<code>_</code>，如 <code>x_i^2</code>：<script type="math/tex">x_i^2</script>，但是<code>^</code> 和<code>_</code>分别只对下一个数起作用，比如 <code>10^10</code> 会得到 $10^10$ 而不是 $10^{10}$，这时需要使用 <code>{...}</code>，也就是<code>10^{10}</code>。同时，大括号还能消除二义性，如<code>x^5^6</code> 将得到一个错误，必须使用大括号来界定 <code>^</code> 的结合性，如<code>{x^5}^6</code>：${x^5}^6$ 或者 <code>x^{5^6}</code>：$x^{5^6}$。总之，加了大括号总归不会错。</p>
+<p>另外，如果要在左右两边都有上下标，可以用 <code>\sideset</code> 命令。例如，<code>\sideset{^1_2}{^3_4}\bigotimes</code>：<script type="math/tex">\sideset{^1_2}{^3_4}\bigotimes</script>。</p>
 <h2 id="括号"><a href="# 括号" class="headerlink" title="括号"></a>括号</h2><ul>
 <li>小括号和方括号，就用原始的 <code>()</code> 和<code>[]</code>:$(2+2)$ $[3+3]$；</li>
 <li>大括号，由于大括号用来 <code> 分组 </code>，所以如果要在公式里面加大括号就使用<code>\{</code> 和<code>\}</code>或者用 <code>\lbrace</code> 和<code>\rbrace</code>来表示。如<code>\{a*b\}</code>:${a∗b}$，<code>\lbrace a*b \rbrace</code>: $\lbrace a*b \rbrace$ ；</li>
@@ -675,7 +676,6 @@
 \begin{array}{cc}
 \mathrm{缩放前} & \mathrm{缩放后} \\
 \hline \\
-`\{\sum_{i=0}^{n}i^2 = \frac {(n^2+n)(2n+1)}{6} \}` & `\left\{\sum_{i=0}^{n}i^2 = \frac {(n^2+n)(2n+1)}{6} \right\}` \\
 \{\sum_{i=0}^{n}i^2 = \frac {(n^2+n)(2n+1)}{6} \} & \left\{\sum_{i=0}^{n}i^2 = \frac {(n^2+n)(2n+1)}{6} \right\} \\
 \end{array}</script><h2 id="求和 -amp- 积分"><a href="# 求和 -amp- 积分" class="headerlink" title="求和 &amp; 积分"></a>求和 &amp; 积分</h2><ul>
 <li><code>\sum</code>用来表示求和符号，上标表示上限，下标表示下限。如，<code>\sum_{i=1}^{n}i^2</code>：$\sum_{i=1}^{n}i^2$；</li>
