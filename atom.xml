@@ -1384,7 +1384,7 @@ p^{'} & = p_{5} + \eta \cdot (x_{1} - p_{5}) \cr
     <link href="http://randolph.pro/2016/12/30/%E2%99%9E%E3%80%8CMachine%20Learning%E3%80%8D%20Chapter%202/"/>
     <id>http://randolph.pro/2016/12/30/♞「Machine Learning」 Chapter 2/</id>
     <published>2016-12-29T16:00:00.000Z</published>
-    <updated>2017-08-14T12:37:34.000Z</updated>
+    <updated>2017-08-15T06:36:20.000Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://farm5.staticflickr.com/4307/36174772306_62cfbc8cd6_o.jpg" alt=""></p>
 <p>有关该书的其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/Book-「Machine-Learning」/">Book:「Machine Learning」</a></p>
@@ -1592,7 +1592,7 @@ Err(x) = [f(x)-\frac{1}{k}\sum_{i=1}^{k}f(x_{i})]^2 + \frac{\delta ^2}{k}+\delta
 <ul>
 <li><p>10 折交叉检验：由于每次训练样本中正反例数目一样，所以将结果判断为正反例的概率也是一样的，所以错误率的期望是 50% 。 </p>
 </li>
-<li><p>留一法：如果留下的是正例，训练样本中反例的数目比正例多一个，所以留出的样本会被判断是反例；同理，留出的是反例，则会被判断成正例，所以错误率是 100% 。</p>
+<li><p>留一法：测试集为一个样本，训练集九十九个样本且有五十个与测试集真实类别不同，故测试集无法被划分到正确的类，所以错误率是 100% 。</p>
 </li>
 </ul>
 <hr>
