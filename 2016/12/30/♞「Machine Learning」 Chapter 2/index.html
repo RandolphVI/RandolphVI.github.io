@@ -124,7 +124,7 @@
 <meta property="og:image" content="https://farm1.staticflickr.com/595/30795620304_a815c4ccff_o.png">
 <meta property="og:image" content="https://farm1.staticflickr.com/663/30795629194_9a7a48bc13_o.png">
 <meta property="og:image" content="https://farm1.staticflickr.com/733/31637250505_65b565e6c6_o.png">
-<meta property="og:updated_time" content="2017-08-15T06:36:20.000Z">
+<meta property="og:updated_time" content="2017-08-15T08:17:01.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="♞「Machine Learning」 Chapter 2">
 <meta name="twitter:description" content="本文是关于周志华「Machine Learning」这本书的 Chapter 2 的学习笔记。">
@@ -461,7 +461,7 @@
                   <i class="fa fa-file-word-o"></i>
                 </span>
                 <span title="Words count in article">
-                  7,269
+                  7,274
                 </span>
                 <span> words </span>
                 
@@ -713,27 +713,27 @@ Err(x) = [f(x)-\frac{1}{k}\sum_{i=1}^{k}f(x_{i})]^2 + \frac{\delta ^2}{k}+\delta
 <p>4. 试述真正例率（TPR）、假正例率（FPR）与查准率（P）、查全率（R）之间的联系。</p>
 </blockquote>
 <ul>
-<li>查全率: 真实正例被预测为正例的比例。 </li>
-<li>真正例率: 真实正例被预测为正例的比例。 </li>
+<li>查全率（R）： 真实正例被预测为正例的比例。 </li>
+<li>真正例率（TPR）： 真实正例被预测为正例的比例。 </li>
 </ul>
-<p>（显然查全率与真正例率是相等的） </p>
+<p>（显然查全率与真正例率是相等的，即 $R=TPR$） </p>
 <ul>
-<li>查准率: 预测为正例的实例中真实正例的比例。</li>
-<li>假正例率: 真实反例被预测为正例的比例。</li>
+<li>查准率（P）：预测为正例的实例中真实正例的比例。</li>
+<li>假正例率（FPR）： 真实反例被预测为正例的比例。</li>
 </ul>
 <p>（两者并没有直接的数值关系）</p>
 <hr>
 <blockquote>
 <p>5. 试证明 $AUC = 1 − l_{rank}$ 。</p>
 </blockquote>
-<p>与 BEP 一样，学习器先将所有测试样本按预测概率排序，越可能是正的排在越前面。然后依次遍历，每扫描到一个位置，里面如果只有正例，则 ROC 曲线垂直向上，如果只有反例，曲线水平往右，如果既有正例也有反例，则斜向上。如图所示:</p>
+<p>与 BEP 一样，学习器先将所有测试样本按预测概率排序，越可能是正的排在越前面。然后依次遍历，每扫描到一个位置，里面如果只有正例，则 ROC 曲线垂直向上，如果只有反例，曲线水平往右，如果既有正例也有反例，则斜向上。如图所示：</p>
 <p><img src="https://farm1.staticflickr.com/733/31637250505_65b565e6c6_o.png" alt=""></p>
-<p>由于 TPR 与 FPR 的分母是常数，所以这里按比例扩大了坐标(分别是真实正例和真实反例的数目倍)，可以更好看出曲线走势。</p>
-<p>可以看出一共有 20 个测试样本，10 个正，10 个反。学习器排序的结果是 </p>
+<p>由于 TPR 与 FPR 的分母是常数，所以这里按比例扩大了坐标（分别是真实正例和真实反例的数目倍），可以更好看出曲线走势。</p>
+<p>可以看出一共有 20 个测试样本，10 个正，10 个反。学习器排序的结果是：</p>
 <ul>
 <li>, − , (+,+) , (+,−) , (+,−) , (+,+) , (−,−) , (+,+) , (−,−,−) , + , −。其中括号内的样本排在相同的位置。<br>&lt; (+,+,−,−) 与 (+,−) , (+,−) 是同样的效果 &gt;</li>
 </ul>
-<p>公式 <2.21> 累加了所有不在正例的反例数目，其中同样的位置标记为 0.5 ，在正例前面标记为 1 。从图中可以看出，折线每次向右 (右上) 延伸，表示扫描到了反例，折线上方对应的面积，就是该反例后面有多少个正例，每个正例是一个正方形，对应的面积是 1 。同位置上的正例是个三角形，对应的面积是 0.5 。计算出总面积后，由于 ROC 图的坐标是归一化的，所以总面积要除以一开始放大的倍数，也就是 $ m<em>{+}  m</em>{-}$ 。</2.21></p>
+<p>公式 <2.21> 累加了所有不在正例的反例数目，其中同样的位置标记为 0.5 ，在正例前面标记为 1 。从图中可以看出，折线每次向右 (右上) 延伸，表示扫描到了反例，折线上方对应的面积，就是该反例后面有多少个正例，每个正例是一个正方形，对应的面积是 1 。同位置上的正例是个三角形，对应的面积是 0.5 。计算出总面积后，由于 ROC 图的坐标是归一化的，所以总面积要除以一开始放大的倍数，也就是 <script type="math/tex">m_{+}  m_{-}</script> 。</2.21></p>
 <hr>
 <blockquote>
 <p>6. 试述错误率与 ROC 曲线之间的关系。</p>
@@ -885,7 +885,7 @@ E_{cost} = \frac{m^+ \times (1-TPR) \times cost_{01}+m^- \times FPR \times cost_
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-count">20</span>
                 <span class="site-state-item-name">Posts</span>
               </a>
             </div>
@@ -896,7 +896,7 @@ E_{cost} = \frac{m^+ \times (1-TPR) \times cost_{01}+m^- \times FPR \times cost_
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">Categories</span>
               </a>
             </div>
@@ -907,7 +907,7 @@ E_{cost} = \frac{m^+ \times (1-TPR) \times cost_{01}+m^- \times FPR \times cost_
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">Tags</span>
               </a>
             </div>
