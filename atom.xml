@@ -1855,7 +1855,7 @@ E_{cost} = \frac{m^+ \times (1-TPR) \times cost_{01}+m^- \times FPR \times cost_
     <link href="http://randolph.pro/2016/11/11/%E2%99%9FMathjax/"/>
     <id>http://randolph.pro/2016/11/11/♟Mathjax/</id>
     <published>2016-11-10T16:00:00.000Z</published>
-    <updated>2017-08-15T14:46:05.000Z</updated>
+    <updated>2017-08-15T14:48:03.000Z</updated>
     
     <content type="html"><![CDATA[<h1 id="基础"><a href="# 基础" class="headerlink" title="基础"></a>基础</h1><hr>
 <h2 id="希腊字母"><a href="# 希腊字母" class="headerlink" title="希腊字母"></a>希腊字母 </h2><p> 具体见下表：</p>
@@ -2175,7 +2175,7 @@ E_{cost} = \frac{m^+ \times (1-TPR) \times cost_{01}+m^- \times FPR \times cost_
 <li><code>a\;b</code>：$a\;b$；</li>
 <li><code>a \quad b</code>：$a \quad b$；</li>
 <li><code>a \qquad b</code>：$a \qquad b$。</li>
-<li>还有一种比较方便的方法是不使用转义字符 <code>\</code> 而是这样 <code>a~b</code>：$a~b$，<script type="math/tex">a~~~~~b</script>可以表示一个空格。</li>
+<li>还有一种比较方便的方法是不使用转义字符 <code>\</code> 而是这样 <code>a~b</code>：$a~b$，<code>~</code>可以表示一个空格。</li>
 </ul>
 <h2 id="顶部符号"><a href="# 顶部符号" class="headerlink" title="顶部符号"></a>顶部符号</h2><ul>
 <li>对于单字符，<code>\hat x</code>：$\hat x$；</li>

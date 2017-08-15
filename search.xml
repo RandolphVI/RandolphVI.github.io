@@ -2138,7 +2138,7 @@ E_{cost} = \frac{m^+ \times (1-TPR) \times cost_{01}+m^- \times FPR \times cost_
 <li><code>a\;b</code>：$a\;b$；</li>
 <li><code>a \quad b</code>：$a \quad b$；</li>
 <li><code>a \qquad b</code>：$a \qquad b$。</li>
-<li>还有一种比较方便的方法是不使用转义字符 <code>\</code> 而是这样 <code>a~b</code>：$a~b$，<script type="math/tex">a~~~~~b</script>可以表示一个空格。</li>
+<li>还有一种比较方便的方法是不使用转义字符 <code>\</code> 而是这样 <code>a~b</code>：$a~b$，<code>~</code>可以表示一个空格。</li>
 </ul>
 <h2 id="顶部符号"><a href="# 顶部符号" class="headerlink" title="顶部符号"></a>顶部符号</h2><ul>
 <li>对于单字符，<code>\hat x</code>：$\hat x$；</li>
