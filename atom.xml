@@ -1855,7 +1855,7 @@ E_{cost} = \frac{m^+ \times (1-TPR) \times cost_{01}+m^- \times FPR \times cost_
     <link href="http://randolph.pro/2016/11/11/%E2%99%9FMathjax/"/>
     <id>http://randolph.pro/2016/11/11/♟Mathjax/</id>
     <published>2016-11-10T16:00:00.000Z</published>
-    <updated>2017-08-15T09:39:42.000Z</updated>
+    <updated>2017-08-15T09:49:53.000Z</updated>
     
     <content type="html"><![CDATA[<h1 id="基础"><a href="# 基础" class="headerlink" title="基础"></a>基础</h1><hr>
 <h2 id="希腊字母"><a href="# 希腊字母" class="headerlink" title="希腊字母"></a>希腊字母 </h2><p> 具体见下表：</p>
@@ -2062,18 +2062,18 @@ E_{cost} = \frac{m^+ \times (1-TPR) \times cost_{01}+m^- \times FPR \times cost_
 <li>类似的符号还有，<code>\prod</code>：$\prod$， <code>\bigcup</code>：$\bigcup$， <code>\bigcap</code>：$\bigcap$， <code>\iint</code>：$\iint$。</li>
 </ul>
 <h2 id="分式 -amp- 根式"><a href="# 分式 -amp- 根式" class="headerlink" title="分式 &amp; 根式"></a>分式 &amp; 根式</h2><ul>
-<li>分式，第一种表示为<code>\frac{a}{b}</code>：$\frac{a}{b}$。第二种表示为<code>{a+1 \over b+1}</code>：$a+1 \over b+1}$;</li>
+<li>分式，第一种表示为<code>\frac{a}{b}</code>：$\frac{a}{b}$。第二种表示为<code>{a+1 \over b+1}</code>：${a+1 \over b+1}$;</li>
 <li>根式，表示为<code>\sqrt</code>，比如<code>\sqrt[4]{\frac {x}{y}}</code>：$\sqrt[4]{\frac {x}{y}}$</li>
 </ul>
-<h2 id="Font-Family"><a href="#Font-Family" class="headerlink" title="Font Family"></a>Font Family</h2><ul>
-<li>黑板粗体字，例如 <code>\mathbb</code>或者<code>\Bbb</code>，这种字体常用来表示实数、整数、有理数、复数的大写字母，<code>\mathbb A</code>:AA, 或者<code>\mathbb {ABCDEFGHIJKLMNOPQRSTUVWXYZ}</code>:ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ;</li>
-<li>黑体字，例如 <code>mathbf</code>, <code>\mathbf A</code>:AA, 或者<code>\mathbf {ABCDEFGHIJKLMNOPQRSTUVWXYZ}</code>:ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ;</li>
-<li>打印机字体，例如 <code>mathtt</code>, <code>\mathtt A</code>:AA, 或者<code>\mathtt {ABCDEFGHIJKLMNOPQRSTUVWXYZ}</code>:ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ;</li>
-<li>罗马字体，例如 <code>mathrm</code>, <code>\mathrm A</code>:AA, 或者<code>\mathrm {ABCDEFGHIJKLMNOPQRSTUVWXYZ}</code>:ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ;</li>
-<li>手写字体，例如 <code>mathscr</code>, <code>\mathscr A</code>:AA, 或者<code>\mathscr {ABCDEFGHIJKLMNOPQRSTUVWXYZ}</code>:ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ;</li>
-<li><code>Fraktur</code>一种德国字体，例如 <code>mathfrak</code>, <code>\mathfrak A</code>:AA, 或者<code>\mathfrak {ABCDEFGHIJKLMNOPQRSTUVWXYZ}</code>:ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ;</li>
+<h2 id="字体"><a href="# 字体" class="headerlink" title="字体"></a>字体</h2><ul>
+<li>黑板粗体字，例如 <code>\mathbb</code>或者<code>\Bbb</code>，这种字体常用来表示实数、整数、有理数、复数的大写字母，<code>\mathbb A</code>：$\mathbb A$，或者<code>\mathbb {ABCDEFGHIJKLMNOPQRSTUVWXYZ}</code>:$\mathbb {ABCDEFGHIJKLMNOPQRSTUVWXYZ}$；</li>
+<li>黑体字，例如 <code>mathbf</code>，<code>\mathbf A</code>：$\mathbf A$，或者<code>\mathbf {ABCDEFGHIJKLMNOPQRSTUVWXYZ}</code>：$\mathbf {ABCDEFGHIJKLMNOPQRSTUVWXYZ}$；</li>
+<li>打印机字体，例如 <code>mathtt</code>,<code>\mathtt A</code>：$\mathtt A$，或者<code>\mathtt {ABCDEFGHIJKLMNOPQRSTUVWXYZ}</code>：$\mathtt {ABCDEFGHIJKLMNOPQRSTUVWXYZ}$；</li>
+<li>罗马字体，例如 <code>mathrm</code>,<code>\mathrm A</code>：$\mathrm A$，或者<code>\mathrm {ABCDEFGHIJKLMNOPQRSTUVWXYZ}</code>：$\mathrm {ABCDEFGHIJKLMNOPQRSTUVWXYZ}$；</li>
+<li>手写字体，例如 <code>mathscr</code>,<code>\mathscr A</code>：$\mathscr A<code>$，或者</code>\mathscr {ABCDEFGHIJKLMNOPQRSTUVWXYZ}`:$\mathscr {ABCDEFGHIJKLMNOPQRSTUVWXYZ}$；</li>
+<li><code>Fraktur</code>是一种德国字体，例如 <code>mathfrak</code>，<code>\mathfrak A</code>：$\mathfrak A$，或者<code>\mathfrak {ABCDEFGHIJKLMNOPQRSTUVWXYZ}</code>:$\mathfrak {ABCDEFGHIJKLMNOPQRSTUVWXYZ}$。</li>
 </ul>
-<h2 id="Special-Functions-amp-Symbols"><a href="#Special-Functions-amp-Symbols" class="headerlink" title="Special Functions &amp; Symbols"></a>Special Functions &amp; Symbols</h2><ul>
+<h2 id="特殊函数 -amp- 符号"><a href="# 特殊函数 -amp- 符号" class="headerlink" title="特殊函数 &amp; 符号"></a>特殊函数 &amp; 符号</h2><ul>
 <li>常见的三角函数、求极限符号可以直接使用缩写即可，如 <code>\sin (x)</code>:sin(x)sin⁡(x), <code>\arctan (x)</code>:arctan(x)arctan⁡(x), <code>\lim_{1\rightarrow\infty}x</code>: lim1→∞xlim1→∞x ;</li>
 <li>比较运算符，<code>\lt</code>:&lt;&lt;, <code>\gt</code>:&gt;&gt;, <code>\le</code>:≤≤, <code>\ge</code>:≥≥, <code>\neq</code>:≠≠, 同时如果在前面加上 <code>\not</code> 就可以是 <code>\not\lt</code>:≮≮;</li>
 <li>运算符， <code>\times</code>:××,<code>\div</code>:÷÷,<code>\pm</code>:±±,<code>\mp</code>: ∓∓ ,<code>x \cdot y</code>:x⋅yx⋅y;</li>
