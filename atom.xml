@@ -1855,7 +1855,7 @@ E_{cost} = \frac{m^+ \times (1-TPR) \times cost_{01}+m^- \times FPR \times cost_
     <link href="http://randolph.pro/2016/11/11/%E2%99%9FMathjax/"/>
     <id>http://randolph.pro/2016/11/11/♟Mathjax/</id>
     <published>2016-11-10T16:00:00.000Z</published>
-    <updated>2017-08-15T14:50:51.000Z</updated>
+    <updated>2017-08-15T14:52:01.000Z</updated>
     
     <content type="html"><![CDATA[<h1 id="基础"><a href="# 基础" class="headerlink" title="基础"></a>基础</h1><hr>
 <h2 id="希腊字母"><a href="# 希腊字母" class="headerlink" title="希腊字母"></a>希腊字母 </h2><p> 具体见下表：</p>
@@ -2186,7 +2186,7 @@ E_{cost} = \frac{m^+ \times (1-TPR) \times cost_{01}+m^- \times FPR \times cost_
 <li><code>\dot {xy}</code>：$\dot {xy}$；</li>
 <li><code>\ddot {xy}</code>：$\ddot {xy}$。</li>
 </ul>
-<h1 id="表格"><a href="# 表格" class="headerlink" title="表格"></a>表格 </h1><p> 可以使用 <code>\$$\begin{array}{列样式}…\end{array}\$$</code>的方式来创建表格。</p>
+<h1 id="表格"><a href="# 表格" class="headerlink" title="表格"></a>表格 </h1><p> 可以使用 <code>\$$\begin{array}{列样式}…\end{array}$$</code>的方式来创建表格。</p>
 <ul>
 <li>其中 <code> 列样式 </code>，可以使用<code>c</code>、<code>l</code>、<code>r</code> 分别表示 <code> 居中 </code>、<code> 左对齐 </code>、<code> 右对齐</code>。</li>
 <li>每行之间使用 <code>\\</code> 来分隔（本来是 <code>\</code>，但是在 Markdown 中第一个 <code>\</code> 被解释为转义字符，所以需要使用 <code>\\</code>），每列之间使用 <code>&amp;</code> 来分隔。</li>
