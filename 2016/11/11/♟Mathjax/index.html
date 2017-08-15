@@ -111,7 +111,7 @@
 <meta property="og:site_name" content="黃某人">
 <meta property="og:description" content="本文是关于 MathJax 的一些写法。">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2017-08-15T13:38:49.000Z">
+<meta property="og:updated_time" content="2017-08-15T14:03:39.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="♟「Tools」 MathJax">
 <meta name="twitter:description" content="本文是关于 MathJax 的一些写法。">
@@ -436,7 +436,7 @@
                   <i class="fa fa-file-word-o"></i>
                 </span>
                 <span title="Words count in article">
-                  3,120
+                  3,182
                 </span>
                 <span> words </span>
                 
@@ -723,20 +723,68 @@
 </ul>
 </li>
 <li>集合关系运算：<ul>
-<li><code>\cup</code>： ∪∪；</li>
-<li><code>\cap</code>： ∩∩；</li>
-<li><code>\setminus</code>: ∖∖,<code>\subset</code>: ⊂⊂,<code>\subseteq</code>: ⊆⊆,<code>\subsetneq</code>: ⊊⊊,<code>\supset</code>: ⊃⊃,<code>\in</code>: ∈∈,<code>\notin</code>: ∉∉,<code>\emptyset</code>: ∅∅,<code>\varnothing</code>: ∅∅;</li>
+<li>并<code>\cup</code>：$\cup$；</li>
+<li>交<code>\cap</code>：$\cap$；</li>
+<li>舍<code>\setminus</code>：$\setminus$；</li>
+<li>包含于<code>\subset</code>：$\subset$；</li>
+<li>真包含于<code>\subseteq</code>： $\subseteq$；</li>
+<li>非真包含于<code>\subsetneq</code>：$\subsetneq$；</li>
+<li>包含<code>\supset</code>：$\supset$；</li>
+<li>属于<code>\in</code>：$\in$；</li>
+<li>不属于<code>\notin</code>：$\notin$；</li>
+<li>空集<code>\varnothing</code>： $\varnothing$。</li>
 </ul>
 </li>
-<li>表示排列使用 <code>{n+1 \choose 2k}</code> 或者 <code>\binom{n+1}{2k}</code> 表示 (n+12k)(n+12k);</li>
-<li>箭头，<code>\to</code>:→→,<code>\rightarrow</code>:→→,<code>\Rightarrow</code>:⇒⇒,<code>\leftarrow</code>: ←← ,<code>\Leftarrow</code>:⇐⇐,<code>\mapsto</code>:↦↦,</li>
-<li>逻辑运算符， <code>\land</code>:∧∧,<code>\lor</code>:∨∨,<code>\lnot</code>:¬¬,<code>\forall</code>: ∀∀ ,<code>\exists</code>:∃∃,<code>\top</code>:⊤⊤,<code>\bot</code>:⊥⊥,<code>\vdash</code>: ⊢⊢ ,<code>\vDash</code>:⊨⊨;</li>
-<li>特殊运算符， <code>\star</code>:⋆⋆,<code>\ast</code>:∗∗,<code>\oplus</code>:⊕⊕,<code>\circ</code>: ∘∘ ,<code>\bullet</code>:∙∙;</li>
-<li>等于运算符， <code>\approx</code>:≈≈,<code>\sim</code>:∼∼,<code>\cong</code>:≅≅,<code>\equiv</code>: ≡≡ ,<code>\prec</code>:≺≺;</li>
-<li>特殊符号， <code>\infty</code>:∞∞,<code>\aleph_0</code>:ℵ0ℵ0,<code>\nabla</code>:∇∇,<code>\partial</code>: ∂∂ ,<code>\Im</code>:Iℑ,<code>\Re</code>:Rℜ;</li>
-<li>膜运算符， <code>a \pmod b</code>:a(modb)a(modb)， 例如 <code>a\equiv b\pmod n</code>:a≡b(modn)a≡b(modn);</li>
-<li>省略符， <code>\ldots</code>:…… 与 <code>\cdots</code>:⋯⋯，就是位置不一样的 3 个点;</li>
-<li>一些希腊字母的变体形式， 例如 <code>\epsilon</code>:ϵϵ,<code>\varepsilon</code>:εε,<code>\phi</code>:ϕϕ,<code>\varphi</code>: φφ 。</li>
+<li>表示排列使用 <code>{n+1 \choose 2k}</code> 或者 <code>\binom{n+1}{2k}</code> 表示：$\binom{n+1}{2k}$；</li>
+<li>箭头：<ul>
+<li><code>\to</code>：$\to$；</li>
+<li><code>\rightarrow</code>：$\rightarrow$；</li>
+<li><code>\Rightarrow</code>：$\Rightarrow$；</li>
+<li><code>\leftarrow</code>： $\leftarrow$；</li>
+<li><code>\Leftarrow</code>：$\Leftarrow$；</li>
+<li><code>\mapsto</code>：$\mapsto$。</li>
+</ul>
+</li>
+<li>逻辑运算符：<ul>
+<li><code>\land</code>：$\land$；</li>
+<li><code>\lor</code>：$\lor$；</li>
+<li><code>\lnot</code>：$\lnot$；</li>
+<li><code>\forall</code>：$\forall$；</li>
+<li><code>\exists</code>：$\exists$；</li>
+<li><code>\top</code>：$\top$；</li>
+<li><code>\bot</code>：$\bot$；</li>
+<li><code>\vdash</code>：$\vdash$；</li>
+<li><code>\vDash</code>：$\vDash$。</li>
+</ul>
+</li>
+<li>特殊运算符:<ul>
+<li><code>\star</code>：$\star$;</li>
+<li><code>\ast</code>：$\ast$；</li>
+<li><code>\oplus</code>：$\oplus$；</li>
+<li><code>\circ</code>：$\circ$；</li>
+<li><code>\bullet</code>：$\bullet$。</li>
+</ul>
+</li>
+<li>等于运算符：<ul>
+<li><code>\approx</code>：$\approx$；</li>
+<li><code>\sim</code>：$\sim$；</li>
+<li><code>\cong</code>：$\cong$；</li>
+<li><code>\equiv</code>：$\equiv$；</li>
+<li><code>\prec</code>：$\prec$。</li>
+</ul>
+</li>
+<li>特殊符号：<ul>
+<li><code>\infty</code>：$\infty$；</li>
+<li><code>\aleph_0</code>：$\aleph_0$；</li>
+<li><code>\nabla</code>：$\nabla$；</li>
+<li><code>\partial</code>：$\partial$；</li>
+<li><code>\Im</code>：$\Im$；</li>
+<li><code>\Re</code>：$\Re$。</li>
+</ul>
+</li>
+<li>模运算符<code>a \pmod b</code>：$a \pmod b$，例如<code>a\equiv b\pmod n</code>：$a\equiv b\pmod n$；</li>
+<li>省略符<code>\ldots</code>：$\ldots$ 与 <code>\cdots</code>：$\cdots$，就是位置不一样的 3 个点;</li>
+<li>一些希腊字母的变体形式，例如 <code>\epsilon</code>：$\epsilon$，<code>\varepsilon</code>：$\varepsilon$，<code>\phi</code>：$\phi$，<code>\varphi</code>：$\varphi$。</li>
 </ul>
 <h2 id="Space"><a href="#Space" class="headerlink" title="Space"></a>Space</h2><p>由于 <code>MathJax</code> 的空间管理比较特殊，所以 <code>a.b</code>或者 <code>a.........b</code>（…表示空格），都会显示为 <code>a b</code>:abab, 如果要增加间隙，可以使用 <code>a\,b</code>:abab，较宽的间隙 <code>a\;b</code>:abab，或者是使用 <code>a\quad b</code>:abab 或 <code>a\qquad b</code>:abab。还有一种比较方便的方法是不使用转义字符 <code>\</code> 而是这样 <code>a~b</code>:a ba b，可以表示一个空格。</p>
 <h2 id="Symbols-over-letters"><a href="#Symbols-over-letters" class="headerlink" title="Symbols over letters"></a>Symbols over letters</h2><p>对于单字符， <code>\hat x</code>:^xx^，对于多个字符使用 <code>\widehat {xy}</code>:ˆxyxy^，类似的还有 <code>\overline {xy}</code>:¯¯¯¯¯¯xyxy¯,<code>\vec {xy}</code>: →xyxy→ ,<code>\overrightarrow {xy}</code>:−→xyxy→,<code>\dot {xy}</code>:˙xyxy˙,<code>\ddot {xy}</code>:¨xyxy¨,</p>
