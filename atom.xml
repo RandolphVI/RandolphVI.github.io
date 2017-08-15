@@ -1855,7 +1855,7 @@ E_{cost} = \frac{m^+ \times (1-TPR) \times cost_{01}+m^- \times FPR \times cost_
     <link href="http://randolph.pro/2016/11/11/%E2%99%9FMathjax/"/>
     <id>http://randolph.pro/2016/11/11/♟Mathjax/</id>
     <published>2016-11-10T16:00:00.000Z</published>
-    <updated>2017-08-15T13:29:45.000Z</updated>
+    <updated>2017-08-15T13:38:49.000Z</updated>
     
     <content type="html"><![CDATA[<h1 id="基础"><a href="# 基础" class="headerlink" title="基础"></a>基础</h1><hr>
 <h2 id="希腊字母"><a href="# 希腊字母" class="headerlink" title="希腊字母"></a>希腊字母 </h2><p> 具体见下表：</p>
@@ -2083,10 +2083,34 @@ E_{cost} = \frac{m^+ \times (1-TPR) \times cost_{01}+m^- \times FPR \times cost_
 <li>Fraktur 字体，例如<code>\mathfrak A</code>：$\mathfrak A$，或者<code>\mathfrak {ABC}</code>:<script type="math/tex">\mathfrak {ABC}</script>。</li>
 </ul>
 <h2 id="特殊函数 -amp- 符号"><a href="# 特殊函数 -amp- 符号" class="headerlink" title="特殊函数 &amp; 符号"></a>特殊函数 &amp; 符号</h2><ul>
-<li>常见的三角函数、求极限符号可以直接使用缩写即可，如 <code>\sin (x)</code>：$\sin (x)$⁡，<code>\arctan (x)</code>：$\arctan(x)⁡$，<code>\lim_{1\rightarrow\infty}x</code>： $\lim_{1\rightarrow\infty}x$ ；</li>
-<li>比较运算符，<code>\lt</code>：$\lt$，<code>\gt</code>：$\gt$，<code>\le</code>：$\le$，<code>\ge</code>：$\ge$，<code>\neq</code>：$\neq$，同时如果在前面加上 <code>\not</code> 就可以是 <code>\not\lt</code>：$\not\lt$；</li>
-<li>运算符，<code>\times</code>：$\times$，<code>\div</code>：$\div$，<code>\pm</code>：$\pm$，<code>\mp</code>：$\mp$，<code>x \cdot y</code>：$x \cdot y$；</li>
-<li>集合关系运算，<code>\cup</code>: ∪∪,<code>\cap</code>: ∩∩,<code>\setminus</code>: ∖∖,<code>\subset</code>: ⊂⊂,<code>\subseteq</code>: ⊆⊆,<code>\subsetneq</code>: ⊊⊊,<code>\supset</code>: ⊃⊃,<code>\in</code>: ∈∈,<code>\notin</code>: ∉∉,<code>\emptyset</code>: ∅∅,<code>\varnothing</code>: ∅∅;</li>
+<li>常见的三角函数、求极限符号可以直接使用缩写即可：<ul>
+<li>正弦函数<code>\sin (x)</code>：$\sin (x)$⁡；</li>
+<li>反正切函数<code>\arctan (x)</code>：$\arctan(x)⁡$；</li>
+<li>求极限<code>\lim_{1\rightarrow\infty}x</code>： $\lim_{1\rightarrow\infty}x$。</li>
+</ul>
+</li>
+<li>比较运算符：<ul>
+<li>小于<code>\lt</code>：$\lt$；</li>
+<li>大于<code>\gt</code>：$\gt$；</li>
+<li>小于等于<code>\le</code>：$\le$；</li>
+<li>大于等于<code>\ge</code>：$\ge$；</li>
+<li>不等于 <code>\neq</code>：$\neq$，同时如果在前面加上<code>\not</code> 就可以是<code>\not\lt</code>：$\not\lt$；</li>
+</ul>
+</li>
+<li>运算符：<ul>
+<li>乘<code>\times</code>：$\times$；</li>
+<li>除<code>\div</code>：$\div$；</li>
+<li>加减<code>\pm</code>：$\pm$；</li>
+<li>减加<code>\mp</code>：$\mp$；</li>
+<li>点乘<code>x \cdot y</code>：$x \cdot y$。</li>
+</ul>
+</li>
+<li>集合关系运算：<ul>
+<li><code>\cup</code>： ∪∪；</li>
+<li><code>\cap</code>： ∩∩；</li>
+<li><code>\setminus</code>: ∖∖,<code>\subset</code>: ⊂⊂,<code>\subseteq</code>: ⊆⊆,<code>\subsetneq</code>: ⊊⊊,<code>\supset</code>: ⊃⊃,<code>\in</code>: ∈∈,<code>\notin</code>: ∉∉,<code>\emptyset</code>: ∅∅,<code>\varnothing</code>: ∅∅;</li>
+</ul>
+</li>
 <li>表示排列使用 <code>{n+1 \choose 2k}</code> 或者 <code>\binom{n+1}{2k}</code> 表示 (n+12k)(n+12k);</li>
 <li>箭头，<code>\to</code>:→→,<code>\rightarrow</code>:→→,<code>\Rightarrow</code>:⇒⇒,<code>\leftarrow</code>: ←← ,<code>\Leftarrow</code>:⇐⇐,<code>\mapsto</code>:↦↦,</li>
 <li>逻辑运算符， <code>\land</code>:∧∧,<code>\lor</code>:∨∨,<code>\lnot</code>:¬¬,<code>\forall</code>: ∀∀ ,<code>\exists</code>:∃∃,<code>\top</code>:⊤⊤,<code>\bot</code>:⊥⊥,<code>\vdash</code>: ⊢⊢ ,<code>\vDash</code>:⊨⊨;</li>
@@ -2204,15 +2228,7 @@ E_{cost} = \frac{m^+ \times (1-TPR) \times cost_{01}+m^- \times FPR \times cost_
 <figure class="highlight tex"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">\<span class="name">[</span></span></div><div class="line">a := x^2-y^3 <span class="tag">\<span class="name">tag</span><span class="string">&#123;1-1&#125;</span></span><span class="tag">\<span class="name">label</span><span class="string">&#123; 1-1&#125;</span></span></div><div class="line"><span class="tag">\<span class="name">]</span></span></div></pre></td></tr></table></figure>
 <p>为了引用公式，可以使用<code>\eqref{rlabel}</code>，如：</p>
 <p>a+y3<a href="https://melissanotes.github.io/HTML/Docs/MathJax-Quick-Memo.md.html#" target="_blank" rel="external">(???)</a>=x2a+y3=(???)x2</p>
-<figure class="highlight gams"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">$</span><span class="symbol">$</span></div><div class="line">a+y^<span class="number">3</span> \stackrel&#123;\eqref&#123;<span class="number">1</span><span class="number">-1</span>&#125;&#125;= x^<span class="number">2</span></div><div class="line"><span class="symbol">$</span><span class="symbol">$</span></div></pre></td></tr></table></figure>
-<h1 id="HTML-Color-Quick-Reference"><a href="#HTML-Color-Quick-Reference" class="headerlink" title="HTML Color Quick Reference"></a>HTML Color Quick Reference</h1><hr>
-<p><a href="http://html-color-codes.info/chinese/" target="_blank" rel="external">HTML 色彩代码提取</a></p>
-<p><a href="http://www.w3schools.com/colors/colors_picker.asp" target="_blank" rel="external">HTML Color Picker</a></p>
-<h1 id="Mathematics-Symbols-Quick-Reference"><a href="#Mathematics-Symbols-Quick-Reference" class="headerlink" title="Mathematics Symbols Quick Reference"></a>Mathematics Symbols Quick Reference</h1><hr>
-<p><code>Detexify</code>, 一个数学符号查询手写识别系统，如图：</p>
-<p><img src="https://melissanotes.github.io/Docs/assets/MathJax-Quick-Memo-51ba3.png?v=1475994320721" alt="detexify-demo"></p>
-<p><code>Detexify</code> : <a href="http://detexify.kirelabs.org/classify.html" target="_blank" rel="external">Detexify2</a></p>
-]]></content>
+<figure class="highlight gams"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">$</span><span class="symbol">$</span></div><div class="line">a+y^<span class="number">3</span> \stackrel&#123;\eqref&#123;<span class="number">1</span><span class="number">-1</span>&#125;&#125;= x^<span class="number">2</span></div><div class="line"><span class="symbol">$</span><span class="symbol">$</span></div></pre></td></tr></table></figure>]]></content>
     
     <summary type="html">
     
