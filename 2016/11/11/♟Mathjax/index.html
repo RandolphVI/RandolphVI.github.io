@@ -111,7 +111,7 @@
 <meta property="og:site_name" content="黃某人">
 <meta property="og:description" content="本文是关于 MathJax 的一些写法。">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2017-08-15T14:22:23.000Z">
+<meta property="og:updated_time" content="2017-08-15T14:35:07.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="♟「Tools」 MathJax">
 <meta name="twitter:description" content="本文是关于 MathJax 的一些写法。">
@@ -436,7 +436,7 @@
                   <i class="fa fa-file-word-o"></i>
                 </span>
                 <span title="Words count in article">
-                  3,187
+                  3,178
                 </span>
                 <span> words </span>
                 
@@ -786,7 +786,14 @@
 <li>省略符<code>\ldots</code>：$\ldots$ 与 <code>\cdots</code>：$\cdots$，就是位置不一样的 3 个点;</li>
 <li>一些希腊字母的变体形式，例如 <code>\epsilon</code>：$\epsilon$，<code>\varepsilon</code>：$\varepsilon$，<code>\phi</code>：$\phi$，<code>\varphi</code>：$\varphi$。</li>
 </ul>
-<h2 id="空格"><a href="# 空格" class="headerlink" title="空格"></a>空格 </h2><p> 由于 <code>MathJax</code> 的空间管理比较特殊，所以 <code>a.b</code> 或者 <code>a.........b</code>（…表示空格），都会显示为 <code>a b</code>：$a b$, 如果要增加间隙，可以使用 <code>a\,b</code>：$a\,b$，较宽的间隙 <code>a\;b</code>：$a\;b$，或者是使用 <code>a \quad b</code>：$a \quad b$ 或 <code>a \qquad b</code>：$a \qquad b$。还有一种比较方便的方法是不使用转义字符 <code>\</code> 而是这样 <code>a~b</code>：$a~b$，可以表示一个空格。</p>
+<h2 id="空格"><a href="# 空格" class="headerlink" title="空格"></a>空格 </h2><p> 由于 <code>MathJax</code> 的空间管理比较特殊，所以 <code>a.b</code> 或者 <code>a.........b</code>（…表示空格），都会显示为 <code>a b</code>：$a b$。如果要增加间隙，可以使用：</p>
+<ul>
+<li><code>a\,b</code>：$a\,b$；</li>
+<li><code>a\;b</code>：$a\;b$；</li>
+<li><code>a \quad b</code>：$a \quad b$；</li>
+<li><code>a \qquad b</code>：$a \qquad b$。</li>
+<li>还有一种比较方便的方法是不使用转义字符 <code>\</code> 而是这样 <code>a~b</code>：$a~b$，$a<del>~</del>b$<code>~</code>可以表示一个空格。</li>
+</ul>
 <h2 id="顶部符号"><a href="# 顶部符号" class="headerlink" title="顶部符号"></a>顶部符号 </h2><p> 对于单字符，<code>\hat x</code>：$\hat x$，对于多个字符使用<code>\widehat {xy}</code>：$\widehat {xy}$，类似的还有<code>\overline {xy}</code>：$\overline {xy}$，<code>\vec {xy}</code>：$\vec {xy}$,<code>\overrightarrow {xy}</code>：$\overrightarrow {xy}$，<code>\dot {xy}</code>：$\dot {xy}$,<code>\ddot {xy}</code>：$\ddot {xy}$。</p>
 <h1 id="表格"><a href="# 表格" class="headerlink" title="表格"></a>表格 </h1><p> 可以使用 $$$\begin{array}{列样式}…\end{array}$$$ 的方式来创建表格。</p>
 <ul>
