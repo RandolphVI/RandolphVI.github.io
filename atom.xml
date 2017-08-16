@@ -1855,7 +1855,7 @@ E_{cost} = \frac{m^+ \times (1-TPR) \times cost_{01}+m^- \times FPR \times cost_
     <link href="http://randolph.pro/2016/11/11/%E2%99%9FMathjax/"/>
     <id>http://randolph.pro/2016/11/11/♟Mathjax/</id>
     <published>2016-11-10T16:00:00.000Z</published>
-    <updated>2017-08-16T12:34:55.000Z</updated>
+    <updated>2017-08-16T12:39:01.000Z</updated>
     
     <content type="html"><![CDATA[<h1 id="基础"><a href="# 基础" class="headerlink" title="基础"></a>基础 </h1><h2 id="排版方式"><a href="# 排版方式" class="headerlink" title="排版方式"></a> 排版方式 </h2><p> 使用 <code>MathJax</code> 时，需要用一些适当的标记告诉 <code>MathJax</code> 某段文本是公式代码。此外，<code>MathJax</code>中的公式排版有两种方式，<code>inline</code>和 <code>displayed</code>。<code>inline</code> 表示公式嵌入到文本段中，<code>displayed</code>表示公式独自成为一个段落（也就是居中显示）。例如 $f(x)=3*x$ 这是一个 <code>inline</code> 公式，而下面：</p>
 <script type="math/tex; mode=display">
@@ -2189,7 +2189,7 @@ f(x)=3*x</script><p>这就是一个 <code>displayed</code> 公式。</p>
 <li><code>\dot {xy}</code>：$\dot {xy}$；</li>
 <li><code>\ddot {xy}</code>：$\ddot {xy}$。</li>
 </ul>
-<h1 id="表格"><a href="# 表格" class="headerlink" title="表格"></a>表格 </h1><p> 可以使用 <code>$$\begin{array}{列样式}…\end{array}$$</code> 的方式来创建表格。</p>
+<h1 id="表格"><a href="# 表格" class="headerlink" title="表格"></a>表格 </h1><p> 可以使用 <code>$$\begin{array}{列样式} ... \end{array}$$</code> 的方式来创建表格。</p>
 <ul>
 <li>其中 <code> 列样式 </code>，可以使用<code>c</code>、<code>l</code>、<code>r</code> 分别表示 <code> 居中 </code>、<code> 左对齐 </code>、<code> 右对齐</code>。</li>
 <li>每行之间使用 <code>\\</code> 来分隔（本来是 <code>\</code>，但是在 Markdown 中第一个 <code>\</code> 被解释为转义字符，所以需要使用 <code>\\</code>），每列之间使用 <code>&amp;</code> 来分隔。</li>
@@ -2204,7 +2204,7 @@ n & \text{Left} & \text{Center} & \text{Right} \\
 1 & 0.24 & 1 & 125 \\
 2 & -1 & 189 & -8 \\
 3 & -20 & 2000 & 1+10i \\
-\end{array}</script><h1 id="矩阵"><a href="# 矩阵" class="headerlink" title="矩阵"></a>矩阵 </h1><h2 id="基础用法"><a href="# 基础用法" class="headerlink" title="基础用法"></a> 基础用法 </h2><p> 可以使用 <code>$$\begin{matrix}…\end{matrix}$$</code> 来表示矩阵，同样使用 <code>\\</code> 作为行分隔符，<code>&amp;</code>使用列分隔符。</p>
+\end{array}</script><h1 id="矩阵"><a href="# 矩阵" class="headerlink" title="矩阵"></a>矩阵 </h1><h2 id="基础用法"><a href="# 基础用法" class="headerlink" title="基础用法"></a> 基础用法 </h2><p> 可以使用 <code>$$\begin{matrix} ... \end{matrix}$$</code> 来表示矩阵，同样使用 <code>\\</code> 作为行分隔符，<code>&amp;</code>使用列分隔符。</p>
 <p>例如：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">$$</div><div class="line">\begin&#123;matrix&#125;</div><div class="line">1 &amp; x &amp; x^2 \\</div><div class="line">1 &amp; y &amp; y^2 \\</div><div class="line">1 &amp; z &amp; z^2 \\</div><div class="line">\end&#123;matrix&#125;</div><div class="line">$$</div></pre></td></tr></table></figure>
 <script type="math/tex; mode=display">
@@ -2283,7 +2283,7 @@ n & \text{Left} & \text{Center} & \text{Right} \\
   1 & 2 & 3 \\
   4 & 5 & 6
   \end{array}
-\right]</script><h1 id="公式对齐"><a href="# 公式对齐" class="headerlink" title="公式对齐"></a>公式对齐 </h1><p> 如果需要一系列的公式中等号对齐，可以使用<code>$$\begin{align}…\end{align}$$</code>，其中使用 <code>&amp;</code> 来对其位置，例如：</p>
+\right]</script><h1 id="公式对齐"><a href="# 公式对齐" class="headerlink" title="公式对齐"></a>公式对齐 </h1><p> 如果需要一系列的公式中等号对齐，可以使用<code>$$\begin{align} ... \end{align}$$</code>，其中使用 <code>&amp;</code> 来对其位置，例如：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">$$</div><div class="line">\begin&#123;align&#125;</div><div class="line">\sqrt&#123;37&#125; &amp; = \sqrt&#123;\frac&#123;73^2-1&#125;&#123;12^2&#125;&#125; \\</div><div class="line"> &amp; = \sqrt&#123;\frac&#123;73^2&#125;&#123;12^2&#125;\cdot\frac&#123;73^2-1&#125;&#123;73^2&#125;&#125; \\</div><div class="line"> &amp; = \sqrt&#123;\frac&#123;73^2&#125;&#123;12^2&#125;&#125;\sqrt&#123;\frac&#123;73^2-1&#125;&#123;73^2&#125;&#125; \\</div><div class="line"> &amp; = \frac&#123;73&#125;&#123;12&#125;\sqrt&#123;1 - \frac&#123;1&#125;&#123;73^2&#125;&#125; \\</div><div class="line"> &amp; \approx \frac&#123;73&#125;&#123;12&#125;\left(1 - \frac&#123;1&#125;&#123;2\cdot73^2&#125;\right)</div><div class="line">\end&#123;align&#125;</div><div class="line">$$</div></pre></td></tr></table></figure>
 <script type="math/tex; mode=display">
 \begin{align}
@@ -2292,7 +2292,7 @@ n & \text{Left} & \text{Center} & \text{Right} \\
  & = \sqrt{\frac{73^2}{12^2}}\sqrt{\frac{73^2-1}{73^2}} \\
  & = \frac{73}{12}\sqrt{1 - \frac{1}{73^2}} \\
  & \approx \frac{73}{12}\left(1 - \frac{1}{2\cdot73^2}\right)
-\end{align}</script><h1 id="分类表示"><a href="# 分类表示" class="headerlink" title="分类表示"></a>分类表示 </h1><p> 分类表达式可以使用 <code>$$\begin{cases}…\end{cases}$$</code> ，其中使用 <code>\</code> 来分类，使用 <code>&amp;</code> 指示对齐的位置，例如：</p>
+\end{align}</script><h1 id="分类表示"><a href="# 分类表示" class="headerlink" title="分类表示"></a>分类表示 </h1><p> 分类表达式可以使用 <code>$$\begin{cases} ... \end{cases}$$</code> ，其中使用 <code>\</code> 来分类，使用 <code>&amp;</code> 指示对齐的位置，例如：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">$$</div><div class="line">f(n) =</div><div class="line">\begin&#123;cases&#125;</div><div class="line">n/2,  &amp; \text&#123;if $n$ is even&#125; \\</div><div class="line">3n+1, &amp; \text&#123;if $n$ is odd&#125;  \\</div><div class="line">\end&#123;cases&#125;</div><div class="line">$$</div></pre></td></tr></table></figure>
 <script type="math/tex; mode=display">
 f(n) =
@@ -2347,7 +2347,7 @@ x = a_0 + \cfrac{1^2}{a_1
 <script type="math/tex; mode=display">
 x = a_0 + \frac{1^2}{a_1
           + \frac{2^2}{a_2
-            + \frac{3^2}{a_3 + \frac{4^4}{a_4 + \cdots}}}} \tag{\frac}</script><h1 id="方程组"><a href="# 方程组" class="headerlink" title="方程组"></a>方程组 </h1><p> 对于方程组可以使用 <code>\begin{array} … \end{array}</code> 与<code>\left{…\right.</code>配合，表示方程组：</p>
+            + \frac{3^2}{a_3 + \frac{4^4}{a_4 + \cdots}}}} \tag{\frac}</script><h1 id="方程组"><a href="# 方程组" class="headerlink" title="方程组"></a>方程组 </h1><p> 对于方程组可以使用 <code>\begin{array} ... \end{array}</code> 与<code>\left{... \right.</code>配合，表示方程组：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">$$</div><div class="line">\left\&#123;</div><div class="line">\begin&#123;array&#125;&#123;c&#125;</div><div class="line">a_1x+b_1y+c_1z=d_1 \\</div><div class="line">a_2x+b_2y+c_2z=d_2 \\</div><div class="line">a_3x+b_3y+c_3z=d_3</div><div class="line">\end&#123;array&#125;</div><div class="line">\right.</div><div class="line">$$</div></pre></td></tr></table></figure>
 <script type="math/tex; mode=display">
 \left\{\begin{array}{c}
@@ -2355,14 +2355,14 @@ a_1x+b_1y+c_1z=d_1 \\
 a_2x+b_2y+c_2z=d_2 \\
 a_3x+b_3y+c_3z=d_3
 \end{array}
-\right.</script><p>同时，还可以使用 <code>\begin{cases}…\end{cases}</code> 表达同样的方程组，如：</p>
+\right.</script><p>同时，还可以使用 <code>\begin{cases} ... \end{cases}</code> 表达同样的方程组，如：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">$$</div><div class="line">\begin&#123;cases&#125;</div><div class="line">a_1x+b_1y+c_1z=d_1 \\</div><div class="line">a_2x+b_2y+c_2z=d_2 \\</div><div class="line">a_3x+b_3y+c_3z=d_3</div><div class="line">\end&#123;cases&#125;</div><div class="line">$$</div></pre></td></tr></table></figure>
 <script type="math/tex; mode=display">
 \begin{cases}
 a_1x+b_1y+c_1z=d_1 \\
 a_2x+b_2y+c_2z=d_2 \\
 a_3x+b_3y+c_3z=d_3
-\end{cases}</script><p>对齐方程组中的 <code>=</code> 号，可以使用 <code>\being{aligned} .. \end{aligned}</code>，如：</p>
+\end{cases}</script><p>对齐方程组中的 <code>=</code> 号，可以使用 <code>\being{aligned} ... \end{aligned}</code>，如：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">$$</div><div class="line">\left\&#123;</div><div class="line">\begin&#123;aligned&#125;</div><div class="line">a_1x+b_1y+c_1z &amp;=d_1+e_1 \\</div><div class="line">a_2x+b_2y&amp;=d_2 \\</div><div class="line">a_3x+b_3y+c_3z &amp;=d_3</div><div class="line">\end&#123;aligned&#125;</div><div class="line">\right.</div><div class="line">$$</div></pre></td></tr></table></figure>
 <script type="math/tex; mode=display">
 \left\{\begin{aligned}
@@ -2370,7 +2370,7 @@ a_1x+b_1y+c_1z &=d_1+e_1 \\
 a_2x+b_2y&=d_2 \\
 a_3x+b_3y+c_3z &=d_3
 \end{aligned}
-\right.</script><p>如果要对齐 = 号 和项，可以使用 \being{array}{列样式} … \end{array}，如：</p>
+\right.</script><p>如果要对齐 <code>=</code> 号 和项，可以使用<code>\being{array}{列样式} ... \end{array}</code>，如：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">$$</div><div class="line">\left\&#123;</div><div class="line">\begin&#123;array&#125;&#123;ll&#125;</div><div class="line">a_1x+b_1y+c_1z &amp;=d_1+e_1 \\</div><div class="line">a_2x+b_2y &amp;=d_2 \\</div><div class="line">a_3x+b_3y+c_3z &amp;=d_3</div><div class="line">\end&#123;array&#125;</div><div class="line">\right.</div><div class="line">$$</div></pre></td></tr></table></figure>
 <script type="math/tex; mode=display">
 \left\{\begin{array}{ll}
