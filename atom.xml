@@ -266,7 +266,7 @@ c_{i} = f(w⋅x_{i:i+h-1}+b)</script><p><code>conv2d()</code> 得到的其实是
     <link href="http://randolph.pro/2017/03/07/%E3%80%8CMachine%20Learning%E3%80%8D%20CNN%20Introduction/"/>
     <id>http://randolph.pro/2017/03/07/「Machine Learning」 CNN Introduction/</id>
     <published>2017-03-06T16:00:00.000Z</published>
-    <updated>2017-08-12T14:30:16.000Z</updated>
+    <updated>2017-08-17T15:22:49.000Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://farm5.staticflickr.com/4300/35460446383_aafc34ca3c_o.jpg" alt=""></p>
 <p>有关「Machine Learning」的其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/">「Machine Learning」</a></p>
@@ -274,7 +274,8 @@ c_{i} = f(w⋅x_{i:i+h-1}+b)</script><p><code>conv2d()</code> 得到的其实是
 <p>卷积神经网络（Convolutional Neural Network）虽然很早被出，但是却是近些年才得以发展起来并引起广泛重视的。它是深度学习技术中极具代表的网络结构之一，也是近些年语音分析和图像识别领域的研究热点，后来发现其在 NLP 自然语言处理上的效果同样不俗。它以其特有的局部连接、权值共享网络结构，有效地降低了深度神经网络模型的复杂度，极大地减少了权值的数量。</p>
 <h2 id="Perceptron"><a href="#Perceptron" class="headerlink" title="Perceptron"></a>Perceptron</h2><p>在理解 CNN 卷积神经网络之前，有必要了解神经网络的机制以及缺点，而其中典型的神经元网络就是 MLP （Multi-Layer Perceptron）多层感知器。</p>
 <p>而多层感知器中的 Multi-Layer 是针对单层感知器（Perceptron）而言，单层感知器是最简单的前馈人工神经网络，就是通常人们所说的“神经元”。 </p>
-<h2 id="Build-a-Multilayer-Convolutional-Network"><a href="#Build-a-Multilayer-Convolutional-Network" class="headerlink" title="Build a Multilayer Convolutional Network"></a>Build a Multilayer Convolutional Network</h2><p>在 CNN 卷积神经网络中，主要有四个操作：</p>
+<p>而单层感知器的基本结构如图所示，其以一个实数向量作为输入，计算这些输入的线性组合，若结果大于某个阈值则输出 1，否则输出 0。</p>
+<h1 id=""><a href="#"class="headerlink"title="#"></a>#</h1><h2 id="Build-a-Multilayer-Convolutional-Network"><a href="#Build-a-Multilayer-Convolutional-Network"class="headerlink"title="Build a Multilayer Convolutional Network"></a>Build a Multilayer Convolutional Network</h2><p>在 CNN 卷积神经网络中，主要有四个操作：</p>
 <ol>
 <li>卷积</li>
 <li>非线性处理（ReLU）</li>
@@ -1855,7 +1856,7 @@ E_{cost} = \frac{m^+ \times (1-TPR) \times cost_{01}+m^- \times FPR \times cost_
     <link href="http://randolph.pro/2016/11/11/%E2%99%9FMathjax/"/>
     <id>http://randolph.pro/2016/11/11/♟Mathjax/</id>
     <published>2016-11-10T16:00:00.000Z</published>
-    <updated>2017-08-16T14:10:53.000Z</updated>
+    <updated>2017-08-16T14:12:09.000Z</updated>
     
     <content type="html"><![CDATA[<h1 id="基础"><a href="# 基础" class="headerlink" title="基础"></a>基础 </h1><h2 id="排版方式"><a href="# 排版方式" class="headerlink" title="排版方式"></a> 排版方式 </h2><p> 使用 <code>MathJax</code> 时，需要用一些适当的标记告诉 <code>MathJax</code> 某段文本是公式代码。此外，<code>MathJax</code>中的公式排版有两种方式，<code>inline</code>和 <code>displayed</code>。<code>inline</code> 表示公式嵌入到文本段中，<code>displayed</code>表示公式独自成为一个段落（也就是居中显示）。例如 $f(x)=3*x$ 这是一个 <code>inline</code> 公式，而下面：</p>
 <script type="math/tex; mode=display">
