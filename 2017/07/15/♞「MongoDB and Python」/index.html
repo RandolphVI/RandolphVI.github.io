@@ -112,7 +112,7 @@
 <meta property="og:description" content="本文是关于「MongoDB and Python」这本书的学习笔记。">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://farm5.staticflickr.com/4379/36648216635_d890d6fe5c_o.jpg">
-<meta property="og:updated_time" content="2017-08-18T13:52:06.000Z">
+<meta property="og:updated_time" content="2017-08-18T13:55:09.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="♞「MongoDB and Python」">
 <meta name="twitter:description" content="本文是关于「MongoDB and Python」这本书的学习笔记。">
@@ -503,25 +503,25 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ chown -R /Users/XXX/MongoDB/db</div></pre></td></tr></table></figure>
 <p> 最后一步，手动添加 <code>MongoDB</code> 安装目录到环境变量中，如果使用的是 <code>bash</code>，请修改 <code>~/.bash_profile</code> 配置文件，如果使用的是 <code>zsh</code>，请修改 <code>~/.zshrc</code> 配置文件：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ vim ~/.bash_profile</div></pre></td></tr></table></figure>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">export PATH=<span class="regexp">/usr/</span>local<span class="regexp">/Cellar/m</span>ongodb<span class="regexp">/x.x.x/</span>bin:<span class="variable">$&#123;PATH&#125;</span></div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">export</span> PATH=/usr/<span class="built_in">local</span>/Cellar/mongodb/x.x.x/bin:<span class="variable">$&#123;PATH&#125;</span></div></pre></td></tr></table></figure>
 <p> 这里，x.x.x 代表的是我们安装 <code>MongoDB</code> 对应的版本，请移动到指定文件夹进行查看之后进行修改。</p>
 <p> 最后不要忘记让添加的环境变量生效：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">source</span> ~/.bash_profile</span></div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">source</span> ~/.bash_profile</div></pre></td></tr></table></figure>
 <h2 id="Running-with-MongoDB"><a href="#Running-with-MongoDB" class="headerlink" title="Running with MongoDB"></a>Running with MongoDB</h2><p> 输入命令测试 <code>MongoDB</code> 的环境变量是否生效，尝试启动 <code>MongoDB</code> 服务器端：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash"> mongod</span></div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ mongod</div></pre></td></tr></table></figure>
 <p> 若未出现报错，则说明 <code>MongoDB</code> 服务器端启动成功，会出现如下的信息：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">about to fork child process, waiting until server is ready <span class="keyword">for</span> connections.</div><div class="line">forked process: 15751</div><div class="line">child process started successfully, parent exiting</div></pre></td></tr></table></figure>
 <p> 我们会得到相应的进程号。</p>
 <p> 接着，我们就可以进行 <code>MongoDB</code> 客户端数据库的连接：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash"> mongo</span></div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ mongo</div></pre></td></tr></table></figure>
 <p> 若未出现报错，则进入 <code>MonogDB</code> 的使用界面。</p>
 <h2 id="Restart-the-MongoDB"><a href="#Restart-the-MongoDB" class="headerlink" title="Restart the MongoDB"></a>Restart the MongoDB</h2><p> 如果有一天你发现你的数据库突然启动不了了，很可能是你没有正常关闭 <code>MongoDB</code> 导致的，你可以先尝试删除掉 <code>mongod.lock</code> 文件，然后重新启动。</p>
 <p> 如果还是仍然启动不了，可以先通过命令查看所有进程：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash"> ps -A</span></div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ ps -A</div></pre></td></tr></table></figure>
 <p> 找到 <code>MongoDB</code> 服务器端对应的进程号，进行关闭：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">kill</span> mongodb-id</span></div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">kill</span> mongodb-id</div></pre></td></tr></table></figure>
 <p> 之后再重新启动 <code>MongoDB</code> 服务端：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash"> mongod</span></div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ mongod</div></pre></td></tr></table></figure>
 <h2 id="MongoDB-GUI"><a href="#MongoDB-GUI" class="headerlink" title="MongoDB GUI"></a>MongoDB GUI</h2><p> 存在诸多 MongoDB GUI，我推荐使用的是 <a href="https://robomongo.org" target="_blank" rel="external">Robo 3T</a>。</p>
 <h1 id=""><a href="#"class="headerlink"title=" "></a> </h1>
       
