@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://randolph.pro/"/>
-  <updated>2017-08-18T14:36:53.000Z</updated>
+  <updated>2017-08-18T15:14:50.000Z</updated>
   <id>http://randolph.pro/</id>
   
   <author>
@@ -20,52 +20,71 @@
     <link href="http://randolph.pro/2017/07/15/%E2%99%9E%E3%80%8CMongoDB%20and%20Python%E3%80%8D/"/>
     <id>http://randolph.pro/2017/07/15/♞「MongoDB and Python」/</id>
     <published>2017-07-14T16:00:00.000Z</published>
-    <updated>2017-08-18T14:36:53.000Z</updated>
+    <updated>2017-08-18T15:14:50.000Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://farm5.staticflickr.com/4379/36648216635_d890d6fe5c_o.jpg" alt=""></p>
-<p> 有关「MongoDB and Python」的其他学习笔记系列：<a href="http://randolph.pro/categories/Data-Science/Book-「MongoDB-and-Python」/">「MongoDB and Python」</a><br> 有关「Data Science」的其他数据处理相关学习笔记系列：<a href="http://randolph.pro/categories/Data-Science/">「Data Science」</a></p>
+<p>有关「MongoDB and Python」的其他学习笔记系列：<a href="http://randolph.pro/categories/Data-Science/Book-「MongoDB-and-Python」/">「MongoDB and Python」</a><br>有关「Data Science」的其他数据处理相关学习笔记系列：<a href="http://randolph.pro/categories/Data-Science/">「Data Science」</a></p>
 <h1 id="Getting-Started"><a href="#Getting-Started" class="headerlink" title="Getting Started"></a>Getting Started</h1><h2 id="Installing-MongoDB-on-Mac-OS"><a href="#Installing-MongoDB-on-Mac-OS" class="headerlink" title="Installing MongoDB on Mac OS"></a>Installing MongoDB on Mac OS</h2><p>Mac OS 安装 <code>MongoDB</code> 的方法有多种多样，这里使用 <code>Homebrew</code> 安装 <code>MongoDB</code>，在安装之前首先确保 <code>Homebrew</code> 更新至最新版本：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ brew update</div></pre></td></tr></table></figure>
-<p> 接着，使用 <code>Homebrew</code> 安装 <code>MongoDB</code>：</p>
+<p>接着，使用 <code>Homebrew</code> 安装 <code>MongoDB</code>：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ brew install mongodb</div></pre></td></tr></table></figure>
-<p> 安装完成之后，在使用 <code>MongoDB</code> 之前，我们需要进行相应的环境配置。</p>
-<h2 id="Setting-up-a-Environment-with-MongoDB"><a href="#Setting-up-a-Environment-with-MongoDB" class="headerlink" title="Setting up a Environment with MongoDB"></a>Setting up a Environment with MongoDB</h2><p> 修改 <code>MongoDB</code> 配置文件，配置文件默认在 <code>/usr/local/etc</code> 下的 <code>mongod.conf</code>（可以参考我的配置文件）：</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 日志 </span></div><div class="line"><span class="attr">systemLog:</span></div><div class="line">	<span class="attr">destination:</span> <span class="string">file</span>	<span class="comment"># 日志为文件 </span></div><div class="line">	<span class="attr">path:</span> <span class="string">/Users/XXX/MongoDB/log/mongo.log</span>	<span class="comment"># 文件位置 </span></div><div class="line">	<span class="attr">logAppend:</span> <span class="literal">true</span>	<span class="comment"># 是否追加 </span></div><div class="line"></div><div class="line"><span class="comment"># 进程 </span></div><div class="line"><span class="attr">processManagement:</span></div><div class="line">	<span class="attr">fork:</span> <span class="literal">true</span>	<span class="comment"># 守护进程方式 </span></div><div class="line"></div><div class="line"><span class="comment"># 数据读写 </span></div><div class="line"><span class="attr">storage:</span></div><div class="line">	<span class="attr">dbPath:</span> <span class="string">/Users/XXX/MongoDB/db</span>	<span class="comment"># 数据读写目录 </span></div><div class="line"></div><div class="line"><span class="attr">net:</span></div><div class="line">	<span class="attr">bindIp:</span> <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>	<span class="comment"># 绑定 IP，默认 127.0.0.1，只能本机访问 </span></div><div class="line">	<span class="attr">port:</span> <span class="number">27017</span>	<span class="comment"># 端口 </span></div></pre></td></tr></table></figure>
+<p>安装完成之后，在使用 <code>MongoDB</code> 之前，我们需要进行相应的环境配置。</p>
+<h2 id="Setting-up-a-Environment-with-MongoDB"><a href="#Setting-up-a-Environment-with-MongoDB" class="headerlink" title="Setting up a Environment with MongoDB"></a>Setting up a Environment with MongoDB</h2><p>修改 <code>MongoDB</code> 配置文件，配置文件默认在 <code>/usr/local/etc</code> 下的 <code>mongod.conf</code>（可以参考我的配置文件）：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 日志</span></div><div class="line"><span class="attr">systemLog:</span></div><div class="line">	<span class="attr">destination:</span> <span class="string">file</span>	<span class="comment"># 日志为文件</span></div><div class="line">	<span class="attr">path:</span> <span class="string">/Users/XXX/MongoDB/log/mongo.log</span>	<span class="comment"># 文件位置</span></div><div class="line">	<span class="attr">logAppend:</span> <span class="literal">true</span>	<span class="comment"># 是否追加</span></div><div class="line"></div><div class="line"><span class="comment"># 进程</span></div><div class="line"><span class="attr">processManagement:</span></div><div class="line">	<span class="attr">fork:</span> <span class="literal">true</span>	<span class="comment"># 守护进程方式</span></div><div class="line"></div><div class="line"><span class="comment"># 数据读写</span></div><div class="line"><span class="attr">storage:</span></div><div class="line">	<span class="attr">dbPath:</span> <span class="string">/Users/XXX/MongoDB/db</span>	<span class="comment"># 数据读写目录</span></div><div class="line"></div><div class="line"><span class="attr">net:</span></div><div class="line">	<span class="attr">bindIp:</span> <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>	<span class="comment"># 绑定 IP，默认 127.0.0.1，只能本机访问</span></div><div class="line">	<span class="attr">port:</span> <span class="number">27017</span>	<span class="comment"># 端口</span></div></pre></td></tr></table></figure>
 <p><code>MongoDB</code> 默认的数据读写目录为 <code>/data/db</code>，默认的日志存储目录为 <code>/data/log</code>。</p>
-<p> 我们可以根据需要将其修改成自己需要的目录路径，其中 <code>XXX</code> 为你的电脑的用户名。</p>
-<p> 同样，我们也可以修改绑定的 IP 地址以及对应的端口号。</p>
-<p> 修改完 <code>mongod.conf</code> 配置文件后，根据自己配置内容，创建数据读写目录：</p>
+<p>我们可以根据需要将其修改成自己需要的目录路径，其中 <code>XXX</code> 为你的电脑的用户名。</p>
+<p>同样，我们也可以修改绑定的 IP 地址以及对应的端口号。</p>
+<p>修改完 <code>mongod.conf</code> 配置文件后，根据自己配置内容，创建数据读写目录：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ mkdir -p /Users/XXX/MongoDB/db</div></pre></td></tr></table></figure>
-<p> 并要为其提供可读可写的权限：</p>
+<p>并要为其提供可读可写的权限：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ chown -R /Users/XXX/MongoDB/db</div></pre></td></tr></table></figure>
-<p> 最后一步，手动添加 <code>MongoDB</code> 安装目录到环境变量中。</p>
-<p> 如果使用的是 <code>bash</code>，请修改 <code>~/.bash_profile</code> 配置文件；<br> 如果使用的是 <code>zsh</code>，请修改 <code>~/.zshrc</code> 配置文件。</p>
+<p>最后一步，手动添加 <code>MongoDB</code> 安装目录到环境变量中。</p>
+<p>如果使用的是 <code>bash</code>，请修改 <code>~/.bash_profile</code> 配置文件；<br>如果使用的是 <code>zsh</code>，请修改 <code>~/.zshrc</code> 配置文件。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ vim ~/.bash_profile</div></pre></td></tr></table></figure>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">export</span> PATH=/usr/<span class="built_in">local</span>/Cellar/mongodb/x.x.x/bin:<span class="variable">$&#123;PATH&#125;</span></div></pre></td></tr></table></figure>
-<p> 这里，x.x.x 代表的是我们安装 <code>MongoDB</code> 对应的版本，请移动到指定文件夹进行查看之后进行修改。</p>
-<p> 最后不要忘记让添加的环境变量生效：</p>
+<p>这里，x.x.x 代表的是我们安装 <code>MongoDB</code> 对应的版本，请移动到指定文件夹进行查看之后进行修改。</p>
+<p>最后不要忘记让添加的环境变量生效：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">source</span> ~/.bash_profile</div></pre></td></tr></table></figure>
-<h2 id="Running-with-MongoDB"><a href="#Running-with-MongoDB" class="headerlink" title="Running with MongoDB"></a>Running with MongoDB</h2><p> 输入命令测试 <code>MongoDB</code> 的环境变量是否生效，尝试启动 <code>MongoDB</code> 服务器端：</p>
+<h2 id="Running-with-MongoDB"><a href="#Running-with-MongoDB" class="headerlink" title="Running with MongoDB"></a>Running with MongoDB</h2><p>输入命令测试 <code>MongoDB</code> 的环境变量是否生效，尝试启动 <code>MongoDB</code> 服务器端：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ mongod</div></pre></td></tr></table></figure>
-<p> 若未出现报错，则说明 <code>MongoDB</code> 服务器端启动成功，会出现如下的信息：</p>
+<p>若未出现报错，则说明 <code>MongoDB</code> 服务器端启动成功，会出现如下的信息：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">about to fork child process, waiting until server is ready <span class="keyword">for</span> connections.</div><div class="line">forked process: 15751</div><div class="line">child process started successfully, parent exiting</div></pre></td></tr></table></figure>
-<p> 我们会得到相应的进程号。</p>
-<p> 接着，我们就可以进行 <code>MongoDB</code> 客户端数据库的连接：</p>
+<p>我们会得到相应的进程号。</p>
+<p>接着，我们就可以进行 <code>MongoDB</code> 客户端数据库的连接：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ mongo</div></pre></td></tr></table></figure>
-<p> 若未出现报错，则进入 <code>MonogDB</code> 的使用界面。</p>
-<h2 id="Restart-the-MongoDB"><a href="#Restart-the-MongoDB" class="headerlink" title="Restart the MongoDB"></a>Restart the MongoDB</h2><p> 如果有一天你发现你的数据库突然启动不了了，很可能是你没有正常关闭 <code>MongoDB</code> 导致的。</p>
-<p> 你可以先尝试删除掉 <code>mongod.lock</code> 文件，然后重新启动。</p>
-<p> 如果还是仍然启动不了，可以先通过命令查看所有进程：</p>
+<p>若未出现报错，则进入 <code>MonogDB</code> 的使用界面。</p>
+<h2 id="Restart-the-MongoDB"><a href="#Restart-the-MongoDB" class="headerlink" title="Restart the MongoDB"></a>Restart the MongoDB</h2><p>如果有一天你发现你的数据库突然启动不了了，很可能是你没有正常关闭 <code>MongoDB</code> 导致的。</p>
+<p>你可以先尝试删除掉 <code>mongod.lock</code> 文件，然后重新启动。</p>
+<p>如果还是仍然启动不了，可以先通过命令查看所有进程：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ ps -A</div></pre></td></tr></table></figure>
-<p> 找到 <code>MongoDB</code> 服务器端对应的进程号，进行关闭：</p>
+<p>找到 <code>MongoDB</code> 服务器端对应的进程号，进行关闭：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">kill</span> mongodb-id</div></pre></td></tr></table></figure>
-<p> 之后再重新启动 <code>MongoDB</code> 服务端：</p>
+<p>之后再重新启动 <code>MongoDB</code> 服务端：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ mongod</div></pre></td></tr></table></figure>
-<h2 id="MongoDB-GUI"><a href="#MongoDB-GUI" class="headerlink" title="MongoDB GUI"></a>MongoDB GUI</h2><p> 存在诸多 MongoDB GUI，我推荐使用的是 <a href="https://robomongo.org" target="_blank" rel="external">Robo 3T</a>。</p>
+<h2 id="MongoDB-GUI"><a href="#MongoDB-GUI" class="headerlink" title="MongoDB GUI"></a>MongoDB GUI</h2><p>存在诸多 MongoDB GUI，我推荐使用的是<a href="https://robomongo.org" target="_blank" rel="external">Robo 3T</a>。</p>
 <h1 id="Reading-and-Writing-to-MongoDB-with-Python"><a href="#Reading-and-Writing-to-MongoDB-with-Python" class="headerlink" title="Reading and Writing to MongoDB with Python"></a>Reading and Writing to MongoDB with Python</h1><h2 id="Connecting-to-MongoDB-with-Python"><a href="#Connecting-to-MongoDB-with-Python" class="headerlink" title="Connecting to MongoDB with Python"></a>Connecting to MongoDB with Python</h2><p><code>PyMongo</code> 是 Python 中用来操作 <code>MongoDB</code> 的一个库。首先通过 <code>pip3</code> 下载 <code>PyMongo</code>：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ pip3 install pymongo</div></pre></td></tr></table></figure>
-<p> 安装完 <code>PyMongo</code> 之后，我们直接来看一个使用例子：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> sys</div><div class="line"><span class="keyword">from</span> pymongo <span class="keyword">import</span> MongoClient</div><div class="line"><span class="keyword">from</span> pymongo.errors <span class="keyword">import</span> ConnectionFailure</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></div><div class="line">	<span class="comment"># 建立连接到默认主机（localhost）和端口（27017）。还可以指定主机和 / 或使用端口：</span></div><div class="line">	<span class="keyword">try</span>:</div><div class="line">		client = MongoClient(<span class="string">'localhost'</span>, <span class="number">27017</span>)</div><div class="line">		print(<span class="string">'Connected Successfully!'</span>)</div><div class="line">	<span class="keyword">except</span> ConnectionFailure <span class="keyword">as</span> e:</div><div class="line">		sys.stderr.write(<span class="string">'Could not connect to MongoDB: %s'</span> % e)</div><div class="line">		sys.exit(<span class="number">1</span>)</div><div class="line"></div><div class="line">	db = client.local</div><div class="line">	collection = db[<span class="string">'CNN-Sentence-Pairs-Classification-Original'</span>]</div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</div><div class="line">	main()</div></pre></td></tr></table></figure>
+<p>安装完 <code>PyMongo</code>之后，我们直接来看一个使用例子：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> sys</div><div class="line"></div><div class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> datetime</div><div class="line"><span class="keyword">from</span> pymongo <span class="keyword">import</span> MongoClient</div><div class="line"><span class="keyword">from</span> pymongo.errors <span class="keyword">import</span> ConnectionFailure</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></div><div class="line">	<span class="comment"># 建立连接到默认主机（localhost）和端口（27017）。还可以指定主机和 / 或使用端口：</span></div><div class="line">	<span class="keyword">try</span>:</div><div class="line">		client = MongoClient(<span class="string">'localhost'</span>, <span class="number">27017</span>)</div><div class="line">		print(<span class="string">'Connected Successfully!'</span>)</div><div class="line">	<span class="keyword">except</span> ConnectionFailure <span class="keyword">as</span> e:</div><div class="line">		sys.stderr.write(<span class="string">'Could not connect to MongoDB: %s'</span> % e)</div><div class="line">		sys.exit(<span class="number">1</span>)</div><div class="line"></div><div class="line">	db = client.local</div><div class="line">	collection = db[<span class="string">'CNN-Sentence-Pairs-Classification-Original'</span>]</div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</div><div class="line">	main()</div></pre></td></tr></table></figure>
+<h2 id="ObjectId"><a href="#ObjectId" class="headerlink" title="ObjectId"></a>ObjectId</h2><p>在 <code>MongoDB</code> 中存储的 <code>Document</code> 必须有一个 <strong><code>_id</code></strong> 键。这个键的值可以是任何类型的，默认是个 <code>ObjectId</code> 对象。</p>
+<p>在一个 <code>Collection</code> 里面，每个 <code>Document</code> 都有唯一的 <strong><code>_id</code></strong> 值，来确保 <code>Collection</code> 里面每个 <code>Document</code> 都能被唯一标识。</p>
+<p><code>MongoDB</code>采用<code>ObjectId</code>，而不是其他比较常规的做法（比如自动增加的主键）的主要原因，因为在多个服务器上同步自动增加主键值既费力还费时。</p>
+<p><code>MongoDB</code>的这种设计，就是体现 <strong> 空间换时间 </strong> 的思想。</p>
+<p><code>ObjectId</code>是一个 <strong>12</strong> 字节 <code>BSON</code> 类型数据，有以下格式：</p>
+<ul>
+<li>前 4 个字节表示时间戳</li>
+<li>接下来的 3 个字节是机器标识码</li>
+<li>紧接的两个字节由进程 id 组成（PID）</li>
+<li>最后三个字节是随机数。</li>
+</ul>
+<p>举个例子，<code>4e7020cb7cac81af7136236b</code>这个 24 位的字符串，虽然看起来很长，也很难理解，但实际上它是由一组十六进制的字符构成，每个字节两位的十六进制数字，总共用了 12 字节的存储空间。</p>
+<h3 id="Time"><a href="#Time" class="headerlink" title="Time"></a>Time</h3><p>对其前 4 位进行提取<code>4e7020cb</code>，然后按照十六进制转为十进制，变为<code>1315971275</code>，这个数字就是一个时间戳。通过时间戳的转换，就成了易看清的时间格式。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ date -r 1315971275</div><div class="line">Mer 14 Set 2011 11:34:35 CST</div></pre></td></tr></table></figure>
+<h3 id="Machine"><a href="#Machine" class="headerlink" title="Machine"></a>Machine</h3><p>接下来的三个字节就是 <code>7cac81</code>，这三个字节是所在主机的唯一标识符，一般是机器主机名的散列值，这样就确保了不同主机生成不同的机器 hash 值。<br> 这样确保在分布式中不造成冲突，这也就是在同一台机器生成的 <code>ObjectId</code> 中间的字符串都是一模一样的原因。</p>
+<h3 id="PID"><a href="#PID" class="headerlink" title="PID"></a>PID</h3><p>上面的三个字节的 <code>Machine</code> 是为了确保在不同机器产生的 <code>ObjectId</code> 不冲突，而 <code>PID</code> 就是为了在同一台机器不同的 <code>MongoDB</code> 进程产生了 <code>ObjectId</code> 不冲突。<br>接下来的两个字节就是 <code>af71</code>，它是产生<code>ObjectId</code> 的进程标识符。</p>
+<h3 id="INC"><a href="#INC" class="headerlink" title="INC"></a>INC</h3><p>自增计数器。前面的九个字节是保证了一秒内不同机器不同进程生成 <code>ObjectId</code> 不冲突，这后面的三个字节 <code>36236b</code> 是一个自动增加的计数器，用来确保在同一秒内产生的 <code>ObjectId</code> 也不会发现冲突，允许 $256^3=16777216$ 条记录的唯一性。</p>
+<p>总的来看，<code>ObjectId</code>的前 4 个字节时间戳，记录了文档创建的时间；接下来 3 个字节代表了所在主机的唯一标识符，确定了不同主机间产生不同的 ObjectId；后 2 个字节的进程 id，决定了在同一台机器下，不同 <code>MongoDB</code> 进程产生不同的 <code>ObjectId</code>；最后通过 3 个字节的自增计数器，确保同一秒内产生<code>ObjectId</code> 的唯一性。</p>
+<p><code>ObjectId</code>的这个主键生成策略，很好地解决了在分布式环境下高并发情况主键唯一性问题，值得学习借鉴。</p>
 ]]></content>
     
     <summary type="html">
