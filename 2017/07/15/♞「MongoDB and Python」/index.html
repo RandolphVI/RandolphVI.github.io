@@ -111,7 +111,7 @@
 <meta property="og:site_name" content="黃某人">
 <meta property="og:description" content="本文介绍了 MongoDB 的相关知识，以及 PyMongo （Python 上连接 MongoDB 的第三方库）的 API 操作。">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2017-08-19T17:49:00.000Z">
+<meta property="og:updated_time" content="2017-08-19T17:49:56.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="♟「Tools」 MongoDB and PyMongo">
 <meta name="twitter:description" content="本文介绍了 MongoDB 的相关知识，以及 PyMongo （Python 上连接 MongoDB 的第三方库）的 API 操作。">
@@ -592,7 +592,13 @@
 </li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.collection.insert_one(&#123;<span class="string">'attribute'</span>: value&#125;)</div></pre></td></tr></table></figure>
-<h3 id="Update"><a href="#Update" class="headerlink" title="Update()"></a>Update()</h3><p><strong><code>update(criteria, objNew, upsert, mult)</code></strong><br>1.<strong><code>criteria</code></strong>： 查询文档，用于定位需要更新的目标文档。<br>2.<strong><code>objNew</code></strong>： 修改器文档，用于说明要对找到的文档进行哪些修改。<br>3.<strong><code>upsert</code></strong>：: 如目标记录不存在，是否插入新文档。<br>4.<strong><code>multi</code></strong>： 是否更新多个文档。</p>
+<h3 id="Update"><a href="#Update" class="headerlink" title="Update()"></a>Update()</h3><p><strong><code>update(criteria, objNew, upsert, mult)</code></strong></p>
+<ol>
+<li><strong><code>criteria</code></strong>： 查询文档，用于定位需要更新的目标文档。</li>
+<li><strong><code>objNew</code></strong>： 修改器文档，用于说明要对找到的文档进行哪些修改。</li>
+<li><strong><code>upsert</code></strong>：: 如目标记录不存在，是否插入新文档。</li>
+<li><strong><code>multi</code></strong>： 是否更新多个文档。</li>
+</ol>
 <ul>
 <li><strong><code>$set</code></strong> &amp; <strong><code>$addToSet</code></strong></li>
 </ul>

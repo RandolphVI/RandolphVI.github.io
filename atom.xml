@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://randolph.pro/"/>
-  <updated>2017-08-19T17:49:00.000Z</updated>
+  <updated>2017-08-19T17:49:56.000Z</updated>
   <id>http://randolph.pro/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://randolph.pro/2017/07/15/%E2%99%9E%E3%80%8CMongoDB%20and%20Python%E3%80%8D/"/>
     <id>http://randolph.pro/2017/07/15/♞「MongoDB and Python」/</id>
     <published>2017-07-14T16:00:00.000Z</published>
-    <updated>2017-08-19T17:49:00.000Z</updated>
+    <updated>2017-08-19T17:49:56.000Z</updated>
     
     <content type="html"><![CDATA[<p>有关「Tools」的其他笔记系列：<a href="http://randolph.pro/categories/Tools/">「Tools」</a></p>
 <h1 id="Chapter-1-Getting-Started"><a href="#Chapter-1-Getting-Started" class="headerlink" title="Chapter 1: Getting Started"></a>Chapter 1: Getting Started</h1><h2 id="Installing-MongoDB-on-Mac-OS"><a href="#Installing-MongoDB-on-Mac-OS" class="headerlink" title="Installing MongoDB on Mac OS"></a>Installing MongoDB on Mac OS</h2><p>Mac OS 安装 <code>MongoDB</code> 的方法有多种多样，这里使用 <code>Homebrew</code> 安装 <code>MongoDB</code>，在安装之前首先确保 <code>Homebrew</code> 更新至最新版本：</p>
@@ -140,7 +140,13 @@
 </li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.collection.insert_one(&#123;<span class="string">'attribute'</span>: value&#125;)</div></pre></td></tr></table></figure>
-<h3 id="Update"><a href="#Update" class="headerlink" title="Update()"></a>Update()</h3><p><strong><code>update(criteria, objNew, upsert, mult)</code></strong><br>1.<strong><code>criteria</code></strong>： 查询文档，用于定位需要更新的目标文档。<br>2.<strong><code>objNew</code></strong>： 修改器文档，用于说明要对找到的文档进行哪些修改。<br>3.<strong><code>upsert</code></strong>：: 如目标记录不存在，是否插入新文档。<br>4.<strong><code>multi</code></strong>： 是否更新多个文档。</p>
+<h3 id="Update"><a href="#Update" class="headerlink" title="Update()"></a>Update()</h3><p><strong><code>update(criteria, objNew, upsert, mult)</code></strong></p>
+<ol>
+<li><strong><code>criteria</code></strong>： 查询文档，用于定位需要更新的目标文档。</li>
+<li><strong><code>objNew</code></strong>： 修改器文档，用于说明要对找到的文档进行哪些修改。</li>
+<li><strong><code>upsert</code></strong>：: 如目标记录不存在，是否插入新文档。</li>
+<li><strong><code>multi</code></strong>： 是否更新多个文档。</li>
+</ol>
 <ul>
 <li><strong><code>$set</code></strong> &amp; <strong><code>$addToSet</code></strong></li>
 </ul>
