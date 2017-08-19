@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://randolph.pro/"/>
-  <updated>2017-08-19T17:49:56.000Z</updated>
+  <updated>2017-08-19T17:53:05.000Z</updated>
   <id>http://randolph.pro/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://randolph.pro/2017/07/15/%E2%99%9E%E3%80%8CMongoDB%20and%20Python%E3%80%8D/"/>
     <id>http://randolph.pro/2017/07/15/♞「MongoDB and Python」/</id>
     <published>2017-07-14T16:00:00.000Z</published>
-    <updated>2017-08-19T17:49:56.000Z</updated>
+    <updated>2017-08-19T17:53:05.000Z</updated>
     
     <content type="html"><![CDATA[<p>有关「Tools」的其他笔记系列：<a href="http://randolph.pro/categories/Tools/">「Tools」</a></p>
 <h1 id="Chapter-1-Getting-Started"><a href="#Chapter-1-Getting-Started" class="headerlink" title="Chapter 1: Getting Started"></a>Chapter 1: Getting Started</h1><h2 id="Installing-MongoDB-on-Mac-OS"><a href="#Installing-MongoDB-on-Mac-OS" class="headerlink" title="Installing MongoDB on Mac OS"></a>Installing MongoDB on Mac OS</h2><p>Mac OS 安装 <code>MongoDB</code> 的方法有多种多样，这里使用 <code>Homebrew</code> 安装 <code>MongoDB</code>，在安装之前首先确保 <code>Homebrew</code> 更新至最新版本：</p>
@@ -151,12 +151,12 @@
 <li><strong><code>$set</code></strong> &amp; <strong><code>$addToSet</code></strong></li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">db.collection.update(&#123;<span class="string">'attribute1'</span>: value1, <span class="string">'attribute2'</span>: value2&#125;, \</div><div class="line">					&#123;<span class="string">'$set'</span>: &#123;<span class="string">'attribute1'</span>: new_value1&#125;, <span class="string">'$set'</span>:&#123;<span class="string">'attribute2'</span>: new_value2&#125;, \</div><div class="line">					<span class="string">'$addToSet'</span>:&#123;<span class="string">'attribute3'</span>: value3&#125;&#125;, upsert=<span class="keyword">True</span>)</div></pre></td></tr></table></figure>
-<p>其中，<code>$set</code>表示对原来的记录进行修改，<code>$addToSet</code>表示添加 <code>attribute3</code> 字段到 <code>{&#39;attribute1&#39;=new_value1, &#39;attribute2&#39;=new_value2}</code> 这条记录中。</p>
-<p><code>$addToSet</code>和 <code>$push</code> 类似，不过仅在该元素不存在时才添加 (<code>Set</code>表示不重复元素集合)。</p>
+<p>其中，<strong><code>$set</code></strong>表示对原来的记录进行修改，<strong><code>$addToSet</code></strong>表示添加 <code>attribute3</code> 字段到 <code>{&#39;attribute1&#39;=new_value1, &#39;attribute2&#39;=new_value2}</code> 这条记录中。</p>
+<p><strong><code>$addToSet</code></strong>和 <strong><code>$push</code></strong> 类似，不过仅在该元素不存在时才添加 (<code>Set</code>表示不重复元素集合)。</p>
 <ul>
 <li><strong><code>$unset</code></strong></li>
 </ul>
-<p><code>$unset</code>表示移除字段属性：</p>
+<p><strong><code>$unset</code></strong>表示移除字段属性：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.collection.update(&#123;<span class="string">'attribute1'</span>: value1&#125;, &#123;<span class="string">'$unset'</span>: &#123;<span class="string">'attribute2'</span>: value2&#125;, <span class="string">'$unset'</span>: &#123;<span class="string">'attribute3'</span>: value3&#125;&#125;)</div></pre></td></tr></table></figure>
 <ul>
 <li><strong><code>$push</code></strong> &amp; <strong><code>pushAll</code></strong></li>
@@ -165,18 +165,18 @@
 <ul>
 <li><strong><code>$each</code></strong></li>
 </ul>
-<p><code>$each</code>表示添加多个元素：</p>
+<p><strong><code>$each</code></strong>表示添加多个元素：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.collection.update(&#123;<span class="string">'attribute1'</span>: value1&#125;, &#123;<span class="string">'$addToSet'</span>: &#123;<span class="string">'attribute2'</span>: &#123;<span class="string">'$each'</span>: [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]&#125;&#125;&#125;)</div></pre></td></tr></table></figure>
 <ul>
 <li><strong><code>$pop</code></strong></li>
 </ul>
-<p><code>$pop</code>表示按照 <code>index</code> 位置下标移除元素。</p>
+<p><strong><code>$pop</code></strong>表示按照 <code>index</code> 位置下标移除元素。</p>
 <p>原先记录显示（忽略 ‘_id’）：<code>{&#39;attribute1&#39;: [1, 2, 3, 4, 5, 6, 7, 2, 3], &#39;attribute2&#39;: value}</code></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">db.collection.update(&#123;<span class="string">'attribute2'</span>: value&#125;, &#123;<span class="string">'$pop'</span>: &#123;<span class="string">'attribute1'</span>: <span class="number">1</span>&#125;&#125;) <span class="comment"># 移除最后一个元素</span></div><div class="line"><span class="comment"># 此刻字段显示：&#123;'attribute1': [1, 2, 3, 4, 5, 6, 7, 2], 'attribute2': value&#125;</span></div><div class="line"></div><div class="line">db.collection.update(&#123;<span class="string">'attribute2'</span>: value&#125;, &#123;<span class="string">'$pop'</span>:&#123;<span class="string">'attribute1'</span>: <span class="number">-1</span>&#125;&#125;) <span class="comment"># 移除第一个元素</span></div><div class="line"><span class="comment"># 此刻字段显示：&#123;'attribute1': [2, 3, 4, 5, 6, 7, 2], 'attribute2': value&#125;</span></div></pre></td></tr></table></figure>
 <ul>
 <li><strong><code>$pull</code></strong> &amp; <strong><code>$pullAll</code></strong></li>
 </ul>
-<p><code>$pull</code>表示按值移除元素，<code>$pullAll</code>表示移除所有符合条件的元素：</p>
+<p><strong><code>$pull</code></strong>表示按值移除元素，<strong><code>$pullAll</code></strong>表示移除所有符合条件的元素：</p>
 <p>原先字段显示（忽略 ‘_id’）：<code>{&#39;attribute1&#39;: [2, 3, 4, 5, 6, 7, 2], &#39;attribute2&#39;: value}</code></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">db.collection..update(&#123;<span class="string">'attribute2'</span>: value&#125;, &#123;<span class="string">'$pull'</span>:&#123;<span class="string">'attribute1'</span>: <span class="number">2</span>&#125;&#125;) <span class="comment"># 移除全部 2</span></div><div class="line"><span class="comment"># 此刻字段显示：&#123;'attribute1': [3, 4, 5, 6, 7], 'attribute2': value&#125;</span></div><div class="line"></div><div class="line">db.collection.update(&#123;<span class="string">'attribute2'</span>: value&#125;, &#123;<span class="string">'$pullAll'</span>:&#123;<span class="string">'attribute1'</span>: [<span class="number">3</span>,<span class="number">5</span>,<span class="number">6</span>]&#125;&#125;) <span class="comment"># 移除 3,5,6</span></div><div class="line"><span class="comment"># 此刻字段显示：&#123;'attribute1': [4, 7], 'attribute2': value&#125;</span></div></pre></td></tr></table></figure>
 <h3 id="Remove"><a href="#Remove" class="headerlink" title="Remove()"></a>Remove()</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">db.collection.remove() <span class="comment"># 表示删除集合里的所有记录</span></div><div class="line">db.collection.remove(&#123;<span class="string">'attribute'</span>: value&#125;) <span class="comment"># 表删除某属性 attribute=value 的记录</span></div><div class="line"></div><div class="line">id = db.collection.find_one(&#123;<span class="string">'attribute'</span>: value&#125;)[<span class="string">'_id'</span>]</div><div class="line">db.collection.remove(id) <span class="comment"># 查找到某属性 attribute=value 的记录，并根据记录的 id 删除该记录</span></div><div class="line">db.collection.drop() <span class="comment"># 表示删除整个集合</span></div></pre></td></tr></table></figure>
@@ -219,9 +219,9 @@
 <ul>
 <li><strong>数据类型转换</strong></li>
 </ul>
-<p>对于一条记录 x，若其字段 <code>attribute</code> 为 <code>&lt;string&gt;</code> 型，则可以如下转换为 <code>&lt;int&gt;</code> 型：</p>
+<p>对于一条记录 x，若其字段 <code>attribute</code> 为<code>&lt;string&gt;</code> 型，则可以如下转换为<code>&lt;int&gt;</code> 型：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">x[<span class="string">'price'</span>]=int(x[<span class="string">'price'</span>])</div></pre></td></tr></table></figure>
-<p><code>$type</code>: 用于判断属性类型。</p>
+<p><strong><code>$type</code></strong>: 用于判断属性类型。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> item <span class="keyword">in</span> db.collection.find(&#123;<span class="string">'attribute'</span>: &#123;<span class="string">'$type'</span>:<span class="number">1</span>&#125;&#125;): <span class="keyword">print</span> item <span class="comment"># 查询数字类型的</span></div><div class="line"><span class="keyword">for</span> item <span class="keyword">in</span> db.collection.find(&#123;<span class="string">'attribute'</span>: &#123;<span class="string">'$type'</span>:<span class="number">2</span>&#125;&#125;): <span class="keyword">print</span> item <span class="comment"># 查询字符串类型的</span></div></pre></td></tr></table></figure>
 <p>各种类型值的代表值:</p>
 <div class="table-container">
@@ -268,7 +268,7 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> item <span class="keyword">in</span> db.collection.find(&#123;<span class="string">'attribute1'</span>: value&#125;, &#123;<span class="string">'_id'</span>: <span class="number">0</span>, <span class="string">'attribute1'</span>: <span class="number">1</span>, <span class="string">'attribute2'</span>: <span class="number">1</span>&#125;) \</div><div class="line">							.sort([(<span class="string">'attribute1'</span>, <span class="number">1</span>), (<span class="string">'attribute2'</span>, <span class="number">-1</span>)]):  <span class="keyword">print</span> item</div></pre></td></tr></table></figure>
 <p><strong>可能会出现 <code>OperationFailed: Sort operation used more than the maximum bytes of RAM. Add an index, or specify a smaller limit.</code> 的错误，需要在后面添加一个 <code>limit()</code> 函数：</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> item <span class="keyword">in</span> db.collection.find(&#123;<span class="string">'attribute1'</span>: value&#125;, &#123;<span class="string">'_id'</span>: <span class="number">0</span>, <span class="string">'attribute1'</span>: <span class="number">1</span>, <span class="string">'attribute2'</span>: <span class="number">1</span>&#125;) \</div><div class="line">							.sort([(<span class="string">'attribute1'</span>, <span class="number">1</span>), (<span class="string">'attribute2'</span>, <span class="number">-1</span>)]).limit(<span class="number">100</span>):  <span class="keyword">print</span> item</div></pre></td></tr></table></figure>
-<p>** 比如，我们要做一个排行榜功能，需要在某 <code>collection</code> 中查找分数最多的 100 名玩家。##</p>
+<p><strong>比如，我们要做一个排行榜功能，需要在某 <code>collection</code> 中查找分数最多的 100 名玩家。</strong></p>
 <ul>
 <li><strong>SLICE &amp; LIMIT</strong></li>
 </ul>
