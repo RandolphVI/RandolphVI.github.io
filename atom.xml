@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://randolph.pro/"/>
-  <updated>2017-08-19T17:47:40.000Z</updated>
+  <updated>2017-08-19T17:49:00.000Z</updated>
   <id>http://randolph.pro/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://randolph.pro/2017/07/15/%E2%99%9E%E3%80%8CMongoDB%20and%20Python%E3%80%8D/"/>
     <id>http://randolph.pro/2017/07/15/♞「MongoDB and Python」/</id>
     <published>2017-07-14T16:00:00.000Z</published>
-    <updated>2017-08-19T17:47:40.000Z</updated>
+    <updated>2017-08-19T17:49:00.000Z</updated>
     
     <content type="html"><![CDATA[<p>有关「Tools」的其他笔记系列：<a href="http://randolph.pro/categories/Tools/">「Tools」</a></p>
 <h1 id="Chapter-1-Getting-Started"><a href="#Chapter-1-Getting-Started" class="headerlink" title="Chapter 1: Getting Started"></a>Chapter 1: Getting Started</h1><h2 id="Installing-MongoDB-on-Mac-OS"><a href="#Installing-MongoDB-on-Mac-OS" class="headerlink" title="Installing MongoDB on Mac OS"></a>Installing MongoDB on Mac OS</h2><p>Mac OS 安装 <code>MongoDB</code> 的方法有多种多样，这里使用 <code>Homebrew</code> 安装 <code>MongoDB</code>，在安装之前首先确保 <code>Homebrew</code> 更新至最新版本：</p>
@@ -217,7 +217,36 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">x[<span class="string">'price'</span>]=int(x[<span class="string">'price'</span>])</div></pre></td></tr></table></figure>
 <p><code>$type</code>: 用于判断属性类型。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> item <span class="keyword">in</span> db.collection.find(&#123;<span class="string">'attribute'</span>: &#123;<span class="string">'$type'</span>:<span class="number">1</span>&#125;&#125;): <span class="keyword">print</span> item <span class="comment"># 查询数字类型的</span></div><div class="line"><span class="keyword">for</span> item <span class="keyword">in</span> db.collection.find(&#123;<span class="string">'attribute'</span>: &#123;<span class="string">'$type'</span>:<span class="number">2</span>&#125;&#125;): <span class="keyword">print</span> item <span class="comment"># 查询字符串类型的</span></div></pre></td></tr></table></figure>
-<p>各种类型值的代表值:<br>| Condition A | Condition B | Condition C | Condition D | Condition E |<br>| :—-: | :—-: | :—-: | :—-: | :—-: |<br>| Double = 1  | String = 2 | Object = 3  | Array = 4 | Binary data = 5 |<br>| Undefined = 6(Abandon) | Object Id = 7 | Boolean = 8  | Date = 9 | Null = 10 |</p>
+<p>各种类型值的代表值:</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Condition A</th>
+<th style="text-align:center">Condition B</th>
+<th style="text-align:center">Condition C</th>
+<th style="text-align:center">Condition D</th>
+<th style="text-align:center">Condition E</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Double = 1</td>
+<td style="text-align:center">String = 2</td>
+<td style="text-align:center">Object = 3</td>
+<td style="text-align:center">Array = 4</td>
+<td style="text-align:center">Binary data = 5</td>
+</tr>
+<tr>
+<td style="text-align:center">Undefined = 6(Abandon)</td>
+<td style="text-align:center">Object Id = 7</td>
+<td style="text-align:center">Boolean = 8</td>
+<td style="text-align:center">Date = 9</td>
+<td style="text-align:center">Null = 10</td>
+</tr>
+</tbody>
+</table>
+</div>
 <ul>
 <li><strong>计数</strong></li>
 </ul>
@@ -231,7 +260,7 @@
 <li><strong>指定字段条件查找 + 排序 + 指定字段显示</strong></li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> item <span class="keyword">in</span> db.collection.find(&#123;<span class="string">'attribute1'</span>: value&#125;, &#123;<span class="string">'_id'</span>: <span class="number">0</span>, <span class="string">'attribute1'</span>: <span class="number">1</span>, <span class="string">'attribute2'</span>: <span class="number">1</span>&#125;) \</div><div class="line">							.sort([(<span class="string">'attribute1'</span>, <span class="number">1</span>), (<span class="string">'attribute2'</span>, <span class="number">-1</span>)]):  <span class="keyword">print</span> item</div></pre></td></tr></table></figure>
-<p><strong>可能会出现 「OperationFailed: Sort operation used more than the maximum bytes of RAM. Add an index, or specify a smaller limit.」 的错误，需要在后面添加一个 limit()函数：</strong></p>
+<p><strong>可能会出现 <code>OperationFailed: Sort operation used more than the maximum bytes of RAM. Add an index, or specify a smaller limit.</code> 的错误，需要在后面添加一个 <code>limit()</code> 函数：</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> item <span class="keyword">in</span> db.collection.find(&#123;<span class="string">'attribute1'</span>: value&#125;, &#123;<span class="string">'_id'</span>: <span class="number">0</span>, <span class="string">'attribute1'</span>: <span class="number">1</span>, <span class="string">'attribute2'</span>: <span class="number">1</span>&#125;) \</div><div class="line">							.sort([(<span class="string">'attribute1'</span>, <span class="number">1</span>), (<span class="string">'attribute2'</span>, <span class="number">-1</span>)]).limit(<span class="number">100</span>):  <span class="keyword">print</span> item</div></pre></td></tr></table></figure>
 <p>** 比如，我们要做一个排行榜功能，需要在某 <code>collection</code> 中查找分数最多的 100 名玩家。##</p>
 <ul>

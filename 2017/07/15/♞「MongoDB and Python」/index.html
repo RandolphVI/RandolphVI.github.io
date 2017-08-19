@@ -111,7 +111,7 @@
 <meta property="og:site_name" content="黃某人">
 <meta property="og:description" content="本文介绍了 MongoDB 的相关知识，以及 PyMongo （Python 上连接 MongoDB 的第三方库）的 API 操作。">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2017-08-19T17:47:40.000Z">
+<meta property="og:updated_time" content="2017-08-19T17:49:00.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="♟「Tools」 MongoDB and PyMongo">
 <meta name="twitter:description" content="本文介绍了 MongoDB 的相关知识，以及 PyMongo （Python 上连接 MongoDB 的第三方库）的 API 操作。">
@@ -436,7 +436,7 @@
                   <i class="fa fa-file-word-o"></i>
                 </span>
                 <span title="Words count in article">
-                  4,670
+                  4,657
                 </span>
                 <span> words </span>
                 
@@ -669,7 +669,36 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">x[<span class="string">'price'</span>]=int(x[<span class="string">'price'</span>])</div></pre></td></tr></table></figure>
 <p><code>$type</code>: 用于判断属性类型。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> item <span class="keyword">in</span> db.collection.find(&#123;<span class="string">'attribute'</span>: &#123;<span class="string">'$type'</span>:<span class="number">1</span>&#125;&#125;): <span class="keyword">print</span> item <span class="comment"># 查询数字类型的</span></div><div class="line"><span class="keyword">for</span> item <span class="keyword">in</span> db.collection.find(&#123;<span class="string">'attribute'</span>: &#123;<span class="string">'$type'</span>:<span class="number">2</span>&#125;&#125;): <span class="keyword">print</span> item <span class="comment"># 查询字符串类型的</span></div></pre></td></tr></table></figure>
-<p>各种类型值的代表值:<br>| Condition A | Condition B | Condition C | Condition D | Condition E |<br>| :—-: | :—-: | :—-: | :—-: | :—-: |<br>| Double = 1  | String = 2 | Object = 3  | Array = 4 | Binary data = 5 |<br>| Undefined = 6(Abandon) | Object Id = 7 | Boolean = 8  | Date = 9 | Null = 10 |</p>
+<p>各种类型值的代表值:</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Condition A</th>
+<th style="text-align:center">Condition B</th>
+<th style="text-align:center">Condition C</th>
+<th style="text-align:center">Condition D</th>
+<th style="text-align:center">Condition E</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Double = 1</td>
+<td style="text-align:center">String = 2</td>
+<td style="text-align:center">Object = 3</td>
+<td style="text-align:center">Array = 4</td>
+<td style="text-align:center">Binary data = 5</td>
+</tr>
+<tr>
+<td style="text-align:center">Undefined = 6(Abandon)</td>
+<td style="text-align:center">Object Id = 7</td>
+<td style="text-align:center">Boolean = 8</td>
+<td style="text-align:center">Date = 9</td>
+<td style="text-align:center">Null = 10</td>
+</tr>
+</tbody>
+</table>
+</div>
 <ul>
 <li><strong>计数</strong></li>
 </ul>
@@ -683,7 +712,7 @@
 <li><strong>指定字段条件查找 + 排序 + 指定字段显示</strong></li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> item <span class="keyword">in</span> db.collection.find(&#123;<span class="string">'attribute1'</span>: value&#125;, &#123;<span class="string">'_id'</span>: <span class="number">0</span>, <span class="string">'attribute1'</span>: <span class="number">1</span>, <span class="string">'attribute2'</span>: <span class="number">1</span>&#125;) \</div><div class="line">							.sort([(<span class="string">'attribute1'</span>, <span class="number">1</span>), (<span class="string">'attribute2'</span>, <span class="number">-1</span>)]):  <span class="keyword">print</span> item</div></pre></td></tr></table></figure>
-<p><strong>可能会出现 「OperationFailed: Sort operation used more than the maximum bytes of RAM. Add an index, or specify a smaller limit.」 的错误，需要在后面添加一个 limit()函数：</strong></p>
+<p><strong>可能会出现 <code>OperationFailed: Sort operation used more than the maximum bytes of RAM. Add an index, or specify a smaller limit.</code> 的错误，需要在后面添加一个 <code>limit()</code> 函数：</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> item <span class="keyword">in</span> db.collection.find(&#123;<span class="string">'attribute1'</span>: value&#125;, &#123;<span class="string">'_id'</span>: <span class="number">0</span>, <span class="string">'attribute1'</span>: <span class="number">1</span>, <span class="string">'attribute2'</span>: <span class="number">1</span>&#125;) \</div><div class="line">							.sort([(<span class="string">'attribute1'</span>, <span class="number">1</span>), (<span class="string">'attribute2'</span>, <span class="number">-1</span>)]).limit(<span class="number">100</span>):  <span class="keyword">print</span> item</div></pre></td></tr></table></figure>
 <p>** 比如，我们要做一个排行榜功能，需要在某 <code>collection</code> 中查找分数最多的 100 名玩家。##</p>
 <ul>
