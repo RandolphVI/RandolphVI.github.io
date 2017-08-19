@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://randolph.pro/"/>
-  <updated>2017-08-18T15:14:50.000Z</updated>
+  <updated>2017-08-19T06:24:24.000Z</updated>
   <id>http://randolph.pro/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://randolph.pro/2017/07/15/%E2%99%9E%E3%80%8CMongoDB%20and%20Python%E3%80%8D/"/>
     <id>http://randolph.pro/2017/07/15/♞「MongoDB and Python」/</id>
     <published>2017-07-14T16:00:00.000Z</published>
-    <updated>2017-08-18T15:14:50.000Z</updated>
+    <updated>2017-08-19T06:24:24.000Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://farm5.staticflickr.com/4379/36648216635_d890d6fe5c_o.jpg" alt=""></p>
 <p>有关「MongoDB and Python」的其他学习笔记系列：<a href="http://randolph.pro/categories/Data-Science/Book-「MongoDB-and-Python」/">「MongoDB and Python」</a><br>有关「Data Science」的其他数据处理相关学习笔记系列：<a href="http://randolph.pro/categories/Data-Science/">「Data Science」</a></p>
@@ -77,14 +77,54 @@
 <li>紧接的两个字节由进程 id 组成（PID）</li>
 <li>最后三个字节是随机数。</li>
 </ul>
-<p>举个例子，<code>4e7020cb7cac81af7136236b</code>这个 24 位的字符串，虽然看起来很长，也很难理解，但实际上它是由一组十六进制的字符构成，每个字节两位的十六进制数字，总共用了 12 字节的存储空间。</p>
-<h3 id="Time"><a href="#Time" class="headerlink" title="Time"></a>Time</h3><p>对其前 4 位进行提取<code>4e7020cb</code>，然后按照十六进制转为十进制，变为<code>1315971275</code>，这个数字就是一个时间戳。通过时间戳的转换，就成了易看清的时间格式。</p>
+<p>举个例子，<strong><code>4e7020cb7cac81af7136236b</code></strong>这个 24 位的字符串，虽然看起来很长，也很难理解，但实际上它是由一组十六进制的字符构成，每个字节两位的十六进制数字，总共用了 12 字节的存储空间。</p>
+<h3 id="Time"><a href="#Time" class="headerlink" title="Time"></a>Time</h3><p>对其前 4 位进行提取<strong><code>4e7020cb</code></strong>，然后按照十六进制转为十进制，变为<strong><code>1315971275</code></strong>，这个数字就是一个时间戳。通过时间戳的转换，就成了易看清的时间格式。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ date -r 1315971275</div><div class="line">Mer 14 Set 2011 11:34:35 CST</div></pre></td></tr></table></figure>
-<h3 id="Machine"><a href="#Machine" class="headerlink" title="Machine"></a>Machine</h3><p>接下来的三个字节就是 <code>7cac81</code>，这三个字节是所在主机的唯一标识符，一般是机器主机名的散列值，这样就确保了不同主机生成不同的机器 hash 值。<br> 这样确保在分布式中不造成冲突，这也就是在同一台机器生成的 <code>ObjectId</code> 中间的字符串都是一模一样的原因。</p>
-<h3 id="PID"><a href="#PID" class="headerlink" title="PID"></a>PID</h3><p>上面的三个字节的 <code>Machine</code> 是为了确保在不同机器产生的 <code>ObjectId</code> 不冲突，而 <code>PID</code> 就是为了在同一台机器不同的 <code>MongoDB</code> 进程产生了 <code>ObjectId</code> 不冲突。<br>接下来的两个字节就是 <code>af71</code>，它是产生<code>ObjectId</code> 的进程标识符。</p>
-<h3 id="INC"><a href="#INC" class="headerlink" title="INC"></a>INC</h3><p>自增计数器。前面的九个字节是保证了一秒内不同机器不同进程生成 <code>ObjectId</code> 不冲突，这后面的三个字节 <code>36236b</code> 是一个自动增加的计数器，用来确保在同一秒内产生的 <code>ObjectId</code> 也不会发现冲突，允许 $256^3=16777216$ 条记录的唯一性。</p>
-<p>总的来看，<code>ObjectId</code>的前 4 个字节时间戳，记录了文档创建的时间；接下来 3 个字节代表了所在主机的唯一标识符，确定了不同主机间产生不同的 ObjectId；后 2 个字节的进程 id，决定了在同一台机器下，不同 <code>MongoDB</code> 进程产生不同的 <code>ObjectId</code>；最后通过 3 个字节的自增计数器，确保同一秒内产生<code>ObjectId</code> 的唯一性。</p>
+<h3 id="Machine"><a href="#Machine" class="headerlink" title="Machine"></a>Machine</h3><p>接下来的三个字节就是 <strong><code>7cac81</code></strong>，这三个字节是所在主机的唯一标识符，一般是机器主机名的散列值，这样就确保了不同主机生成不同的机器 hash 值。<br> 这样确保在分布式中不造成冲突，这也就是在同一台机器生成的 <code>ObjectId</code> 中间的字符串都是一模一样的原因。</p>
+<h3 id="PID"><a href="#PID" class="headerlink" title="PID"></a>PID</h3><p>上面的三个字节的 <code>Machine</code> 是为了确保在不同机器产生的 <code>ObjectId</code> 不冲突，而 <code>PID</code> 就是为了在同一台机器不同的 <code>MongoDB</code> 进程产生了 <code>ObjectId</code> 不冲突。<br>接下来的两个字节就是 <strong><code>af71</code></strong>，它是产生<code>ObjectId</code> 的进程标识符。</p>
+<h3 id="INC"><a href="#INC" class="headerlink" title="INC"></a>INC</h3><p>自增计数器。前面的九个字节是保证了一秒内不同机器不同进程生成 <code>ObjectId</code> 不冲突，这后面的三个字节 <strong><code>36236b</code></strong> 是一个自动增加的计数器，用来确保在同一秒内产生的 <code>ObjectId</code> 也不会发现冲突，允许 $256^3=16777216$ 条记录的唯一性。</p>
+<p>总的来看，<code>ObjectId</code>的前 4 个字节时间戳，记录了文档创建的时间；接下来 3 个字节代表了所在主机的唯一标识符，确定了不同主机间产生不同的 <code>ObjectId</code>；后 2 个字节的进程 id，决定了在同一台机器下，不同<code>MongoDB</code> 进程产生不同的 <code>ObjectId</code>；最后通过 3 个字节的自增计数器，确保同一秒内产生<code>ObjectId</code> 的唯一性。</p>
 <p><code>ObjectId</code>的这个主键生成策略，很好地解决了在分布式环境下高并发情况主键唯一性问题，值得学习借鉴。</p>
+<h3 id="Source-code-analysis"><a href="#Source-code-analysis" class="headerlink" title="Source code analysis"></a>Source code analysis</h3><p><code>MongoDB</code>可以通过自身的服务来产生<code>ObjectId</code>，也可以通过客户端的驱动程序来生成<code>ObjectId</code>。</p>
+<p>虽然 <code>ObjectId</code> 是轻量级的，但如果全部在服务端生成肯定会花费一点开销。所以，能从服务器端转移到客户端驱动程序完成的，就尽量转移到客户端来完成，减少服务器端的开销。</p>
+<p>我们来看一下，客户端的驱动程序是如何来生成 <code>ObjectId</code> 的。</p>
+<p>1. 下载 <a href="https://github.com/mongodb/mongo-python-driver" target="_blank" rel="external">mongo-python-driver</a> 源码。</p>
+<p>2. 分析<code>objectid.py</code></p>
+<p>驱动源码的 <code>/bson</code> 文件夹中找到 <code>objectid.py</code>，进行分析。默认构建的<code>ObjectId</code> 代码如下代码所示:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">ObjectId</span><span class="params">(object)</span>:</span></div><div class="line">		<span class="string">"""A MongoDB ObjectId.</span></div><div class="line">"""</div><div class="line"></div><div class="line">		_inc = random.randint(<span class="number">0</span>, <span class="number">0xFFFFFF</span>)</div><div class="line">		_inc_lock = threading.Lock()</div><div class="line"></div><div class="line">		_machine_bytes = _machine_bytes()</div><div class="line"></div><div class="line">		__slots__ = (<span class="string">'__id'</span>)</div><div class="line"></div><div class="line">		_type_marker = <span class="number">7</span></div><div class="line"></div><div class="line">		<span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, oid=None)</span>:</span></div><div class="line">				<span class="string">"""Initialize a new ObjectId.</span></div><div class="line">				An ObjectId is a 12-byte unique identifier consisting of:</div><div class="line">					- a 4-byte value representing the seconds since the Unix epoch,</div><div class="line">					- a 3-byte machine identifier,</div><div class="line">					- a 2-byte process id, and</div><div class="line">					- a 3-byte counter, starting with a random value.</div><div class="line">				By default, ``ObjectId()`` creates a new unique identifier. The</div><div class="line">				optional parameter `oid` can be an :class:`ObjectId`, or any 12</div><div class="line">				:class:`bytes` or, in Python 2, any 12-character :class:`str`.</div><div class="line">				For example, the 12 bytes b'foo-bar-quux'do not follow the ObjectId</div><div class="line">				specification but they are acceptable input::</div><div class="line">					&gt;&gt;&gt; ObjectId(b'foo-bar-quux')</div><div class="line">					ObjectId('666f6f2d6261722d71757578')</div><div class="line">				`oid` can also be a :class:`unicode` or :class:`str` of 24 hex digits::</div><div class="line">					&gt;&gt;&gt; ObjectId('0123456789ab0123456789ab')</div><div class="line">					ObjectId('0123456789ab0123456789ab')</div><div class="line">					&gt;&gt;&gt;</div><div class="line">					&gt;&gt;&gt; # A u-prefixed unicode literal:</div><div class="line">					&gt;&gt;&gt; ObjectId(u'0123456789ab0123456789ab')</div><div class="line">					ObjectId('0123456789ab0123456789ab')</div><div class="line">				Raises :class:`~bson.errors.InvalidId` if `oid` is not 12 bytes nor</div><div class="line">				24 hex digits, or :class:`TypeError` if `oid` is not an accepted type.</div><div class="line">				:Parameters:</div><div class="line">					- `oid` (optional): a valid ObjectId.</div><div class="line">				.. mongodoc:: objectids</div><div class="line">"""</div><div class="line">				<span class="keyword">if</span> oid <span class="keyword">is</span> <span class="keyword">None</span>:</div><div class="line">						self.__generate()</div><div class="line">				<span class="keyword">elif</span> isinstance(oid, bytes) <span class="keyword">and</span> len(oid) == <span class="number">12</span>:</div><div class="line">						self.__id = oid</div><div class="line">				<span class="keyword">else</span>:</div><div class="line">						self.__validate(oid)</div><div class="line">...</div><div class="line"></div><div class="line"><span class="meta">		@classmethod</span></div><div class="line">		<span class="function"><span class="keyword">def</span> <span class="title">__generate</span><span class="params">(self)</span>:</span></div><div class="line">				<span class="string">"""Generate a new value for this ObjectId.</span></div><div class="line">"""</div><div class="line"></div><div class="line">				<span class="comment"># 4 bytes current time</span></div><div class="line">				oid = struct.pack(<span class="string">"&gt;i"</span>, int(time.time()))</div><div class="line"></div><div class="line">				<span class="comment"># 3 bytes machine</span></div><div class="line">				oid += ObjectId._machine_bytes</div><div class="line"></div><div class="line">				<span class="comment"># 2 bytes pid</span></div><div class="line">				oid += struct.pack(<span class="string">"&gt;H"</span>, os.getpid() % <span class="number">0xFFFF</span>)</div><div class="line"></div><div class="line">				<span class="comment"># 3 bytes inc</span></div><div class="line">				<span class="keyword">with</span> ObjectId._inc_lock:</div><div class="line">						oid += struct.pack(<span class="string">"&gt;i"</span>, ObjectId._inc)[<span class="number">1</span>:<span class="number">4</span>]</div><div class="line">						ObjectId._inc = (ObjectId._inc + <span class="number">1</span>) % <span class="number">0xFFFFFF</span></div><div class="line"></div><div class="line">				self.__id = oid</div><div class="line">				</div><div class="line">...</div></pre></td></tr></table></figure>
+<ol>
+<li><code>time</code></li>
+</ol>
+<p><code>oid = struct.pack(&quot;&gt;i&quot;, int(time.time()))</code></p>
+<p>先通过 <code>time.time()</code> 计算出时间，然后 <code>int()</code> 强制类型转换成整数型，然后调用 <code>struct.pack()</code> 计算得出时间戳。</p>
+<ul>
+<li><code>struct.pack()</code></li>
+</ul>
+<p>有的时候需要用 python 处理二进制数据，比如，存取文件，<code>socket</code>操作时。这时候，可以使用 python 的 <code>struct</code> 模块来完成，可以用 <code>struct</code> 来处理 C 语言中的结构体。</p>
+<p><code>struct</code>模块中 <code>pack()</code> 函数：</p>
+<p><code>pack(fmt, v1, v2, ...)</code></p>
+<p>按照给定的格式<code>fmt</code>，把数据封装成字符串(实际上是类似于 C 结构体的字节流)。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> sys  </div><div class="line"><span class="keyword">import</span> struct  </div><div class="line">  </div><div class="line">a = <span class="number">20</span>  </div><div class="line">b = <span class="number">400</span>   </div><div class="line">str = struct.pack(<span class="string">"ii"</span>, a, b)  </div><div class="line"><span class="keyword">print</span> <span class="string">'length:'</span>, len(str)          <span class="comment"># length:  8  </span></div><div class="line"><span class="keyword">print</span> str                           <span class="comment"># 乱码：   </span></div><div class="line"><span class="keyword">print</span> repr(str)                     <span class="comment"># '\x14\x00\x00\x00\x90\x01\x00\x00'</span></div></pre></td></tr></table></figure>
+<p><strong>格式符”i”表示转换为 int，’ii’表示有两个 int 变量。</strong></p>
+<p>进行转换后的结果长度为 8 个字节（int 类型占用 4 个字节，两个 int 为 8 个字节）。</p>
+<p>可以看到输出的结果是乱码，因为结果是二进制数据，所以显示为乱码。</p>
+<p>可以使用 python 的内置函数 <code>repr()</code> 来获取可识别的字符串，其中十六进制的 <strong><code>0x00000014</code></strong>, <strong><code>0x00001009</code></strong> 分别表示 <strong><code>20</code></strong> 和<strong><code>400</code></strong>。</p>
+<ol>
+<li><code>machine</code></li>
+</ol>
+<p><code>oid += ObjectId._machine_bytes</code></p>
+<p>由机器码 (machinePiece) 和进程码 (processPiece) 组成，如代码所示。它这里组成方式是：首先，通过 NetworkInterface 这个类，获取机器的所有网络接口信息（如图 4 所示），并将得到的字符串取散列值，就得到了机器码；然后通过 RuntimeMXBean.getName()方法获取 pid，再拼装 classloaderid，得到进程码；最后将机器码和进程码进行位或运算得到_machine。不过这里生成的_machine 是十进制的，需转成十六进制。</p>
+<p>图 4 本地调试时的网络接口部分信息</p>
+<p>机器码和进程码的生成</p>
+<ol>
+<li><code>pid</code></li>
+</ol>
+<p><code>oid += struct.pack(&quot;&gt;H&quot;, os.getpid() % 0xFFFF)</code></p>
+<ol>
+<li><code>inc</code></li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">with</span> ObjectId._inc_lock:</div><div class="line">		oid += struct.pack(<span class="string">"&gt;i"</span>, ObjectId._inc)[<span class="number">1</span>:<span class="number">4</span>]</div><div class="line">		ObjectId._inc = (ObjectId._inc + <span class="number">1</span>) % <span class="number">0xFFFFFF</span></div></pre></td></tr></table></figure>
+<p>自增数是通过 AtomicInteger 的 getAndIncrement()方法获取，它能保证每次得到的值是一个递增并不重复的值。</p>
 ]]></content>
     
     <summary type="html">
