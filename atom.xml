@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://randolph.pro/"/>
-  <updated>2017-08-19T16:31:04.000Z</updated>
+  <updated>2017-08-19T16:42:44.000Z</updated>
   <id>http://randolph.pro/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://randolph.pro/2017/07/15/%E2%99%9E%E3%80%8CMongoDB%20and%20Python%E3%80%8D/"/>
     <id>http://randolph.pro/2017/07/15/♞「MongoDB and Python」/</id>
     <published>2017-07-14T16:00:00.000Z</published>
-    <updated>2017-08-19T16:31:04.000Z</updated>
+    <updated>2017-08-19T16:42:44.000Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://farm5.staticflickr.com/4379/36648216635_d890d6fe5c_o.jpg" alt=""></p>
 <p>有关「MongoDB and Python」的其他学习笔记系列：<a href="http://randolph.pro/categories/Data-Science/Book-「MongoDB-and-Python」/">「MongoDB and Python」</a><br>有关「Data Science」的其他数据处理相关学习笔记系列：<a href="http://randolph.pro/categories/Data-Science/">「Data Science」</a></p>
@@ -94,10 +94,9 @@
 <ul>
 <li>time</li>
 </ul>
-<p><code>oid = struct.pack(&quot;&gt;i&quot;, int(time.time()))</code></p>
+<p><strong><code>oid = struct.pack(&quot;&gt;i&quot;, int(time.time()))</code></strong></p>
 <p>先通过 <code>time.time()</code> 计算出时间，然后 <code>int()</code> 强制类型转换成整数型，然后调用 <code>struct.pack()</code> 计算得出时间戳。</p>
-<pre><code>- `struct.pack()`
-</code></pre><p><code>pack(fmt, v1, v2, ...)</code></p>
+<p><code>struct.pack(fmt, v1, v2, ...)</code></p>
 <p>按照给定的格式<code>fmt</code>，把数据封装成字符串(实际上是类似于 C 结构体的字节流)。</p>
 <p>有的时候需要用 python 处理二进制数据，比如，存取文件，<code>socket</code>操作时。这时候，可以使用 python 的 <code>struct</code> 模块来完成，可以用 <code>struct</code> 来处理 C 语言中的结构体。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> sys  </div><div class="line"><span class="keyword">import</span> struct  </div><div class="line">  </div><div class="line">a = <span class="number">20</span>  </div><div class="line">b = <span class="number">400</span>   </div><div class="line">str = struct.pack(<span class="string">"ii"</span>, a, b)  </div><div class="line"><span class="keyword">print</span> <span class="string">'length:'</span>, len(str)          <span class="comment"># length:  8  </span></div><div class="line"><span class="keyword">print</span> str                           <span class="comment"># 乱码：   </span></div><div class="line"><span class="keyword">print</span> repr(str)                     <span class="comment"># '\x14\x00\x00\x00\x90\x01\x00\x00'</span></div></pre></td></tr></table></figure>
@@ -108,7 +107,7 @@
 <ul>
 <li>machine</li>
 </ul>
-<p><code>oid += ObjectId._machine_bytes</code></p>
+<p><strong><code>oid += ObjectId._machine_bytes</code></strong></p>
 <p>根据 <code>ObjectId</code> 类中的 <code>_machine_bytes</code> 属性。而 <code>_machine_bytes = _machine_bytes()</code>，下面看一下定义的<code>_machine_bytes()</code> 函数：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">_machine_bytes</span><span class="params">()</span>:</span></div><div class="line">	<span class="string">"""Get the machine portion of an ObjectId."""</span></div><div class="line">	</div><div class="line">	machine_hash = hashlib.md5()</div><div class="line">	<span class="keyword">if</span> PY3:</div><div class="line">		<span class="comment"># gethostname() returns a unicode string in python 3.x</span></div><div class="line">		<span class="comment"># while update() requires a byte string.</span></div><div class="line">		machine_hash.update(socket.gethostname().encode())</div><div class="line">	<span class="keyword">else</span>:</div><div class="line">		<span class="comment"># Calling encode() here will fail with non-ascii hostnames</span></div><div class="line">		machine_hash.update(socket.gethostname())</div><div class="line">	<span class="keyword">return</span> machine_hash.digest()[<span class="number">0</span>:<span class="number">3</span>]</div></pre></td></tr></table></figure>
 <p>根据函数定义的那样，Python 3.x 获得 <code>_machine_bytes</code> 的方式是先通过 <code>socket.gethostname().encode()</code> 获得 encode 之后的 <code>string</code> 字节流。</p>
@@ -116,19 +115,19 @@
 <ul>
 <li>pid</li>
 </ul>
-<p><code>oid += struct.pack(&quot;&gt;H&quot;, os.getpid() % 0xFFFF)</code></p>
+<p><strong><code>oid += struct.pack(&quot;&gt;H&quot;, os.getpid() % 0xFFFF)</code></strong></p>
 <p>根据 <code>os.getpid()</code> 获取进程号，之后再通过 <code>struct.pack()</code> 获得两个字节的进程标记符。</p>
 <ul>
 <li>inc</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">with</span> ObjectId._inc_lock:</div><div class="line">		oid += struct.pack(<span class="string">"&gt;i"</span>, ObjectId._inc)[<span class="number">1</span>:<span class="number">4</span>]</div><div class="line">		ObjectId._inc = (ObjectId._inc + <span class="number">1</span>) % <span class="number">0xFFFFFF</span></div></pre></td></tr></table></figure>
-<p><code>oid += struct.pack(&quot;&gt;i&quot;, ObjectId._inc)[1:4]</code> 先获得三个字节，之后 <code>ObjectId._inc</code> 自增，它能保证每次得到的值是一个递增并不重复的值。</p>
+<p><strong><code>oid += struct.pack(&quot;&gt;i&quot;, ObjectId._inc)[1:4]</code></strong>先获得三个字节，之后 <code>ObjectId._inc</code> 自增，它能保证每次得到的值是一个递增并不重复的值。</p>
 <h3 id="Get-Timestamp-on-MongoDB"><a href="#Get-Timestamp-on-MongoDB" class="headerlink" title="Get Timestamp on MongoDB"></a>Get Timestamp on MongoDB</h3><p>由于 <code>ObjectId</code> 中存储了四个字节的时间戳，所以我们不需要为我们的 <code>Document</code> 保存时间戳字段，我们可以通过 <code>getTimestamp()</code> 函数来获取文档的创建时间（将返回 ISO 格式的文档创建时间）:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; ObjectId(<span class="string">"5349b4ddd2781d08c09890f4"</span>).getTimestamp()</div><div class="line">ISODate(<span class="string">"2014-04-12T21:49:17Z"</span>)</div></pre></td></tr></table></figure>
 <h3 id="ObjectId-to-String"><a href="#ObjectId-to-String" class="headerlink" title="ObjectId to String"></a>ObjectId to String</h3><p>在某些情况下，我们可能需要将 <code>ObjectId</code> 转换为字符串格式。我们可以使用下面的代码（将返回 <code>Guid</code> 格式的字符串）：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; new ObjectId().str</div><div class="line">5349b4ddd2781d08c09890f3</div></pre></td></tr></table></figure>
 <h2 id="Write-to-a-Collection-Safely-and-Synchronously"><a href="#Write-to-a-Collection-Safely-and-Synchronously" class="headerlink" title="Write to a Collection Safely and Synchronously"></a>Write to a Collection Safely and Synchronously</h2><p>PyMongo 默认采用的是 <code>asynchronous 异步的</code> 的数据写入操作，包括 <code>insert()</code>、<code>update()</code>、<code>remove()</code> 以及<code>findAndModify()</code>。</p>
-<p>而异步的数据写入操作，是一种不安全的，当数据写入时发生错误时，我们的程序便无法继续执行，并且客户端也不会收到反馈，因此我们需要使用参数<code>safe=True</code>。</p>
+<p>而异步的数据写入操作，是一种不安全的，当数据写入时发生错误时，我们的程序便无法继续执行，并且客户端也不会收到反馈，因此我们需要使用参数<strong><code>safe=True</code></strong>。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># safe=True ensures that your write will succeed or an exception will be thrown</span></div><div class="line">collection.insert(data_record, safe=<span class="keyword">True</span>)</div></pre></td></tr></table></figure>
 <h2 id="Operation"><a href="#Operation" class="headerlink" title="Operation"></a>Operation</h2><h3 id="Insert"><a href="#Insert" class="headerlink" title="Insert()"></a>Insert()</h3><p><code>MongoDB</code>的 <code>save()</code> 和<code>insert()</code>函数都可以向 <code>collection</code> 里插入数据，但两者是有两个区别：</p>
 <ul>
