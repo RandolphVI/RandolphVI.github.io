@@ -4,24 +4,45 @@
 
     
   <url>
-    <loc>http://randolph.pro/2017/07/15/%E2%99%9E%E3%80%8CMongoDB%20and%20Python%E3%80%8D/</loc>
-    <lastmod>2017-08-19T16:42:44.000Z</lastmod>
+    <loc>http://randolph.pro/2016/11/11/%E2%99%9FMathjax/</loc>
+    <lastmod>2017-08-19T16:56:07.000Z</lastmod>
     <data>
         <display>
-        <title>♞「MongoDB and Python」</title>
+        <title>♟「Tools」 MathJax</title>
+        <pubTime>2016-11-10T16:00:00.000Z</pubTime>
+        
+        <tag>Tools</tag>
+         
+        <tag>MathJax</tag>
+         
+         
+           
+             
+              <breadCrumb title="Tools" url="http://randolph.pro/categories/Tools/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://randolph.pro/2017/07/15/%E2%99%9E%E3%80%8CMongoDB%20and%20Python%E3%80%8D/</loc>
+    <lastmod>2017-08-19T16:56:06.000Z</lastmod>
+    <data>
+        <display>
+        <title>♟「Tools」 MongoDB</title>
         <pubTime>2017-07-14T16:00:00.000Z</pubTime>
         
         <tag>Python</tag>
+         
+        <tag>Tools</tag>
          
         <tag>MongoDB</tag>
          
          
            
              
-              <breadCrumb title="Data Science" url="http://randolph.pro/categories/Data-Science/"/>
-          
-             
-              <breadCrumb title="Book:「MongoDB and Python」" url="http://randolph.pro/categories/Data-Science/Book-%E3%80%8CMongoDB-and-Python%E3%80%8D/"/>
+              <breadCrumb title="Tools" url="http://randolph.pro/categories/Tools/"/>
           
         </display>
     </data>
@@ -42,26 +63,6 @@
            
              
               <breadCrumb title="Machine Learning" url="http://randolph.pro/categories/Machine-Learning/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://randolph.pro/2016/11/11/%E2%99%9FMathjax/</loc>
-    <lastmod>2017-08-16T14:12:09.000Z</lastmod>
-    <data>
-        <display>
-        <title>♟「Tools」 MathJax</title>
-        <pubTime>2016-11-10T16:00:00.000Z</pubTime>
-        
-        <tag>Tools</tag>
-         
-         
-           
-             
-              <breadCrumb title="Tools" url="http://randolph.pro/categories/Tools/"/>
           
         </display>
     </data>

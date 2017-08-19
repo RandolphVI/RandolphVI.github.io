@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://randolph.pro/2016/11/11/%E2%99%9FMathjax/</loc>
+    
+    <lastmod>2017-08-19T16:56:07.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://randolph.pro/2017/07/15/%E2%99%9E%E3%80%8CMongoDB%20and%20Python%E3%80%8D/</loc>
     
-    <lastmod>2017-08-19T16:42:44.000Z</lastmod>
+    <lastmod>2017-08-19T16:56:06.000Z</lastmod>
     
   </url>
   
@@ -12,13 +19,6 @@
     <loc>http://randolph.pro/2017/03/07/%E3%80%8CMachine%20Learning%E3%80%8D%20CNN%20Introduction/</loc>
     
     <lastmod>2017-08-17T15:22:49.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://randolph.pro/2016/11/11/%E2%99%9FMathjax/</loc>
-    
-    <lastmod>2017-08-16T14:12:09.000Z</lastmod>
     
   </url>
   

@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://randolph.pro/"/>
-  <updated>2017-08-19T16:42:44.000Z</updated>
+  <updated>2017-08-19T16:56:06.000Z</updated>
   <id>http://randolph.pro/</id>
   
   <author>
@@ -16,14 +16,13 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>♞「MongoDB and Python」</title>
+    <title>♟「Tools」 MongoDB</title>
     <link href="http://randolph.pro/2017/07/15/%E2%99%9E%E3%80%8CMongoDB%20and%20Python%E3%80%8D/"/>
     <id>http://randolph.pro/2017/07/15/♞「MongoDB and Python」/</id>
     <published>2017-07-14T16:00:00.000Z</published>
-    <updated>2017-08-19T16:42:44.000Z</updated>
+    <updated>2017-08-19T16:56:06.000Z</updated>
     
-    <content type="html"><![CDATA[<p><img src="https://farm5.staticflickr.com/4379/36648216635_d890d6fe5c_o.jpg" alt=""></p>
-<p>有关「MongoDB and Python」的其他学习笔记系列：<a href="http://randolph.pro/categories/Data-Science/Book-「MongoDB-and-Python」/">「MongoDB and Python」</a><br>有关「Data Science」的其他数据处理相关学习笔记系列：<a href="http://randolph.pro/categories/Data-Science/">「Data Science」</a></p>
+    <content type="html"><![CDATA[<p>有关「Tools」的其他笔记系列：<a href="http://randolph.pro/categories/Tools/">「Tools」</a></p>
 <h1 id="Chapter-1-Getting-Started"><a href="#Chapter-1-Getting-Started" class="headerlink" title="Chapter 1: Getting Started"></a>Chapter 1: Getting Started</h1><h2 id="Installing-MongoDB-on-Mac-OS"><a href="#Installing-MongoDB-on-Mac-OS" class="headerlink" title="Installing MongoDB on Mac OS"></a>Installing MongoDB on Mac OS</h2><p>Mac OS 安装 <code>MongoDB</code> 的方法有多种多样，这里使用 <code>Homebrew</code> 安装 <code>MongoDB</code>，在安装之前首先确保 <code>Homebrew</code> 更新至最新版本：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ brew update</div></pre></td></tr></table></figure>
 <p>接着，使用 <code>Homebrew</code> 安装 <code>MongoDB</code>：</p>
@@ -199,16 +198,16 @@
     
     <summary type="html">
     
-      本文是关于「MongoDB and Python」这本书的学习笔记。
+      本文介绍了 MongoDB 的相关知识，以及 PyMongo （Python 上连接 MongoDB 的第三方库）的 API 操作。
     
     </summary>
     
-      <category term="Data Science" scheme="http://randolph.pro/categories/Data-Science/"/>
-    
-      <category term="Book:「MongoDB and Python」" scheme="http://randolph.pro/categories/Data-Science/Book-%E3%80%8CMongoDB-and-Python%E3%80%8D/"/>
+      <category term="Tools" scheme="http://randolph.pro/categories/Tools/"/>
     
     
       <category term="Python" scheme="http://randolph.pro/tags/Python/"/>
+    
+      <category term="Tools" scheme="http://randolph.pro/tags/Tools/"/>
     
       <category term="MongoDB" scheme="http://randolph.pro/tags/MongoDB/"/>
     
@@ -2055,9 +2054,10 @@ E_{cost} = \frac{m^+ \times (1-TPR) \times cost_{01}+m^- \times FPR \times cost_
     <link href="http://randolph.pro/2016/11/11/%E2%99%9FMathjax/"/>
     <id>http://randolph.pro/2016/11/11/♟Mathjax/</id>
     <published>2016-11-10T16:00:00.000Z</published>
-    <updated>2017-08-16T14:12:09.000Z</updated>
+    <updated>2017-08-19T16:56:07.000Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="基础"><a href="# 基础" class="headerlink" title="基础"></a>基础 </h1><h2 id="排版方式"><a href="# 排版方式" class="headerlink" title="排版方式"></a> 排版方式 </h2><p> 使用 <code>MathJax</code> 时，需要用一些适当的标记告诉 <code>MathJax</code> 某段文本是公式代码。此外，<code>MathJax</code>中的公式排版有两种方式，<code>inline</code>和 <code>displayed</code>。<code>inline</code> 表示公式嵌入到文本段中，<code>displayed</code>表示公式独自成为一个段落（也就是居中显示）。例如 $f(x)=3*x$ 这是一个 <code>inline</code> 公式，而下面：</p>
+    <content type="html"><![CDATA[<p>有关「Tools」的其他笔记系列：<a href="http://randolph.pro/categories/Tools/">「Tools」</a></p>
+<h1 id="基础"><a href="# 基础" class="headerlink" title="基础"></a>基础 </h1><h2 id="排版方式"><a href="# 排版方式" class="headerlink" title="排版方式"></a> 排版方式 </h2><p> 使用 <code>MathJax</code> 时，需要用一些适当的标记告诉 <code>MathJax</code> 某段文本是公式代码。此外，<code>MathJax</code>中的公式排版有两种方式，<code>inline</code>和 <code>displayed</code>。<code>inline</code> 表示公式嵌入到文本段中，<code>displayed</code>表示公式独自成为一个段落（也就是居中显示）。例如 $f(x)=3*x$ 这是一个 <code>inline</code> 公式，而下面：</p>
 <script type="math/tex; mode=display">
 f(x)=3*x</script><p>这就是一个 <code>displayed</code> 公式。</p>
 <p>在 <code>MathJax</code> 中，默认的 <code>displayed</code> 公式分隔符有 <code>$$...$$</code> 和<code>\[...\]</code>，而默认的 <code>inline</code> 公式分隔符是<code>$...$</code>。</p>
@@ -2617,6 +2617,8 @@ a+y^3 \stackrel{\eqref{1-1}}= x^2</script><figure class="highlight plain"><table
     
     
       <category term="Tools" scheme="http://randolph.pro/tags/Tools/"/>
+    
+      <category term="MathJax" scheme="http://randolph.pro/tags/MathJax/"/>
     
   </entry>
   
