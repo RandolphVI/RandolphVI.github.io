@@ -111,7 +111,7 @@
 <meta property="og:site_name" content="黃某人">
 <meta property="og:description" content="本文介绍了 MongoDB 的相关知识，以及 PyMongo （Python 上连接 MongoDB 的第三方库）的 API 操作。">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2017-08-20T13:51:28.000Z">
+<meta property="og:updated_time" content="2017-08-20T14:02:47.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="♟「Tools」 MongoDB and PyMongo">
 <meta name="twitter:description" content="本文介绍了 MongoDB 的相关知识，以及 PyMongo （Python 上连接 MongoDB 的第三方库）的 API 操作。">
@@ -558,8 +558,10 @@
 <p>举个例子，<strong><code>4e7020cb7cac81af7136236b</code></strong>这个 24 位的字符串，虽然看起来很长，也很难理解，但实际上它是由一组十六进制的字符构成，每个字节两位的十六进制数字，总共用了 12 字节的存储空间。</p>
 <h3 id="Time"><a href="#Time" class="headerlink" title="Time"></a>Time</h3><p>对其前四个字节进行提取<strong><code>4e7020cb</code></strong>，然后按照十六进制转为十进制，变为<strong><code>1315971275</code></strong>，这个数字就是一个时间戳。通过时间戳的转换，就成了易看清的时间格式。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ date -r 1315971275</div><div class="line">Mer 14 Set 2011 11:34:35 CST</div></pre></td></tr></table></figure>
-<h3 id="Machine"><a href="#Machine" class="headerlink" title="Machine"></a>Machine</h3><p>接下来的三个字节就是 <strong><code>7cac81</code></strong>，这三个字节是所在主机的唯一标识符，一般是机器主机名的散列值，这样就确保了不同主机生成不同的机器 hash 值。<br> 这样确保在分布式中不造成冲突，这也就是在同一台机器生成的 <code>ObjectId</code> 中间的字符串都是一模一样的原因。</p>
-<h3 id="PID"><a href="#PID" class="headerlink" title="PID"></a>PID</h3><p>上面的三个字节的 <code>Machine</code> 是为了确保在不同机器产生的 <code>ObjectId</code> 不冲突，而 <code>PID</code> 就是为了在同一台机器不同的 <code>MongoDB</code> 进程产生了 <code>ObjectId</code> 不冲突。<br>接下来的两个字节就是 <strong><code>af71</code></strong>，它是产生<code>ObjectId</code> 的进程标识符。</p>
+<h3 id="Machine"><a href="#Machine" class="headerlink" title="Machine"></a>Machine</h3><p>接下来的三个字节就是<strong><code>7cac81</code></strong>，这三个字节是所在主机的唯一标识符，一般是机器主机名的散列值，这样就确保了不同主机生成不同的机器 hash 值。</p>
+<p>这样确保在分布式中不造成冲突，这也就是在同一台机器生成的 <code>ObjectId</code> 中间的字符串都是一模一样的原因。</p>
+<h3 id="PID"><a href="#PID" class="headerlink" title="PID"></a>PID</h3><p>上面的三个字节的 <code>Machine</code> 是为了确保在不同机器产生的 <code>ObjectId</code> 不冲突，而 <code>PID</code> 就是为了在同一台机器不同的 <code>MongoDB</code> 进程产生了 <code>ObjectId</code> 不冲突。</p>
+<p>接下来的两个字节就是 <strong><code>af71</code></strong>，它是产生<code>ObjectId</code> 的进程标识符。</p>
 <h3 id="INC"><a href="#INC" class="headerlink" title="INC"></a>INC</h3><p>自增计数器。前面的九个字节是保证了一秒内不同机器不同进程生成 <code>ObjectId</code> 不冲突，这后面的三个字节 <strong><code>36236b</code></strong> 是一个自动增加的计数器，用来确保在同一秒内产生的 <code>ObjectId</code> 也不会发现冲突，允许 $256^3=16777216$ 条记录的唯一性。</p>
 <p>总的来看，<code>ObjectId</code>的前 4 个字节时间戳，记录了文档创建的时间；接下来 3 个字节代表了所在主机的唯一标识符，确定了不同主机间产生不同的 <code>ObjectId</code>；后 2 个字节的进程 id，决定了在同一台机器下，不同<code>MongoDB</code> 进程产生不同的 <code>ObjectId</code>；最后通过 3 个字节的自增计数器，确保同一秒内产生<code>ObjectId</code> 的唯一性。</p>
 <p><code>ObjectId</code>的这个主键生成策略，很好地解决了在分布式环境下高并发情况主键唯一性问题，值得学习借鉴。</p>
@@ -603,15 +605,18 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; ObjectId(<span class="string">"5349b4ddd2781d08c09890f4"</span>).getTimestamp()</div><div class="line">ISODate(<span class="string">"2014-04-12T21:49:17Z"</span>)</div></pre></td></tr></table></figure>
 <h3 id="ObjectId-to-String"><a href="#ObjectId-to-String" class="headerlink" title="ObjectId to String"></a>ObjectId to String</h3><p>在某些情况下，我们可能需要将 <code>ObjectId</code> 转换为字符串格式。我们可以使用下面的代码（将返回 <code>Guid</code> 格式的字符串）：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; new ObjectId().str</div><div class="line">5349b4ddd2781d08c09890f3</div></pre></td></tr></table></figure>
-<h2 id="Operation"><a href="#Operation" class="headerlink" title="Operation"></a>Operation</h2><p>所有存储在 <code>MongoDB</code> 集合中的数据都是 <code>BSON</code> 格式。<br><code>BSON</code>是一种类 <code>JSON</code> 的一种二进制形式的存储格式，简称<code>Binary JSON</code>。</p>
+<h2 id="Operation"><a href="#Operation" class="headerlink" title="Operation"></a>Operation</h2><p>所有存储在 <code>MongoDB</code> 集合中的数据都是 <code>BSON</code> 格式。</p>
+<p><code>BSON</code>是一种类 <code>JSON</code> 的一种二进制形式的存储格式，简称<code>Binary JSON</code>。</p>
 <h3 id="Insert"><a href="#Insert" class="headerlink" title="Insert()"></a>Insert()</h3><p><code>MongoDB</code>的 <code>save()</code> 和<code>insert()</code>函数都可以向 <code>collection</code> 里插入数据，但两者是有两个区别：</p>
 <ul>
-<li><p><code>save()</code>函数实际就是根据参数条件，调用了 <code>insert()</code> 或<code>update()</code>函数。</p>
-<ul>
+<li><code>save()</code>函数实际就是根据参数条件，调用了 <code>insert()</code> 或<code>update()</code>函数。<ul>
 <li>如果想插入的数据对象存在，<code>insert()</code>函数会报错，而 <code>save()</code> 函数则是相当于使用 <code>update()</code> 函数，改变原来的对象；</li>
-<li>如果想插入的对象不存在, 那么它们执行相同的 <code>insert()</code> 函数插入操作。<br>这里可以用几个字来概括它们两的区别，即所谓：<strong>“有则改之, 无则加之”</strong>。</li>
+<li>如果想插入的对象不存在, 那么它们执行相同的 <code>insert()</code> 函数插入操作。</li>
 </ul>
 </li>
+</ul>
+<p>这里可以用几个字来概括它们两的区别，即所谓：<strong>“有则改之, 无则加之”</strong>。</p>
+<ul>
 <li><p><code>insert()</code>可以一次性插入一个列表，而不用遍历，效率高；<code>save()</code>则需要遍历列表，一个个插入。</p>
 </li>
 <li><p>另外，还有 <code>insertOne()</code> 和<code>insertMany()</code>插入方法。还是建议直接使用 <code>insert()</code> 函数。</p>
