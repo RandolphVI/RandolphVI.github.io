@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://randolph.pro/"/>
-  <updated>2017-08-20T14:02:47.000Z</updated>
+  <updated>2017-08-20T14:05:37.000Z</updated>
   <id>http://randolph.pro/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://randolph.pro/2017/07/15/%E2%99%9E%E3%80%8CMongoDB%20and%20Python%E3%80%8D/"/>
     <id>http://randolph.pro/2017/07/15/♞「MongoDB and Python」/</id>
     <published>2017-07-14T16:00:00.000Z</published>
-    <updated>2017-08-20T14:02:47.000Z</updated>
+    <updated>2017-08-20T14:05:37.000Z</updated>
     
     <content type="html"><![CDATA[<p>有关「Tools」的其他笔记系列：<a href="http://randolph.pro/categories/Tools/">「Tools」</a></p>
 <h1 id="Chapter-1-Getting-Started"><a href="#Chapter-1-Getting-Started" class="headerlink" title="Chapter 1: Getting Started"></a>Chapter 1: Getting Started</h1><h2 id="Installing-MongoDB-on-Mac-OS"><a href="#Installing-MongoDB-on-Mac-OS" class="headerlink" title="Installing MongoDB on Mac OS"></a>Installing MongoDB on Mac OS</h2><p>Mac OS 安装 <code>MongoDB</code> 的方法有多种多样，这里使用 <code>Homebrew</code> 安装 <code>MongoDB</code>，在安装之前首先确保 <code>Homebrew</code> 更新至最新版本：</p>
@@ -157,14 +157,12 @@
 <p><code>BSON</code>是一种类 <code>JSON</code> 的一种二进制形式的存储格式，简称<code>Binary JSON</code>。</p>
 <h3 id="Insert"><a href="#Insert" class="headerlink" title="Insert()"></a>Insert()</h3><p><code>MongoDB</code>的 <code>save()</code> 和<code>insert()</code>函数都可以向 <code>collection</code> 里插入数据，但两者是有两个区别：</p>
 <ul>
-<li><code>save()</code>函数实际就是根据参数条件，调用了 <code>insert()</code> 或<code>update()</code>函数。<ul>
+<li><p><code>save()</code>函数实际就是根据参数条件，调用了 <code>insert()</code> 或<code>update()</code>函数。</p>
+<ul>
 <li>如果想插入的数据对象存在，<code>insert()</code>函数会报错，而 <code>save()</code> 函数则是相当于使用 <code>update()</code> 函数，改变原来的对象；</li>
-<li>如果想插入的对象不存在, 那么它们执行相同的 <code>insert()</code> 函数插入操作。</li>
+<li>如果想插入的对象不存在, 那么它们执行相同的 <code>insert()</code> 函数插入操作。<br>这里可以用几个字来概括它们两的区别，即所谓：<strong>“有则改之, 无则加之”</strong>。</li>
 </ul>
 </li>
-</ul>
-<p>这里可以用几个字来概括它们两的区别，即所谓：<strong>“有则改之, 无则加之”</strong>。</p>
-<ul>
 <li><p><code>insert()</code>可以一次性插入一个列表，而不用遍历，效率高；<code>save()</code>则需要遍历列表，一个个插入。</p>
 </li>
 <li><p>另外，还有 <code>insertOne()</code> 和<code>insertMany()</code>插入方法。还是建议直接使用 <code>insert()</code> 函数。</p>
