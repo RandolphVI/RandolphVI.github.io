@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://randolph.pro/"/>
-  <updated>2017-08-20T09:41:24.000Z</updated>
+  <updated>2017-08-20T12:54:11.000Z</updated>
   <id>http://randolph.pro/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://randolph.pro/2017/07/15/%E2%99%9E%E3%80%8CMongoDB%20and%20Python%E3%80%8D/"/>
     <id>http://randolph.pro/2017/07/15/♞「MongoDB and Python」/</id>
     <published>2017-07-14T16:00:00.000Z</published>
-    <updated>2017-08-20T09:41:24.000Z</updated>
+    <updated>2017-08-20T12:54:11.000Z</updated>
     
     <content type="html"><![CDATA[<p>有关「Tools」的其他笔记系列：<a href="http://randolph.pro/categories/Tools/">「Tools」</a></p>
 <h1 id="Chapter-1-Getting-Started"><a href="#Chapter-1-Getting-Started" class="headerlink" title="Chapter 1: Getting Started"></a>Chapter 1: Getting Started</h1><h2 id="Installing-MongoDB-on-Mac-OS"><a href="#Installing-MongoDB-on-Mac-OS" class="headerlink" title="Installing MongoDB on Mac OS"></a>Installing MongoDB on Mac OS</h2><p>Mac OS 安装 <code>MongoDB</code> 的方法有多种多样，这里使用 <code>Homebrew</code> 安装 <code>MongoDB</code>，在安装之前首先确保 <code>Homebrew</code> 更新至最新版本：</p>
@@ -151,9 +151,6 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; ObjectId(<span class="string">"5349b4ddd2781d08c09890f4"</span>).getTimestamp()</div><div class="line">ISODate(<span class="string">"2014-04-12T21:49:17Z"</span>)</div></pre></td></tr></table></figure>
 <h3 id="ObjectId-to-String"><a href="#ObjectId-to-String" class="headerlink" title="ObjectId to String"></a>ObjectId to String</h3><p>在某些情况下，我们可能需要将 <code>ObjectId</code> 转换为字符串格式。我们可以使用下面的代码（将返回 <code>Guid</code> 格式的字符串）：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; new ObjectId().str</div><div class="line">5349b4ddd2781d08c09890f3</div></pre></td></tr></table></figure>
-<h2 id="Write-to-a-Collection-Safely-and-Synchronously"><a href="#Write-to-a-Collection-Safely-and-Synchronously" class="headerlink" title="Write to a Collection Safely and Synchronously"></a>Write to a Collection Safely and Synchronously</h2><p>PyMongo 默认采用的是 <code>asynchronous 异步的</code> 的数据写入操作，包括 <code>insert()</code>、<code>update()</code>、<code>remove()</code> 以及<code>findAndModify()</code>。</p>
-<p>而异步的数据写入操作，是一种不安全的，当数据写入时发生错误时，我们的程序便无法继续执行，并且客户端也不会收到反馈，因此我们需要使用参数<strong><code>safe=True</code></strong>。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># safe=True ensures that your write will succeed or an exception will be thrown</span></div><div class="line">collection.insert(data_record, safe=<span class="keyword">True</span>)</div></pre></td></tr></table></figure>
 <h2 id="Operation"><a href="#Operation" class="headerlink" title="Operation"></a>Operation</h2><p>所有存储在 <code>MongoDB</code> 集合中的数据都是 <code>BSON</code> 格式。<br><code>BSON</code>是一种类 <code>JSON</code> 的一种二进制形式的存储格式，简称<code>Binary JSON</code>。</p>
 <h3 id="Insert"><a href="#Insert" class="headerlink" title="Insert()"></a>Insert()</h3><p><code>MongoDB</code>的 <code>save()</code> 和<code>insert()</code>函数都可以向 <code>collection</code> 里插入数据，但两者是有两个区别：</p>
 <ul>
