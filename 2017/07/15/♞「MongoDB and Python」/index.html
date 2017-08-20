@@ -111,7 +111,7 @@
 <meta property="og:site_name" content="黃某人">
 <meta property="og:description" content="本文介绍了 MongoDB 的相关知识，以及 PyMongo （Python 上连接 MongoDB 的第三方库）的 API 操作。">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2017-08-20T12:54:11.000Z">
+<meta property="og:updated_time" content="2017-08-20T13:51:28.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="♟「Tools」 MongoDB and PyMongo">
 <meta name="twitter:description" content="本文介绍了 MongoDB 的相关知识，以及 PyMongo （Python 上连接 MongoDB 的第三方库）的 API 操作。">
@@ -436,7 +436,7 @@
                   <i class="fa fa-file-word-o"></i>
                 </span>
                 <span title="Words count in article">
-                  5,492
+                  5,774
                 </span>
                 <span> words </span>
                 
@@ -451,7 +451,7 @@
                   <i class="fa fa-clock-o"></i>
                 </span>
                 <span title="Reading time">
-                  24
+                  25
                 </span>
                 <span> mins </span>
               
@@ -492,8 +492,8 @@
 <p>最后一步，手动添加 <code>MongoDB</code> 安装目录到环境变量中。</p>
 <p>如果使用的是 <code>bash</code>，请修改 <code>~/.bash_profile</code> 配置文件；<br>如果使用的是 <code>zsh</code>，请修改 <code>~/.zshrc</code> 配置文件。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ vim ~/.bash_profile</div></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">export</span> PATH=/usr/<span class="built_in">local</span>/Cellar/mongodb/x.x.x/bin:<span class="variable">$&#123;PATH&#125;</span></div></pre></td></tr></table></figure>
-<p>这里，x.x.x 代表的是我们安装 <code>MongoDB</code> 对应的版本，请移动到指定文件夹进行查看之后进行修改。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">alias</span> mongod=<span class="string">'mongod --config /usr/local/etc/mongod.conf'</span></div></pre></td></tr></table></figure>
+<p>这里将 <code>mongod</code> 命令指定为执行 <code>mongod --config /usr/local/etc/mongod.conf</code>，即按照<code>MongoDB</code> 的配置文件 <code>mongod.conf</code>（即刚才修改的）的配置信息来启动<code>MongoDB</code> 服务器端。</p>
 <p>最后不要忘记让添加的环境变量生效：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">source</span> ~/.bash_profile</div></pre></td></tr></table></figure>
 <h2 id="Running-with-MongoDB"><a href="#Running-with-MongoDB" class="headerlink" title="Running with MongoDB"></a>Running with MongoDB</h2><p>输入命令测试 <code>MongoDB</code> 的环境变量是否生效，尝试启动 <code>MongoDB</code> 服务器端：</p>
@@ -673,7 +673,7 @@
 <li><strong><code>spec</code></strong>：查询文档，用于定位需要删除的目标文档。</li>
 <li><strong><code>multi</code></strong>：是否更新多个文档。默认是删除多条符合条件的文档。</li>
 </ol>
-<p><strong>同样，和 <code>insert()</code> 插入操作一样，除了 <code>remove()</code> 更新操作外，还有 <code>delete_one()</code> 以及 <code>delete_many()</code> 需要注意输入参数的形式，单条记录还是记录列表）。</strong></p>
+<p><strong>同样，和 <code>insert()</code> 插入操作一样，除了 <code>remove()</code> 删除操作外，还有 <code>delete_one()</code> 以及<code>delete_many()</code>（需要注意输入参数的形式，单条记录还是记录列表）。</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">db.collection.remove() <span class="comment"># 表示删除集合里的所有记录</span></div><div class="line">db.collection.remove(&#123;<span class="string">'attribute'</span>: value&#125;) <span class="comment"># 表删除某属性 attribute=value 的所有记录</span></div><div class="line"></div><div class="line">id = db.collection.find_one(&#123;<span class="string">'attribute'</span>: value&#125;)[<span class="string">'_id'</span>]</div><div class="line">db.collection.remove(id) <span class="comment"># 查找到某属性 attribute=value 的记录，并根据记录的 id 删除该记录</span></div><div class="line">db.collection.drop() <span class="comment"># 表示删除整个集合</span></div></pre></td></tr></table></figure>
 <p>删除文档通常很快，但是如果要清空整个集合，那么使用 <code>drop()</code> 直接删除集合会更快（然后在这个空集合上重建各项索引）。 </p>
 <p>如果 <code>Collection</code> 有一些 <code>metadata</code>，例如<code>index</code>，那么<code>db.collection.remove()</code> 将删除所有的 <code>Document</code>，但并不会删除<code>index</code> 信息，而 <code>drop()</code> 则会删除掉这些<code>metadata</code>。</p>
@@ -685,48 +685,125 @@
 <li><strong><code>limit</code></strong>：指定读取的记录数量。</li>
 <li><strong><code>sort</code></strong>：排序参数。</li>
 </ol>
-<p>数据库的查询基本是通过 <code>find()</code> 函数进行查询，其中大于、大于等于、小于、小于等于这些关系运算符经常要用到，分别用 <code>$gt</code>、<code>$gte</code>、<code>$lt</code>、<code>$lte</code> 表示。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">db.collection.find(&#123;<span class="string">'attribute'</span>: &#123;<span class="string">"$lt"</span>:<span class="number">15</span>&#125;&#125;) <span class="comment"># 查找符合某属性 attribute 的值小于 15 的多条记录</span></div><div class="line">db.collection.find(&#123;<span class="string">'attribute'</span>: value&#125;) <span class="comment"># 查找符合某属性 attribute=value 的多条记录，查不到时返回 None</span></div><div class="line">db.collection.find_one(&#123;<span class="string">'attribute'</span>: value&#125;) <span class="comment"># 只查找某属性 attribute=value 的一条记录，查不到时返回 None</span></div></pre></td></tr></table></figure>
-<p>只显示集合中的所有记录的 <code>attribute1</code>、<code>attribute2</code> 属性值，<code>_id: 0</code>表示一般忽略不显示 <code>_id</code> 的值，<code>&#39;attribute&#39;: 1</code>表示显示该字段：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 如果不指定，是默认显示所有字段（包括 _id ）</span></div><div class="line"><span class="keyword">for</span> item <span class="keyword">in</span> db.colleciton.find(&#123;&#125;, &#123;<span class="string">'_id'</span>: <span class="number">0</span>, <span class="string">'attribute1'</span>: <span class="number">1</span>, <span class="string">'attribute2'</span>: <span class="number">1</span>&#125;): <span class="keyword">print</span> item</div></pre></td></tr></table></figure>
-<p>显示集合中所有 <code>attribute=21</code> 的记录的 <code>attribute1</code>、<code>attribute2</code> 属性值：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> item <span class="keyword">in</span> db.collection.find(&#123;<span class="string">'attribute2'</span>: <span class="number">21</span>&#125;, &#123;<span class="string">'_id'</span>: <span class="number">0</span>, <span class="string">'attribute1'</span>: <span class="number">1</span>, <span class="string">'attribute2'</span>: <span class="number">1</span>&#125;): <span class="keyword">print</span> item</div></pre></td></tr></table></figure>
-<p>查找符合属性 <code>12&lt;attribute1&lt;15</code> 以及 <code>attribute2=value</code> 的多条记录，查不到时返回<code>None</code>：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> item <span class="keyword">in</span> db.colleciton.find(&#123;<span class="string">'attribute1'</span>: &#123;<span class="string">'$gt'</span>: <span class="number">12</span>, <span class="string">'$lt'</span>: <span class="number">15</span>&#125;, <span class="string">'attribute2'</span>: value&#125;): <span class="keyword">print</span> item</div></pre></td></tr></table></figure>
-<p>查找符合属性 <code>attribute1=21</code> 以及 <code>attribute2=value</code> 的多条记录，查不到时返回<code>None</code>：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> item <span class="keyword">in</span> db.colleciton.find(&#123;<span class="string">'attribute1'</span>: <span class="number">21</span>, <span class="string">'attribute2'</span>: value&#125;): <span class="keyword">print</span> item</div></pre></td></tr></table></figure>
+<p><strong>同样，和 <code>insert()</code> 插入操作一样，除了 <code>find()</code> 查询操作外，还有 <code>find_one()</code>、<code>find_and_modify()</code>、<code>find_one_and_delete()</code>、<code>find_one_and_update()</code> 以及<code>find_one_and_replace()</code>。</strong></p>
 <ul>
-<li><strong>Exists</strong></li>
+<li><strong><code>projection</code></strong></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 如果不指定，是默认显示所有字段（包括 _id ）</span></div><div class="line"><span class="keyword">for</span> item <span class="keyword">in</span> db.colleciton.find(&#123;&#125;, &#123;<span class="string">'_id'</span>: <span class="number">0</span>, <span class="string">'attribute1'</span>: <span class="number">1</span>, <span class="string">'attribute2'</span>: <span class="number">1</span>&#125;): <span class="keyword">print</span> item</div></pre></td></tr></table></figure>
+<p>这里的 <code>projection</code> 就是 <code>{&#39;_id&#39;: 0, &#39;attribute1&#39;: 1, &#39;attribute2&#39;: 1}</code>，表示只显示集合中的所有记录的<code>attribute1</code>、<code>attribute2</code> 属性值，<code>_id: 0</code>表示一般忽略不显示 <code>_id</code> 的值，<code>&#39;attribute&#39;: 1</code>表示显示该字段。</p>
+<h4 id="Comparison"><a href="#Comparison" class="headerlink" title="Comparison"></a>Comparison</h4><p>数据库的查询基本是通过 <code>find()</code> 函数进行查询，其中大于、大于等于、小于、小于等于这些关系运算符经常要用到，分别用 <code>$gt</code>、<code>$gte</code>、<code>$lt</code>、<code>$lte</code> 表示。</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$ne</td>
+<td>Matches all values that are not equal to a specified value.</td>
+</tr>
+<tr>
+<td>$gt</td>
+<td>Matches values that are greater than a specified value.</td>
+</tr>
+<tr>
+<td>$gte</td>
+<td>Matches values that are greater than or equal to a specified value.</td>
+</tr>
+<tr>
+<td>$lt</td>
+<td>Matches values that are less than a specified value.</td>
+</tr>
+<tr>
+<td>$lte</td>
+<td>Matches values that are less than or equal to a specified value.</td>
+</tr>
+<tr>
+<td>$in</td>
+<td>Matches any of the values specified in an array.</td>
+</tr>
+<tr>
+<td>$nin</td>
+<td>Matches none of the values specified in an array.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li><strong><code>$ne</code></strong></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">db.collection.find(&#123;<span class="string">'attribute'</span>: value&#125;) <span class="comment"># 查找符合某属性 attribute 等于 value 的所有记录，查不到时返回 None</span></div><div class="line">db.collection.find(&#123;<span class="string">'attribute'</span>: &#123;<span class="string">"$ne"</span>: <span class="number">73</span>&#125;&#125;) <span class="comment"># 查找符合某属性 attribute 的值不等于 73 的所有记录，查不到时返回 None</span></div><div class="line"><span class="comment"># 显示集合中所有 attribute 等于 21 的记录的 attribute1、attribute2 属性值</span></div><div class="line"><span class="keyword">for</span> item <span class="keyword">in</span> db.collection.find(&#123;<span class="string">'attribute2'</span>: <span class="number">21</span>&#125;, &#123;<span class="string">'_id'</span>: <span class="number">0</span>, <span class="string">'attribute1'</span>: <span class="number">1</span>, <span class="string">'attribute2'</span>: <span class="number">1</span>&#125;): <span class="keyword">print</span> item</div></pre></td></tr></table></figure>
+<ul>
+<li><strong><code>$gt</code> &amp; <code>$gte</code> &amp; <code>$lt</code> &amp; <code>$lte</code></strong></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">db.collection.find(&#123;<span class="string">'attribute'</span>: &#123;<span class="string">"$lt"</span>: <span class="number">15</span>&#125;&#125;) <span class="comment"># 查找符合某属性 attribute 的值小于 15 的所有记录，查不到时返回 None</span></div><div class="line"></div><div class="line"><span class="comment"># 查找符合属性 attribute1 大于等于 12 小于等于 15，并且 attribute2 等于 value 的所有记录，查不到时返回 None</span></div><div class="line"><span class="keyword">for</span> item <span class="keyword">in</span> db.colleciton.find(&#123;<span class="string">'attribute1'</span>: &#123;<span class="string">'$gte'</span>: <span class="number">12</span>, <span class="string">'$lte'</span>: <span class="number">15</span>&#125;, <span class="string">'attribute2'</span>: value&#125;): <span class="keyword">print</span> item</div></pre></td></tr></table></figure>
+<ul>
+<li><strong><code>$in</code> &amp; <code>$nin</code></strong></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 查找符合属性 attribute 等于 (23, 26, 32) 的所有记录，查不到时返回 None</span></div><div class="line"><span class="keyword">for</span> item <span class="keyword">in</span> db.collection.find(&#123;<span class="string">'attribute'</span>: &#123;<span class="string">'$in'</span>: (<span class="number">23</span>, <span class="number">26</span>, <span class="number">32</span>)&#125;&#125;): <span class="keyword">print</span> item </div><div class="line"></div><div class="line"><span class="comment"># 查找符合属性 attribute 不等于 (23, 26, 32) 的所有记录，查不到时返回 None</span></div><div class="line"><span class="keyword">for</span> item <span class="keyword">in</span> db.collection.find(&#123;<span class="string">'attribute'</span>: &#123;<span class="string">'$nin'</span>: (<span class="number">23</span>, <span class="number">26</span>, <span class="number">32</span>)&#125;&#125;): <span class="keyword">print</span> item </div><div class="line">	</div><div class="line"><span class="comment"># IN 与 查询制定字段结合</span></div><div class="line"><span class="keyword">for</span> item <span class="keyword">in</span> db.collection.find(&#123;<span class="string">'attribute'</span>: &#123;<span class="string">'$in'</span>: (value1, value2)&#125;&#125;, &#123;<span class="string">'_id'</span>: <span class="number">0</span>, <span class="string">'attribute'</span>: <span class="number">1</span>&#125;)</div></pre></td></tr></table></figure>
+<h4 id="Logical"><a href="#Logical" class="headerlink" title="Logical"></a>Logical</h4><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$and</td>
+<td>Joins query clauses with a logical AND returns all documents that match the conditions of both clause.</td>
+</tr>
+<tr>
+<td>$not</td>
+<td>Inverts the effect of a query expression and returns documents that do not match the query expression.</td>
+</tr>
+<tr>
+<td>$nor</td>
+<td>Joins query clauses with a logical NOR returns all documents that fail to match both clauses.</td>
+</tr>
+<tr>
+<td>$or</td>
+<td>Joins query clauses with a logical OR returns all documents that match the conditions of either clause.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li><strong><code>$or</code></strong></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> item <span class="keyword">in</span> db.collection.find(&#123;<span class="string">"$or"</span>:[&#123;<span class="string">"age"</span>:<span class="number">25</span>&#125;, &#123;<span class="string">"age"</span>:<span class="number">28</span>&#125;]&#125;): <span class="keyword">print</span> item</div><div class="line"><span class="keyword">for</span> item <span class="keyword">in</span> db.collection.find(&#123;<span class="string">"$or"</span>:[&#123;<span class="string">"age"</span>:&#123;<span class="string">"$lte"</span>:<span class="number">23</span>&#125;&#125;, &#123;<span class="string">"age"</span>:&#123;<span class="string">"$gte"</span>:<span class="number">33</span>&#125;&#125;]&#125;): <span class="keyword">print</span> item</div><div class="line"></div><div class="line"><span class="comment"># OR 与 查询制定字段结合</span></div><div class="line"><span class="keyword">for</span> item <span class="keyword">in</span> db.collection.find(&#123;<span class="string">'$or'</span>: [&#123;<span class="string">'attribute'</span>: value1&#125;, &#123;<span class="string">'attribute'</span>: value2&#125;]&#125;, &#123;<span class="string">'_id'</span>: <span class="number">0</span>, <span class="string">'attribute'</span>: <span class="number">1</span>&#125;)</div></pre></td></tr></table></figure>
+<h4 id="Element"><a href="#Element" class="headerlink" title="Element"></a>Element</h4><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$exists</td>
+<td>Matches documents that have the specified field.</td>
+</tr>
+<tr>
+<td>$type</td>
+<td>Selects documents if a field is of the specified type.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li><strong><code>$exists</code></strong></li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 查找存在属性 attribute 的所有记录</span></div><div class="line">db.collection.find(&#123;<span class="string">'attribute'</span>: &#123;<span class="string">'$exists'</span>:<span class="keyword">True</span>&#125;&#125;)</div><div class="line">	</div><div class="line"><span class="comment"># 查找不存在属性 attribute 的所有记录 </span></div><div class="line">db.collection.find(&#123;<span class="string">'attribute'</span>: &#123;<span class="string">'$exists'</span>:<span class="keyword">False</span>&#125;&#125;)</div></pre></td></tr></table></figure>
 <ul>
-<li><strong>IN</strong></li>
+<li><strong><code>$type</code></strong></li>
 </ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 查找符合属性 attribute 等于 (23, 26, 32) 的多条记录，查不到时返回 None</span></div><div class="line"><span class="keyword">for</span> item <span class="keyword">in</span> db.collection.find(&#123;<span class="string">'attribute'</span>: &#123;<span class="string">'$in'</span>: (<span class="number">23</span>, <span class="number">26</span>, <span class="number">32</span>)&#125;&#125;): <span class="keyword">print</span> item </div><div class="line"></div><div class="line"><span class="comment"># 查找符合属性 attribute 不等于 (23, 26, 32) 的多条记录，查不到时返回 None</span></div><div class="line"><span class="keyword">for</span> item <span class="keyword">in</span> db.collection.find(&#123;<span class="string">'attribute'</span>: &#123;<span class="string">'$nin'</span>: (<span class="number">23</span>, <span class="number">26</span>, <span class="number">32</span>)&#125;&#125;): <span class="keyword">print</span> item </div><div class="line">	</div><div class="line"><span class="comment"># IN 与 查询制定字段结合</span></div><div class="line"><span class="keyword">for</span> item <span class="keyword">in</span> db.collection.find(&#123;<span class="string">'attribute'</span>: &#123;<span class="string">'$in'</span>: (value1, value2)&#125;&#125;, &#123;<span class="string">'_id'</span>: <span class="number">0</span>, <span class="string">'attribute'</span>: <span class="number">1</span>&#125;)</div></pre></td></tr></table></figure>
-<ul>
-<li><strong>OR</strong></li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> item <span class="keyword">in</span> db.collection.find(&#123;<span class="string">"$or"</span>:[&#123;<span class="string">"age"</span>:<span class="number">25</span>&#125;, &#123;<span class="string">"age"</span>:<span class="number">28</span>&#125;]&#125;): <span class="keyword">print</span> item</div><div class="line"><span class="keyword">for</span> item <span class="keyword">in</span> db.collection.find(&#123;<span class="string">"$or"</span>:[&#123;<span class="string">"age"</span>:&#123;<span class="string">"$lte"</span>:<span class="number">23</span>&#125;&#125;, &#123;<span class="string">"age"</span>:&#123;<span class="string">"$gte"</span>:<span class="number">33</span>&#125;&#125;]&#125;): <span class="keyword">print</span> item</div><div class="line"></div><div class="line"><span class="comment"># OR 与 查询制定字段结合</span></div><div class="line"><span class="keyword">for</span> item <span class="keyword">in</span> db.collection.find(&#123;<span class="string">'$or'</span>: [&#123;<span class="string">'attribute'</span>: value1&#125;, &#123;<span class="string">'attribute'</span>: value2&#125;]&#125;, &#123;<span class="string">'_id'</span>: <span class="number">0</span>, <span class="string">'attribute'</span>: <span class="number">1</span>&#125;)</div></pre></td></tr></table></figure>
-<ul>
-<li><strong>判断数组属性是否包含全部条件</strong></li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> item <span class="keyword">in</span> db.collection.find(&#123;<span class="string">'attribute'</span>: &#123;<span class="string">'$all'</span>: (<span class="number">23</span>, <span class="number">26</span>, <span class="number">32</span>)&#125;&#125;): <span class="keyword">print</span> item</div></pre></td></tr></table></figure>
-<p><strong>注意和 <code>$in</code> 的区别。<code>$in</code>是检查目标属性值是条件表达式中的一员，而 <code>$all</code> 则要求属性值包含全部条件元素。</strong></p>
-<ul>
-<li><strong>正则表达式查询</strong></li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 查询出 attribute 为 'value1', 'value3', 'value5' 的记录</span></div><div class="line"><span class="keyword">for</span> item <span class="keyword">in</span> db.collection.find(&#123;<span class="string">'attribute'</span>: &#123;<span class="string">'$regex'</span> : <span class="string">r'(?i)value[135]'</span>&#125;&#125;, &#123;<span class="string">'_id'</span>: <span class="number">0</span>, <span class="string">'attribute'</span>: <span class="number">1</span>&#125;): </div><div class="line">	<span class="keyword">print</span> item</div></pre></td></tr></table></figure>
-<ul>
-<li><strong>匹配数组属性元素数量</strong></li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> item <span class="keyword">in</span> db.collection.find(&#123;<span class="string">'attribute'</span>: &#123;<span class="string">'$size'</span>: <span class="number">3</span>&#125;&#125;, &#123;<span class="string">'_id'</span>: <span class="number">0</span>, <span class="string">'attribute'</span>: <span class="number">1</span>&#125;): <span class="keyword">print</span> item</div></pre></td></tr></table></figure>
-<ul>
-<li><strong>数据类型转换</strong></li>
-</ul>
-<p>对于一条记录 x，若其字段 <code>attribute</code> 为<code>&lt;string&gt;</code> 型，则可以如下转换为<code>&lt;int&gt;</code> 型：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">x[<span class="string">'price'</span>]=int(x[<span class="string">'price'</span>])</div></pre></td></tr></table></figure>
-<p><strong><code>$type</code></strong>: 用于判断属性类型。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> item <span class="keyword">in</span> db.collection.find(&#123;<span class="string">'attribute'</span>: &#123;<span class="string">'$type'</span>:<span class="number">1</span>&#125;&#125;): <span class="keyword">print</span> item <span class="comment"># 查询数字类型的</span></div><div class="line"><span class="keyword">for</span> item <span class="keyword">in</span> db.collection.find(&#123;<span class="string">'attribute'</span>: &#123;<span class="string">'$type'</span>:<span class="number">2</span>&#125;&#125;): <span class="keyword">print</span> item <span class="comment"># 查询字符串类型的</span></div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 查询属性 attribute 其数据类型为指定 type 的所有记录</span></div><div class="line"><span class="keyword">for</span> item <span class="keyword">in</span> db.collection.find(&#123;<span class="string">'attribute'</span>: &#123;<span class="string">'$type'</span>:<span class="number">1</span>&#125;&#125;): <span class="keyword">print</span> item <span class="comment"># 查询数字类型的</span></div><div class="line"><span class="keyword">for</span> item <span class="keyword">in</span> db.collection.find(&#123;<span class="string">'attribute'</span>: &#123;<span class="string">'$type'</span>:<span class="number">2</span>&#125;&#125;): <span class="keyword">print</span> item <span class="comment"># 查询字符串类型的</span></div></pre></td></tr></table></figure>
 <p>各种类型值的代表值:</p>
 <div class="table-container">
 <table>
@@ -757,12 +834,54 @@
 </tbody>
 </table>
 </div>
+<h4 id="Array"><a href="#Array" class="headerlink" title="Array"></a>Array</h4><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$all</td>
+<td>Matches arrays that contain all elements specified in the query.</td>
+</tr>
+<tr>
+<td>$elemMatch</td>
+<td>Selects documents if element in the array field matches all the specified $elemMatch conditions.</td>
+</tr>
+<tr>
+<td>$size</td>
+<td>Selects documents if the array field is a specified size.</td>
+</tr>
+</tbody>
+</table>
+</div>
 <ul>
-<li><strong>计数</strong></li>
+<li><strong><code>$all</code></strong></li>
 </ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">print(db.collection.find().count()) </div><div class="line">print(db.collection.find(&#123;<span class="string">'attribute'</span>: &#123;<span class="string">'$gt'</span>:<span class="number">30</span>&#125;&#125;).count())</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 查找存在属性 attribute 包含全部条件的所有记录 </span></div><div class="line"><span class="keyword">for</span> item <span class="keyword">in</span> db.collection.find(&#123;<span class="string">'attribute'</span>: &#123;<span class="string">'$all'</span>: (<span class="number">23</span>, <span class="number">26</span>, <span class="number">32</span>)&#125;&#125;): <span class="keyword">print</span> item</div></pre></td></tr></table></figure>
+<p><strong>注意和 <code>$in</code> 的区别。<code>$in</code>是检查目标属性值是条件表达式中的一员，而 <code>$all</code> 则要求属性值包含全部条件元素。</strong></p>
 <ul>
-<li><strong>排序</strong></li>
+<li><strong><code>$elemMatch</code></strong></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 查询属性 attribute 其数组元素数量为指定 size 的所有记录</span></div><div class="line"><span class="keyword">for</span> item <span class="keyword">in</span> db.collection.find(&#123;<span class="string">'attribute'</span>: &#123;<span class="string">'$size'</span>: <span class="number">3</span>&#125;&#125;, &#123;<span class="string">'_id'</span>: <span class="number">0</span>&#125;): <span class="keyword">print</span> item</div></pre></td></tr></table></figure>
+<ul>
+<li><strong><code>$size</code></strong></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 查询属性 attribute 其数组元素数量为指定 size 的所有记录</span></div><div class="line"><span class="keyword">for</span> item <span class="keyword">in</span> db.collection.find(&#123;<span class="string">'attribute'</span>: &#123;<span class="string">'$size'</span>: <span class="number">3</span>&#125;&#125;, &#123;<span class="string">'_id'</span>: <span class="number">0</span>&#125;): <span class="keyword">print</span> item</div></pre></td></tr></table></figure>
+<ul>
+<li><strong><code>$regex</code></strong></li>
+</ul>
+<p>正则表达式查询：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 查询属性 attribute 满足指定正则表达式，即其值为 'value1', 'value3', 'value5' 的所有记录</span></div><div class="line"><span class="keyword">for</span> item <span class="keyword">in</span> db.collection.find(&#123;<span class="string">'attribute'</span>: &#123;<span class="string">'$regex'</span> : <span class="string">r'(?i)value[135]'</span>&#125;&#125;, &#123;<span class="string">'_id'</span>: <span class="number">0</span>, <span class="string">'attribute'</span>: <span class="number">1</span>&#125;): </div><div class="line">	<span class="keyword">print</span> item</div></pre></td></tr></table></figure>
+<ul>
+<li><strong><code>count()</code></strong></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 计数</span></div><div class="line">print(db.collection.find().count()) </div><div class="line">print(db.collection.find(&#123;<span class="string">'attribute'</span>: &#123;<span class="string">'$gt'</span>:<span class="number">30</span>&#125;&#125;).count())</div></pre></td></tr></table></figure>
+<ul>
+<li><strong><code>sort()</code></strong></li>
 </ul>
 <p>对记录进行排序，用 <code>sort()</code> 函数，形如 <code>find().sort([(&#39;attribute&#39;,1/-1)])</code> 表示按某属性 <code>attribute</code> 的<strong>升序 / 降序 </strong> 排列：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">pymongo.ASCENDING <span class="comment"># 表按升序排列，也可以用 1 来代替</span></div><div class="line">pymongo.DESCENDING <span class="comment"># 表按降序排列， 也可以用 -1 来代替</span></div><div class="line">	</div><div class="line"><span class="keyword">for</span> item <span class="keyword">in</span> db.collection.find().sort([(<span class="string">'attribute'</span>, pymongo.ASCENDING)]): <span class="keyword">print</span> item</div><div class="line"><span class="keyword">for</span> item <span class="keyword">in</span> db.collection.find().sort([(<span class="string">'attribute'</span>, pymongo.DESCENDING)]): <span class="keyword">print</span> item</div><div class="line">	</div><div class="line"><span class="keyword">for</span> item <span class="keyword">in</span> db.collection.find().sort([(<span class="string">'attribute1'</span>, pymongo.ASCENDING), (<span class="string">'attribute2'</span>, pymongo.DESCENDING)]): </div><div class="line">	<span class="keyword">print</span> item </div><div class="line">	</div><div class="line"><span class="keyword">for</span> item <span class="keyword">in</span> db.collection.find(sort = [(<span class="string">'attribute1'</span>, pymongo.ASCENDING), (<span class="string">'attribute2'</span>, pymongo.DESCENDING)]): </div><div class="line">	<span class="keyword">print</span> item</div></pre></td></tr></table></figure>
@@ -774,7 +893,7 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> item <span class="keyword">in</span> db.collection.find(&#123;<span class="string">'attribute1'</span>: value&#125;, &#123;<span class="string">'_id'</span>: <span class="number">0</span>, <span class="string">'attribute1'</span>: <span class="number">1</span>, <span class="string">'attribute2'</span>: <span class="number">1</span>&#125;) \</div><div class="line">							.sort([(<span class="string">'attribute1'</span>, <span class="number">1</span>), (<span class="string">'attribute2'</span>, <span class="number">-1</span>)]).limit(<span class="number">100</span>):  <span class="keyword">print</span> item</div></pre></td></tr></table></figure>
 <p><strong>比如，我们要做一个排行榜功能，需要在某 <code>collection</code> 中查找分数最多的 100 名玩家。</strong></p>
 <ul>
-<li><strong>SLICE &amp; LIMIT</strong></li>
+<li><strong><code>skip()</code> &amp; <code>limit()</code></strong></li>
 </ul>
 <p>从第几行开始读取<code>skip()</code>，读取多少行<code>limit()</code>：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 从第 2 行开始读取，读取 3 行记录</span></div><div class="line"><span class="keyword">for</span> item <span class="keyword">in</span> db.collection.find().skip(<span class="number">2</span>).limit(<span class="number">3</span>): <span class="keyword">print</span> item</div><div class="line"><span class="keyword">for</span> item <span class="keyword">in</span> db.collection.find(skip=<span class="number">2</span>, limit=<span class="number">3</span>): <span class="keyword">print</span> item</div><div class="line"><span class="keyword">for</span> item <span class="keyword">in</span> db.collection.find(&#123;&#125;, &#123;<span class="string">'_id'</span>: <span class="number">0</span>, <span class="string">'attribute1'</span>: <span class="number">1</span>&#125;, skip=<span class="number">2</span>, limit=<span class="number">3</span>): <span class="keyword">print</span> item</div></pre></td></tr></table></figure>
@@ -1043,7 +1162,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Chapter-1-Getting-Started"><span class="nav-number">1.</span> <span class="nav-text">Chapter 1: Getting Started</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Installing-MongoDB-on-Mac-OS"><span class="nav-number">1.1.</span> <span class="nav-text">Installing MongoDB on Mac OS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Setting-up-a-Environment-with-MongoDB"><span class="nav-number">1.2.</span> <span class="nav-text">Setting up a Environment with MongoDB</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Running-with-MongoDB"><span class="nav-number">1.3.</span> <span class="nav-text">Running with MongoDB</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Restart-the-MongoDB"><span class="nav-number">1.4.</span> <span class="nav-text">Restart the MongoDB</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MongoDB-GUI"><span class="nav-number">1.5.</span> <span class="nav-text">MongoDB GUI</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Chapter-2-Reading-and-Writing-to-MongoDB-with-Python"><span class="nav-number">2.</span> <span class="nav-text">Chapter 2: Reading and Writing to MongoDB with Python</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Create-and-Delete-database"><span class="nav-number">2.1.</span> <span class="nav-text">Create and Delete database</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Connecting-to-MongoDB-with-Python"><span class="nav-number">2.2.</span> <span class="nav-text">Connecting to MongoDB with Python</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ObjectId"><span class="nav-number">2.3.</span> <span class="nav-text">ObjectId</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Time"><span class="nav-number">2.3.1.</span> <span class="nav-text">Time</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Machine"><span class="nav-number">2.3.2.</span> <span class="nav-text">Machine</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PID"><span class="nav-number">2.3.3.</span> <span class="nav-text">PID</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#INC"><span class="nav-number">2.3.4.</span> <span class="nav-text">INC</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Source-Code-Analysis"><span class="nav-number">2.3.5.</span> <span class="nav-text">Source Code Analysis</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Get-Timestamp-on-MongoDB"><span class="nav-number">2.3.6.</span> <span class="nav-text">Get Timestamp on MongoDB</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ObjectId-to-String"><span class="nav-number">2.3.7.</span> <span class="nav-text">ObjectId to String</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Operation"><span class="nav-number">2.4.</span> <span class="nav-text">Operation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Insert"><span class="nav-number">2.4.1.</span> <span class="nav-text">Insert()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Update"><span class="nav-number">2.4.2.</span> <span class="nav-text">Update()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Remove"><span class="nav-number">2.4.3.</span> <span class="nav-text">Remove()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Find"><span class="nav-number">2.4.4.</span> <span class="nav-text">Find()</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Chapter-3-Common-MongoDB-and-Python-Patterns"><span class="nav-number">3.</span> <span class="nav-text">Chapter 3: Common MongoDB and Python Patterns</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Chapter-1-Getting-Started"><span class="nav-number">1.</span> <span class="nav-text">Chapter 1: Getting Started</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Installing-MongoDB-on-Mac-OS"><span class="nav-number">1.1.</span> <span class="nav-text">Installing MongoDB on Mac OS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Setting-up-a-Environment-with-MongoDB"><span class="nav-number">1.2.</span> <span class="nav-text">Setting up a Environment with MongoDB</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Running-with-MongoDB"><span class="nav-number">1.3.</span> <span class="nav-text">Running with MongoDB</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Restart-the-MongoDB"><span class="nav-number">1.4.</span> <span class="nav-text">Restart the MongoDB</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MongoDB-GUI"><span class="nav-number">1.5.</span> <span class="nav-text">MongoDB GUI</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Chapter-2-Reading-and-Writing-to-MongoDB-with-Python"><span class="nav-number">2.</span> <span class="nav-text">Chapter 2: Reading and Writing to MongoDB with Python</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Create-and-Delete-database"><span class="nav-number">2.1.</span> <span class="nav-text">Create and Delete database</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Connecting-to-MongoDB-with-Python"><span class="nav-number">2.2.</span> <span class="nav-text">Connecting to MongoDB with Python</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ObjectId"><span class="nav-number">2.3.</span> <span class="nav-text">ObjectId</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Time"><span class="nav-number">2.3.1.</span> <span class="nav-text">Time</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Machine"><span class="nav-number">2.3.2.</span> <span class="nav-text">Machine</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PID"><span class="nav-number">2.3.3.</span> <span class="nav-text">PID</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#INC"><span class="nav-number">2.3.4.</span> <span class="nav-text">INC</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Source-Code-Analysis"><span class="nav-number">2.3.5.</span> <span class="nav-text">Source Code Analysis</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Get-Timestamp-on-MongoDB"><span class="nav-number">2.3.6.</span> <span class="nav-text">Get Timestamp on MongoDB</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ObjectId-to-String"><span class="nav-number">2.3.7.</span> <span class="nav-text">ObjectId to String</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Operation"><span class="nav-number">2.4.</span> <span class="nav-text">Operation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Insert"><span class="nav-number">2.4.1.</span> <span class="nav-text">Insert()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Update"><span class="nav-number">2.4.2.</span> <span class="nav-text">Update()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Remove"><span class="nav-number">2.4.3.</span> <span class="nav-text">Remove()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Find"><span class="nav-number">2.4.4.</span> <span class="nav-text">Find()</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Comparison"><span class="nav-number">2.4.4.1.</span> <span class="nav-text">Comparison</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Logical"><span class="nav-number">2.4.4.2.</span> <span class="nav-text">Logical</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Element"><span class="nav-number">2.4.4.3.</span> <span class="nav-text">Element</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Array"><span class="nav-number">2.4.4.4.</span> <span class="nav-text">Array</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Chapter-3-Common-MongoDB-and-Python-Patterns"><span class="nav-number">3.</span> <span class="nav-text">Chapter 3: Common MongoDB and Python Patterns</span></a></li></ol></div>
             
 
           </div>
