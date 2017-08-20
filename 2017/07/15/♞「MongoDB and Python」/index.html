@@ -111,7 +111,7 @@
 <meta property="og:site_name" content="黃某人">
 <meta property="og:description" content="本文介绍了 MongoDB 的相关知识，以及 PyMongo （Python 上连接 MongoDB 的第三方库）的 API 操作。">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2017-08-20T09:39:30.000Z">
+<meta property="og:updated_time" content="2017-08-20T09:41:24.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="♟「Tools」 MongoDB and PyMongo">
 <meta name="twitter:description" content="本文介绍了 MongoDB 的相关知识，以及 PyMongo （Python 上连接 MongoDB 的第三方库）的 API 操作。">
@@ -436,7 +436,7 @@
                   <i class="fa fa-file-word-o"></i>
                 </span>
                 <span title="Words count in article">
-                  5,567
+                  5,608
                 </span>
                 <span> words </span>
                 
@@ -679,6 +679,7 @@
 <p><strong>同样，和 <code>insert()</code> 插入操作一样，除了 <code>remove()</code> 更新操作外，还有 <code>delete_one()</code> 以及 <code>delete_many()</code> 需要注意输入参数的形式，单条记录还是记录列表）。</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">db.collection.remove() <span class="comment"># 表示删除集合里的所有记录</span></div><div class="line">db.collection.remove(&#123;<span class="string">'attribute'</span>: value&#125;) <span class="comment"># 表删除某属性 attribute=value 的所有记录</span></div><div class="line"></div><div class="line">id = db.collection.find_one(&#123;<span class="string">'attribute'</span>: value&#125;)[<span class="string">'_id'</span>]</div><div class="line">db.collection.remove(id) <span class="comment"># 查找到某属性 attribute=value 的记录，并根据记录的 id 删除该记录</span></div><div class="line">db.collection.drop() <span class="comment"># 表示删除整个集合</span></div></pre></td></tr></table></figure>
 <p>删除文档通常很快，但是如果要清空整个集合，那么使用 <code>drop()</code> 直接删除集合会更快（然后在这个空集合上重建各项索引）。 </p>
+<p>如果 <code>Collection</code> 有一些 <code>metadata</code>，例如<code>index</code>，那么<code>db.collection.remove()</code> 将删除所有的 <code>Document</code>，但并不会删除<code>index</code> 信息，而 <code>drop()</code> 则会删除掉这些<code>metadata</code>。</p>
 <h3 id="Find"><a href="#Find" class="headerlink" title="Find()"></a>Find()</h3><p><strong><code>find(filter, projection,skip=0, limit=0, sort=None)</code></strong></p>
 <ol>
 <li><strong><code>filter</code></strong>：过滤器，用于定位需要更新的目标文档。</li>

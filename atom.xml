@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://randolph.pro/"/>
-  <updated>2017-08-20T09:39:30.000Z</updated>
+  <updated>2017-08-20T09:41:24.000Z</updated>
   <id>http://randolph.pro/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://randolph.pro/2017/07/15/%E2%99%9E%E3%80%8CMongoDB%20and%20Python%E3%80%8D/"/>
     <id>http://randolph.pro/2017/07/15/♞「MongoDB and Python」/</id>
     <published>2017-07-14T16:00:00.000Z</published>
-    <updated>2017-08-20T09:39:30.000Z</updated>
+    <updated>2017-08-20T09:41:24.000Z</updated>
     
     <content type="html"><![CDATA[<p>有关「Tools」的其他笔记系列：<a href="http://randolph.pro/categories/Tools/">「Tools」</a></p>
 <h1 id="Chapter-1-Getting-Started"><a href="#Chapter-1-Getting-Started" class="headerlink" title="Chapter 1: Getting Started"></a>Chapter 1: Getting Started</h1><h2 id="Installing-MongoDB-on-Mac-OS"><a href="#Installing-MongoDB-on-Mac-OS" class="headerlink" title="Installing MongoDB on Mac OS"></a>Installing MongoDB on Mac OS</h2><p>Mac OS 安装 <code>MongoDB</code> 的方法有多种多样，这里使用 <code>Homebrew</code> 安装 <code>MongoDB</code>，在安装之前首先确保 <code>Homebrew</code> 更新至最新版本：</p>
@@ -227,6 +227,7 @@
 <p><strong>同样，和 <code>insert()</code> 插入操作一样，除了 <code>remove()</code> 更新操作外，还有 <code>delete_one()</code> 以及 <code>delete_many()</code> 需要注意输入参数的形式，单条记录还是记录列表）。</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">db.collection.remove() <span class="comment"># 表示删除集合里的所有记录</span></div><div class="line">db.collection.remove(&#123;<span class="string">'attribute'</span>: value&#125;) <span class="comment"># 表删除某属性 attribute=value 的所有记录</span></div><div class="line"></div><div class="line">id = db.collection.find_one(&#123;<span class="string">'attribute'</span>: value&#125;)[<span class="string">'_id'</span>]</div><div class="line">db.collection.remove(id) <span class="comment"># 查找到某属性 attribute=value 的记录，并根据记录的 id 删除该记录</span></div><div class="line">db.collection.drop() <span class="comment"># 表示删除整个集合</span></div></pre></td></tr></table></figure>
 <p>删除文档通常很快，但是如果要清空整个集合，那么使用 <code>drop()</code> 直接删除集合会更快（然后在这个空集合上重建各项索引）。 </p>
+<p>如果 <code>Collection</code> 有一些 <code>metadata</code>，例如<code>index</code>，那么<code>db.collection.remove()</code> 将删除所有的 <code>Document</code>，但并不会删除<code>index</code> 信息，而 <code>drop()</code> 则会删除掉这些<code>metadata</code>。</p>
 <h3 id="Find"><a href="#Find" class="headerlink" title="Find()"></a>Find()</h3><p><strong><code>find(filter, projection,skip=0, limit=0, sort=None)</code></strong></p>
 <ol>
 <li><strong><code>filter</code></strong>：过滤器，用于定位需要更新的目标文档。</li>
