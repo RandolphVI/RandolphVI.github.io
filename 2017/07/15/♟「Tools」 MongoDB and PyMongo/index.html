@@ -107,11 +107,11 @@
 <meta name="keywords" content="Python,Tools,MongoDB">
 <meta property="og:type" content="article">
 <meta property="og:title" content="♟「Tools」 MongoDB and PyMongo">
-<meta property="og:url" content="http://randolph.pro/2017/07/15/♞「MongoDB and Python」/index.html">
+<meta property="og:url" content="http://randolph.pro/2017/07/15/♟「Tools」 MongoDB and PyMongo/index.html">
 <meta property="og:site_name" content="黃某人">
 <meta property="og:description" content="本文介绍了 MongoDB 的相关知识，以及 PyMongo （Python 上连接 MongoDB 的第三方库）的 API 操作。">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2017-08-20T15:12:30.000Z">
+<meta property="og:updated_time" content="2017-08-20T15:22:50.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="♟「Tools」 MongoDB and PyMongo">
 <meta name="twitter:description" content="本文介绍了 MongoDB 的相关知识，以及 PyMongo （Python 上连接 MongoDB 的第三方库）的 API 操作。">
@@ -142,7 +142,7 @@
 
 
 
-  <link rel="canonical" href="http://randolph.pro/2017/07/15/♞「MongoDB and Python」/"/>
+  <link rel="canonical" href="http://randolph.pro/2017/07/15/♟「Tools」 MongoDB and PyMongo/"/>
 
 
 
@@ -335,7 +335,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://randolph.pro/2017/07/15/♞「MongoDB and Python」/">
+    <link itemprop="mainEntityOfPage" href="http://randolph.pro/2017/07/15/♟「Tools」 MongoDB and PyMongo/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Randolph">
@@ -405,9 +405,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/07/15/♞「MongoDB and Python」/#comments" itemprop="discussionUrl">
+                <a href="/2017/07/15/♟「Tools」 MongoDB and PyMongo/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/07/15/♞「MongoDB and Python」/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2017/07/15/♟「Tools」 MongoDB and PyMongo/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -415,7 +415,7 @@
 
           
           
-             <span id="/2017/07/15/♞「MongoDB and Python」/" class="leancloud_visitors" data-flag-title="♟「Tools」 MongoDB and PyMongo">
+             <span id="/2017/07/15/♟「Tools」 MongoDB and PyMongo/" class="leancloud_visitors" data-flag-title="♟「Tools」 MongoDB and PyMongo">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-fire"></i>
@@ -436,7 +436,7 @@
                   <i class="fa fa-file-word-o"></i>
                 </span>
                 <span title="Words count in article">
-                  6,376
+                  6,406
                 </span>
                 <span> words </span>
                 
@@ -693,14 +693,14 @@
 <p><strong><code>$mul</code></strong>表示对原来的记录中的指定属性的值乘以给定的数值，分为以下几种情况：</p>
 <p>例如，存在这样的三条数据：</p>
 <p>1.<code>{&#39;_id&#39;: 1, &#39;item&#39;: &#39;ABC&#39;, &#39;price&#39;: 10.99}</code><br>2.<code>{&#39;_id&#39;: 2, &#39;item&#39;: &#39;Unknown&#39;}</code><br>3.<code>{&#39;_id&#39;: 3, &#39;item&#39;: &#39;XYZ&#39;, &#39;price&#39;: NumberLong(10) }</code></p>
-<pre><code>- Multiply the Value of a Field
-</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.collection.update(&#123;<span class="string">'_id'</span>: <span class="number">1</span>&#125;, &#123;<span class="string">'$mul'</span>: &#123;price: <span class="number">1.25</span>&#125;&#125;)</div></pre></td></tr></table></figure>
+<p>◎ Multiply the Value of a Field</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.collection.update(&#123;<span class="string">'_id'</span>: <span class="number">1</span>&#125;, &#123;<span class="string">'$mul'</span>: &#123;price: <span class="number">1.25</span>&#125;&#125;)</div></pre></td></tr></table></figure>
 <p>更新后的数据 1 为<code>{&#39;_id&#39;: 1, &#39;item&#39;: &#39;ABC&#39;, &#39;price&#39;: 13.7375}</code>。</p>
-<pre><code>- Apply **`$mul`** Operator to a Non-existing Field
-</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.collection.update(&#123;<span class="string">'_id'</span>: <span class="number">2</span>&#125;, &#123;<span class="string">'$mul'</span>: &#123;<span class="string">'price'</span>: NumberLong(<span class="number">100</span>)&#125;&#125;)</div></pre></td></tr></table></figure>
+<p>◎ Apply <strong><code>$mul</code></strong> Operator to a Non-existing Field</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.collection.update(&#123;<span class="string">'_id'</span>: <span class="number">2</span>&#125;, &#123;<span class="string">'$mul'</span>: &#123;<span class="string">'price'</span>: NumberLong(<span class="number">100</span>)&#125;&#125;)</div></pre></td></tr></table></figure>
 <p>更新后的数据 2 为<code>{&#39;_id&#39;: 2, &#39;item&#39;: &#39;Unknown&#39;, &#39;price&#39;: NumberLong(0) }</code>。</p>
-<pre><code>- Multiply Mixed Numeric Types
-</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.collection.update(&#123;<span class="string">'_id'</span>: <span class="number">3</span>&#125;, &#123;<span class="string">'$mul'</span>: &#123;<span class="string">'price'</span>: NumberInt(<span class="number">5</span>)&#125;&#125;)</div></pre></td></tr></table></figure>
+<p>◎ Multiply Mixed Numeric Types</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.collection.update(&#123;<span class="string">'_id'</span>: <span class="number">3</span>&#125;, &#123;<span class="string">'$mul'</span>: &#123;<span class="string">'price'</span>: NumberInt(<span class="number">5</span>)&#125;&#125;)</div></pre></td></tr></table></figure>
 <p>更新后的数据 3 为<code>{&#39;_id&#39;: 3, &#39;item&#39; : &#39;XYZ&#39;, &#39;price&#39;: NumberLong(50) }</code>。</p>
 <ul>
 <li><strong><code>$min</code></strong> &amp; <strong><code>$max</code></strong></li>
@@ -719,19 +719,21 @@
 <li><strong><code>$rename</code></strong></li>
 </ul>
 <p><strong><code>$rename</code></strong>表示对原来的记录中的指定属性的 <strong>key</strong> 值进行修改：</p>
-<p>例如，存在这样的数据 <code>{&#39;_id&#39;: 1, &#39;nmae&#39;: {&#39;first&#39;: &#39;george&#39;, &#39;last&#39;: &#39;washington&#39;}}</code>，对其进行<strong><code>$rename</code></strong> 更新操作，分为以下几种情况：</p>
+<p>例如，存在这样的数据 <code>{&#39;_id&#39;: 1, &#39;nmae&#39;: {&#39;first&#39;: &#39;george&#39;, &#39;last&#39;: &#39;washington&#39;}}</code>，对其进行<strong><code>$rename</code></strong> 更新操作，分为以下几种情况：<br>​    </p>
 <pre><code>- Rename a Field
 </code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.collection.update(&#123;<span class="string">'_id'</span>: <span class="number">1</span>&#125;, &#123;<span class="string">'$rename'</span>: &#123;<span class="string">'nmae'</span>: <span class="string">'name'</span>&#125;&#125;)</div></pre></td></tr></table></figure>
 <p>更新后的数据为<code>{&#39;_id&#39;: 1, &#39;name&#39;: {&#39;first&#39;: &#39;george&#39;, &#39;last&#39;: &#39;washington&#39;}}</code>。</p>
 <pre><code>- Rename a Field in an Embedded Document
 </code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.collection.update(&#123;<span class="string">'_id'</span>: <span class="number">1</span>&#125;, &#123;<span class="string">'$rename'</span>: &#123;<span class="string">'name.first'</span>: <span class="string">'name.fname'</span>&#125;&#125;)</div></pre></td></tr></table></figure>
-<p>更新后的数据为<code>{&#39;_id&#39;: 1, &#39;name&#39;: {&#39;fname&#39;: &#39;george&#39;, &#39;last&#39;: &#39;washington&#39;}}</code>。</p>
+<p>更新后的数据为<code>{&#39;_id&#39;: 1, &#39;name&#39;: {&#39;fname&#39;: &#39;george&#39;, &#39;last&#39;: &#39;washington&#39;}}</code>。<br>​    </p>
 <pre><code>- Rename a Field That Does Not Exist
 </code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.collection.update(&#123;<span class="string">'_id'</span>: <span class="number">1</span>&#125;, &#123;<span class="string">'$rename'</span>: &#123;<span class="string">'job'</span>: <span class="string">'student'</span>&#125;&#125;)</div></pre></td></tr></table></figure>
 <p>因为不存在该字段，所以并不会进行修改，更新后的数据仍为<code>{&#39;_id&#39;: 1, &#39;name&#39;: {&#39;fname&#39;: &#39;george&#39;, &#39;last&#39;: &#39;washington&#39;}}</code>。</p>
 <h4 id="Array"><a href="#Array" class="headerlink" title="Array"></a>Array</h4><ul>
 <li><strong><code>$addToSet</code></strong></li>
 </ul>
+<p><strong><code>$addToSet</code></strong>表示添加给定的字段到原来的记录中。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">db.collection.update(&#123;<span class="string">'attribute1'</span>: value1, <span class="string">'attribute2'</span>: value2&#125;, \</div><div class="line">                    &#123;<span class="string">'$addToSet'</span>: &#123;<span class="string">'attribute3'</span>: value3&#125;&#125;, multi=<span class="keyword">True</span>)</div></pre></td></tr></table></figure>
 <p><strong><code>$addToSet</code></strong>和 <strong><code>$push</code></strong> 类似，不过仅在该元素不存在时才添加，相当于将 <code>array</code> 当成 <code>set</code> 来执行 <code>set.add(item)</code> 操作。</p>
 <ul>
 <li><strong><code>$each</code></strong></li>
@@ -932,6 +934,7 @@
 <tr>
 <td>$elemMatch</td>
 <td>Selects documents if element in the array field matches all the specified $elemMatch conditions.</td>
+<td></td>
 </tr>
 <tr>
 <td>$size</td>
@@ -1417,8 +1420,8 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://randolph.pro/2017/07/15/♞「MongoDB and Python」/';
-          this.page.identifier = '2017/07/15/♞「MongoDB and Python」/';
+          this.page.url = 'http://randolph.pro/2017/07/15/♟「Tools」 MongoDB and PyMongo/';
+          this.page.identifier = '2017/07/15/♟「Tools」 MongoDB and PyMongo/';
           this.page.title = '♟「Tools」 MongoDB and PyMongo';
         };
         var d = document, s = d.createElement('script');
