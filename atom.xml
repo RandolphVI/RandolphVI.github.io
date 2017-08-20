@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://randolph.pro/"/>
-  <updated>2017-08-20T08:17:25.000Z</updated>
+  <updated>2017-08-20T09:39:30.000Z</updated>
   <id>http://randolph.pro/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://randolph.pro/2017/07/15/%E2%99%9E%E3%80%8CMongoDB%20and%20Python%E3%80%8D/"/>
     <id>http://randolph.pro/2017/07/15/♞「MongoDB and Python」/</id>
     <published>2017-07-14T16:00:00.000Z</published>
-    <updated>2017-08-20T08:17:25.000Z</updated>
+    <updated>2017-08-20T09:39:30.000Z</updated>
     
     <content type="html"><![CDATA[<p>有关「Tools」的其他笔记系列：<a href="http://randolph.pro/categories/Tools/">「Tools」</a></p>
 <h1 id="Chapter-1-Getting-Started"><a href="#Chapter-1-Getting-Started" class="headerlink" title="Chapter 1: Getting Started"></a>Chapter 1: Getting Started</h1><h2 id="Installing-MongoDB-on-Mac-OS"><a href="#Installing-MongoDB-on-Mac-OS" class="headerlink" title="Installing MongoDB on Mac OS"></a>Installing MongoDB on Mac OS</h2><p>Mac OS 安装 <code>MongoDB</code> 的方法有多种多样，这里使用 <code>Homebrew</code> 安装 <code>MongoDB</code>，在安装之前首先确保 <code>Homebrew</code> 更新至最新版本：</p>
@@ -173,48 +173,69 @@
 </li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">data_record = &#123;<span class="string">'attribute1'</span>: value1, <span class="string">'attribute2'</span>: value2, <span class="string">'attribute3'</span>: value3&#125;</div><div class="line"><span class="comment">#  插入单条数据 </span></div><div class="line">db.collection.insert(data_record)</div><div class="line">db.collection.insert_one(data_record)</div><div class="line"></div><div class="line"><span class="comment">#  插入多条数据</span></div><div class="line">✗ db.collection.insert_many(data_record) // 会报错，insert_many() 时参数必须为 list 形式</div><div class="line"></div><div class="line">record_list = []</div><div class="line">record_list.append(data_record)</div><div class="line">db.collection.insert_many(record_list)</div></pre></td></tr></table></figure>
-<h3 id="Update"><a href="#Update" class="headerlink" title="Update()"></a>Update()</h3><p><strong><code>update(criteria, objNew, upsert, mult)</code></strong></p>
+<h3 id="Update"><a href="#Update" class="headerlink" title="Update()"></a>Update()</h3><p><strong><code>update(spec, doucument, upsert=False, multi=False)</code></strong></p>
 <ol>
-<li><strong><code>criteria</code></strong>： 查询文档，用于定位需要更新的目标文档。</li>
-<li><strong><code>objNew</code></strong>： 修改器文档，用于说明要对找到的文档进行哪些修改。</li>
-<li><strong><code>upsert</code></strong>：: 如目标记录不存在，是否插入新文档。</li>
-<li><strong><code>multi</code></strong>： 是否更新多个文档。</li>
+<li><strong><code>spec</code></strong>：查询文档，用于定位需要更新的目标文档。</li>
+<li><strong><code>document</code></strong>：修改器文档，用于说明要对找到的文档进行哪些修改。</li>
+<li><strong><code>upsert</code></strong>：如目标记录不存在，是否插入新文档。</li>
+<li><strong><code>multi</code></strong>：是否更新多个文档。默认是只会修改第一条发现的文档，如果你要修改多条符合条件的文档，则需要设置参数<code>multi=true</code>。</li>
 </ol>
+<p><strong>同样，和 <code>insert()</code> 插入操作一样，除了 <code>update()</code> 更新操作外，还有 <code>replace_one()</code>、<code>update_one()</code> 以及<code>update_many()</code>（需要注意输入参数的形式，单条记录还是记录列表）。</strong></p>
 <ul>
 <li><strong><code>$set</code></strong> &amp; <strong><code>$addToSet</code></strong></li>
 </ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">db.collection.update(&#123;<span class="string">'attribute1'</span>: value1, <span class="string">'attribute2'</span>: value2&#125;, \</div><div class="line">					&#123;<span class="string">'$set'</span>: &#123;<span class="string">'attribute1'</span>: new_value1&#125;, <span class="string">'$set'</span>:&#123;<span class="string">'attribute2'</span>: new_value2&#125;, \</div><div class="line">					<span class="string">'$addToSet'</span>:&#123;<span class="string">'attribute3'</span>: value3&#125;&#125;, upsert=<span class="keyword">True</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">db.collection.update(&#123;<span class="string">'attribute1'</span>: value1, <span class="string">'attribute2'</span>: value2&#125;, \</div><div class="line">					&#123;<span class="string">'$set'</span>: &#123;<span class="string">'attribute1'</span>: new_value1&#125;, <span class="string">'$set'</span>:&#123;<span class="string">'attribute2'</span>: new_value2&#125;, \</div><div class="line">					<span class="string">'$addToSet'</span>:&#123;<span class="string">'attribute3'</span>: value3&#125;&#125;, upsert=<span class="keyword">True</span>, multi=<span class="keyword">True</span>)</div></pre></td></tr></table></figure>
 <p>其中，<strong><code>$set</code></strong>表示对原来的记录进行修改，<strong><code>$addToSet</code></strong>表示添加 <code>attribute3</code> 字段到 <code>{&#39;attribute1&#39;=new_value1, &#39;attribute2&#39;=new_value2}</code> 这条记录中。</p>
-<p><strong><code>$addToSet</code></strong>和 <strong><code>$push</code></strong> 类似，不过仅在该元素不存在时才添加 (<code>Set</code>表示不重复元素集合)。</p>
+<p><strong><code>$addToSet</code></strong>和 <strong><code>$push</code></strong> 类似，不过仅在该元素不存在时才添加，相当于将 <code>array</code> 当成 <code>set</code> 来执行 <code>set.add(item)</code> 操作。</p>
+<p><strong>注意，使用 <code>&#39;$set&#39;: {attribute1: new_value1}</code> 只会对 <code>attribute1</code> 的部分进行修改，如果使用 <code>db.collection.update({&#39;attribute1&#39;: value1}, {&#39;attribute1&#39;: new_value1})</code>，即不使用<code>$set</code>，则会将整个<code>Document</code> 记录替换成<code>{&#39;attribute1&#39;: new_value1}</code>。</strong></p>
 <ul>
 <li><strong><code>$unset</code></strong></li>
 </ul>
 <p><strong><code>$unset</code></strong>表示移除字段属性：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.collection.update(&#123;<span class="string">'attribute1'</span>: value1&#125;, &#123;<span class="string">'$unset'</span>: &#123;<span class="string">'attribute2'</span>: value2&#125;, <span class="string">'$unset'</span>: &#123;<span class="string">'attribute3'</span>: value3&#125;&#125;)</div></pre></td></tr></table></figure>
-<ul>
-<li><strong><code>$push</code></strong> &amp; <strong><code>pushAll</code></strong></li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">db.collection.update(&#123;<span class="string">'attribute1'</span>: value1&#125;, &#123;<span class="string">'$push'</span>: &#123;<span class="string">'attribute2'</span>: value2&#125;&#125;)</div><div class="line">db.collection.update(&#123;<span class="string">'attribute1'</span>: value1&#125;, &#123;<span class="string">'$pushAll'</span>: &#123;<span class="string">'attribute2'</span>: value2&#125;&#125;)</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.collection.update(&#123;<span class="string">'attribute1'</span>: value1&#125;, &#123;<span class="string">'$unset'</span>: &#123;<span class="string">'attribute2'</span>: value2&#125;, <span class="string">'$unset'</span>: &#123;<span class="string">'attribute3'</span>: value3&#125;&#125;, multi=<span class="keyword">True</span>)</div></pre></td></tr></table></figure>
 <ul>
 <li><strong><code>$each</code></strong></li>
 </ul>
 <p><strong><code>$each</code></strong>表示添加多个元素：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.collection.update(&#123;<span class="string">'attribute1'</span>: value1&#125;, &#123;<span class="string">'$addToSet'</span>: &#123;<span class="string">'attribute2'</span>: &#123;<span class="string">'$each'</span>: [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]&#125;&#125;&#125;)</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.collection.update(&#123;<span class="string">'attribute1'</span>: value1&#125;, &#123;<span class="string">'$addToSet'</span>: &#123;<span class="string">'attribute2'</span>: &#123;<span class="string">'$each'</span>: [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]&#125;&#125;&#125;, multi=<span class="keyword">True</span>)</div></pre></td></tr></table></figure>
+<ul>
+<li><p><strong><code>$push</code></strong> &amp; <strong><code>pushAll</code></strong></p>
+<ul>
+<li><strong><code>push</code></strong>：在 <code>Document</code> 记录中末尾添加一项，相当于<code>list.append(item)</code>。</li>
+<li><strong><code>pushAll</code></strong>：在 <code>Document</code> 记录中末尾添加多项，相当于<code>list=list + another_list</code>。</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">db.collection.update(&#123;<span class="string">'attribute1'</span>: value1&#125;, &#123;<span class="string">'$push'</span>: &#123;<span class="string">'attribute2'</span>: value2&#125;&#125;, multi=<span class="keyword">True</span>)</div><div class="line">db.collection.update(&#123;<span class="string">'attribute1'</span>: value1&#125;, &#123;<span class="string">'$pushAll'</span>: &#123;<span class="string">'attribute2'</span>: value2&#125;&#125;, multi=<span class="keyword">True</span>)</div></pre></td></tr></table></figure>
 <ul>
 <li><strong><code>$pop</code></strong></li>
 </ul>
 <p><strong><code>$pop</code></strong>表示按照 <code>index</code> 位置下标移除元素。</p>
-<p>原先记录显示（忽略 ‘_id’）：<code>{&#39;attribute1&#39;: [1, 2, 3, 4, 5, 6, 7, 2, 3], &#39;attribute2&#39;: value}</code></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">db.collection.update(&#123;<span class="string">'attribute2'</span>: value&#125;, &#123;<span class="string">'$pop'</span>: &#123;<span class="string">'attribute1'</span>: <span class="number">1</span>&#125;&#125;) <span class="comment"># 移除最后一个元素</span></div><div class="line"><span class="comment"># 此刻字段显示：&#123;'attribute1': [1, 2, 3, 4, 5, 6, 7, 2], 'attribute2': value&#125;</span></div><div class="line"></div><div class="line">db.collection.update(&#123;<span class="string">'attribute2'</span>: value&#125;, &#123;<span class="string">'$pop'</span>:&#123;<span class="string">'attribute1'</span>: <span class="number">-1</span>&#125;&#125;) <span class="comment"># 移除第一个元素</span></div><div class="line"><span class="comment"># 此刻字段显示：&#123;'attribute1': [2, 3, 4, 5, 6, 7, 2], 'attribute2': value&#125;</span></div></pre></td></tr></table></figure>
+<p>原先记录显示（忽略 ‘_id’）：<code>{&#39;attribute1&#39;: [1, 2, 3, 4, 5, 6, 7, 2, 3], &#39;attribute2&#39;: value, multi=True}</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">db.collection.update(&#123;<span class="string">'attribute2'</span>: value&#125;, &#123;<span class="string">'$pop'</span>: &#123;<span class="string">'attribute1'</span>: <span class="number">1</span>&#125;&#125;, multi=<span class="keyword">True</span>) <span class="comment"># 移除最后一个元素</span></div><div class="line"><span class="comment"># 此刻字段显示：&#123;'attribute1': [1, 2, 3, 4, 5, 6, 7, 2], 'attribute2': value&#125;</span></div><div class="line"></div><div class="line">db.collection.update(&#123;<span class="string">'attribute2'</span>: value&#125;, &#123;<span class="string">'$pop'</span>:&#123;<span class="string">'attribute1'</span>: <span class="number">-1</span>&#125;&#125;, multi=<span class="keyword">True</span>) <span class="comment"># 移除第一个元素</span></div><div class="line"><span class="comment"># 此刻字段显示：&#123;'attribute1': [2, 3, 4, 5, 6, 7, 2], 'attribute2': value&#125;</span></div></pre></td></tr></table></figure>
 <ul>
 <li><strong><code>$pull</code></strong> &amp; <strong><code>$pullAll</code></strong></li>
 </ul>
 <p><strong><code>$pull</code></strong>表示按值移除元素，<strong><code>$pullAll</code></strong>表示移除所有符合条件的元素：</p>
 <p>原先字段显示（忽略 ‘_id’）：<code>{&#39;attribute1&#39;: [2, 3, 4, 5, 6, 7, 2], &#39;attribute2&#39;: value}</code></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">db.collection..update(&#123;<span class="string">'attribute2'</span>: value&#125;, &#123;<span class="string">'$pull'</span>:&#123;<span class="string">'attribute1'</span>: <span class="number">2</span>&#125;&#125;) <span class="comment"># 移除全部 2</span></div><div class="line"><span class="comment"># 此刻字段显示：&#123;'attribute1': [3, 4, 5, 6, 7], 'attribute2': value&#125;</span></div><div class="line"></div><div class="line">db.collection.update(&#123;<span class="string">'attribute2'</span>: value&#125;, &#123;<span class="string">'$pullAll'</span>:&#123;<span class="string">'attribute1'</span>: [<span class="number">3</span>,<span class="number">5</span>,<span class="number">6</span>]&#125;&#125;) <span class="comment"># 移除 3,5,6</span></div><div class="line"><span class="comment"># 此刻字段显示：&#123;'attribute1': [4, 7], 'attribute2': value&#125;</span></div></pre></td></tr></table></figure>
-<h3 id="Remove"><a href="#Remove" class="headerlink" title="Remove()"></a>Remove()</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">db.collection.remove() <span class="comment"># 表示删除集合里的所有记录</span></div><div class="line">db.collection.remove(&#123;<span class="string">'attribute'</span>: value&#125;) <span class="comment"># 表删除某属性 attribute=value 的记录</span></div><div class="line"></div><div class="line">id = db.collection.find_one(&#123;<span class="string">'attribute'</span>: value&#125;)[<span class="string">'_id'</span>]</div><div class="line">db.collection.remove(id) <span class="comment"># 查找到某属性 attribute=value 的记录，并根据记录的 id 删除该记录</span></div><div class="line">db.collection.drop() <span class="comment"># 表示删除整个集合</span></div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">db.collection..update(&#123;<span class="string">'attribute2'</span>: value&#125;, &#123;<span class="string">'$pull'</span>:&#123;<span class="string">'attribute1'</span>: <span class="number">2</span>&#125;&#125;, multi=<span class="keyword">True</span>) <span class="comment"># 移除全部 2</span></div><div class="line"><span class="comment"># 此刻字段显示：&#123;'attribute1': [3, 4, 5, 6, 7], 'attribute2': value&#125;</span></div><div class="line"></div><div class="line">db.collection.update(&#123;<span class="string">'attribute2'</span>: value&#125;, &#123;<span class="string">'$pullAll'</span>:&#123;<span class="string">'attribute1'</span>: [<span class="number">3</span>,<span class="number">5</span>,<span class="number">6</span>]&#125;&#125;, multi=<span class="keyword">True</span>) <span class="comment"># 移除 3,5,6</span></div><div class="line"><span class="comment"># 此刻字段显示：&#123;'attribute1': [4, 7], 'attribute2': value&#125;</span></div></pre></td></tr></table></figure>
+<h3 id="Remove"><a href="#Remove" class="headerlink" title="Remove()"></a>Remove()</h3><p><strong><code>remove(spec, multi=True)</code></strong></p>
+<ol>
+<li><strong><code>spec</code></strong>：查询文档，用于定位需要删除的目标文档。</li>
+<li><strong><code>multi</code></strong>：是否更新多个文档。默认是删除多条符合条件的文档。</li>
+</ol>
+<p><strong>同样，和 <code>insert()</code> 插入操作一样，除了 <code>remove()</code> 更新操作外，还有 <code>delete_one()</code> 以及 <code>delete_many()</code> 需要注意输入参数的形式，单条记录还是记录列表）。</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">db.collection.remove() <span class="comment"># 表示删除集合里的所有记录</span></div><div class="line">db.collection.remove(&#123;<span class="string">'attribute'</span>: value&#125;) <span class="comment"># 表删除某属性 attribute=value 的所有记录</span></div><div class="line"></div><div class="line">id = db.collection.find_one(&#123;<span class="string">'attribute'</span>: value&#125;)[<span class="string">'_id'</span>]</div><div class="line">db.collection.remove(id) <span class="comment"># 查找到某属性 attribute=value 的记录，并根据记录的 id 删除该记录</span></div><div class="line">db.collection.drop() <span class="comment"># 表示删除整个集合</span></div></pre></td></tr></table></figure>
 <p>删除文档通常很快，但是如果要清空整个集合，那么使用 <code>drop()</code> 直接删除集合会更快（然后在这个空集合上重建各项索引）。 </p>
-<h3 id="Query"><a href="#Query" class="headerlink" title="Query()"></a>Query()</h3><p>数据库的查询基本是通过 <code>find()</code> 函数进行查询，其中大于、大于等于、小于、小于等于这些关系运算符经常要用到，分别用 <code>$gt</code>、<code>$gte</code>、<code>$lt</code>、<code>$lte</code> 表示。</p>
+<h3 id="Find"><a href="#Find" class="headerlink" title="Find()"></a>Find()</h3><p><strong><code>find(filter, projection,skip=0, limit=0, sort=None)</code></strong></p>
+<ol>
+<li><strong><code>filter</code></strong>：过滤器，用于定位需要更新的目标文档。</li>
+<li><strong><code>projection</code></strong>： 指定返回记录的属性信息。</li>
+<li><strong><code>skip</code></strong>： 跳过指定数量的记录。</li>
+<li><strong><code>limit</code></strong>：指定读取的记录数量。</li>
+<li><strong><code>sort</code></strong>：排序参数。</li>
+</ol>
+<p>数据库的查询基本是通过 <code>find()</code> 函数进行查询，其中大于、大于等于、小于、小于等于这些关系运算符经常要用到，分别用 <code>$gt</code>、<code>$gte</code>、<code>$lt</code>、<code>$lte</code> 表示。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">db.collection.find(&#123;<span class="string">'attribute'</span>: &#123;<span class="string">"$lt"</span>:<span class="number">15</span>&#125;&#125;) <span class="comment"># 查找符合某属性 attribute 的值小于 15 的多条记录</span></div><div class="line">db.collection.find(&#123;<span class="string">'attribute'</span>: value&#125;) <span class="comment"># 查找符合某属性 attribute=value 的多条记录，查不到时返回 None</span></div><div class="line">db.collection.find_one(&#123;<span class="string">'attribute'</span>: value&#125;) <span class="comment"># 只查找某属性 attribute=value 的一条记录，查不到时返回 None</span></div></pre></td></tr></table></figure>
 <p>只显示集合中的所有记录的 <code>attribute1</code>、<code>attribute2</code> 属性值，<code>_id: 0</code>表示一般忽略不显示 <code>_id</code> 的值，<code>&#39;attribute&#39;: 1</code>表示显示该字段：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 如果不指定，是默认显示所有字段（包括 _id ）</span></div><div class="line"><span class="keyword">for</span> item <span class="keyword">in</span> db.colleciton.find(&#123;&#125;, &#123;<span class="string">'_id'</span>: <span class="number">0</span>, <span class="string">'attribute1'</span>: <span class="number">1</span>, <span class="string">'attribute2'</span>: <span class="number">1</span>&#125;): <span class="keyword">print</span> item</div></pre></td></tr></table></figure>
@@ -307,6 +328,7 @@
 </ul>
 <p>从第几行开始读取<code>skip()</code>，读取多少行<code>limit()</code>：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 从第 2 行开始读取，读取 3 行记录</span></div><div class="line"><span class="keyword">for</span> item <span class="keyword">in</span> db.collection.find().skip(<span class="number">2</span>).limit(<span class="number">3</span>): <span class="keyword">print</span> item</div><div class="line"><span class="keyword">for</span> item <span class="keyword">in</span> db.collection.find(skip=<span class="number">2</span>, limit=<span class="number">3</span>): <span class="keyword">print</span> item</div><div class="line"><span class="keyword">for</span> item <span class="keyword">in</span> db.collection.find(&#123;&#125;, &#123;<span class="string">'_id'</span>: <span class="number">0</span>, <span class="string">'attribute1'</span>: <span class="number">1</span>&#125;, skip=<span class="number">2</span>, limit=<span class="number">3</span>): <span class="keyword">print</span> item</div></pre></td></tr></table></figure>
+<p><strong><code>skip()</code>和 <code>limit()</code> 结合就能实现分页，当查询时同时使用 <code>sort()</code>、<code>skip()</code> 以及 <code>limit()</code>，无论位置先后，最先执行顺序先<code>sort()</code> 再<code>skip()</code>最后<code>limit()</code>。</strong></p>
 <h1 id="Chapter-3-Common-MongoDB-and-Python-Patterns"><a href="#Chapter-3-Common-MongoDB-and-Python-Patterns" class="headerlink" title="Chapter 3: Common MongoDB and Python Patterns"></a>Chapter 3: Common MongoDB and Python Patterns</h1>]]></content>
     
     <summary type="html">
