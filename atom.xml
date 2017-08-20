@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://randolph.pro/"/>
-  <updated>2017-08-20T07:41:24.000Z</updated>
+  <updated>2017-08-20T07:51:42.000Z</updated>
   <id>http://randolph.pro/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://randolph.pro/2017/07/15/%E2%99%9E%E3%80%8CMongoDB%20and%20Python%E3%80%8D/"/>
     <id>http://randolph.pro/2017/07/15/♞「MongoDB and Python」/</id>
     <published>2017-07-14T16:00:00.000Z</published>
-    <updated>2017-08-20T07:41:24.000Z</updated>
+    <updated>2017-08-20T07:51:42.000Z</updated>
     
     <content type="html"><![CDATA[<p>有关「Tools」的其他笔记系列：<a href="http://randolph.pro/categories/Tools/">「Tools」</a></p>
 <h1 id="Chapter-1-Getting-Started"><a href="#Chapter-1-Getting-Started" class="headerlink" title="Chapter 1: Getting Started"></a>Chapter 1: Getting Started</h1><h2 id="Installing-MongoDB-on-Mac-OS"><a href="#Installing-MongoDB-on-Mac-OS" class="headerlink" title="Installing MongoDB on Mac OS"></a>Installing MongoDB on Mac OS</h2><p>Mac OS 安装 <code>MongoDB</code> 的方法有多种多样，这里使用 <code>Homebrew</code> 安装 <code>MongoDB</code>，在安装之前首先确保 <code>Homebrew</code> 更新至最新版本：</p>
@@ -62,7 +62,9 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ mongod</div></pre></td></tr></table></figure>
 <h2 id="MongoDB-GUI"><a href="#MongoDB-GUI" class="headerlink" title="MongoDB GUI"></a>MongoDB GUI</h2><p>存在诸多 MongoDB GUI，我推荐使用的是<a href="https://robomongo.org" target="_blank" rel="external">Robo 3T</a>。</p>
 <hr>
-<h1 id="Chapter-2-Reading-and-Writing-to-MongoDB-with-Python"><a href="#Chapter-2-Reading-and-Writing-to-MongoDB-with-Python" class="headerlink" title="Chapter 2: Reading and Writing to MongoDB with Python"></a>Chapter 2: Reading and Writing to MongoDB with Python</h1><h2 id="Creating-database"><a href="#Creating-database" class="headerlink" title="Creating database"></a>Creating database</h2><p><code>MongoDB</code>创建数据库的语法格式如下：</p>
+<h1 id="Chapter-2-Reading-and-Writing-to-MongoDB-with-Python"><a href="#Chapter-2-Reading-and-Writing-to-MongoDB-with-Python" class="headerlink" title="Chapter 2: Reading and Writing to MongoDB with Python"></a>Chapter 2: Reading and Writing to MongoDB with Python</h1><h2 id="Create-and-Delete-database"><a href="#Create-and-Delete-database" class="headerlink" title="Create and Delete database"></a>Create and Delete database</h2><ul>
+<li><code>MongoDB</code>创建数据库的语法格式如下：</li>
+</ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt; use DATABASE_NAME</div></pre></td></tr></table></figure>
 <p>如果数据库不存在，则创建数据库，否则切换到指定数据库。</p>
 <p>以下实例我们创建了数据库<strong><code>randolph</code></strong>:</p>
@@ -72,6 +74,20 @@
 <p>可以看到，我们刚创建的数据库 <strong><code>randolph</code></strong> 并不在数据库的列表中，要显示它，我们需要向 <strong><code>randolph</code></strong> 数据库插入一些数据：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&gt; db.randolph.insert(&#123;<span class="string">"name"</span>:<span class="string">"MongoDB"</span>&#125;)</div><div class="line">WriteResult(&#123; <span class="string">"nInserted"</span> : 1 &#125;)</div><div class="line">&gt; show dbs</div><div class="line"><span class="built_in">local</span>   0.078GB</div><div class="line">randolph  0.078GB</div><div class="line"><span class="built_in">test</span>    0.078GB</div></pre></td></tr></table></figure>
 <p><strong><code>MongoDB</code>中默认的数据库为 <code>test</code>，如果你没有创建新的数据库，集合将存放在<code>test</code> 数据库中。</strong></p>
+<ul>
+<li><code>MongoDB</code>删除数据库的语法格式如下：</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt; db.dropDatabase()</div></pre></td></tr></table></figure>
+<p>删除当前数据库，默认为 <code>test</code>，你可以使用<code>db</code> 命令查看当前数据库名。</p>
+<p>以下实例我们删除了数据库<strong><code>randolph</code></strong>。</p>
+<p>首先，查看所有数据库：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&gt; show dbs</div><div class="line"><span class="built_in">local</span>   0.078GB</div><div class="line">randolph  0.078GB</div><div class="line"><span class="built_in">test</span>    0.078GB</div><div class="line">接下来我们切换到数据库 randolph：</div><div class="line">&gt; use randolph</div><div class="line">switched to db randolph</div></pre></td></tr></table></figure>
+<p>执行删除命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&gt; db.<span class="function"><span class="title">dropDatabase</span></span>()</div><div class="line">&#123; <span class="string">"dropped"</span> : <span class="string">"randolph"</span>, <span class="string">"ok"</span> : 1 &#125;</div><div class="line">最后，我们再通过 show dbs 命令数据库是否删除成功：</div><div class="line">&gt; show dbs</div><div class="line"><span class="built_in">local</span>  0.078GB</div><div class="line"><span class="built_in">test</span>   0.078GB</div></pre></td></tr></table></figure>
+<p>以上是数据库的删除操作，而删除集合的语法格式如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt; db.collection.drop()</div></pre></td></tr></table></figure>
+<p>以下实例删除了 <strong><code>randolph</code></strong> 数据库中的集合<strong>site</strong>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&gt; use randolph</div><div class="line">switched to db randolph</div><div class="line">&gt; show tables</div><div class="line">site</div><div class="line">&gt; db.site.drop()</div><div class="line"><span class="literal">true</span></div><div class="line">&gt; show tables</div></pre></td></tr></table></figure>
 <h2 id="Connecting-to-MongoDB-with-Python"><a href="#Connecting-to-MongoDB-with-Python" class="headerlink" title="Connecting to MongoDB with Python"></a>Connecting to MongoDB with Python</h2><p><code>PyMongo</code> 是 Python 中用来操作 <code>MongoDB</code> 的一个库。首先通过 <code>pip3</code> 下载 <code>PyMongo</code>：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ pip3 install pymongo</div></pre></td></tr></table></figure>
 <p>安装完 <code>PyMongo</code>之后，我们直接来看一个使用例子：</p>
