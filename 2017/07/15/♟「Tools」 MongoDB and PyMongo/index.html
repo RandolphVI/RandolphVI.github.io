@@ -111,7 +111,7 @@
 <meta property="og:site_name" content="黃某人">
 <meta property="og:description" content="本文介绍了 MongoDB 的相关知识，以及 PyMongo （Python 上连接 MongoDB 的第三方库）的 API 操作。">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2017-08-20T15:25:03.000Z">
+<meta property="og:updated_time" content="2017-08-20T16:46:35.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="♟「Tools」 MongoDB and PyMongo">
 <meta name="twitter:description" content="本文介绍了 MongoDB 的相关知识，以及 PyMongo （Python 上连接 MongoDB 的第三方库）的 API 操作。">
@@ -436,7 +436,7 @@
                   <i class="fa fa-file-word-o"></i>
                 </span>
                 <span title="Words count in article">
-                  6,406
+                  7,114
                 </span>
                 <span> words </span>
                 
@@ -451,7 +451,7 @@
                   <i class="fa fa-clock-o"></i>
                 </span>
                 <span title="Reading time">
-                  28
+                  32
                 </span>
                 <span> mins </span>
               
@@ -552,8 +552,8 @@
 <ul>
 <li>前 4 个字节表示时间戳</li>
 <li>接下来的 3 个字节是机器标识码</li>
-<li>紧接的两个字节由进程 id 组成（PID）</li>
-<li>最后三个字节是随机数。</li>
+<li>紧接的 2 个字节由进程 id 组成（PID）</li>
+<li>最后 3 个字节是随机数</li>
 </ul>
 <p>举个例子，<strong><code>4e7020cb7cac81af7136236b</code></strong>这个 24 位的字符串，虽然看起来很长，也很难理解，但实际上它是由一组十六进制的字符构成，每个字节两位的十六进制数字，总共用了 12 字节的存储空间。</p>
 <h3 id="Time"><a href="#Time" class="headerlink" title="Time"></a>Time</h3><p>对其前四个字节进行提取<strong><code>4e7020cb</code></strong>，然后按照十六进制转为十进制，变为<strong><code>1315971275</code></strong>，这个数字就是一个时间戳。通过时间戳的转换，就成了易看清的时间格式。</p>
@@ -639,7 +639,7 @@
 <li><strong><code>spec</code></strong>：查询文档，用于定位需要更新的目标文档。</li>
 <li><strong><code>document</code></strong>：修改器文档，用于说明要对找到的文档进行哪些修改。</li>
 <li><strong><code>upsert</code></strong>：如目标记录不存在，是否插入新文档。</li>
-<li><strong><code>multi</code></strong>：是否更新多个文档。默认是只会修改第一条发现的文档，如果你要修改多条符合条件的文档，则需要设置参数<code>multi=true</code>。</li>
+<li><strong><code>multi</code></strong>：<strong>是否更新多个文档。默认是只会修改第一条发现的文档，如果你要修改多条符合条件的文档，则需要设置参数<code>multi=true</code>。</strong></li>
 </ol>
 <p><strong>同样，和 <code>insert()</code> 插入操作一样，除了 <code>update()</code> 更新操作外，还有 <code>replace_one()</code>、<code>update_one()</code> 以及<code>update_many()</code>（需要注意输入参数的形式，单条记录还是记录列表）。</strong></p>
 <h4 id="Fields"><a href="#Fields" class="headerlink" title="Fields"></a>Fields</h4><div class="table-container">
@@ -686,21 +686,27 @@
 <li><strong><code>$inc</code></strong></li>
 </ul>
 <p><strong><code>$inc</code></strong>表示对原来的记录中的指定属性进行自增或自减：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 找到 attribute1 等于 value1 并且 attribute2 等于 value2 的所有记录后，</span></div><div class="line"><span class="comment"># 将 attribute1 的值减少 2， attribute2 的值增加 3，然后更新记录至数据库</span></div><div class="line">db.collection.update(&#123;<span class="string">'attribute1'</span>: value1, <span class="string">'attribute2'</span>: value2&#125;, \</div><div class="line">                    &#123;<span class="string">'$inc'</span>: &#123;<span class="string">'attribute1'</span>: <span class="number">-2</span>, <span class="string">'attribute2'</span>: <span class="number">3</span>&#125;&#125;, multi=<span class="keyword">True</span>)</div></pre></td></tr></table></figure>
+<p>例如，存在这样的条数据 <code>{&#39;_id&#39;: 1, &#39;attribute1&#39;: 8, &#39;attribute2&#39;: 6}</code>，对其进行<strong><code>$inc</code></strong> 更新操作：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.collection.update(&#123;<span class="string">'_id'</span>: <span class="number">1</span>&#125;, &#123;<span class="string">'$inc'</span>: &#123;<span class="string">'attribute1'</span>: <span class="number">-2</span>, <span class="string">'attribute2'</span>: <span class="number">3</span>&#125;&#125;)</div></pre></td></tr></table></figure>
+<p>更新后的数据为<code>{&#39;_id&#39;: 1, &#39;attribute1&#39;: 6, &#39;attribute2&#39;: 9}</code>。</p>
 <ul>
 <li><strong><code>$mul</code></strong></li>
 </ul>
 <p><strong><code>$mul</code></strong>表示对原来的记录中的指定属性的值乘以给定的数值，分为以下几种情况：</p>
 <p>例如，存在这样的三条数据：</p>
-<p>1.<code>{&#39;_id&#39;: 1, &#39;item&#39;: &#39;ABC&#39;, &#39;price&#39;: 10.99}</code><br>2.<code>{&#39;_id&#39;: 2, &#39;item&#39;: &#39;Unknown&#39;}</code><br>3.<code>{&#39;_id&#39;: 3, &#39;item&#39;: &#39;XYZ&#39;, &#39;price&#39;: NumberLong(10) }</code></p>
-<pre><code>◎ Multiply the Value of a Field
-</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.collection.update(&#123;<span class="string">'_id'</span>: <span class="number">1</span>&#125;, &#123;<span class="string">'$mul'</span>: &#123;price: <span class="number">1.25</span>&#125;&#125;)</div></pre></td></tr></table></figure>
+<ol>
+<li><code>{&#39;_id&#39;: 1, &#39;item&#39;: &#39;ABC&#39;, &#39;price&#39;: 10.99}</code></li>
+<li><code>{&#39;_id&#39;: 2, &#39;item&#39;: &#39;Unknown&#39;}</code></li>
+<li><code>{&#39;_id&#39;: 3, &#39;item&#39;: &#39;XYZ&#39;, &#39;price&#39;: NumberLong(10) }</code></li>
+</ol>
+<p>◎ Multiply the Value of a Field</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.collection.update(&#123;<span class="string">'_id'</span>: <span class="number">1</span>&#125;, &#123;<span class="string">'$mul'</span>: &#123;price: <span class="number">1.25</span>&#125;&#125;)</div></pre></td></tr></table></figure>
 <p>更新后的数据 1 为<code>{&#39;_id&#39;: 1, &#39;item&#39;: &#39;ABC&#39;, &#39;price&#39;: 13.7375}</code>。</p>
-<pre><code>◎ Apply **`$mul`** Operator to a Non-existing Field
-</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.collection.update(&#123;<span class="string">'_id'</span>: <span class="number">2</span>&#125;, &#123;<span class="string">'$mul'</span>: &#123;<span class="string">'price'</span>: NumberLong(<span class="number">100</span>)&#125;&#125;)</div></pre></td></tr></table></figure>
+<p>◎ Apply <strong><code>$mul</code></strong> Operator to a Non-existing Field</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.collection.update(&#123;<span class="string">'_id'</span>: <span class="number">2</span>&#125;, &#123;<span class="string">'$mul'</span>: &#123;<span class="string">'price'</span>: NumberLong(<span class="number">100</span>)&#125;&#125;)</div></pre></td></tr></table></figure>
 <p>更新后的数据 2 为<code>{&#39;_id&#39;: 2, &#39;item&#39;: &#39;Unknown&#39;, &#39;price&#39;: NumberLong(0) }</code>。</p>
-<pre><code>◎ Multiply Mixed Numeric Types
-</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.collection.update(&#123;<span class="string">'_id'</span>: <span class="number">3</span>&#125;, &#123;<span class="string">'$mul'</span>: &#123;<span class="string">'price'</span>: NumberInt(<span class="number">5</span>)&#125;&#125;)</div></pre></td></tr></table></figure>
+<p>◎ Multiply Mixed Numeric Types</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.collection.update(&#123;<span class="string">'_id'</span>: <span class="number">3</span>&#125;, &#123;<span class="string">'$mul'</span>: &#123;<span class="string">'price'</span>: NumberInt(<span class="number">5</span>)&#125;&#125;)</div></pre></td></tr></table></figure>
 <p>更新后的数据 3 为<code>{&#39;_id&#39;: 3, &#39;item&#39; : &#39;XYZ&#39;, &#39;price&#39;: NumberLong(50) }</code>。</p>
 <ul>
 <li><strong><code>$min</code></strong> &amp; <strong><code>$max</code></strong></li>
@@ -719,30 +725,74 @@
 <li><strong><code>$rename</code></strong></li>
 </ul>
 <p><strong><code>$rename</code></strong>表示对原来的记录中的指定属性的 <strong>key</strong> 值进行修改：</p>
-<p>例如，存在这样的数据 <code>{&#39;_id&#39;: 1, &#39;nmae&#39;: {&#39;first&#39;: &#39;george&#39;, &#39;last&#39;: &#39;washington&#39;}}</code>，对其进行<strong><code>$rename</code></strong> 更新操作，分为以下几种情况：<br>​    </p>
-<pre><code>- Rename a Field
-</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.collection.update(&#123;<span class="string">'_id'</span>: <span class="number">1</span>&#125;, &#123;<span class="string">'$rename'</span>: &#123;<span class="string">'nmae'</span>: <span class="string">'name'</span>&#125;&#125;)</div></pre></td></tr></table></figure>
+<p>例如，存在这样的数据 <code>{&#39;_id&#39;: 1, &#39;nmae&#39;: {&#39;first&#39;: &#39;george&#39;, &#39;last&#39;: &#39;washington&#39;}}</code>，对其进行<strong><code>$rename</code></strong> 更新操作，分为以下几种情况：<br>​<br>◎ Rename a Field</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.collection.update(&#123;<span class="string">'_id'</span>: <span class="number">1</span>&#125;, &#123;<span class="string">'$rename'</span>: &#123;<span class="string">'nmae'</span>: <span class="string">'name'</span>&#125;&#125;)</div></pre></td></tr></table></figure>
 <p>更新后的数据为<code>{&#39;_id&#39;: 1, &#39;name&#39;: {&#39;first&#39;: &#39;george&#39;, &#39;last&#39;: &#39;washington&#39;}}</code>。</p>
-<pre><code>- Rename a Field in an Embedded Document
-</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.collection.update(&#123;<span class="string">'_id'</span>: <span class="number">1</span>&#125;, &#123;<span class="string">'$rename'</span>: &#123;<span class="string">'name.first'</span>: <span class="string">'name.fname'</span>&#125;&#125;)</div></pre></td></tr></table></figure>
-<p>更新后的数据为<code>{&#39;_id&#39;: 1, &#39;name&#39;: {&#39;fname&#39;: &#39;george&#39;, &#39;last&#39;: &#39;washington&#39;}}</code>。<br>​    </p>
-<pre><code>- Rename a Field That Does Not Exist
-</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.collection.update(&#123;<span class="string">'_id'</span>: <span class="number">1</span>&#125;, &#123;<span class="string">'$rename'</span>: &#123;<span class="string">'job'</span>: <span class="string">'student'</span>&#125;&#125;)</div></pre></td></tr></table></figure>
+<p>◎ Rename a Field in an Embedded Document</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.collection.update(&#123;<span class="string">'_id'</span>: <span class="number">1</span>&#125;, &#123;<span class="string">'$rename'</span>: &#123;<span class="string">'name.first'</span>: <span class="string">'name.fname'</span>&#125;&#125;)</div></pre></td></tr></table></figure>
+<p>更新后的数据为<code>{&#39;_id&#39;: 1, &#39;name&#39;: {&#39;fname&#39;: &#39;george&#39;, &#39;last&#39;: &#39;washington&#39;}}</code>。<br>​<br>◎ Rename a Field That Does Not Exist</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.collection.update(&#123;<span class="string">'_id'</span>: <span class="number">1</span>&#125;, &#123;<span class="string">'$rename'</span>: &#123;<span class="string">'job'</span>: <span class="string">'student'</span>&#125;&#125;)</div></pre></td></tr></table></figure>
 <p>因为不存在该字段，所以并不会进行修改，更新后的数据仍为<code>{&#39;_id&#39;: 1, &#39;name&#39;: {&#39;fname&#39;: &#39;george&#39;, &#39;last&#39;: &#39;washington&#39;}}</code>。</p>
-<h4 id="Array"><a href="#Array" class="headerlink" title="Array"></a>Array</h4><ul>
+<h4 id="Array"><a href="#Array" class="headerlink" title="Array"></a>Array</h4><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$addToSet</td>
+<td>Adds elements to an array only if they do not already exist in the set.</td>
+</tr>
+<tr>
+<td>$push</td>
+<td>Adds an item to an array.</td>
+</tr>
+<tr>
+<td>$pushAll</td>
+<td>Deprecated. Adds several items to an array.</td>
+</tr>
+<tr>
+<td>$pop</td>
+<td>Removes the first or last item of an array.</td>
+</tr>
+<tr>
+<td>$pull</td>
+<td>Removes all array elements that match a specified query.</td>
+</tr>
+<tr>
+<td>$pullAll</td>
+<td>Removes all matching values from an array.</td>
+</tr>
+<tr>
+<td>$each</td>
+<td>Modifies the $push and $addToSet operators to append multiple items for array updates.</td>
+</tr>
+<tr>
+<td>$position</td>
+<td>Modifies the $push operator to specify the position in the array to add elements.</td>
+</tr>
+<tr>
+<td>$slice</td>
+<td>Modifies the $push operator to limit the size of updated arrays.</td>
+</tr>
+<tr>
+<td>$sort</td>
+<td>Modifies the $push operator to reorder documents stored in an array.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
 <li><strong><code>$addToSet</code></strong></li>
 </ul>
 <p><strong><code>$addToSet</code></strong>表示添加给定的字段到原来的记录中。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">db.collection.update(&#123;<span class="string">'attribute1'</span>: value1, <span class="string">'attribute2'</span>: value2&#125;, \</div><div class="line">                    &#123;<span class="string">'$addToSet'</span>: &#123;<span class="string">'attribute3'</span>: value3&#125;&#125;, multi=<span class="keyword">True</span>)</div></pre></td></tr></table></figure>
 <p><strong><code>$addToSet</code></strong>和 <strong><code>$push</code></strong> 类似，不过仅在该元素不存在时才添加，相当于将 <code>array</code> 当成 <code>set</code> 来执行 <code>set.add(item)</code> 操作。</p>
 <ul>
-<li><strong><code>$each</code></strong></li>
-</ul>
-<p><strong><code>$each</code></strong>表示添加多个元素：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.collection.update(&#123;<span class="string">'attribute1'</span>: value1&#125;, &#123;<span class="string">'$addToSet'</span>: &#123;<span class="string">'attribute2'</span>: &#123;<span class="string">'$each'</span>: [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]&#125;&#125;&#125;, multi=<span class="keyword">True</span>)</div></pre></td></tr></table></figure>
-<ul>
-<li><p><strong><code>$push</code></strong> &amp; <strong><code>pushAll</code></strong></p>
-<ul>
+<li><strong><code>$push</code></strong> &amp; <strong><code>pushAll</code></strong><ul>
 <li><strong><code>push</code></strong>：在 <code>Document</code> 记录中末尾添加一项，相当于<code>list.append(item)</code>。</li>
 <li><strong><code>pushAll</code></strong>：在 <code>Document</code> 记录中末尾添加多项，相当于<code>list=list + another_list</code>。</li>
 </ul>
@@ -753,14 +803,71 @@
 <li><strong><code>$pop</code></strong></li>
 </ul>
 <p><strong><code>$pop</code></strong>表示按照 <code>index</code> 位置下标移除元素。</p>
-<p>原先记录显示（忽略 ‘_id’）：<code>{&#39;attribute1&#39;: [1, 2, 3, 4, 5, 6, 7, 2, 3], &#39;attribute2&#39;: value, multi=True}</code></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">db.collection.update(&#123;<span class="string">'attribute2'</span>: value&#125;, &#123;<span class="string">'$pop'</span>: &#123;<span class="string">'attribute1'</span>: <span class="number">1</span>&#125;&#125;, multi=<span class="keyword">True</span>) <span class="comment"># 移除最后一个元素</span></div><div class="line"><span class="comment"># 此刻字段显示：&#123;'attribute1': [1, 2, 3, 4, 5, 6, 7, 2], 'attribute2': value&#125;</span></div><div class="line"></div><div class="line">db.collection.update(&#123;<span class="string">'attribute2'</span>: value&#125;, &#123;<span class="string">'$pop'</span>:&#123;<span class="string">'attribute1'</span>: <span class="number">-1</span>&#125;&#125;, multi=<span class="keyword">True</span>) <span class="comment"># 移除第一个元素</span></div><div class="line"><span class="comment"># 此刻字段显示：&#123;'attribute1': [2, 3, 4, 5, 6, 7, 2], 'attribute2': value&#125;</span></div></pre></td></tr></table></figure>
+<p>例如，存在这样的数据 <code>{&#39;_id&#39;: 1, &#39;attribute1&#39;: [1, 2, 3, 4, 5, 6, 7, 2, 3] }</code>，对其进行<strong><code>$pop</code></strong> 更新操作：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">db.collection.update(&#123;<span class="string">'_id'</span>: <span class="number">1</span>&#125;, &#123;<span class="string">'$pop'</span>: &#123;<span class="string">'attribute1'</span>: <span class="number">1</span>&#125;&#125;) <span class="comment"># 移除最后一个元素</span></div><div class="line"><span class="comment"># 此刻字段显示：&#123; '_id': 1, 'attribute1': [1, 2, 3, 4, 5, 6, 7, 2]&#125;</span></div><div class="line"></div><div class="line">db.collection.update(&#123;<span class="string">'_id'</span>: <span class="number">1</span>&#125;, &#123;<span class="string">'$pop'</span>:&#123;<span class="string">'attribute1'</span>: <span class="number">-1</span>&#125;&#125;) <span class="comment"># 移除第一个元素</span></div><div class="line"><span class="comment"># 此刻字段显示：&#123; '_id': 1, 'attribute1': [2, 3, 4, 5, 6, 7, 2]&#125;</span></div></pre></td></tr></table></figure>
 <ul>
 <li><strong><code>$pull</code></strong> &amp; <strong><code>$pullAll</code></strong></li>
 </ul>
-<p><strong><code>$pull</code></strong>表示按值移除元素，<strong><code>$pullAll</code></strong>表示移除所有符合条件的元素：</p>
-<p>原先字段显示（忽略 ‘_id’）：<code>{&#39;attribute1&#39;: [2, 3, 4, 5, 6, 7, 2], &#39;attribute2&#39;: value}</code></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">db.collection..update(&#123;<span class="string">'attribute2'</span>: value&#125;, &#123;<span class="string">'$pull'</span>:&#123;<span class="string">'attribute1'</span>: <span class="number">2</span>&#125;&#125;, multi=<span class="keyword">True</span>) <span class="comment"># 移除全部 2</span></div><div class="line"><span class="comment"># 此刻字段显示：&#123;'attribute1': [3, 4, 5, 6, 7], 'attribute2': value&#125;</span></div><div class="line"></div><div class="line">db.collection.update(&#123;<span class="string">'attribute2'</span>: value&#125;, &#123;<span class="string">'$pullAll'</span>:&#123;<span class="string">'attribute1'</span>: [<span class="number">3</span>,<span class="number">5</span>,<span class="number">6</span>]&#125;&#125;, multi=<span class="keyword">True</span>) <span class="comment"># 移除 3,5,6</span></div><div class="line"><span class="comment"># 此刻字段显示：&#123;'attribute1': [4, 7], 'attribute2': value&#125;</span></div></pre></td></tr></table></figure>
+<p><strong><code>$pull</code></strong>表示按值移除元素，<strong><code>$pullAll</code></strong>表示移除所有符合条件的元素。</p>
+<p>例如，存在这样的数据 <code>{&#39;_id&#39;: 1, &#39;attribute1&#39;: [2, 3, 4, 5, 6, 7, 2] }</code>，对其进行<strong><code>$pull</code></strong> 以及 <strong><code>$pullAll</code></strong> 更新操作：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">db.collection..update(&#123;<span class="string">'_id'</span>: <span class="number">1</span>&#125;, &#123;<span class="string">'$pull'</span>:&#123;<span class="string">'attribute1'</span>: <span class="number">2</span>&#125;&#125;) <span class="comment"># 移除全部 2</span></div><div class="line"><span class="comment"># 此刻字段显示：&#123; '_id': 1, 'attribute1': [3, 4, 5, 6, 7]&#125;</span></div><div class="line"></div><div class="line">db.collection.update(&#123;<span class="string">'_id'</span>: <span class="number">1</span>&#125;, &#123;<span class="string">'$pullAll'</span>:&#123;<span class="string">'attribute1'</span>: [<span class="number">3</span>,<span class="number">5</span>,<span class="number">6</span>]&#125;&#125;) <span class="comment"># 移除 3, 5, 6</span></div><div class="line"><span class="comment"># 此刻字段显示：&#123; '_id': 1, 'attribute1': [4, 7]&#125;</span></div></pre></td></tr></table></figure>
+<ul>
+<li><strong><code>$each</code></strong></li>
+</ul>
+<p><strong><code>$each</code></strong>表示添加多个元素，相当于加强版的 <strong><code>$addToSet</code></strong> 或者 <strong><code>$push</code></strong> 操作（添加多个记录）。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Use $each with $addToSet Operator</span></div><div class="line">db.collection.update(&#123;<span class="string">'_id'</span>: <span class="number">1</span>&#125;, &#123;<span class="string">'$addToSet'</span>: &#123;<span class="string">'attribute1'</span>: &#123;<span class="string">'$each'</span>: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]&#125;&#125;&#125;)</div><div class="line"></div><div class="line"><span class="comment"># Use each with $push Operator</span></div><div class="line">db.collection.update(&#123;<span class="string">'_id'</span>: <span class="number">1</span>&#125;, &#123;<span class="string">'$push'</span>: &#123;<span class="string">'attribute1'</span>: &#123;<span class="string">'$each'</span>: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]&#125;&#125;&#125;)</div></pre></td></tr></table></figure>
+<ul>
+<li><strong><code>$position</code></strong></li>
+</ul>
+<p><strong><code>$position</code></strong>可以看作是指定插入位置的 <strong><code>$push</code></strong> 操作。</p>
+<p>例如，存在这样的条数据 <code>{&#39;_id&#39;: 1, &#39;scores&#39;: [100] }</code>，对其进行<strong><code>$position</code></strong> 更新操作：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">db.collection.update(&#123;<span class="string">'_id'</span>: <span class="number">1</span>&#125;, &#123;<span class="string">'$push'</span>: &#123;<span class="string">'attribute1'</span>: &#123;<span class="string">'$each'</span>: [<span class="number">50</span>, <span class="number">60</span>, <span class="number">70</span>]&#125;, <span class="string">'$position'</span>: <span class="number">0</span>&#125;&#125;)</div><div class="line"><span class="comment"># 此刻字段显示：&#123; '_id': 1, 'attribute1': [50,  60,  70,  100]&#125;</span></div><div class="line"></div><div class="line">db.collection.update(&#123;<span class="string">'_id'</span>: <span class="number">1</span>&#125;, &#123;<span class="string">'$push'</span>: &#123;<span class="string">'attribute1'</span>: &#123;<span class="string">'$each'</span>: [<span class="number">20</span>, <span class="number">30</span>]&#125;, <span class="string">'$position'</span>: <span class="number">2</span>&#125;&#125;)</div><div class="line"><span class="comment"># 此刻字段显示：&#123; '_id': 1, 'attribute1': [50,  60,  20,  30,  70,  100]&#125;</span></div></pre></td></tr></table></figure>
+<ul>
+<li><strong><code>$slice</code></strong></li>
+</ul>
+<p><strong><code>$slice</code></strong>可以看作是进行 <strong><code>$push</code></strong> 操作之后再进行一次切片操作。</p>
+<p>例如，存在这样的几条数据：</p>
+<ol>
+<li><code>{&#39;_id&#39;: 2, &#39;scores&#39;: [89, 90] }</code></li>
+<li><code>{&#39;_id&#39;: 1, &#39;scores&#39;: [40, 50, 60] }</code></li>
+<li><code>{&#39;_id&#39;: 3, &#39;scores&#39;: [89,  70,  100,  20] }</code></li>
+</ol>
+<p>◎ Slice from the Front of the Array</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.collection.update(&#123;<span class="string">'_id'</span>: <span class="number">1</span>&#125;, &#123;<span class="string">'$push'</span>: &#123;<span class="string">'scores'</span>: &#123;<span class="string">'$each'</span>: [<span class="number">100</span>, <span class="number">20</span>]&#125;, <span class="string">'$slice'</span>: <span class="number">3</span>&#125;&#125;)</div></pre></td></tr></table></figure>
+<p>更新后的数据 1 为<code>{&#39;_id&#39;: 1, &#39;scores&#39;: [89,  90,  100]}</code>。</p>
+<p>◎ Slice from the End of the Array</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.collection.update(&#123;<span class="string">'_id'</span>: <span class="number">2</span>&#125;, &#123;<span class="string">'$push'</span>: &#123;<span class="string">'scores'</span>: &#123;<span class="string">'$each'</span>: [<span class="number">80</span>, <span class="number">78</span>, <span class="number">86</span>]&#125;, <span class="string">'$slice'</span>: <span class="number">-5</span>&#125;&#125;)</div></pre></td></tr></table></figure>
+<p>更新后的数据 2 为<code>{&#39;_id&#39;: 2, &#39;scores&#39;: [50,  60,  80,  78,  86]}</code>。</p>
+<p>◎ Update Array Using Slice Only</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.collection.update(&#123;<span class="string">'_id'</span>: <span class="number">3</span>&#125;, &#123;<span class="string">'$push'</span>: &#123;<span class="string">'scores'</span>: &#123;<span class="string">'$each'</span>: []&#125;, <span class="string">'$slice'</span>: <span class="number">-3</span>&#125;&#125;)</div></pre></td></tr></table></figure>
+<p>更新后的数据 3 为<code>{&#39;_id&#39;: 3, &#39;scores&#39;: [70,  100,  20]}</code>。</p>
+<ul>
+<li><strong><code>$sort</code></strong></li>
+</ul>
+<p><strong><code>$sort</code></strong>可以看作是 <strong><code>$push</code></strong> 操作之后再进行一次排序操作。</p>
+<p>例如，存在这样的几条数据：</p>
+<ol>
+<li><code>{&#39;_id&#39;: 1, &#39;quizzes&#39;: [{ &#39;id&#39;: 1, &#39;score&#39;: 6}, {&#39;id&#39;: 2, &#39;score&#39;: 9}] }</code></li>
+<li><code>{&#39;_id&#39;: 2, &#39;tests&#39;: [89,  70,  89,  50] }</code></li>
+</ol>
+<p>◎ Sort Array of Documents by a Field in the Documents</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">db.collection.update(&#123;<span class="string">'_id'</span>: <span class="number">1</span>&#125;, &#123;<span class="string">'$push'</span>: &#123;<span class="string">'quizzes'</span>: &#123; <span class="string">'$each'</span>: [&#123; <span class="string">'id'</span>: <span class="number">3</span>, <span class="string">'score'</span>: <span class="number">8</span> &#125;,	\</div><div class="line">					&#123; <span class="string">'id'</span>: <span class="number">4</span>, <span class="string">'score'</span>: <span class="number">7</span> &#125;, &#123; <span class="string">'id'</span>: <span class="number">5</span>, <span class="string">'score'</span>: <span class="number">6</span> &#125; ],	<span class="string">'$sort'</span>: &#123; <span class="string">'score'</span>: <span class="number">1</span> &#125;&#125;&#125;)</div></pre></td></tr></table></figure>
+<p>更新后的数据 1 为<code>{&#39;_id&#39;: 1, &quot;quizzes&quot; : [ { &quot;id&quot; : 1, &quot;score&quot; : 6}, {&quot;id&quot; : 5, &quot;score&quot; : 6}, {&quot;id&quot; : 4, &quot;score&quot; : 7}, {&quot;id&quot; : 3, &quot;score&quot; : 8}, {&quot;id&quot; : 2, &quot;score&quot; : 9}]}</code>。</p>
+<p>◎ Sort Array Elements That Are Not Documents</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">db.collection.update(&#123;<span class="string">'_id'</span>: <span class="number">2</span>&#125;, &#123;<span class="string">'$push'</span>: &#123;<span class="string">'tests'</span>: &#123; $each: [<span class="number">40</span>, <span class="number">60</span> ], $sort: <span class="number">1</span> &#125; &#125; &#125;</div><div class="line">)</div></pre></td></tr></table></figure>
+<ul>
+<li>Use <strong><code>$push</code></strong> Operator with Multiple Modifiers</li>
+</ul>
+<p>例如，存在这样一条数据 <code>{&#39;_id&#39;: 1, &#39;quizzes&#39;: [{ &#39;wk&#39;: 1, &#39;score&#39;: 10}, {&#39;wk&#39;: 2, &#39;score&#39;: 8}, {&#39;wk&#39;: 3, &#39;score&#39;: 5}, {&#39;wk&#39;: 4, &#39;score&#39;: 6}]}</code>，对其进行<strong><code>$push</code></strong> 以及各种 Modifiers （<strong><code>$each</code></strong>、<strong><code>$slice</code></strong>、<strong><code>$sort</code></strong>以及<strong><code>$position</code></strong>）更新操作：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">db.collection.update(&#123;<span class="string">'_id'</span>: <span class="number">4</span>&#125;, &#123;<span class="string">'$push'</span>: &#123;<span class="string">'quizzes'</span>: &#123; <span class="string">'$each'</span>: [&#123; <span class="string">'wk'</span>: <span class="number">5</span>, <span class="string">'score'</span>: <span class="number">8</span> &#125;,	\</div><div class="line">					&#123; <span class="string">'wk'</span>: <span class="number">6</span>, <span class="string">'score'</span>: <span class="number">7</span> &#125;, &#123; <span class="string">'wk'</span>: <span class="number">7</span>, <span class="string">'score'</span>: <span class="number">6</span> &#125; ],	\</div><div class="line">					<span class="string">'$sort'</span>: &#123; <span class="string">'score'</span>: <span class="number">-1</span> &#125;, <span class="string">'$slice'</span>: <span class="number">3</span> &#125;&#125;)</div></pre></td></tr></table></figure>
+<p>更新后的数据为<code>{&#39;_id&#39;: 1, &#39;quizzes&#39;:[{ &#39;wk&#39;: 1, &#39;score&#39;: 10}, {&#39;wk&#39;: 2, &#39;score&#39;: 8}, {&#39;wk&#39;: 5, &#39;score&#39;: 8}}</code>。</p>
+<p>最终目的就是取得分数前三的数据信息，关于 <strong><code>$each</code></strong>、<strong><code>$sort</code></strong> 以及 <strong><code>$slice</code></strong> 执行的前后顺序与代码中的顺序无关，其实依照下表优先级：</p>
+<ol>
+<li>Update array to add elements in the correct position.</li>
+<li>Apply sort, if specified.</li>
+<li>Slice the array, if specified.</li>
+<li>Store the array.</li>
+</ol>
 <h3 id="Find"><a href="#Find" class="headerlink" title="Find()"></a>Find()</h3><p><strong><code>find(filter, projection,skip=0, limit=0, sort=None)</code></strong></p>
 <ol>
 <li><strong><code>filter</code></strong>：过滤器，用于定位需要更新的目标文档。</li>
