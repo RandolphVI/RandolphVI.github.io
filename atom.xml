@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://randolph.pro/"/>
-  <updated>2017-08-20T07:51:42.000Z</updated>
+  <updated>2017-08-20T08:17:25.000Z</updated>
   <id>http://randolph.pro/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://randolph.pro/2017/07/15/%E2%99%9E%E3%80%8CMongoDB%20and%20Python%E3%80%8D/"/>
     <id>http://randolph.pro/2017/07/15/♞「MongoDB and Python」/</id>
     <published>2017-07-14T16:00:00.000Z</published>
-    <updated>2017-08-20T07:51:42.000Z</updated>
+    <updated>2017-08-20T08:17:25.000Z</updated>
     
     <content type="html"><![CDATA[<p>有关「Tools」的其他笔记系列：<a href="http://randolph.pro/categories/Tools/">「Tools」</a></p>
 <h1 id="Chapter-1-Getting-Started"><a href="#Chapter-1-Getting-Started" class="headerlink" title="Chapter 1: Getting Started"></a>Chapter 1: Getting Started</h1><h2 id="Installing-MongoDB-on-Mac-OS"><a href="#Installing-MongoDB-on-Mac-OS" class="headerlink" title="Installing MongoDB on Mac OS"></a>Installing MongoDB on Mac OS</h2><p>Mac OS 安装 <code>MongoDB</code> 的方法有多种多样，这里使用 <code>Homebrew</code> 安装 <code>MongoDB</code>，在安装之前首先确保 <code>Homebrew</code> 更新至最新版本：</p>
@@ -154,7 +154,8 @@
 <h2 id="Write-to-a-Collection-Safely-and-Synchronously"><a href="#Write-to-a-Collection-Safely-and-Synchronously" class="headerlink" title="Write to a Collection Safely and Synchronously"></a>Write to a Collection Safely and Synchronously</h2><p>PyMongo 默认采用的是 <code>asynchronous 异步的</code> 的数据写入操作，包括 <code>insert()</code>、<code>update()</code>、<code>remove()</code> 以及<code>findAndModify()</code>。</p>
 <p>而异步的数据写入操作，是一种不安全的，当数据写入时发生错误时，我们的程序便无法继续执行，并且客户端也不会收到反馈，因此我们需要使用参数<strong><code>safe=True</code></strong>。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># safe=True ensures that your write will succeed or an exception will be thrown</span></div><div class="line">collection.insert(data_record, safe=<span class="keyword">True</span>)</div></pre></td></tr></table></figure>
-<h2 id="Operation"><a href="#Operation" class="headerlink" title="Operation"></a>Operation</h2><h3 id="Insert"><a href="#Insert" class="headerlink" title="Insert()"></a>Insert()</h3><p><code>MongoDB</code>的 <code>save()</code> 和<code>insert()</code>函数都可以向 <code>collection</code> 里插入数据，但两者是有两个区别：</p>
+<h2 id="Operation"><a href="#Operation" class="headerlink" title="Operation"></a>Operation</h2><p>所有存储在 <code>MongoDB</code> 集合中的数据都是 <code>BSON</code> 格式。<br><code>BSON</code>是一种类 <code>JSON</code> 的一种二进制形式的存储格式，简称<code>Binary JSON</code>。</p>
+<h3 id="Insert"><a href="#Insert" class="headerlink" title="Insert()"></a>Insert()</h3><p><code>MongoDB</code>的 <code>save()</code> 和<code>insert()</code>函数都可以向 <code>collection</code> 里插入数据，但两者是有两个区别：</p>
 <ul>
 <li><p><code>save()</code>函数实际就是根据参数条件，调用了 <code>insert()</code> 或<code>update()</code>函数。</p>
 <ul>
@@ -164,8 +165,14 @@
 </li>
 <li><p><code>insert()</code>可以一次性插入一个列表，而不用遍历，效率高；<code>save()</code>则需要遍历列表，一个个插入。</p>
 </li>
+<li><p>另外，还有 <code>insertOne()</code> 和<code>insertMany()</code>插入方法。还是建议直接使用 <code>insert()</code> 函数。</p>
+<ul>
+<li><code>insertOne()</code>：向指定集合中插入一条文档数据；</li>
+<li><code>insertMany()</code>：向指定集合中插入多条文档数据。</li>
 </ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.collection.insert_one(&#123;<span class="string">'attribute'</span>: value&#125;)</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">data_record = &#123;<span class="string">'attribute1'</span>: value1, <span class="string">'attribute2'</span>: value2, <span class="string">'attribute3'</span>: value3&#125;</div><div class="line"><span class="comment">#  插入单条数据 </span></div><div class="line">db.collection.insert(data_record)</div><div class="line">db.collection.insert_one(data_record)</div><div class="line"></div><div class="line"><span class="comment">#  插入多条数据</span></div><div class="line">✗ db.collection.insert_many(data_record) // 会报错，insert_many() 时参数必须为 list 形式</div><div class="line"></div><div class="line">record_list = []</div><div class="line">record_list.append(data_record)</div><div class="line">db.collection.insert_many(record_list)</div></pre></td></tr></table></figure>
 <h3 id="Update"><a href="#Update" class="headerlink" title="Update()"></a>Update()</h3><p><strong><code>update(criteria, objNew, upsert, mult)</code></strong></p>
 <ol>
 <li><strong><code>criteria</code></strong>： 查询文档，用于定位需要更新的目标文档。</li>
