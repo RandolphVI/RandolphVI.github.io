@@ -3685,7 +3685,7 @@ AC & (1,2)(-2),(0,1)(-1),(0,1)(-1),(0,1)(-1),(2,1)(-1),(EOB)(0,0)
     <link href="http://randolph.pro/2015/11/13/%E2%99%9E%E3%80%8CWeb%20Scraping%20with%20Python%E3%80%8D%20Chapter%203/"/>
     <id>http://randolph.pro/2015/11/13/♞「Web Scraping with Python」 Chapter 3/</id>
     <published>2015-11-12T16:00:00.000Z</published>
-    <updated>2017-08-21T13:51:25.000Z</updated>
+    <updated>2017-08-21T13:53:39.000Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://farm5.staticflickr.com/4316/36049777032_f975ed0941_o.jpg" alt=""></p>
 <p> 有关该书的其他学习笔记系列：<a href="http://randolph.pro/categories/Web-Scraping/Book-「Web-Scraping-with-Python」/">Book:「Web Scraping with Python」</a></p>
@@ -3754,7 +3754,7 @@ AC & (1,2)(-2),(0,1)(-1),(0,1)(-1),(0,1)(-1),(2,1)(-1),(EOB)(0,0)
 <p> 我的 Mac OS X 系统版本为 10.11.4，Mac 自版本 10.11 之后，由于新的 SIP 机制，即使是 root 用户也无法对 /System 中的内容进行修改删除（在系统恢复中可以办到）。</p>
 <p> 于是，我采用另外一种方法继续尝试：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ sudo pip uninstall six</div><div class="line">$ easy_install six</div></pre></td></tr></table></figure>
-<p> 同样得到的是 Operation not Permitted（此方法在 10.11 之前的版本应该都可以行得通）。</p>
+<p> 同样得到的是 <code>Operation not Permitted</code>（此方法在 10.11 之前的版本应该都可以行得通）。</p>
 <p> 后来尝试了通过 Python 虚拟环境进行解决，能力不够失败。<br> 还尝试了通过下载 Python 官网的 2.7.11，不使用 Mac 系统默认自带的 2.7.10（有人提到使用自己安装的 Python2.7 可以解决问题），折腾了半天，还是失败告终，还差点弄的 pip 无法安装 package。挽救办法为：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ brew link python </div><div class="line">$ bre unlink python</div></pre></td></tr></table></figure>
 <p> 到最后，本来想着要放弃的，Stackoverflow 上的另一个办法让事情有了转机：</p>
