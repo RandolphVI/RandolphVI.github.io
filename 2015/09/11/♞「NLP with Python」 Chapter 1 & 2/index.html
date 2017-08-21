@@ -114,7 +114,7 @@
 <meta property="og:image" content="https://farm5.staticflickr.com/4423/36425940061_fe957aaf15_o.jpg">
 <meta property="og:image" content="https://farm1.staticflickr.com/445/31263100710_d839312795_o.png">
 <meta property="og:image" content="https://farm1.staticflickr.com/474/31598383846_537809b299_o.png">
-<meta property="og:updated_time" content="2017-08-21T13:12:58.000Z">
+<meta property="og:updated_time" content="2017-08-21T14:15:48.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="♞「NLP with Python」 Chapter 1 &amp; 2">
 <meta name="twitter:description" content="本文是关于「Natural Language Processing with Python」这本书的 Chapter 1 &amp; 2 的学习笔记。">
@@ -462,7 +462,7 @@
                   <i class="fa fa-file-word-o"></i>
                 </span>
                 <span title="Words count in article">
-                  1,578
+                  1,644
                 </span>
                 <span> words </span>
                 
@@ -510,7 +510,7 @@
 <li><strong>WordNet</strong></li>
 </ul>
 <hr>
-<h1 id="Key"><a href="#Key" class="headerlink" title="Key:"></a>Key:</h1><h2 id="What’s-NTLK"><a href="#What’s-NTLK" class="headerlink" title="What’s NTLK?"></a><strong>What’s NTLK?</strong></h2><p><strong><code>NTLK</code></strong> 是一个自然语言工具包，最初创建于 2001 年，最初是宾州大学计算机与信息科学系计算语言学课程的一部分，大部分 NLP 研究者入门的首选 tool。</p>
+<h1 id="Key"><a href="#Key" class="headerlink" title="Key:"></a>Key:</h1><h2 id="What’s-NTLK"><a href="#What’s-NTLK" class="headerlink" title="What’s NTLK?"></a><strong>What’s NTLK?</strong></h2><p><strong><code>NTLK</code></strong> 是一个自然语言工具包，最初创建于 2001 年，最初是宾州大学计算机与信息科学系计算语言学课程的一部分，大部分 NLP 研究者入门的首选工具。</p>
 <p>另外，这本书是关于用 Python 进行自然语言处理的一本入门书，基本上可以看做是 <strong><code>NLTK</code></strong> 这个库的 HandBook，使用的方法均是 <strong><code>nltk</code></strong> 库中的方法。如果希望查阅 API 文档或者是下载安装 <strong><code>NLTK</code></strong>，可以前往 <a href="http://www.nltk.org" target="_blank" rel="external"> 官方网站 </a> 下载，官网上提供和的 API 文档涵盖了工具包中的每一个模块、类和函数，详细说明了各种参数，以及用法示例，在此不再赘述。</p>
 <ul>
 <li><strong>简单介绍一下 <code>NLTK</code> 的几个重要的模块以及功能描述：</strong></li>
@@ -588,6 +588,10 @@
 </tbody>
 </table>
 </div>
+<hr>
+<h2 id="Download-with-NLTK"><a href="#Download-with-NLTK" class="headerlink" title="Download with NLTK"></a>Download with NLTK</h2><p>安装完之后 <strong><code>NTLK</code></strong>，我们还需要下载 <strong><code>NTLK</code></strong> 的语料库，在 Python 解释器中输入：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; nltk.download()</div></pre></td></tr></table></figure>
+<p>之后，会弹出相应的下载窗口，由于语料库数量较多，内容较大，耐心等待下载完毕。</p>
 <hr>
 <h2 id="concordance-function"><a href="#concordance-function" class="headerlink" title="concordance function"></a>concordance <strong>function</strong></h2><ul>
 <li><strong><code>concordance()</code></strong> 函数：这个函数挺有意思的，是 <strong><code>nltk</code></strong> 下的一个函数，可以显示指定单词的出现情况（使用这个函数，指定单词的大小写不敏感），同时还可以显示一些上下文。下面是该函数的使用场景（其中 text1 的内容是 <code>nltk.book</code> 导入后中的 text1）:</li>
@@ -937,7 +941,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Related"><span class="nav-number">1.</span> <span class="nav-text">Related</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Key"><span class="nav-number">2.</span> <span class="nav-text">Key:</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#What’s-NTLK"><span class="nav-number">2.1.</span> <span class="nav-text">What’s NTLK?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#concordance-function"><span class="nav-number">2.2.</span> <span class="nav-text">concordance function</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Word-Sense-Disambiguation-amp-Pronoun-Resolution"><span class="nav-number">2.3.</span> <span class="nav-text">Word Sense Disambiguation & Pronoun Resolution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Text-Corpus-Structure"><span class="nav-number">2.4.</span> <span class="nav-text">Text Corpus Structure</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#WordNet"><span class="nav-number">2.5.</span> <span class="nav-text">WordNet</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Correct-errors-in-printing"><span class="nav-number">3.</span> <span class="nav-text">Correct errors in printing:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Practice"><span class="nav-number">4.</span> <span class="nav-text">Practice:</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Related"><span class="nav-number">1.</span> <span class="nav-text">Related</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Key"><span class="nav-number">2.</span> <span class="nav-text">Key:</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#What’s-NTLK"><span class="nav-number">2.1.</span> <span class="nav-text">What’s NTLK?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Download-with-NLTK"><span class="nav-number">2.2.</span> <span class="nav-text">Download with NLTK</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#concordance-function"><span class="nav-number">2.3.</span> <span class="nav-text">concordance function</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Word-Sense-Disambiguation-amp-Pronoun-Resolution"><span class="nav-number">2.4.</span> <span class="nav-text">Word Sense Disambiguation & Pronoun Resolution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Text-Corpus-Structure"><span class="nav-number">2.5.</span> <span class="nav-text">Text Corpus Structure</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#WordNet"><span class="nav-number">2.6.</span> <span class="nav-text">WordNet</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Correct-errors-in-printing"><span class="nav-number">3.</span> <span class="nav-text">Correct errors in printing:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Practice"><span class="nav-number">4.</span> <span class="nav-text">Practice:</span></a></li></ol></div>
             
 
           </div>
