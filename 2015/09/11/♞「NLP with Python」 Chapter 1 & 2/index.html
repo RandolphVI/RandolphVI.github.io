@@ -114,7 +114,7 @@
 <meta property="og:image" content="https://farm5.staticflickr.com/4423/36425940061_fe957aaf15_o.jpg">
 <meta property="og:image" content="https://farm1.staticflickr.com/445/31263100710_d839312795_o.png">
 <meta property="og:image" content="https://farm1.staticflickr.com/474/31598383846_537809b299_o.png">
-<meta property="og:updated_time" content="2017-08-14T12:56:49.000Z">
+<meta property="og:updated_time" content="2017-08-21T10:35:10.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="♞「NLP with Python」 Chapter 1 &amp; 2">
 <meta name="twitter:description" content="本文是关于「Natural Language Processing with Python」这本书的 Chapter 1 &amp; 2 的学习笔记。">
@@ -510,10 +510,10 @@
 <li><strong>WordNet</strong></li>
 </ul>
 <hr>
-<h1 id="Key"><a href="#Key" class="headerlink" title="Key:"></a>Key:</h1><h2 id="What’s-NTLK"><a href="#What’s-NTLK" class="headerlink" title="What’s NTLK?"></a><strong>What’s NTLK?</strong></h2><p>NTLK 是一个自然语言工具包，最初创建于 2001 年，最初是宾州大学计算机与信息科学系计算语言学课程的一部分，大部分 NLP 研究者入门的首选 tool。</p>
-<p>另外，这本书是关于用 Python 进行自然语言处理的一本入门书，基本上可以看做是 NLTK 这个库的 HandBook，使用的方法均是 nltk 库中的方法。如果希望查阅 API 文档或者是下载安装 NLTK，可以前往 <a href="http://www.nltk.org" target="_blank" rel="external"> 官方网站 </a> 下载，官网上提供和的 API 文档涵盖了工具包中的每一个模块、类和函数，详细说明了各种参数，以及用法示例，在此不再赘述。</p>
+<h1 id="Key"><a href="#Key" class="headerlink" title="Key:"></a>Key:</h1><h2 id="What’s-NTLK"><a href="#What’s-NTLK" class="headerlink" title="What’s NTLK?"></a><strong>What’s NTLK?</strong></h2><p><strong><code>NTLK</code></strong> 是一个自然语言工具包，最初创建于 2001 年，最初是宾州大学计算机与信息科学系计算语言学课程的一部分，大部分 NLP 研究者入门的首选 tool。</p>
+<p>另外，这本书是关于用 Python 进行自然语言处理的一本入门书，基本上可以看做是 <strong><code>NLTK</code></strong> 这个库的 HandBook，使用的方法均是 <strong><code>nltk</code></strong> 库中的方法。如果希望查阅 API 文档或者是下载安装 <strong><code>NLTK</code></strong>，可以前往 <a href="http://www.nltk.org" target="_blank" rel="external"> 官方网站 </a> 下载，官网上提供和的 API 文档涵盖了工具包中的每一个模块、类和函数，详细说明了各种参数，以及用法示例，在此不再赘述。</p>
 <ul>
-<li><strong>简单介绍一下 NLTK 的几个重要的模块以及功能描述：</strong></li>
+<li><strong>简单介绍一下 <code>NLTK</code> 的几个重要的模块以及功能描述：</strong></li>
 </ul>
 <div class="table-container">
 <table>
@@ -590,7 +590,7 @@
 </div>
 <hr>
 <h2 id="concordance-function"><a href="#concordance-function" class="headerlink" title="concordance function"></a>concordance <strong>function</strong></h2><ul>
-<li><strong><code>concordance()</code></strong> 函数：这个函数挺有意思的，是 nltk 下的一个函数，可以显示指定单词的出现情况（使用这个函数，指定单词的大小写不敏感），同时还可以显示一些上下文。下面是该函数的使用场景（其中 text1 的内容是 nltk.book 导入后中的 text1）:</li>
+<li><strong><code>concordance()</code></strong> 函数：这个函数挺有意思的，是 <strong><code>nltk</code></strong> 下的一个函数，可以显示指定单词的出现情况（使用这个函数，指定单词的大小写不敏感），同时还可以显示一些上下文。下面是该函数的使用场景（其中 text1 的内容是 <code>nltk.book</code> 导入后中的 text1）:</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; text1.concordance(&quot;monstrous&quot;)</div><div class="line">    Building index...</div><div class="line">    Displaying 11 of 11 matches:</div><div class="line">    ong the former , one was of a most monstrous size . ... This came towards us ,</div><div class="line">    ON OF THE PSALMS . &quot; Touching that monstrous bulk of the whale or ork we have r</div><div class="line">    ll over with a heathenish array of monstrous clubs and spears . Some were thick</div><div class="line">    d as you gazed , and wondered what monstrous cannibal and savage could ever hav</div><div class="line">    that has survived the flood ; most monstrous and most mountainous ! That Himmal</div><div class="line">    they might scout at Moby Dick as a monstrous fable , or still worse and more de</div><div class="line">    th of Radney .&apos;&quot; CHAPTER 55 Of the monstrous Pictures of Whales . I shall ere l</div><div class="line">    ing Scenes . In connexion with the monstrous pictures of whales , I am strongly</div><div class="line">    ere to enter upon those still more monstrous stories of them which are to be fo</div></pre></td></tr></table></figure>
 <p>这个函数的具体实现如下：</p>
@@ -636,11 +636,11 @@
 </ul>
 <p>在 「Your Trun」 的那块内容中：</p>
 <blockquote>
-<p>使用 text2 尝试前面频率分布的例子。…如果得到的是错误信息：NameError: name ‘FreqDist’is not defined，则需要在一开始输入  <strong><code>from nltk.book import *</code></strong>。</p>
+<p>使用 text2 尝试前面频率分布的例子。…如果得到的是错误信息：<code>NameError: name &#39;FreqDist&#39;is not defined</code>，则需要在一开始输入  <strong><code>from nltk.book import *</code></strong>。</p>
 </blockquote>
 <p>需更正为：</p>
 <blockquote>
-<p>使用 text2 尝试前面频率分布的例子。…如果得到的是错误信息：NameError: name ‘FreqDist’is not defined，则需要在一开始输入 <strong><code>from nltk import *</code></strong>。</p>
+<p>使用 text2 尝试前面频率分布的例子。…如果得到的是错误信息：<code>NameError: name &#39;FreqDist&#39;is not defined</code>，则需要在一开始输入 <strong><code>from nltk import *</code></strong>。</p>
 </blockquote>
 <p><strong>原因：<code>nltk.book</code> 中并不存在 <code>FreqDist()</code> 这一 function.</strong></p>
 <hr>
