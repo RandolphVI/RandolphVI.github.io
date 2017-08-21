@@ -111,7 +111,7 @@
 <meta property="og:site_name" content="黃某人">
 <meta property="og:description" content="本文介绍了 MongoDB 的相关知识，以及 PyMongo （Python 上连接 MongoDB 的第三方库）的 API 操作。">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2017-08-21T06:35:51.000Z">
+<meta property="og:updated_time" content="2017-08-21T10:04:42.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="♟「Tools」 MongoDB and PyMongo">
 <meta name="twitter:description" content="本文介绍了 MongoDB 的相关知识，以及 PyMongo （Python 上连接 MongoDB 的第三方库）的 API 操作。">
@@ -718,19 +718,19 @@
 <ul>
 <li><strong><code>$set</code></strong> &amp; <strong><code>$unSet</code></strong></li>
 </ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">db.collection.update(&#123;<span class="string">'attribute1'</span>: value1, <span class="string">'attribute2'</span>: value2&#125;, \</div><div class="line">					&#123;<span class="string">'$set'</span>: &#123;<span class="string">'attribute1'</span>: new_value1&#125;, <span class="string">'$set'</span>: &#123;<span class="string">'attribute2'</span>: new_value2&#125;&#125;, multi=<span class="keyword">True</span>)</div><div class="line">db.collection.update(&#123;<span class="string">'attribute1'</span>: value1&#125;, &#123;<span class="string">'$unset'</span>: &#123;<span class="string">'attribute2'</span>: value2&#125;&#125;, multi=<span class="keyword">True</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">db.collection.update(&#123;<span class="string">'attribute1'</span>: value1, <span class="string">'attribute2'</span>: value2&#125;, \</div><div class="line">		&#123;<span class="string">'$set'</span>: &#123;<span class="string">'attribute1'</span>: new_value1&#125;, <span class="string">'$set'</span>: &#123;<span class="string">'attribute2'</span>: new_value2&#125;&#125;, multi=<span class="keyword">True</span>)</div><div class="line">db.collection.update(&#123;<span class="string">'attribute1'</span>: value1&#125;, &#123;<span class="string">'$unset'</span>: &#123;<span class="string">'attribute2'</span>: value2&#125;&#125;, multi=<span class="keyword">True</span>)</div></pre></td></tr></table></figure>
 <p>其中，<strong><code>$set</code></strong>表示对原来的记录进行修改，<strong><code>$unset</code></strong>表示移除指定属性。</p>
 <p><strong>注意，使用 <code>&#39;$set&#39;: {&#39;attribute1&#39;: new_value1}</code> 只会对 <code>attribute1</code> 的部分进行修改，如果使用 <code>db.collection.update({&#39;attribute1&#39;: value1}, {&#39;attribute1&#39;: new_value1})</code>，即不使用<code>$set</code>，则会将整个<code>Document</code> 记录替换成<code>{&#39;attribute1&#39;: new_value1}</code>。</strong></p>
 <ul>
 <li><strong><code>$rename</code></strong></li>
 </ul>
 <p><strong><code>$rename</code></strong>表示对原来的记录中的指定属性的 <strong>key</strong> 值进行修改：</p>
-<p>例如，存在这样的数据 <code>{&#39;_id&#39;: 1, &#39;nmae&#39;: {&#39;first&#39;: &#39;george&#39;, &#39;last&#39;: &#39;washington&#39;}}</code>，对其进行<strong><code>$rename</code></strong> 更新操作，分为以下几种情况：<br>​<br>◎ Rename a Field</p>
+<p>例如，存在这样的数据 <code>{&#39;_id&#39;: 1, &#39;nmae&#39;: {&#39;first&#39;: &#39;george&#39;, &#39;last&#39;: &#39;washington&#39;}}</code>，对其进行<strong><code>$rename</code></strong> 更新操作，分为以下几种情况：<br>​<br>◎ <strong>Rename a Field</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.collection.update(&#123;<span class="string">'_id'</span>: <span class="number">1</span>&#125;, &#123;<span class="string">'$rename'</span>: &#123;<span class="string">'nmae'</span>: <span class="string">'name'</span>&#125;&#125;)</div></pre></td></tr></table></figure>
 <p>更新后的数据为<code>{&#39;_id&#39;: 1, &#39;name&#39;: {&#39;first&#39;: &#39;george&#39;, &#39;last&#39;: &#39;washington&#39;}}</code>。</p>
-<p>◎ Rename a Field in an Embedded Document</p>
+<p>◎ <strong>Rename a Field in an Embedded Document</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.collection.update(&#123;<span class="string">'_id'</span>: <span class="number">1</span>&#125;, &#123;<span class="string">'$rename'</span>: &#123;<span class="string">'name.first'</span>: <span class="string">'name.fname'</span>&#125;&#125;)</div></pre></td></tr></table></figure>
-<p>更新后的数据为<code>{&#39;_id&#39;: 1, &#39;name&#39;: {&#39;fname&#39;: &#39;george&#39;, &#39;last&#39;: &#39;washington&#39;}}</code>。<br>​<br>◎ Rename a Field That Does Not Exist</p>
+<p>更新后的数据为<code>{&#39;_id&#39;: 1, &#39;name&#39;: {&#39;fname&#39;: &#39;george&#39;, &#39;last&#39;: &#39;washington&#39;}}</code>。<br>​<br>◎ <strong>Rename a Field That Does Not Exist</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.collection.update(&#123;<span class="string">'_id'</span>: <span class="number">1</span>&#125;, &#123;<span class="string">'$rename'</span>: &#123;<span class="string">'job'</span>: <span class="string">'student'</span>&#125;&#125;)</div></pre></td></tr></table></figure>
 <p>因为不存在该字段，所以并不会进行修改，更新后的数据仍为<code>{&#39;_id&#39;: 1, &#39;name&#39;: {&#39;fname&#39;: &#39;george&#39;, &#39;last&#39;: &#39;washington&#39;}}</code>。</p>
 <h4 id="Array"><a href="#Array" class="headerlink" title="Array"></a>Array</h4><div class="table-container">

@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://randolph.pro/"/>
-  <updated>2017-08-21T06:35:51.000Z</updated>
+  <updated>2017-08-21T10:04:42.000Z</updated>
   <id>http://randolph.pro/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://randolph.pro/2017/07/15/%E2%99%9F%E3%80%8CTools%E3%80%8D%20MongoDB%20and%20PyMongo/"/>
     <id>http://randolph.pro/2017/07/15/♟「Tools」 MongoDB and PyMongo/</id>
     <published>2017-07-14T16:00:00.000Z</published>
-    <updated>2017-08-21T06:35:51.000Z</updated>
+    <updated>2017-08-21T10:04:42.000Z</updated>
     
     <content type="html"><![CDATA[<p>有关「Tools」的其他笔记系列：<a href="http://randolph.pro/categories/Tools/">「Tools」</a></p>
 <h1 id="Chapter-1-Getting-Started"><a href="#Chapter-1-Getting-Started" class="headerlink" title="Chapter 1: Getting Started"></a>Chapter 1: Getting Started</h1><h2 id="Installing-MongoDB-on-Mac-OS"><a href="#Installing-MongoDB-on-Mac-OS" class="headerlink" title="Installing MongoDB on Mac OS"></a>Installing MongoDB on Mac OS</h2><p>Mac OS 安装 <code>MongoDB</code> 的方法有多种多样，这里使用 <code>Homebrew</code> 安装 <code>MongoDB</code>，在安装之前首先确保 <code>Homebrew</code> 更新至最新版本：</p>
@@ -266,19 +266,19 @@
 <ul>
 <li><strong><code>$set</code></strong> &amp; <strong><code>$unSet</code></strong></li>
 </ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">db.collection.update(&#123;<span class="string">'attribute1'</span>: value1, <span class="string">'attribute2'</span>: value2&#125;, \</div><div class="line">					&#123;<span class="string">'$set'</span>: &#123;<span class="string">'attribute1'</span>: new_value1&#125;, <span class="string">'$set'</span>: &#123;<span class="string">'attribute2'</span>: new_value2&#125;&#125;, multi=<span class="keyword">True</span>)</div><div class="line">db.collection.update(&#123;<span class="string">'attribute1'</span>: value1&#125;, &#123;<span class="string">'$unset'</span>: &#123;<span class="string">'attribute2'</span>: value2&#125;&#125;, multi=<span class="keyword">True</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">db.collection.update(&#123;<span class="string">'attribute1'</span>: value1, <span class="string">'attribute2'</span>: value2&#125;, \</div><div class="line">		&#123;<span class="string">'$set'</span>: &#123;<span class="string">'attribute1'</span>: new_value1&#125;, <span class="string">'$set'</span>: &#123;<span class="string">'attribute2'</span>: new_value2&#125;&#125;, multi=<span class="keyword">True</span>)</div><div class="line">db.collection.update(&#123;<span class="string">'attribute1'</span>: value1&#125;, &#123;<span class="string">'$unset'</span>: &#123;<span class="string">'attribute2'</span>: value2&#125;&#125;, multi=<span class="keyword">True</span>)</div></pre></td></tr></table></figure>
 <p>其中，<strong><code>$set</code></strong>表示对原来的记录进行修改，<strong><code>$unset</code></strong>表示移除指定属性。</p>
 <p><strong>注意，使用 <code>&#39;$set&#39;: {&#39;attribute1&#39;: new_value1}</code> 只会对 <code>attribute1</code> 的部分进行修改，如果使用 <code>db.collection.update({&#39;attribute1&#39;: value1}, {&#39;attribute1&#39;: new_value1})</code>，即不使用<code>$set</code>，则会将整个<code>Document</code> 记录替换成<code>{&#39;attribute1&#39;: new_value1}</code>。</strong></p>
 <ul>
 <li><strong><code>$rename</code></strong></li>
 </ul>
 <p><strong><code>$rename</code></strong>表示对原来的记录中的指定属性的 <strong>key</strong> 值进行修改：</p>
-<p>例如，存在这样的数据 <code>{&#39;_id&#39;: 1, &#39;nmae&#39;: {&#39;first&#39;: &#39;george&#39;, &#39;last&#39;: &#39;washington&#39;}}</code>，对其进行<strong><code>$rename</code></strong> 更新操作，分为以下几种情况：<br>​<br>◎ Rename a Field</p>
+<p>例如，存在这样的数据 <code>{&#39;_id&#39;: 1, &#39;nmae&#39;: {&#39;first&#39;: &#39;george&#39;, &#39;last&#39;: &#39;washington&#39;}}</code>，对其进行<strong><code>$rename</code></strong> 更新操作，分为以下几种情况：<br>​<br>◎ <strong>Rename a Field</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.collection.update(&#123;<span class="string">'_id'</span>: <span class="number">1</span>&#125;, &#123;<span class="string">'$rename'</span>: &#123;<span class="string">'nmae'</span>: <span class="string">'name'</span>&#125;&#125;)</div></pre></td></tr></table></figure>
 <p>更新后的数据为<code>{&#39;_id&#39;: 1, &#39;name&#39;: {&#39;first&#39;: &#39;george&#39;, &#39;last&#39;: &#39;washington&#39;}}</code>。</p>
-<p>◎ Rename a Field in an Embedded Document</p>
+<p>◎ <strong>Rename a Field in an Embedded Document</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.collection.update(&#123;<span class="string">'_id'</span>: <span class="number">1</span>&#125;, &#123;<span class="string">'$rename'</span>: &#123;<span class="string">'name.first'</span>: <span class="string">'name.fname'</span>&#125;&#125;)</div></pre></td></tr></table></figure>
-<p>更新后的数据为<code>{&#39;_id&#39;: 1, &#39;name&#39;: {&#39;fname&#39;: &#39;george&#39;, &#39;last&#39;: &#39;washington&#39;}}</code>。<br>​<br>◎ Rename a Field That Does Not Exist</p>
+<p>更新后的数据为<code>{&#39;_id&#39;: 1, &#39;name&#39;: {&#39;fname&#39;: &#39;george&#39;, &#39;last&#39;: &#39;washington&#39;}}</code>。<br>​<br>◎ <strong>Rename a Field That Does Not Exist</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.collection.update(&#123;<span class="string">'_id'</span>: <span class="number">1</span>&#125;, &#123;<span class="string">'$rename'</span>: &#123;<span class="string">'job'</span>: <span class="string">'student'</span>&#125;&#125;)</div></pre></td></tr></table></figure>
 <p>因为不存在该字段，所以并不会进行修改，更新后的数据仍为<code>{&#39;_id&#39;: 1, &#39;name&#39;: {&#39;fname&#39;: &#39;george&#39;, &#39;last&#39;: &#39;washington&#39;}}</code>。</p>
 <h4 id="Array"><a href="#Array" class="headerlink" title="Array"></a>Array</h4><div class="table-container">
