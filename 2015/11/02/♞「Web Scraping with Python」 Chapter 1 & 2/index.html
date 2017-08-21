@@ -112,7 +112,7 @@
 <meta property="og:description" content="本文是关于「Web Scraping with Python」这本书的 Chapter 1 &amp; 2的学习笔记。">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://farm5.staticflickr.com/4316/36049777032_f975ed0941_o.jpg">
-<meta property="og:updated_time" content="2017-08-06T13:18:11.000Z">
+<meta property="og:updated_time" content="2017-08-21T13:07:28.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="♞「Web Scraping with Python」 Chapter 1 &amp; 2">
 <meta name="twitter:description" content="本文是关于「Web Scraping with Python」这本书的 Chapter 1 &amp; 2的学习笔记。">
@@ -511,7 +511,8 @@
 <li><strong>findAll(tag, attributes, recursive, text, limit, keywords)</strong></li>
 <li><strong>find(tag, attributes, recursive, text, keywords)</strong></li>
 </ul>
-<p>先说结论，再仔细说说参数的用法。<br><strong><code>find()</code></strong> is equivalent to the same <strong><code>findAll()</code></strong> call, with a <strong>limit</strong> of  1.<br><strong><code>find()</code></strong> 其实等价于 <strong><code>findAll()</code></strong> 的 limit 等于 1 时的特殊情况。 </p>
+<p>先说结论，再仔细说说参数的用法。</p>
+<p><strong><code>find()</code></strong> is equivalent to the same <strong><code>findAll()</code></strong> call, with a <strong>limit</strong> of  1.<br><strong><code>find()</code></strong> 其实等价于 <strong><code>findAll()</code></strong> 的 limit 等于 1 时的特殊情况。 </p>
 <ul>
 <li><strong><code>tag</code></strong>: 我们可以传一个标签的名称或多个标签名称组成的 Python 列表做标签参数。例如：<strong><code>(”span”, “h1” , {“span”, “h1”}, {“h1”, “h2”, “h3”})</code></strong>。其实就是一个「或」关系的过滤器（即我们可以选择带有 <strong><code>span</code></strong> 或 <strong><code>h1</code></strong> 或 <strong><code>h2</code></strong> 等的一列标签）。</li>
 <li><strong><code>attributes</code></strong>: 这是一个用 Python 字典封装某一标签的若干属性和对应的属性值。例如：<strong><code>{“class”: {“green”, “red”}}</code></strong></li>
@@ -522,7 +523,10 @@
 <blockquote>
 <p><strong>keyword 关键词参数的主意事项：</strong><br>使用 <strong><code>keyword</code></strong> 偶尔会出现问题，尤其是在用 <strong>class</strong> 属性查找标签的时候，因为 <strong>class</strong> 是 Python 中受保护的关键字。也就是说，<strong>class</strong> 是 Python 语言的保留字，在 Python 程序中是不能充当变量或者参数名使用的。假如我们运行下面的代码，Python 就会因为我们误用 <strong>class</strong> 保留字而产生一个语法错误：</p>
 <p>   <strong><code>bsObj.findAll(class=&quot;green&quot;)</code></strong></p>
-<p>不过 BeautifulSoup 提供了一个解决方案，就是在 class 后面增加一个下划线：<br>   <strong><code>bsObj.findAll(class_=&quot;green&quot;)</code></strong><br>我们也可以使用属性参数来将 <strong>class</strong> 用引号包起来：<br>   <strong><code>bsObj.findAll(&quot;&quot;,{&quot;class&quot;: &quot;green&quot;})</code></strong></p>
+<p>不过 BeautifulSoup 提供了一个解决方案，就是在 class 后面增加一个下划线：</p>
+<p>   <strong><code>bsObj.findAll(class_=&quot;green&quot;)</code></strong></p>
+<p>我们也可以使用属性参数来将 <strong>class</strong> 用引号包起来：</p>
+<p>   <strong><code>bsObj.findAll(&quot;&quot;,{&quot;class&quot;: &quot;green&quot;})</code></strong></p>
 </blockquote>
 <p><strong>另外，如果说 <code>tag</code> 参数是相当于一个「或」关系的过滤器，那么 <code>keyword</code> 参数就可以为我们构造一个「与」关系的过滤器来提高我们的工作效率，简化我们的工作。</strong></p>
 <hr>
