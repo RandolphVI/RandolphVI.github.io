@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://randolph.pro/"/>
-  <updated>2017-08-21T06:25:32.000Z</updated>
+  <updated>2017-08-21T06:35:51.000Z</updated>
   <id>http://randolph.pro/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://randolph.pro/2017/07/15/%E2%99%9F%E3%80%8CTools%E3%80%8D%20MongoDB%20and%20PyMongo/"/>
     <id>http://randolph.pro/2017/07/15/♟「Tools」 MongoDB and PyMongo/</id>
     <published>2017-07-14T16:00:00.000Z</published>
-    <updated>2017-08-21T06:25:32.000Z</updated>
+    <updated>2017-08-21T06:35:51.000Z</updated>
     
     <content type="html"><![CDATA[<p>有关「Tools」的其他笔记系列：<a href="http://randolph.pro/categories/Tools/">「Tools」</a></p>
 <h1 id="Chapter-1-Getting-Started"><a href="#Chapter-1-Getting-Started" class="headerlink" title="Chapter 1: Getting Started"></a>Chapter 1: Getting Started</h1><h2 id="Installing-MongoDB-on-Mac-OS"><a href="#Installing-MongoDB-on-Mac-OS" class="headerlink" title="Installing MongoDB on Mac OS"></a>Installing MongoDB on Mac OS</h2><p>Mac OS 安装 <code>MongoDB</code> 的方法有多种多样，这里使用 <code>Homebrew</code> 安装 <code>MongoDB</code>，在安装之前首先确保 <code>Homebrew</code> 更新至最新版本：</p>
@@ -247,13 +247,13 @@
 <li><code>{&#39;_id&#39;: 2, &#39;item&#39;: &#39;Unknown&#39;}</code></li>
 <li><code>{&#39;_id&#39;: 3, &#39;item&#39;: &#39;XYZ&#39;, &#39;price&#39;: NumberLong(10)}</code></li>
 </ol>
-<p>◎ Multiply the Value of a Field</p>
+<p>◎ <strong>Multiply the Value of a Field</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.collection.update(&#123;<span class="string">'_id'</span>: <span class="number">1</span>&#125;, &#123;<span class="string">'$mul'</span>: &#123;price: <span class="number">1.25</span>&#125;&#125;)</div></pre></td></tr></table></figure>
 <p>更新后的数据 1 为<code>{&#39;_id&#39;: 1, &#39;item&#39;: &#39;ABC&#39;, &#39;price&#39;: 13.7375}</code>。</p>
-<p>◎ Apply <strong><code>$mul</code></strong> Operator to a Non-existing Field</p>
+<p>◎ <strong>Apply <code>$mul</code> Operator to a Non-existing Field</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.collection.update(&#123;<span class="string">'_id'</span>: <span class="number">2</span>&#125;, &#123;<span class="string">'$mul'</span>: &#123;<span class="string">'price'</span>: NumberLong(<span class="number">100</span>)&#125;&#125;)</div></pre></td></tr></table></figure>
 <p>更新后的数据 2 为<code>{&#39;_id&#39;: 2, &#39;item&#39;: &#39;Unknown&#39;, &#39;price&#39;: NumberLong(0)}</code>。</p>
-<p>◎ Multiply Mixed Numeric Types</p>
+<p>◎ <strong>Multiply Mixed Numeric Types</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.collection.update(&#123;<span class="string">'_id'</span>: <span class="number">3</span>&#125;, &#123;<span class="string">'$mul'</span>: &#123;<span class="string">'price'</span>: NumberInt(<span class="number">5</span>)&#125;&#125;)</div></pre></td></tr></table></figure>
 <p>更新后的数据 3 为<code>{&#39;_id&#39;: 3, &#39;item&#39; : &#39;XYZ&#39;, &#39;price&#39;: NumberLong(50)}</code>。</p>
 <ul>

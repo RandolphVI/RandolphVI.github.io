@@ -111,7 +111,7 @@
 <meta property="og:site_name" content="黃某人">
 <meta property="og:description" content="本文介绍了 MongoDB 的相关知识，以及 PyMongo （Python 上连接 MongoDB 的第三方库）的 API 操作。">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2017-08-21T06:25:32.000Z">
+<meta property="og:updated_time" content="2017-08-21T06:35:51.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="♟「Tools」 MongoDB and PyMongo">
 <meta name="twitter:description" content="本文介绍了 MongoDB 的相关知识，以及 PyMongo （Python 上连接 MongoDB 的第三方库）的 API 操作。">
@@ -699,13 +699,13 @@
 <li><code>{&#39;_id&#39;: 2, &#39;item&#39;: &#39;Unknown&#39;}</code></li>
 <li><code>{&#39;_id&#39;: 3, &#39;item&#39;: &#39;XYZ&#39;, &#39;price&#39;: NumberLong(10)}</code></li>
 </ol>
-<p>◎ Multiply the Value of a Field</p>
+<p>◎ <strong>Multiply the Value of a Field</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.collection.update(&#123;<span class="string">'_id'</span>: <span class="number">1</span>&#125;, &#123;<span class="string">'$mul'</span>: &#123;price: <span class="number">1.25</span>&#125;&#125;)</div></pre></td></tr></table></figure>
 <p>更新后的数据 1 为<code>{&#39;_id&#39;: 1, &#39;item&#39;: &#39;ABC&#39;, &#39;price&#39;: 13.7375}</code>。</p>
-<p>◎ Apply <strong><code>$mul</code></strong> Operator to a Non-existing Field</p>
+<p>◎ <strong>Apply <code>$mul</code> Operator to a Non-existing Field</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.collection.update(&#123;<span class="string">'_id'</span>: <span class="number">2</span>&#125;, &#123;<span class="string">'$mul'</span>: &#123;<span class="string">'price'</span>: NumberLong(<span class="number">100</span>)&#125;&#125;)</div></pre></td></tr></table></figure>
 <p>更新后的数据 2 为<code>{&#39;_id&#39;: 2, &#39;item&#39;: &#39;Unknown&#39;, &#39;price&#39;: NumberLong(0)}</code>。</p>
-<p>◎ Multiply Mixed Numeric Types</p>
+<p>◎ <strong>Multiply Mixed Numeric Types</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.collection.update(&#123;<span class="string">'_id'</span>: <span class="number">3</span>&#125;, &#123;<span class="string">'$mul'</span>: &#123;<span class="string">'price'</span>: NumberInt(<span class="number">5</span>)&#125;&#125;)</div></pre></td></tr></table></figure>
 <p>更新后的数据 3 为<code>{&#39;_id&#39;: 3, &#39;item&#39; : &#39;XYZ&#39;, &#39;price&#39;: NumberLong(50)}</code>。</p>
 <ul>
