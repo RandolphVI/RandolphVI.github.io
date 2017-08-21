@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://randolph.pro/"/>
-  <updated>2017-08-21T10:04:42.000Z</updated>
+  <updated>2017-08-21T10:06:21.000Z</updated>
   <id>http://randolph.pro/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://randolph.pro/2017/07/15/%E2%99%9F%E3%80%8CTools%E3%80%8D%20MongoDB%20and%20PyMongo/"/>
     <id>http://randolph.pro/2017/07/15/♟「Tools」 MongoDB and PyMongo/</id>
     <published>2017-07-14T16:00:00.000Z</published>
-    <updated>2017-08-21T10:04:42.000Z</updated>
+    <updated>2017-08-21T10:06:21.000Z</updated>
     
     <content type="html"><![CDATA[<p>有关「Tools」的其他笔记系列：<a href="http://randolph.pro/categories/Tools/">「Tools」</a></p>
 <h1 id="Chapter-1-Getting-Started"><a href="#Chapter-1-Getting-Started" class="headerlink" title="Chapter 1: Getting Started"></a>Chapter 1: Getting Started</h1><h2 id="Installing-MongoDB-on-Mac-OS"><a href="#Installing-MongoDB-on-Mac-OS" class="headerlink" title="Installing MongoDB on Mac OS"></a>Installing MongoDB on Mac OS</h2><p>Mac OS 安装 <code>MongoDB</code> 的方法有多种多样，这里使用 <code>Homebrew</code> 安装 <code>MongoDB</code>，在安装之前首先确保 <code>Homebrew</code> 更新至最新版本：</p>
@@ -147,7 +147,7 @@
 <ul>
 <li><strong>inc</strong></li>
 </ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">with</span> ObjectId._inc_lock:</div><div class="line">		oid += struct.pack(<span class="string">"&gt;i"</span>, ObjectId._inc)[<span class="number">1</span>:<span class="number">4</span>]</div><div class="line">		ObjectId._inc = (ObjectId._inc + <span class="number">1</span>) % <span class="number">0xFFFFFF</span></div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">with</span> ObjectId._inc_lock:</div><div class="line">	oid += struct.pack(<span class="string">"&gt;i"</span>, ObjectId._inc)[<span class="number">1</span>:<span class="number">4</span>]</div><div class="line">	ObjectId._inc = (ObjectId._inc + <span class="number">1</span>) % <span class="number">0xFFFFFF</span></div></pre></td></tr></table></figure>
 <p><strong><code>oid += struct.pack(&quot;&gt;i&quot;, ObjectId._inc)[1:4]</code></strong>先获得三个字节，之后 <code>ObjectId._inc</code> 自增，它能保证每次得到的值是一个递增并不重复的值。</p>
 <h3 id="Get-Timestamp-on-MongoDB"><a href="#Get-Timestamp-on-MongoDB" class="headerlink" title="Get Timestamp on MongoDB"></a>Get Timestamp on MongoDB</h3><p>由于 <code>ObjectId</code> 中存储了四个字节的时间戳，所以我们不需要为我们的 <code>Document</code> 保存时间戳字段，我们可以通过 <code>getTimestamp()</code> 函数来获取文档的创建时间（将返回 ISO 格式的文档创建时间）:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; ObjectId(<span class="string">"5349b4ddd2781d08c09890f4"</span>).getTimestamp()</div><div class="line">ISODate(<span class="string">"2014-04-12T21:49:17Z"</span>)</div></pre></td></tr></table></figure>
@@ -266,7 +266,7 @@
 <ul>
 <li><strong><code>$set</code></strong> &amp; <strong><code>$unSet</code></strong></li>
 </ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">db.collection.update(&#123;<span class="string">'attribute1'</span>: value1, <span class="string">'attribute2'</span>: value2&#125;, \</div><div class="line">		&#123;<span class="string">'$set'</span>: &#123;<span class="string">'attribute1'</span>: new_value1&#125;, <span class="string">'$set'</span>: &#123;<span class="string">'attribute2'</span>: new_value2&#125;&#125;, multi=<span class="keyword">True</span>)</div><div class="line">db.collection.update(&#123;<span class="string">'attribute1'</span>: value1&#125;, &#123;<span class="string">'$unset'</span>: &#123;<span class="string">'attribute2'</span>: value2&#125;&#125;, multi=<span class="keyword">True</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">db.collection.update(&#123;<span class="string">'attribute1'</span>: value1, <span class="string">'attribute2'</span>: value2&#125;, \</div><div class="line">			&#123;<span class="string">'$set'</span>: &#123;<span class="string">'attribute1'</span>: new_value1&#125;, <span class="string">'$set'</span>: &#123;<span class="string">'attribute2'</span>: new_value2&#125;&#125;, multi=<span class="keyword">True</span>)</div><div class="line">db.collection.update(&#123;<span class="string">'attribute1'</span>: value1&#125;, &#123;<span class="string">'$unset'</span>: &#123;<span class="string">'attribute2'</span>: value2&#125;&#125;, multi=<span class="keyword">True</span>)</div></pre></td></tr></table></figure>
 <p>其中，<strong><code>$set</code></strong>表示对原来的记录进行修改，<strong><code>$unset</code></strong>表示移除指定属性。</p>
 <p><strong>注意，使用 <code>&#39;$set&#39;: {&#39;attribute1&#39;: new_value1}</code> 只会对 <code>attribute1</code> 的部分进行修改，如果使用 <code>db.collection.update({&#39;attribute1&#39;: value1}, {&#39;attribute1&#39;: new_value1})</code>，即不使用<code>$set</code>，则会将整个<code>Document</code> 记录替换成<code>{&#39;attribute1&#39;: new_value1}</code>。</strong></p>
 <ul>
