@@ -112,7 +112,7 @@
 <meta property="og:description" content="本文是关于「Web Scraping with Python」这本书的 Chapter 1 &amp; 2的学习笔记。">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://farm5.staticflickr.com/4316/36049777032_f975ed0941_o.jpg">
-<meta property="og:updated_time" content="2017-08-21T13:41:06.000Z">
+<meta property="og:updated_time" content="2017-08-21T13:45:19.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="♞「Web Scraping with Python」 Chapter 1 &amp; 2">
 <meta name="twitter:description" content="本文是关于「Web Scraping with Python」这本书的 Chapter 1 &amp; 2的学习笔记。">
@@ -449,7 +449,7 @@
                   <i class="fa fa-file-word-o"></i>
                 </span>
                 <span title="Words count in article">
-                  1,601
+                  1,589
                 </span>
                 <span> words </span>
                 
@@ -541,7 +541,6 @@
 <h2 id="Regular-Expression"><a href="#Regular-Expression" class="headerlink" title="Regular Expression"></a>Regular Expression</h2><p>学好正则表达式，走遍天下都不怕。正则表达式其实就是一个过滤器，如果你给我的字符串符合我写的规则，那么我就返回它。    </p>
 <p>让我们来看看用正则表达式来表示邮箱地址：</p>
 <p><strong>[A-Za-z0-9\._+]+@[A-Za-z]+\.(com|org|edu|net)</strong></p>
-<p><strong>[A-Za-z0-9._+]+@[A-Za-z]+.(com|org|edu|net)</strong></p>
 <p>让我们把它分解开来看：</p>
 <ol>
 <li><strong>[A-Za-z0-9\._+]+</strong> : 这个表达式把所有可能的序列和符号放在中括号（而不是小括号）里面，表示“括号中的符号里任何一个”。另外注意，后面的加号表示“这些符号都可以出现多次，而且至少出现一次”。</li>
@@ -555,11 +554,11 @@
 <li>P17:</li>
 </ul>
 <blockquote>
-<p>例如，tr 标签是 <strong>tabel</strong> 标签的子标签，而……</p>
+<p>例如，<code>tr</code> 标签是 <strong><code>tabel</code></strong> 标签的子标签，而……</p>
 </blockquote>
 <p>需要更正为：</p>
 <blockquote>
-<p>例如，tr 标签是 <strong>table</strong> 标签的子标签，而……</p>
+<p>例如，<code>tr</code> 标签是 <strong><code>table</code></strong> 标签的子标签，而……</p>
 </blockquote>
 <hr>
 <h1 id="Practice"><a href="#Practice" class="headerlink" title="Practice:"></a>Practice:</h1><ul>
