@@ -3910,7 +3910,7 @@ AC & (1,2)(-2),(0,1)(-1),(0,1)(-1),(0,1)(-1),(2,1)(-1),(EOB)(0,0)
     <link href="http://randolph.pro/2015/09/17/%E2%99%9E%E3%80%8CNLP%20with%20Python%E3%80%8D%20Chapter%203/"/>
     <id>http://randolph.pro/2015/09/17/♞「NLP with Python」 Chapter 3/</id>
     <published>2015-09-16T16:00:00.000Z</published>
-    <updated>2017-08-21T12:58:49.000Z</updated>
+    <updated>2017-08-21T13:02:44.000Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://farm5.staticflickr.com/4423/36425940061_fe957aaf15_o.jpg" alt=""></p>
 <p>有关该书的其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/Natural-Language-Processing/Book-「NLP-with-Python」/">Book:「NLP with Python」</a></p>
@@ -4113,7 +4113,8 @@ P(\mathrm{d} E) = exp(\mathrm{d}E/kT)</script><p>其中 <strong><em>k</em></stro
 <li>字母字符串</li>
 <li>开头大写后小写字母不限（小写字母可有可没有）</li>
 <li>p 开头 t 结尾，中间有少于 2 个的元音字母</li>
-<li>整数或者带小数的整数（整数与浮点数）<br>5.（（非元音）（元音）（非元音））（可有可没有） 例如’pot’</li>
+<li>整数或者带小数的整数（整数与浮点数）</li>
+<li>（（非元音）（元音）（非元音））（可有可没有） 例如’pot’</li>
 <li>要么是字母一个或多个，要么不是字母、空格一个或多个</li>
 </ol>
 <hr>
