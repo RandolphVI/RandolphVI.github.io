@@ -5,11 +5,41 @@
     
   <url>
     <loc>http://randolph.pro/2015/09/11/%E2%99%9E%E3%80%8CNLP%20with%20Python%E3%80%8D%20Chapter%201%20&%202/</loc>
-    <lastmod>2017-08-21T10:35:10.000Z</lastmod>
+    <lastmod>2017-08-21T12:32:51.000Z</lastmod>
     <data>
         <display>
         <title>♞「NLP with Python」 Chapter 1 & 2</title>
         <pubTime>2015-09-10T16:00:00.000Z</pubTime>
+        
+        <tag>Machine Learning</tag>
+         
+        <tag>Python</tag>
+         
+        <tag>Natural Language Processing</tag>
+         
+         
+           
+             
+              <breadCrumb title="Machine Learning" url="http://randolph.pro/categories/Machine-Learning/"/>
+          
+             
+              <breadCrumb title="Natural Language Processing" url="http://randolph.pro/categories/Machine-Learning/Natural-Language-Processing/"/>
+          
+             
+              <breadCrumb title="Book:「NLP with Python」" url="http://randolph.pro/categories/Machine-Learning/Natural-Language-Processing/Book-%E3%80%8CNLP-with-Python%E3%80%8D/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://randolph.pro/2015/09/17/%E2%99%9E%E3%80%8CNLP%20with%20Python%E3%80%8D%20Chapter%203/</loc>
+    <lastmod>2017-08-21T12:30:47.000Z</lastmod>
+    <data>
+        <display>
+        <title>♞「NLP with Python」 Chapter 3</title>
+        <pubTime>2015-09-16T16:00:00.000Z</pubTime>
         
         <tag>Machine Learning</tag>
          
@@ -143,36 +173,6 @@
           
              
               <breadCrumb title="Book:「Machine Learning」" url="http://randolph.pro/categories/Machine-Learning/Book-%E3%80%8CMachine-Learning%E3%80%8D/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://randolph.pro/2015/09/17/%E2%99%9E%E3%80%8CNLP%20with%20Python%E3%80%8D%20Chapter%203/</loc>
-    <lastmod>2017-08-14T12:57:35.000Z</lastmod>
-    <data>
-        <display>
-        <title>♞「NLP with Python」 Chapter 3</title>
-        <pubTime>2015-09-16T16:00:00.000Z</pubTime>
-        
-        <tag>Machine Learning</tag>
-         
-        <tag>Python</tag>
-         
-        <tag>Natural Language Processing</tag>
-         
-         
-           
-             
-              <breadCrumb title="Machine Learning" url="http://randolph.pro/categories/Machine-Learning/"/>
-          
-             
-              <breadCrumb title="Natural Language Processing" url="http://randolph.pro/categories/Machine-Learning/Natural-Language-Processing/"/>
-          
-             
-              <breadCrumb title="Book:「NLP with Python」" url="http://randolph.pro/categories/Machine-Learning/Natural-Language-Processing/Book-%E3%80%8CNLP-with-Python%E3%80%8D/"/>
           
         </display>
     </data>
