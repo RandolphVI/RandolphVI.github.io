@@ -4,6 +4,31 @@
 
     
   <url>
+    <loc>http://randolph.pro/2015/11/02/%E2%99%9E%E3%80%8CWeb%20Scraping%20with%20Python%E3%80%8D%20Chapter%201%20&%202/</loc>
+    <lastmod>2017-08-21T13:49:19.000Z</lastmod>
+    <data>
+        <display>
+        <title>♞「Web Scraping with Python」 Chapter 1 & 2</title>
+        <pubTime>2015-11-01T16:00:00.000Z</pubTime>
+        
+        <tag>Python</tag>
+         
+        <tag>Web Scraping</tag>
+         
+         
+           
+             
+              <breadCrumb title="Web Scraping" url="http://randolph.pro/categories/Web-Scraping/"/>
+          
+             
+              <breadCrumb title="Book:「Web Scraping with Python」" url="http://randolph.pro/categories/Web-Scraping/Book-%E3%80%8CWeb-Scraping-with-Python%E3%80%8D/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://randolph.pro/2015/09/17/%E2%99%9E%E3%80%8CNLP%20with%20Python%E3%80%8D%20Chapter%203/</loc>
     <lastmod>2017-08-21T13:47:47.000Z</lastmod>
     <data>
@@ -27,31 +52,6 @@
           
              
               <breadCrumb title="Book:「NLP with Python」" url="http://randolph.pro/categories/Machine-Learning/Natural-Language-Processing/Book-%E3%80%8CNLP-with-Python%E3%80%8D/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://randolph.pro/2015/11/02/%E2%99%9E%E3%80%8CWeb%20Scraping%20with%20Python%E3%80%8D%20Chapter%201%20&%202/</loc>
-    <lastmod>2017-08-21T13:45:19.000Z</lastmod>
-    <data>
-        <display>
-        <title>♞「Web Scraping with Python」 Chapter 1 & 2</title>
-        <pubTime>2015-11-01T16:00:00.000Z</pubTime>
-        
-        <tag>Python</tag>
-         
-        <tag>Web Scraping</tag>
-         
-         
-           
-             
-              <breadCrumb title="Web Scraping" url="http://randolph.pro/categories/Web-Scraping/"/>
-          
-             
-              <breadCrumb title="Book:「Web Scraping with Python」" url="http://randolph.pro/categories/Web-Scraping/Book-%E3%80%8CWeb-Scraping-with-Python%E3%80%8D/"/>
           
         </display>
     </data>
