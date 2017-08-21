@@ -112,7 +112,7 @@
 <meta property="og:description" content="本文是关于「Web Scraping with Python」这本书的 Chapter 1 &amp; 2的学习笔记。">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://farm5.staticflickr.com/4316/36049777032_f975ed0941_o.jpg">
-<meta property="og:updated_time" content="2017-08-21T13:34:22.000Z">
+<meta property="og:updated_time" content="2017-08-21T13:39:55.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="♞「Web Scraping with Python」 Chapter 1 &amp; 2">
 <meta name="twitter:description" content="本文是关于「Web Scraping with Python」这本书的 Chapter 1 &amp; 2的学习笔记。">
@@ -449,7 +449,7 @@
                   <i class="fa fa-file-word-o"></i>
                 </span>
                 <span title="Words count in article">
-                  1,589
+                  1,601
                 </span>
                 <span> words </span>
                 
@@ -535,11 +535,12 @@
 <p>To make your scrapers more robust, it’s best to be as specific as pos‐ sible when making tag selections. Take advantage of tag attributes when they are available. </p>
 </blockquote>
 <p>如果想让我们的爬虫更加稳定，最好还是让标签的选择更加具体。如果有属性，就利用标签的属性。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">bsObj.tr</div><div class="line">bsObj.table.tr</div><div class="line">bsObj.find(<span class="string">"table"</span>,&#123;<span class="string">"id"</span>:<span class="string">"giftList"</span>&#125;).tr</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">bsObj.tr</div><div class="line">bsObj.table.tr</div><div class="line">bsObj.find(<span class="string">'table'</span>, &#123;<span class="string">'id'</span>: <span class="string">'giftList'</span>&#125;).tr</div></pre></td></tr></table></figure>
 <p>上述三行目的都是获取书本上的网站中的表格的第一行。但是我们应该采用最后一条，用更具体的形式来获取，原因很简单，即使页面上只有一个表格（或者其他的目标标签），只用标签也很容易丢失细节。另外，页面的布局总是不断变化的，一个标签这次是在表格中的第一行的位置，没准哪天就在第二行或者第三行了。</p>
 <hr>
 <h2 id="Regular-Expression"><a href="#Regular-Expression" class="headerlink" title="Regular Expression"></a>Regular Expression</h2><p>学好正则表达式，走遍天下都不怕。正则表达式其实就是一个过滤器，如果你给我的字符串符合我写的规则，那么我就返回它。    </p>
 <p>让我们来看看用正则表达式来表示邮箱地址：</p>
+<p><strong>[A-Za-z0-9\._+]+@[A-Za-z]+\.(com|org|edu|net)</strong></p>
 <p><strong>[A-Za-z0-9\._+]+@[A-Za-z]+\.(com|org|edu|net)</strong></p>
 <p>让我们把它分解开来看：</p>
 <ol>
