@@ -115,7 +115,7 @@
 <meta property="og:image" content="https://farm1.staticflickr.com/645/30825223223_8abc614f13_o.png">
 <meta property="og:image" content="https://farm1.staticflickr.com/767/31488720242_48aae8823f_o.png">
 <meta property="og:image" content="https://farm1.staticflickr.com/768/31263141960_9e2f2a7c44_o.png">
-<meta property="og:updated_time" content="2017-08-21T15:01:42.000Z">
+<meta property="og:updated_time" content="2017-08-21T15:13:19.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="♞「NLP with Python」 Chapter 3">
 <meta name="twitter:description" content="本文是关于「Natural Language Processing with Python」这本书的 Chapter 3 的学习笔记。">
@@ -629,7 +629,7 @@
 <p>在「处理 HTML」的模块中：</p>
 <p>书本提到从 HTML 中提取文本，采用辅助函数 <strong><code>nltk.clean_html()</code></strong> 将 HTML 字符串作为参数，返回原始文本。</p>
 <p>然而，现在这个辅助函数已不支持。为了实现这一目的，我们可以下载<strong><code>Beautiful Soup 4</code></strong>。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ pip install beautifulsoup4</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ pip3 install beautifulsoup4</div></pre></td></tr></table></figure>
 <p>随后在代码部分中，调用 BeautifulSoup：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> nltk, re, pprint</div><div class="line"><span class="keyword">from</span> urllib.request <span class="keyword">import</span> urlopen</div><div class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> *</div><div class="line"></div><div class="line">url = <span class="string">'http://youraddress'</span></div><div class="line">html = urlopen(url).read()</div><div class="line">soup = BeautifulSoup(html)</div><div class="line">raw = soup.get_text()</div><div class="line">tokens = nltk.word_tokenize(raw)</div></pre></td></tr></table></figure></p>
 <hr>
 <p>在「分词」的模块中：</p>
