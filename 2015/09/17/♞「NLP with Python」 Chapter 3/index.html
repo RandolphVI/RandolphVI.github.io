@@ -115,7 +115,7 @@
 <meta property="og:image" content="https://farm1.staticflickr.com/645/30825223223_8abc614f13_o.png">
 <meta property="og:image" content="https://farm1.staticflickr.com/767/31488720242_48aae8823f_o.png">
 <meta property="og:image" content="https://farm1.staticflickr.com/768/31263141960_9e2f2a7c44_o.png">
-<meta property="og:updated_time" content="2017-08-21T14:39:25.000Z">
+<meta property="og:updated_time" content="2017-08-21T14:57:40.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="♞「NLP with Python」 Chapter 3">
 <meta name="twitter:description" content="本文是关于「Natural Language Processing with Python」这本书的 Chapter 3 的学习笔记。">
@@ -598,13 +598,13 @@
 <hr>
 <h2 id="Finding-Word-Stems"><a href="#Finding-Word-Stems" class="headerlink" title="Finding Word Stems"></a>Finding Word Stems</h2><p>书中提到的，抽出一个词的词干的方法，是直接去掉任何看起来像后缀的字符。听起来很棒，但是仍然存在一个问题。比如这个词 <strong>processes</strong>：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; re.findall(r<span class="string">'^(.*)(ing|ly|ed|ious|ies|ive|es|s|ment)$'</span>, <span class="string">'processes'</span>)</div><div class="line">[(<span class="string">'processe'</span>, <span class="string">'s'</span>)]</div></pre></td></tr></table></figure>
-<p>正则表达式错误的找到了后缀 ‘-s’，而不是后缀 ‘-es’。这表明另一个微妙之处：</p>
+<p>正则表达式错误的找到了后缀 <code>&#39;-s&#39;</code>，而不是后缀 <code>&#39;-es&#39;</code>。这表明另一个微妙之处：</p>
 <p><strong><code>*</code></strong> 操作符是“贪婪的”，所以表达式的 <strong><code>.*</code></strong> 部分试图尽可能多地匹配输入的字符串。如果使用“非贪婪”版本的 <strong><code>*</code></strong> 操作符，写成 <strong><code>*?</code></strong> 操作符，就得到想要的结果。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; re.findall(r<span class="string">'^(.*?)(ing|ly|ed|ious|ies|ive|es|s|ment)$'</span>, <span class="string">'processes'</span>)</div><div class="line">[(<span class="string">'process'</span>, <span class="string">'es'</span>)]</div></pre></td></tr></table></figure>
 <p>还可以通过将第二个括号中的内容变成可选来得到空后缀。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; re.findall(r<span class="string">'^(.*?)(ing|ly|ed|ious|ies|ive|es|s|ment)$'</span>, <span class="string">'language'</span>)</div><div class="line">[(<span class="string">'language'</span>, <span class="string">''</span>)]</div></pre></td></tr></table></figure></p>
 <p>（虽然以上方法还有许多问题…）</p>
 <hr>
-<h2 id="Searching-Tokenized-Text"><a href="#Searching-Tokenized-Text" class="headerlink" title="Searching Tokenized Text"></a>Searching Tokenized Text</h2><p>可以使用一种特殊的正则表达式搜索一个文本中多个词。例如，在大型文本语料库中搜索 ‘x and other ys’ 形式的表达式来发现上位词。</p>
+<h2 id="Searching-Tokenized-Text"><a href="#Searching-Tokenized-Text" class="headerlink" title="Searching Tokenized Text"></a>Searching Tokenized Text</h2><p>可以使用一种特殊的正则表达式搜索一个文本中多个词。例如，在大型文本语料库中搜索 <code>&#39;x and other ys&#39;</code> 形式的表达式来发现上位词。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; from nltk.corpus import brown</div><div class="line">&gt;&gt;&gt; hobbies_learned = nltk.Text(brown.words(categories=[<span class="string">'hobbies'</span>, <span class="string">'learned'</span>]))</div><div class="line">&gt;&gt;&gt; hobbies_learned.findall(r<span class="string">'&lt;\w*&gt; &lt;and&gt; &lt;other&gt; &lt;\w*s&gt;'</span>)</div><div class="line">speed and other activities; water and other liquids; tomb and other</div><div class="line">landmarks; Statues and other monuments; pearls and other jewels;</div><div class="line">charts and other items; roads and other features; figures and other</div><div class="line">objects; military and other areas; demands and other factors;</div><div class="line">abstracts and other compilations; iron and other metals</div></pre></td></tr></table></figure>
 <hr>
 <h2 id="Normalizing-Text"><a href="#Normalizing-Text" class="headerlink" title="Normalizing Text"></a>Normalizing Text</h2><h3 id="Stemmers"><a href="#Stemmers" class="headerlink" title="Stemmers"></a>Stemmers</h3><p><strong>词干提取器 </strong>。<code>NLTK</code> 中包括了一些现成的词干提取器，如果需要使用词干提取器，应该优先使用它们中的一个，而不是使用正则表达式制作自己的词干提取器，因为 <code>NLTK</code> 中的词干提取器能处理的不规则情况很广泛。<strong>Porter</strong>和 <strong>Lancaster</strong> 词干提取器按照它们自己的规则剥离词缀。下面的例子表明 <strong>Porter</strong> 词干提取器正确处理了词 lying（将它映射为 lie），而 <strong>Lancaster</strong> 词干提取器并没有处理好。</p>
