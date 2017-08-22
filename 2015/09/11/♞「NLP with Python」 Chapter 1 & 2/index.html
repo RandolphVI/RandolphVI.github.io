@@ -116,7 +116,7 @@
 <meta property="og:image" content="https://farm1.staticflickr.com/474/31598383846_537809b299_o.png">
 <meta property="og:image" content="https://farm5.staticflickr.com/4352/36729830135_f3a2ba6679_o.png">
 <meta property="og:image" content="https://farm5.staticflickr.com/4431/35896100614_0455b1c8b5_o.png">
-<meta property="og:updated_time" content="2017-08-22T09:36:52.000Z">
+<meta property="og:updated_time" content="2017-08-22T09:39:49.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="♞「NLP with Python」 Chapter 1 &amp; 2">
 <meta name="twitter:description" content="本文是关于「Natural Language Processing with Python」这本书的 Chapter 1 &amp; 2 的学习笔记。">
@@ -678,7 +678,7 @@
 </ul>
 <hr>
 <blockquote>
-<p>7.○ According to Strunk and White’s <strong><em>Elements of Style</em></strong>, the word <strong><em>however</em></strong>, used at the start of a sentence, means “in whatever way” or “to whatever extent,” and not “nevertheless.” They give this example of correct usage: <a href="http://www.bartleby.com/141/strunk3.html" target="_blank" rel="external">However you advise him, he will probably do as he thinks best.</a> Use the concordance tool to study actual usage of this word in the various texts we have been considering.<br>See also the <strong><em>LanguageLog</em></strong> posting “Fossilized prejudices about ‘however’” at <a href="http://itre.cis.upenn.edu/~myl/languagelog/archives/001913.html" target="_blank" rel="external">this website</a>.</p>
+<p>7.○ According to Strunk and White’s <strong><em>Elements of Style</em></strong>, the word <strong><em>however</em></strong>, used at the start of a sentence, means “in whatever way” or “to whatever extent,” and not “nevertheless.” They give this example of correct usage: <a href="http://www.bartleby.com/141/strunk3.html" target="_blank" rel="external">However you advise him, he will probably do as he thinks best.</a> Use the concordance tool to study actual usage of this word in the various texts we have been considering. See also the <strong><em>LanguageLog</em></strong> posting “Fossilized prejudices about ‘however’” at <a href="http://itre.cis.upenn.edu/~myl/languagelog/archives/001913.html" target="_blank" rel="external">this website</a>.</p>
 </blockquote>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> nltk</div><div class="line"><span class="keyword">from</span> nltk.corpus <span class="keyword">import</span> *</div><div class="line"></div><div class="line">emma = nltk.Text(nltk.corpus.gutenberg.words(<span class="string">'austen-emma.txt'</span>))</div><div class="line">emma.concordance(<span class="string">'however'</span>)</div><div class="line">print(<span class="string">'----------\n'</span>)</div><div class="line">last = inaugural.fileids()[<span class="number">-3</span>]</div><div class="line">print(last)</div><div class="line">inaugural = nltk.Text(nltk.corpus.inaugural.words(last))</div><div class="line">inaugural.concordance(<span class="string">'however'</span>)</div></pre></td></tr></table></figure>
 <hr>
