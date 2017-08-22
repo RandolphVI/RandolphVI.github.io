@@ -115,7 +115,7 @@
 <meta property="og:image" content="https://farm1.staticflickr.com/445/31263100710_d839312795_o.png">
 <meta property="og:image" content="https://farm1.staticflickr.com/474/31598383846_537809b299_o.png">
 <meta property="og:image" content="https://farm5.staticflickr.com/4352/36729830135_f3a2ba6679_o.png">
-<meta property="og:updated_time" content="2017-08-22T08:28:55.000Z">
+<meta property="og:updated_time" content="2017-08-22T08:51:49.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="♞「NLP with Python」 Chapter 1 &amp; 2">
 <meta name="twitter:description" content="本文是关于「Natural Language Processing with Python」这本书的 Chapter 1 &amp; 2 的学习笔记。">
@@ -463,7 +463,7 @@
                   <i class="fa fa-file-word-o"></i>
                 </span>
                 <span title="Words count in article">
-                  2,199
+                  2,429
                 </span>
                 <span> words </span>
                 
@@ -478,7 +478,7 @@
                   <i class="fa fa-clock-o"></i>
                 </span>
                 <span title="Reading time">
-                  10
+                  12
                 </span>
                 <span> mins </span>
               
@@ -677,7 +677,7 @@
 </ul>
 <hr>
 <blockquote>
-<p>7.○ According to Strunk and White’s <strong><em>Elements of Style</em></strong>, the word <strong><em>however</em></strong>, used at the start of a sentence, means “in whatever way” or “to whatever extent,” and not “nevertheless.” They give this example of correct usage: <strong><em>However you advise him, he will probably do as he thinks best.</em></strong>(<a href="http://www.bartleby.com/141/strunk3.html" target="_blank" rel="external">http://www.bartleby.com/141/strunk3.html</a>) Use the concordance tool to study actual usage of this word in the various texts we have been considering. See also the <strong><em>LanguageLog</em></strong> posting “Fossilized prejudices about ‘however’” at <a href="http://itre.cis.upenn.edu/~myl/languagelog/archives/001913" target="_blank" rel="external">http://itre.cis.upenn.edu/~myl/languagelog/archives/001913</a> .html.</p>
+<p>7.○ According to Strunk and White’s <strong><em>Elements of Style</em></strong>, the word <strong><em>however</em></strong>, used at the start of a sentence, means “in whatever way” or “to whatever extent,” and not “nevertheless.” They give this example of correct usage: <strong><em>However you advise him, he will probably do as he thinks best.</em></strong>!((<a href="http://www.bartleby.com/141/strunk3.html" target="_blank" rel="external">http://www.bartleby.com/141/strunk3.html</a>)) Use the concordance tool to study actual usage of this word in the various texts we have been considering. See also the <strong><em>LanguageLog</em></strong> posting “Fossilized prejudices about ‘however’” at !(<a href="http://itre.cis.upenn.edu/~myl/languagelog/archives/001913.html" target="_blank" rel="external">http://itre.cis.upenn.edu/~myl/languagelog/archives/001913.html</a>).</p>
 </blockquote>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> nltk</div><div class="line"><span class="keyword">from</span> nltk.corpus <span class="keyword">import</span> *</div><div class="line"></div><div class="line">emma = nltk.Text(nltk.corpus.gutenberg.words(<span class="string">'austen-emma.txt'</span>))</div><div class="line">emma.concordance(<span class="string">'however'</span>)</div><div class="line">print(<span class="string">'----------\n'</span>)</div><div class="line">last = inaugural.fileids()[<span class="number">-3</span>]</div><div class="line">print(last)</div><div class="line">inaugural = nltk.Text(nltk.corpus.inaugural.words(last))</div><div class="line">inaugural.concordance(<span class="string">'however'</span>)</div></pre></td></tr></table></figure>
 <hr>
@@ -688,7 +688,12 @@
 <p>!()[<a href="https://farm5.staticflickr.com/4431/35896100614_0455b1c8b5_o.png" target="_blank" rel="external">https://farm5.staticflickr.com/4431/35896100614_0455b1c8b5_o.png</a>]</p>
 <hr>
 <blockquote>
-<p>14.◑ Define a function <strong><code>supergloss(s)</code></strong> that takes a synset s as its argument and returns a string consisting of the concatenation of the definition of <strong>s</strong>, and the definitions of all the hypernyms and hyponyms of <strong>s</strong>.</p>
+<p>9.◑ Pick a pair of texts and study the differences between them, in terms of vocabu- lary, vocabulary richness, genre, etc. Can you find pairs of words that have quite different meanings across the two texts, such as <strong><em>monstrous</em></strong> in <strong><em>Moby Dick</em></strong> and in <strong><em>Sense</em></strong> and Sensibility?</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> nltk</div><div class="line"><span class="keyword">from</span> nltk.book <span class="keyword">import</span> *</div><div class="line"><span class="keyword">from</span> nltk.corpus <span class="keyword">import</span> *</div><div class="line"></div><div class="line">religion = brown.words(fileids=<span class="string">'cd12'</span>)</div><div class="line">movie = webtext.words(fileids=<span class="string">'pirates.txt'</span>)</div><div class="line"></div><div class="line">print(<span class="string">'Vocabulary of Book1: %d'</span> % len(set(religion)))</div><div class="line">print(<span class="string">'Vocabulary Richness of Book1: %f'</span> % (len(set(religion)) / len(religion)))</div><div class="line"></div><div class="line">print(<span class="string">'----------\n'</span>)</div><div class="line">print(<span class="string">'Vocabulary of Book2: %d'</span> % len(set(movie)))</div><div class="line">print(<span class="string">'Vocabulary Richness Book2: %f'</span> % (len(set(movie)) / len(movie)))</div><div class="line">print(<span class="string">'----------\n'</span>)</div><div class="line"></div><div class="line">movie_text = nltk.Text(movie)</div><div class="line">religion_text = nltk.Text(religion)</div><div class="line"></div><div class="line"><span class="comment">## Word use:</span></div><div class="line">movie_text.concordance(<span class="string">'love'</span>)</div><div class="line">print(<span class="string">'----------\n'</span>)</div><div class="line">religion_text.concordance(<span class="string">'love'</span>)</div><div class="line">print(<span class="string">'----------\n'</span>)</div><div class="line"></div><div class="line">movie_text.concordance(<span class="string">'bear'</span>)</div><div class="line">print(<span class="string">'----------\n'</span>)</div><div class="line">religion_text.concordance(<span class="string">'bear'</span>)</div></pre></td></tr></table></figure>
+<hr>
+<blockquote>
+<p>10.◑ Read the BBC News article: “UK’s Vicky Pollards ‘left behind’” at !(<a href="http://news" target="_blank" rel="external">http://news</a> .bbc.co.uk/1/hi/education/6173441.stm). The article gives the following statistic about teen language: “the top 20 words used, including yeah, no, but and like, account for around a third of all words.” How many word types account for a third of all word tokens, for a variety of text sources? What do you conclude about this statistic? Read more about this on LanguageLog, at <a href="http://itre.cis.upenn.edu/~myl/" target="_blank" rel="external">http://itre.cis.upenn.edu/~myl/</a> languagelog/archives/003993.html.<br>14.◑ Define a function <strong><code>supergloss(s)</code></strong> that takes a synset s as its argument and returns a string consisting of the concatenation of the definition of <strong>s</strong>, and the definitions of all the hypernyms and hyponyms of <strong>s</strong>.</p>
 </blockquote>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">supergloss</span><span class="params">(s)</span>:</span></div><div class="line">    s = wn.synset(<span class="string">'s'</span>)</div><div class="line">    hyponyms_of_s = s.hyponyms()</div><div class="line">    hypernyms_of_s = s.hypernyms()</div><div class="line">    <span class="keyword">return</span> str(s) + str(hyponyms_of_s) + str(hypernyms_of_s)</div></pre></td></tr></table></figure>
 <hr>
