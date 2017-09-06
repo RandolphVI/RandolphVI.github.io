@@ -112,7 +112,7 @@
 <meta property="og:description" content="本文主要介绍在机器学习中样本比例不平衡的处理方法。">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://farm5.staticflickr.com/4300/35460446383_aafc34ca3c_o.jpg">
-<meta property="og:updated_time" content="2017-09-06T14:29:52.000Z">
+<meta property="og:updated_time" content="2017-09-06T14:30:46.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="「Machine Learning」 Deal with Imbalanced Data">
 <meta name="twitter:description" content="本文主要介绍在机器学习中样本比例不平衡的处理方法。">
@@ -438,7 +438,7 @@
                   <i class="fa fa-file-word-o"></i>
                 </span>
                 <span title="Words count in article">
-                  2,077
+                  2,078
                 </span>
                 <span> words </span>
                 
@@ -479,7 +479,7 @@
         <p><img src="https://farm5.staticflickr.com/4300/35460446383_aafc34ca3c_o.jpg" alt=""></p>
 <p>有关「Machine Learning」的其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/">「Machine Learning」</a></p>
 <h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>在机器学习中，常常会遇到样本比例不平衡的问题，如对于一个二分类问题，正负样本的比例是 10:1。这种现象往往是由于本身数据来源决定的，如信用卡的征信问题中往往就是正样本居多。样本比例不平衡往往会带来不少问题，但是实际获取的数据又往往是不平衡的，因此本文主要讨论面对样本不平衡时的解决方法。</p>
-<p>样本不平衡往往会导致模型对样本数较多的分类造成过拟合，即总是将样本分到了样本数较多的分类中；除此之外，一个典型的问题就是 <a href="https://en.wikipedia.org/wiki/Accuracy_paradox" target="_blank" rel="external">Accuracy Paradox</a>，这个问题指的是模型的对样本预测的准确率很高，但是模型的泛化能力差。其原因是模型将大多数的样本都归类为样本数较多的那一类，如下所示</p>
+<p>样本不平衡往往会导致模型对样本数较多的分类造成过拟合，即总是将样本分到了样本数较多的分类中；除此之外，一个典型的问题就是 <a href="https://en.wikipedia.org/wiki/Accuracy_paradox" target="_blank" rel="external">Accuracy Paradox</a>，这个问题指的是模型的对样本预测的准确率很高，但是模型的泛化能力差。其原因是模型将大多数的样本都归类为样本数较多的那一类，如下表所示:</p>
 <div class="table-container">
 <table>
 <thead>
