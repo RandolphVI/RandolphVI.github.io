@@ -107,7 +107,7 @@
 <meta name="keywords" content="Machine Learning">
 <meta property="og:type" content="article">
 <meta property="og:title" content="「Machine Learning」 LSTM Introduction">
-<meta property="og:url" content="http://randolph.pro/2017/09/07/「Machine Learning」 RNN & LSTM Introduction/index.html">
+<meta property="og:url" content="http://randolph.pro/2017/09/08/「Machine Learning」 LSTM Introduction/index.html">
 <meta property="og:site_name" content="黃某人">
 <meta property="og:description" content="本文主要介绍 Deep Learning 中的 LSTM 神经网络。">
 <meta property="og:locale" content="en">
@@ -128,7 +128,7 @@
 <meta property="og:image" content="http://7xqwhn.com1.z0.glb.clouddn.com/2016-10-19-14585655553885.jpg">
 <meta property="og:image" content="http://7xqwhn.com1.z0.glb.clouddn.com/2016-10-19-14585661398239.jpg">
 <meta property="og:image" content="http://7xqwhn.com1.z0.glb.clouddn.com/2016-10-19-14585667357562.png">
-<meta property="og:updated_time" content="2017-09-06T12:26:32.000Z">
+<meta property="og:updated_time" content="2017-09-06T12:28:40.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="「Machine Learning」 LSTM Introduction">
 <meta name="twitter:description" content="本文主要介绍 Deep Learning 中的 LSTM 神经网络。">
@@ -160,7 +160,7 @@
 
 
 
-  <link rel="canonical" href="http://randolph.pro/2017/09/07/「Machine Learning」 RNN & LSTM Introduction/"/>
+  <link rel="canonical" href="http://randolph.pro/2017/09/08/「Machine Learning」 LSTM Introduction/"/>
 
 
 
@@ -353,7 +353,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://randolph.pro/2017/09/07/「Machine Learning」 RNN & LSTM Introduction/">
+    <link itemprop="mainEntityOfPage" href="http://randolph.pro/2017/09/08/「Machine Learning」 LSTM Introduction/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Randolph">
@@ -382,8 +382,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-07T00:00:00+08:00">
-                2017-09-07
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-08T00:00:00+08:00">
+                2017-09-08
               </time>
             
 
@@ -423,9 +423,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/09/07/「Machine Learning」 RNN & LSTM Introduction/#comments" itemprop="discussionUrl">
+                <a href="/2017/09/08/「Machine Learning」 LSTM Introduction/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/09/07/「Machine Learning」 RNN & LSTM Introduction/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2017/09/08/「Machine Learning」 LSTM Introduction/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -433,7 +433,7 @@
 
           
           
-             <span id="/2017/09/07/「Machine Learning」 RNN & LSTM Introduction/" class="leancloud_visitors" data-flag-title="「Machine Learning」 LSTM Introduction">
+             <span id="/2017/09/08/「Machine Learning」 LSTM Introduction/" class="leancloud_visitors" data-flag-title="「Machine Learning」 LSTM Introduction">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-fire"></i>
@@ -498,7 +498,6 @@
 <p>传统的神经网络并不能如此，这似乎是一个主要的缺点。例如，假设你在看一场电影，你想对电影里的每一个场景进行分类。传统的神经网络不能够基于前面的已分类场景来推断接下来的场景分类。</p>
 <p>循环神经网络 (Recurrent Neural Networks) 解决了这个问题。这种神经网络带有环，可以将信息持久化。</p>
 <p><img src="http://7xqwhn.com1.z0.glb.clouddn.com/2016-10-19-14585451475265.jpg" alt="Recurrent Neural Networks have loops. -c100"></p>
-<p><a id="more"></a></p>
 <p>在上图所示的神经网络 $A$ 中，输入为 $X_t$，输出为 $h_t$。$A$ 上的环允许将每一步产生的信息传递到下一步中。环的加入使得 RNN 变得神秘。不过，如果你多思考一下的话，其实 RNN 跟普通的神经网络也没有那么不同。一个 RNN 可以看作是同一个网络的多份副本，每一份都将信息传递到下一个副本。如果我们将环展开的话：</p>
 <p><img src="http://7xqwhn.com1.z0.glb.clouddn.com/2016-10-19-14585464218639.png" alt="An unrolled recurrent neural network. -c600"></p>
 <p>这种链式结构展示了 RNN 与序列和列表的密切关系。RNN 的这种结构能够非常自然地使用这类数据。而且事实的确如此。在过去的几年里，RNN 在一系列的任务中都取得了令人惊叹的成就，比如语音识别，语言建模，翻译，图片标题等等。关于 RNN 在各个领域所取得的令人惊叹的成就，参见 <a href="http://karpathy.github.io/2015/05/21/rnn-effectiveness/" target="_blank" rel="external"> 这篇文章</a>。</p>
@@ -595,8 +594,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/09/06/「Machine Learning」Deal with Imbalanced Data/" rel="next" title="「Machine Learning」 Deal with Imbalanced Data">
-                <i class="fa fa-chevron-left"></i> 「Machine Learning」 Deal with Imbalanced Data
+              <a href="/2017/09/07/「Machine Learning」 RNN Introduction/" rel="next" title="「Machine Learning」 RNN Introduction">
+                <i class="fa fa-chevron-left"></i> 「Machine Learning」 RNN Introduction
               </a>
             
           </div>
@@ -683,7 +682,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">23</span>
+                <span class="site-state-item-count">24</span>
                 <span class="site-state-item-name">Posts</span>
               </a>
             </div>
@@ -986,8 +985,8 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://randolph.pro/2017/09/07/「Machine Learning」 RNN & LSTM Introduction/';
-          this.page.identifier = '2017/09/07/「Machine Learning」 RNN & LSTM Introduction/';
+          this.page.url = 'http://randolph.pro/2017/09/08/「Machine Learning」 LSTM Introduction/';
+          this.page.identifier = '2017/09/08/「Machine Learning」 LSTM Introduction/';
           this.page.title = '「Machine Learning」 LSTM Introduction';
         };
         var d = document, s = d.createElement('script');
