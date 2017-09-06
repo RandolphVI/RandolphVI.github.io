@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://randolph.pro/"/>
-  <updated>2017-08-21T10:23:56.000Z</updated>
+  <updated>2017-09-06T12:21:41.000Z</updated>
   <id>http://randolph.pro/</id>
   
   <author>
@@ -14,6 +14,383 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>「Machine Learning」 Deal with Imbalanced Data</title>
+    <link href="http://randolph.pro/2017/09/06/%E3%80%8CMachine%20Learning%E3%80%8DDeal%20with%20Imbalanced%20Data/"/>
+    <id>http://randolph.pro/2017/09/06/「Machine Learning」Deal with Imbalanced Data/</id>
+    <published>2017-09-05T16:00:00.000Z</published>
+    <updated>2017-09-06T12:21:41.000Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="https://farm5.staticflickr.com/4300/35460446383_aafc34ca3c_o.jpg" alt=""></p>
+<p>有关「Machine Learning」的其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/">「Machine Learning」</a></p>
+<h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>在机器学习中，常常会遇到样本比例不平衡的问题，如对于一个二分类问题，正负样本的比例是 10:1。这种现象往往是由于本身数据来源决定的，如信用卡的征信问题中往往就是正样本居多。样本比例不平衡往往会带来不少问题，但是实际获取的数据又往往是不平衡的，因此本文主要讨论面对样本不平衡时的解决方法。</p>
+<p>样本不平衡往往会导致模型对样本数较多的分类造成过拟合，即总是将样本分到了样本数较多的分类中；除此之外，一个典型的问题就是 <a href="https://en.wikipedia.org/wiki/Accuracy_paradox" target="_blank" rel="external">Accuracy Paradox</a>，这个问题指的是模型的对样本预测的准确率很高，但是模型的泛化能力差。其原因是模型将大多数的样本都归类为样本数较多的那一类，如下所示</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>category</th>
+<th>Predicted Negative</th>
+<th>Predicted Positive</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Negative Cases</td>
+<td>9700</td>
+<td>150</td>
+</tr>
+<tr>
+<td>Positive Cases</td>
+<td>50</td>
+<td>100</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>准确率为 $\frac{9700+100}{9700 + 150 + 50 + 100} = 0.98$</p>
+<p>而假如将所有的样本都归为预测为负样本，准确率会进一步上升，但是这样的模型显然是不好的，实际上，模型已经对这个不平衡的样本过拟合了。</p>
+<p>针对样本的不平衡问题，有以下几种常见的解决思路</p>
+<ol>
+<li>搜集更多的数据</li>
+<li>改变评判指标</li>
+<li>对数据进行采样</li>
+<li>合成样本</li>
+<li>改变样本权重</li>
+</ol>
+<h2 id="搜集更多的数据"><a href="# 搜集更多的数据" class="headerlink" title="搜集更多的数据"></a>搜集更多的数据 </h2><p> 搜集更多的数据，从而让正负样本的比例平衡，这种方法往往是最被忽视的方法，然而实际上，当搜集数据的代价不大时，这种方法是最有效的。</p>
+<p>但是需要注意，当搜集数据的场景本来产生数据的比例就是不平衡时，这种方法并不能解决数据比例不平衡问题。</p>
+<h2 id="改变评判指标"><a href="# 改变评判指标" class="headerlink" title="改变评判指标"></a>改变评判指标 </h2><p> 改变评判指标，也就是不用准确率来评判和选择模型，原因就是我们上面提到的 Accuracy Paradox 问题。实际上有一些评判指标就是专门解决样本不平衡时的评判问题的，如准确率，召回率，F1 值，ROC（AUC），<a href="https://en.wikipedia.org/wiki/Cohen%27s_kappa" target="_blank" rel="external">Kappa</a> 等。</p>
+<p>根据 <a href="http://alexkong.net/2013/06/introduction-to-auc-and-roc/" target="_blank" rel="external"> 这篇文章</a>，ROC 曲线具有不随样本比例而改变的良好性质，因此能够在样本比例不平衡的情况下较好地反映出分类器的优劣。</p>
+<p>关于评判指标更详细的内容可参考文章： <a href="http://machinelearningmastery.com/classification-accuracy-is-not-enough-more-performance-measures-you-can-use/" target="_blank" rel="external">Classification Accuracy is Not Enough: More Performance Measures You Can Use</a></p>
+<h2 id="对数据进行采样"><a href="# 对数据进行采样" class="headerlink" title="对数据进行采样"></a>对数据进行采样 </h2><p> 对数据采样可以有针对性地改变数据中样本的比例，采样一般有两种方式：<code>over-sampling</code> 和 <code>under-sampling</code>，前者是增加样本数较少的样本，其方式是直接复制原来的样本，而后者是减少样本数较多的样本，其方式是丢弃这些多余的样本。</p>
+<p>通常来说，当总样本数目较多的时候考虑 <code>under-sampling</code>，而样本数数目较少的时候考虑 <code>over-sampling</code>。</p>
+<p>关于数据采样更详细的内容可参考 <a href="https://en.wikipedia.org/wiki/Oversampling_and_undersampling_in_data_analysis" target="_blank" rel="external">Oversampling and undersampling in data analysis</a></p>
+<h2 id="合成样本"><a href="# 合成样本" class="headerlink" title="合成样本"></a>合成样本 </h2><p> 合成样本 (Synthetic Samples) 是为了增加样本数目较少的那一类的样本，合成指的是通过组合已有的样本的各个 feature 从而产生新的样本。</p>
+<p>一种最简单的方法就是从各个 feature 中随机选出一个已有值，然后拼接成一个新的样本，这种方法增加了样本数目较少的类别的样本数，作用与上面提到的 <code>Over-sampling</code> 方法一样，不同点在于上面的方法是单纯的复制样本，而这里则是拼接得到新的样本。</p>
+<p>这类方法中的具有代表性的方法是 SMOTE（Synthetic Minority Over-sampling Technique），这个方法通过在相似样本中进行 feature 的随机选择并拼接出新的样本。</p>
+<p>关于 SMOTE 更详细的信息可参考论文 <a href="http://www.jair.org/papers/paper953.html" target="_blank" rel="external">SMOTE: Synthetic Minority Over-sampling Technique</a></p>
+<h2 id="改变样本权重"><a href="# 改变样本权重" class="headerlink" title="改变样本权重"></a>改变样本权重 </h2><p> 改变样本权重指的是 <strong> 增大样本数较少类别的样本的权重</strong>，当这样的样本被误分时，其损失值要乘上相应的权重，从而让分类器更加关注这一类数目较少的样本。</p>
+<p>参考：</p>
+<p><a href="http://machinelearningmastery.com/tactics-to-combat-imbalanced-classes-in-your-machine-learning-dataset/" target="_blank" rel="external">8 Tactics to Combat Imbalanced Classes in Your Machine Learning Dataset</a><br><a href="https://www.quora.com/In-classification-how-do-you-handle-an-unbalanced-training-set" target="_blank" rel="external">In classification, how do you handle an unbalanced training set?</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      本文主要介绍在机器学习中样本比例不平衡的处理方法。
+    
+    </summary>
+    
+      <category term="Machine Learning" scheme="http://randolph.pro/categories/Machine-Learning/"/>
+    
+    
+      <category term="Machine Learning" scheme="http://randolph.pro/tags/Machine-Learning/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>「Machine Learning」 CNN Introduction</title>
+    <link href="http://randolph.pro/2017/09/06/%E3%80%8CMachine%20Learning%E3%80%8D%20RNN%20&amp;%20LSTM%20Introduction/"/>
+    <id>http://randolph.pro/2017/09/06/「Machine Learning」 RNN &amp; LSTM Introduction/</id>
+    <published>2017-09-05T16:00:00.000Z</published>
+    <updated>2017-09-06T11:19:07.000Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="https://farm5.staticflickr.com/4300/35460446383_aafc34ca3c_o.jpg" alt=""></p>
+<p>有关「Machine Learning」的其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/">「Machine Learning」</a></p>
+<h1 id="理解 LSTM 网络"><a href="# 理解 LSTM 网络" class="headerlink" title="理解 LSTM 网络"></a>理解 LSTM 网络</h1><div class="post-meta"><span class="post-time">Posted on <time itemprop="dateCreated" datetime="2016-10-19T11:38:26+08:00" content="2016-10-19">2016-10-19</time> </span><span class="post-category">  |   In <span itemprop="about" itemscope=""itemtype="https://schema.org/Thing">[<span itemprop="name">Machine Learning</span>](/categories/Machine-Learning/) </span></span><span class="post-comments-count">  |   [<span class="post-comments-count disqus-comment-count"data-disqus-identifier="understanding-lstm-network.html"itemprop="commentsCount"></span>](/understanding-lstm-network.html#comments)</span>  |   <span id="/understanding-lstm-network.html"class="leancloud_visitors"data-flag-title=" 理解 LSTM 网络 "> Views</span></div>
+
+<p>&lt;/header&gt;</p>
+<div class="post-body"><span itemprop="articleBody">
+
+## 循环神经网络(RNN)
+
+人们的每次思考并不都是从零开始的。比如说你在阅读这篇文章时，你基于对前面的文字的理解来理解你目前阅读到的文字，而不是每读到一个文字时，都抛弃掉前面的思考，从头开始。你的记忆是有持久性的。
+
+传统的神经网络并不能如此，这似乎是一个主要的缺点。例如，假设你在看一场电影，你想对电影里的每一个场景进行分类。传统的神经网络不能够基于前面的已分类场景来推断接下来的场景分类。
+
+循环神经网络 (Recurrent Neural Networks) 解决了这个问题。这种神经网络带有环，可以将信息持久化。
+
+![Recurrent Neural Networks have loops. -c100](http://7xqwhn.com1.z0.glb.clouddn.com/2016-10-19-14585451475265.jpg)
+
+<a id="more"></a>
+
+在上图所示的神经网络 $A$ 中，输入为 $X_t$，输出为 $h_t$。$A$ 上的环允许将每一步产生的信息传递到下一步中。环的加入使得 RNN 变得神秘。不过，如果你多思考一下的话，其实 RNN 跟普通的神经网络也没有那么不同。一个 RNN 可以看作是同一个网络的多份副本，每一份都将信息传递到下一个副本。如果我们将环展开的话：
+
+![An unrolled recurrent neural network. -c600](http://7xqwhn.com1.z0.glb.clouddn.com/2016-10-19-14585464218639.png)
+
+这种链式结构展示了 RNN 与序列和列表的密切关系。RNN 的这种结构能够非常自然地使用这类数据。而且事实的确如此。在过去的几年里，RNN 在一系列的任务中都取得了令人惊叹的成就，比如语音识别，语言建模，翻译，图片标题等等。关于 RNN 在各个领域所取得的令人惊叹的成就，参见[这篇文章](http://karpathy.github.io/2015/05/21/rnn-effectiveness/)。
+
+LSTM 是这一系列成功中的必要组成部分。LSTM(Long Short Term Memory)是一种特殊的循环神经网络，在许多任务中，LSTM 表现得比标准的 RNN 要出色得多。几乎所有基于 RNN 的令人赞叹的结果都是 LSTM 取得的。本文接下来将着重介绍 LSTM。
+
+## 长期依赖 (Long Term Dependencies) 的问题
+
+RNN 的一个核心思想是将以前的信息连接到当前的任务中来，例如，通过前面的视频帧来帮助理解当前帧。如果 RNN 真的能够这样做的话，那么它们将会极其有用。但是事实真是如此吗？未必。
+
+有时候，我们只需要看最近的信息，就可以完成当前的任务。比如，考虑一个语言模型，通过前面的单词来预测接下来的单词。如果我们想预测句子“the clouds are in the _sky_”中的最后一个单词，我们不需要更多的上下文信息——很明显下一个单词应该是 sky。在这种情况下，当前位置与相关信息所在位置之间的距离相对较小，RNN 可以被训练来使用这样的信息。
+
+![-c400](http://7xqwhn.com1.z0.glb.clouddn.com/2016-10-19-14585476990034.jpg)
+
+然而，有时候我们需要更多的上下文信息。比如，我们想预测句子“I grew up in France… I speak fluent _French_”中的最后一个单词。最近的信息告诉我们，最后一个单词可能是某种语言的名字，然而如果我们想确定到底是哪种语言的话，我们需要 France 这个更远的上下文信息。实际上，相关信息和需要该信息的位置之间的距离可能非常的远。
+
+不幸的是，随着距离的增大，RNN 对于如何将这样的信息连接起来无能为力。
+
+![-c600](http://7xqwhn.com1.z0.glb.clouddn.com/2016-10-19-14585481509571.png)
+
+理论上说，RNN 是有能力来处理这种长期依赖 (Long Term Dependencies) 的。人们可以通过精心调参来构建模型处理一个这种玩具问题 (Toy Problem)。不过，在实际问题中，RNN 并没有能力来学习这些。[Hochreiter (1991) German](http://people.idsia.ch/~juergen/SeppHochreiter1991ThesisAdvisorSchmidhuber.pdf) 更深入地讲了这个问题，[Bengio, et al. (1994)](http://www-dsi.ing.unifi.it/~paolo/ps/tnn-94-gradient.pdf)发现了 RNN 的一些非常基础的问题。
+
+幸运的是，LSTM 并没有上述问题！
+
+## LSTM 网络
+
+LSTM，全称为长短期记忆网络 (Long Short Term Memory networks)，是一种特殊的 RNN，能够学习到长期依赖关系。LSTM 由[Hochreiter & Schmidhuber (1997)](http://deeplearning.cs.cmu.edu/pdfs/Hochreiter97_lstm.pdf) 提出，许多研究者进行了一系列的工作对其改进并使之发扬光大。LSTM 在许多问题上效果非常好，现在被广泛使用。
+
+LSTM 在设计上明确地避免了长期依赖的问题。记住长期信息是小菜一碟！所有的循环神经网络都有着重复的神经网络模块形成链的形式。在普通的 RNN 中，重复模块结构非常简单，例如只有一个 tanh 层。
+
+![The repeating module in a standard RNN contains a single layer. -c600](http://7xqwhn.com1.z0.glb.clouddn.com/2016-10-19-14585498578776.jpg)
+
+LSTM 也有这种链状结构，不过其重复模块的结构不同。LSTM 的重复模块中有 4 个神经网络层，并且他们之间的交互非常特别。
+
+![The repeating module in an LSTM contains four interacting layers. -c600](http://7xqwhn.com1.z0.glb.clouddn.com/2016-10-19-14585500063294.png)
+
+现在暂且不必关心细节，稍候我们会一步一步地对 LSTM 的各个部分进行介绍。开始之前，我们先介绍一下将用到的标记。
+
+![-c500](http://7xqwhn.com1.z0.glb.clouddn.com/2016-10-19-14585501719114.jpg)
+
+在上图中，每条线表示向量的传递，从一个结点的输出传递到另外结点的输入。粉红圆表示向量的元素级操作，比如相加或者相乘。黄色方框表示神经网络的层。线合并表示向量的连接，线分叉表示向量复制。
+
+## LSTM 核心思想
+
+LSTM 的关键是元胞状态(Cell State)，下图中横穿整个元胞顶部的水平线。
+
+元胞状态有点像是传送带，它直接穿过整个链，同时只有一些较小的线性交互。上面承载的信息可以很容易地流过而不改变。
+
+![-c600](http://7xqwhn.com1.z0.glb.clouddn.com/2016-10-19-14585507601229.jpg)
+
+LSTM 有能力对元胞状态添加或者删除信息，这种能力通过一种叫门的结构来控制。
+
+门是一种选择性让信息通过的方法。它们由一个 Sigmoid 神经网络层和一个元素级相乘操作组成。
+
+![-c100](http://7xqwhn.com1.z0.glb.clouddn.com/2016-10-19-14585511223368.jpg)
+
+Sigmoid 层输出 0~1 之间的值，每个值表示对应的部分信息是否应该通过。0 值表示不允许信息通过，1 值表示让所有信息通过。一个 LSTM 有 3 个这种门，来保护和控制元胞状态。
+
+## LSTM 分步详解
+
+LSTM 的第一步是决定我们将要从元胞状态中扔掉哪些信息。该决定由一个叫做“遗忘门 (Forget Gate)”的 Sigmoid 层控制。遗忘门观察 \(h_{t-1}\) 和 \(x_{t}\)，对于元胞状态 \(C_{t-1}\)中的每一个元素，输出一个 0~1 之间的数。1 表示“完全保留该信息”，0 表示“完全丢弃该信息”。
+
+回到之前的预测下一个单词的例子。在这样的一个问题中，元胞状态可能包含当前主语的性别信息，以用来选择正确的物主代词。当我们遇到一个新的主语时，我们就需要把旧的性别信息遗忘掉。
+
+![-c600](http://7xqwhn.com1.z0.glb.clouddn.com/2016-10-19-14585517843913.jpg)
+
+下一步是决定我们将会把哪些新信息存储到元胞状态中。这步分为两部分。首先，有一个叫做“输入门(Input Gate)”的 Sigmoid 层决定我们要更新哪些信息。接下来，一个 tanh 层创造了一个新的候选值，$\tilde{C_t}$，该值可能被加入到元胞状态中。在下一步中，我们将会把这两个值组合起来用于更新元胞状态。
+
+在语言模型的例子中，我们可能想要把新主语的性别加到元胞状态中，来取代我们已经遗忘的旧值。
+
+![-c600](http://7xqwhn.com1.z0.glb.clouddn.com/2016-10-19-14585522130400.jpg)
+
+现在我们该更新旧元胞状态 $C_{t-1}$ 到新状态 $C_t$ 了。上面的步骤中已经决定了该怎么做，这一步我们只需要实际执行即可。
+
+我们把旧状态 $C_{t-1}$ 乘以 $f_t$，忘掉我们已经决定忘记的内容。然后我们再加上 $i_t * \tilde{C_t}$，这个值由新的候选值（$\tilde{C_t}$）乘以候选值的每一个状态我们决定更新的程度（$i_t$）构成。
+
+还是语言模型的例子，在这一步，我们按照之前的决定，扔掉了旧的主语的性别信息，并且添加了新的信息。
+
+![-c600](http://7xqwhn.com1.z0.glb.clouddn.com/2016-10-19-14585647039038.jpg)
+
+最后，我们需要决定最终的输出。输出将会基于目前的元胞状态，并且会加入一些过滤。首先我们建立一个 Sigmoid 层的输出门(Output Gate)，来决定我们将输出元胞的哪些部分。然后我们将元胞状态通过 tanh 之后（使得输出值在 -1 到 1 之间），与输出门相乘，这样我们只会输出我们想输出的部分。
+
+对于语言模型的例子，由于刚刚只输出了一个主语，因此下一步可能需要输出与动词相关的信息。举例来说，可能需要输出主语是单数还是复数，以便于我们接下来选择动词时能够选择正确的形式。
+
+![-c600](http://7xqwhn.com1.z0.glb.clouddn.com/2016-10-19-14585652046323.jpg)
+
+## LSTM 的变种
+
+本文前面所介绍的 LSTM 是最普通的 LSTM，但并非所有的 LSTM 模型都与前面相同。事实上，似乎每一篇 paper 中所用到的 LSTM 都是稍微不一样的版本。不同之处很微小，不过其中一些值得介绍。
+
+一个流行的 LSTM 变种，由 [Gers & Schmidhuber (2000)](ftp://ftp.idsia.ch/pub/juergen/TimeCount-IJCNN2000.pdf) 提出，加入了“窥视孔连接(peephole connection)”。也就是说我们让各种门可以观察到元胞状态。
+
+![-c600](http://7xqwhn.com1.z0.glb.clouddn.com/2016-10-19-14585655553885.jpg)
+
+上图中，对于所有的门都加入了“窥视孔”，不过也有一些 paper 中只加一部分。
+
+另一种变种是使用 ** 对偶 ** 的遗忘门和输入门。我们不再是单独地决定需要遗忘什么信息，需要加入什么新信息；而是一起做决定：我们只会在需要在某处放入新信息时忘记该处的旧值；我们只会在已经忘记旧值的位置放入新值。
+
+![-c600](http://7xqwhn.com1.z0.glb.clouddn.com/2016-10-19-14585661398239.jpg)
+
+另一个变化更大一些的 LSTM 变种叫做 Gated Recurrent Unit，或者 GRU，由 [Cho, et al. (2014)](http://arxiv.org/pdf/1406.1078v3.pdf) 提出。GRU 将遗忘门和输入门合并成为单一的“更新门 (Update Gate)”。GRU 同时也将元胞状态(Cell State) 和隐状态 (Hidden State) 合并，同时引入其他的一些变化。该模型比标准的 LSTM 模型更加简化，同时现在也变得越来越流行。
+
+![-c600](http://7xqwhn.com1.z0.glb.clouddn.com/2016-10-19-14585667357562.png)
+
+另外还有很多其他的模型，比如 [Yao, et al. (2015)](http://arxiv.org/pdf/1508.03790v2.pdf) 提出的 Depth Gated RNNs。同时，还有很多完全不同的解决长期依赖问题的方法，比如 [Koutnik, et al. (2014)](http://arxiv.org/pdf/1402.3511v1.pdf) 提出的 Clockwork RNNs。
+
+不同的模型中哪个最好？这其中的不同真的有关系吗？[Greff, et al. (2015)](http://arxiv.org/pdf/1503.04069.pdf)对流行的变种做了一个比较，发现它们基本相同。[Jozefowicz, et al. (2015)](http://jmlr.org/proceedings/papers/v37/jozefowicz15.pdf)测试了一万多种 RNN 结构，发现其中的一些在特定的任务上效果比 LSTM 要好。
+
+## 结论
+
+前文中，我提到了人们使用 RNN 所取得的出色的成就。本质上，几乎所有的成就都是由 LSTM 取得的。对于大部分的任务，LSTM 表现得非常好。
+
+由于 LSTM 写在纸上是一堆公式，因此看起来很吓人。希望本文的分步讲解能让读者更容易接受和理解。
+
+LSTM 使得我们在使用 RNN 能完成的任务上迈进了一大步。很自然，我们会思考，还会有下一个一大步吗？研究工作者们的共同观点是：“是的！还有一个下一步，那就是注意力 (Attention)！”注意力机制的思想是，在每一步中，都让 RNN 从一个更大的信息集合中去选择信息。举个例子，假如你使用 RNN 来生成一幅图片的说明文字，RNN 可能在输出每一个单词时，都会去观察图片的一部分。事实上，[Xu, et al.(2015)](http://arxiv.org/pdf/1502.03044v2.pdf) 做的正是这个工作！如果你想探索注意力机制的话，这会是一个很有趣的起始点。现在已经有很多使用注意力的令人兴奋的成果，而且似乎更多的成果马上将会出来……
+
+注意力并不是 RNN 研究中唯一让人兴奋的主题。举例说，由 [Kalchbrenner, et al. (2015)](http://arxiv.org/pdf/1507.01526v1.pdf) 提出的 Grid LSTM 似乎极有前途。在生成式模型中使用 RNN 的工作——比如 [Gregor, et al. (2015)](http://arxiv.org/pdf/1502.04623.pdf)、[Chung, et al. (2015)](http://arxiv.org/pdf/1506.02216v3.pdf) 以及[Bayer & Osendorfer (2015)](http://arxiv.org/pdf/1411.7610v3.pdf)——看起来也非常有意思。最近的几年对于 RNN 来说是一段非常令人激动的时间，接下来的几年也必将更加使人振奋！
+
+* * *
+
+本文结束，感谢欣赏。
+
+#### 注：本文翻译自[colah’s blog](http://colah.github.io/)，原文链接：[http://colah.github.io/posts/2015-08-Understanding-LSTMs/](http://colah.github.io/posts/2015-08-Understanding-LSTMs/)。译文原作者：Naitong Yu，译文链接：[https://yunaitong.cn/understanding-lstm-networks.html](https://yunaitong.cn/understanding-lstm-networks.html)
+
+* * *
+
+** 文章写得不错？打赏一个呗:)**
+
+![](http://i.imgur.com/tTBAnzw.png)
+
+** 近期博主准备筹建 NLP 方面的技术群，欢迎感兴趣的小伙伴加我入群交流:)，加好友请备注：”博客”。**
+
+![](http://i.imgur.com/CTuJ7Ln.jpg)
+
+</span></div>
+
+<footer class="post-footer">
+
+<div class="post-tags">[#Deep Learning](/tags/Deep-Learning/) [#LSTM](/tags/LSTM/) [#Machine Learning](/tags/Machine-Learning/) [#RNN](/tags/RNN/)</div>
+
+<div class="post-nav">
+
+<div class="post-nav-next post-nav-item">[各种系统下 Shadowsocks 客户端的安装与配置](/how-to-install-and-setup-shadowsocks-client-in-different-os.html "各种系统下 Shadowsocks 客户端的安装与配置")</div>
+
+<div class="post-nav-prev post-nav-item">[聊天机器人中的深度学习技术之二：基于检索模型的实现](/deep-learning-for-chatbots-2.html "聊天机器人中的深度学习技术之二：基于检索模型的实现")</div>
+
+</div>
+
+</footer>
+
+<p>&lt;/article&gt;</p>
+<div class="post-spread">
+
+<div class="jiathis_style"><a class="jiathis_button_tsina"></a><a class="jiathis_button_tqq"></a><a class="jiathis_button_weixin"></a><a class="jiathis_button_cqq"></a><a class="jiathis_button_douban"></a><a class="jiathis_button_renren"></a><a class="jiathis_button_qzone"></a><a class="jiathis_button_kaixin001"></a><a class="jiathis_button_copy"></a>[](http://www.jiathis.com/share)<a class="jiathis_counter_style"></a></div>
+
+<script type="text/javascript">var jiathis_config={hideMore:false}</script></div>
+
+
+
+
+
+<div class="comments" id="comments">
+
+<div id="disqus_thread">
+
+<noscript>Please enable JavaScript to view the [comments powered by Disqus.](//disqus.com/?ref_noscript)</noscript>
+
+</div>
+
+</div>
+
+
+
+<div class="sidebar-toggle">
+
+<div class="sidebar-toggle-line-wrap"><span class="sidebar-toggle-line sidebar-toggle-line-first"></span><span class="sidebar-toggle-line sidebar-toggle-line-middle"></span><span class="sidebar-toggle-line sidebar-toggle-line-last"></span></div>
+
+</div>
+
+<aside id="sidebar" class="sidebar">
+
+<div class="sidebar-inner">
+
+*   Table Of Contents
+*   Overview
+
+<section class="site-overview sidebar-panel">
+
+<div class="site-author motion-element" itemprop="author" itemscope=""itemtype="http://schema.org/Person">![Jey Zhang](/upload/image/avatar.png)
+
+Jey Zhang
+
+</div>
+
+Life is Now.
+
+<nav class="site-state motion-element">
+
+<div class="site-state-item site-state-posts">[<span class="site-state-item-count">28</span> <span class="site-state-item-name">posts</span>](/archives)</div>
+
+<div class="site-state-item site-state-categories">[<span class="site-state-item-count">8</span> <span class="site-state-item-name">categories</span>](/categories)</div>
+
+<div class="site-state-item site-state-tags">[<span class="site-state-item-count">49</span> <span class="site-state-item-name">tags</span>](/tags)</div>
+
+</nav>
+
+<div class="links-of-author motion-element"><span class="links-of-author-item">[facebook](http://www.facebook.com/jeyzhang) </span><span class="links-of-author-item">[weibo](http://weibo.com/jerrychang0402) </span><span class="links-of-author-item">[zhihu](http://www.zhihu.com/people/zhangjieup) </span><span class="links-of-author-item">[github](https://github.com/jeyzhang)</span></div>
+
+<div class="links-of-author motion-element">
+
+Links
+
+<span class="links-of-author-item">[Tong](http://www.yunaitong.cn)</span> <span class="links-of-author-item">[WILDML](http://www.wildml.com/)</span></div>
+
+</section>
+
+<section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+
+<div class="post-toc">
+
+<div class="post-toc-content">
+
+1.  [<span class="nav-number">1.</span> <span class="nav-text">循环神经网络(RNN)</span>](# 循环神经网络(RNN))
+2.  [<span class="nav-number">2.</span> <span class="nav-text">长期依赖 (Long Term Dependencies) 的问题 </span>](# 长期依赖(Long_Term_Dependencies) 的问题)
+3.  [<span class="nav-number">3.</span> <span class="nav-text">LSTM 网络</span>](#LSTM 网络)
+4.  [<span class="nav-number">4.</span> <span class="nav-text">LSTM 核心思想</span>](#LSTM 核心思想)
+5.  [<span class="nav-number">5.</span> <span class="nav-text">LSTM 分步详解</span>](#LSTM 分步详解)
+6.  [<span class="nav-number">6.</span> <span class="nav-text">LSTM 的变种</span>](#LSTM 的变种)
+7.  [<span class="nav-number">7.</span> <span class="nav-text">结论</span>](# 结论)
+    1.  [<span class="nav-number">7.0.1.</span> <span class="nav-text">注：本文翻译自 colah’s blog，原文链接：http://colah.github.io/posts/2015-08-Understanding-LSTMs/。译文原作者：Naitong Yu，译文链接：https://yunaitong.cn/understanding-lstm-networks.html</span>](# 注：本文翻译自 colah’s_blog，原文链接：http://colah-github-io/posts/2015-08-Understanding-LSTMs/。译文原作者：Naitong_Yu，译文链接：https://yunaitong-cn/understanding-lstm-networks-html)
+
+</div>
+
+</div>
+
+</section>
+
+</div>
+
+</aside>
+
+
+
+<footer id="footer" class="footer">
+
+<div class="footer-inner">
+
+<div class="copyright">© <span itemprop="copyrightYear">2017</span> <span class="with-love"></span><span class="author" itemprop="copyrightHolder">Jey Zhang</span></div>
+
+<div class="powered-by">Powered by [Hexo](http://hexo.io)</div>
+
+<div class="theme-info">Theme - [NexT](https://github.com/iissnan/hexo-theme-next)</div>
+
+<span id="busuanzi_container_site_pv">  |  Total visited <span id="busuanzi_value_site_pv"></span>times.</span></div>
+
+</footer>
+
+
+
+<script type="text/javascript">var disqus_shortname = 'jeyzhang'; var disqus_identifier = 'understanding-lstm-network.html'; var disqus_title = '理解 LSTM 网络'; var disqus_url = 'http://www.jeyzhang.com/understanding-lstm-network.html'; function run_disqus_script(disqus_script){var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true; dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script; (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq); } run_disqus_script('count.js'); run_disqus_script('embed.js');</script> <script type="text/javascript" id="sidebar.toc.highlight">$(document).ready(function () {var tocSelector = '.post-toc'; var $tocSelector = $(tocSelector); var activeCurrentSelector = '.active-current'; $tocSelector .on('activate.bs.scrollspy', function () {var $currentActiveElement = $(tocSelector + '.active').last(); removeCurrentActiveClass(); $currentActiveElement.addClass('active-current'); $tocSelector[0].scrollTop = $currentActiveElement.position().top;}) .on('clear.bs.scrollspy', function () {removeCurrentActiveClass(); }); function removeCurrentActiveClass () { $(tocSelector + '' + activeCurrentSelector) .removeClass(activeCurrentSelector.substring(1)); } function processTOC () { getTOCMaxHeight(); toggleTOCOverflowIndicators();} function getTOCMaxHeight () { var height = $('.sidebar').height() - $tocSelector.position().top - $('.post-toc-indicator-bottom').height(); $tocSelector.css('height', height); return height; } function toggleTOCOverflowIndicators () { tocOverflowIndicator('.post-toc-indicator-top', $tocSelector.scrollTop() > 0 ?'show':'hide'); tocOverflowIndicator('.post-toc-indicator-bottom', $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ?'hide':'show') } $(document).on('sidebar.motion.complete', function () {processTOC(); }); $('body').scrollspy({target: tocSelector}); $(window).on('resize', function () {if ( $('.sidebar').hasClass('sidebar-active') ) {processTOC(); } }); onScroll($tocSelector); function onScroll (element) {element.on('mousewheel DOMMouseScroll', function (event) {var oe = event.originalEvent; var delta = oe.wheelDelta || -oe.detail; this.scrollTop += ( delta < 0 ? 1 : -1) * 30; event.preventDefault(); toggleTOCOverflowIndicators(); }); } function tocOverflowIndicator (indicator, action) {var $indicator = $(indicator); var opacity = action ==='show'? 1 : 0; $indicator.velocity ? $indicator.velocity('stop').velocity({opacity: opacity}, {duration: 100}) : $indicator.stop().animate({ opacity: opacity}, 100); } });</script> <script type="text/javascript"id="sidebar.nav">$(document).ready(function () {var html = $('html'); var TAB_ANIMATE_DURATION = 200; var hasVelocity = $.isFunction(html.velocity); $('.sidebar-nav li').on('click', function () {var item = $(this); var activeTabClassName ='sidebar-nav-active'; var activePanelClassName ='sidebar-panel-active'; if (item.hasClass(activeTabClassName)) {return;} var currentTarget = $('.'+ activePanelClassName); var target = $('.'+ item.data('target')); hasVelocity ? currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {target .velocity('stop') .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION) .addClass(activePanelClassName); }) : currentTarget.animate({opacity: 0}, TAB_ANIMATE_DURATION, function () { currentTarget.hide(); target .stop() .css({'opacity': 0,'display':'block'}) .animate({opacity: 1}, TAB_ANIMATE_DURATION, function () { currentTarget.removeClass(activePanelClassName); target.addClass(activePanelClassName); }); }); item.siblings().removeClass(activeTabClassName); item.addClass(activeTabClassName); }); $('.post-toc a').on('click', function (e) {e.preventDefault(); var targetSelector = escapeSelector(this.getAttribute('href')); var offset = $(targetSelector).offset().top; hasVelocity ? html.velocity('stop').velocity('scroll', { offset: offset +'px', mobileHA: false}) : $('html, body').stop().animate({ scrollTop: offset}, 500); }); // Expand sidebar on post detail page by default, when post has a toc. motionMiddleWares.sidebar = function () { var $tocContent = $('.post-toc-content'); if (CONFIG.sidebar ==='post') {if ($tocContent.length> 0 && $tocContent.html().trim().length > 0) {displaySidebar(); } } }; });</script> <script>AV.initialize("4KyzRuAgl6zwWXQK1UfxmIh0-gzGzoHsz","YeXrCFBwTG1qRdqS2rUJ7XgJ");</script> <script>function showTime(Counter) {var query = new AV.Query(Counter); $(".leancloud_visitors").each(function() {var url = $(this).attr("id").trim(); query.equalTo("url", url); query.find({success: function(results) {if (results.length == 0) {var content ='0 '+ $(document.getElementById(url)).text(); $(document.getElementById(url)).text(content); return; } for (var i = 0; i < results.length; i++) {var object = results[i]; var content = object.get('time') +' '+ $(document.getElementById(url)).text(); $(document.getElementById(url)).text(content); } }, error: function(object, error) {console.log("Error: "+ error.code +" "+ error.message); } }); }); } function addCount(Counter) {var Counter = AV.Object.extend("Counter"); url = $(".leancloud_visitors").attr('id').trim(); title = $(".leancloud_visitors").attr('data-flag-title').trim(); var query = new AV.Query(Counter); query.equalTo("url", url); query.find({success: function(results) {if (results.length> 0) {var counter = results[0]; counter.fetchWhenSave(true); counter.increment("time"); counter.save(null, { success: function(counter) {var content = counter.get('time') +' '+ $(document.getElementById(url)).text(); $(document.getElementById(url)).text(content); }, error: function(counter, error) {console.log('Failed to save Visitor num, with error message: '+ error.message); } }); } else {var newcounter = new Counter(); newcounter.set("title", title); newcounter.set("url", url); newcounter.set("time", 1); newcounter.save(null, { success: function(newcounter) {console.log("newcounter.get('time')="+newcounter.get('time')); var content = newcounter.get('time') +' '+ $(document.getElementById(url)).text(); $(document.getElementById(url)).text(content); }, error: function(newcounter, error) {console.log('Failed to create'); } }); } }, error: function(error) {console.log('Error:'+ error.code +" "+ error.message); } }); } $(function() {var Counter = AV.Object.extend("Counter"); if ($('.leancloud_visitors').length == 1) {addCount(Counter); } else if ($('.post-title-link').length > 1) {showTime(Counter); } });</script> <script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: { inlineMath: [ ['/script>,'/script>], ["\\(","\\)"] ], processEscapes: true } });</script> <script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: { skipTags: ['script','noscript','style','textarea','pre','code'] } });</script> <script type="text/x-mathjax-config">MathJax.Hub.Queue(function() {var all = MathJax.Hub.getAllJax(), i; for(i=0; i < all.length; i += 1) {all[i].SourceElement().parentNode.className +=' has-jax';} });</script>
+]]></content>
+    
+    <summary type="html">
+    
+      本文主要介绍 Deep Learning 中的 RNN 卷积神经网络。
+    
+    </summary>
+    
+      <category term="Machine Learning" scheme="http://randolph.pro/categories/Machine-Learning/"/>
+    
+    
+      <category term="Machine Learning" scheme="http://randolph.pro/tags/Machine-Learning/"/>
+    
+  </entry>
   
   <entry>
     <title>♟「Tools」 MongoDB and PyMongo</title>
@@ -3802,421 +4179,6 @@ AC & (1,2)(-2),(0,1)(-1),(0,1)(-1),(0,1)(-1),(2,1)(-1),(EOB)(0,0)
       <category term="Python" scheme="http://randolph.pro/tags/Python/"/>
     
       <category term="Web Scraping" scheme="http://randolph.pro/tags/Web-Scraping/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>♞「Web Scraping with Python」 Chapter 1 &amp; 2</title>
-    <link href="http://randolph.pro/2015/11/02/%E2%99%9E%E3%80%8CWeb%20Scraping%20with%20Python%E3%80%8D%20Chapter%201%20&amp;%202/"/>
-    <id>http://randolph.pro/2015/11/02/♞「Web Scraping with Python」 Chapter 1 &amp; 2/</id>
-    <published>2015-11-01T16:00:00.000Z</published>
-    <updated>2017-08-21T13:51:06.000Z</updated>
-    
-    <content type="html"><![CDATA[<p><img src="https://farm5.staticflickr.com/4316/36049777032_f975ed0941_o.jpg" alt=""></p>
-<p>有关该书的其他学习笔记系列：<a href="http://randolph.pro/categories/Web-Scraping/Book-「Web-Scraping-with-Python」/">Book:「Web Scraping with Python」</a></p>
-<h1 id="Related"><a href="#Related" class="headerlink" title="Related"></a>Related</h1><ul>
-<li><strong>BeautifulSoup package</strong></li>
-<li><strong>Navigating Trees</strong> </li>
-<li><strong>Regular Expression</strong></li>
-</ul>
-<hr>
-<h1 id="Key"><a href="#Key" class="headerlink" title="Key:"></a>Key:</h1><h2 id="urlib-or-urlib2"><a href="#urlib-or-urlib2" class="headerlink" title="urlib or urlib2?"></a>urlib or urlib2?</h2><blockquote>
-<p>If you’ve used the urllib2 library in Python 2.x, you might have noticed that things have changed somewhat between urllib2 and urllib. In Python 3.x, urllib2 was renamed urllib and was split into several submodules: urllib.request, urllib.parse, and url lib.error. Although function names mostly remain the same, you might want to note which functions have moved to submodules when using the new urllib. </p>
-</blockquote>
-<p>在学习这本书之前，使用过此 package（我一开始学习 Python 就用的是 3.x，Mac 自带 Python 2.x），当时出错了，在 Stackoverflow 找到了答案，现在这本书提到了这点，重新回顾一下:</p>
-<p>如果你用过 Python 2.x 里的 <strong><code>urllib2</code></strong> 库，可能会发现 <strong><code>urllib2</code></strong> 与 <strong><code>urllib</code></strong> 有些不同。在 Python 3.x 里，<strong><code>urllib2</code></strong> 改名为 <strong><code>urllib</code></strong>，被分成一些子模块：<strong><code>urllib.request</code></strong>、<strong><code>urllib.parse</code></strong> 和 <strong><code>urllib.error</code></strong>。尽管函数名称大多和原来一样，但是在用新的 <strong><code>urllib</code></strong> 库时需要注意哪些函数被移动到子模块里了。</p>
-<hr>
-<h2 id="When-to-get-text-and-When-to-Preserve-Tags"><a href="#When-to-get-text-and-When-to-Preserve-Tags" class="headerlink" title="When to get_text() and When to Preserve Tags?"></a>When to get_text() and When to Preserve Tags?</h2><blockquote>
-<p>.get_text() strips all tags from the document you are working with and returns a string containing the text only. For example, if you are working with a large block of text that contains many hyperlinks, paragraphs, and other tags, all those will be stripped away and you’ll be left with a tagless block of text.</p>
-<p>Keep in mind that it’s much easier to find what you’re looking for in a BeautifulSoup object than in a block of text. Calling .get_text() should always be the last thing you do, immediately before you print, store, or manipulate your final data. In general, you should try to preserve the tag structure of a document as long as possible.</p>
-</blockquote>
-<p>简而言之，通常在我们准备打印、存储和操作数据的时候，即最后的时候才使用 <strong><code>.get_text()</code></strong>。一般情况下，我们应该尽可能地保留 HTML 文档的标签结构。</p>
-<hr>
-<h2 id="find-and-findAll-with-BeautifulSoup"><a href="#find-and-findAll-with-BeautifulSoup" class="headerlink" title="find() and findAll() with BeautifulSoup?"></a>find() and findAll() with BeautifulSoup?</h2><ul>
-<li><strong>findAll(tag, attributes, recursive, text, limit, keywords)</strong></li>
-<li><strong>find(tag, attributes, recursive, text, keywords)</strong></li>
-</ul>
-<p>先说结论，再仔细说说参数的用法。</p>
-<p><strong><code>find()</code></strong> is equivalent to the same <strong><code>findAll()</code></strong> call, with a <strong>limit</strong> of  1.<br><strong><code>find()</code></strong> 其实等价于 <strong><code>findAll()</code></strong> 的 <strong>limit</strong> 等于 1 时的特殊情况。 </p>
-<ul>
-<li><strong><code>tag</code></strong>: 我们可以传一个标签的名称或多个标签名称组成的 Python 列表做标签参数。例如：<strong><code>(&#39;span&#39;, &#39;h1&#39;, {&#39;span&#39;, &#39;h1&#39;}, {&#39;h1&#39;, &#39;h2&#39;, &#39;h3&#39;})</code></strong>。其实就是一个「或」关系的过滤器（即我们可以选择带有 <strong><code>span</code></strong> 或 <strong><code>h1</code></strong> 或 <strong><code>h2</code></strong> 等的一列标签）。</li>
-<li><strong><code>attributes</code></strong>: 这是一个用 Python 字典封装某一标签的若干属性和对应的属性值。例如：<strong><code>{&#39;class&#39;: {&#39;green&#39;, &#39;red&#39;}}</code></strong></li>
-<li><strong><code>recursive</code></strong>: 一般情况下，这个参数不需要设置，除非我们真正了解自己需要哪些信息，而且抓取速度非常重要，因为这个参数会根据我们的要求去查找标签参数的所有子标签，以及子标签的子标签。</li>
-<li><strong><code>limit</code></strong>: 只适用于 <strong><code>findAll()</code></strong> 方法，如果我们只对网页中获取的前 <em>x</em> 项结果感兴趣，我们就可以通过设置 <strong><code>limit</code></strong> 来获取。<strong>但是需要注意的是：获得的前几项结果是按照网页上的顺序排序的，未必是我们想要的前几项，所以我们还需要额外做一些自己的排序。</strong></li>
-<li><strong><code>keyword</code></strong>: 使我们选择那些具有制定属性的标签成为可能。</li>
-</ul>
-<blockquote>
-<p><strong>keyword 关键词参数的主意事项：</strong><br>使用 <strong><code>keyword</code></strong> 偶尔会出现问题，尤其是在用 <strong>class</strong> 属性查找标签的时候，因为 <strong>class</strong> 是 Python 中受保护的关键字。也就是说，<strong>class</strong> 是 Python 语言的保留字，在 Python 程序中是不能充当变量或者参数名使用的。假如我们运行下面的代码，Python 就会因为我们误用 <strong>class</strong> 保留字而产生一个语法错误：</p>
-<p>   <strong><code>bsObj.findAll(class=&#39;green&#39;)</code></strong></p>
-<p>不过 BeautifulSoup 提供了一个解决方案，就是在 class 后面增加一个下划线：</p>
-<p>   <strong><code>bsObj.findAll(class_=&#39;green&#39;)</code></strong></p>
-<p>我们也可以使用属性参数来将 <strong>class</strong> 用引号包起来：</p>
-<p>   <strong><code>bsObj.findAll(&#39;&#39;,{&#39;class&#39;: &#39;green&#39;})</code></strong></p>
-</blockquote>
-<p><strong>另外，如果说 <code>tag</code> 参数是相当于一个「或」关系的过滤器，那么 <code>keyword</code> 参数就可以为我们构造一个「与」关系的过滤器来提高我们的工作效率，简化我们的工作。</strong></p>
-<hr>
-<h2 id="Navigating-Trees"><a href="#Navigating-Trees" class="headerlink" title="Navigating Trees"></a>Navigating Trees</h2><p>如果说 <strong><code>find()</code></strong> 和 <strong><code>findAll()</code></strong> 函数是通过标签的名称和属性来查找标签，那么 Navigating Trees 就是通过标签在文档中的位置来查找标签。</p>
-<h3 id="Make-Selections-Specific"><a href="#Make-Selections-Specific" class="headerlink" title="Make Selections Specific"></a>Make Selections Specific</h3><blockquote>
-<p>To make your scrapers more robust, it’s best to be as specific as pos‐ sible when making tag selections. Take advantage of tag attributes when they are available. </p>
-</blockquote>
-<p>如果想让我们的爬虫更加稳定，最好还是让标签的选择更加具体。如果有属性，就利用标签的属性。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">bsObj.tr</div><div class="line">bsObj.table.tr</div><div class="line">bsObj.find(<span class="string">'table'</span>, &#123;<span class="string">'id'</span>: <span class="string">'giftList'</span>&#125;).tr</div></pre></td></tr></table></figure>
-<p>上述三行目的都是获取书本上的网站中的表格的第一行。但是我们应该采用最后一条，用更具体的形式来获取，原因很简单，即使页面上只有一个表格（或者其他的目标标签），只用标签也很容易丢失细节。另外，页面的布局总是不断变化的，一个标签这次是在表格中的第一行的位置，没准哪天就在第二行或者第三行了。</p>
-<hr>
-<h2 id="Regular-Expression"><a href="#Regular-Expression" class="headerlink" title="Regular Expression"></a>Regular Expression</h2><p>学好正则表达式，走遍天下都不怕。正则表达式其实就是一个过滤器，如果你给我的字符串符合我写的规则，那么我就返回它。    </p>
-<p>让我们来看看用正则表达式来表示邮箱地址：</p>
-<p><strong>[A-Za-z0-9\._+]+@[A-Za-z]+\.(com|org|edu|net)</strong></p>
-<p>让我们把它分解开来看：</p>
-<ol>
-<li><strong>[A-Za-z0-9\._+]+</strong> : 这个表达式把所有可能的序列和符号放在中括号（而不是小括号）里面，表示“括号中的符号里任何一个”。另外注意，后面的加号表示“这些符号都可以出现多次，而且至少出现一次”。</li>
-<li><strong>@</strong>：这个符号很直接，出现在中间位置，有且仅有一次。</li>
-<li><strong>[A-Za-z]+</strong> ：可能出现在域名的前半部分、符号 @后面用字母。而且，至少有一个字母。</li>
-<li><strong>.</strong> : 域名前必须有一个点号。</li>
-<li><strong>(com|org|edu|net)</strong> : 顶级域名可能有很多种，但是作为参考，这是个后缀够用了。</li>
-</ol>
-<hr>
-<h1 id="Correct-errors-in-printing"><a href="#Correct-errors-in-printing" class="headerlink" title="Correct errors in printing:"></a>Correct errors in printing:</h1><ul>
-<li>P17:</li>
-</ul>
-<blockquote>
-<p>例如，<code>tr</code> 标签是 <strong><code>tabel</code></strong> 标签的子标签，而……</p>
-</blockquote>
-<p>需要更正为：</p>
-<blockquote>
-<p>例如，<code>tr</code> 标签是 <strong><code>table</code></strong> 标签的子标签，而……</p>
-</blockquote>
-<hr>
-<h1 id="Practice"><a href="#Practice" class="headerlink" title="Practice:"></a>Practice:</h1><ul>
-<li><strong>暂无</strong></li>
-</ul>
-<hr>
-]]></content>
-    
-    <summary type="html">
-    
-      本文是关于「Web Scraping with Python」这本书的 Chapter 1 &amp; 2的学习笔记。
-    
-    </summary>
-    
-      <category term="Web Scraping" scheme="http://randolph.pro/categories/Web-Scraping/"/>
-    
-      <category term="Book:「Web Scraping with Python」" scheme="http://randolph.pro/categories/Web-Scraping/Book-%E3%80%8CWeb-Scraping-with-Python%E3%80%8D/"/>
-    
-    
-      <category term="Python" scheme="http://randolph.pro/tags/Python/"/>
-    
-      <category term="Web Scraping" scheme="http://randolph.pro/tags/Web-Scraping/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>♞「NLP with Python」 Chapter 3</title>
-    <link href="http://randolph.pro/2015/09/17/%E2%99%9E%E3%80%8CNLP%20with%20Python%E3%80%8D%20Chapter%203/"/>
-    <id>http://randolph.pro/2015/09/17/♞「NLP with Python」 Chapter 3/</id>
-    <published>2015-09-16T16:00:00.000Z</published>
-    <updated>2017-08-23T14:54:18.000Z</updated>
-    
-    <content type="html"><![CDATA[<p><img src="https://farm5.staticflickr.com/4423/36425940061_fe957aaf15_o.jpg" alt=""></p>
-<p>有关该书的其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/Natural-Language-Processing/Book-「NLP-with-Python」/">Book:「NLP with Python」</a></p>
-<h1 id="Related"><a href="#Related" class="headerlink" title="Related"></a>Related</h1><ul>
-<li><strong>The NLP Pipeline</strong></li>
-<li><strong>Basic Operations with Strings</strong></li>
-<li><strong>Regular Expressions for Detecting Word Patterns</strong></li>
-<li><strong>Finding Word Stems</strong></li>
-<li><strong>Searching Tokenized Text</strong></li>
-<li><strong>Normalizing Text</strong></li>
-<li><strong>Word Segmentation</strong></li>
-<li><strong>Formatting: From Lists to Strings</strong></li>
-</ul>
-<hr>
-<h1 id="Key"><a href="#Key" class="headerlink" title="Key:"></a>Key:</h1><h2 id="The-NLP-Pipeline"><a href="#The-NLP-Pipeline" class="headerlink" title="The NLP Pipeline"></a>The NLP Pipeline</h2><p>NLP 的处理流程：我们打开一个 URL 代码读取里面 HTML 格式的内容，去除标记，并选择字符的切片，然后分词，是否转换为 <strong><code>nltk.Text</code></strong> 对象是可选择的。我们也可以将所有词汇小写并提取成词汇表（Vocab）。</p>
-<p><img src="https://farm1.staticflickr.com/645/30825223223_8abc614f13_o.png" alt=""></p>
-<hr>
-<h2 id="Basic-Operations-with-Strings"><a href="#Basic-Operations-with-Strings" class="headerlink" title="Basic Operations with Strings"></a>Basic Operations with Strings</h2><p>有时候字符串跨好几行。Python 提供了多种方式表示它们。在下面的例子中，一个包含两个字符串的序列被连接为一个字符串。我们需要使用 <strong> 反斜杠 </strong> 或者 <strong> 括号</strong>，这样解释器就知道第一行的表达式不完整了。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; couplet = &quot;Shall I compare thee to a Summer&apos;s day?&quot;\</div><div class="line">...           &quot;Thou are more lovely and more temperate:&quot;</div><div class="line">&gt;&gt;&gt; print(couplet)</div><div class="line">Shall I compare thee to a Summer&apos;s day?Thou are more lovely and more temperate:</div><div class="line">&gt;&gt;&gt; couplet = (&quot;Rough winds do shake the darling buds of May,&quot;</div><div class="line">...           &quot;And Summer&apos;s lease hath all too short a date:&quot;)</div><div class="line">&gt;&gt;&gt; print(couplet)</div><div class="line">Rough winds do shake the darling buds of May,And Summer&apos;s lease hath all too short a date:</div></pre></td></tr></table></figure>
-<p>不幸的是，这些方法并没有展现给我们十四行诗中两行之间的换行。为此，我们可以使用如下所示的三重引号的字符串。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; couplet = &quot;&quot;&quot;Shall I compare thee to a Summer&apos;s day?</div><div class="line">...           Thou are more lovely and more temperate:&quot;&quot;&quot;</div><div class="line">&gt;&gt;&gt; print(couplet)</div><div class="line">Shall I compare thee to a Summer&apos;s day?</div><div class="line">Thou are more lovely and more temperate:</div><div class="line">&gt;&gt;&gt; couplet = &apos;&apos;&apos;Rough winds do shake the darling buds of May,</div><div class="line">...           And Summer&apos;s lease hath all too short a date:&apos;&apos;&apos;</div><div class="line">&gt;&gt;&gt; print(couplet)</div><div class="line">Rough winds do shake the darling buds of May,</div><div class="line">And Summer&apos;s lease hath all too short a date:</div></pre></td></tr></table></figure>
-<hr>
-<h2 id="Regular-Expressions-for-Detecting-Word-Patterns"><a href="#Regular-Expressions-for-Detecting-Word-Patterns" class="headerlink" title="Regular Expressions for Detecting Word Patterns"></a>Regular Expressions for Detecting Word Patterns</h2><p>正则表达式基本元字符，其中包括通配符、范围和闭包：</p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th>Operator</th>
-<th>Behavior</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>.</td>
-<td>Wildcard, matches any character</td>
-</tr>
-<tr>
-<td>^abc</td>
-<td>Matches some pattern abc at the start of a string</td>
-</tr>
-<tr>
-<td>abc$</td>
-<td>Matches some pattern abc at the end of a string</td>
-</tr>
-<tr>
-<td>[abc]</td>
-<td>Matches one of a set of characters</td>
-</tr>
-<tr>
-<td>[A-Z0-9]</td>
-<td>Matches one of a range of characters</td>
-</tr>
-<tr>
-<td>ed/ing/s</td>
-<td>Matches one of the specified strings (disjunction)</td>
-</tr>
-<tr>
-<td>*</td>
-<td>Zero or more of previous item, e.g.,a<em>,[a-z]</em>(also known as Kleene Closure)</td>
-</tr>
-<tr>
-<td>+</td>
-<td>One or more of previous item, e.g.,a+,[a-z]+</td>
-</tr>
-<tr>
-<td>?</td>
-<td>Zero or one of the previous item (i.e., optional), e.g.,a?,[a-z]?</td>
-</tr>
-<tr>
-<td>{n}</td>
-<td>Exactly n repeats where n is a non-negative integer</td>
-</tr>
-<tr>
-<td>{n,}</td>
-<td>At least n repeats</td>
-</tr>
-<tr>
-<td>{,n}</td>
-<td>No more than n repeats</td>
-</tr>
-<tr>
-<td>{m,n}</td>
-<td>At least m and no more than n repeats</td>
-</tr>
-<tr>
-<td>a(b/c)+</td>
-<td>Parentheses that indicate the scope of the operators</td>
-</tr>
-</tbody>
-</table>
-</div>
-<ul>
-<li>正则表达式是用来指定模式的一种强大而灵活的方法。只要导入了 <strong><code>re</code></strong> 模块，就可以使用 <strong><code>re.findall()</code></strong> 找到一个字符串中匹配一个模式的所有子字符串。</li>
-<li>如果正则表达式字符串包含反斜杠，应该使用原始字符串与 r 前缀：<strong><code>r&#39;regexp&#39;</code></strong>，告诉 Python 不要预处理这个字符串。</li>
-</ul>
-<hr>
-<h2 id="Finding-Word-Stems"><a href="#Finding-Word-Stems" class="headerlink" title="Finding Word Stems"></a>Finding Word Stems</h2><p>书中提到的，抽出一个词的词干的方法，是直接去掉任何看起来像后缀的字符。听起来很棒，但是仍然存在一个问题。比如这个词 <strong>processes</strong>：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; re.findall(r<span class="string">'^(.*)(ing|ly|ed|ious|ies|ive|es|s|ment)$'</span>, <span class="string">'processes'</span>)</div><div class="line">[(<span class="string">'processe'</span>, <span class="string">'s'</span>)]</div></pre></td></tr></table></figure>
-<p>正则表达式错误的找到了后缀 <code>&#39;-s&#39;</code>，而不是后缀 <code>&#39;-es&#39;</code>。这表明另一个微妙之处：</p>
-<p><strong><code>*</code></strong> 操作符是“贪婪的”，所以表达式的 <strong><code>.*</code></strong> 部分试图尽可能多地匹配输入的字符串。如果使用“非贪婪”版本的 <strong><code>*</code></strong> 操作符，写成 <strong><code>*?</code></strong> 操作符，就得到想要的结果。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; re.findall(r<span class="string">'^(.*?)(ing|ly|ed|ious|ies|ive|es|s|ment)$'</span>, <span class="string">'processes'</span>)</div><div class="line">[(<span class="string">'process'</span>, <span class="string">'es'</span>)]</div></pre></td></tr></table></figure>
-<p>还可以通过将第二个括号中的内容变成可选来得到空后缀。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; re.findall(r<span class="string">'^(.*?)(ing|ly|ed|ious|ies|ive|es|s|ment)$'</span>, <span class="string">'language'</span>)</div><div class="line">[(<span class="string">'language'</span>, <span class="string">''</span>)]</div></pre></td></tr></table></figure></p>
-<p>（虽然以上方法还有许多问题…）</p>
-<hr>
-<h2 id="Searching-Tokenized-Text"><a href="#Searching-Tokenized-Text" class="headerlink" title="Searching Tokenized Text"></a>Searching Tokenized Text</h2><p>可以使用一种特殊的正则表达式搜索一个文本中多个词。例如，在大型文本语料库中搜索 <code>&#39;x and other ys&#39;</code> 形式的表达式来发现上位词。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; from nltk.corpus import brown</div><div class="line">&gt;&gt;&gt; hobbies_learned = nltk.Text(brown.words(categories=[<span class="string">'hobbies'</span>, <span class="string">'learned'</span>]))</div><div class="line">&gt;&gt;&gt; hobbies_learned.findall(r<span class="string">'&lt;\w*&gt; &lt;and&gt; &lt;other&gt; &lt;\w*s&gt;'</span>)</div><div class="line">speed and other activities; water and other liquids; tomb and other</div><div class="line">landmarks; Statues and other monuments; pearls and other jewels;</div><div class="line">charts and other items; roads and other features; figures and other</div><div class="line">objects; military and other areas; demands and other factors;</div><div class="line">abstracts and other compilations; iron and other metals</div></pre></td></tr></table></figure>
-<hr>
-<h2 id="Normalizing-Text"><a href="#Normalizing-Text" class="headerlink" title="Normalizing Text"></a>Normalizing Text</h2><h3 id="Stemmers"><a href="#Stemmers" class="headerlink" title="Stemmers"></a>Stemmers</h3><p><strong>词干提取器 </strong>。<code>NLTK</code> 中包括了一些现成的词干提取器，如果需要使用词干提取器，应该优先使用它们中的一个，而不是使用正则表达式制作自己的词干提取器，因为 <code>NLTK</code> 中的词干提取器能处理的不规则情况很广泛。<strong>Porter</strong>和 <strong>Lancaster</strong> 词干提取器按照它们自己的规则剥离词缀。下面的例子表明 <strong>Porter</strong> 词干提取器正确处理了词 <strong>lying</strong>（将它映射为 <strong>lie</strong>），而<strong>Lancaster</strong> 词干提取器并没有处理好。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; porter = nltk.PorterStemmer()</div><div class="line">&gt;&gt;&gt; lancaster = nltk.LancasterStemmer()</div><div class="line">&gt;&gt;&gt; [porter.stem(t) <span class="keyword">for</span> t <span class="keyword">in</span> tokens]</div><div class="line">[<span class="string">'DENNI'</span>, <span class="string">':'</span>, <span class="string">'Listen'</span>, <span class="string">','</span>, <span class="string">'strang'</span>, <span class="string">'women'</span>, <span class="string">'lie'</span>, <span class="string">'in'</span>, <span class="string">'pond'</span>,</div><div class="line"><span class="string">'distribut'</span>, <span class="string">'sword'</span>, <span class="string">'is'</span>, <span class="string">'no'</span>, <span class="string">'basi'</span>, <span class="string">'for'</span>, <span class="string">'a'</span>, <span class="string">'system'</span>, <span class="string">'of'</span>, <span class="string">'govern'</span>,</div><div class="line"><span class="string">'.'</span>, <span class="string">'Suprem'</span>, <span class="string">'execut'</span>, <span class="string">'power'</span>, <span class="string">'deriv'</span>, <span class="string">'from'</span>, <span class="string">'a'</span>, <span class="string">'mandat'</span>, <span class="string">'from'</span>,</div><div class="line"><span class="string">'the'</span>, <span class="string">'mass'</span>, <span class="string">','</span>, <span class="string">'not'</span>, <span class="string">'from'</span>, <span class="string">'some'</span>, <span class="string">'farcic'</span>, <span class="string">'aquat'</span>, <span class="string">'ceremoni'</span>, <span class="string">'.'</span>]</div><div class="line">&gt;&gt;&gt; [lancaster.stem(t) <span class="keyword">for</span> t <span class="keyword">in</span> tokens]</div><div class="line">[<span class="string">'den'</span>, <span class="string">':'</span>, <span class="string">'list'</span>, <span class="string">','</span>, <span class="string">'strange'</span>, <span class="string">'wom'</span>, <span class="string">'lying'</span>, <span class="string">'in'</span>, <span class="string">'pond'</span>, <span class="string">'distribut'</span>,</div><div class="line"><span class="string">'sword'</span>, <span class="string">'is'</span>, <span class="string">'no'</span>, <span class="string">'bas'</span>, <span class="string">'for'</span>, <span class="string">'a'</span>, <span class="string">'system'</span>, <span class="string">'of'</span>, <span class="string">'govern'</span>, <span class="string">'.'</span>, <span class="string">'suprem'</span>,</div><div class="line"><span class="string">'execut'</span>, <span class="string">'pow'</span>, <span class="string">'der'</span>, <span class="string">'from'</span>, <span class="string">'a'</span>, <span class="string">'mand'</span>, <span class="string">'from'</span>, <span class="string">'the'</span>, <span class="string">'mass'</span>, <span class="string">','</span>, <span class="string">'not'</span>,</div><div class="line"><span class="string">'from'</span>, <span class="string">'som'</span>, <span class="string">'farc'</span>, <span class="string">'aqu'</span>, <span class="string">'ceremony'</span>, <span class="string">'.'</span>]</div></pre></td></tr></table></figure>
-<p>词干提取过程没有明确定义，通常选择最合适应用的词干提取器。</p>
-<p>书本上的例子不错，使用词干提取器索引文本：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">IndexedText</span><span class="params">(object)</span>:</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, stemmer, text)</span>:</span></div><div class="line">        self._text = text</div><div class="line">        self._stemmer = stemmer</div><div class="line">        self._index = nltk.Index((self._stem(word), i)</div><div class="line">                                <span class="keyword">for</span> (i, word) <span class="keyword">in</span> enumerate(text))</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">concordance</span><span class="params">(self, word, width=<span class="number">40</span>)</span>:</span></div><div class="line">        key = self._stem(word)</div><div class="line">        wc = int(width/<span class="number">4</span>)                <span class="comment"># words of context</span></div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> self._index[key]:</div><div class="line">            lcontext = <span class="string">''</span>.join(self._text[i-wc:i])</div><div class="line">            rcontext = <span class="string">' '</span>.join(self._text[i:i+wc])</div><div class="line">            ldisplay = <span class="string">'&#123;:&gt;&#123;width&#125;&#125;'</span>.format(lcontext[-width:], width=width)</div><div class="line">            rdisplay = <span class="string">'&#123;:&#123;width&#125;&#125;'</span>.format(rcontext[:width], width=width)</div><div class="line">            print(ldisplay, rdisplay)</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_stem</span><span class="params">(self, word)</span>:</span></div><div class="line">        <span class="keyword">return</span> self._stemmer.stem(word).lower()</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; porter = nltk.PorterStemmer()</div><div class="line">&gt;&gt;&gt; grail = nltk.corpus.webtext.words(&apos;grail.txt&apos;)</div><div class="line">&gt;&gt;&gt; text = IndexedText(porter, grail)</div><div class="line">&gt;&gt;&gt; text.concordance(&apos;lie&apos;)</div><div class="line">r king ! DENNIS : Listen , strange women lying in ponds distributing swords is no</div><div class="line"> beat a very brave retreat . ROBIN : All lies ! MINSTREL : [singing] Bravest of</div><div class="line">       Nay . Nay . Come . Come . You may lie here . Oh , but you are wounded !</div><div class="line">doctors immediately ! No , no , please ! Lie down . [clap clap] PIGLET : Well</div><div class="line">ere is much danger , for beyond the cave lies the Gorge of Eternal Peril , which</div><div class="line">   you . Oh ... TIM : To the north there lies a cave -- the cave of Caerbannog --</div><div class="line">h it and lived ! Bones of full fifty men lie strewn about its lair . So , brave k</div><div class="line">not stop our fight &apos; til each one of you lies dead , and the Holy Grail returns t</div></pre></td></tr></table></figure>
-<hr>
-<h2 id="Formatting-From-Lists-to-Strings"><a href="#Formatting-From-Lists-to-Strings" class="headerlink" title="Formatting: From Lists to Strings"></a>Formatting: From Lists to Strings</h2><h3 id="from-Lists-to-Strings"><a href="#from-Lists-to-Strings" class="headerlink" title="from Lists to Strings"></a>from Lists to Strings</h3><p>从链表到字符串。用于文本处理最简单的结构化对象是词链表。当需要把这些输出到显示器或者文件中时，必须把这些词的链表转换成字符串。在 Python 中，使用 <strong><code>join()</code></strong> 方法，并制定作为“胶水”使用的字符串。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; silly = [<span class="string">'We'</span>, <span class="string">'called'</span>, <span class="string">'him'</span>, <span class="string">'Tortoise'</span>, <span class="string">'because'</span>, <span class="string">'he'</span>, <span class="string">'taught'</span>, <span class="string">'us'</span>, <span class="string">'.'</span>]</div><div class="line">&gt;&gt;&gt; <span class="string">''</span>.join(silly)</div><div class="line"><span class="string">'We called him Tortoise because he taught us .'</span></div><div class="line">&gt;&gt;&gt; <span class="string">';'</span>.join(silly)</div><div class="line"><span class="string">'We;called;him;Tortoise;because;he;taught;us;.'</span></div><div class="line">&gt;&gt;&gt; <span class="string">''</span>.join(silly)</div><div class="line"><span class="string">'WecalledhimTortoisebecausehetaughtus.'</span></div></pre></td></tr></table></figure>
-<ul>
-<li>书本提到了 <strong> 间接地提供占位符的值</strong>。例子：</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; template = <span class="string">'Lee wants a %s right now'</span></div><div class="line">&gt;&gt;&gt; menu = [<span class="string">'sandwich'</span>, <span class="string">'spam fritter'</span>, <span class="string">'pancake'</span>]</div><div class="line">&gt;&gt;&gt; <span class="keyword">for</span> snack <span class="keyword">in</span> menu:</div><div class="line">...     <span class="built_in">print</span> (template.format(snack))</div><div class="line">...</div><div class="line">Lee wants a sandwich right now</div><div class="line">Lee wants a spam fritter right now</div><div class="line">Lee wants a pancake right now</div></pre></td></tr></table></figure>
-<hr>
-<h1 id="Need-to-Know"><a href="#Need-to-Know" class="headerlink" title="Need to Know:"></a>Need to Know:</h1><p>在 Python 2.x 当中是可以使用：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> urllib <span class="keyword">import</span> urlopen</div></pre></td></tr></table></figure>
-<p>如果使用的是 Python 3.x 的话，需要更改为：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> urllib.request <span class="keyword">import</span> urlopen</div></pre></td></tr></table></figure>
-<hr>
-<p>在「处理 HTML」的模块中：</p>
-<p>书本提到从 HTML 中提取文本，采用辅助函数 <strong><code>nltk.clean_html()</code></strong> 将 HTML 字符串作为参数，返回原始文本。</p>
-<p>然而，现在这个辅助函数已不支持。为了实现这一目的，我们可以下载<strong><code>Beautiful Soup 4</code></strong>。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ pip3 install beautifulsoup4</div></pre></td></tr></table></figure>
-<p>随后在代码部分中，调用 BeautifulSoup：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> nltk, re, pprint</div><div class="line"><span class="keyword">from</span> urllib.request <span class="keyword">import</span> urlopen</div><div class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> *</div><div class="line"></div><div class="line">url = <span class="string">'http://youraddress'</span></div><div class="line">html = urlopen(url).read()</div><div class="line">soup = BeautifulSoup(html)</div><div class="line">raw = soup.get_text()</div><div class="line">tokens = nltk.word_tokenize(raw)</div></pre></td></tr></table></figure></p>
-<hr>
-<p>在「分词」的模块中：</p>
-<blockquote>
-<p>Now the segmentation task becomes a search problem: find the bit string that causes the text string to be correctly segmented into words.<br>现在分词的任务变成一个搜索问题：找到能将文本字符串正确地分割成词汇的字位串。</p>
-<p><strong>We assume the learner is acquiring words and storing them in an internal lexicon. Given a suitable lexicon, it is possible to reconstruct the source text as a sequence of lexical items.</strong><br>假定学习者接受字词，并将它们存储在一个内部的词典当中。给定一个合适的词典，我们是能够使用词典中的词的序列来进行重构文本的。</p>
-<p>Following (Brent &amp; Cart- wright, 1995), we can define an <strong>objective function</strong>, a scoring function whose value we will try to optimize, based on the size of the lexicon and the amount of information needed to reconstruct the source text from the lexicon.<br>为了衡量我们这个词典的优劣，这里我们需要定义一个目标函数（Brent &amp; Cart-wright 在 1995 提出的方法），即一个打分函数，依据两个因素，第一个因素是词典的大小，第二个是使用词典来重构原文本所需的信息量。</p>
-</blockquote>
-<p><img src="https://farm1.staticflickr.com/767/31488720242_48aae8823f_o.png" alt=""></p>
-<p>计算目标函数：给定一个假设的源文本的分词（左），推导出一个词典和推导表，它能让源文本重构，然后合计每个词项（包括边界标志）与推导表的字符数，作为分词质量的得分；得分值越小表明分词越好。</p>
-<p>用代码来实现这个目标函数，计算存储词典和重构源文本的成本：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">evaluate</span><span class="params">(text, segs)</span>:</span></div><div class="line">    words = segment(text, segs)</div><div class="line">    text_size = len(words)</div><div class="line">    lexicon_size = len(<span class="string">''</span>.join(list(set(words))))</div><div class="line">    <span class="keyword">return</span> text_size + lexicon_size</div></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; text = <span class="string">'doyouseethekittyseethedoggydoyoulikethekittylikethedoggy'</span></div><div class="line">&gt;&gt;&gt; seg1 = <span class="string">'0000000000000001000000000010000000000000000100000000000'</span></div><div class="line">&gt;&gt;&gt; seg2 = <span class="string">'0100100100100001001001000010100100010010000100010010000'</span></div><div class="line">&gt;&gt;&gt; seg3 = <span class="string">'0000100100000011001000000110000100010000001100010000001'</span></div><div class="line">&gt;&gt;&gt; segment(text, seg3)</div><div class="line">[<span class="string">'doyou'</span>, <span class="string">'see'</span>, <span class="string">'thekitt'</span>, <span class="string">'y'</span>, <span class="string">'see'</span>, <span class="string">'thedogg'</span>, <span class="string">'y'</span>, <span class="string">'doyou'</span>, <span class="string">'like'</span>,</div><div class="line"> <span class="string">'thekitt'</span>, <span class="string">'y'</span>, <span class="string">'like'</span>, <span class="string">'thedogg'</span>, <span class="string">'y'</span>]</div><div class="line">&gt;&gt;&gt; evaluate(text, seg3)</div><div class="line">46</div><div class="line">&gt;&gt;&gt; evaluate(text, seg2)</div><div class="line">47</div><div class="line">&gt;&gt;&gt; evaluate(text, seg1)</div><div class="line">63</div></pre></td></tr></table></figure>
-<hr>
-<h2 id="Simulated-Annealing-SA"><a href="#Simulated-Annealing-SA" class="headerlink" title="Simulated Annealing(SA)"></a>Simulated Annealing(SA)</h2><p><strong>模拟退火算法 </strong>。在提到模拟退火算法之前，我来先介绍一下<strong> 爬山算法（Hill Climbing）</strong>。爬山算法是一种简单的贪心搜索算法，该算法每次从当前的临近解空间中选择一个最优解作为当前解，直到达到一个局部最优解。</p>
-<p>爬山算法实现很简单，其主要的缺点就是会陷入局部最优解而不一定能搜索到全局最优解。如图所示，假设 C 点为当前解，爬山算法搜索到 A 点这个局部最优解就会停止搜索，因为 A 点无论向哪个方向小幅度移动都不能得到更优的解。</p>
-<p><img src="https://farm1.staticflickr.com/768/31263141960_9e2f2a7c44_o.png" alt=""></p>
-<p>爬山算法是完完全全的贪心算法，每一次都是鼠目寸光地选择一个当前最优解，因此只能搜索到局部的最有值。模拟退火其实也是一种贪心算法，但是它的搜索过程引入了随机因素。模拟退火算法 <strong> 以一定的概率 </strong> 来接受一个比当前解要差的解，因此 <strong> 有可能 </strong> 会跳出这个局部的最优解，达到全局的最优解。如上图为例，模拟退火算法在搜索到局部最优解 A 后，会以 <strong> 一定的概率 </strong> 接受向 E 的移动。也许经过几次这样的不是局部最优的移动后会到达 D 点，于是就跳出了局部最大值 A。</p>
-<p>模拟退火算法描述：</p>
-<ul>
-<li>若 $ J(Y(i+1)) \geqslant  J(Y(i)) $  (即移动后得到更优解)，则总是接受该移动</li>
-<li>若 $ J(Y(i+1)) &lt;  J(Y(i)) $  (即移动后的解比当前解要差)，则以一定的概率接受移动，而且这个概率随着时间推移逐渐降低（逐渐降低才能趋向稳定）</li>
-</ul>
-<p><strong>这里的“一定的概率”的计算参考了金属冶炼的退火过程，这也是模拟退火算法名称的由来。</strong></p>
-<p>根据热力学的原理，在温度为 <strong><em>T</em></strong> 时，出现能量差为 <strong><em>dE</em></strong> 的降温的概率为<strong><em>P(dE)</em></strong>，表示为：</p>
-<script type="math/tex; mode=display">
-P(\mathrm{d} E) = exp(\mathrm{d}E/kT)</script><p>其中 <strong><em>k</em></strong> 是一个常数，<strong><em>exp</em></strong>表示自然指数，且 <strong><em>dE&lt;0</em></strong>。这条公式说白了就是：温度越高，出现一次能量差为<strong><em>dE</em></strong> 的降温的概率就越大；温度越低，则出现降温的概率就越小。又由于 <strong><em>dE</em></strong> 总是小于 0（否则就不叫退火了），因此 <strong><em>dE/kT &lt; 0</em></strong>，所以<strong><em>P(dE)</em></strong> 的函数取值范围是 $(0,1)$ 。</p>
-<p>　　随着温度 <strong><em>T</em></strong> 的降低，<strong><em>P(dE)</em></strong>会逐渐降低。</p>
-<p>我们将一次向较差解的移动看做一次温度跳变过程，我们以概率 <strong><em>P(dE)</em></strong> 来接受这样的移动。</p>
-<p>关于爬山算法与模拟退火，有一个有趣的比喻：</p>
-<p>爬山算法：兔子朝着比现在高的地方跳去。它找到了不远处的最高山峰。但是这座山不一定是珠穆朗玛峰。这就是爬山算法，它不能保证局部最优值就是全局最优值。</p>
-<p>模拟退火：兔子喝醉了。它随机地跳了很长时间。这期间，它可能走向高处，也可能踏入平地。但是，它渐渐清醒了并朝最高方向跳去。这就是模拟退火。</p>
-<hr>
-<p>接着，让我们使用带有模拟退火算法思想的非确定性搜索，来确定构建分词最好的词典：</p>
-<ol>
-<li>一开始仅搜索短语分词；</li>
-<li>随机扰动 0 和 1，它们与“温度”成一定比例；</li>
-<li>每次迭代温度都会降低，扰动边界会减少。</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> random <span class="keyword">import</span> randint</div><div class="line"></div><div class="line"><span class="comment"># flip()函数，随机扰动 0 和 1</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">flip</span><span class="params">(segs, pos)</span>:</span></div><div class="line">    <span class="keyword">return</span> segs[:pos] + str(<span class="number">1</span>-int(segs[pos])) + segs[pos+<span class="number">1</span>:]</div><div class="line"></div><div class="line"><span class="comment"># flip_n()函数，n 为迭代次数</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">flip_n</span><span class="params">(segs, n)</span>:</span></div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(n):</div><div class="line">        segs = flip(segs, randint(<span class="number">0</span>,len(segs)<span class="number">-1</span>))</div><div class="line">    <span class="keyword">return</span> segs</div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">anneal</span><span class="params">(text, segs, iterations, cooling_rate)</span>:</span>    <span class="comment">#cooling_rate“降温”的快慢</span></div><div class="line">    temperature = float(len(segs))    <span class="comment"># 初始温度</span></div><div class="line">    <span class="keyword">while</span> temperature &gt; <span class="number">0.5</span>:</div><div class="line">        <span class="comment"># 每一次“降温”的结果，若由于前一次，则会更改 segs 的值并进行下一次“降温”</span></div><div class="line">        best_segs, best = segs, evaluate(text, segs)</div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(iterations):</div><div class="line">            guess = flip_n(segs, int(round(temperature)))</div><div class="line">            score = evaluate(text, guess)</div><div class="line">            <span class="keyword">if</span> score &lt; best:</div><div class="line">                best, best_segs = score, guess</div><div class="line">        score, segs = best, best_segs</div><div class="line">        temperature = temperature / cooling_rate</div><div class="line">        print(evaluate(text, segs), segment(text, segs))</div><div class="line">    <span class="keyword">print</span></div><div class="line">    <span class="keyword">return</span> segs</div></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; text = <span class="string">'doyouseethekittyseethedoggydoyoulikethekittylikethedoggy'</span></div><div class="line">&gt;&gt;&gt; seg1 = <span class="string">'0000000000000001000000000010000000000000000100000000000'</span></div><div class="line">&gt;&gt;&gt; anneal(text, seg1, 5000, 1.2)</div><div class="line">60 [<span class="string">'doyouseetheki'</span>, <span class="string">'tty'</span>, <span class="string">'see'</span>, <span class="string">'thedoggy'</span>, <span class="string">'doyouliketh'</span>, <span class="string">'ekittylike'</span>, <span class="string">'thedoggy'</span>]</div><div class="line">58 [<span class="string">'doy'</span>, <span class="string">'ouseetheki'</span>, <span class="string">'ttysee'</span>, <span class="string">'thedoggy'</span>, <span class="string">'doy'</span>, <span class="string">'o'</span>, <span class="string">'ulikethekittylike'</span>, <span class="string">'thedoggy'</span>]</div><div class="line">56 [<span class="string">'doyou'</span>, <span class="string">'seetheki'</span>, <span class="string">'ttysee'</span>, <span class="string">'thedoggy'</span>, <span class="string">'doyou'</span>, <span class="string">'liketh'</span>, <span class="string">'ekittylike'</span>, <span class="string">'thedoggy'</span>]</div><div class="line">54 [<span class="string">'doyou'</span>, <span class="string">'seethekit'</span>, <span class="string">'tysee'</span>, <span class="string">'thedoggy'</span>, <span class="string">'doyou'</span>, <span class="string">'likethekittylike'</span>, <span class="string">'thedoggy'</span>]</div><div class="line">53 [<span class="string">'doyou'</span>, <span class="string">'seethekit'</span>, <span class="string">'tysee'</span>, <span class="string">'thedoggy'</span>, <span class="string">'doyou'</span>, <span class="string">'like'</span>, <span class="string">'thekitty'</span>, <span class="string">'like'</span>, <span class="string">'thedoggy'</span>]</div><div class="line">51 [<span class="string">'doyou'</span>, <span class="string">'seethekittysee'</span>, <span class="string">'thedoggy'</span>, <span class="string">'doyou'</span>, <span class="string">'like'</span>, <span class="string">'thekitty'</span>, <span class="string">'like'</span>, <span class="string">'thedoggy'</span>]</div><div class="line">42 [<span class="string">'doyou'</span>, <span class="string">'see'</span>, <span class="string">'thekitty'</span>, <span class="string">'see'</span>, <span class="string">'thedoggy'</span>, <span class="string">'doyou'</span>, <span class="string">'like'</span>, <span class="string">'thekitty'</span>, <span class="string">'like'</span>, <span class="string">'thedoggy'</span>]</div><div class="line"><span class="string">'0000100100000001001000000010000100010000000100010000000'</span></div></pre></td></tr></table></figure>
-<p>有了足够的数据，就可能以一个较为合理的准确度自动将文本分割成词汇。</p>
-<p>这种方法可用于那些词的边界没有任何视觉表示的书写系统分词。</p>
-<hr>
-<h1 id="Correct-errors-in-printing"><a href="#Correct-errors-in-printing" class="headerlink" title="Correct errors in printing:"></a>Correct errors in printing:</h1><ul>
-<li>暂无</li>
-</ul>
-<hr>
-<h1 id="Practice"><a href="#Practice" class="headerlink" title="Practice:"></a>Practice:</h1><blockquote>
-<p>5.○ What happens if you ask the interpreter to evaluate <strong><code>monty[::-1]</code></strong>? Explain why this is a reasonable result.</p>
-</blockquote>
-<ul>
-<li>逆序输出。</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; a=<span class="string">'python'</span></div><div class="line">&gt;&gt;&gt; a[::-1]</div><div class="line"><span class="string">'nohtyp'</span></div></pre></td></tr></table></figure>
-<hr>
-<blockquote>
-<p>6.○ Describe the class of strings matched by the following regular expressions: </p>
-<ol>
-<li>[a-zA-Z]+</li>
-<li>[A-Z][a-z]*</li>
-<li>p[aeiou]{,2}t</li>
-<li>\d+(\.\d+)?</li>
-<li>(<sup><a href="#fn_aeiou" id="reffn_aeiou">aeiou</a></sup>[aeiou]<sup><a href="#fn_aeiou" id="reffn_aeiou">aeiou</a></sup>)</li>
-<li>\w+|<sup><a href="#fn_\w\s" id="reffn_\w\s">\w\s</a></sup>+</li>
-</ol>
-<p>Test your answers using <strong><code>nltk.re_show()</code></strong>.</p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> nltk</div><div class="line"></div><div class="line"><span class="comment"># 1. 字母字符串</span></div><div class="line">nltk.re_show(<span class="string">r'[a-zA-Z]+'</span>, <span class="string">'A very Intersting3 example'</span>)</div><div class="line"></div><div class="line"><span class="comment"># 2. 开头大写后小写字母不限（小写字母可有可没有）</span></div><div class="line">nltk.re_show(<span class="string">r'[A-Z][a-z]*'</span>, <span class="string">'A very Intersting3 example'</span>)</div><div class="line"></div><div class="line"><span class="comment"># 3. p 开头 t 结尾，中间有少于 2 个的元音字母</span></div><div class="line">nltk.re_show(<span class="string">r'p[aeiou]&#123;,2&#125;t'</span>, <span class="string">'two pouting party pets - pt'</span>)</div><div class="line"></div><div class="line"><span class="comment"># 4. 整数或者带小数的整数（整数与浮点数）</span></div><div class="line">nltk.re_show(<span class="string">r'\d+(\.\d+)?'</span>, <span class="string">'This should match 23 as well as 1.093 and 999.9'</span>)</div><div class="line"></div><div class="line"><span class="comment"># 5. （（非元音）（元音）（非元音））（可有可没有） 例如 'pot'</span></div><div class="line">nltk.re_show(<span class="string">r'([^aeiou][aeiou][^aeiou])*'</span>, <span class="string">'This should match pet as well as cut and lol'</span>)</div><div class="line"></div><div class="line"><span class="comment"># 6. 要么是一个或多个的字母（但不包括空格）</span></div><div class="line">nltk.re_show(<span class="string">r'\w+|[^\w\s]+'</span>, <span class="string">'should match me but not a apple \n'</span>)</div></pre></td></tr></table></figure>
-<hr>
-<blockquote>
-<p>7.○ Write regular expressions to match the following classes of strings:</p>
-<ol>
-<li>A single determiner (assume that <strong><em>a</em></strong>, <strong><em>an</em></strong>, and <strong><em>the</em></strong> are the only determiners)</li>
-<li>An arithmetic expression using integers, addition, and multiplication, such as <strong>2*3+8</strong></li>
-</ol>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="number">1.</span> &gt;&gt;&gt; nltk.re_show(<span class="string">'an?|the'</span>, <span class="string">'thesisiaishihsthean'</span>, left=<span class="string">'&#123;'</span>, right=<span class="string">'&#125;'</span>)</div><div class="line"><span class="number">2.</span> &gt;&gt;&gt; nltk.re_show(<span class="string">'\d+\*\d+\+\d+'</span>, <span class="string">'2*3+8'</span>, left=<span class="string">'&#123;'</span>, right=<span class="string">'&#125;'</span>)</div></pre></td></tr></table></figure>
-<hr>
-<blockquote>
-<p>9.○ Save some text into a file corpus.txt. Define a function <strong><code>load(f)</code></strong> that reads from the file named in its sole argument, and returns a string containing the text of the file.</p>
-<ol>
-<li>Use <strong><code>nltk.regexp_tokenize()</code></strong>to create a tokenizer that tokenizes the various kinds of punctuation in this text. Use one multiline regular expression inline comments, using the verbose flag<strong><code>(?x)</code></strong>.</li>
-<li>Use <strong><code>nltk.regexp_tokenize()</code></strong> to create a tokenizer that tokenizes the following kinds of expressions: monetary amounts; dates; names of people and organizations.    </li>
-</ol>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="number">1.</span> &gt;&gt;&gt; pattern = <span class="string">r'''(?x)</span></div><div class="line">   ...           [][.,;"'?()=-_`]</div><div class="line">   ...           '''</div><div class="line">   &gt;&gt;&gt; nltk.regexp_tokenize(text, pattern)</div><div class="line"></div><div class="line"><span class="number">2.</span> &gt;&gt;&gt; pattern = <span class="string">r'''(?x)</span></div><div class="line">   ...           ([A-Z]\.)+    # eg.  U.S.A</div><div class="line">   ...           |([A-Z][a-z]*\s[A-Z][a-z]*)    # words with optional internal</div><div class="line">   ...           |\$?\d+(\.\d+)?%    # currency and percentages eg. $12.40, 82%</div><div class="line">   ...           | \d&#123;4&#125;\-\d&#123;2&#125;\-\d&#123;2&#125;               # Date like 2016-22-01</div><div class="line">   ...           | \d&#123;1,2&#125;\s[A-Z][a-z]&#123;2,8&#125;\s\d&#123;4&#125;   # Date like 2 March 1998</div><div class="line">   ...           '''</div><div class="line">   &gt;&gt;&gt; nltk.regexp_tokenize(text, pattern)</div></pre></td></tr></table></figure>
-<hr>
-<blockquote>
-<ol>
-<li>○ What is the difference between calling <strong><code>split</code></strong> on a string with no argument and one with <strong><code>&#39; &#39;</code></strong> as the argument, e.g., <strong><code>sent.split()</code></strong> versus <strong><code>sent.split(&#39; &#39;)</code></strong>? What happens when the string being split contains tab characters, consecutive space characters, or a sequence of tabs and spaces? (In IDLE you will need to use ‘\t’ to enter a tab character.)</li>
-</ol>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; raw = <span class="string">'Tres tristes tigres comen trigo en un trigal.'</span></div><div class="line">&gt;&gt;&gt; raw.split()</div><div class="line">[<span class="string">'Tres'</span>, <span class="string">'tristes'</span>, <span class="string">'tigres'</span>, <span class="string">'comen'</span>, <span class="string">'trigo'</span>, <span class="string">'en'</span>, <span class="string">'un'</span>, <span class="string">'trigal.'</span>]</div><div class="line">&gt;&gt;&gt; raw.split(<span class="string">''</span>)</div><div class="line">[<span class="string">'Tres'</span>, <span class="string">'tristes'</span>, <span class="string">'tigres'</span>, <span class="string">'comen'</span>, <span class="string">'trigo'</span>, <span class="string">'en'</span>, <span class="string">'un'</span>, <span class="string">'trigal.'</span>]</div><div class="line"></div><div class="line">&gt;&gt;&gt; sent = <span class="string">'Tres\ttristes\ttigres\tcomen\ttrigo\ten\tun\ttrigal.'</span></div><div class="line">&gt;&gt;&gt; sent.split()</div><div class="line">[<span class="string">'Tres'</span>, <span class="string">'tristes'</span>, <span class="string">'tigres'</span>, <span class="string">'comen'</span>, <span class="string">'trigo'</span>, <span class="string">'en'</span>, <span class="string">'un'</span>, <span class="string">'trigal.'</span>]</div><div class="line">&gt;&gt;&gt; sent.split(<span class="string">' '</span>)</div><div class="line">[<span class="string">'Tres\ttristes\ttigres\tcomen\ttrigo\ten\tun\ttrigal.'</span>]</div><div class="line"></div><div class="line">&gt;&gt;&gt; sent = <span class="string">'Tres   tristes   tigres   comen   trigo   en   un   trigal.'</span></div><div class="line">&gt;&gt;&gt; sent.split()</div><div class="line">[<span class="string">'Tres'</span>, <span class="string">'tristes'</span>, <span class="string">'tigres'</span>, <span class="string">'comen'</span>, <span class="string">'trigo'</span>, <span class="string">'en'</span>, <span class="string">'un'</span>, <span class="string">'trigal.'</span>]</div><div class="line">&gt;&gt;&gt; sent.split(<span class="string">' '</span>)</div><div class="line">[<span class="string">'Tres'</span>, <span class="string">''</span>, <span class="string">''</span>, <span class="string">'tristes'</span>, <span class="string">''</span>, <span class="string">''</span>, <span class="string">'tigres'</span>, <span class="string">''</span>, <span class="string">''</span>, <span class="string">'comen'</span>, <span class="string">''</span>, <span class="string">''</span>, <span class="string">'trigo'</span>, <span class="string">''</span>, <span class="string">''</span>, <span class="string">'en'</span>, <span class="string">''</span>, <span class="string">''</span>, <span class="string">'un'</span>, <span class="string">''</span>, <span class="string">''</span>, <span class="string">'trigal.'</span>]</div><div class="line"></div><div class="line">&gt;&gt;&gt; sent = <span class="string">'Tres \ttristes\t\t\ttigres\t\t comen\t \t trigo en un trigal.'</span></div><div class="line">&gt;&gt;&gt; sent.split()</div><div class="line">[<span class="string">'Tres'</span>, <span class="string">'tristes'</span>, <span class="string">'tigres'</span>, <span class="string">'comen'</span>, <span class="string">'trigo'</span>, <span class="string">'en'</span>, <span class="string">'un'</span>, <span class="string">'trigal.'</span>]</div><div class="line">&gt;&gt;&gt; sent.split(<span class="string">' '</span>)</div><div class="line">[<span class="string">'Tres'</span>, <span class="string">'\ttristes\t\t\ttigres\t\t'</span>, <span class="string">'comen\t'</span>, <span class="string">'\t'</span>, <span class="string">'trigo'</span>, <span class="string">'en'</span>, <span class="string">'un'</span>, <span class="string">'trigal.'</span>]</div></pre></td></tr></table></figure>
-<hr>
-<blockquote>
-</blockquote>
-<hr>
-<blockquote>
-<p>20.◑ Write code to access a favorite web page and extract some text from it. For example, access a weather site and extract the forecast top temperature for your town or city today.</p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">test20</span><span class="params">()</span>:</span></div><div class="line">    <span class="comment"># search weather</span></div><div class="line">    url = <span class="string">'http://en.weather.com.cn/weather/101220101.shtml'</span></div><div class="line">    html = urlopen(url).read()</div><div class="line">    soup = BeautifulSoup(html, <span class="string">'lxml'</span>)</div><div class="line">    raw = soup.get_text()</div><div class="line">    tokens = nltk.word_tokenize(raw)</div><div class="line">    text = nltk.Text(tokens)</div><div class="line">    print(text)</div><div class="line">    <span class="keyword">print</span></div><div class="line">    print(text.concordance(<span class="string">'Hefei'</span>))</div></pre></td></tr></table></figure>
-<hr>
-<blockquote>
-<p>21.◑ Write a function <strong><code>unknown()</code></strong> that takes a URL as its argument, and returns a list of unknown words that occur on that web page. In order to do this, extract all substrings consisting of lowercase letters (using <strong><code>re.findall()</code></strong>) and remove any items from this set that occur in the Words Corpus (<strong>nltk.corpus.words</strong>). Try to categorize these words manually and discuss your findings.</p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">test21</span><span class="params">()</span>:</span></div><div class="line">    url = <span class="string">'http://www.bbc.co.uk/news/world-middle-east-18650775'</span></div><div class="line">    wordsres = []</div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">unknown</span><span class="params">(url)</span>:</span></div><div class="line">        html = urlopen(url).read()</div><div class="line">        soup = BeautifulSoup(html)</div><div class="line">        raw = soup.get_text()</div><div class="line">        words = re.findall(<span class="string">r'[a-z]+'</span>, raw)</div><div class="line">        wordlist = [w <span class="keyword">for</span> w <span class="keyword">in</span> nltk.corpus.words.words(<span class="string">'en'</span>) <span class="keyword">if</span> w.islower()]</div><div class="line">        <span class="keyword">for</span> word <span class="keyword">in</span> words:</div><div class="line">            <span class="keyword">if</span> word <span class="keyword">not</span> <span class="keyword">in</span> wordlist:</div><div class="line">                wordsres.append(word)</div><div class="line">        <span class="keyword">return</span> wordsres</div><div class="line">    wordsres = unknown(url)</div><div class="line">    print(wordsres)</div></pre></td></tr></table></figure>
-<hr>
-<blockquote>
-<p>25.◑ <strong><em>Pig Latin</em></strong> is a simple transformation of English text. Each word of the text is converted as follows: move any consonant (or consonant cluster) that appears at the start of the word to the end, then append <strong><em>ay</em></strong>, e.g., <strong><em>string</em></strong> → <strong><em>ingstray</em></strong>, <strong><em>idle</em></strong> → <strong><em>idleay</em></strong> (see <em><a href="http://en.wikipedia.org/wiki/Pig_Latin" target="_blank" rel="external">http://en.wikipedia.org/wiki/Pig_Latin</a></em>).</p>
-<ol>
-<li>Write a function to convert a word to Pig Latin.</li>
-<li>Write code that converts text, instead of individual words.</li>
-<li>Extend it further to preserve capitalization, to keep <strong>qu</strong> together (so that <strong>quiet</strong> becomes <strong>ietquay</strong>, for example), and to detect when <strong>y</strong> is used as a consonant (e.g., <strong>yellow</strong>) versus a vowel (e.g., <strong>style</strong>).</li>
-</ol>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">test25</span><span class="params">()</span>:</span></div><div class="line">    <span class="comment"># Pig Latin</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">pig_latin</span><span class="params">(word)</span>:</span></div><div class="line">        result = []</div><div class="line">        <span class="keyword">if</span> <span class="string">'qu'</span> <span class="keyword">in</span> word.lower():</div><div class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(len(word)):</div><div class="line">                <span class="keyword">if</span> word[i] <span class="keyword">in</span> <span class="string">'[AEIOUaeiou]'</span>:</div><div class="line">                    pig_word = [word[i+<span class="number">1</span>:], word[:i+<span class="number">1</span>], <span class="string">'ay'</span>]</div><div class="line">                    result = <span class="string">''</span>.join(pig_word)</div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(len(word)):</div><div class="line">                <span class="keyword">if</span> word[i] <span class="keyword">in</span> <span class="string">'[AEIOUaeiou]'</span>:</div><div class="line">                    pig_word = [word[i:], word[:i], <span class="string">'ay'</span>]</div><div class="line">                    result = <span class="string">''</span>.join(pig_word)</div><div class="line">        <span class="keyword">return</span> result</div><div class="line"></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">translate</span><span class="params">()</span>:</span></div><div class="line">        object = open(<span class="string">'text25.txt'</span>)</div><div class="line">        <span class="keyword">try</span>:</div><div class="line">            text = object.read()</div><div class="line">        <span class="keyword">finally</span>:</div><div class="line">            object.close()</div><div class="line">        words = nltk.word_tokenize(text)</div><div class="line">        result = []</div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(words)):</div><div class="line">            result.append(pig_latin(words[i]))</div><div class="line">        <span class="keyword">return</span> result</div><div class="line">    result = translate()</div><div class="line">    print(result)</div><div class="line">    print(pig_latin(<span class="string">'quiet'</span>))</div><div class="line">    print(pig_latin(<span class="string">'string'</span>))</div></pre></td></tr></table></figure>
-<hr>
-<blockquote>
-<p>27.◑ Python’s <strong>random</strong> module includes a function <strong><code>choice()</code></strong> which randomly chooses an item from a sequence; e.g., <strong><code>choice(&#39;aehh &#39;)</code></strong> will produce one of four possible characters, with the letter h being twice as frequent as the others. Write a generator expression that produces a sequence of 500 randomly chosen letters drawn from the string <strong>“aehh “</strong>, and put this expression inside a call to the <strong><code>&#39;&#39;.join()</code></strong> function, to concatenate them into one long string. You should get a result that looks like uncontrolled sneezing or maniacal laughter: <strong>he haha ee heheeh eha</strong>. Use <strong><code>split()</code></strong> and <strong><code>join()</code></strong> again to normalize the whitespace in this string.</p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">test27</span><span class="params">()</span>:</span></div><div class="line">    <span class="comment"># choice</span></div><div class="line">    string = []</div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">500</span>):</div><div class="line">        string.append(random.choice(<span class="string">'hahe'</span>))</div><div class="line">    result = <span class="string">''</span>.join(string).split()</div><div class="line">    print(result)</div></pre></td></tr></table></figure>
-<hr>
-<blockquote>
-<p>29.◑ Readability measures are used to score the reading difficulty of a text, for the purposes of selecting texts of appropriate difficulty for language learners. Let us define $μ_w$ to be the average number of letters per word, and $μ_s$ to be the average number of words per sentence, in a given text. The Automated Readability Index (ARI) of the text is defined to be: $4.71 μ_w + 0.5 μ_s - 21.43$. Compute the ARI score for various sections of the Brown Corpus, including section f (popular lore) and j (learned). Make use of the fact that <strong><code>nltk.corpus.brown.words()</code></strong> produces a se- quence of words, whereas <strong><code>nltk.corpus.brown.sents()</code></strong> produces a sequence of sentences.</p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">test29</span><span class="params">()</span>:</span></div><div class="line">    words1 = [len(word) <span class="keyword">for</span> word <span class="keyword">in</span> nltk.corpus.brown.words(categories = <span class="string">'lore'</span>)]</div><div class="line">    sents1 = [len(sent) <span class="keyword">for</span> sent <span class="keyword">in</span> nltk.corpus.brown.sents(categories = <span class="string">'lore'</span>)]</div><div class="line">    words2 = [len(word) <span class="keyword">for</span> word <span class="keyword">in</span> nltk.corpus.brown.words(categories = <span class="string">'learned'</span>)]</div><div class="line">    sents2 = [len(sent) <span class="keyword">for</span> sent <span class="keyword">in</span> nltk.corpus.brown.sents(categories = <span class="string">'learned'</span>)]</div><div class="line">    wordsum = <span class="number">0</span></div><div class="line">    sentsum = <span class="number">0</span></div><div class="line">    <span class="keyword">for</span> wlength <span class="keyword">in</span> words1 :</div><div class="line">        wordsum += int(wlength)</div><div class="line"></div><div class="line">    <span class="keyword">for</span> slength <span class="keyword">in</span> sents1 :</div><div class="line">        sentsum += slength</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">ARI</span><span class="params">(uw,us)</span>:</span></div><div class="line">        <span class="keyword">return</span> <span class="number">4.71</span>*uw + <span class="number">0.5</span>*us - <span class="number">21.43</span></div><div class="line"></div><div class="line">    uw = wordsum/len(words1)</div><div class="line">    us = sentsum/len(sents1)</div><div class="line">    print(us)</div><div class="line">    print(ARI(uw, us))</div></pre></td></tr></table></figure>
-<hr>
-<blockquote>
-<p>30.◑ Use the Porter Stemmer to normalize some tokenized text, calling the stemmer on each word. Do the same thing with the Lancaster Stemmer, and see if you ob- serve any differences.</p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">test30</span><span class="params">()</span>:</span></div><div class="line">    saying = [<span class="string">'After'</span>, <span class="string">'all'</span>, <span class="string">'is'</span>, <span class="string">'said'</span>, <span class="string">'and'</span>, <span class="string">'done'</span>, <span class="string">','</span>, <span class="string">'more'</span>, <span class="string">'is'</span>, <span class="string">'said'</span>, <span class="string">'than'</span>, <span class="string">'done'</span>, <span class="string">'.'</span>]</div><div class="line">    porter = nltk.PorterStemmer()</div><div class="line">    lancaster = nltk.LancasterStemmer()</div><div class="line">    result_porter = [porter.stem(t) <span class="keyword">for</span> t <span class="keyword">in</span> saying]</div><div class="line">    result_lancaster = [lancaster.stem(t) <span class="keyword">for</span> t <span class="keyword">in</span> saying]</div><div class="line">    print(result_porter)</div><div class="line">    print(result_lancaster)</div></pre></td></tr></table></figure>
-<hr>
-<blockquote>
-<p>32.◑ Define a variable silly to contain the string: <strong>‘newly formed bland ideas are inexpressible in an infuriating way’</strong>. (This happens to be the legitimate inter- pretation that bilingual English-Spanish speakers can assign to Chomsky’s famous nonsense phrase <strong><em>colorless green ideas sleep furiously</em></strong>, according to Wikipedia). Now write code to perform the following tasks:</p>
-<ol>
-<li>Split <strong>silly</strong> into a list of strings, one per word, using Python’s <strong><code>split()</code></strong> opera- tion, and save this to a variable called <strong>bland</strong>.</li>
-<li>Extract the second letter of each word in <strong>silly</strong> and join them into a string, to get <strong>‘eoldrnnnna’</strong>.</li>
-</ol>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">test32</span><span class="params">()</span>:</span></div><div class="line">    silly=<span class="string">'newly formed bland ideas are inexpressible in an infuriating way'</span></div><div class="line">    bland = silly.split()</div><div class="line">    print(bland)</div><div class="line">    result = <span class="string">''</span></div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(bland)):</div><div class="line">        result = result + bland[i][<span class="number">1</span>]</div><div class="line">    print(result,type(result))</div></pre></td></tr></table></figure>
-<hr>
-<blockquote>
-<p>35.◑ Read the LanguageLog post on phrases of the form <strong><em>as best as p can</em></strong> and <strong><em>as best p can</em></strong>, where <strong><em>p</em></strong> is a pronoun. Investigate this phenomenon with the help of a corpus and the <strong><code>findall()</code></strong> method for searching tokenized text described in Section 3.5. The post is at <em><a href="http://itre.cis.upenn.edu/~myl/languagelog/archives/002733.html" target="_blank" rel="external">http://itre.cis.upenn.edu/~myl/languagelog/archives/002733.html</a></em>.</p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">test35</span><span class="params">()</span>:</span></div><div class="line">    <span class="comment"># 为什么我的 brown.words()中没有 as best as p can 以及 as best p can 的形式？</span></div><div class="line">    text = nltk.Text(brown.words())</div><div class="line">    print(text)</div><div class="line">    print(text.findall(<span class="string">r'&lt;as&gt; &lt;\w*&gt; &lt;as&gt;'</span>))</div><div class="line">    <span class="keyword">print</span></div><div class="line">    print(text.findall(<span class="string">r'&lt;\w*&gt; &lt;and&gt; &lt;other&gt; &lt;\w*s&gt;'</span>))</div></pre></td></tr></table></figure>
-<hr>
-<blockquote>
-<p>37.◑ Read about the <strong><code>re.sub()</code></strong> function for string substitution using regular expres- sions, using <strong><code>help(re.sub)</code></strong> and by consulting the further readings for this chapter. Use <strong><code>re.sub</code></strong> in writing code to remove HTML tags from an HTML file, and to normalize whitespace.</p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">test37</span><span class="params">()</span>:</span></div><div class="line">    object = open(<span class="string">'Language Log: Asbestos she can.html'</span>)</div><div class="line">    <span class="keyword">try</span>:</div><div class="line">        text = object.read()</div><div class="line">        pattern = <span class="string">'''(?x)&lt;html&gt;|&lt;/html&gt;'''</span></div><div class="line">        text = re.sub(pattern, <span class="string">''</span>, text)</div><div class="line">        object_copy = open(<span class="string">'text36.txt'</span>, <span class="string">'w+'</span>)</div><div class="line">        <span class="keyword">try</span>:</div><div class="line">            object_copy.write(text)</div><div class="line">        <span class="keyword">finally</span>:</div><div class="line">            object_copy.close()</div><div class="line"></div><div class="line">    <span class="keyword">finally</span>:</div><div class="line">        object.close()</div></pre></td></tr></table></figure>
-<hr>
-]]></content>
-    
-    <summary type="html">
-    
-      本文是关于「Natural Language Processing with Python」这本书的 Chapter 3 的学习笔记。
-    
-    </summary>
-    
-      <category term="Machine Learning" scheme="http://randolph.pro/categories/Machine-Learning/"/>
-    
-      <category term="Natural Language Processing" scheme="http://randolph.pro/categories/Machine-Learning/Natural-Language-Processing/"/>
-    
-      <category term="Book:「NLP with Python」" scheme="http://randolph.pro/categories/Machine-Learning/Natural-Language-Processing/Book-%E3%80%8CNLP-with-Python%E3%80%8D/"/>
-    
-    
-      <category term="Machine Learning" scheme="http://randolph.pro/tags/Machine-Learning/"/>
-    
-      <category term="Python" scheme="http://randolph.pro/tags/Python/"/>
-    
-      <category term="Natural Language Processing" scheme="http://randolph.pro/tags/Natural-Language-Processing/"/>
     
   </entry>
   
