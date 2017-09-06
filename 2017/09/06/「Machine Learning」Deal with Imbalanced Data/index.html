@@ -112,7 +112,7 @@
 <meta property="og:description" content="本文主要介绍在机器学习中样本比例不平衡的处理方法。">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://farm5.staticflickr.com/4300/35460446383_aafc34ca3c_o.jpg">
-<meta property="og:updated_time" content="2017-09-06T14:27:29.000Z">
+<meta property="og:updated_time" content="2017-09-06T14:28:16.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="「Machine Learning」 Deal with Imbalanced Data">
 <meta name="twitter:description" content="本文主要介绍在机器学习中样本比例不平衡的处理方法。">
@@ -438,7 +438,7 @@
                   <i class="fa fa-file-word-o"></i>
                 </span>
                 <span title="Words count in article">
-                  2,086
+                  2,077
                 </span>
                 <span> words </span>
                 
@@ -508,8 +508,9 @@
 </tbody>
 </table>
 </div>
-<p>准确率为 $\frac{9700+100}{9700 + 150 + 50 + 100} = 0.98$</p>
-<p>而假如将所有的样本都归为预测为负样本，准确率会进一步上升，但是这样的模型显然是不好的，实际上，模型已经对这个不平衡的样本过拟合了。</p>
+<p>准确率为：</p>
+<script type="math/tex; mode=display">
+\frac{9700+100}{9700 + 150 + 50 + 100} = 0.98</script><p>而假如将所有的样本都归为预测为负样本，准确率会进一步上升，但是这样的模型显然是不好的，实际上，模型已经对这个不平衡的样本过拟合了。</p>
 <p>针对样本的不平衡问题，可以从两个方面考虑：</p>
 <ul>
 <li>改变数据分布，从数据层面使得类别分布更为平衡：<ul>

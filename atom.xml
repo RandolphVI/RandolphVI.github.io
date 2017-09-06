@@ -126,7 +126,7 @@
     <link href="http://randolph.pro/2017/09/06/%E3%80%8CMachine%20Learning%E3%80%8DDeal%20with%20Imbalanced%20Data/"/>
     <id>http://randolph.pro/2017/09/06/「Machine Learning」Deal with Imbalanced Data/</id>
     <published>2017-09-05T16:00:00.000Z</published>
-    <updated>2017-09-06T14:27:29.000Z</updated>
+    <updated>2017-09-06T14:28:16.000Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://farm5.staticflickr.com/4300/35460446383_aafc34ca3c_o.jpg" alt=""></p>
 <p>有关「Machine Learning」的其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/">「Machine Learning」</a></p>
@@ -160,8 +160,9 @@
 </tbody>
 </table>
 </div>
-<p>准确率为 $\frac{9700+100}{9700 + 150 + 50 + 100} = 0.98$</p>
-<p>而假如将所有的样本都归为预测为负样本，准确率会进一步上升，但是这样的模型显然是不好的，实际上，模型已经对这个不平衡的样本过拟合了。</p>
+<p>准确率为：</p>
+<script type="math/tex; mode=display">
+\frac{9700+100}{9700 + 150 + 50 + 100} = 0.98</script><p>而假如将所有的样本都归为预测为负样本，准确率会进一步上升，但是这样的模型显然是不好的，实际上，模型已经对这个不平衡的样本过拟合了。</p>
 <p>针对样本的不平衡问题，可以从两个方面考虑：</p>
 <ul>
 <li>改变数据分布，从数据层面使得类别分布更为平衡：<ul>
