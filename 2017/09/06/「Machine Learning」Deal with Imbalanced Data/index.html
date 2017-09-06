@@ -112,7 +112,7 @@
 <meta property="og:description" content="本文主要介绍在机器学习中样本比例不平衡的处理方法。">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://farm5.staticflickr.com/4300/35460446383_aafc34ca3c_o.jpg">
-<meta property="og:updated_time" content="2017-09-06T14:04:14.000Z">
+<meta property="og:updated_time" content="2017-09-06T14:27:29.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="「Machine Learning」 Deal with Imbalanced Data">
 <meta name="twitter:description" content="本文主要介绍在机器学习中样本比例不平衡的处理方法。">
@@ -491,6 +491,11 @@
 </thead>
 <tbody>
 <tr>
+<td>c</td>
+<td>c</td>
+<td>c</td>
+</tr>
+<tr>
 <td>Negative Cases</td>
 <td>9700</td>
 <td>150</td>
@@ -528,7 +533,7 @@
 <p>但是需要注意，当搜集数据的场景本来产生数据的比例就是不平衡时，这种方法并不能解决数据比例不平衡问题。</p>
 <h2 id="Data-Resampling"><a href="#Data-Resampling" class="headerlink" title="Data Resampling"></a>Data Resampling</h2><p>对数据重采样可以有针对性地改变数据中样本的比例，采样一般有两种方式：<code>over-sampling</code> 和 <code>under-sampling</code>，前者是增加样本数较少的样本，其方式是直接复制原来的样本，而后者是减少样本数较多的样本，其方式是丢弃这些多余的样本。</p>
 <p>通常来说，当总样本数目较多的时候考虑 <code>under-sampling</code>，而样本数数目较少的时候考虑 <code>over-sampling</code>。</p>
-<h3 id="Over-Sampling"><a href="#Over-Sampling" class="headerlink" title="Over-Sampling"></a>Over-Sampling</h3><p>过抽样方法是针对少数的正样本，增加正样本的数量，从而提高整体 $F$ 值。最简单的过抽样方法是简单地复制一些正样本。过抽样的缺点是没有给正样本增加任何新的信息。过抽样方法对 SVM 算法是无效的。因为 SVM 算法是找支持向量，复制正样本并不能改变数据的支持向量。</p>
+<h2 id="Over-Sampling"><a href="#Over-Sampling" class="headerlink" title="Over-Sampling"></a>Over-Sampling</h2><p>过抽样方法是针对少数的正样本，增加正样本的数量，从而提高整体 $F$ 值。最简单的过抽样方法是简单地复制一些正样本。过抽样的缺点是没有给正样本增加任何新的信息。过抽样方法对 SVM 算法是无效的。因为 SVM 算法是找支持向量，复制正样本并不能改变数据的支持向量。</p>
 <h2 id="Under-Sampling"><a href="#Under-Sampling" class="headerlink" title="Under-Sampling"></a>Under-Sampling</h2><p>欠抽样方法是针对多数的负样本，减少负样本的数量，反而提高整体 $F$ 值。最简单的欠抽样方法是随机地删掉一些负样本。欠抽样的缺点很明显，就是会丢失负样本的一些重要信息，不能够充分利用已有的信息。</p>
 <h2 id="Integrated-Sampling"><a href="#Integrated-Sampling" class="headerlink" title="Integrated-Sampling"></a>Integrated-Sampling</h2><p>将过采样和欠采样结合。</p>
 <h2 id="Different-resampled-ratios"><a href="#Different-resampled-ratios" class="headerlink" title="Different resampled ratios"></a>Different resampled ratios</h2><p>尝试不同的采样比例，有些时候 1:1 的比例并不是最好的，因为与现实情况相差甚远。</p>
@@ -821,7 +826,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Data-Level"><span class="nav-number">2.</span> <span class="nav-text">Data Level</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Collect-more-data"><span class="nav-number">2.1.</span> <span class="nav-text">Collect more data</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Data-Resampling"><span class="nav-number">2.2.</span> <span class="nav-text">Data Resampling</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Over-Sampling"><span class="nav-number">2.2.1.</span> <span class="nav-text">Over-Sampling</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Under-Sampling"><span class="nav-number">2.3.</span> <span class="nav-text">Under-Sampling</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Integrated-Sampling"><span class="nav-number">2.4.</span> <span class="nav-text">Integrated-Sampling</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Different-resampled-ratios"><span class="nav-number">2.5.</span> <span class="nav-text">Different resampled ratios</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Synthetic-Samples：SMOTE"><span class="nav-number">2.6.</span> <span class="nav-text">Synthetic Samples：SMOTE</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Algorithm-Level"><span class="nav-number">3.</span> <span class="nav-text">Algorithm Level</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Try-Different-Algorithms"><span class="nav-number">3.1.</span> <span class="nav-text">Try Different Algorithms</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Change-the-Performance-Measures"><span class="nav-number">3.2.</span> <span class="nav-text">Change the Performance Measures</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Try-Penalized-Models"><span class="nav-number">3.3.</span> <span class="nav-text">Try Penalized Models</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Change-the-Model-Training-Process"><span class="nav-number">3.4.</span> <span class="nav-text">Change the Model Training Process</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Data-Level"><span class="nav-number">2.</span> <span class="nav-text">Data Level</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Collect-more-data"><span class="nav-number">2.1.</span> <span class="nav-text">Collect more data</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Data-Resampling"><span class="nav-number">2.2.</span> <span class="nav-text">Data Resampling</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Over-Sampling"><span class="nav-number">2.3.</span> <span class="nav-text">Over-Sampling</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Under-Sampling"><span class="nav-number">2.4.</span> <span class="nav-text">Under-Sampling</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Integrated-Sampling"><span class="nav-number">2.5.</span> <span class="nav-text">Integrated-Sampling</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Different-resampled-ratios"><span class="nav-number">2.6.</span> <span class="nav-text">Different resampled ratios</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Synthetic-Samples：SMOTE"><span class="nav-number">2.7.</span> <span class="nav-text">Synthetic Samples：SMOTE</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Algorithm-Level"><span class="nav-number">3.</span> <span class="nav-text">Algorithm Level</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Try-Different-Algorithms"><span class="nav-number">3.1.</span> <span class="nav-text">Try Different Algorithms</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Change-the-Performance-Measures"><span class="nav-number">3.2.</span> <span class="nav-text">Change the Performance Measures</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Try-Penalized-Models"><span class="nav-number">3.3.</span> <span class="nav-text">Try Penalized Models</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Change-the-Model-Training-Process"><span class="nav-number">3.4.</span> <span class="nav-text">Change the Model Training Process</span></a></li></ol></li></ol></div>
             
 
           </div>

@@ -122,6 +122,11 @@
 </thead>
 <tbody>
 <tr>
+<td>c</td>
+<td>c</td>
+<td>c</td>
+</tr>
+<tr>
 <td>Negative Cases</td>
 <td>9700</td>
 <td>150</td>
@@ -159,7 +164,7 @@
 <p>但是需要注意，当搜集数据的场景本来产生数据的比例就是不平衡时，这种方法并不能解决数据比例不平衡问题。</p>
 <h2 id="Data-Resampling"><a href="#Data-Resampling" class="headerlink" title="Data Resampling"></a>Data Resampling</h2><p>对数据重采样可以有针对性地改变数据中样本的比例，采样一般有两种方式：<code>over-sampling</code> 和 <code>under-sampling</code>，前者是增加样本数较少的样本，其方式是直接复制原来的样本，而后者是减少样本数较多的样本，其方式是丢弃这些多余的样本。</p>
 <p>通常来说，当总样本数目较多的时候考虑 <code>under-sampling</code>，而样本数数目较少的时候考虑 <code>over-sampling</code>。</p>
-<h3 id="Over-Sampling"><a href="#Over-Sampling" class="headerlink" title="Over-Sampling"></a>Over-Sampling</h3><p>过抽样方法是针对少数的正样本，增加正样本的数量，从而提高整体 $F$ 值。最简单的过抽样方法是简单地复制一些正样本。过抽样的缺点是没有给正样本增加任何新的信息。过抽样方法对 SVM 算法是无效的。因为 SVM 算法是找支持向量，复制正样本并不能改变数据的支持向量。</p>
+<h2 id="Over-Sampling"><a href="#Over-Sampling" class="headerlink" title="Over-Sampling"></a>Over-Sampling</h2><p>过抽样方法是针对少数的正样本，增加正样本的数量，从而提高整体 $F$ 值。最简单的过抽样方法是简单地复制一些正样本。过抽样的缺点是没有给正样本增加任何新的信息。过抽样方法对 SVM 算法是无效的。因为 SVM 算法是找支持向量，复制正样本并不能改变数据的支持向量。</p>
 <h2 id="Under-Sampling"><a href="#Under-Sampling" class="headerlink" title="Under-Sampling"></a>Under-Sampling</h2><p>欠抽样方法是针对多数的负样本，减少负样本的数量，反而提高整体 $F$ 值。最简单的欠抽样方法是随机地删掉一些负样本。欠抽样的缺点很明显，就是会丢失负样本的一些重要信息，不能够充分利用已有的信息。</p>
 <h2 id="Integrated-Sampling"><a href="#Integrated-Sampling" class="headerlink" title="Integrated-Sampling"></a>Integrated-Sampling</h2><p>将过采样和欠采样结合。</p>
 <h2 id="Different-resampled-ratios"><a href="#Different-resampled-ratios" class="headerlink" title="Different resampled ratios"></a>Different resampled ratios</h2><p>尝试不同的采样比例，有些时候 1:1 的比例并不是最好的，因为与现实情况相差甚远。</p>
