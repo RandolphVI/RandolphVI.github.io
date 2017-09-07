@@ -114,7 +114,7 @@
 <meta property="og:image" content="https://farm5.staticflickr.com/4300/35460446383_aafc34ca3c_o.jpg">
 <meta property="og:image" content="https://farm5.staticflickr.com/4369/37075604245_e8b49bcb5e_o.png">
 <meta property="og:image" content="https://farm5.staticflickr.com/4416/36680155240_e56c93ec1d_o.png">
-<meta property="og:updated_time" content="2017-09-07T06:08:27.000Z">
+<meta property="og:updated_time" content="2017-09-07T06:10:06.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="「Machine Learning」 Deal with Imbalanced Data">
 <meta name="twitter:description" content="本文主要介绍在机器学习中样本比例不平衡的处理方法。">
@@ -440,7 +440,7 @@
                   <i class="fa fa-file-word-o"></i>
                 </span>
                 <span title="Words count in article">
-                  3,548
+                  3,464
                 </span>
                 <span> words </span>
                 
@@ -455,7 +455,7 @@
                   <i class="fa fa-clock-o"></i>
                 </span>
                 <span title="Reading time">
-                  13
+                  12
                 </span>
                 <span> mins </span>
               
@@ -576,11 +576,9 @@ x_{new}=x+rand\left(0,1\right)\times\left(\tilde{x}-x\right)</script><p><img src
 <h3 id="ADASYN"><a href="#ADASYN" class="headerlink" title="ADASYN"></a>ADASYN</h3><h2 id="Under-Sampling"><a href="#Under-Sampling" class="headerlink" title="Under-Sampling"></a>Under-Sampling</h2><p> 欠采样方法是针对多数的负样本，减少负样本的数量，反而提高整体 $F$ 值。最简单的欠采样方法是随机地删掉一些负样本。欠采样的缺点很明显，就是会丢失负样本的一些重要信息，不能够充分利用已有的信息，这样训练得到的模型只学到了总体模式的一部分。</p>
 <h3 id="Random-Under-Sampling"><a href="#Random-Under-Sampling" class="headerlink" title="Random Under-Sampling"></a>Random Under-Sampling</h3><h3 id="Informed-Under-Samling"><a href="#Informed-Under-Samling" class="headerlink" title="Informed Under-Samling"></a>Informed Under-Samling</h3><p>Informed 欠采样算法可以解决传统随机欠采样造成的数据信息丢失问题，且表现出较好的不均衡数据分类性能。其中含有一些集成（Ensemble）的思想，主要的方法是 <strong>EasyEnsemble</strong> 算法和 <strong>BalanceCascade</strong> 算法。</p>
 <h4 id="EasyEnsemble"><a href="#EasyEnsemble" class="headerlink" title="EasyEnsemble"></a>EasyEnsemble</h4><p> 它把数据划分为两部分，分别是多数类样本和少数类样本，对于多数类样本 $S<em>{maj}$，通过 $n$ 次有放回采样生成 $n$ 份子集，少数类样本 $S</em>{min}$ 分别和这 $n$ 份样本合并训练 AdaBoost 分类器，这样可以得到 $n$ 个模型，最终的模型采用加权多数表决的方法，加大分类误差率小的弱分类器的权值，使其在表决中起较大的作用，减小分类误差率小的弱分类器的权值，使其在表决中起较小的作用。这里假设多数类样本为 N，少数类样本为 P，算法流程如下：</p>
-<center>![屏幕快照 2017-04-19 上午 10.07.45](http://omu7tit09.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-04-19%20%E4%B8%8A%E5%8D%8810.07.45.png)</center>
-
+<p><img src=""alt=""></p>
 <p>EasyEnsemble 的想法是多次随机欠采样，尽可能全面地涵盖所有信息，算法特点是利用 boosting 减小偏差（Adaboost）、bagging 减小方差（集成分类器）。实际应用的时候也可以尝试选用不同的分类器来提高分类的效果。</p>
-<center>![屏幕快照 2017-04-19 上午 10.08.08](http://omu7tit09.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-04-19%20%E4%B8%8A%E5%8D%8810.08.08.png)</center>
-
+<p><img src=""alt=""></p>
 <h4 id="BalanceCascade"><a href="#BalanceCascade" class="headerlink" title="BalanceCascade"></a>BalanceCascade</h4><h2 id="Integration-of"><a href="#Integration-of" class="headerlink" title="Integration of"></a>Integration of</h2><p> 将过采样和欠采样结合。</p>
 <h2 id="Different-resampled-ratios"><a href="#Different-resampled-ratios" class="headerlink" title="Different resampled ratios"></a>Different resampled ratios</h2><p> 尝试不同的采样比例，有些时候 1:1 的比例并不是最好的，因为与现实情况相差甚远。</p>
 <h1 id="Algorithm-Level"><a href="#Algorithm-Level" class="headerlink" title="Algorithm Level"></a>Algorithm Level</h1><p> 在算法层面上，改变分类算法，在传统分类算法的基础上对不同类别采取不同的加权方式，使得模型更看重少数类。</p>
