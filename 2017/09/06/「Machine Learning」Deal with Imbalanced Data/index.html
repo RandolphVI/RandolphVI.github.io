@@ -114,7 +114,7 @@
 <meta property="og:image" content="https://farm5.staticflickr.com/4300/35460446383_aafc34ca3c_o.jpg">
 <meta property="og:image" content="https://farm5.staticflickr.com/4369/37075604245_e8b49bcb5e_o.png">
 <meta property="og:image" content="https://farm5.staticflickr.com/4416/36680155240_e56c93ec1d_o.png">
-<meta property="og:updated_time" content="2017-09-07T03:19:28.000Z">
+<meta property="og:updated_time" content="2017-09-07T05:11:55.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="「Machine Learning」 Deal with Imbalanced Data">
 <meta name="twitter:description" content="本文主要介绍在机器学习中样本比例不平衡的处理方法。">
@@ -566,7 +566,7 @@ x_{new}=x+rand\left(0,1\right)\times\left(\tilde{x}-x\right)</script><p><img src
 <ol>
 <li> 首先，对于每个 <script type="math/tex">x_{i} \subset S_{min}</script> 确定一系列 K- 近邻样本集，称该数据集为 <script type="math/tex">S_{i-kNN}</script>，且 <script type="math/tex">S_{i-kNN} \subset S</script>；</li>
 <li> 然后，对每个样本 <script type="math/tex">x_{i}</script>，判断出最近邻样本集中属于多数类样本的个数，即：<script type="math/tex">|S_{i-kNN} \cap S_{maj}|</script>；</li>
-<li> 最后，选择满足下面不等式的 <script type="math/tex">x_{i} \frac{k}{2} <|S_{i-kNN} \cap S_{maj}| <k</script> 的 <script type="math/tex">x_i</script>，将其加入危险集 <strong>DANGER</strong>，对危险集中的每一个样本点（最容易被错分的样本），采用普通的 SMOTE 算法生成新的少数类样本。</li>
+<li> 最后，选择满足下面不等式的 <script type="math/tex">\frac{k}{2} <|S_{i-kNN} \cap S_{maj}| <k</script> 的 <script type="math/tex">x_i</script>，将其加入危险集 <strong>DANGER</strong>，对危险集中的每一个样本点（最容易被错分的样本），采用普通的 SMOTE 算法生成新的少数类样本。</li>
 </ol>
 <p><img src="https://farm5.staticflickr.com/4416/36680155240_e56c93ec1d_o.png" alt=""></p>
 <h2 id="Under-Sampling"><a href="#Under-Sampling" class="headerlink" title="Under-Sampling"></a>Under-Sampling</h2><p> 欠采样方法是针对多数的负样本，减少负样本的数量，反而提高整体 $F$ 值。最简单的欠采样方法是随机地删掉一些负样本。欠采样的缺点很明显，就是会丢失负样本的一些重要信息，不能够充分利用已有的信息，这样训练得到的模型只学到了总体模式的一部分。</p>
