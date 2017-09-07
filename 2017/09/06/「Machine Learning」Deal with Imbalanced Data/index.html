@@ -113,7 +113,7 @@
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://farm5.staticflickr.com/4300/35460446383_aafc34ca3c_o.jpg">
 <meta property="og:image" content="https://farm5.staticflickr.com/4369/37075604245_e8b49bcb5e_o.png">
-<meta property="og:updated_time" content="2017-09-07T01:51:15.000Z">
+<meta property="og:updated_time" content="2017-09-07T02:24:56.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="「Machine Learning」 Deal with Imbalanced Data">
 <meta name="twitter:description" content="本文主要介绍在机器学习中样本比例不平衡的处理方法。">
@@ -439,7 +439,7 @@
                   <i class="fa fa-file-word-o"></i>
                 </span>
                 <span title="Words count in article">
-                  2,753
+                  3,206
                 </span>
                 <span> words </span>
                 
@@ -454,7 +454,7 @@
                   <i class="fa fa-clock-o"></i>
                 </span>
                 <span title="Reading time">
-                  10
+                  11
                 </span>
                 <span> mins </span>
               
@@ -511,10 +511,13 @@
 <ul>
 <li>改变数据分布，从数据层面使得类别分布更为平衡：<ul>
 <li>收集更多的数据。</li>
+<li>数据重采样：<ul>
 <li>过采样：增加少数类样本的数量。</li>
 <li>欠采样：减少多数类样本的数量。</li>
 <li>综合采样：将过采样和欠采样结合。</li>
 <li>尝试不同的采样比例。</li>
+</ul>
+</li>
 </ul>
 </li>
 <li>改变分类算法，在传统分类算法的基础上对不同类别采取不同的加权方式，使得模型更看重少数类：<ul>
@@ -527,18 +530,22 @@
 </ul>
 <h1 id="Data-Level"><a href="#Data-Level" class="headerlink" title="Data Level"></a>Data Level</h1><h2 id="Collect-more-data"><a href="#Collect-more-data" class="headerlink" title="Collect more data"></a>Collect more data</h2><p>搜集更多的数据，从而让正负样本的比例平衡，这种方法往往是最被忽视的方法，然而实际上，当搜集数据的代价不大时，这种方法是最有效的。</p>
 <p>但是需要注意，当搜集数据的场景本来产生数据的比例就是不平衡时，这种方法并不能解决数据比例不平衡问题。</p>
-<h2 id="Data-Resampling"><a href="#Data-Resampling" class="headerlink" title="Data Resampling"></a>Data Resampling</h2><p>对数据重采样可以有针对性地改变数据中样本的比例，采样一般有两种方式：<code>over-sampling</code> 和 <code>under-sampling</code>，前者是增加样本数较少的样本，其方式是直接复制原来的样本，而后者是减少样本数较多的样本，其方式是丢弃这些多余的样本。</p>
-<p>通常来说，当总样本数目较少的时候考虑 <code>over-sampling</code>，而样本数数目较多的时候考虑 <code>under-sampling</code>。</p>
-<h2 id="Over-Sampling"><a href="#Over-Sampling" class="headerlink" title="Over-Sampling"></a>Over-Sampling</h2><p>过采样方法是针对少数的正样本，增加正样本的数量，从而提高整体 $F$ 值。最简单的过采样方法是简单地复制一些正样本。过采样的缺点是没有给正样本增加任何新的信息，这样训练得到的模型会有出现一定的过拟合问题。</p>
+<h2 id="Data-Resampling"><a href="#Data-Resampling" class="headerlink" title="Data Resampling"></a>Data Resampling</h2><p>对于一个不平衡样本，其样本数多的为 <strong>majority</strong>，样本数少的为 <strong>minority</strong>。整个 trainingset 为 $S$，<strong>majority</strong> 记为 <script type="math/tex">S_{maj}</script>，<strong>minority</strong> 记为 <script type="math/tex">S_{min}</script>。用 <script type="math/tex">|S_{maj}|</script> 表示 <strong>majority</strong>的样本数量，用 <script type="math/tex">|S_{min}|</script> 表示 <strong>minority</strong> 的样本数量。</p>
+<p>如果随机采取部分 <strong>majority</strong> 的样本记为 <script type="math/tex">|E_{maj}|</script>，随机采取 <strong>minority</strong> 的样本记为 <script type="math/tex">|E_{min}|</script>。</p>
+<p>对数据重采样可以有针对性地改变数据中样本的比例，采样一般有两种方式：<code>Over-Sampling</code> 和 <code>Under-Sampling</code>。</p>
+<p><code>Over-Sampling</code>是增加样本数较少的样本，其方式是直接复制原来的样本，通常简单的做法就是随机挑选 <script type="math/tex">S_{min}</script>，然后加入到 <script type="math/tex">S_{min}</script>当中，增加的量通常是 <script type="math/tex">|S_{maj}|-|S_{min}|</script>，因为增加了重复的样本，所以容易造成过拟合。</p>
+<p><code>Under-Sampling</code>是减少样本数较多的样本，其方式是丢弃这些多余的样本，通过简单的做法就是随机挑选 <script type="math/tex">S_{maj}</script>，然后将其去除，减少的量通常是 <script type="math/tex">|S_{maj}|-|S_{min}|</script>，由于去除了原本样本中可能存在的重要信息，所以会导致欠拟合。</p>
+<p>通常来说，当总样本数目较少的时候考虑 <code>Over-Sampling</code>，而样本数数目较多的时候考虑 <code>Under-Sampling</code>。</p>
+<h3 id="Over-Sampling"><a href="#Over-Sampling" class="headerlink" title="Over-Sampling"></a>Over-Sampling</h3><p>过采样方法是针对少数的正样本，增加正样本的数量，从而提高整体 $F$ 值。最简单的过采样方法是简单地复制一些正样本。过采样的缺点是没有给正样本增加任何新的信息，这样训练得到的模型会有出现一定的过拟合问题。</p>
 <p>另外，过采样方法对 SVM 算法是无效的。因为 SVM 算法是找支持向量，复制正样本并不能改变数据的支持向量。</p>
-<h3 id="随机过采样"><a href="# 随机过采样" class="headerlink" title="随机过采样"></a>随机过采样 </h3><p> 随机过采样是增加少数类样本数量，可以事先设置多数类与少数类最终的数量比例，在保留多数类样本不变的情况下，根据比例随机复制少数类样本，在使用的过程中为了保证所有的少数类样本信息都会被包含，可以先完全复制一份全量的少数类样本，再随机复制少数样本使得满足数量比例，具体步骤如下：</p>
+<h4 id="Random-Over-Sampling"><a href="#Random-Over-Sampling" class="headerlink" title="Random Over-Sampling"></a>Random Over-Sampling</h4><p>随机过采样是增加少数类样本数量，可以事先设置多数类与少数类最终的数量比例，在保留多数类样本不变的情况下，根据比例随机复制少数类样本，在使用的过程中为了保证所有的少数类样本信息都会被包含，可以先完全复制一份全量的少数类样本，再随机复制少数样本使得满足数量比例，具体步骤如下：</p>
 <ol>
 <li>首先在少数类 $S_{min}$ 集合中随机选中一些少数类样本</li>
 <li>然后通过复制所选样本生成样本集合 $E$</li>
 <li>将它们添加到 $S<em>{min}$ 中来扩大原始数据集从而得到新的少数类集合 $S</em>{min-new}$</li>
 </ol>
 <p>$S<em>{min}$ 中的总样本数增加了 $|E|$ 个新样本，且 $S</em>{min-new}$ 的类分布均衡度进行了相应的调整，如此操作可以改变类分布平衡度从而达到所需水平。当然，重复的样本过多，容易造成分类器的过拟合。</p>
-<h3 id="SMOTE（Synthetic-Minority-Oversampling-Technique）"><a href="#SMOTE（Synthetic-Minority-Oversampling-Technique）" class="headerlink" title="SMOTE（Synthetic Minority Oversampling Technique）"></a>SMOTE（Synthetic Minority Oversampling Technique）</h3><p>在合成采样技术方面，Chawla NY 等人提出的 SMOTE 过采样技术是基于随机过采样算法的一种改进方案，由于随机过采样简单复制样本的策略来增加少数类样本，这样容易产生模型过拟合的问题，即使模型学习到的信息过于特别（Specific）而不够泛化(General)。</p>
+<h4 id="SMOTE（Synthetic-Minority-Oversampling-Technique）"><a href="#SMOTE（Synthetic-Minority-Oversampling-Technique）" class="headerlink" title="SMOTE（Synthetic Minority Oversampling Technique）"></a>SMOTE（Synthetic Minority Oversampling Technique）</h4><p>在合成采样技术方面，Chawla NY 等人提出的 SMOTE 过采样技术是基于随机过采样算法的一种改进方案，由于随机过采样简单复制样本的策略来增加少数类样本，这样容易产生模型过拟合的问题，即使模型学习到的信息过于特别（Specific）而不够泛化(General)。</p>
 <p>SMOTE 的主要思想是利用特征空间中现存少数类样本之间的相似性来建立人工数据，特别是，对于子集 <script type="math/tex">S_{min} \subset S</script>，对于每一个样本 <script type="math/tex">x_i \subset S_{min}</script> 使用 K- 近邻法，其中 K- 近邻被定义为考虑 $S_{min}$ 中的 K 个元素本身与 <script type="math/tex">x_i</script> 的欧氏距离在 $n$ 维特征空间 $X$ 中表现为最小幅度值的样本。<strong>由于不是简单地复制少数类样本，因此可以在一定程度上避免分类器的过度拟合，实践证明此方法可以提高分类器的性能。但是由于对每个少数类样本都生成新样本，因此容易发生生成样本重叠（overlapping）的问题</strong>。算法流程如下：</p>
 <ul>
 <li>1）对于少数类中的每一个样本 <script type="math/tex">x_i</script>，以欧氏距离为标准计算它到少数类样本集 <script type="math/tex">S_{min}</script> 中所有样本的距离，得到 K 近邻；</li>
@@ -546,16 +553,23 @@
 <li>3）对于每一个随机选出的近邻 <script type="math/tex">\tilde{x}</script>，分别与原样本按照如下的公式构建新的样本:</li>
 </ul>
 <script type="math/tex; mode=display">x_{new}=x+rand\left(0,1\right)\times\left(\tilde{x}-x\right)</script><p><img src="https://farm5.staticflickr.com/4369/37075604245_e8b49bcb5e_o.png" alt=""></p>
-<h3 id="Borderline-SMOTE"><a href="#Borderline-SMOTE" class="headerlink" title="Borderline-SMOTE"></a>Borderline-SMOTE</h3><p>原始的 SMOTE 算法对所有的少数类样本都是一视同仁的，但实际建模过程中发现那些处于边界位置的样本更容易被错分，因此利用边界位置的样本信息产生新样本可以给模型带来更大的提升。Borderline-SMOTE 便是将原始 SMOTE 算法和边界信息算法结合的算法。算法流程如下：</p>
+<h4 id="Borderline-SMOTE"><a href="#Borderline-SMOTE" class="headerlink" title="Borderline-SMOTE"></a>Borderline-SMOTE</h4><p>原始的 SMOTE 算法对所有的少数类样本都是一视同仁的，但实际建模过程中发现那些处于边界位置的样本更容易被错分，因此利用边界位置的样本信息产生新样本可以给模型带来更大的提升。Borderline-SMOTE 便是将原始 SMOTE 算法和边界信息算法结合的算法。算法流程如下：</p>
 <ol>
 <li>首先，对于每个 <script type="math/tex">x_{i} \subset S_{min}</script> 确定一系列 K- 近邻样本集，称该数据集为 <script type="math/tex">S_{i-kNN}</script>，且 <script type="math/tex">S_{i-kNN} \subset S</script>；</li>
 <li>然后，对每个样本 <script type="math/tex">x_{i}</script>，判断出最近邻样本集中属于多数类样本的个数，即：$|S<em>{i-kNN} \cap S</em>{maj}|$；</li>
 <li>最后，选择满足下面不等式的 <script type="math/tex">x_{i} \frac{k}{2} <|S_{i-kNN} \cap S_{maj}| <k</script>，将其加入危险集 <strong>DANGER</strong>，对危险集中的每一个样本点（最容易被错分的样本），采用普通的 SMOTE 算法生成新的少数类样本。</li>
 </ol>
 <p><img src=""alt=""></p>
-<h2 id="Under-Sampling"><a href="#Under-Sampling" class="headerlink" title="Under-Sampling"></a>Under-Sampling</h2><p>欠采样方法是针对多数的负样本，减少负样本的数量，反而提高整体 $F$ 值。最简单的欠采样方法是随机地删掉一些负样本。欠采样的缺点很明显，就是会丢失负样本的一些重要信息，不能够充分利用已有的信息，这样训练得到的模型只学到了总体模式的一部分。</p>
-<h2 id=""><a href="#"class="headerlink"title="#"></a>#</h2><h2 id="Integrated-Sampling"><a href="#Integrated-Sampling"class="headerlink"title="Integrated-Sampling"></a>Integrated-Sampling</h2><p>将过采样和欠采样结合。</p>
-<h2 id="Different-resampled-ratios"><a href="#Different-resampled-ratios" class="headerlink" title="Different resampled ratios"></a>Different resampled ratios</h2><p>尝试不同的采样比例，有些时候 1:1 的比例并不是最好的，因为与现实情况相差甚远。</p>
+<h3 id="Under-Sampling"><a href="#Under-Sampling" class="headerlink" title="Under-Sampling"></a>Under-Sampling</h3><p>欠采样方法是针对多数的负样本，减少负样本的数量，反而提高整体 $F$ 值。最简单的欠采样方法是随机地删掉一些负样本。欠采样的缺点很明显，就是会丢失负样本的一些重要信息，不能够充分利用已有的信息，这样训练得到的模型只学到了总体模式的一部分。</p>
+<h4 id="Random-Under-Sampling"><a href="#Random-Under-Sampling" class="headerlink" title="Random Under-Sampling"></a>Random Under-Sampling</h4><p>随机欠采样是减少多数类样本数量，可以事先设置多数类与少数类最终的数量比例，在保留少数类样本不变的情况下，根据比例随机去除多数类样本，在使用的过程中为了保证所有的少数类样本信息都会被包含，可以先完全复制一份全量的少数类样本，再随机复制少数样本使得满足数量比例，具体步骤如下：</p>
+<ol>
+<li>首先在少数类 $S_{min}$ 集合中随机选中一些少数类样本</li>
+<li>然后通过复制所选样本生成样本集合 $E$</li>
+<li>将它们添加到 $S<em>{min}$ 中来扩大原始数据集从而得到新的少数类集合 $S</em>{min-new}$</li>
+</ol>
+<p>$S<em>{min}$ 中的总样本数增加了 $|E|$ 个新样本，且 $S</em>{min-new}$ 的类分布均衡度进行了相应的调整，如此操作可以改变类分布平衡度从而达到所需水平。当然，重复的样本过多，容易造成分类器的过拟合。</p>
+<h3 id="Integrated-Sampling"><a href="#Integrated-Sampling" class="headerlink" title="Integrated-Sampling"></a>Integrated-Sampling</h3><p>将过采样和欠采样结合。</p>
+<h3 id="Different-resampled-ratios"><a href="#Different-resampled-ratios" class="headerlink" title="Different resampled ratios"></a>Different resampled ratios</h3><p>尝试不同的采样比例，有些时候 1:1 的比例并不是最好的，因为与现实情况相差甚远。</p>
 <h1 id="Algorithm-Level"><a href="#Algorithm-Level" class="headerlink" title="Algorithm Level"></a>Algorithm Level</h1><h2 id="Try-Different-Algorithms"><a href="#Try-Different-Algorithms" class="headerlink" title="Try Different Algorithms"></a>Try Different Algorithms</h2><p>强烈建议不要对待每一个分类都使用自己喜欢而熟悉的分类算法。应该使用不同的算法对其进行比较，因为不同的算法适用于不同的任务与数据。</p>
 <p>例如，<strong>决策树 </strong> 往往在类别不均衡数据上表现不错。它使用基于类变量的划分规则去创建分类树，因此可以强制地将不同类别的样本分开。目前流行的决策树算法有：<code>C4.5</code>、<code>C5.0</code>、<code>CART</code> 和 <code>Random Forest</code> 等。</p>
 <h2 id="Change-the-Performance-Measures"><a href="#Change-the-Performance-Measures" class="headerlink" title="Change the Performance Measures"></a>Change the Performance Measures</h2><p>改变评判指标，也就是不用准确率来评判和选择模型，原因就是我们上面提到的 Accuracy Paradox 问题。从开头的分析可以看出，准确度这个评价指标在类别不均衡的分类任务中并不能很好的适用，甚至还会进行误导（尽管单从这个指标的数值上而言很高，但是模型的泛化能力很差）。因此在样本不均衡的分类任务中，需要使用更有说服力的评价指标来对分类器进行评价。</p>
@@ -576,7 +590,7 @@
 <p>如果你锁定一个具体的算法时，并且无法通过使用重采样来解决不均衡性问题，此时你便可以使用惩罚模型来解决不平衡性问题。但是，设置惩罚矩阵是一个复杂的事，因此你需要根据你的任务尝试不同的惩罚矩阵，并选取一个较好的惩罚矩阵。</p>
 <h2 id="Change-the-Model-Training-Process"><a href="#Change-the-Model-Training-Process" class="headerlink" title="Change the Model Training Process"></a>Change the Model Training Process</h2><p>更改模型的训练过程。假设超大类中样本的个数是极小类中样本个数的 $L$ 倍，那么在随机梯度下降（SGD，stochastic gradient descent）算法中，每次遇到一个极小类中样本进行训练时，训练 $L$ 次。</p>
 <p>参考：</p>
-<p><a href="http://machinelearningmastery.com/tactics-to-combat-imbalanced-classes-in-your-machine-learning-dataset/" target="_blank" rel="external">8 Tactics to Combat Imbalanced Classes in Your Machine Learning Dataset</a><br><a href="https://www.quora.com/In-classification-how-do-you-handle-an-unbalanced-training-set" target="_blank" rel="external">In classification, how do you handle an unbalanced training set?</a></p>
+<p><a href="http://machinelearningmastery.com/tactics-to-combat-imbalanced-classes-in-your-machine-learning-dataset/" target="_blank" rel="external">8 Tactics to Combat Imbalanced Classes in Your Machine Learning Dataset</a><br><a href="http://www.ele.uri.edu/faculty/he/PDFfiles/ImbalancedLearning.pdf" target="_blank" rel="external">Learning from Imbalanced Data</a></p>
 
       
     </div>
@@ -841,7 +855,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Data-Level"><span class="nav-number">2.</span> <span class="nav-text">Data Level</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Collect-more-data"><span class="nav-number">2.1.</span> <span class="nav-text">Collect more data</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Data-Resampling"><span class="nav-number">2.2.</span> <span class="nav-text">Data Resampling</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Over-Sampling"><span class="nav-number">2.3.</span> <span class="nav-text">Over-Sampling</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#随机过采样"><span class="nav-number">2.3.1.</span> <span class="nav-text">随机过采样 </span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SMOTE（Synthetic-Minority-Oversampling-Technique）"><span class="nav-number">2.3.2.</span> <span class="nav-text">SMOTE（Synthetic Minority Oversampling Technique）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Borderline-SMOTE"><span class="nav-number">2.3.3.</span> <span class="nav-text">Borderline-SMOTE</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Under-Sampling"><span class="nav-number">2.4.</span> <span class="nav-text">Under-Sampling</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number">2.5.</span> <span class="nav-text">#</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Integrated-Sampling"><span class="nav-number">2.6.</span> <span class="nav-text">Integrated-Sampling</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Different-resampled-ratios"><span class="nav-number">2.7.</span> <span class="nav-text">Different resampled ratios</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Algorithm-Level"><span class="nav-number">3.</span> <span class="nav-text">Algorithm Level</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Try-Different-Algorithms"><span class="nav-number">3.1.</span> <span class="nav-text">Try Different Algorithms</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Change-the-Performance-Measures"><span class="nav-number">3.2.</span> <span class="nav-text">Change the Performance Measures</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Try-Penalized-Models"><span class="nav-number">3.3.</span> <span class="nav-text">Try Penalized Models</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Change-the-Model-Training-Process"><span class="nav-number">3.4.</span> <span class="nav-text">Change the Model Training Process</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Data-Level"><span class="nav-number">2.</span> <span class="nav-text">Data Level</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Collect-more-data"><span class="nav-number">2.1.</span> <span class="nav-text">Collect more data</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Data-Resampling"><span class="nav-number">2.2.</span> <span class="nav-text">Data Resampling</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Over-Sampling"><span class="nav-number">2.2.1.</span> <span class="nav-text">Over-Sampling</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Random-Over-Sampling"><span class="nav-number">2.2.1.1.</span> <span class="nav-text">Random Over-Sampling</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SMOTE（Synthetic-Minority-Oversampling-Technique）"><span class="nav-number">2.2.1.2.</span> <span class="nav-text">SMOTE（Synthetic Minority Oversampling Technique）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Borderline-SMOTE"><span class="nav-number">2.2.1.3.</span> <span class="nav-text">Borderline-SMOTE</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Under-Sampling"><span class="nav-number">2.2.2.</span> <span class="nav-text">Under-Sampling</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Random-Under-Sampling"><span class="nav-number">2.2.2.1.</span> <span class="nav-text">Random Under-Sampling</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Integrated-Sampling"><span class="nav-number">2.2.3.</span> <span class="nav-text">Integrated-Sampling</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Different-resampled-ratios"><span class="nav-number">2.2.4.</span> <span class="nav-text">Different resampled ratios</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Algorithm-Level"><span class="nav-number">3.</span> <span class="nav-text">Algorithm Level</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Try-Different-Algorithms"><span class="nav-number">3.1.</span> <span class="nav-text">Try Different Algorithms</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Change-the-Performance-Measures"><span class="nav-number">3.2.</span> <span class="nav-text">Change the Performance Measures</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Try-Penalized-Models"><span class="nav-number">3.3.</span> <span class="nav-text">Try Penalized Models</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Change-the-Model-Training-Process"><span class="nav-number">3.4.</span> <span class="nav-text">Change the Model Training Process</span></a></li></ol></li></ol></div>
             
 
           </div>
