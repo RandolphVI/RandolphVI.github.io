@@ -126,7 +126,7 @@
     <link href="http://randolph.pro/2017/09/06/%E3%80%8CMachine%20Learning%E3%80%8DDeal%20with%20Imbalanced%20Data/"/>
     <id>http://randolph.pro/2017/09/06/「Machine Learning」Deal with Imbalanced Data/</id>
     <published>2017-09-05T16:00:00.000Z</published>
-    <updated>2017-09-07T03:15:52.000Z</updated>
+    <updated>2017-09-07T03:17:34.000Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://farm5.staticflickr.com/4300/35460446383_aafc34ca3c_o.jpg" alt=""></p>
 <p> 有关「Machine Learning」的其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/">「Machine Learning」</a></p>
@@ -212,9 +212,9 @@ SMOTE 的主要思想是利用特征空间中现存少数类样本之间的相�
 
 *   1）对于少数类中的每一个样本 $$x_i$$，以欧氏距离为标准计算它到少数类样本集 $$S_{min}$$ 中所有样本的距离，得到 K 近邻；
 *   2）根据样本不平衡比例设置一个采样比例以确定采样倍率 $$N$$，对于每一个少数类样本 $$x_i$$，从其 K 近邻中随机选择若干个样本，假设选择的近邻为 $$\tilde{x}$$；
-*   3）对于每一个随机选出的近邻 $$\tilde{x}$$，分别与原样本按照如下的公式构建新的样本:
-
-$$x_{new}=x+rand\left(0,1\right)\times\left(\tilde{x}-x\right)</script><p><img src="https://farm5.staticflickr.com/4369/37075604245_e8b49bcb5e_o.png" alt=""></p>
+*   3）对于每一个随机选出的近邻 $$\tilde{x}$$，分别与原样本按照如下的公式构建新的样本:</script><p>x_{new}=x+rand\left(0,1\right)\times\left(\tilde{x}-x\right)</p>
+<p>$$</p>
+<p><img src="https://farm5.staticflickr.com/4369/37075604245_e8b49bcb5e_o.png" alt=""></p>
 <h3 id="Borderline-SMOTE"><a href="#Borderline-SMOTE" class="headerlink" title="Borderline-SMOTE"></a>Borderline-SMOTE</h3><p> 原始的 SMOTE 算法对所有的少数类样本都是一视同仁的，<strong> 但实际建模过程中发现那些处于边界位置的样本更容易被错分，因此利用边界位置的样本信息产生新样本可以给模型带来更大的提升 </strong>。Borderline-SMOTE 便是将原始 SMOTE 算法和边界信息算法结合的算法。算法流程如下：</p>
 <ol>
 <li> 首先，对于每个 <script type="math/tex">x_{i} \subset S_{min}</script> 确定一系列 K- 近邻样本集，称该数据集为 <script type="math/tex">S_{i-kNN}</script>，且 <script type="math/tex">S_{i-kNN} \subset S</script>；</li>
