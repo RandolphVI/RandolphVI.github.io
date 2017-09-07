@@ -126,7 +126,7 @@
     <link href="http://randolph.pro/2017/09/06/%E3%80%8CMachine%20Learning%E3%80%8DDeal%20with%20Imbalanced%20Data/"/>
     <id>http://randolph.pro/2017/09/06/「Machine Learning」Deal with Imbalanced Data/</id>
     <published>2017-09-05T16:00:00.000Z</published>
-    <updated>2017-09-07T05:11:55.000Z</updated>
+    <updated>2017-09-07T05:42:56.000Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://farm5.staticflickr.com/4300/35460446383_aafc34ca3c_o.jpg" alt=""></p>
 <p> 有关「Machine Learning」的其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/">「Machine Learning」</a></p>
@@ -218,8 +218,12 @@ x_{new}=x+rand\left(0,1\right)\times\left(\tilde{x}-x\right)</script><p><img src
 <li> 然后，对每个样本 <script type="math/tex">x_{i}</script>，判断出最近邻样本集中属于多数类样本的个数，即：<script type="math/tex">|S_{i-kNN} \cap S_{maj}|</script>；</li>
 <li> 最后，选择满足下面不等式的 <script type="math/tex">\frac{k}{2} <|S_{i-kNN} \cap S_{maj}| <k</script> 的 <script type="math/tex">x_i</script>，将其加入危险集 <strong>DANGER</strong>，对危险集中的每一个样本点（最容易被错分的样本），采用普通的 SMOTE 算法生成新的少数类样本。</li>
 </ol>
+<p><strong>NOISE</strong>：如果一个 <script type="math/tex">x_i</script> 的 <script type="math/tex">|S_{i-kNN} \cap S_{maj}|</script> 等于 $k$（即设定的近邻个数），表示这个 <strong>minority</strong> 点的周围全都是 <script type="math/tex">S_{maj}</script> 的点，那么这个点就很有可能只是个干扰，或者是一个错误的 sample。</p>
+<p><strong>DANGER</strong>：如果一个 <script type="math/tex">x_i</script> 的 <script type="math/tex">|S_{i-kNN} \cap S_{maj}|</script> 在 <script type="math/tex">\frac{k}{2}</script> 与 <script type="math/tex">k</script> 之间，表示这个 <strong>minority</strong> 点很有可能在 <strong>minority</strong> 与 <strong>majority</strong> 的边界边，或者已经到了 <script type="math/tex">S_{maj}</script> 的范围内，因此有点“危险”。</p>
+<p><strong>SAFE</strong>：如果一个 <script type="math/tex">x_i</script> 的 <script type="math/tex">|S_{i-kNN} \cap S_{maj}|</script> 少于 <script type="math/tex">\frac{k}{2}</script>，表示这个 <strong>minority</strong> 点还在 <script type="math/tex">S_{min}</script> 的范围内，算是比较“安全”。</p>
+<p> 在划分了三种级别的 <strong>minority</strong> 点之后，就开始采用普通的 SMOTE 算法产生新的少数类样本，但是只要是 <strong>NOISE</strong> 级别的，就不予产生，反而是 <strong>Danger</strong> 的才产生新的样本， <strong>SAFE</strong> 的产生意义就不是特别大，大多数机器学习算法的假设大多数会涵盖到 <strong>SAFE</strong> 该级别的附近，多了反而会产生过拟合。</p>
 <p><img src="https://farm5.staticflickr.com/4416/36680155240_e56c93ec1d_o.png" alt=""></p>
-<h2 id="Under-Sampling"><a href="#Under-Sampling" class="headerlink" title="Under-Sampling"></a>Under-Sampling</h2><p> 欠采样方法是针对多数的负样本，减少负样本的数量，反而提高整体 $F$ 值。最简单的欠采样方法是随机地删掉一些负样本。欠采样的缺点很明显，就是会丢失负样本的一些重要信息，不能够充分利用已有的信息，这样训练得到的模型只学到了总体模式的一部分。</p>
+<h3 id="ADASYN"><a href="#ADASYN" class="headerlink" title="ADASYN"></a>ADASYN</h3><h2 id="Under-Sampling"><a href="#Under-Sampling" class="headerlink" title="Under-Sampling"></a>Under-Sampling</h2><p> 欠采样方法是针对多数的负样本，减少负样本的数量，反而提高整体 $F$ 值。最简单的欠采样方法是随机地删掉一些负样本。欠采样的缺点很明显，就是会丢失负样本的一些重要信息，不能够充分利用已有的信息，这样训练得到的模型只学到了总体模式的一部分。</p>
 <h3 id="Random-Under-Sampling"><a href="#Random-Under-Sampling" class="headerlink" title="Random Under-Sampling"></a>Random Under-Sampling</h3><h3 id="Informed-Under-Samling"><a href="#Informed-Under-Samling" class="headerlink" title="Informed Under-Samling"></a>Informed Under-Samling</h3><p>Informed 欠采样算法可以解决传统随机欠采样造成的数据信息丢失问题，且表现出较好的不均衡数据分类性能。其中含有一些集成（Ensemble）的思想，主要的方法是 <strong>EasyEnsemble</strong> 算法和 <strong>BalanceCascade</strong> 算法。</p>
 <h4 id="EasyEnsemble"><a href="#EasyEnsemble" class="headerlink" title="EasyEnsemble"></a>EasyEnsemble</h4><h2 id="Integration-of"><a href="#Integration-of" class="headerlink" title="Integration of"></a>Integration of</h2><p> 将过采样和欠采样结合。</p>
 <h2 id="Different-resampled-ratios"><a href="#Different-resampled-ratios" class="headerlink" title="Different resampled ratios"></a>Different resampled ratios</h2><p> 尝试不同的采样比例，有些时候 1:1 的比例并不是最好的，因为与现实情况相差甚远。</p>
@@ -244,7 +248,7 @@ x_{new}=x+rand\left(0,1\right)\times\left(\tilde{x}-x\right)</script><p><img src
 <p> 如果你锁定一个具体的算法时，并且无法通过使用重采样来解决不均衡性问题，此时你便可以使用惩罚模型来解决不平衡性问题。但是，设置惩罚矩阵是一个复杂的事，因此你需要根据你的任务尝试不同的惩罚矩阵，并选取一个较好的惩罚矩阵。</p>
 <h2 id="Change-the-Model-Training-Process"><a href="#Change-the-Model-Training-Process" class="headerlink" title="Change the Model Training Process"></a>Change the Model Training Process</h2><p> 更改模型的训练过程。假设超大类中样本的个数是极小类中样本个数的 $L$ 倍，那么在随机梯度下降（SGD，stochastic gradient descent）算法中，每次遇到一个极小类中样本进行训练时，训练 $L$ 次。</p>
 <p> 参考：</p>
-<p><a href="http://machinelearningmastery.com/tactics-to-combat-imbalanced-classes-in-your-machine-learning-dataset/" target="_blank" rel="external">8 Tactics to Combat Imbalanced Classes in Your Machine Learning Dataset</a><br><a href="http://www.ele.uri.edu/faculty/he/PDFfiles/ImbalancedLearning.pdf" target="_blank" rel="external">Paper: Learning from Imbalanced Data</a></p>
+<p><a href="http://machinelearningmastery.com/tactics-to-combat-imbalanced-classes-in-your-machine-learning-dataset/" target="_blank" rel="external">8 Tactics to Combat Imbalanced Classes in Your Machine Learning Dataset</a><br><a href="http://www.ele.uri.edu/faculty/he/PDFfiles/ImbalancedLearning.pdf" target="_blank" rel="external">♜ Learning from Imbalanced Data</a><br><a href="http://www.jair.org/media/953/live-953-2037-jair.pdf" target="_blank" rel="external">♜ SMOTE: Synthetic Minority Over-sampling Technique</a><br><a href="http://sci2s.ugr.es/keel/pdf/specific/congreso/han_borderline_smote.pdf" target="_blank" rel="external">♜ Borderline-SMOTE: A New Over-Sampling Method inImbalanced Data Sets Learning</a><br><a href="https://pdfs.semanticscholar.org/4823/4756b7cf798bfeb47328f7c5d597fd4838c2.pdf" target="_blank" rel="external">♜ ADASYN: Adaptive Synthetic Sampling Approach for ImbalancedLearning</a></p>
 ]]></content>
     
     <summary type="html">
