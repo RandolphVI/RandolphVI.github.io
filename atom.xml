@@ -126,7 +126,7 @@
     <link href="http://randolph.pro/2017/09/06/%E3%80%8CMachine%20Learning%E3%80%8DDeal%20with%20Imbalanced%20Data/"/>
     <id>http://randolph.pro/2017/09/06/「Machine Learning」Deal with Imbalanced Data/</id>
     <published>2017-09-05T16:00:00.000Z</published>
-    <updated>2017-09-07T03:12:10.000Z</updated>
+    <updated>2017-09-07T03:15:52.000Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://farm5.staticflickr.com/4300/35460446383_aafc34ca3c_o.jpg" alt=""></p>
 <p> 有关「Machine Learning」的其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/">「Machine Learning」</a></p>
@@ -202,7 +202,7 @@
 <li> 然后通过复制所选样本生成样本集合 $E$</li>
 <li> 将它们添加到 <script type="math/tex">S_{min}</script> 中来扩大原始数据集从而得到新的少数类集合 <script type="math/tex">S_{min-new}</script></li>
 </ol>
-<script type="math/tex; mode=display">S_{min}$$ 中的总样本数增加了 $|E|$ 个新样本，且 $$S_{min-new}$$ 的类分布均衡度进行了相应的调整，如此操作可以改变类分布平衡度从而达到所需水平。当然，重复的样本过多，容易造成分类器的过拟合。
+<script type="math/tex; mode=display">S_{min}$$ 中的总样本数增加了 $$|E|$$ 个新样本，且 $$S_{min-new}$$ 的类分布均衡度进行了相应的调整，如此操作可以改变类分布平衡度从而达到所需水平。当然，重复的样本过多，容易造成分类器的过拟合。
 
 ### SMOTE（Synthetic Minority Oversampling Technique）
 
