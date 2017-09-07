@@ -126,7 +126,7 @@
     <link href="http://randolph.pro/2017/09/06/%E3%80%8CMachine%20Learning%E3%80%8DDeal%20with%20Imbalanced%20Data/"/>
     <id>http://randolph.pro/2017/09/06/「Machine Learning」Deal with Imbalanced Data/</id>
     <published>2017-09-05T16:00:00.000Z</published>
-    <updated>2017-09-07T06:10:06.000Z</updated>
+    <updated>2017-09-07T06:16:42.000Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://farm5.staticflickr.com/4300/35460446383_aafc34ca3c_o.jpg" alt=""></p>
 <p> 有关「Machine Learning」的其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/">「Machine Learning」</a></p>
@@ -225,8 +225,8 @@ x_{new}=x+rand\left(0,1\right)\times\left(\tilde{x}-x\right)</script><p><img src
 <p><img src="https://farm5.staticflickr.com/4416/36680155240_e56c93ec1d_o.png" alt=""></p>
 <h3 id="ADASYN"><a href="#ADASYN" class="headerlink" title="ADASYN"></a>ADASYN</h3><h2 id="Under-Sampling"><a href="#Under-Sampling" class="headerlink" title="Under-Sampling"></a>Under-Sampling</h2><p> 欠采样方法是针对多数的负样本，减少负样本的数量，反而提高整体 $F$ 值。最简单的欠采样方法是随机地删掉一些负样本。欠采样的缺点很明显，就是会丢失负样本的一些重要信息，不能够充分利用已有的信息，这样训练得到的模型只学到了总体模式的一部分。</p>
 <h3 id="Random-Under-Sampling"><a href="#Random-Under-Sampling" class="headerlink" title="Random Under-Sampling"></a>Random Under-Sampling</h3><h3 id="Informed-Under-Samling"><a href="#Informed-Under-Samling" class="headerlink" title="Informed Under-Samling"></a>Informed Under-Samling</h3><p>Informed 欠采样算法可以解决传统随机欠采样造成的数据信息丢失问题，且表现出较好的不均衡数据分类性能。其中含有一些集成（Ensemble）的思想，主要的方法是 <strong>EasyEnsemble</strong> 算法和 <strong>BalanceCascade</strong> 算法。</p>
-<h4 id="EasyEnsemble"><a href="#EasyEnsemble" class="headerlink" title="EasyEnsemble"></a>EasyEnsemble</h4><p> 它把数据划分为两部分，分别是多数类样本和少数类样本，对于多数类样本 $S<em>{maj}$，通过 $n$ 次有放回采样生成 $n$ 份子集，少数类样本 $S</em>{min}$ 分别和这 $n$ 份样本合并训练 AdaBoost 分类器，这样可以得到 $n$ 个模型，最终的模型采用加权多数表决的方法，加大分类误差率小的弱分类器的权值，使其在表决中起较大的作用，减小分类误差率小的弱分类器的权值，使其在表决中起较小的作用。这里假设多数类样本为 N，少数类样本为 P，算法流程如下：</p>
-<p><img src=""alt=""></p>
+<h4 id="EasyEnsemble"><a href="#EasyEnsemble" class="headerlink" title="EasyEnsemble"></a>EasyEnsemble</h4><p> 它把数据划分为两部分，分别是多数类样本和少数类样本，对于多数类样本 <script type="math/tex">S_{maj}</script>，通过 $n$ 次有放回采样生成 $n$ 份子集，少数类样本 <script type="math/tex">S_{min}</script> 分别和这 <script type="math/tex">n</script> 份样本合并训练 AdaBoost 分类器，这样可以得到 <script type="math/tex">n</script> 个模型，最终的模型采用加权多数表决的方法，加大分类误差率小的弱分类器的权值，使其在表决中起较大的作用，减小分类误差率小的弱分类器的权值，使其在表决中起较小的作用。这里假设多数类样本为 $N$，少数类样本为 $P$，算法流程如下：</p>
+<p><img src="https://farm5.staticflickr.com/4416/36937191991_4182206650_o.png" alt=""></p>
 <p>EasyEnsemble 的想法是多次随机欠采样，尽可能全面地涵盖所有信息，算法特点是利用 boosting 减小偏差（Adaboost）、bagging 减小方差（集成分类器）。实际应用的时候也可以尝试选用不同的分类器来提高分类的效果。</p>
 <p><img src=""alt=""></p>
 <h4 id="BalanceCascade"><a href="#BalanceCascade" class="headerlink" title="BalanceCascade"></a>BalanceCascade</h4><h2 id="Integration-of"><a href="#Integration-of" class="headerlink" title="Integration of"></a>Integration of</h2><p> 将过采样和欠采样结合。</p>
