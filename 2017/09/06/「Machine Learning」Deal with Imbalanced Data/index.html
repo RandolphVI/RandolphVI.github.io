@@ -114,7 +114,7 @@
 <meta property="og:image" content="https://farm5.staticflickr.com/4300/35460446383_aafc34ca3c_o.jpg">
 <meta property="og:image" content="https://farm5.staticflickr.com/4369/37075604245_e8b49bcb5e_o.png">
 <meta property="og:image" content="https://farm5.staticflickr.com/4416/36680155240_e56c93ec1d_o.png">
-<meta property="og:updated_time" content="2017-09-07T03:17:34.000Z">
+<meta property="og:updated_time" content="2017-09-07T03:19:28.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="「Machine Learning」 Deal with Imbalanced Data">
 <meta name="twitter:description" content="本文主要介绍在机器学习中样本比例不平衡的处理方法。">
@@ -440,7 +440,7 @@
                   <i class="fa fa-file-word-o"></i>
                 </span>
                 <span title="Words count in article">
-                  2,461
+                  2,949
                 </span>
                 <span> words </span>
                 
@@ -455,7 +455,7 @@
                   <i class="fa fa-clock-o"></i>
                 </span>
                 <span title="Reading time">
-                  9
+                  10
                 </span>
                 <span> mins </span>
               
@@ -552,19 +552,16 @@
 <li> 然后通过复制所选样本生成样本集合 $E$</li>
 <li> 将它们添加到 <script type="math/tex">S_{min}</script> 中来扩大原始数据集从而得到新的少数类集合 <script type="math/tex">S_{min-new}</script></li>
 </ol>
-<script type="math/tex; mode=display">S_{min}$$ 中的总样本数增加了 $$|E|$$ 个新样本，且 $$S_{min-new}$$ 的类分布均衡度进行了相应的调整，如此操作可以改变类分布平衡度从而达到所需水平。当然，重复的样本过多，容易造成分类器的过拟合。
-
-### SMOTE（Synthetic Minority Oversampling Technique）
-
-在合成采样技术方面，Chawla NY 等人提出的 SMOTE 过采样技术是基于随机过采样算法的一种改进方案，由于随机过采样简单复制样本的策略来增加少数类样本，这样容易产生模型过拟合的问题，即使模型学习到的信息过于特别（Specific）而不够泛化 (General)。
-
-SMOTE 的主要思想是利用特征空间中现存少数类样本之间的相似性来建立人工数据，特别是，对于子集 $$S_{min} \subset S$$，对于每一个样本 $$x_i \subset S_{min}$$ 使用 K- 近邻法，其中 K- 近邻被定义为考虑 $S_{min}$ 中的 K 个元素本身与 $$x_i$$ 的欧氏距离在 $n$ 维特征空间 $X$ 中表现为最小幅度值的样本。** 由于不是简单地复制少数类样本，因此可以在一定程度上避免分类器的过度拟合，实践证明此方法可以提高分类器的性能。但是由于对每个少数类样本都生成新样本，因此容易发生生成样本重叠（overlapping）的问题 **。算法流程如下：
-
-*   1）对于少数类中的每一个样本 $$x_i$$，以欧氏距离为标准计算它到少数类样本集 $$S_{min}$$ 中所有样本的距离，得到 K 近邻；
-*   2）根据样本不平衡比例设置一个采样比例以确定采样倍率 $$N$$，对于每一个少数类样本 $$x_i$$，从其 K 近邻中随机选择若干个样本，假设选择的近邻为 $$\tilde{x}$$；
-*   3）对于每一个随机选出的近邻 $$\tilde{x}$$，分别与原样本按照如下的公式构建新的样本:</script><p>x_{new}=x+rand\left(0,1\right)\times\left(\tilde{x}-x\right)</p>
-<p>$$</p>
-<p><img src="https://farm5.staticflickr.com/4369/37075604245_e8b49bcb5e_o.png" alt=""></p>
+<p> 最后，<script type="math/tex">S_{min}</script> 中的总样本数增加了 <script type="math/tex">|E|</script> 个新样本，且 <script type="math/tex">S_{min-new}</script> 的类分布均衡度进行了相应的调整，如此操作可以改变类分布平衡度从而达到所需水平。当然，重复的样本过多，容易造成分类器的过拟合。</p>
+<h3 id="SMOTE（Synthetic-Minority-Oversampling-Technique）"><a href="#SMOTE（Synthetic-Minority-Oversampling-Technique）" class="headerlink" title="SMOTE（Synthetic Minority Oversampling Technique）"></a>SMOTE（Synthetic Minority Oversampling Technique）</h3><p> 在合成采样技术方面，Chawla NY 等人提出的 SMOTE 过采样技术是基于随机过采样算法的一种改进方案，由于随机过采样简单复制样本的策略来增加少数类样本，这样容易产生模型过拟合的问题，即使模型学习到的信息过于特别（Specific）而不够泛化 (General)。</p>
+<p>SMOTE 的主要思想是利用特征空间中现存少数类样本之间的相似性来建立人工数据，特别是，对于子集 <script type="math/tex">S_{min} \subset S</script>，对于每一个样本 <script type="math/tex">x_i \subset S_{min}</script> 使用 K- 近邻法，其中 K- 近邻被定义为考虑 $S_{min}$ 中的 K 个元素本身与 <script type="math/tex">x_i</script> 的欧氏距离在 $n$ 维特征空间 $X$ 中表现为最小幅度值的样本。<strong> 由于不是简单地复制少数类样本，因此可以在一定程度上避免分类器的过度拟合，实践证明此方法可以提高分类器的性能。但是由于对每个少数类样本都生成新样本，因此容易发生生成样本重叠（overlapping）的问题 </strong>。算法流程如下：</p>
+<ul>
+<li>1）对于少数类中的每一个样本 <script type="math/tex">x_i</script>，以欧氏距离为标准计算它到少数类样本集 <script type="math/tex">S_{min}</script> 中所有样本的距离，得到 K 近邻；</li>
+<li>2）根据样本不平衡比例设置一个采样比例以确定采样倍率 <script type="math/tex">N</script>，对于每一个少数类样本 <script type="math/tex">x_i</script>，从其 K 近邻中随机选择若干个样本，假设选择的近邻为 <script type="math/tex">\tilde{x}</script>；</li>
+<li>3）对于每一个随机选出的近邻 <script type="math/tex">\tilde{x}</script>，分别与原样本按照如下的公式构建新的样本:</li>
+</ul>
+<script type="math/tex; mode=display">
+x_{new}=x+rand\left(0,1\right)\times\left(\tilde{x}-x\right)</script><p><img src="https://farm5.staticflickr.com/4369/37075604245_e8b49bcb5e_o.png" alt=""></p>
 <h3 id="Borderline-SMOTE"><a href="#Borderline-SMOTE" class="headerlink" title="Borderline-SMOTE"></a>Borderline-SMOTE</h3><p> 原始的 SMOTE 算法对所有的少数类样本都是一视同仁的，<strong> 但实际建模过程中发现那些处于边界位置的样本更容易被错分，因此利用边界位置的样本信息产生新样本可以给模型带来更大的提升 </strong>。Borderline-SMOTE 便是将原始 SMOTE 算法和边界信息算法结合的算法。算法流程如下：</p>
 <ol>
 <li> 首先，对于每个 <script type="math/tex">x_{i} \subset S_{min}</script> 确定一系列 K- 近邻样本集，称该数据集为 <script type="math/tex">S_{i-kNN}</script>，且 <script type="math/tex">S_{i-kNN} \subset S</script>；</li>
@@ -862,7 +859,7 @@ SMOTE 的主要思想是利用特征空间中现存少数类样本之间的相�
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Data-Level"><span class="nav-number">2.</span> <span class="nav-text">Data Level</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Over-Sampling"><span class="nav-number">2.1.</span> <span class="nav-text">Over-Sampling</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Random-Over-Sampling"><span class="nav-number">2.1.1.</span> <span class="nav-text">Random Over-Sampling</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Borderline-SMOTE"><span class="nav-number">2.1.2.</span> <span class="nav-text">Borderline-SMOTE</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Under-Sampling"><span class="nav-number">2.2.</span> <span class="nav-text">Under-Sampling</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Random-Under-Sampling"><span class="nav-number">2.2.1.</span> <span class="nav-text">Random Under-Sampling</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Informed-Under-Samling"><span class="nav-number">2.2.2.</span> <span class="nav-text">Informed Under-Samling</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#EasyEnsemble"><span class="nav-number">2.2.2.1.</span> <span class="nav-text">EasyEnsemble</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Integration-of"><span class="nav-number">2.3.</span> <span class="nav-text">Integration of</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Different-resampled-ratios"><span class="nav-number">2.4.</span> <span class="nav-text">Different resampled ratios</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Algorithm-Level"><span class="nav-number">3.</span> <span class="nav-text">Algorithm Level</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Try-Different-Algorithms"><span class="nav-number">3.1.</span> <span class="nav-text">Try Different Algorithms</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Change-the-Performance-Measures"><span class="nav-number">3.2.</span> <span class="nav-text">Change the Performance Measures</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Try-Penalized-Models"><span class="nav-number">3.3.</span> <span class="nav-text">Try Penalized Models</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Change-the-Model-Training-Process"><span class="nav-number">3.4.</span> <span class="nav-text">Change the Model Training Process</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Data-Level"><span class="nav-number">2.</span> <span class="nav-text">Data Level</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Over-Sampling"><span class="nav-number">2.1.</span> <span class="nav-text">Over-Sampling</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Random-Over-Sampling"><span class="nav-number">2.1.1.</span> <span class="nav-text">Random Over-Sampling</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SMOTE（Synthetic-Minority-Oversampling-Technique）"><span class="nav-number">2.1.2.</span> <span class="nav-text">SMOTE（Synthetic Minority Oversampling Technique）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Borderline-SMOTE"><span class="nav-number">2.1.3.</span> <span class="nav-text">Borderline-SMOTE</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Under-Sampling"><span class="nav-number">2.2.</span> <span class="nav-text">Under-Sampling</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Random-Under-Sampling"><span class="nav-number">2.2.1.</span> <span class="nav-text">Random Under-Sampling</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Informed-Under-Samling"><span class="nav-number">2.2.2.</span> <span class="nav-text">Informed Under-Samling</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#EasyEnsemble"><span class="nav-number">2.2.2.1.</span> <span class="nav-text">EasyEnsemble</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Integration-of"><span class="nav-number">2.3.</span> <span class="nav-text">Integration of</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Different-resampled-ratios"><span class="nav-number">2.4.</span> <span class="nav-text">Different resampled ratios</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Algorithm-Level"><span class="nav-number">3.</span> <span class="nav-text">Algorithm Level</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Try-Different-Algorithms"><span class="nav-number">3.1.</span> <span class="nav-text">Try Different Algorithms</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Change-the-Performance-Measures"><span class="nav-number">3.2.</span> <span class="nav-text">Change the Performance Measures</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Try-Penalized-Models"><span class="nav-number">3.3.</span> <span class="nav-text">Try Penalized Models</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Change-the-Model-Training-Process"><span class="nav-number">3.4.</span> <span class="nav-text">Change the Model Training Process</span></a></li></ol></li></ol></div>
             
 
           </div>
