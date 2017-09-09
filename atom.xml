@@ -126,7 +126,7 @@
     <link href="http://randolph.pro/2017/09/06/%E3%80%8CMachine%20Learning%E3%80%8DDeal%20with%20Imbalanced%20Data/"/>
     <id>http://randolph.pro/2017/09/06/「Machine Learning」Deal with Imbalanced Data/</id>
     <published>2017-09-05T16:00:00.000Z</published>
-    <updated>2017-09-08T03:09:32.000Z</updated>
+    <updated>2017-09-09T04:21:15.000Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://farm5.staticflickr.com/4300/35460446383_aafc34ca3c_o.jpg" alt=""></p>
 <p>有关「Machine Learning」的其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/">「Machine Learning」</a></p>
@@ -239,7 +239,8 @@ x_{new}=x+rand\left(0,1\right)\times\left(\tilde{x}-x\right)</script><p><img src
 <p><img src="https://farm5.staticflickr.com/4409/36281899963_45beb23bde_o.png" alt=""></p>
 <h4 id="BalanceCascade"><a href="#BalanceCascade" class="headerlink" title="BalanceCascade"></a>BalanceCascade</h4><p><strong>EasyEnsemble</strong> 算法训练的子过程是独立的，<strong>BalanceCascade</strong> 则是一种级联算法，这种级联的思想在图像识别中用途非常广泛。算法流程如下：</p>
 <p><img src="https://farm5.staticflickr.com/4423/36924728072_b27ef319a3_o.png" alt=""></p>
-<p><strong>BalanceCascade</strong> 和 <strong>EasyEnsemble</strong> 方法接近，但并不是对于多数类样本 <script type="math/tex">S_{maj}</script> 一次性直接生成多个子集，而是先生成一个子集 <script type="math/tex">E_{maj,1}</script>，让少数类样本 <script type="math/tex">S_{min}</script> 和这个子集 <script type="math/tex">E_{maj,1}</script> 样本合并训练出一个分类器，通过这个分类器判断整个多数类 <script type="math/tex">S_{maj}</script>，将判断错误的挑出来。用判断错误的 <script type="math/tex">S_{maj}</script> 中生成一个新的子集 <script type="math/tex">E_{maj,2}</script>，并且再让少数类样本和该子集 <script type="math/tex">E_{maj,2}</script> 样本合并训练出一个分类器，然后继续通过这个新的分类器判断整个</p>
+<p><strong>BalanceCascade</strong> 和 <strong>EasyEnsemble</strong> 方法接近，但并不是对于多数类样本 <script type="math/tex">S_{maj}</script> 一次性直接生成多个子集，而是先生成一个子集 <script type="math/tex">E_{maj,1}</script>，让少数类样本 <script type="math/tex">S_{min}</script> 和这个子集 <script type="math/tex">E_{maj,1}</script> 样本合并训练出一个分类器，通过这个分类器判断整个多数类 <script type="math/tex">S_{maj}</script>，将判断错误的挑出来。用判断错误的 <script type="math/tex">S_{maj}</script> 中生成一个新的子集 <script type="math/tex">E_{maj,2}</script>，并且再让少数类样本和该子集 <script type="math/tex">E_{maj,2}</script> 样本合并训练出一个分类器，然后继续通过这个新的分类器继续判断整个多数类 <script type="math/tex">S_{maj}</script>，将判断错误的挑出来，如此不停地用这种流程进行下去，直到先用完 sample 或者判断准确，程序停止。</p>
+<p>可以看出，<strong>BalanceCascade</strong> 算法每次循环的前置条件都是根据上一次判断错误的结果来生成 sample 。</p>
 <p><strong>BalanceCascade</strong> 算法得到的是一个级联分类器，将若干个强分类器由简单到复杂排列，只有和少数类样本特征比较接近的才有可能输入到后面的分类器，比如边界点，因此能更充分地利用多数类样本的信息，一定程度上解决随机欠采样的信息丢失问题。</p>
 <h2 id="Integration-of"><a href="#Integration-of" class="headerlink" title="Integration of"></a>Integration of</h2><p>将过采样和欠采样结合。</p>
 <h3 id="SMOTE-Tomek-Links"><a href="#SMOTE-Tomek-Links" class="headerlink" title="SMOTE + Tomek Links"></a>SMOTE + Tomek Links</h3><h3 id="SMOTE-ENN"><a href="#SMOTE-ENN" class="headerlink" title="SMOTE + ENN"></a>SMOTE + ENN</h3><h2 id="Different-resampled-ratios"><a href="#Different-resampled-ratios" class="headerlink" title="Different resampled ratios"></a>Different resampled ratios</h2><p>尝试不同的采样比例，有些时候 1:1 的比例并不是最好的，因为与现实情况相差甚远。</p>
