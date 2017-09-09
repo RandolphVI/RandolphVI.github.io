@@ -183,7 +183,7 @@
 </ol>
 <p>最后，<script type="math/tex">S_{min}</script> 中的总样本数增加了 <script type="math/tex">|E|</script> 个新样本，且 <script type="math/tex">S_{min-new}</script> 的类分布均衡度进行了相应的调整，如此操作可以改变类分布平衡度从而达到所需水平。当然，重复的样本过多，容易造成分类器的过拟合。</p>
 <h3 id="SMOTE（Synthetic-Minority-Oversampling-Technique）"><a href="#SMOTE（Synthetic-Minority-Oversampling-Technique）" class="headerlink" title="SMOTE（Synthetic Minority Oversampling Technique）"></a>SMOTE（Synthetic Minority Oversampling Technique）</h3><p>在合成采样技术方面，Chawla NY 等人提出的 SMOTE 过采样技术是基于随机过采样算法的一种改进方案，由于随机过采样简单复制样本的策略来增加少数类样本，这样容易产生模型过拟合的问题，即使模型学习到的信息过于特别（Specific）而不够泛化(General)。</p>
-<p>SMOTE 的主要思想是利用特征空间中现存少数类样本之间的相似性来建立人工数据，特别是，对于子集 <script type="math/tex">S_{min} \subset S</script>，对于每一个样本 <script type="math/tex">x_i \subset S_{min}</script> 使用 K- 近邻法，其中 K- 近邻被定义为考虑 $S_{min}$ 中的 K 个元素本身与 <script type="math/tex">x_i</script> 的欧氏距离在 $n$ 维特征空间 $X$ 中表现为最小幅度值的样本。<strong>由于不是简单地复制少数类样本，因此可以在一定程度上避免分类器的过度拟合，实践证明此方法可以提高分类器的性能。但是由于对每个少数类样本都生成新样本，因此容易发生生成样本重叠（overlapping）的问题</strong>。算法流程如下：</p>
+<p>SMOTE 的主要思想是利用特征空间中现存少数类样本之间的相似性来建立人工数据，特别是，对于子集 <script type="math/tex">S_{min} \subset S</script>，对于每一个样本 <script type="math/tex">x_i \subset S_{min}</script> 使用 KNN 算法，其中 KNN 算法被定义为考虑 $S_{min}$ 中的 K 个元素本身与 <script type="math/tex">x_i</script> 的欧氏距离在 $n$ 维特征空间 $X$ 中表现为最小幅度值的样本。<strong>由于不是简单地复制少数类样本，因此可以在一定程度上避免分类器的过度拟合，实践证明此方法可以提高分类器的性能。但是由于对每个少数类样本都生成新样本，因此容易发生生成样本重叠（overlapping）的问题</strong>。算法流程如下：</p>
 <ul>
 <li>1）对于少数类中的每一个样本 <script type="math/tex">x_i</script>，以欧氏距离为标准计算它到少数类样本集 <script type="math/tex">S_{min}</script> 中所有样本的距离，得到 K 近邻；</li>
 <li>2）根据样本不平衡比例设置一个采样比例以确定采样倍率 <script type="math/tex">N</script>，对于每一个少数类样本 <script type="math/tex">x_i</script>，从其 K 近邻中随机选择若干个样本，假设选择的近邻为 <script type="math/tex">\tilde{x}</script>；</li>
@@ -193,7 +193,7 @@
 x_{new}=x+rand\left(0,1\right)\times\left(\tilde{x}-x\right)</script><p><img src="https://farm5.staticflickr.com/4369/37075604245_e8b49bcb5e_o.png" alt=""></p>
 <h3 id="Borderline-SMOTE"><a href="#Borderline-SMOTE" class="headerlink" title="Borderline-SMOTE"></a>Borderline-SMOTE</h3><p>原始的 SMOTE 算法对所有的少数类样本都是一视同仁的，<strong>但实际建模过程中发现那些处于边界位置的样本更容易被错分，因此利用边界位置的样本信息产生新样本可以给模型带来更大的提升</strong>。Borderline-SMOTE 便是将原始 SMOTE 算法和边界信息算法结合的算法。算法流程如下：</p>
 <ol>
-<li>首先，对于每个 <script type="math/tex">x_{i} \subset S_{min}</script> 确定一系列 K- 近邻样本集，称该数据集为 <script type="math/tex">S_{i-kNN}</script>，且 <script type="math/tex">S_{i-kNN} \subset S</script>；</li>
+<li>首先，对于每个 <script type="math/tex">x_{i} \subset S_{min}</script> 确定一系列 KNN 样本集，称该数据集为 <script type="math/tex">S_{i-kNN}</script>，且 <script type="math/tex">S_{i-kNN} \subset S</script>；</li>
 <li>然后，对每个样本 <script type="math/tex">x_{i}</script>，判断出最近邻样本集中属于多数类样本的个数，即：<script type="math/tex">|S_{i-kNN} \cap S_{maj}|</script>；</li>
 <li>最后，选择满足下面不等式的 <script type="math/tex">\frac{k}{2} <|S_{i-kNN} \cap S_{maj}| <k</script> 的 <script type="math/tex">x_i</script>，将其加入危险集 <strong>DANGER</strong>，对危险集中的每一个样本点（最容易被错分的样本），采用普通的 SMOTE 算法生成新的少数类样本。</li>
 </ol>
@@ -221,6 +221,24 @@ x_{new}=x+rand\left(0,1\right)\times\left(\tilde{x}-x\right)</script><p><img src
 <p><strong>BalanceCascade</strong> 和 <strong>EasyEnsemble</strong> 方法接近，但并不是对于多数类样本 <script type="math/tex">S_{maj}</script> 一次性直接生成多个子集，而是先生成一个子集 <script type="math/tex">E_{maj,1}</script>，让少数类样本 <script type="math/tex">S_{min}</script> 和这个子集 <script type="math/tex">E_{maj,1}</script> 样本合并训练出一个分类器，通过这个分类器判断整个多数类 <script type="math/tex">S_{maj}</script>，将判断错误的挑出来。用判断错误的 <script type="math/tex">S_{maj}</script> 中生成一个新的子集 <script type="math/tex">E_{maj,2}</script>，并且再让少数类样本和该子集 <script type="math/tex">E_{maj,2}</script> 样本合并训练出一个分类器，然后继续通过这个新的分类器继续判断整个多数类 <script type="math/tex">S_{maj}</script>，将判断错误的挑出来，如此不停地用这种流程进行下去，直到先用完 sample 或者判断准确，程序停止。</p>
 <p>可以看出，<strong>BalanceCascade</strong> 算法每次循环的前置条件都是根据上一次判断错误的结果来生成 sample 。</p>
 <p><strong>BalanceCascade</strong> 算法得到的是一个级联分类器，将若干个强分类器由简单到复杂排列，只有和少数类样本特征比较接近的才有可能输入到后面的分类器，比如边界点，因此能更充分地利用多数类样本的信息，一定程度上解决随机欠采样的信息丢失问题。</p>
+<h4 id="NearMiss"><a href="#NearMiss" class="headerlink" title="NearMiss"></a>NearMiss</h4><p><strong>NearMiss</strong> 方法是利用距离远近剔除多数类样本的一类方法，实际操作就是依据 KNN 算法，有以下三种方法：</p>
+<ul>
+<li>NearMiss 1</li>
+</ul>
+<p>对于多数样本类 <script type="math/tex">S_{maj}</script> 中的某个点，计算该点和离自己最近的 <script type="math/tex">S_{min}</script> 少数类的 3 个点的总距离，按值从小到大排序，根据指定个数 $n$， 保留 $n$ 个样本。</p>
+<ul>
+<li>NearMiss 2</li>
+</ul>
+<p>对于多数样本类 <script type="math/tex">S_{maj}</script> 中的某个点，计算该点和离自己最远的 <script type="math/tex">S_{min}</script> 少数类的 3 个点的总距离，按值从小到大排序，根据指定个数 $n$， 保留 $n$ 个样本。</p>
+<ul>
+<li>NearMiss 3</li>
+</ul>
+<p>首先事前给定一个值 $a$，对于少数样本类 <script type="math/tex">S_{min}</script> 中的每个点，保留和自己距离最近的 $a$ 个多数类点。</p>
+<p><img src="https://farm5.staticflickr.com/4336/37117835945_006294f37c_o.png" alt=""></p>
+<p><strong>NearMiss-1</strong> 和 <strong>NearMiss-2</strong> 方法的描述仅有一字之差，但其含义是完全不同的：</p>
+<p><strong>NearMiss-1</strong> 考虑的是与最近的 3 个少数类样本的平均距离，是局部的；<strong>NearMiss-2</strong> 考虑的是与最远的 3 个少数类样本的平均距离，是全局的。</p>
+<p><strong>NearMiss-1</strong> 方法得到的多数类样本分布也是”不均衡“的，它倾向于在比较集中的少数类附近找到更多的多数类样本，而在孤立的（或者说是离群的）少数类附近找到更少的多数类样本，原因是 <strong>NearMiss-1</strong> 方法考虑的局部性质和平均距离。</p>
+<p><strong>NearMiss-3</strong> 方法则会使得每一个少数类样本附近都有足够多的多数类样本，显然这会使得模型的精确度高、召回率低。</p>
 <h2 id="Integration-of"><a href="#Integration-of" class="headerlink" title="Integration of"></a>Integration of</h2><p>将过采样和欠采样结合。</p>
 <h3 id="SMOTE-Tomek-Links"><a href="#SMOTE-Tomek-Links" class="headerlink" title="SMOTE + Tomek Links"></a>SMOTE + Tomek Links</h3><h3 id="SMOTE-ENN"><a href="#SMOTE-ENN" class="headerlink" title="SMOTE + ENN"></a>SMOTE + ENN</h3><h2 id="Different-resampled-ratios"><a href="#Different-resampled-ratios" class="headerlink" title="Different resampled ratios"></a>Different resampled ratios</h2><p>尝试不同的采样比例，有些时候 1:1 的比例并不是最好的，因为与现实情况相差甚远。</p>
 <h1 id="Algorithm-Level"><a href="#Algorithm-Level" class="headerlink" title="Algorithm Level"></a>Algorithm Level</h1><p>在算法层面上，改变分类算法，在传统分类算法的基础上对不同类别采取不同的加权方式，使得模型更看重少数类。</p>
@@ -245,7 +263,7 @@ x_{new}=x+rand\left(0,1\right)\times\left(\tilde{x}-x\right)</script><p><img src
 <h2 id="Change-the-Model-Training-Process"><a href="#Change-the-Model-Training-Process" class="headerlink" title="Change the Model Training Process"></a>Change the Model Training Process</h2><p>更改模型的训练过程。假设超大类中样本的个数是极小类中样本个数的 $L$ 倍，那么在随机梯度下降（SGD，stochastic gradient descent）算法中，每次遇到一个极小类中样本进行训练时，训练 $L$ 次。</p>
 <p>参考：</p>
 <p><a href="http://machinelearningmastery.com/tactics-to-combat-imbalanced-classes-in-your-machine-learning-dataset/" target="_blank" rel="external">8 Tactics to Combat Imbalanced Classes in Your Machine Learning Dataset</a><br><a href="http://www.ele.uri.edu/faculty/he/PDFfiles/ImbalancedLearning.pdf" target="_blank" rel="external">♜ Learning from Imbalanced Data</a><br><a href="http://www.jair.org/media/953/live-953-2037-jair.pdf" target="_blank" rel="external">♜ SMOTE: Synthetic Minority Over-sampling Technique</a><br><a href="http://sci2s.ugr.es/keel/pdf/specific/congreso/han_borderline_smote.pdf" target="_blank" rel="external">♜ Borderline-SMOTE: A New Over-Sampling Method inImbalanced Data Sets Learning</a><br><a href="https://pdfs.semanticscholar.org/4823/4756b7cf798bfeb47328f7c5d597fd4838c2.pdf" target="_blank" rel="external">♜ ADASYN: Adaptive Synthetic Sampling Approach for ImbalancedLearning</a></p>
-<p><a href="https://cs.nju.edu.cn/zhouzh/zhouzh.files/publication/tsmcb09.pdf" target="_blank" rel="external">♜ Exploratory Undersampling for Class-Imbalance Learning</a></p>
+<p><a href="https://cs.nju.edu.cn/zhouzh/zhouzh.files/publication/tsmcb09.pdf" target="_blank" rel="external">♜ Exploratory Undersampling for Class-Imbalance Learning</a><br><a href="https://www.site.uottawa.ca/~nat/Workshop2003/jzhang.pdf" target="_blank" rel="external">♜ KNN Approach to Unbalanced Data Distributions: A Case Study Involving Information Extraction</a></p>
 ]]></content>
       
         <categories>
