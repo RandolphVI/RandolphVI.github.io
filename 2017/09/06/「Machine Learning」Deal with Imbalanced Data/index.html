@@ -112,13 +112,23 @@
 <meta property="og:description" content="本文主要介绍在机器学习中样本比例不平衡的处理方法。">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://farm5.staticflickr.com/4300/35460446383_aafc34ca3c_o.jpg">
+<meta property="og:image" content="https://farm5.staticflickr.com/4362/37118453045_b9e9c4a044_o.png">
 <meta property="og:image" content="https://farm5.staticflickr.com/4369/37075604245_e8b49bcb5e_o.png">
 <meta property="og:image" content="https://farm5.staticflickr.com/4416/36680155240_e56c93ec1d_o.png">
+<meta property="og:image" content="https://farm5.staticflickr.com/4407/36721703920_7ee63f5633_o.png">
+<meta property="og:image" content="https://farm5.staticflickr.com/4391/36948259812_969cfd4d20_o.png">
 <meta property="og:image" content="https://farm5.staticflickr.com/4349/36924720872_f6dc5d18bc_o.png">
 <meta property="og:image" content="https://farm5.staticflickr.com/4409/36281899963_45beb23bde_o.png">
+<meta property="og:image" content="https://farm5.staticflickr.com/4362/36282852314_18efd6065f_o.png">
 <meta property="og:image" content="https://farm5.staticflickr.com/4423/36924728072_b27ef319a3_o.png">
+<meta property="og:image" content="https://farm5.staticflickr.com/4362/36282852314_18efd6065f_o.png">
+<meta property="og:image" content="https://farm5.staticflickr.com/4392/36976824531_e1ecb1b0d1_o.png">
+<meta property="og:image" content="https://farm5.staticflickr.com/4442/36976823751_dd2854ca84_o.png">
+<meta property="og:image" content="https://farm5.staticflickr.com/4361/36976822951_d483540f26_o.png">
 <meta property="og:image" content="https://farm5.staticflickr.com/4336/37117835945_006294f37c_o.png">
-<meta property="og:updated_time" content="2017-09-09T09:12:07.000Z">
+<meta property="og:image" content="https://farm5.staticflickr.com/4363/36305865973_b4c970d546_o.png">
+<meta property="og:image" content="https://farm5.staticflickr.com/4411/36305863773_0780f863b0_o.png">
+<meta property="og:updated_time" content="2017-09-09T09:53:50.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="「Machine Learning」 Deal with Imbalanced Data">
 <meta name="twitter:description" content="本文主要介绍在机器学习中样本比例不平衡的处理方法。">
@@ -444,7 +454,7 @@
                   <i class="fa fa-file-word-o"></i>
                 </span>
                 <span title="Words count in article">
-                  4,419
+                  4,473
                 </span>
                 <span> words </span>
                 
@@ -523,8 +533,9 @@
 </li>
 <li>Under-Sampling<ul>
 <li>Random Under-Samling</li>
-<li>EasyEnsemble</li>
-<li>BalanceCascade</li>
+<li>Easy Ensemble</li>
+<li>Balance Cascade</li>
+<li>NearMiss</li>
 </ul>
 </li>
 <li>Integration of</li>
@@ -557,6 +568,7 @@
 <li>将它们添加到 <script type="math/tex">S_{min}</script> 中来扩大原始数据集从而得到新的少数类集合 <script type="math/tex">S_{min-new}</script></li>
 </ol>
 <p>最后，<script type="math/tex">S_{min}</script> 中的总样本数增加了 <script type="math/tex">|E|</script> 个新样本，且 <script type="math/tex">S_{min-new}</script> 的类分布均衡度进行了相应的调整，如此操作可以改变类分布平衡度从而达到所需水平。当然，重复的样本过多，容易造成分类器的过拟合。</p>
+<p><img src="https://farm5.staticflickr.com/4362/37118453045_b9e9c4a044_o.png" alt=""></p>
 <h3 id="SMOTE（Synthetic-Minority-Oversampling-Technique）"><a href="#SMOTE（Synthetic-Minority-Oversampling-Technique）" class="headerlink" title="SMOTE（Synthetic Minority Oversampling Technique）"></a>SMOTE（Synthetic Minority Oversampling Technique）</h3><p>在合成采样技术方面，Chawla NY 等人提出的 SMOTE 过采样技术是基于随机过采样算法的一种改进方案，由于随机过采样简单复制样本的策略来增加少数类样本，这样容易产生模型过拟合的问题，即使模型学习到的信息过于特别（Specific）而不够泛化(General)。</p>
 <p>SMOTE 的主要思想是利用特征空间中现存少数类样本之间的相似性来建立人工数据，特别是，对于子集 <script type="math/tex">S_{min} \subset S</script>，对于每一个样本 <script type="math/tex">x_i \subset S_{min}</script> 使用 KNN 算法，其中 KNN 算法被定义为考虑 $S_{min}$ 中的 K 个元素本身与 <script type="math/tex">x_i</script> 的欧氏距离在 $n$ 维特征空间 $X$ 中表现为最小幅度值的样本。<strong>由于不是简单地复制少数类样本，因此可以在一定程度上避免分类器的过度拟合，实践证明此方法可以提高分类器的性能。但是由于对每个少数类样本都生成新样本，因此容易发生生成样本重叠（overlapping）的问题</strong>。算法流程如下：</p>
 <ul>
@@ -577,7 +589,9 @@ x_{new}=x+rand\left(0,1\right)\times\left(\tilde{x}-x\right)</script><p><img src
 <p><strong>SAFE</strong>：如果一个 <script type="math/tex">x_i</script> 的 <script type="math/tex">|S_{i-kNN} \cap S_{maj}|</script> 少于 <script type="math/tex">\frac{k}{2}</script>，表示这个 <strong>minority</strong> 点还在 <script type="math/tex">S_{min}</script> 的范围内，算是比较“安全”。</p>
 <p>在划分了三种级别的 <strong>minority</strong> 点之后，就开始采用普通的 SMOTE 算法产生新的少数类样本，但是只要是 <strong>NOISE</strong> 级别的，就不予产生，反而是 <strong>Danger</strong> 的才产生新的样本， <strong>SAFE</strong> 的产生意义就不是特别大，大多数机器学习算法的假设大多数会涵盖到 <strong>SAFE</strong> 该级别的附近，多了反而会产生过拟合。</p>
 <p><img src="https://farm5.staticflickr.com/4416/36680155240_e56c93ec1d_o.png" alt=""></p>
-<h3 id="ADASYN"><a href="#ADASYN" class="headerlink" title="ADASYN"></a>ADASYN</h3><h2 id="Under-Sampling"><a href="#Under-Sampling" class="headerlink" title="Under-Sampling"></a>Under-Sampling</h2><p>欠采样方法是针对多数的负样本，减少负样本的数量，反而提高整体 $F$ 值。最简单的欠采样方法是随机地删掉一些负样本。欠采样的缺点很明显，就是会丢失负样本的一些重要信息，不能够充分利用已有的信息，这样训练得到的模型只学到了总体模式的一部分。</p>
+<h3 id="ADASYN"><a href="#ADASYN" class="headerlink" title="ADASYN"></a>ADASYN</h3><p>实际效果如下：</p>
+<p><img src="https://farm5.staticflickr.com/4407/36721703920_7ee63f5633_o.png" alt=""></p>
+<h2 id="Under-Sampling"><a href="#Under-Sampling" class="headerlink" title="Under-Sampling"></a>Under-Sampling</h2><p>欠采样方法是针对多数的负样本，减少负样本的数量，反而提高整体 $F$ 值。最简单的欠采样方法是随机地删掉一些负样本。欠采样的缺点很明显，就是会丢失负样本的一些重要信息，不能够充分利用已有的信息，这样训练得到的模型只学到了总体模式的一部分。</p>
 <h3 id="Random-Under-Sampling"><a href="#Random-Under-Sampling" class="headerlink" title="Random Under-Sampling"></a>Random Under-Sampling</h3><p>减少多数类样本数量最简单的方法便是随机剔除多数类样本，可以事先设置多数类与少数类最终的数量比例，在保留少数类样本不变的情况下，根据比例随机选择多数类样本。</p>
 <ul>
 <li><p>1）首先我们从 <script type="math/tex">S_{maj}</script> 中随机选取一些多数类样本 <script type="math/tex">E</script></p>
@@ -585,37 +599,47 @@ x_{new}=x+rand\left(0,1\right)\times\left(\tilde{x}-x\right)</script><p><img src
 <li><p>2）将这些样本从 <script type="math/tex">S_{maj}</script> 中移除，就有<script type="math/tex">|S_{maj-new}|=|S_{maj}|-|E|</script></p>
 </li>
 </ul>
+<p><img src="https://farm5.staticflickr.com/4391/36948259812_969cfd4d20_o.png" alt=""></p>
 <p>优点在于操作简单，只依赖于样本分布，不依赖任何距离信息，属于非启发式方法；缺点在于会丢失一部分多数类样本的信息，无法充分利用已有信息。</p>
 <h3 id="Informed-Under-Samling"><a href="#Informed-Under-Samling" class="headerlink" title="Informed Under-Samling"></a>Informed Under-Samling</h3><p>Informed 欠采样算法可以解决传统随机欠采样造成的数据信息丢失问题，且表现出较好的不均衡数据分类性能。其中含有一些集成（Ensemble）的思想，主要的方法是 <strong>EasyEnsemble</strong> 算法和 <strong>BalanceCascade</strong> 算法。</p>
-<h4 id="EasyEnsemble"><a href="#EasyEnsemble" class="headerlink" title="EasyEnsemble"></a>EasyEnsemble</h4><p>它把数据划分为两部分，分别是多数类样本和少数类样本，对于多数类样本 <script type="math/tex">S_{maj}</script>，通过 $n$ 次 <strong> 有放回 </strong> 采样生成 $n$ 份子集，每份子集的大小为 <script type="math/tex">S_{min}</script>。然后，让少数类样本 <script type="math/tex">S_{min}</script> 分别和这 <script type="math/tex">n</script> 份样本合并训练 AdaBoost 分类器，这样可以得到 <script type="math/tex">n</script> 个模型，最终的模型采用加权多数表决的方法，加大分类误差率小的弱分类器的权值，使其在表决中起较大的作用，减小分类误差率大的弱分类器的权值，使其在表决中起较小的作用。这里假设多数类样本为 $N$，少数类样本为 $P$，算法流程如下：</p>
+<h4 id="Easy-Ensemble"><a href="#Easy-Ensemble" class="headerlink" title="Easy Ensemble"></a>Easy Ensemble</h4><p>它把数据划分为两部分，分别是多数类样本和少数类样本，对于多数类样本 <script type="math/tex">S_{maj}</script>，通过 $n$ 次 <strong> 有放回 </strong> 采样生成 $n$ 份子集，每份子集的大小为 <script type="math/tex">S_{min}</script>。然后，让少数类样本 <script type="math/tex">S_{min}</script> 分别和这 <script type="math/tex">n</script> 份样本合并训练 AdaBoost 分类器，这样可以得到 <script type="math/tex">n</script> 个模型，最终的模型采用加权多数表决的方法，加大分类误差率小的弱分类器的权值，使其在表决中起较大的作用，减小分类误差率大的弱分类器的权值，使其在表决中起较小的作用。这里假设多数类样本为 $N$，少数类样本为 $P$，算法伪代码如下：</p>
 <p><img src="https://farm5.staticflickr.com/4349/36924720872_f6dc5d18bc_o.png" alt=""></p>
-<p>EasyEnsemble 的想法是多次随机欠采样，尽可能全面地涵盖所有信息，算法特点是利用 <strong>boosting</strong> 减小偏差（Adaboost）、<strong>bagging</strong> 减小方差（Ensemble Classifier）。实际应用的时候也可以尝试选用不同的分类器来提高分类的效果。</p>
+<p>EasyEnsemble 的想法是多次随机欠采样，尽可能全面地涵盖所有信息，算法特点是利用 <strong>boosting</strong> 减小偏差（Adaboost）、<strong>bagging</strong> 减小方差（Ensemble Classifier）。实际应用的时候也可以尝试选用不同的分类器来提高分类的效果。算法的流程如下：</p>
 <p><img src="https://farm5.staticflickr.com/4409/36281899963_45beb23bde_o.png" alt=""></p>
-<h4 id="BalanceCascade"><a href="#BalanceCascade" class="headerlink" title="BalanceCascade"></a>BalanceCascade</h4><p><strong>EasyEnsemble</strong> 算法训练的子过程是独立的，<strong>BalanceCascade</strong> 则是一种级联算法，这种级联的思想在图像识别中用途非常广泛。算法流程如下：</p>
+<p>实际的效果如下：</p>
+<p><img src="https://farm5.staticflickr.com/4362/36282852314_18efd6065f_o.png" alt=""></p>
+<h4 id="Balance-Cascade"><a href="#Balance-Cascade" class="headerlink" title="Balance Cascade"></a>Balance Cascade</h4><p><strong>EasyEnsemble</strong> 算法训练的子过程是独立的，<strong>BalanceCascade</strong> 则是一种级联算法，这种级联的思想在图像识别中用途非常广泛。算法伪代码如下：</p>
 <p><img src="https://farm5.staticflickr.com/4423/36924728072_b27ef319a3_o.png" alt=""></p>
 <p><strong>BalanceCascade</strong> 和 <strong>EasyEnsemble</strong> 方法接近，但并不是对于多数类样本 <script type="math/tex">S_{maj}</script> 一次性直接生成多个子集，而是先生成一个子集 <script type="math/tex">E_{maj,1}</script>，让少数类样本 <script type="math/tex">S_{min}</script> 和这个子集 <script type="math/tex">E_{maj,1}</script> 样本合并训练出一个分类器，通过这个分类器判断整个多数类 <script type="math/tex">S_{maj}</script>，将判断错误的挑出来。用判断错误的 <script type="math/tex">S_{maj}</script> 中生成一个新的子集 <script type="math/tex">E_{maj,2}</script>，并且再让少数类样本和该子集 <script type="math/tex">E_{maj,2}</script> 样本合并训练出一个分类器，然后继续通过这个新的分类器继续判断整个多数类 <script type="math/tex">S_{maj}</script>，将判断错误的挑出来，如此不停地用这种流程进行下去，直到先用完 sample 或者判断准确，程序停止。</p>
 <p>可以看出，<strong>BalanceCascade</strong> 算法每次循环的前置条件都是根据上一次判断错误的结果来生成 sample 。</p>
 <p><strong>BalanceCascade</strong> 算法得到的是一个级联分类器，将若干个强分类器由简单到复杂排列，只有和少数类样本特征比较接近的才有可能输入到后面的分类器，比如边界点，因此能更充分地利用多数类样本的信息，一定程度上解决随机欠采样的信息丢失问题。</p>
+<p>实际效果如下：</p>
+<p><img src="https://farm5.staticflickr.com/4362/36282852314_18efd6065f_o.png" alt=""></p>
 <h4 id="NearMiss"><a href="#NearMiss" class="headerlink" title="NearMiss"></a>NearMiss</h4><p><strong>NearMiss</strong> 方法是利用距离远近剔除多数类样本的一类方法，实际操作就是依据 KNN 算法，有以下三种方法：</p>
 <ul>
-<li>NearMiss 1</li>
+<li>NearMiss 1：对于多数样本类 <script type="math/tex">S_{maj}</script> 中的某个点，计算该点和离自己最近的 <script type="math/tex">S_{min}</script> 少数类的 3 个点的总距离，按值从小到大排序，根据指定个数 $n$， 保留 $n$ 个样本。</li>
 </ul>
-<p>对于多数样本类 <script type="math/tex">S_{maj}</script> 中的某个点，计算该点和离自己最近的 <script type="math/tex">S_{min}</script> 少数类的 3 个点的总距离，按值从小到大排序，根据指定个数 $n$， 保留 $n$ 个样本。</p>
+<p><img src="https://farm5.staticflickr.com/4392/36976824531_e1ecb1b0d1_o.png" alt=""></p>
 <ul>
-<li>NearMiss 2</li>
+<li>NearMiss 2：对于多数样本类 <script type="math/tex">S_{maj}</script> 中的某个点，计算该点和离自己最远的 <script type="math/tex">S_{min}</script> 少数类的 3 个点的总距离，按值从小到大排序，根据指定个数 $n$， 保留 $n$ 个样本。</li>
 </ul>
-<p>对于多数样本类 <script type="math/tex">S_{maj}</script> 中的某个点，计算该点和离自己最远的 <script type="math/tex">S_{min}</script> 少数类的 3 个点的总距离，按值从小到大排序，根据指定个数 $n$， 保留 $n$ 个样本。</p>
+<p><img src="https://farm5.staticflickr.com/4442/36976823751_dd2854ca84_o.png" alt=""></p>
 <ul>
-<li>NearMiss 3</li>
+<li>NearMiss 3：首先事前给定一个值 $a$，对于少数样本类 <script type="math/tex">S_{min}</script> 中的每个点，保留和自己距离最近的 $a$ 个多数类点。</li>
 </ul>
-<p>首先事前给定一个值 $a$，对于少数样本类 <script type="math/tex">S_{min}</script> 中的每个点，保留和自己距离最近的 $a$ 个多数类点。</p>
-<p><img src="https://farm5.staticflickr.com/4336/37117835945_006294f37c_o.png" alt=""></p>
+<p><img src="https://farm5.staticflickr.com/4361/36976822951_d483540f26_o.png" alt=""></p>
 <p><strong>NearMiss-1</strong> 和 <strong>NearMiss-2</strong> 方法的描述仅有一字之差，但其含义是完全不同的：</p>
 <p><strong>NearMiss-1</strong> 考虑的是与最近的 3 个少数类样本的平均距离，是局部的；<strong>NearMiss-2</strong> 考虑的是与最远的 3 个少数类样本的平均距离，是全局的。</p>
 <p><strong>NearMiss-1</strong> 方法得到的多数类样本分布也是”不均衡“的，它倾向于在比较集中的少数类附近找到更多的多数类样本，而在孤立的（或者说是离群的）少数类附近找到更少的多数类样本，原因是 <strong>NearMiss-1</strong> 方法考虑的局部性质和平均距离。</p>
 <p><strong>NearMiss-3</strong> 方法则会使得每一个少数类样本附近都有足够多的多数类样本，显然这会使得模型的精确度高、召回率低。</p>
+<p><strong>NearMiss</strong> 算法实际效果如下：</p>
+<p><img src="https://farm5.staticflickr.com/4336/37117835945_006294f37c_o.png" alt=""></p>
 <h2 id="Integration-of"><a href="#Integration-of" class="headerlink" title="Integration of"></a>Integration of</h2><p>将过采样和欠采样结合。</p>
-<h3 id="SMOTE-Tomek-Links"><a href="#SMOTE-Tomek-Links" class="headerlink" title="SMOTE + Tomek Links"></a>SMOTE + Tomek Links</h3><h3 id="SMOTE-ENN"><a href="#SMOTE-ENN" class="headerlink" title="SMOTE + ENN"></a>SMOTE + ENN</h3><h2 id="Different-resampled-ratios"><a href="#Different-resampled-ratios" class="headerlink" title="Different resampled ratios"></a>Different resampled ratios</h2><p>尝试不同的采样比例，有些时候 1:1 的比例并不是最好的，因为与现实情况相差甚远。</p>
+<h3 id="SMOTE-Tomek-Links"><a href="#SMOTE-Tomek-Links" class="headerlink" title="SMOTE + Tomek Links"></a>SMOTE + Tomek Links</h3><p>实际效果如下：</p>
+<p><img src="https://farm5.staticflickr.com/4363/36305865973_b4c970d546_o.png" alt=""></p>
+<h3 id="SMOTE-ENN"><a href="#SMOTE-ENN" class="headerlink" title="SMOTE + ENN"></a>SMOTE + ENN</h3><p>实际效果如下：</p>
+<p><img src="https://farm5.staticflickr.com/4411/36305863773_0780f863b0_o.png" alt=""></p>
+<h2 id="Different-resampled-ratios"><a href="#Different-resampled-ratios" class="headerlink" title="Different resampled ratios"></a>Different resampled ratios</h2><p>尝试不同的采样比例，有些时候 1:1 的比例并不是最好的，因为与现实情况相差甚远。</p>
 <h1 id="Algorithm-Level"><a href="#Algorithm-Level" class="headerlink" title="Algorithm Level"></a>Algorithm Level</h1><p>在算法层面上，改变分类算法，在传统分类算法的基础上对不同类别采取不同的加权方式，使得模型更看重少数类。</p>
 <h2 id="Try-Different-Algorithms"><a href="#Try-Different-Algorithms" class="headerlink" title="Try Different Algorithms"></a>Try Different Algorithms</h2><p>强烈建议不要对待每一个分类都使用自己喜欢而熟悉的分类算法。应该使用不同的算法对其进行比较，因为不同的算法适用于不同的任务与数据。</p>
 <p>例如，<strong>决策树</strong> 往往在类别不均衡数据上表现不错。它使用基于类变量的划分规则去创建分类树，因此可以强制地将不同类别的样本分开。目前流行的决策树算法有：<strong><code>C4.5</code></strong>、<strong><code>C5.0</code></strong>、<strong><code>CART</code></strong> 和 <strong><code>Random Forest</code></strong> 等。</p>
@@ -903,7 +927,7 @@ x_{new}=x+rand\left(0,1\right)\times\left(\tilde{x}-x\right)</script><p><img src
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Data-Level"><span class="nav-number">2.</span> <span class="nav-text">Data Level</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Over-Sampling"><span class="nav-number">2.1.</span> <span class="nav-text">Over-Sampling</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Random-Over-Sampling"><span class="nav-number">2.1.1.</span> <span class="nav-text">Random Over-Sampling</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SMOTE（Synthetic-Minority-Oversampling-Technique）"><span class="nav-number">2.1.2.</span> <span class="nav-text">SMOTE（Synthetic Minority Oversampling Technique）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Borderline-SMOTE"><span class="nav-number">2.1.3.</span> <span class="nav-text">Borderline-SMOTE</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ADASYN"><span class="nav-number">2.1.4.</span> <span class="nav-text">ADASYN</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Under-Sampling"><span class="nav-number">2.2.</span> <span class="nav-text">Under-Sampling</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Random-Under-Sampling"><span class="nav-number">2.2.1.</span> <span class="nav-text">Random Under-Sampling</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Informed-Under-Samling"><span class="nav-number">2.2.2.</span> <span class="nav-text">Informed Under-Samling</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#EasyEnsemble"><span class="nav-number">2.2.2.1.</span> <span class="nav-text">EasyEnsemble</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#BalanceCascade"><span class="nav-number">2.2.2.2.</span> <span class="nav-text">BalanceCascade</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#NearMiss"><span class="nav-number">2.2.2.3.</span> <span class="nav-text">NearMiss</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Integration-of"><span class="nav-number">2.3.</span> <span class="nav-text">Integration of</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SMOTE-Tomek-Links"><span class="nav-number">2.3.1.</span> <span class="nav-text">SMOTE + Tomek Links</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SMOTE-ENN"><span class="nav-number">2.3.2.</span> <span class="nav-text">SMOTE + ENN</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Different-resampled-ratios"><span class="nav-number">2.4.</span> <span class="nav-text">Different resampled ratios</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Algorithm-Level"><span class="nav-number">3.</span> <span class="nav-text">Algorithm Level</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Try-Different-Algorithms"><span class="nav-number">3.1.</span> <span class="nav-text">Try Different Algorithms</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Change-the-Performance-Measures"><span class="nav-number">3.2.</span> <span class="nav-text">Change the Performance Measures</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Try-Penalized-Models"><span class="nav-number">3.3.</span> <span class="nav-text">Try Penalized Models</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Change-the-Model-Training-Process"><span class="nav-number">3.4.</span> <span class="nav-text">Change the Model Training Process</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Data-Level"><span class="nav-number">2.</span> <span class="nav-text">Data Level</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Over-Sampling"><span class="nav-number">2.1.</span> <span class="nav-text">Over-Sampling</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Random-Over-Sampling"><span class="nav-number">2.1.1.</span> <span class="nav-text">Random Over-Sampling</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SMOTE（Synthetic-Minority-Oversampling-Technique）"><span class="nav-number">2.1.2.</span> <span class="nav-text">SMOTE（Synthetic Minority Oversampling Technique）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Borderline-SMOTE"><span class="nav-number">2.1.3.</span> <span class="nav-text">Borderline-SMOTE</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ADASYN"><span class="nav-number">2.1.4.</span> <span class="nav-text">ADASYN</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Under-Sampling"><span class="nav-number">2.2.</span> <span class="nav-text">Under-Sampling</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Random-Under-Sampling"><span class="nav-number">2.2.1.</span> <span class="nav-text">Random Under-Sampling</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Informed-Under-Samling"><span class="nav-number">2.2.2.</span> <span class="nav-text">Informed Under-Samling</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Easy-Ensemble"><span class="nav-number">2.2.2.1.</span> <span class="nav-text">Easy Ensemble</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Balance-Cascade"><span class="nav-number">2.2.2.2.</span> <span class="nav-text">Balance Cascade</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#NearMiss"><span class="nav-number">2.2.2.3.</span> <span class="nav-text">NearMiss</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Integration-of"><span class="nav-number">2.3.</span> <span class="nav-text">Integration of</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SMOTE-Tomek-Links"><span class="nav-number">2.3.1.</span> <span class="nav-text">SMOTE + Tomek Links</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SMOTE-ENN"><span class="nav-number">2.3.2.</span> <span class="nav-text">SMOTE + ENN</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Different-resampled-ratios"><span class="nav-number">2.4.</span> <span class="nav-text">Different resampled ratios</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Algorithm-Level"><span class="nav-number">3.</span> <span class="nav-text">Algorithm Level</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Try-Different-Algorithms"><span class="nav-number">3.1.</span> <span class="nav-text">Try Different Algorithms</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Change-the-Performance-Measures"><span class="nav-number">3.2.</span> <span class="nav-text">Change the Performance Measures</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Try-Penalized-Models"><span class="nav-number">3.3.</span> <span class="nav-text">Try Penalized Models</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Change-the-Model-Training-Process"><span class="nav-number">3.4.</span> <span class="nav-text">Change the Model Training Process</span></a></li></ol></li></ol></div>
             
 
           </div>
