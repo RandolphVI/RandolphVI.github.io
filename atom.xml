@@ -126,7 +126,7 @@
     <link href="http://randolph.pro/2017/09/06/%E3%80%8CMachine%20Learning%E3%80%8DDeal%20with%20Imbalanced%20Data/"/>
     <id>http://randolph.pro/2017/09/06/「Machine Learning」Deal with Imbalanced Data/</id>
     <published>2017-09-05T16:00:00.000Z</published>
-    <updated>2017-09-09T09:53:50.000Z</updated>
+    <updated>2017-09-09T10:01:39.000Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://farm5.staticflickr.com/4300/35460446383_aafc34ca3c_o.jpg" alt=""></p>
 <p>有关「Machine Learning」的其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/">「Machine Learning」</a></p>
@@ -250,7 +250,7 @@ x_{new}=x+rand\left(0,1\right)\times\left(\tilde{x}-x\right)</script><p><img src
 <p>可以看出，<strong>BalanceCascade</strong> 算法每次循环的前置条件都是根据上一次判断错误的结果来生成 sample 。</p>
 <p><strong>BalanceCascade</strong> 算法得到的是一个级联分类器，将若干个强分类器由简单到复杂排列，只有和少数类样本特征比较接近的才有可能输入到后面的分类器，比如边界点，因此能更充分地利用多数类样本的信息，一定程度上解决随机欠采样的信息丢失问题。</p>
 <p>实际效果如下：</p>
-<p><img src="https://farm5.staticflickr.com/4362/36282852314_18efd6065f_o.png" alt=""></p>
+<p><img src="https://farm5.staticflickr.com/4390/36976962741_8a22144772_o.png" alt=""></p>
 <h4 id="NearMiss"><a href="#NearMiss" class="headerlink" title="NearMiss"></a>NearMiss</h4><p><strong>NearMiss</strong> 方法是利用距离远近剔除多数类样本的一类方法，实际操作就是依据 KNN 算法，有以下三种方法：</p>
 <ul>
 <li>NearMiss 1：对于多数样本类 <script type="math/tex">S_{maj}</script> 中的某个点，计算该点和离自己最近的 <script type="math/tex">S_{min}</script> 少数类的 3 个点的总距离，按值从小到大排序，根据指定个数 $n$， 保留 $n$ 个样本。</li>
