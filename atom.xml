@@ -126,7 +126,7 @@
     <link href="http://randolph.pro/2017/09/06/%E3%80%8CMachine%20Learning%E3%80%8DDeal%20with%20Imbalanced%20Data/"/>
     <id>http://randolph.pro/2017/09/06/「Machine Learning」Deal with Imbalanced Data/</id>
     <published>2017-09-05T16:00:00.000Z</published>
-    <updated>2017-09-10T05:31:58.000Z</updated>
+    <updated>2017-09-10T05:43:57.000Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://farm5.staticflickr.com/4300/35460446383_aafc34ca3c_o.jpg" alt=""></p>
 <p>有关「Machine Learning」的其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/">「Machine Learning」</a></p>
@@ -229,12 +229,12 @@ x_{new}=x+rand\left(0,1\right)\times\left(\tilde{x}-x\right)</script><p><img src
 <p><img src="https://farm5.staticflickr.com/4407/36721703920_7ee63f5633_o.png" alt=""></p>
 <h2 id="Under-Sampling"><a href="#Under-Sampling" class="headerlink" title="Under-Sampling"></a>Under-Sampling</h2><p>欠采样方法是针对多数的负样本，减少负样本的数量，反而提高整体 $F$ 值。最简单的欠采样方法是随机地删掉一些负样本。欠采样的缺点很明显，就是会丢失负样本的一些重要信息，不能够充分利用已有的信息，这样训练得到的模型只学到了总体模式的一部分。</p>
 <h3 id="Random-Under-Sampling"><a href="#Random-Under-Sampling" class="headerlink" title="Random Under-Sampling"></a>Random Under-Sampling</h3><p>减少多数类样本数量最简单的方法便是随机剔除多数类样本，可以事先设置多数类与少数类最终的数量比例，在保留少数类样本不变的情况下，根据比例随机选择多数类样本。</p>
-<ul>
-<li><p>1）首先我们从 <script type="math/tex">S_{maj}</script> 中随机选取一些多数类样本 <script type="math/tex">E</script></p>
+<ol>
+<li><p>首先我们从 <script type="math/tex">S_{maj}</script> 中随机选取一些多数类样本 <script type="math/tex">E</script></p>
 </li>
-<li><p>2）将这些样本从 <script type="math/tex">S_{maj}</script> 中移除，就有<script type="math/tex">|S_{maj-new}|=|S_{maj}|-|E|</script></p>
+<li><p>将这些样本从 <script type="math/tex">S_{maj}</script> 中移除，就有<script type="math/tex">|S_{maj-new}|=|S_{maj}|-|E|</script></p>
 </li>
-</ul>
+</ol>
 <p><img src="https://farm5.staticflickr.com/4391/36948259812_969cfd4d20_o.png" alt=""></p>
 <p>优点在于操作简单，只依赖于样本分布，不依赖任何距离信息，属于非启发式方法；缺点在于会丢失一部分多数类样本的信息，无法充分利用已有信息。</p>
 <h3 id="Informed-Under-Samling"><a href="#Informed-Under-Samling" class="headerlink" title="Informed Under-Samling"></a>Informed Under-Samling</h3><p>Informed 欠采样算法可以解决传统随机欠采样造成的数据信息丢失问题，且表现出较好的不均衡数据分类性能。其中含有一些集成（Ensemble）的思想，主要的方法是 <strong>EasyEnsemble</strong> 算法和 <strong>BalanceCascade</strong> 算法。</p>
