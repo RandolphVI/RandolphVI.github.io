@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://randolph.pro/"/>
-  <updated>2017-09-06T12:28:40.000Z</updated>
+  <updated>2017-09-10T05:53:54.000Z</updated>
   <id>http://randolph.pro/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://randolph.pro/2017/09/08/%E3%80%8CMachine%20Learning%E3%80%8D%20LSTM%20Introduction/"/>
     <id>http://randolph.pro/2017/09/08/「Machine Learning」 LSTM Introduction/</id>
     <published>2017-09-07T16:00:00.000Z</published>
-    <updated>2017-09-06T12:28:40.000Z</updated>
+    <updated>2017-09-10T05:53:54.000Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://farm5.staticflickr.com/4300/35460446383_aafc34ca3c_o.jpg" alt=""></p>
 <p>有关「Machine Learning」的其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/">「Machine Learning」</a></p>
@@ -82,7 +82,7 @@
 <p>由于 LSTM 写在纸上是一堆公式，因此看起来很吓人。希望本文的分步讲解能让读者更容易接受和理解。</p>
 <p>LSTM 使得我们在使用 RNN 能完成的任务上迈进了一大步。很自然，我们会思考，还会有下一个一大步吗？研究工作者们的共同观点是：“是的！还有一个下一步，那就是注意力 (Attention)！”注意力机制的思想是，在每一步中，都让 RNN 从一个更大的信息集合中去选择信息。举个例子，假如你使用 RNN 来生成一幅图片的说明文字，RNN 可能在输出每一个单词时，都会去观察图片的一部分。事实上，<a href="http://arxiv.org/pdf/1502.03044v2.pdf" target="_blank" rel="external">Xu, et al.(2015)</a> 做的正是这个工作！如果你想探索注意力机制的话，这会是一个很有趣的起始点。现在已经有很多使用注意力的令人兴奋的成果，而且似乎更多的成果马上将会出来……</p>
 <p>注意力并不是 RNN 研究中唯一让人兴奋的主题。举例说，由 <a href="http://arxiv.org/pdf/1507.01526v1.pdf" target="_blank" rel="external">Kalchbrenner, et al. (2015)</a> 提出的 Grid LSTM 似乎极有前途。在生成式模型中使用 RNN 的工作——比如 <a href="http://arxiv.org/pdf/1502.04623.pdf" target="_blank" rel="external">Gregor, et al. (2015)</a>、<a href="http://arxiv.org/pdf/1506.02216v3.pdf" target="_blank" rel="external">Chung, et al. (2015)</a> 以及<a href="http://arxiv.org/pdf/1411.7610v3.pdf" target="_blank" rel="external">Bayer &amp; Osendorfer (2015)</a>——看起来也非常有意思。最近的几年对于 RNN 来说是一段非常令人激动的时间，接下来的几年也必将更加使人振奋！</p>
-<h4 id="注：本文翻译自 colah’s-blog，原文链接：http-colah-github-io-posts-2015-08-Understanding-LSTMs-。译文原作者：Naitong-Yu，译文链接：https-yunaitong-cn-understanding-lstm-networks-html"><a href="# 注：本文翻译自 colah’s-blog，原文链接：http-colah-github-io-posts-2015-08-Understanding-LSTMs-。译文原作者：Naitong-Yu，译文链接：https-yunaitong-cn-understanding-lstm-networks-html" class="headerlink" title="注：本文翻译自 colah’s blog，原文链接：http://colah.github.io/posts/2015-08-Understanding-LSTMs/。译文原作者：Naitong Yu，译文链接：https://yunaitong.cn/understanding-lstm-networks.html"></a>注：本文翻译自<a href="http://colah.github.io/" target="_blank" rel="external">colah’s blog</a>，原文链接：<a href="http://colah.github.io/posts/2015-08-Understanding-LSTMs/" target="_blank" rel="external">http://colah.github.io/posts/2015-08-Understanding-LSTMs/</a>。译文原作者：Naitong Yu，译文链接：<a href="https://yunaitong.cn/understanding-lstm-networks.html" target="_blank" rel="external">https://yunaitong.cn/understanding-lstm-networks.html</a></h4>]]></content>
+]]></content>
     
     <summary type="html">
     
@@ -126,7 +126,7 @@
     <link href="http://randolph.pro/2017/09/06/%E3%80%8CMachine%20Learning%E3%80%8DDeal%20with%20Imbalanced%20Data/"/>
     <id>http://randolph.pro/2017/09/06/「Machine Learning」Deal with Imbalanced Data/</id>
     <published>2017-09-05T16:00:00.000Z</published>
-    <updated>2017-09-10T05:43:57.000Z</updated>
+    <updated>2017-09-11T02:19:54.000Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://farm5.staticflickr.com/4300/35460446383_aafc34ca3c_o.jpg" alt=""></p>
 <p>有关「Machine Learning」的其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/">「Machine Learning」</a></p>
@@ -164,7 +164,8 @@
 <li>Over-Sampling<ul>
 <li>Random Over-Sampling</li>
 <li>SMOTE</li>
-<li>Borderline-SMOTE<br>-</li>
+<li>Borderline-SMOTE</li>
+<li>ASASYN</li>
 </ul>
 </li>
 <li>Under-Sampling<ul>
@@ -174,7 +175,11 @@
 <li>NearMiss</li>
 </ul>
 </li>
-<li>Integration of</li>
+<li>Integration of<ul>
+<li>SMOTE + Tomek Links</li>
+<li>SMOTE + ENN</li>
+</ul>
+</li>
 <li>Different resampled ratios</li>
 </ul>
 </li>
@@ -190,7 +195,7 @@
 <p>但是需要注意，当搜集数据的场景本来产生数据的比例就是不平衡时，这种方法并不能解决数据比例不平衡问题。</p>
 <h1 id="Data-Level"><a href="#Data-Level" class="headerlink" title="Data Level"></a>Data Level</h1><p>在数据层面上，改变数据分布，从数据层面使得类别分布更为平衡。</p>
 <p>对于一个不平衡样本，其样本数多的为 <strong>majority</strong>，样本数少的为 <strong>minority</strong>。整个 trainingset 为 $S$，<strong>majority</strong> 记为 <script type="math/tex">S_{maj}</script>，<strong>minority</strong> 记为 <script type="math/tex">S_{min}</script>。用 <script type="math/tex">|S_{maj}|</script> 表示 <strong>majority</strong> 的样本数量，用 <script type="math/tex">|S_{min}|</script> 表示 <strong>minority</strong> 的样本数量。</p>
-<p>对于随机采取部分 <strong>majority</strong> 的样本记为 <script type="math/tex">|E_{maj}|</script>，随机采取 <strong>minority</strong> 的样本记为 <script type="math/tex">|E_{min}|</script>。</p>
+<p>对于随机采取部分 <strong>majority</strong> 的样本记为 <script type="math/tex">E_{maj}</script>，其样本数量用 <script type="math/tex">|E_{maj}|</script> 表示。<br>对于随机采取部分 <strong>minority</strong> 的样本记为 <script type="math/tex">E_{min}</script>，其样本数量用 <script type="math/tex">|E_{min}|</script> 表示。</p>
 <p>对数据重采样可以有针对性地改变数据中样本的比例，采样一般有两种方式：<strong>Over-Sampling</strong> 和 <strong>Under-Sampling</strong>。</p>
 <p><strong>Over-Sampling</strong> 是增加样本数较少的样本，其方式是直接复制原来的样本，通常简单的做法就是随机挑选 <script type="math/tex">S_{min}</script>，然后加入到 <script type="math/tex">S_{min}</script>当中，增加的量通常是 <script type="math/tex">|S_{maj}|-|S_{min}|</script>，因为增加了重复的样本，所以容易造成过拟合。</p>
 <p><strong>Under-Sampling</strong> 是减少样本数较多的样本，其方式是丢弃这些多余的样本，通过简单的做法就是随机挑选 <script type="math/tex">S_{maj}</script>，然后将其去除，减少的量通常是 <script type="math/tex">|S_{maj}|-|S_{min}|</script>，由于去除了原本样本中可能存在的重要信息，所以会导致欠拟合。</p>
@@ -237,7 +242,7 @@ x_{new}=x+rand\left(0,1\right)\times\left(\tilde{x}-x\right)</script><p><img src
 </ol>
 <p><img src="https://farm5.staticflickr.com/4391/36948259812_969cfd4d20_o.png" alt=""></p>
 <p>优点在于操作简单，只依赖于样本分布，不依赖任何距离信息，属于非启发式方法；缺点在于会丢失一部分多数类样本的信息，无法充分利用已有信息。</p>
-<h3 id="Informed-Under-Samling"><a href="#Informed-Under-Samling" class="headerlink" title="Informed Under-Samling"></a>Informed Under-Samling</h3><p>Informed 欠采样算法可以解决传统随机欠采样造成的数据信息丢失问题，且表现出较好的不均衡数据分类性能。其中含有一些集成（Ensemble）的思想，主要的方法是 <strong>EasyEnsemble</strong> 算法和 <strong>BalanceCascade</strong> 算法。</p>
+<h3 id="Tomek-Links"><a href="#Tomek-Links" class="headerlink" title="Tomek Links"></a>Tomek Links</h3><h3 id="Informed-Under-Samling"><a href="#Informed-Under-Samling" class="headerlink" title="Informed Under-Samling"></a>Informed Under-Samling</h3><p>Informed 欠采样算法可以解决传统随机欠采样造成的数据信息丢失问题，且表现出较好的不均衡数据分类性能。其中含有一些集成（Ensemble）的思想，主要的方法是 <strong>EasyEnsemble</strong> 算法和 <strong>BalanceCascade</strong> 算法。</p>
 <h4 id="Easy-Ensemble"><a href="#Easy-Ensemble" class="headerlink" title="Easy Ensemble"></a>Easy Ensemble</h4><p>它把数据划分为两部分，分别是多数类样本和少数类样本，对于多数类样本 <script type="math/tex">S_{maj}</script>，通过 $n$ 次 <strong> 有放回 </strong> 采样生成 $n$ 份子集，每份子集的大小为 <script type="math/tex">S_{min}</script>。然后，让少数类样本 <script type="math/tex">S_{min}</script> 分别和这 <script type="math/tex">n</script> 份样本合并训练 AdaBoost 分类器，这样可以得到 <script type="math/tex">n</script> 个模型，最终的模型采用加权多数表决的方法，加大分类误差率小的弱分类器的权值，使其在表决中起较大的作用，减小分类误差率大的弱分类器的权值，使其在表决中起较小的作用。这里假设多数类样本为 $N$，少数类样本为 $P$，算法伪代码如下：</p>
 <p><img src="https://farm5.staticflickr.com/4349/36924720872_f6dc5d18bc_o.png" alt=""></p>
 <p>EasyEnsemble 的想法是多次随机欠采样，尽可能全面地涵盖所有信息，算法特点是利用 <strong>boosting</strong> 减小偏差（Adaboost）、<strong>bagging</strong> 减小方差（Ensemble Classifier）。实际应用的时候也可以尝试选用不同的分类器来提高分类的效果。算法的流程如下：</p>
@@ -253,15 +258,15 @@ x_{new}=x+rand\left(0,1\right)\times\left(\tilde{x}-x\right)</script><p><img src
 <p><img src="https://farm5.staticflickr.com/4390/36976962741_8a22144772_o.png" alt=""></p>
 <h4 id="NearMiss"><a href="#NearMiss" class="headerlink" title="NearMiss"></a>NearMiss</h4><p><strong>NearMiss</strong> 方法是利用距离远近剔除多数类样本的一类方法，实际操作就是依据 KNN 算法，有以下三种方法：</p>
 <ul>
-<li>NearMiss 1：对于多数样本类 <script type="math/tex">S_{maj}</script> 中的某个点，计算该点和离自己最近的 <script type="math/tex">S_{min}</script> 少数类的 3 个点的总距离，按值从小到大排序，根据指定个数 $n$， 保留 $n$ 个样本。</li>
+<li><strong>NearMiss 1</strong>：对于多数样本类 <script type="math/tex">S_{maj}</script> 中的某个点，计算该点和离自己最近的 <script type="math/tex">S_{min}</script> 少数类的 3 个点的总距离，按值从小到大排序，根据指定个数 $n$， 保留 $n$ 个样本。</li>
 </ul>
 <p><img src="https://farm5.staticflickr.com/4392/36976824531_e1ecb1b0d1_o.png" alt=""></p>
 <ul>
-<li>NearMiss 2：对于多数样本类 <script type="math/tex">S_{maj}</script> 中的某个点，计算该点和离自己最远的 <script type="math/tex">S_{min}</script> 少数类的 3 个点的总距离，按值从小到大排序，根据指定个数 $n$， 保留 $n$ 个样本。</li>
+<li><strong>NearMiss 2</strong>：对于多数样本类 <script type="math/tex">S_{maj}</script> 中的某个点，计算该点和离自己最远的 <script type="math/tex">S_{min}</script> 少数类的 3 个点的总距离，按值从小到大排序，根据指定个数 $n$， 保留 $n$ 个样本。</li>
 </ul>
 <p><img src="https://farm5.staticflickr.com/4442/36976823751_dd2854ca84_o.png" alt=""></p>
 <ul>
-<li>NearMiss 3：首先事前给定一个值 $a$，对于少数样本类 <script type="math/tex">S_{min}</script> 中的每个点，保留和自己距离最近的 $a$ 个多数类点。</li>
+<li><strong>NearMiss 3</strong>：首先事前给定一个值 $a$，对于少数样本类 <script type="math/tex">S_{min}</script> 中的每个点，保留和自己距离最近的 $a$ 个多数类点。</li>
 </ul>
 <p><img src="https://farm5.staticflickr.com/4361/36976822951_d483540f26_o.png" alt=""></p>
 <p><strong>NearMiss-1</strong> 和 <strong>NearMiss-2</strong> 方法的描述仅有一字之差，但其含义是完全不同的：</p>
@@ -270,6 +275,7 @@ x_{new}=x+rand\left(0,1\right)\times\left(\tilde{x}-x\right)</script><p><img src
 <p><strong>NearMiss-3</strong> 方法则会使得每一个少数类样本附近都有足够多的多数类样本，显然这会使得模型的精确度高、召回率低。</p>
 <p><strong>NearMiss</strong> 算法实际效果如下：</p>
 <p><img src="https://farm5.staticflickr.com/4336/37117835945_006294f37c_o.png" alt=""></p>
+<h3 id="CNN-Condensed-Nearest-Neighbours"><a href="#CNN-Condensed-Nearest-Neighbours" class="headerlink" title="CNN(Condensed Nearest Neighbours)"></a>CNN(Condensed Nearest Neighbours)</h3><p>这里的 CNN 不是卷积神经网络的简称，而是 Condensed Nearest Neighbours 压缩最近邻算法，通过 CNN 算法来进行 Under-Sampling。</p>
 <h2 id="Integration-of"><a href="#Integration-of" class="headerlink" title="Integration of"></a>Integration of</h2><p>将过采样和欠采样结合。</p>
 <h3 id="SMOTE-Tomek-Links"><a href="#SMOTE-Tomek-Links" class="headerlink" title="SMOTE + Tomek Links"></a>SMOTE + Tomek Links</h3><p>实际效果如下：</p>
 <p><img src="https://farm5.staticflickr.com/4363/36305865973_b4c970d546_o.png" alt=""></p>
@@ -279,6 +285,8 @@ x_{new}=x+rand\left(0,1\right)\times\left(\tilde{x}-x\right)</script><p><img src
 <h1 id="Algorithm-Level"><a href="#Algorithm-Level" class="headerlink" title="Algorithm Level"></a>Algorithm Level</h1><p>在算法层面上，改变分类算法，在传统分类算法的基础上对不同类别采取不同的加权方式，使得模型更看重少数类。</p>
 <h2 id="Try-Different-Algorithms"><a href="#Try-Different-Algorithms" class="headerlink" title="Try Different Algorithms"></a>Try Different Algorithms</h2><p>强烈建议不要对待每一个分类都使用自己喜欢而熟悉的分类算法。应该使用不同的算法对其进行比较，因为不同的算法适用于不同的任务与数据。</p>
 <p>例如，<strong>决策树</strong> 往往在类别不均衡数据上表现不错。它使用基于类变量的划分规则去创建分类树，因此可以强制地将不同类别的样本分开。目前流行的决策树算法有：<strong><code>C4.5</code></strong>、<strong><code>C5.0</code></strong>、<strong><code>CART</code></strong> 和 <strong><code>Random Forest</code></strong> 等。</p>
+<h2 id="Try-Penalized-Models"><a href="#Try-Penalized-Models" class="headerlink" title="Try Penalized Models"></a>Try Penalized Models</h2><p>可以使用相同的分类算法，但是使用一个不同的角度，比如你的分类任务是识别那些小类，那么可以对分类器的小类样本数据增加权值，降低大类样本的权值，从而使得分类器将重点集中在小类样本身上。一个具体做法就是，在训练分类器时，若分类器将小类样本分错时额外增加分类器一个小类样本分错代价，这个额外的代价可以使得分类器更加“关心”小类样本。如 <code>penalized-SVM</code> 和 <code>penalized-LDA</code> 算法。另外，刚开始，可以设置每个类别的权值与样本个数比例的倒数，然后可以使用过采样进行调优。</p>
+<p>如果你锁定一个具体的算法时，并且无法通过使用重采样来解决不均衡性问题，此时你便可以使用惩罚模型来解决不平衡性问题。但是，设置惩罚矩阵是一个复杂的事，因此你需要根据你的任务尝试不同的惩罚矩阵，并选取一个较好的惩罚矩阵。</p>
 <h2 id="Change-the-Performance-Measures"><a href="#Change-the-Performance-Measures" class="headerlink" title="Change the Performance Measures"></a>Change the Performance Measures</h2><p>改变评判指标，也就是不用准确率来评判和选择模型，原因就是我们上面提到的 Accuracy Paradox 问题。从开头的分析可以看出，准确度这个评价指标在类别不均衡的分类任务中并不能很好的适用，甚至还会进行误导（尽管单从这个指标的数值上而言很高，但是模型的泛化能力很差）。因此在样本不均衡的分类任务中，需要使用更有说服力的评价指标来对分类器进行评价。</p>
 <p>实际上有一些评判指标就是专门解决样本不平衡时的评判问题的，如：</p>
 <ul>
@@ -293,12 +301,10 @@ x_{new}=x+rand\left(0,1\right)\times\left(\tilde{x}-x\right)</script><p><img src
 <li><a href="https://en.wikipedia.org/wiki/Cohen%27s_kappa" target="_blank" rel="external">Kappa</a></li>
 </ul>
 <p>如何针对不同的问题选择有效的评价指标，可以阅读这篇文章：<a href="http://machinelearningmastery.com/classification-accuracy-is-not-enough-more-performance-measures-you-can-use/" target="_blank" rel="external">Classification Accuracy is Not Enough: More Performance Measures You Can Use</a>。</p>
-<h2 id="Try-Penalized-Models"><a href="#Try-Penalized-Models" class="headerlink" title="Try Penalized Models"></a>Try Penalized Models</h2><p>可以使用相同的分类算法，但是使用一个不同的角度，比如你的分类任务是识别那些小类，那么可以对分类器的小类样本数据增加权值，降低大类样本的权值，从而使得分类器将重点集中在小类样本身上。一个具体做法就是，在训练分类器时，若分类器将小类样本分错时额外增加分类器一个小类样本分错代价，这个额外的代价可以使得分类器更加“关心”小类样本。如 <code>penalized-SVM</code> 和 <code>penalized-LDA</code> 算法。另外，刚开始，可以设置每个类别的权值与样本个数比例的倒数，然后可以使用过采样进行调优。</p>
-<p>如果你锁定一个具体的算法时，并且无法通过使用重采样来解决不均衡性问题，此时你便可以使用惩罚模型来解决不平衡性问题。但是，设置惩罚矩阵是一个复杂的事，因此你需要根据你的任务尝试不同的惩罚矩阵，并选取一个较好的惩罚矩阵。</p>
 <h2 id="Change-the-Model-Training-Process"><a href="#Change-the-Model-Training-Process" class="headerlink" title="Change the Model Training Process"></a>Change the Model Training Process</h2><p>更改模型的训练过程。假设超大类中样本的个数是极小类中样本个数的 $L$ 倍，那么在随机梯度下降（SGD，stochastic gradient descent）算法中，每次遇到一个极小类中样本进行训练时，训练 $L$ 次。</p>
 <p>参考：</p>
 <p><a href="http://machinelearningmastery.com/tactics-to-combat-imbalanced-classes-in-your-machine-learning-dataset/" target="_blank" rel="external">8 Tactics to Combat Imbalanced Classes in Your Machine Learning Dataset</a><br><a href="http://www.ele.uri.edu/faculty/he/PDFfiles/ImbalancedLearning.pdf" target="_blank" rel="external">♜ Learning from Imbalanced Data</a><br><a href="http://www.jair.org/media/953/live-953-2037-jair.pdf" target="_blank" rel="external">♜ SMOTE: Synthetic Minority Over-sampling Technique</a><br><a href="http://sci2s.ugr.es/keel/pdf/specific/congreso/han_borderline_smote.pdf" target="_blank" rel="external">♜ Borderline-SMOTE: A New Over-Sampling Method inImbalanced Data Sets Learning</a><br><a href="https://pdfs.semanticscholar.org/4823/4756b7cf798bfeb47328f7c5d597fd4838c2.pdf" target="_blank" rel="external">♜ ADASYN: Adaptive Synthetic Sampling Approach for ImbalancedLearning</a></p>
-<p><a href="https://cs.nju.edu.cn/zhouzh/zhouzh.files/publication/tsmcb09.pdf" target="_blank" rel="external">♜ Exploratory Undersampling for Class-Imbalance Learning</a><br><a href="https://www.site.uottawa.ca/~nat/Workshop2003/jzhang.pdf" target="_blank" rel="external">♜ KNN Approach to Unbalanced Data Distributions: A Case Study Involving Information Extraction</a></p>
+<p><a href="http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=4309452" target="_blank" rel="external">♜ Two Modifications of CNN</a><br><a href="https://cs.nju.edu.cn/zhouzh/zhouzh.files/publication/tsmcb09.pdf" target="_blank" rel="external">♜ Exploratory Undersampling for Class-Imbalance Learning</a><br><a href="https://www.site.uottawa.ca/~nat/Workshop2003/jzhang.pdf" target="_blank" rel="external">♜ KNN Approach to Unbalanced Data Distributions: A Case Study Involving Information Extraction</a></p>
 ]]></content>
     
     <summary type="html">
