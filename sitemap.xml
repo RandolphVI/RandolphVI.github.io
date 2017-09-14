@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://randolph.pro/about/index.html</loc>
+    
+    <lastmod>2017-09-14T14:37:34.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://randolph.pro/2017/09/06/%E3%80%8CMachine%20Learning%E3%80%8DDeal%20with%20Imbalanced%20Data/</loc>
     
     <lastmod>2017-09-11T02:19:54.000Z</lastmod>
@@ -180,13 +187,6 @@
     <loc>http://randolph.pro/categories/index.html</loc>
     
     <lastmod>2017-07-19T08:11:53.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://randolph.pro/about/index.html</loc>
-    
-    <lastmod>2017-07-19T06:05:23.000Z</lastmod>
     
   </url>
   
