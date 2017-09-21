@@ -2608,7 +2608,7 @@ E_{cost} = \frac{m^+ \times (1-TPR) \times cost_{01}+m^- \times FPR \times cost_
     <link href="http://randolph.pro/2016/12/26/%E2%99%9E%E3%80%8CMachine%20Learning%E3%80%8D%20Chapter%201/"/>
     <id>http://randolph.pro/2016/12/26/♞「Machine Learning」 Chapter 1/</id>
     <published>2016-12-25T16:00:00.000Z</published>
-    <updated>2017-09-21T06:49:59.000Z</updated>
+    <updated>2017-09-21T07:14:52.000Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://farm5.staticflickr.com/4307/36174772306_62cfbc8cd6_o.jpg" alt=""></p>
 <p>有关该书的其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/Book-「Machine-Learning」/">Book:「Machine Learning」</a></p>
@@ -2777,7 +2777,7 @@ E_{cost} = \frac{m^+ \times (1-TPR) \times cost_{01}+m^- \times FPR \times cost_
 <blockquote>
 <p>3. 若数据包含噪声，则假设空间中可能不存在与所有训练样本都一致的假设。在此情形下，试设计一种归纳偏好用于假设选择。</p>
 </blockquote>
-<p>通常认为两个数据的属性越相近，则更倾向于将他们分为同一类。若相同属性出现了两种不同的分类，则认为它属于与他最临近几个数据的属性。也可以考虑同时去掉所有具有相同属性而不同分类的数据，留下的数据就是没误差的数据，但是可能会丢失部分信息。</p>
+<p>通常认为两个数据的属性越相近，则更倾向于将它们分为同一类。若相同属性出现了两种不同的分类，则认为它属于与它最临近几个数据的属性。也可以考虑同时去掉所有具有相同属性而不同分类的数据，留下的数据就是没误差的数据，但是可能会丢失部分信息。</p>
 <hr>
 ]]></content>
     
