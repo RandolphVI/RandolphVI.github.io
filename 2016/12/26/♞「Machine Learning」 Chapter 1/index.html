@@ -113,7 +113,7 @@
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://farm5.staticflickr.com/4307/36174772306_62cfbc8cd6_o.jpg">
 <meta property="og:image" content="https://farm5.staticflickr.com/4366/36147851030_43e856f6b2_o.png">
-<meta property="og:updated_time" content="2017-09-21T06:40:50.000Z">
+<meta property="og:updated_time" content="2017-09-21T06:49:59.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="♞「Machine Learning」 Chapter 1">
 <meta name="twitter:description" content="本文是关于周志华「Machine Learning」这本书的 Chapter 1 的学习笔记。">
@@ -450,7 +450,7 @@
                   <i class="fa fa-file-word-o"></i>
                 </span>
                 <span title="Words count in article">
-                  3,531
+                  3,532
                 </span>
                 <span> words </span>
                 
@@ -634,7 +634,7 @@
 <li>具体假设： $2 \times 3 \times 3=18$ 种</li>
 <li>一个属性泛化假设： $2 \times 3 + 3 \times 3 + 2 \times 3 = 21$ 种 </li>
 <li>两个属性泛化假设： $2 + 3 + 3 = 8$ 种 </li>
-<li>三属性泛化： $1$  种 </li>
+<li>三个属性泛化： $1$  种 </li>
 </ul>
 <p>当 $k=1$ 时，任选一种假设都可以作为一种没有冗余的假设，共 48 种。<br>$k$ 的最大值是 18 ，当 $k=18$ 时，就是 18 种具体属性假设的析取式，共 1 种。 而当 $k$ 取中间值时，就不好分析了。 </p>
 <p>下面提供一种我认为可行的算法：<br>由于属性泛化后，一个泛化的假设可以对应多个具体假设。<br>把所有假设按三属性泛化，二属性泛化，一属性泛化，具体属性排序（这样可以保证排在后面的假设不会包含前面的任何一个假设，所以省略了一些包含判断），进行循环枚举，按顺序遍历所有假设组合 248 种可能（当然绝大部分都提前结束了，不会是那么夸张的量级，虽然也不低）：</p>
