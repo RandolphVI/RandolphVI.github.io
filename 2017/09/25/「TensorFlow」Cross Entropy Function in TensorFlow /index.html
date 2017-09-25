@@ -112,7 +112,7 @@
 <meta property="og:description" content="交叉熵（Cross Entropy）是 Loss 函数的一种（也称为损失函数或代价函数），用于描述模型预测值与真实值的差距大小，TensorFlow 本身也提供了多种交叉熵算法的实现，本文详细了 TensorFlow 中各个交叉熵函数的用法。">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://farm5.staticflickr.com/4399/36206153111_6662041dd1_o.png">
-<meta property="og:updated_time" content="2017-09-25T04:57:49.000Z">
+<meta property="og:updated_time" content="2017-09-25T05:03:02.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="「TensorFlow」 Cross Entropy in TensorFlow">
 <meta name="twitter:description" content="交叉熵（Cross Entropy）是 Loss 函数的一种（也称为损失函数或代价函数），用于描述模型预测值与真实值的差距大小，TensorFlow 本身也提供了多种交叉熵算法的实现，本文详细了 TensorFlow 中各个交叉熵函数的用法。">
@@ -438,7 +438,7 @@
                   <i class="fa fa-file-word-o"></i>
                 </span>
                 <span title="Words count in article">
-                  2,363
+                  2,349
                 </span>
                 <span> words </span>
                 
@@ -485,7 +485,7 @@ C = \frac {(y-a)^2}{2}</script><p>平方差很好理解，预测值与真实值�
 <ol>
 <li>非负性。交叉熵输出的值是非负的。</li>
 <li>当真实值 $a$ 与期望输出 $y$ 的误差越大，权值更新就快；误差越小，权值更新就慢。而使用平方差作为 Loss 函数，其权值更新往往很慢。</li>
-<li>其中用于计算的 $a$ 也是经过 sigmoid 激活的，取值范围在 0 到 1。如果 label 是 1，预测值也是 1 的话，前面一项 $y <em> ln(a)$ 就是 $1 </em> ln(1)$ 等于 0，后一项 $(1 – y) <em> ln(1 – a)$ 也就是 $0 </em> ln(0)$ 等于 0，Loss 函数为 0，反之 Loss 函数为无限大非常符合我们对 Loss 函数的定义。</li>
+<li>其中用于计算的 $a$ 也是经过 sigmoid 激活的，取值范围在 0 到 1。如果 label 是 1，预测值也是 1 的话，前面一项 <script type="math/tex">y * ln(a)</script> 就是 <script type="math/tex">1 * ln(1)</script> 等于 0，后一项 <script type="math/tex">(1 – y) * ln(1 – a)</script> 也就是 <script type="math/tex">0 * ln(0)</script> 等于 0，Loss 函数为 0，反之 Loss 函数为无限大非常符合我们对 Loss 函数的定义。</li>
 </ol>
 <p>交叉熵的定义如下：</p>
 <script type="math/tex; mode=display">
