@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://randolph.pro/"/>
-  <updated>2017-09-10T05:53:54.000Z</updated>
+  <updated>2017-09-25T04:55:13.000Z</updated>
   <id>http://randolph.pro/</id>
   
   <author>
@@ -14,6 +14,77 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>「TensorFlow」 Use WeChat to Monitor Your Network</title>
+    <link href="http://randolph.pro/2017/09/25/%E3%80%8CTensorFlow%E3%80%8DCross%20Entropy%20Function%20in%20TensorFlow%20/"/>
+    <id>http://randolph.pro/2017/09/25/「TensorFlow」Cross Entropy Function in TensorFlow /</id>
+    <published>2017-09-24T16:00:00.000Z</published>
+    <updated>2017-09-25T04:55:13.000Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="https://farm5.staticflickr.com/4399/36206153111_6662041dd1_o.png" alt=""></p>
+<p>有关「TensorFlow」的其他学习笔记系列：<a href="http://randolph.pro/categories/TensorFlow/">「TensorFlow」</a></p>
+<h1 id="Cross-Entropy-Introduction"><a href="#Cross-Entropy-Introduction" class="headerlink" title="Cross Entropy Introduction"></a>Cross Entropy Introduction</h1><p>交叉熵（Cross Entropy）是 Loss 函数的一种（也称为损失函数或代价函数），用于描述模型预测值与真实值的差距大小，常见的 Loss 函数就是均方平方差（Mean Squared Error），定义如下：</p>
+<script type="math/tex; mode=display">
+C = \frac {(y-a)^2}{2}</script><p>平方差很好理解，预测值与真实值直接相减，为了避免得到负数取绝对值或者平方，再做平均就是均方平方差。注意这里预测值需要经过 sigmoid 激活函数，得到取值范围在 0 到 1 之间的预测值。</p>
+<p>平方差可以表达预测值与真实值的差异，但在分类问题种效果并不如交叉熵好，原因是：</p>
+<ol>
+<li>非负性。交叉熵输出的值是非负的。</li>
+<li>当真实值 $a$ 与期望输出 $y$ 的误差越大，权值更新就快；误差越小，权值更新就慢。而使用平方差作为 Loss 函数，其权值更新往往很慢。</li>
+<li>其中用于计算的 $a$ 也是经过 sigmoid 激活的，取值范围在 0 到 1。如果 label 是 1，预测值也是 1 的话，前面一项 $y <em> ln(a)$ 就是 $1 </em> ln(1)$ 等于 0，后一项 $(1 – y) <em> ln(1 – a)$ 也就是 $0 </em> ln(0)$ 等于 0，Loss 函数为 0，反之 Loss 函数为无限大非常符合我们对 Loss 函数的定义。</li>
+</ol>
+<p>交叉熵的定义如下：</p>
+<script type="math/tex; mode=display">
+C = -\frac{1}{n}\sum_{x}[yln(a)+(1-y)ln(1-a)]</script><p>其中，$a = \sigma(z)$，<script type="math/tex">z=\sum_{j}w_{j}x_{j}+b</script>，$n$ 是训练数据的个数。</p>
+<p>这里多次强调 sigmoid 激活函数，是因为在多标签或者多分类的问题下有些函数是不可用的，而 TensorFlow 本身也提供了多种交叉熵算法的实现。</p>
+<h1 id="Cross-Entropy-in-TensorFlow"><a href="#Cross-Entropy-in-TensorFlow" class="headerlink" title="Cross Entropy in TensorFlow"></a>Cross Entropy in TensorFlow</h1><p>TensorFlow 针对分类问题，实现了四个交叉熵函数，分别是：</p>
+<ul>
+<li><a href="https://www.tensorflow.org/versions/master/api_docs/python/nn.html#sigmoid_cross_entropy_with_logits" target="_blank" rel="external">tf.nn.sigmoid_cross_entropy_with_logits</a></li>
+<li><a href="https://www.tensorflow.org/versions/master/api_docs/python/nn.html#softmax_cross_entropy_with_logits" target="_blank" rel="external">tf.nn.softmax_cross_entropy_with_logits</a></li>
+<li><a href="https://www.tensorflow.org/versions/master/api_docs/python/nn.html#sparse_softmax_cross_entropy_with_logits" target="_blank" rel="external">tf.nn.sparse_softmax_cross_entropy_with_logits</a></li>
+<li><a href="https://www.tensorflow.org/versions/master/api_docs/python/nn.html#weighted_cross_entropy_with_logits" target="_blank" rel="external">tf.nn.weighted_cross_entropy_with_logits</a></li>
+</ul>
+<p><a href="https://www.tensorflow.org/versions/master/api_docs/python/nn.html#sparse_softmax_cross_entropy_with_logits" target="_blank" rel="external">详细内容参考 API 文档</a></p>
+<h2 id="sigmoid-cross-entropy-with-logits"><a href="#sigmoid-cross-entropy-with-logits" class="headerlink" title="sigmoid_cross_entropy_with_logits"></a>sigmoid_cross_entropy_with_logits</h2><p>我们先看 <code>sigmoid_cross_entropy_with_logits</code>，为什么呢，因为它的实现和前面的交叉熵算法定义是一样的，也是 TensorFlow 最早实现的交叉熵算法。这个函数的输入是 logits 和 targets，logits 就是神经网络模型中的 $W * X$ 矩阵，注意不需要经过 sigmoid，而 targets 的 shape 和 logits 相同，就是正确的 label 值，例如这个模型一次要判断 100 张图是否包含 10 种动物，这两个输入的 shape 都是 $[100, 10]$。注释中还提到这 10 个分类之间是独立的、不要求是互斥，这种问题我们称之为多目标或者多标签分类问题，例如判断图片中是否包含 10 种动物，label 值可以包含多个 1 或 0 个 1。这种问题，我们可以使用 <code>sigmoid_cross_entropy_with_logits</code> 函数。</p>
+<p>另外，还有一种问题是多分类问题，例如我们对年龄特征分为 5 段，只允许 5 个值有且只有 1 个值为 1，这种问题可以直接用这个函数吗？答案是不可以，我们先来看看 <code>sigmoid_cross_entropy_with_logits</code> 的代码实现吧。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="string">"""</span></div><div class="line">For brevity, let `x = logits`, `z = labels`.  The logistic loss is</div><div class="line"></div><div class="line">      z * -log(sigmoid(x)) + (1 - z) * -log(1 - sigmoid(x))</div><div class="line">    = z * -log(1 / (1 + exp(-x))) + (1 - z) * -log(exp(-x) / (1 + exp(-x)))</div><div class="line">    = z * log(1 + exp(-x)) + (1 - z) * (-log(exp(-x)) + log(1 + exp(-x)))</div><div class="line">    = z * log(1 + exp(-x)) + (1 - z) * (x + log(1 + exp(-x))</div><div class="line">    = (1 - z) * x + log(1 + exp(-x))</div><div class="line">    = x - x * z + log(1 + exp(-x))</div><div class="line">"""</div></pre></td></tr></table></figure>
+<p>可以看到这就是标准的 Cross Entropy 算法实现，对 $W * X$ 得到的值进行 sigmoid 激活，保证取值在 0 到 1 之间，然后放在交叉熵的函数中计算 Loss。对于二分类问题这样做没问题，但对于前面提到的多分类问题，例如年龄取值范围在 $[0, 4]$，目标值也在 $[0, 4]$，这里如果经过 sigmoid 后预测值就限制在 0 到 1 之间，而且公式中的 $(1 – z)$ 就会出现负数，仔细想一下 0 到 4 之间还不存在线性关系，如果直接把 label 值带入计算肯定会有非常大的误差。但是对于这多分类问题， TensorFlow 又提供了基于 Softmax 的交叉熵函数。</p>
+<p>因此对于多分类问题是不能直接代入的，但是对于多标签分类问题，我们可以灵活变通，把 5 个年龄段的预测用 <strong>onehot encoding</strong> 变成 5 维的 label，训练时当做 5 个不同的目标来训练即可，但不保证只有一个为 1。</p>
+<h2 id="softmax-cross-entropy-with-logits"><a href="#softmax-cross-entropy-with-logits" class="headerlink" title="softmax_cross_entropy_with_logits"></a>softmax_cross_entropy_with_logits</h2><p>Softmax 本身的算法很简单，就是把所有值用 $e^n$ 计算出来，求和后算每个值占的比率，保证总和为 1，一般我们可以认为 Softmax 出来的就是 confidence，也就是概率。</p>
+<script type="math/tex; mode=display">
+softmax = \frac{exp(logits)}{reduce_sum(exp(logits),  dim)}</script><p><code>softmax_cross_entropy_with_logits</code> 和 <code>sigmoid_cross_entropy_with_logits</code> 很不一样，输入是类似的 logits 和 lables 的 shape 一样，但这里要求分类的结果是互斥的，保证只有一个字段有值，例如 CIFAR-10 中图片只能分一类而不像前面判断是否包含多类动物。</p>
+<p>想一下问什么会有这样的限制？在函数头的注释中我们看到，这个函数传入的 logits 是 unscaled 的，既不做 sigmoid 也不做 softmax，因为函数实现会在内部更高效得使用 softmax，对于任意的输入经过 softmax 都会变成和为 1 的概率预测值，这个值就可以代入变形的 Cross Entroy 算法：</p>
+<script type="math/tex; mode=display">
+- y * ln(a) – (1 – y) * ln(1 – a)</script><p>从而得到有意义的 Loss 值了。如果是多标签多目标问题，经过 softmax 就不会得到多个和为 1 的概率，而且 label 有多个 1 也无法计算交叉熵，因此这个函数只适合单目标的二分类或者多分类问题。</p>
+<p>再补充一点，对于多分类问题，例如我们的年龄分为 5 类，并且人工编码为 0、1、2、3、4，因为输出值是 5 维的特征，因此我们需要人工做 <strong>onehot encoding</strong> 分别编码为 00001、00010、00100、01000、10000，才可以作为这个函数的输入。理论上我们不做 onehot encoding 也可以，做成和为 1 的概率分布也可以，但需要保证是和为 1，和不为 1 的实际含义不明确，TensorFlow 的 C++ 代码实现计划检查这些参数，可以提前提醒用户避免误用。</p>
+<h2 id="sparse-softmax-cross-entropy-with-logits"><a href="#sparse-softmax-cross-entropy-with-logits" class="headerlink" title="sparse_softmax_cross_entropy_with_logits"></a>sparse_softmax_cross_entropy_with_logits</h2><p><code>sparse_softmax_cross_entropy_with_logits</code>是 <code>softmax_cross_entropy_with_logits</code> 的易用版本，除了输入参数不同，作用和算法实现都是一样的。前面提到 <code>softmax_cross_entropy_with_logits</code> 的输入必须是类似 <strong>onehot encoding</strong> 的多维特征，但 CIFAR-10、ImageNet 和大部分分类场景都只有一个分类目标，label 值都是从 0 编码的整数，每次转成 onehot encoding 比较麻烦，有没有更好的方法呢？答案就是用<code>sparse_softmax_cross_entropy_with_logits</code>：</p>
+<ul>
+<li>它的第一个参数 logits 和前面一样，shape 是<code>[batch_size, num_classes]</code>。</li>
+<li>而第二个参数 labels，<code>softmax_cross_entropy_with_logits</code>规定 shape 必须是 <code>[batch_size, num_classes]</code>，否则无法做 Cross Entropy。这意味着，labels 的值必须是从 0 开始编码的 int32 或 int64，而且值范围是 <code>[0, num_class)</code>，如果我们从 1 开始编码或者步长大于 1，会导致某些 label 值超过这个范围，代码会直接报错退出，这也很好理解，TensorFlow 通过这样的限制才能知道用户传入的 3、6 或者 9 对应是哪个 class。而<strong><code>sparse</code></strong> 版本，则允许 labels 的 shape 是 <code>[batch_size]</code>，通过在内部高效实现类似的 <strong>onehot encoding</strong>，从而简化用户的输入。</li>
+</ul>
+<p>因此，如果用户已经做了 <strong>onehot encoding</strong> 那可以直接使用不带 <code>softmax_cross_entropy_with_logits</code>函数，如果还没有进行 <strong>onehot encoding</strong>，则可以选择使用 <code>sparse_softmax_cross_entropy_with_logits</code>函数。</p>
+<h2 id="weighted-cross-entropy-with-logits"><a href="#weighted-cross-entropy-with-logits" class="headerlink" title="weighted_cross_entropy_with_logits"></a>weighted_cross_entropy_with_logits</h2><p><code>weighted_cross_entropy_with_logits</code>是 <code>sigmoid_cross_entropy_with_logits</code> 的拓展版，输入参数和实现和后者差不多，只是可以多支持一个 <code>pos_weight</code> 参数，目的是可以增加或者减小正样本在算 Cross Entropy 时的 Loss。实现原理很简单，在传统基于 Sigmoid 的交叉熵算法上，正样本算出的值乘以某个系数 <strong><code>pos_weight</code></strong>，算法实现如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="string">"""</span></div><div class="line">The usual cross-entropy cost is defined as:</div><div class="line"></div><div class="line">    targets * -log(sigmoid(logits)) +</div><div class="line">        (1 - targets) * -log(1 - sigmoid(logits))</div><div class="line"></div><div class="line">The argument `pos_weight` is used as a multiplier for the positive targets:</div><div class="line"></div><div class="line">    targets * -log(sigmoid(logits)) * pos_weight +</div><div class="line">        (1 - targets) * -log(1 - sigmoid(logits))</div><div class="line"></div><div class="line">For brevity, let `x = logits`, `z = targets`, `q = pos_weight`.</div><div class="line">The loss is:</div><div class="line"></div><div class="line">      qz * -log(sigmoid(x)) + (1 - z) * -log(1 - sigmoid(x))</div><div class="line">    = qz * -log(1 / (1 + exp(-x))) + (1 - z) * -log(exp(-x) / (1 + exp(-x)))</div><div class="line">    = qz * log(1 + exp(-x)) + (1 - z) * (-log(exp(-x)) + log(1 + exp(-x)))</div><div class="line">    = qz * log(1 + exp(-x)) + (1 - z) * (x + log(1 + exp(-x))</div><div class="line">    = (1 - z) * x + (qz +  1 - z) * log(1 + exp(-x))</div><div class="line">    = (1 - z) * x + (1 + (q - 1) * z) * log(1 + exp(-x))</div><div class="line">"""</div></pre></td></tr></table></figure>
+<h1 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h1><p>这就是 TensorFlow 目前提供的有关 Cross Entropy 的函数实现，用户需要理解多标签和多分类的场景，根据业务需求（分类目标是否独立和互斥）来选择基于 Sigmoid 或者 Softmax 的实现，如果使用 Sigmoid 目前还支持加权的实现，如果使用 Softmax 我们可以自己做 onehot coding 或者使用更易用的 <code>sparse_softmax_cross_entropy_with_logits</code> 函数。</p>
+<p>TensorFlow 提供的 Cross Entropy 函数基本涵盖了多目标和多分类的问题，但如果同时是多目标多分类的场景，肯定是无法使用 <code>softmax_cross_entropy_with_logits</code>，如果使用<code>sigmoid_cross_entropy_with_logits</code> 我们就把多分类的特征都认为是独立的特征，而实际上他们有且只有一个为 1 的非独立特征，计算 Loss 时不如 Softmax 有效。这里可以预测下，未来 TensorFlow 社区将会实现更多的 op 解决类似的问题，我们也期待更多人参与 TensorFlow 贡献算法和代码。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      交叉熵（Cross Entropy）是 Loss 函数的一种（也称为损失函数或代价函数），用于描述模型预测值与真实值的差距大小，TensorFlow 本身也提供了多种交叉熵算法的实现，本文详细了 TensorFlow 中各个交叉熵函数的用法。
+    
+    </summary>
+    
+      <category term="TensorFlow" scheme="http://randolph.pro/categories/TensorFlow/"/>
+    
+    
+      <category term="Machine Learning" scheme="http://randolph.pro/tags/Machine-Learning/"/>
+    
+      <category term="Python" scheme="http://randolph.pro/tags/Python/"/>
+    
+      <category term="TensorFlow" scheme="http://randolph.pro/tags/TensorFlow/"/>
+    
+  </entry>
   
   <entry>
     <title>「Machine Learning」 LSTM Introduction</title>
@@ -3947,131 +4018,6 @@ AC & (1,2)(-2),(0,1)(-1),(0,1)(-1),(0,1)(-1),(2,1)(-1),(EOB)(0,0)
     <summary type="html">
     
       本文是关于「Web Scraping with Python」这本书的 Chapter 4 &amp; 5 的学习笔记。
-    
-    </summary>
-    
-      <category term="Web Scraping" scheme="http://randolph.pro/categories/Web-Scraping/"/>
-    
-      <category term="Book:「Web Scraping with Python」" scheme="http://randolph.pro/categories/Web-Scraping/Book-%E3%80%8CWeb-Scraping-with-Python%E3%80%8D/"/>
-    
-    
-      <category term="Python" scheme="http://randolph.pro/tags/Python/"/>
-    
-      <category term="Web Scraping" scheme="http://randolph.pro/tags/Web-Scraping/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>♞「Web Scraping with Python」 Chapter 3</title>
-    <link href="http://randolph.pro/2015/11/13/%E2%99%9E%E3%80%8CWeb%20Scraping%20with%20Python%E3%80%8D%20Chapter%203/"/>
-    <id>http://randolph.pro/2015/11/13/♞「Web Scraping with Python」 Chapter 3/</id>
-    <published>2015-11-12T16:00:00.000Z</published>
-    <updated>2017-08-21T13:53:39.000Z</updated>
-    
-    <content type="html"><![CDATA[<p><img src="https://farm5.staticflickr.com/4316/36049777032_f975ed0941_o.jpg" alt=""></p>
-<p> 有关该书的其他学习笔记系列：<a href="http://randolph.pro/categories/Web-Scraping/Book-「Web-Scraping-with-Python」/">Book:「Web Scraping with Python」</a></p>
-<h1 id="Related"><a href="#Related" class="headerlink" title="Related"></a>Related</h1><ul>
-<li><strong>urlparse module</strong></li>
-</ul>
-<hr>
-<h1 id="Key"><a href="#Key" class="headerlink" title="Key:"></a>Key:</h1><h2 id="Think-First"><a href="#Think-First" class="headerlink" title="Think First"></a>Think First</h2><blockquote>
-<p>What data am I trying to gather? Can this be accomplished by scraping just a few predefined websites (almost always the easier option), or does my crawler need to be able to discover new websites I might not know about?<br> 我需要收集哪些数据？这些数据可以通过采集几个已经确定的网站（永远是最简单的做法）完成吗？或者我需要通过爬虫发现那些我可能不知道的网站从而获取我想要的信息吗？</p>
-<p>When my crawler reaches a particular website, will it immediately follow the next outbound link to a new website, or will it stick around for a while and drill down into the current website?<br> 当我的爬虫到了某一个网站，它是立即顺着下一个出站链接跳转到下一个新网站，还是在网站上呆一会，深入采集网站的内容？</p>
-<p>Are there any conditions under which I would not want to scrape a particular site? Am I interested in non-English content?<br> 有没有我不想采集的一些网站？我对非英文网站的内容感兴趣么？</p>
-<p>How am I protecting myself against legal action if my web crawler catches the attention of a webmaster on one of the sites it runs across?<br> 如果我的爬虫引起了某个网站网管的怀疑，我该如何避免法律责任？</p>
-</blockquote>
-<hr>
-<h2 id="urlparse-module"><a href="#urlparse-module" class="headerlink" title="urlparse module"></a>urlparse module</h2><p><strong>urlparse</strong> 模块主要是把 url 拆分为六个部分，并返回元组 tuple。并且可以把拆分后的部分再组成一个 url。主要函数有 <strong><code>urljoin</code></strong>、<strong><code>urlsplit</code></strong>、<strong><code>urlunsplit</code></strong>、<strong><code>urlparse</code></strong> 等。</p>
-<h3 id="urlparse-function"><a href="#urlparse-function" class="headerlink" title="urlparse function"></a>urlparse function</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; from urlparse import urlparse</div><div class="line">&gt;&gt;&gt; o = urlparse(<span class="string">'http://www.cwi.nl:80/%7Eguido/Python.html'</span>)</div><div class="line">&gt;&gt;&gt; o    </div><div class="line">    ParseResult(scheme=<span class="string">'http'</span>, netloc=<span class="string">'www.cwi.nl:80'</span>, path=<span class="string">'/%7Eguido/Python.html'</span>, params=<span class="string">''</span>, query=<span class="string">''</span>, fragment=<span class="string">''</span>)</div><div class="line">&gt;&gt;&gt; o.scheme  </div><div class="line">    <span class="string">'http'</span></div><div class="line">&gt;&gt;&gt; o.port  </div><div class="line">    80</div><div class="line">&gt;&gt;&gt; o.geturl()  </div><div class="line">    <span class="string">'http://www.cwi.nl:80/%7Eguido/Python.html'</span></div></pre></td></tr></table></figure>
-<p> 其将 url 解析成六个部分 <strong>（scheme, netloc, path, parameters, query, fragment）</strong>。</p>
-<hr>
-<h2 id="scrapy"><a href="#scrapy" class="headerlink" title="scrapy"></a>scrapy</h2><blockquote>
-<p>Scrapy uses the Item objects to determine which pieces of information it should save from the pages it visits. This information can be saved by Scrapy in a variety of ways, such as a CSV, JSON, or XML files, using the following commands:<br>Scrapy 用 Item 对象决定要从它浏览的页面中提取哪些信息。Scrapy 支持用不同的输出格式来保存这些信息，比如 CSV、JSON、XML 文件格式，对应命令如下：</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ scrapy crawl article -o articles.csv -t csv</div><div class="line">$ scrapy crawl article -o articles.json -t json</div><div class="line">$ scrapy crawl article -o articles.xml -t xml</div></pre></td></tr></table></figure>
-<p> 当然我们也可以自己定义 Item 对象，把结果写入我们需要的一个文件或者数据库中，只要在爬虫的 parse 部分增加相应的代码即可。<br>Scrapy 是处理网络数据采集相关问题的利器。它可以自动收集所有 URL，然后和指定的规则进行比较；确保所有的 URL 是唯一的；根据需求对相关的 URL 进行标准化；以及到更深层的页面中递归查询。</p>
-<hr>
-<h1 id="Need-to-know"><a href="#Need-to-know" class="headerlink" title="Need to know:"></a>Need to know:</h1><p> 在「用 Scrapy 采集」的模块中：</p>
-<p> 我们需要下载 <strong><code>scrapy</code></strong> 这一个 package。<strong>「 这个 package 不支持 python3.x 和 python2.6，只能使用 python2.7 。」</strong></p>
-<p> 我的尝试：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ sudo pip install scrapy</div><div class="line">Could not find <span class="keyword">function</span> xmlCheckVersion <span class="keyword">in</span> library libxml2. Is libxml2 installed? </div><div class="line">Perhaps try: xcode-select --install</div></pre></td></tr></table></figure>
-<p> 意思是缺少 <strong><code>libxml2</code> </strong>，通过命令行输入:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ xcode-select --install</div></pre></td></tr></table></figure>
-<p> 接着会弹出 Xcode command line tools 下载，里面包含了 <strong><code>libxml2</code></strong>。安装完成之后，再次尝试 <strong><code>sudo pip install scrapy</code></strong>，报错，内容为:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; from six.moves import xmlrpc_client as xmlrpclib</div><div class="line">ImportError: cannot import name xmlrpc_client</div></pre></td></tr></table></figure>
-<p> 在 stackoverflow 上寻找原因:</p>
-<blockquote>
-<ul>
-<li><p><strong>six.moves</strong> is a virtual namespace. It provides access to packages that were renamed between Python 2 and 3. As such, you shouldn’t be installing anything.</p>
-</li>
-<li><p>By importing from six.moves.xmlrpc_client the developer doesn’t have to handle the case where it is located at xmlrpclib in Python 2, and at xmlrpc.client in Python 3. Note that these are part of the standard library.</p>
-</li>
-<li><p>The mapping was added to six version 1.5.0; make sure you have that version or newer.</p>
-</li>
-<li><p>Mac comes with six version 1.4.1 pre-installed in the path:  </p>
-<p><strong>/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python</strong> </p>
-<p>and this will interfere with any version you install in site-packages (which is listed last in the sys.path).</p>
-<p>The best work-around is to use a virtualenv and install your own version of six into that, together with whatever else you need for this project. Create a new virtualenv for new projects.</p>
-</li>
-<li><p>If you absolutely have to install this at the system level, then for this specific project you’ll have to remove the /System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python path:</p>
-</li>
-</ul>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; import sys</div><div class="line">&gt;&gt;&gt; sys.path.remove(<span class="string">'/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python'</span>)</div></pre></td></tr></table></figure>
-<blockquote>
-<ul>
-<li>This will remove various OS X-provided packages from your path for just that run of Python; Apple installs these for their own needs.</li>
-</ul>
-</blockquote>
-<p>Mac 自带的 <strong><code>six</code></strong> 版本过低，<strong><code>scrapy</code></strong> 需要 <strong><code>six</code></strong> 的版本在 1.5.0 以上，建议是采用 Python 虚拟环境，如果真的需要在 system level 上进行更改的话，需要重新安装 <strong><code>six</code></strong>。<br> 于是，我先尝试了其中的一个解决办法：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ sudo rm -rf /Library/Python/2.7/site-packages/six*</div><div class="line">$ sudo rm -rf </div><div class="line">/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/six*</div><div class="line">$ sudo pip install six</div></pre></td></tr></table></figure>
-<p> 但很不幸的是，<strong><code>sudo rm -rf</code></strong> 尝试删除文件的时候失败报错，Operation not Permitted。<br> 继续查找原因：</p>
-<blockquote>
-<ul>
-<li>This is because OS X El Capitan ships with six 1.4.1 installed already and when it attempts to uninstall it (because scrapy depends on six &gt;= 1.5) it doesn’t have permission to do so because <strong>System Integrity Protection</strong> doesn’t allow even root to modify those directories.</li>
-<li>Ideally, pip should just skip uninstalling those items since they aren’t installed to site-packages they are installed to a special Apple directory. However, even if pip skips uninstalling those items and installs six into site-packages we’ll hit another bug where Apple puts their pre-installed stuff earlier in the sys.path than site-packages. I’ve talked to Apple about this and I’m not sure if they’re going to do anything about it or not.</li>
-</ul>
-</blockquote>
-<p> 我的 Mac OS X 系统版本为 10.11.4，Mac 自版本 10.11 之后，由于新的 SIP 机制，即使是 root 用户也无法对 /System 中的内容进行修改删除（在系统恢复中可以办到）。</p>
-<p> 于是，我采用另外一种方法继续尝试：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ sudo pip uninstall six</div><div class="line">$ easy_install six</div></pre></td></tr></table></figure>
-<p> 同样得到的是 <code>Operation not Permitted</code>（此方法在 10.11 之前的版本应该都可以行得通）。</p>
-<p> 后来尝试了通过 Python 虚拟环境进行解决，能力不够失败。<br> 还尝试了通过下载 Python 官网的 2.7.11，不使用 Mac 系统默认自带的 2.7.10（有人提到使用自己安装的 Python2.7 可以解决问题），折腾了半天，还是失败告终，还差点弄的 pip 无法安装 package。挽救办法为：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ brew link python </div><div class="line">$ bre unlink python</div></pre></td></tr></table></figure>
-<p> 到最后，本来想着要放弃的，Stackoverflow 上的另一个办法让事情有了转机：</p>
-<blockquote>
-<p>This is a known issue on Mac OSX for Scrapy. You can refer to <a href="https://github.com/pypa/pip/issues/3165" target="_blank" rel="external">this link</a>.<br>Basically the issue is with the <strong>PYTHONPATH</strong> in your system. To solve the issue change the current PYTHONPATH to point to the newer or none Mac OSX version of Python. Before running Scrapy, try:</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">export</span> PYTHONPATH=/Library/Python/2.7/site-packages:<span class="variable">$PYTHONPATH</span></div></pre></td></tr></table></figure>
-<blockquote>
-<p>If that worked you can change the .bashrc file permanently:</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">echo</span> <span class="string">"export PYTHONPATH=/Library/Python/2.7/site-packages:<span class="variable">$PYTHONPATH</span>"</span> &gt;&gt; ~/.bashrc</div></pre></td></tr></table></figure>
-<blockquote>
-<p>If none of this works, take a look at the link above.</p>
-</blockquote>
-<p> 此时命令行输入 python，之后输入：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; import scrapy</div></pre></td></tr></table></figure>
-<p> 没有报错，说明可以导入 scrapy。</p>
-<p> 尝试书上的命令：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ scrapy startproject wikiSpider</div></pre></td></tr></table></figure>
-<p> 得到信息：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">New Scrapy project <span class="string">'wikiSpider'</span> created <span class="keyword">in</span>:</div><div class="line">	/Users/randolph/PycharmProjects/Scraping/wikiSpider</div><div class="line">You can start your first spider with:</div><div class="line">	<span class="built_in">cd</span> wikiSpider</div><div class="line">	scrapy genspider example example.com</div></pre></td></tr></table></figure>
-<p> 成功！scrapy is ready to go!</p>
-<hr>
-<h1 id="Correct-errors-in-printing"><a href="#Correct-errors-in-printing" class="headerlink" title="Correct errors in printing:"></a>Correct errors in printing:</h1><ul>
-<li><strong> 暂无 </strong></li>
-</ul>
-<hr>
-<h1 id="Practice"><a href="#Practice" class="headerlink" title="Practice:"></a>Practice:</h1><ul>
-<li><strong> 暂无 </strong></li>
-</ul>
-<hr>
-]]></content>
-    
-    <summary type="html">
-    
-      本文是关于「Web Scraping with Python」这本书的 Chapter 3 的学习笔记。
     
     </summary>
     
