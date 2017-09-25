@@ -112,7 +112,7 @@
 <meta property="og:description" content="交叉熵（Cross Entropy）是 Loss 函数的一种（也称为损失函数或代价函数），用于描述模型预测值与真实值的差距大小，TensorFlow 本身也提供了多种交叉熵算法的实现，本文详细了 TensorFlow 中各个交叉熵函数的用法。">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://farm5.staticflickr.com/4399/36206153111_6662041dd1_o.png">
-<meta property="og:updated_time" content="2017-09-25T05:03:02.000Z">
+<meta property="og:updated_time" content="2017-09-25T05:04:08.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="「TensorFlow」 Cross Entropy in TensorFlow">
 <meta name="twitter:description" content="交叉熵（Cross Entropy）是 Loss 函数的一种（也称为损失函数或代价函数），用于描述模型预测值与真实值的差距大小，TensorFlow 本身也提供了多种交叉熵算法的实现，本文详细了 TensorFlow 中各个交叉熵函数的用法。">
@@ -506,7 +506,7 @@ C = -\frac{1}{n}\sum_{x}[yln(a)+(1-y)ln(1-a)]</script><p>其中，$a = \sigma(z)
 <p>因此对于多分类问题是不能直接代入的，但是对于多标签分类问题，我们可以灵活变通，把 5 个年龄段的预测用 <strong>onehot encoding</strong> 变成 5 维的 label，训练时当做 5 个不同的目标来训练即可，但不保证只有一个为 1。</p>
 <h2 id="softmax-cross-entropy-with-logits"><a href="#softmax-cross-entropy-with-logits" class="headerlink" title="softmax_cross_entropy_with_logits"></a>softmax_cross_entropy_with_logits</h2><p>Softmax 本身的算法很简单，就是把所有值用 $e^n$ 计算出来，求和后算每个值占的比率，保证总和为 1，一般我们可以认为 Softmax 出来的就是 confidence，也就是概率。</p>
 <script type="math/tex; mode=display">
-softmax = \frac{exp(logits)}{reduce_sum(exp(logits),  dim)}</script><p><code>softmax_cross_entropy_with_logits</code> 和 <code>sigmoid_cross_entropy_with_logits</code> 很不一样，输入是类似的 logits 和 lables 的 shape 一样，但这里要求分类的结果是互斥的，保证只有一个字段有值，例如 CIFAR-10 中图片只能分一类而不像前面判断是否包含多类动物。</p>
+softmax = \frac{exp(logits)}{reduce\_sum(exp(logits),  dim)}</script><p><code>softmax_cross_entropy_with_logits</code> 和 <code>sigmoid_cross_entropy_with_logits</code> 很不一样，输入是类似的 logits 和 lables 的 shape 一样，但这里要求分类的结果是互斥的，保证只有一个字段有值，例如 CIFAR-10 中图片只能分一类而不像前面判断是否包含多类动物。</p>
 <p>想一下问什么会有这样的限制？在函数头的注释中我们看到，这个函数传入的 logits 是 unscaled 的，既不做 sigmoid 也不做 softmax，因为函数实现会在内部更高效得使用 softmax，对于任意的输入经过 softmax 都会变成和为 1 的概率预测值，这个值就可以代入变形的 Cross Entroy 算法：</p>
 <script type="math/tex; mode=display">
 - y * ln(a) – (1 – y) * ln(1 – a)</script><p>从而得到有意义的 Loss 值了。如果是多标签多目标问题，经过 softmax 就不会得到多个和为 1 的概率，而且 label 有多个 1 也无法计算交叉熵，因此这个函数只适合单目标的二分类或者多分类问题。</p>
