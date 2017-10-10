@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://randolph.pro/"/>
-  <updated>2017-09-25T05:04:08.000Z</updated>
+  <updated>2017-10-10T15:01:18.000Z</updated>
   <id>http://randolph.pro/</id>
   
   <author>
@@ -14,6 +14,51 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>♜「Papers」 About Text Classification based on RCNN</title>
+    <link href="http://randolph.pro/2017/10/10/%E2%99%9C%E3%80%8CPapers%E3%80%8DAbout%20Text%20Classification%20based%20on%20RCNN/"/>
+    <id>http://randolph.pro/2017/10/10/♜「Papers」About Text Classification based on RCNN/</id>
+    <published>2017-10-09T16:00:00.000Z</published>
+    <updated>2017-10-10T15:01:18.000Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="https://farm5.staticflickr.com/4373/35507009504_3298ce3029_o.jpg" alt=""></p>
+<p> 有关「Machine Learning」的其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/">「Machine Learning」</a><br> 有关「Papers」的其他论文学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/Papers/">「Papers」</a></p>
+<h1 id="「Recurrent-Convolutional-Neural-Networks-for-Text-Classification」"><a href="#「Recurrent-Convolutional-Neural-Networks-for-Text-Classification」" class="headerlink" title="「Recurrent Convolutional Neural Networks for Text Classification」"></a>「Recurrent Convolutional Neural Networks for Text Classification」</h1><h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>Introduction 里面提及了：</p>
+<ul>
+<li> 词向量的发展（A key problem in text classification is feature repre<br>sentation）以及作者词向量方法的选取（pre-trained word embedding）。</li>
+<li> 之所以选择使用 RecurrentNN，一是因为 RecurrentNN 的时间复杂度为 $O(n)$，二是因为 RecurrentNN 的优势在于能够更好地捕捉上下文信息（The adavantage of RecurrentNN is the ability to better capture the contextual information）。而不选择使用 RecursiveNN，一是因为 RecursiveNN 的时间复杂度较高 $O(n^2)$，其中 $n$ 为文本的句子长度，所以导致 RecursiveNN 不太适合用来处理长文本信息，二是因为 RecursiveNN 是通过树形结构捕捉句子的语义信息（The RecursiveNN captures the semantics of a sentence via a tree structure），但实际上两两句子之间几乎无法通过树形结构来表示。</li>
+<li> 然而，尽管使用 RecurrentNN 具有如上的优势，但是其本质是一个 Biased Model，在一段文本中靠后的分词往往会比靠前的分词更加具有决定性的作用（where later words are more dominant than earlier words），因此这会导致模型在捕捉文本全局信息的时候会影响模型的性能，而一段文本中的关键部分并不会只是仅仅出现文本的句末，而是可能出现在文本中的任意位置，为了解决这一问题，作者使用了 CNN 模型中的 max-pooling 这一组件（which can fairly determine discriminative phrases in a text with a max-pooling layer）。</li>
+</ul>
+<h2 id="Related-Work"><a href="#Related-Work" class="headerlink" title="Related Work"></a>Related Work</h2><p><img src="/Users/randolph/Desktop/RCNN Structure.png" alt=""></p>
+<p> 上面的图就是作者循环卷积网络的模型示意图，可以看到还是比较简单，先是用了双向循环网络：</p>
+<script type="math/tex; mode=display">
+c_l(w_i)=f(W^{(l)}c_{l}(w_{i-1})+W^{(sl)}e(w_{i-1}))</script><script type="math/tex; mode=display">
+c_r(w_i)=f(W^{(r)}c_{l}(w_{i+1})+W^{(sr)}e(w_{i+1}))</script><p> 其中， $c_l(w_i)$ 是分词 $w_i$ 的左边部分文本，相应地， $c_r(w_i)$ 是分词 $w_i$ 的右边部分文本。</p>
+<p> 根据式子（1），可以得知 $c<em>l(w_i)$ 是由  $c_l(w</em>{i-1})$  以及 $e(w<em>{i-1})$ （分词 $w</em>{i-1}$ 的词向量）决定的。</p>
+<script type="math/tex; mode=display">
+x_i=[c_l(w_i);e(w_i);c_r(w_i)]</script><p> 最后是将 $c_l(w_i)$、$e(w_i)$ 以及 $c_r(w_i)$ 合并在一起作为 $x_i$，进行下一步的处理。</p>
+<script type="math/tex; mode=display">
+y_{i}^{(2)}=tanh(W^{(2)}x_{i}+b^{(2)})</script><p>$y<em>{i}^{2}$ 是一个潜在语义向量（a latent semantic vector），激活函数选择的是 _tanh</em> 双曲正切函数，接着使用 max-pooling layer：</p>
+<script type="math/tex; mode=display">
+y^{(3)}=\underset{i=1}{\overset{n}{max}}y_{i}^{(2)}</script>]]></content>
+    
+    <summary type="html">
+    
+      RCNN Text Classification.
+    
+    </summary>
+    
+      <category term="Machine Learning" scheme="http://randolph.pro/categories/Machine-Learning/"/>
+    
+      <category term="Papers" scheme="http://randolph.pro/categories/Machine-Learning/Papers/"/>
+    
+    
+      <category term="Machine Learning" scheme="http://randolph.pro/tags/Machine-Learning/"/>
+    
+      <category term="Papers" scheme="http://randolph.pro/tags/Papers/"/>
+    
+  </entry>
   
   <entry>
     <title>「TensorFlow」 Cross Entropy in TensorFlow</title>
@@ -3931,93 +3976,6 @@ AC & (1,2)(-2),(0,1)(-1),(0,1)(-1),(0,1)(-1),(2,1)(-1),(EOB)(0,0)
     <summary type="html">
     
       本文介绍了关于 Web Scraping 网络爬虫时可能会用到的 smtplib &amp; email 模块。
-    
-    </summary>
-    
-      <category term="Web Scraping" scheme="http://randolph.pro/categories/Web-Scraping/"/>
-    
-      <category term="Book:「Web Scraping with Python」" scheme="http://randolph.pro/categories/Web-Scraping/Book-%E3%80%8CWeb-Scraping-with-Python%E3%80%8D/"/>
-    
-    
-      <category term="Python" scheme="http://randolph.pro/tags/Python/"/>
-    
-      <category term="Web Scraping" scheme="http://randolph.pro/tags/Web-Scraping/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>♞「Web Scraping with Python」 Chapter 4 &amp; 5</title>
-    <link href="http://randolph.pro/2015/11/27/%E2%99%9E%E3%80%8CWeb%20Scraping%20with%20Python%E3%80%8D%20Chapter%204%20&amp;%205/"/>
-    <id>http://randolph.pro/2015/11/27/♞「Web Scraping with Python」 Chapter 4 &amp; 5/</id>
-    <published>2015-11-26T16:00:00.000Z</published>
-    <updated>2017-08-06T13:18:04.000Z</updated>
-    
-    <content type="html"><![CDATA[<p><img src="https://farm5.staticflickr.com/4316/36049777032_f975ed0941_o.jpg" alt=""></p>
-<p> 有关该书的其他学习笔记系列：<a href="http://randolph.pro/categories/Web-Scraping/Book-「Web-Scraping-with-Python」/">Book:「Web Scraping with Python」</a></p>
-<h1 id="Related"><a href="#Related" class="headerlink" title="Related"></a>Related</h1><ul>
-<li><strong>Parsing JSON</strong></li>
-<li><strong>Storing Data to CSV</strong></li>
-<li><strong>Integrating with Python &amp; MySQL</strong></li>
-</ul>
-<hr>
-<h1 id="Key："><a href="#Key：" class="headerlink" title="Key："></a>Key：</h1><h2 id="Parsing-JSON"><a href="#Parsing-JSON" class="headerlink" title="Parsing JSON?"></a>Parsing JSON?</h2><blockquote>
-<p>Python uses a more flexible approach and turns JSON objects into dictionaries, JSON arrays into lists, JSON strings into strings, and so forth. In this way, it makes it extremely easy to access and manipulate values stored in JSON.</p>
-<p>Python 使用了一种更加灵活的方式来处理 JSON，把 JSON 转换成字典，JSON 数组转换成列表，JSON 字符串转换成 Python 字符串。通过这种方式，就可以让 JSON 的获取和操作变得更加简单。<br> 下面的程序对维基百科的编辑历史页面里面的 IP 地址找出来，并查询 IP 地址所属的国家和地区：</p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> urllib.request <span class="keyword">import</span> urlopen</div><div class="line"><span class="keyword">from</span> urllib.request <span class="keyword">import</span> HTTPError</div><div class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</div><div class="line"><span class="keyword">import</span> datetime</div><div class="line"><span class="keyword">import</span> json</div><div class="line"><span class="keyword">import</span> random</div><div class="line"><span class="keyword">import</span> re</div><div class="line"></div><div class="line">random.seed(datetime.datetime.now())</div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">getLinks</span><span class="params">(article_url)</span>:</span></div><div class="line">    html = urlopen(<span class="string">"http://en.wikipedia.org"</span>+article_url)</div><div class="line">    bsObj = BeautifulSoup(html.read(),<span class="string">"html5lib"</span>)</div><div class="line">    <span class="keyword">return</span> bsObj.find(<span class="string">"div"</span>,&#123;<span class="string">"id"</span>:<span class="string">"bodyContent"</span>&#125;).findAll(<span class="string">"a"</span>,href=re.compile(<span class="string">"^(/wiki/)((?!:).)*$"</span>))</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">getHistoryIPs</span><span class="params">(page_url)</span>:</span></div><div class="line">    <span class="comment"># http://en.wikipedia.org/w/index.php?title=Title_in_URL&amp;action=history</span></div><div class="line">    page_url = page_url.replace(<span class="string">"/wiki/"</span>,<span class="string">""</span>)</div><div class="line">    history_url = <span class="string">"http://en.wikipedia.org/w/index.php?title="</span> + page_url + <span class="string">"&amp;action=history"</span></div><div class="line">    print(<span class="string">"history url is: "</span> + history_url)</div><div class="line">    html = urlopen(history_url)</div><div class="line">    bsObj = BeautifulSoup(html.read(),<span class="string">"html5lib"</span>)</div><div class="line">    <span class="comment"># finds only the links with class"mw-anonuserlink"which has IP addresses instead of usernames</span></div><div class="line">    ipAddresses = bsObj.findAll(<span class="string">"a"</span>, &#123;<span class="string">"class"</span>:<span class="string">"mw-anonuserlink"</span>&#125;)</div><div class="line">    addressList = set()</div><div class="line">    <span class="keyword">for</span> ipAddresses <span class="keyword">in</span> ipAddresses:</div><div class="line">        addressList.add(ipAddresses.get_text())</div><div class="line">    <span class="keyword">return</span> addressList</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">getCountry</span><span class="params">(ipAddress)</span>:</span></div><div class="line">    <span class="keyword">try</span>:</div><div class="line">        response = urlopen(<span class="string">"http://freegeoip.net/json/"</span> + ipAddress).read().decode(<span class="string">'utf-8'</span>)</div><div class="line">    <span class="keyword">except</span> HTTPError:</div><div class="line">        <span class="keyword">return</span> <span class="keyword">None</span></div><div class="line">    responseJson = json.loads(response)</div><div class="line">    <span class="keyword">return</span> responseJson.get(<span class="string">"country_code"</span>)</div><div class="line"></div><div class="line">links = getLinks(<span class="string">"/wiki/Python_(programming_language)"</span>)</div><div class="line"></div><div class="line"><span class="keyword">while</span>(len(links) &gt; <span class="number">0</span>):</div><div class="line">    <span class="keyword">for</span> link <span class="keyword">in</span> links:</div><div class="line">        print(<span class="string">"----------------"</span>)</div><div class="line">        historyIPs = getHistoryIPs(link.attrs[<span class="string">"href"</span>])</div><div class="line">        <span class="keyword">for</span> historyIP <span class="keyword">in</span> historyIPs:</div><div class="line">            country = getCountry(historyIP)</div><div class="line">            <span class="keyword">if</span> country <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span>:</div><div class="line">                print(historyIP + <span class="string">"is from "</span> + country)</div><div class="line"></div><div class="line">    newLink = links[random.randint(<span class="number">0</span>,len(links)<span class="number">-1</span>)].attrs[<span class="string">"href"</span>]</div><div class="line">    links = getLinks(newLink)</div></pre></td></tr></table></figure>
-<hr>
-<h2 id="Download-Page-Source"><a href="#Download-Page-Source" class="headerlink" title="Download Page Source"></a>Download Page Source</h2><p> 下面的程序将 <a href="http://pythonscraping.com" target="_blank" rel="external">http://pythonscraping.com</a> 主页上所有 src 属性的文件都下载下来，然后对 URL 链接进行清理和标准化，获得文件对绝对路径（而且去掉了外链）。最后，每个文件都会下载到程序所在文件夹到 downloaded 文件里：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> urllib.request <span class="keyword">import</span> urlretrieve</div><div class="line"><span class="keyword">from</span> urllib.request <span class="keyword">import</span> urlopen</div><div class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</div><div class="line"><span class="keyword">import</span> os</div><div class="line"></div><div class="line">download_directory = <span class="string">"downloaded"</span></div><div class="line">base_url = <span class="string">"http://pythonscraping.com"</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">getAbsolute_url</span><span class="params">(base_url,source)</span>:</span></div><div class="line">    <span class="keyword">if</span> source.startswith(<span class="string">"http://www."</span>):</div><div class="line">        url = <span class="string">"http://"</span> + source[<span class="number">11</span>:]</div><div class="line">    <span class="keyword">elif</span> source.startswith(<span class="string">"http://"</span>):</div><div class="line">        url = source</div><div class="line">    <span class="keyword">elif</span> source.startswith(<span class="string">"www."</span>):</div><div class="line">        url = source[<span class="number">4</span>:]</div><div class="line">        url = <span class="string">"http://"</span> + source</div><div class="line">    <span class="keyword">else</span>:</div><div class="line">        url = base_url + <span class="string">"/"</span> + source</div><div class="line">    <span class="keyword">if</span> base_url <span class="keyword">not</span> <span class="keyword">in</span> url:</div><div class="line">        <span class="keyword">return</span> <span class="keyword">None</span></div><div class="line">    <span class="keyword">return</span> url</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">getDownloadPath</span><span class="params">(base_url, absolute_url, download_directory)</span>:</span></div><div class="line">    path = absolute_url.replace(<span class="string">"www"</span>,<span class="string">""</span>)</div><div class="line">    path = path.replace(base_url,<span class="string">""</span>)</div><div class="line">    path = download_directory + path</div><div class="line">    directory = os.path.dirname(path)</div><div class="line"></div><div class="line">    <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(directory):</div><div class="line">        os.makedirs(directory)</div><div class="line"></div><div class="line">    <span class="keyword">return</span> path</div><div class="line"></div><div class="line">html = urlopen(<span class="string">"http://www.pythonscraping.com"</span>)</div><div class="line">bsObj = BeautifulSoup(html.read(),<span class="string">"html5lib"</span>)</div><div class="line">downloadList = bsObj.findAll(src=<span class="keyword">True</span>)</div><div class="line"></div><div class="line"><span class="keyword">for</span> download <span class="keyword">in</span> downloadList:</div><div class="line">    file_url = getAbsolute_url(base_url, download[<span class="string">"src"</span>])</div><div class="line">    <span class="keyword">if</span> file_url <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span>:</div><div class="line">        print(file_url)</div><div class="line"></div><div class="line">urlretrieve(file_url,getDownloadPath(base_url,file_url,download_directory))</div></pre></td></tr></table></figure>
-<hr>
-<h2 id="Storing-Data-to-CSV"><a href="#Storing-Data-to-CSV" class="headerlink" title="Storing Data to CSV"></a>Storing Data to CSV</h2><blockquote>
-<p>CSV, or comma-separated values, is one of the most popular file formats in which to store spreadsheet data. It is supported by Microsoft Excel and many other applica‐ tions because of its simplicity. The following is an example of a perfectly valid CSV file: </p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">fruit,cost</div><div class="line">apple,1.00</div><div class="line">banana,0.30</div><div class="line">pear,1.25</div></pre></td></tr></table></figure>
-<p> 网络数据采集的一个常用功能就是获取 HTML 表格并写入 CSV 文件。</p>
-<hr>
-<h1 id="Need-to-Know"><a href="#Need-to-Know" class="headerlink" title="Need to Know:"></a>Need to Know:</h1><h2 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h2><p><a href="http://dev.mysql.com/downloads/mysql/" target="_blank" rel="external"><strong>The download page</strong></a></p>
-<p> 下载 .dmg 安装包，在 MySQL5.7.x 版本之后，安装的时候会随机分配一个初始密码！这非常重要，例如 root@localhost: <strong>;,aLs&amp;%%4ziE</strong> 密码很复杂，最好先复制下来，等会更改密码的时候需要用到。</p>
-<p> 安装完成之后，可以在系统偏好设置中看到多出了一个 MySQL，我们可以通过其来开关 MySQL 服务器，当然我们可以通过命令行输入来控制。<br> 打开服务器，在命令行输入：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">alias</span> mysql=/usr/<span class="built_in">local</span>/mysql/bin/mysql</span></div><div class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">alias</span> mysqladmin=/usr/<span class="built_in">local</span>/mysql/bin/mysqladmin</span></div></pre></td></tr></table></figure>
-<p>ps: 注意，这上面 alias 别名的方法，只是一次性的，意味着我们关闭了终端之后再开，命令行直接输入 mysql 或者 mysqladmin 就无效了。如果需要长期有效，需要修改文件，让终端启动的时候加载。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">cd</span> ~</span></div><div class="line"><span class="meta">$</span><span class="bash"> vim ./bash_profile</span></div></pre></td></tr></table></figure>
-<p><strong> 注意：如果你安装了 oh-my-zsh，需要去更改 .zshrc 文件。</strong></p>
-<p> 然后更改密码，命令行输入：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash"> mysqladmin - u root -p password xxx(我们需要的新密码)</span></div></pre></td></tr></table></figure>
-<p> 确保 MySQL 服务器打开，然后命令输入：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash"> mysql -u root -p</span></div></pre></td></tr></table></figure>
-<p> 若未显示错误，则表示连接上数据库了 </p>
-<hr>
-<h2 id="Integrating-with-Python"><a href="#Integrating-with-Python" class="headerlink" title="Integrating with Python"></a>Integrating with Python</h2><p>Python 没有内置的 MySQL 支持工具。不过，有很多开源的库可以用来与 MySQL 做交互，Python2.x 和 Python3.x 版本都支持。最有名的一个库就是 PyMySQL。</p>
-<p> 我是在 PyCharm 直接安装 PyMySQL，安装完成之后，如果我们的 MySQL 的服务器处于运行状态，应该就可以使用 PyMySQL 包。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> pymysql.conn = pymysql.connect(host=<span class="string">'127.0.0.1'</span>, unix_socket=<span class="string">'/tmp/mysql.sock'</span>, </div><div class="line"> 			user=<span class="string">'root'</span>, passwd=<span class="string">'xxxx'</span>, db=<span class="string">'mysql'</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>cur = conn.cursor()</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>cur.execute(<span class="string">"USE scraping"</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>cur.execute(<span class="string">"SELECT * FROM pages WHERE id=1"</span>) </div><div class="line"><span class="meta">&gt;&gt;&gt; </span>print(cur.fetchone())cur.close().conn.close()</div></pre></td></tr></table></figure>
-<ol>
-<li> 程序中有两个对象：连接对象 <strong><code>conn</code></strong> 和光标对象 <strong><code>cur</code></strong>。</li>
-<li> 连接 / 光标模式是数据库编程中常见的模式。连接模式除了要连接数据库之外，还要发送数据库信息，处理回滚操作（当一个查询或一组查询被中断时，数据库需要回到初始状态，一般用事务控制手段实现状态会滚），创建新的光标对象，等等。</li>
-<li><strong> 而一个 <code>conn</code> 可以有很多个 <code>cur</code></strong>。一个光标跟踪一种状态信息，比如跟踪数据库的使用状态。如果你有多个数据库，且需要向所有数据库写内容，就需要多个光标来处理。光标还包含最后一次查询执行的结果。通过调用光标函数，比如 <strong><code>cur.fetchone()</code></strong>，可以获取查询结果。</li>
-<li> 用完光标和链接之后，千万记得要把它们关闭。如果不关闭就会导致连接泄漏（<strong>connection leak</strong>），造成一种未关闭连接的现象，即连接已经不在使用，但是数据库却不能关闭，因为数据库不能确定你还要不要继续使用它。这种现象会一直耗费数据库的资源，所以用完数据库之后记得关闭连接！</li>
-<li> 进行网络数据采集的时候，处理 Unicode 字符串是很痛苦的事情。默认情况下，MySQL 也不支持 Unicode 字符处理。不过我们可以设置这个功能，因为采集的时候，我们难免会遇到各种各样的字符，所以最好一开始就让我们的数据库支持 Unicode：</li>
-</ol>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">ALTER</span> <span class="keyword">DATABASE</span> scraping <span class="built_in">CHARACTER</span> <span class="keyword">SET</span> = utf8mb4 <span class="keyword">COLLATE</span> = utf8mb4_unicode_ci; </div><div class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> pages <span class="keyword">CONVERT</span> <span class="keyword">TO</span> <span class="built_in">CHARACTER</span> <span class="keyword">SET</span> utf8mb4 <span class="keyword">COLLATE</span> utf8mb4_unicode_ci; </div><div class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> pages <span class="keyword">CHANGE</span> title title <span class="built_in">VARCHAR</span>(<span class="number">200</span>) <span class="built_in">CHARACTER</span> <span class="keyword">SET</span> utf8mb4 <span class="keyword">COLLATE</span> utf8mb4_unicode_ci; </div><div class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> pages <span class="keyword">CHANGE</span> <span class="keyword">content</span> <span class="keyword">content</span> <span class="built_in">VARCHAR</span>(<span class="number">10000</span>) <span class="built_in">CHARACTER</span> <span class="keyword">SET</span> utf8mb4 <span class="keyword">COLLATE</span> utf8mb4_unicode_ci;</div></pre></td></tr></table></figure>
-<p> 我们尝试用下面的程序来存储数据：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> urllib.request <span class="keyword">import</span> urlopen</div><div class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</div><div class="line"><span class="keyword">import</span> re</div><div class="line"><span class="keyword">import</span> datetime</div><div class="line"><span class="keyword">import</span> random</div><div class="line"><span class="keyword">import</span> pymysql</div><div class="line"></div><div class="line">conn = pymysql.connect(host=<span class="string">'127.0.0.1'</span>, unix_socket=<span class="string">'/tmp/mysql.sock'</span>,</div><div class="line">                       user=<span class="string">'root'</span>,passwd=<span class="string">'randolph'</span>,db=<span class="string">'mysql'</span>,charset=<span class="string">'utf8'</span>)</div><div class="line"></div><div class="line">cur = conn.cursor()</div><div class="line">cur.execute(<span class="string">"USE scraping"</span>)</div><div class="line"></div><div class="line">random.seed(datetime.datetime.now())</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">store</span><span class="params">(title, content)</span>:</span></div><div class="line">    cur.execute(<span class="string">"INSERT INTO pages(title, content) VALUE (\"%s\",\"%s\")"</span>,(title,content))</div><div class="line">    cur.connection.commit()</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">getLinks</span><span class="params">(article_url)</span>:</span></div><div class="line">    html = urlopen(<span class="string">"http://en.wikipedia.org"</span>+article_url)</div><div class="line">    bsObj = BeautifulSoup(html.read(),<span class="string">"html5lib"</span>)</div><div class="line">    title = bsObj.find(<span class="string">"h1"</span>).get_text()</div><div class="line">    content = bsObj.find(<span class="string">"div"</span>, &#123;<span class="string">"id"</span>:<span class="string">"mw-content-text"</span>&#125;).find(<span class="string">"p"</span>).get_text()</div><div class="line">    store(title,content)</div><div class="line">    <span class="keyword">return</span> bsObj.find(<span class="string">"div"</span>,&#123;<span class="string">"id"</span>:<span class="string">"bodyContent"</span>&#125;).findAll(<span class="string">"a"</span>,href=re.compile(<span class="string">"^(/wiki/)(?!:).)*$"</span>))</div><div class="line"></div><div class="line">links = getLinks(<span class="string">"/wiki/Kevin_Bacon"</span>)</div><div class="line"></div><div class="line"><span class="keyword">try</span>:</div><div class="line">    <span class="keyword">while</span> len(links) &gt; <span class="number">0</span>:</div><div class="line">        newArticle = links[random.randint(<span class="number">0</span>, len(links)<span class="number">-1</span>)].attrs[<span class="string">"href"</span>]</div><div class="line">        print(newArticle)</div><div class="line">        links = getLinks(newArticle)</div><div class="line"></div><div class="line"><span class="keyword">finally</span>:</div><div class="line">    cur.close()</div><div class="line">    conn.close()</div></pre></td></tr></table></figure>
-<ul>
-<li> 需要注意的是 <strong><code>store()</code></strong> 函数，它有两个参数：<strong><code>title</code></strong> 和 <strong><code>content</code></strong>，并把这两个参数加到了一个 INSERT 语句中并用光标执行，然后用光标进行连接确认。这是一个让光标与连接操作分离的好例子；当光标里存储了一些数据库与数据库上下文的信息时，需要通过连接的确认操作先将信息传进数据库，再将信息插入数据库。</li>
-<li> 最后需要注意的是 finally 语句是在程序主循环的外面，代码的最底下。这样做可以保证，无论程序执行过程中如何发生中断或抛出异常（当然，因为网络很复杂，我们需要随时准备遭遇异常），光标和连接都会在程序结束前立即关闭。无论我们是在采集网络还是在处理一个打开连接的数据库，用 <strong><code>try...finally</code></strong> 都是一个好主意。</li>
-</ul>
-<hr>
-<h1 id="Correct-errors-in-printing"><a href="#Correct-errors-in-printing" class="headerlink" title="Correct errors in printing:"></a>Correct errors in printing:</h1><ul>
-<li><strong> 暂无 </strong></li>
-</ul>
-<hr>
-<h1 id="Practice"><a href="#Practice" class="headerlink" title="Practice:"></a>Practice:</h1><ul>
-<li><strong> 暂无 </strong></li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      本文是关于「Web Scraping with Python」这本书的 Chapter 4 &amp; 5 的学习笔记。
     
     </summary>
     
