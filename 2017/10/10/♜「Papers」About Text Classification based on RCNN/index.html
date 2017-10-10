@@ -112,8 +112,8 @@
 <meta property="og:description" content="本文主要介绍了 RCNN 循环卷积神经网络在文本分类上的一些论文.">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://farm5.staticflickr.com/4373/35507009504_3298ce3029_o.jpg">
-<meta property="og:image" content="http://randolph.pro/Users/randolph/Desktop/RCNN%20Structure.png">
-<meta property="og:updated_time" content="2017-10-10T15:03:59.000Z">
+<meta property="og:image" content="https://farm5.staticflickr.com/4452/36946829163_ef05233be9_o.png">
+<meta property="og:updated_time" content="2017-10-10T15:14:47.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="♜「Papers」 About Text Classification based on RCNN">
 <meta name="twitter:description" content="本文主要介绍了 RCNN 循环卷积神经网络在文本分类上的一些论文.">
@@ -450,7 +450,7 @@
                   <i class="fa fa-file-word-o"></i>
                 </span>
                 <span title="Words count in article">
-                  584
+                  557
                 </span>
                 <span> words </span>
                 
@@ -496,7 +496,7 @@
 <li> 之所以选择使用 RecurrentNN，一是因为 RecurrentNN 的时间复杂度为 $O(n)$，二是因为 RecurrentNN 的优势在于能够更好地捕捉上下文信息（The adavantage of RecurrentNN is the ability to better capture the contextual information）。而不选择使用 RecursiveNN，一是因为 RecursiveNN 的时间复杂度较高 $O(n^2)$，其中 $n$ 为文本的句子长度，所以导致 RecursiveNN 不太适合用来处理长文本信息，二是因为 RecursiveNN 是通过树形结构捕捉句子的语义信息（The RecursiveNN captures the semantics of a sentence via a tree structure），但实际上两两句子之间几乎无法通过树形结构来表示。</li>
 <li> 然而，尽管使用 RecurrentNN 具有如上的优势，但是其本质是一个 Biased Model，在一段文本中靠后的分词往往会比靠前的分词更加具有决定性的作用（where later words are more dominant than earlier words），因此这会导致模型在捕捉文本全局信息的时候会影响模型的性能，而一段文本中的关键部分并不会只是仅仅出现文本的句末，而是可能出现在文本中的任意位置，为了解决这一问题，作者使用了 CNN 模型中的 max-pooling 这一组件（which can fairly determine discriminative phrases in a text with a max-pooling layer）。</li>
 </ul>
-<h2 id="Related-Work"><a href="#Related-Work" class="headerlink" title="Related Work"></a>Related Work</h2><p><img src="/Users/randolph/Desktop/RCNN Structure.png" alt=""></p>
+<h2 id="Related-Work"><a href="#Related-Work" class="headerlink" title="Related Work"></a>Related Work</h2><p><img src="https://farm5.staticflickr.com/4452/36946829163_ef05233be9_o.png" alt=""></p>
 <p> 上面的图就是作者循环卷积网络的模型示意图，可以看到还是比较简单，先是用了双向循环网络：</p>
 <script type="math/tex; mode=display">
 c_l(w_i)=f(W^{(l)}c_{l}(w_{i-1})+W^{(sl)}e(w_{i-1}))</script><script type="math/tex; mode=display">
@@ -505,9 +505,8 @@ c_r(w_i)=f(W^{(r)}c_{l}(w_{i+1})+W^{(sr)}e(w_{i+1}))</script><p> 其中， $c_l(
 <script type="math/tex; mode=display">
 x_i=[c_l(w_i);e(w_i);c_r(w_i)]</script><p> 最后是将 $c_l(w_i)$、$e(w_i)$ 以及 $c_r(w_i)$ 合并在一起作为 $x_i$，进行下一步的处理。</p>
 <script type="math/tex; mode=display">
-y_{i}^{(2)}=tanh(W^{(2)}x_{i}+b^{(2)})</script><p>$y<em>{i}^{2}$ 是一个潜在语义向量（a latent semantic vector），激活函数选择的是 _tanh</em> 双曲正切函数，接着使用 max-pooling layer：</p>
-<script type="math/tex; mode=display">
-y^{(3)}=\underset{i=1}{\overset{n}{max}}y_{i}^{(2)}</script>
+y_{i}^{(2)}=tanh(W^{(2)}x_{i}+b^{(2)})</script><script type="math/tex; mode=display">y_{i}^{2}$$ 是一个潜在语义向量（a latent semantic vector），激活函数选择的是 _tanh_ 双曲正切函数，接着使用 max-pooling layer：</script><p>y^{(3)}=\underset{i=1}{\overset{n}{max}}y_{i}^{(2)}<br>$$</p>
+
       
     </div>
 
