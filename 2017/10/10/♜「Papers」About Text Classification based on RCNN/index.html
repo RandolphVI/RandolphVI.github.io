@@ -113,7 +113,7 @@
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://farm5.staticflickr.com/4373/35507009504_3298ce3029_o.jpg">
 <meta property="og:image" content="https://farm5.staticflickr.com/4452/36946829163_ef05233be9_o.png">
-<meta property="og:updated_time" content="2017-10-11T02:56:20.000Z">
+<meta property="og:updated_time" content="2017-10-11T02:59:09.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="♜「Papers」 About Text Classification based on RCNN">
 <meta name="twitter:description" content="本文主要介绍了 RCNN 循环卷积神经网络在文本分类上的一些论文.">
@@ -507,7 +507,7 @@ x_i=[c_l(w_i);e(w_i);c_r(w_i)]</script><p> 最后是将 $c_l(w_i)$、$e(w_i)$ �
 <script type="math/tex; mode=display">
 y_{i}^{(2)}=tanh(W^{(2)}x_{i}+b^{(2)})</script><p>$y_{i}^{2}$ 是一个潜在语义向量（a latent semantic vector），激活函数选择的是 tanh 双曲正切函数，接着使用 max-pooling layer：</p>
 <script type="math/tex; mode=display">
-y^{(3)}=\underset{i=1}{\overset{n}{max}}y_{i}^{(2)}</script><p> 最大池化层的作用就是将不定长的文本转换成固定长度的向量（The pooling layer converts texts with various lengths into a fixed-length vector），除了最大池化层，还可以选择平均池化层，但是不建议在该任务上使用（We do not use average pooling here because only a few words and their combination are useful for capturing the meaning of the document）。</p>
+y^{(3)}=\underset{i=1}{\overset{n}{max}}\left(y_{i}^{(2)}\right)</script><p> 最大池化层的作用就是将不定长的文本转换成固定长度的向量（The pooling layer converts texts with various lengths into a fixed-length vector），除了最大池化层，还可以选择平均池化层，但是不建议在该任务上使用（We do not use average pooling here because only a few words and their combination are useful for capturing the meaning of the document）。</p>
 <p> 进行完最大池化之后，就是输出层：</p>
 <script type="math/tex; mode=display">
 y^{(4)}=W^{(4)}y^{(3)}+b^{(4)}</script><p> 最后再使用 softmax 函数作用于 $y^{(4)}$，将其转换每个 label 或者 class 的概率：</p>
@@ -515,14 +515,10 @@ y^{(4)}=W^{(4)}y^{(3)}+b^{(4)}</script><p> 最后再使用 softmax 函数作用�
 p_{i}=\frac{exp\left(y^{(4)}_{i}\right)}{\sum_{k=1}^{n}exp\left(y^{(4)}_{k}\right)}</script><p> 可以看出来，网络的设计还是比较简单易懂的。</p>
 <h2 id="Experiments"><a href="#Experiments" class="headerlink" title="Experiments"></a>Experiments</h2><h3 id="Datasets"><a href="#Datasets" class="headerlink" title="Datasets"></a>Datasets</h3><p> 实验部分就是使用几个常见的 Datasets，其中用到的有：</p>
 <ul>
-<li><p>20Newsgroups</p>
-</li>
-<li><p>Fudan Set</p>
-</li>
-<li><p>ACL Anthology Network</p>
-</li>
-<li><p>Sentiment Treebank</p>
-</li>
+<li>20Newsgroups</li>
+<li>Fudan Set</li>
+<li>ACL Anthology Network</li>
+<li>Sentiment Treebank</li>
 </ul>
 <h3 id="Experiment-Setting"><a href="#Experiment-Setting" class="headerlink" title="Experiment Setting"></a>Experiment Setting</h3><ul>
 <li> 使用的 SGD 算法就是最简单的，设定的 learning rate = 0.01；</li>
