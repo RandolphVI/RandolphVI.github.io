@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://randolph.pro/"/>
-  <updated>2017-10-11T03:01:51.000Z</updated>
+  <updated>2017-10-11T03:04:08.000Z</updated>
   <id>http://randolph.pro/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://randolph.pro/2017/10/10/%E2%99%9C%E3%80%8CPapers%E3%80%8DAbout%20Text%20Classification%20based%20on%20RCNN/"/>
     <id>http://randolph.pro/2017/10/10/♜「Papers」About Text Classification based on RCNN/</id>
     <published>2017-10-09T16:00:00.000Z</published>
-    <updated>2017-10-11T03:01:51.000Z</updated>
+    <updated>2017-10-11T03:04:08.000Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://farm5.staticflickr.com/4373/35507009504_3298ce3029_o.jpg" alt=""></p>
 <p> 有关「Machine Learning」的其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/">「Machine Learning」</a><br> 有关「Papers」的其他论文学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/Papers/">「Papers」</a></p>
@@ -55,9 +55,9 @@ p_{i}=\frac{exp\left(y^{(4)}_{i}\right)}{\sum_{k=1}^{n}exp\left(y^{(4)}_{k}\righ
 <li>Sentiment Treebank</li>
 </ul>
 <h3 id="Experiment-Setting"><a href="#Experiment-Setting" class="headerlink" title="Experiment Setting"></a>Experiment Setting</h3><ul>
-<li> 使用的 SGD 算法就是最简单的，设定的 learning rate = 0.01；</li>
+<li> 使用的 SGD 算法就是最简单的，设定的学习率 $\alpha = 0.01$；</li>
 <li> 隐含层的神经元个数为 $H=100$；</li>
-<li> 词向量的 Embedding dim 为 50 维；</li>
+<li> 词向量的 Embedding dim 为 <strong>50</strong> 维；</li>
 <li> 词向量的训练方法为 <strong>Skip-gram model</strong>。</li>
 </ul>
 <h3 id="Results-and-Discussion"><a href="#Results-and-Discussion" class="headerlink" title="Results and Discussion"></a>Results and Discussion</h3><p> 我个人着重观察的部分是在各个数据集上 RCNN 模型与 CNN 的比较，结果是 RCNN 会比 CNN 的性能要高一到两个百分比。</p>
