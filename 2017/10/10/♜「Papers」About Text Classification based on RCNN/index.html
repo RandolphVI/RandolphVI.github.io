@@ -113,7 +113,7 @@
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://farm5.staticflickr.com/4373/35507009504_3298ce3029_o.jpg">
 <meta property="og:image" content="https://farm5.staticflickr.com/4452/36946829163_ef05233be9_o.png">
-<meta property="og:updated_time" content="2017-10-11T02:59:09.000Z">
+<meta property="og:updated_time" content="2017-10-11T03:01:51.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="♜「Papers」 About Text Classification based on RCNN">
 <meta name="twitter:description" content="本文主要介绍了 RCNN 循环卷积神经网络在文本分类上的一些论文.">
@@ -450,7 +450,7 @@
                   <i class="fa fa-file-word-o"></i>
                 </span>
                 <span title="Words count in article">
-                  843
+                  855
                 </span>
                 <span> words </span>
                 
@@ -523,7 +523,8 @@ p_{i}=\frac{exp\left(y^{(4)}_{i}\right)}{\sum_{k=1}^{n}exp\left(y^{(4)}_{k}\righ
 <h3 id="Experiment-Setting"><a href="#Experiment-Setting" class="headerlink" title="Experiment Setting"></a>Experiment Setting</h3><ul>
 <li> 使用的 SGD 算法就是最简单的，设定的 learning rate = 0.01；</li>
 <li> 隐含层的神经元个数为 $H=100$；</li>
-<li> 词向量的 Embedding dim 为 50 维。</li>
+<li> 词向量的 Embedding dim 为 50 维；</li>
+<li> 词向量的训练方法为 <strong>Skip-gram model</strong>。</li>
 </ul>
 <h3 id="Results-and-Discussion"><a href="#Results-and-Discussion" class="headerlink" title="Results and Discussion"></a>Results and Discussion</h3><p> 我个人着重观察的部分是在各个数据集上 RCNN 模型与 CNN 的比较，结果是 RCNN 会比 CNN 的性能要高一到两个百分比。</p>
 
