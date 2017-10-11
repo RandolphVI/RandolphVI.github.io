@@ -113,7 +113,7 @@
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://farm5.staticflickr.com/4373/35507009504_3298ce3029_o.jpg">
 <meta property="og:image" content="https://farm5.staticflickr.com/4452/36946829163_ef05233be9_o.png">
-<meta property="og:updated_time" content="2017-10-11T02:02:05.000Z">
+<meta property="og:updated_time" content="2017-10-11T02:03:35.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="♜「Papers」 About Text Classification based on RCNN">
 <meta name="twitter:description" content="本文主要介绍了 RCNN 循环卷积神经网络在文本分类上的一些论文.">
@@ -450,7 +450,7 @@
                   <i class="fa fa-file-word-o"></i>
                 </span>
                 <span title="Words count in article">
-                  544
+                  571
                 </span>
                 <span> words </span>
                 
@@ -505,8 +505,9 @@ c_r(w_i)=f(W^{(r)}c_{l}(w_{i+1})+W^{(sr)}e(w_{i+1}))</script><p> 其中， $c_l(
 <script type="math/tex; mode=display">
 x_i=[c_l(w_i);e(w_i);c_r(w_i)]</script><p> 最后是将 $c_l(w_i)$、$e(w_i)$ 以及 $c_r(w_i)$ 合并在一起作为 $x_i$，进行下一步的处理。</p>
 <script type="math/tex; mode=display">
-y_{i}^{(2)}=tanh(W^{(2)}x_{i}+b^{(2)})</script><script type="math/tex; mode=display">y_{i}^{2}$$ 是一个潜在语义向量（a latent semantic vector），激活函数选择的是 _tanh_ 双曲正切函数，接着使用 max-pooling layer：</script><p>y^{(3)}=\underset{i=1}{\overset{n}{max}}y_{i}^{(2)}<br>$$</p>
-
+y_{i}^{(2)}=tanh(W^{(2)}x_{i}+b^{(2)})</script><p>$y_{i}^{2}$ 是一个潜在语义向量（a latent semantic vector），激活函数选择的是 <em>tanh</em> 双曲正切函数，接着使用 max-pooling layer：</p>
+<script type="math/tex; mode=display">
+y^{(3)}=\underset{i=1}{\overset{n}{max}}y_{i}^{(2)}</script>
       
     </div>
 
