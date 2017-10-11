@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://randolph.pro/"/>
-  <updated>2017-10-11T02:24:40.000Z</updated>
+  <updated>2017-10-11T02:56:20.000Z</updated>
   <id>http://randolph.pro/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://randolph.pro/2017/10/10/%E2%99%9C%E3%80%8CPapers%E3%80%8DAbout%20Text%20Classification%20based%20on%20RCNN/"/>
     <id>http://randolph.pro/2017/10/10/♜「Papers」About Text Classification based on RCNN/</id>
     <published>2017-10-09T16:00:00.000Z</published>
-    <updated>2017-10-11T02:24:40.000Z</updated>
+    <updated>2017-10-11T02:56:20.000Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://farm5.staticflickr.com/4373/35507009504_3298ce3029_o.jpg" alt=""></p>
 <p> 有关「Machine Learning」的其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/">「Machine Learning」</a><br> 有关「Papers」的其他论文学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/Papers/">「Papers」</a></p>
@@ -41,7 +41,30 @@ x_i=[c_l(w_i);e(w_i);c_r(w_i)]</script><p> 最后是将 $c_l(w_i)$、$e(w_i)$ �
 <script type="math/tex; mode=display">
 y_{i}^{(2)}=tanh(W^{(2)}x_{i}+b^{(2)})</script><p>$y_{i}^{2}$ 是一个潜在语义向量（a latent semantic vector），激活函数选择的是 tanh 双曲正切函数，接着使用 max-pooling layer：</p>
 <script type="math/tex; mode=display">
-y^{(3)}=\underset{i=1}{\overset{n}{max}}y_{i}^{(2)}</script>]]></content>
+y^{(3)}=\underset{i=1}{\overset{n}{max}}y_{i}^{(2)}</script><p> 最大池化层的作用就是将不定长的文本转换成固定长度的向量（The pooling layer converts texts with various lengths into a fixed-length vector），除了最大池化层，还可以选择平均池化层，但是不建议在该任务上使用（We do not use average pooling here because only a few words and their combination are useful for capturing the meaning of the document）。</p>
+<p> 进行完最大池化之后，就是输出层：</p>
+<script type="math/tex; mode=display">
+y^{(4)}=W^{(4)}y^{(3)}+b^{(4)}</script><p> 最后再使用 softmax 函数作用于 $y^{(4)}$，将其转换每个 label 或者 class 的概率：</p>
+<script type="math/tex; mode=display">
+p_{i}=\frac{exp\left(y^{(4)}_{i}\right)}{\sum_{k=1}^{n}exp\left(y^{(4)}_{k}\right)}</script><p> 可以看出来，网络的设计还是比较简单易懂的。</p>
+<h2 id="Experiments"><a href="#Experiments" class="headerlink" title="Experiments"></a>Experiments</h2><h3 id="Datasets"><a href="#Datasets" class="headerlink" title="Datasets"></a>Datasets</h3><p> 实验部分就是使用几个常见的 Datasets，其中用到的有：</p>
+<ul>
+<li><p>20Newsgroups</p>
+</li>
+<li><p>Fudan Set</p>
+</li>
+<li><p>ACL Anthology Network</p>
+</li>
+<li><p>Sentiment Treebank</p>
+</li>
+</ul>
+<h3 id="Experiment-Setting"><a href="#Experiment-Setting" class="headerlink" title="Experiment Setting"></a>Experiment Setting</h3><ul>
+<li> 使用的 SGD 算法就是最简单的，设定的 learning rate = 0.01；</li>
+<li> 隐含层的神经元个数为 $H=100$；</li>
+<li> 词向量的 Embedding dim 为 50 维。</li>
+</ul>
+<h3 id="Results-and-Discussion"><a href="#Results-and-Discussion" class="headerlink" title="Results and Discussion"></a>Results and Discussion</h3><p> 我个人着重观察的部分是在各个数据集上 RCNN 模型与 CNN 的比较，结果是 RCNN 会比 CNN 的性能要高一到两个百分比。</p>
+]]></content>
     
     <summary type="html">
     
