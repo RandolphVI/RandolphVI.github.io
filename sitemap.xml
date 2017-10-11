@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://randolph.pro/2016/12/26/%E2%99%9E%E3%80%8CMachine%20Learning%E3%80%8D%20Chapter%201/</loc>
+    
+    <lastmod>2017-10-11T11:03:34.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://randolph.pro/2017/10/10/%E2%99%9C%E3%80%8CPapers%E3%80%8DAbout%20Text%20Classification%20based%20on%20RCNN/</loc>
     
     <lastmod>2017-10-11T03:04:08.000Z</lastmod>
@@ -19,13 +26,6 @@
     <loc>http://randolph.pro/2017/09/25/%E3%80%8CTensorFlow%E3%80%8DCross%20Entropy%20Function%20in%20TensorFlow%20/</loc>
     
     <lastmod>2017-09-25T05:04:08.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://randolph.pro/2016/12/26/%E2%99%9E%E3%80%8CMachine%20Learning%E3%80%8D%20Chapter%201/</loc>
-    
-    <lastmod>2017-09-21T07:14:52.000Z</lastmod>
     
   </url>
   
