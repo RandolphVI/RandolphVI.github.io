@@ -5,11 +5,36 @@
     
   <url>
     <loc>http://randolph.pro/2017/10/13/%E2%99%9C%E3%80%8CPapers%E3%80%8DAbout%20Word%20Representation/</loc>
-    <lastmod>2017-10-13T14:45:04.000Z</lastmod>
+    <lastmod>2017-10-13T14:54:33.000Z</lastmod>
     <data>
         <display>
         <title>♜「Papers」 About Word Representation</title>
         <pubTime>2017-10-12T16:00:00.000Z</pubTime>
+        
+        <tag>Machine Learning</tag>
+         
+        <tag>Papers</tag>
+         
+         
+           
+             
+              <breadCrumb title="Machine Learning" url="http://randolph.pro/categories/Machine-Learning/"/>
+          
+             
+              <breadCrumb title="Papers" url="http://randolph.pro/categories/Machine-Learning/Papers/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://randolph.pro/2017/10/10/%E2%99%9C%E3%80%8CPapers%E3%80%8DAbout%20Text%20Classification%20based%20on%20RCNN/</loc>
+    <lastmod>2017-10-13T14:53:17.000Z</lastmod>
+    <data>
+        <display>
+        <title>♜「Papers」 About Text Classification based on RCNN</title>
+        <pubTime>2017-10-09T16:00:00.000Z</pubTime>
         
         <tag>Machine Learning</tag>
          
@@ -47,31 +72,6 @@
           
              
               <breadCrumb title="Book:「Machine Learning」" url="http://randolph.pro/categories/Machine-Learning/Book-%E3%80%8CMachine-Learning%E3%80%8D/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://randolph.pro/2017/10/10/%E2%99%9C%E3%80%8CPapers%E3%80%8DAbout%20Text%20Classification%20based%20on%20RCNN/</loc>
-    <lastmod>2017-10-11T03:04:08.000Z</lastmod>
-    <data>
-        <display>
-        <title>♜「Papers」 About Text Classification based on RCNN</title>
-        <pubTime>2017-10-09T16:00:00.000Z</pubTime>
-        
-        <tag>Machine Learning</tag>
-         
-        <tag>Papers</tag>
-         
-         
-           
-             
-              <breadCrumb title="Machine Learning" url="http://randolph.pro/categories/Machine-Learning/"/>
-          
-             
-              <breadCrumb title="Papers" url="http://randolph.pro/categories/Machine-Learning/Papers/"/>
           
         </display>
     </data>

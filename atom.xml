@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://randolph.pro/"/>
-  <updated>2017-10-13T14:45:04.000Z</updated>
+  <updated>2017-10-13T14:54:33.000Z</updated>
   <id>http://randolph.pro/</id>
   
   <author>
@@ -20,23 +20,16 @@
     <link href="http://randolph.pro/2017/10/13/%E2%99%9C%E3%80%8CPapers%E3%80%8DAbout%20Word%20Representation/"/>
     <id>http://randolph.pro/2017/10/13/♜「Papers」About Word Representation/</id>
     <published>2017-10-12T16:00:00.000Z</published>
-    <updated>2017-10-13T14:45:04.000Z</updated>
+    <updated>2017-10-13T14:54:33.000Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://farm5.staticflickr.com/4373/35507009504_3298ce3029_o.jpg" alt=""></p>
 <p> 有关「Machine Learning」的其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/">「Machine Learning」</a><br> 有关「Papers」的其他论文学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/Papers/">「Papers」</a></p>
-<h1 id="「Bag-of-Tricks-for-Efficient-Text-Classification」"><a href="#「Bag-of-Tricks-for-Efficient-Text-Classification」" class="headerlink" title="「Bag of Tricks for Efficient Text Classification」"></a>「Bag of Tricks for Efficient Text Classification」</h1><h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>Introduction 里面提及了：</p>
+<h1 id="「Efficient-Estimation-of-Word-Representation-in-Vector-Space」"><a href="#「Efficient-Estimation-of-Word-Representation-in-Vector-Space」" class="headerlink" title="「Efficient Estimation of Word Representation in Vector Space」"></a>「Efficient Estimation of Word Representation in Vector Space」</h1><p> 本文 </p>
+<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>Introduction 里面提及了：</p>
 <ul>
-<li> 神经网络很流行，在文本分类上的性能表现也很喜人。但是存在训练时间长的弊端，在大型数据集上难以发挥。</li>
-<li> 在文本分类的任务上，线性分类器经常会作为一个基准模型，尽管会相对简单，如果特征选取得当，也可以获得很好的性能表现（Despite their simplicity, they often obatin state-of-art performances if the right features are used）。</li>
-<li> 本文基于词向量的有效性，在此基础上使用线性模型 </li>
+<li><h2 id="Model-Architecture"><a href="#Model-Architecture" class="headerlink" title="Model Architecture"></a>Model Architecture</h2></li>
 </ul>
-<h2 id="Model-Architecture"><a href="#Model-Architecture" class="headerlink" title="Model Architecture"></a>Model Architecture</h2><p><img src="https://farm5.staticflickr.com/4508/37001961843_15cc54cf88_o.png" alt=""></p>
-<p>FastText 模型架构如上图所示。FastText 模型输入一个词的序列（一段文本或者一句话 )，输出这个词序列属于不同类别的概率。序列中的词和词组组成特征向量，特征向量通过线性变换映射到中间层，中间层再映射到标签。FastText 在预测标签时使用了非线性激活函数，但在中间层不使用非线性激活函数。</p>
-<p>FastText 模型架构和 Word2Vec 中的 CBOW 模型很类似。不同之处在于，FastText 预测标签，而 CBOW 模型预测中间词（This architecture is similar to the CBOW model of Mikolov, where the middle word is replaced by a label）。</p>
-<p>FastText 简而言之，就是把文档中所有词通过 lookup table 变成向量，取平均后直接用线性分类器得到分类结果。FastText 和 ACL-15 上的 Deep Averaging Network（DAN）相似，区别就是去掉了中间的隐层。两篇文章的结论也比较类似，也是指出对一些简单的分类任务，没有必要使用太复杂的网络结构就可以取得差不多的结果。</p>
-<h3 id="Hierarchical-Softmax"><a href="#Hierarchical-Softmax" class="headerlink" title="Hierarchical Softmax"></a>Hierarchical Softmax</h3><p> 在某些文本分类任务中，当输出的类别非常巨大的时候，使用线性分类器的计算开销就显得非常的大，时间复杂度为 $O(kh)$，其中 $k$ 是类别的个数，$h$ 是词序列向量的维度。</p>
-<p> 为了改善运行的时间，FastText 模型使用了 Hierarchical softmax 层次化的 Softmax 来优化，其是建立在哈夫曼编码的基础上，对标签先进行编码，能够极大地缩小模型预测目标的数量。对应的时间复杂度降至为 $O(log_{2}(k)h)$。</p>
-<p> 另外，同样地，当计算输出类别的 Top K 问题时，可以使用 （binary heap）来优化，其时间复杂度可以从 $O(K)$ 降至 $O(log(K))$，其中 $K$ 是 $K$ 个最有可能的类别。</p>
+<p><img src=""alt=""></p>
 <h3 id=""><a href="#"class="headerlink"title=" "></a> </h3><h2 id="Experiments"><a href="#Experiments"class="headerlink"title="Experiments"></a>Experiments</h2><h3 id="Datasets"><a href="#Datasets"class="headerlink"title="Datasets"></a>Datasets</h3><p> 实验部分就是使用几个常见的 Datasets，其中用到的有：</p>
 <ul>
 <li>​</li>
@@ -44,7 +37,29 @@
 <h3 id="Experiment-Setting"><a href="#Experiment-Setting" class="headerlink" title="Experiment Setting"></a>Experiment Setting</h3><ul>
 <li></li>
 </ul>
-<h3 id="Results-and-Discussion"><a href="#Results-and-Discussion" class="headerlink" title="Results and Discussion"></a>Results and Discussion</h3>]]></content>
+<h3 id="Results-and-Discussion"><a href="#Results-and-Discussion" class="headerlink" title="Results and Discussion"></a>Results and Discussion</h3><hr>
+<h1 id="「Bag-of-Tricks-for-Efficient-Text-Classification」"><a href="#「Bag-of-Tricks-for-Efficient-Text-Classification」" class="headerlink" title="「Bag of Tricks for Efficient Text Classification」"></a>「Bag of Tricks for Efficient Text Classification」</h1><p> 本文主要介绍了 Word2Vec 作者，Facebook AI 科学家 Mikolov 在 2016 年提出的 FastText 文本分类方法。</p>
+<h2 id="Introduction-1"><a href="#Introduction-1" class="headerlink" title="Introduction"></a>Introduction</h2><p>Introduction 里面提及了：</p>
+<ul>
+<li> 神经网络很流行，在文本分类上的性能表现也很喜人。但是存在训练时间长的弊端，在大型数据集上难以发挥。</li>
+<li> 在文本分类的任务上，线性分类器经常会作为一个基准模型，尽管会相对简单，如果特征选取得当，也可以获得很好的性能表现（Despite their simplicity, they often obatin state-of-art performances if the right features are used）。</li>
+<li> 本文基于词向量的有效性，在此基础上使用线性模型 </li>
+</ul>
+<h2 id="Model-Architecture-1"><a href="#Model-Architecture-1" class="headerlink" title="Model Architecture"></a>Model Architecture</h2><p><img src="https://farm5.staticflickr.com/4508/37001961843_15cc54cf88_o.png" alt=""></p>
+<p>FastText 模型架构如上图所示。FastText 模型输入一个词的序列（一段文本或者一句话 )，输出这个词序列属于不同类别的概率。序列中的词和词组组成特征向量，特征向量通过线性变换映射到中间层，中间层再映射到标签。FastText 在预测标签时使用了非线性激活函数，但在中间层不使用非线性激活函数。</p>
+<p>FastText 模型架构和 Word2Vec 中的 CBOW 模型很类似。不同之处在于，FastText 预测标签，而 CBOW 模型预测中间词（This architecture is similar to the CBOW model of Mikolov, where the middle word is replaced by a label）。</p>
+<p>FastText 简而言之，就是把文档中所有词通过 lookup table 变成向量，取平均后直接用线性分类器得到分类结果。FastText 和 ACL-15 上的 Deep Averaging Network（DAN）相似，区别就是去掉了中间的隐层。两篇文章的结论也比较类似，也是指出对一些简单的分类任务，没有必要使用太复杂的网络结构就可以取得差不多的结果。</p>
+<h3 id="Hierarchical-Softmax"><a href="#Hierarchical-Softmax" class="headerlink" title="Hierarchical Softmax"></a>Hierarchical Softmax</h3><p> 在某些文本分类任务中，当输出的类别非常巨大的时候，使用线性分类器的计算开销就显得非常的大，时间复杂度为 $O(kh)$，其中 $k$ 是类别的个数，$h$ 是词序列向量的维度。</p>
+<p> 为了改善运行的时间，FastText 模型使用了 Hierarchical softmax 层次化的 Softmax 来优化，其是建立在哈夫曼编码的基础上，对标签先进行编码，能够极大地缩小模型预测目标的数量。对应的时间复杂度降至为 $O(log_{2}(k)h)$。</p>
+<p> 另外，同样地，当计算输出类别的 Top K 问题时，可以使用 （binary heap）来优化，其时间复杂度可以从 $O(K)$ 降至 $O(log(K))$，其中 $K$ 是 $K$ 个最有可能的类别。</p>
+<h3 id="-1"><a href="#-1" class="headerlink" title=""></a> </h3><h2 id="Experiments-1"><a href="#Experiments-1"class="headerlink"title="Experiments"></a>Experiments</h2><h3 id="Datasets-1"><a href="#Datasets-1"class="headerlink"title="Datasets"></a>Datasets</h3><p> 实验部分就是使用几个常见的 Datasets，其中用到的有：</p>
+<ul>
+<li>​</li>
+</ul>
+<h3 id="Experiment-Setting-1"><a href="#Experiment-Setting-1" class="headerlink" title="Experiment Setting"></a>Experiment Setting</h3><ul>
+<li></li>
+</ul>
+<h3 id="Results-and-Discussion-1"><a href="#Results-and-Discussion-1" class="headerlink" title="Results and Discussion"></a>Results and Discussion</h3>]]></content>
     
     <summary type="html">
     
@@ -68,11 +83,12 @@
     <link href="http://randolph.pro/2017/10/10/%E2%99%9C%E3%80%8CPapers%E3%80%8DAbout%20Text%20Classification%20based%20on%20RCNN/"/>
     <id>http://randolph.pro/2017/10/10/♜「Papers」About Text Classification based on RCNN/</id>
     <published>2017-10-09T16:00:00.000Z</published>
-    <updated>2017-10-11T03:04:08.000Z</updated>
+    <updated>2017-10-13T14:53:17.000Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://farm5.staticflickr.com/4373/35507009504_3298ce3029_o.jpg" alt=""></p>
 <p> 有关「Machine Learning」的其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/">「Machine Learning」</a><br> 有关「Papers」的其他论文学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/Papers/">「Papers」</a></p>
-<h1 id="「Recurrent-Convolutional-Neural-Networks-for-Text-Classification」"><a href="#「Recurrent-Convolutional-Neural-Networks-for-Text-Classification」" class="headerlink" title="「Recurrent Convolutional Neural Networks for Text Classification」"></a>「Recurrent Convolutional Neural Networks for Text Classification」</h1><h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>Introduction 里面提及了：</p>
+<h1 id="「Recurrent-Convolutional-Neural-Networks-for-Text-Classification」"><a href="#「Recurrent-Convolutional-Neural-Networks-for-Text-Classification」" class="headerlink" title="「Recurrent Convolutional Neural Networks for Text Classification」"></a>「Recurrent Convolutional Neural Networks for Text Classification」</h1><p> 本文为中科院团队在 2015 年 AAAI 上提出来的 RCNN 网络结构。</p>
+<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>Introduction 里面提及了：</p>
 <ul>
 <li> 词向量的发展（A key problem in text classification is feature repre<br>sentation）以及作者词向量方法的选取（pre-trained word embedding）。</li>
 <li> 之所以选择使用 RecurrentNN，一是因为 RecurrentNN 的时间复杂度为 $O(n)$，二是因为 RecurrentNN 的优势在于能够更好地捕捉上下文信息（The adavantage of RecurrentNN is the ability to better capture the contextual information）。而不选择使用 RecursiveNN，一是因为 RecursiveNN 的时间复杂度较高 $O(n^2)$，其中 $n$ 为文本的句子长度，所以导致 RecursiveNN 不太适合用来处理长文本信息，二是因为 RecursiveNN 是通过树形结构捕捉句子的语义信息（The RecursiveNN captures the semantics of a sentence via a tree structure），但实际上两两句子之间几乎无法通过树形结构来表示。</li>

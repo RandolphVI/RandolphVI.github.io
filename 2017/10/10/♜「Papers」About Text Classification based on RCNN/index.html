@@ -113,7 +113,7 @@
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://farm5.staticflickr.com/4373/35507009504_3298ce3029_o.jpg">
 <meta property="og:image" content="https://farm5.staticflickr.com/4452/36946829163_ef05233be9_o.png">
-<meta property="og:updated_time" content="2017-10-11T03:04:08.000Z">
+<meta property="og:updated_time" content="2017-10-13T14:53:17.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="♜「Papers」 About Text Classification based on RCNN">
 <meta name="twitter:description" content="本文主要介绍了 RCNN 循环卷积神经网络在文本分类上的一些论文.">
@@ -450,7 +450,7 @@
                   <i class="fa fa-file-word-o"></i>
                 </span>
                 <span title="Words count in article">
-                  857
+                  879
                 </span>
                 <span> words </span>
                 
@@ -465,7 +465,7 @@
                   <i class="fa fa-clock-o"></i>
                 </span>
                 <span title="Reading time">
-                  3
+                  4
                 </span>
                 <span> mins </span>
               
@@ -490,7 +490,8 @@
       
         <p><img src="https://farm5.staticflickr.com/4373/35507009504_3298ce3029_o.jpg" alt=""></p>
 <p> 有关「Machine Learning」的其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/">「Machine Learning」</a><br> 有关「Papers」的其他论文学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/Papers/">「Papers」</a></p>
-<h1 id="「Recurrent-Convolutional-Neural-Networks-for-Text-Classification」"><a href="#「Recurrent-Convolutional-Neural-Networks-for-Text-Classification」" class="headerlink" title="「Recurrent Convolutional Neural Networks for Text Classification」"></a>「Recurrent Convolutional Neural Networks for Text Classification」</h1><h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>Introduction 里面提及了：</p>
+<h1 id="「Recurrent-Convolutional-Neural-Networks-for-Text-Classification」"><a href="#「Recurrent-Convolutional-Neural-Networks-for-Text-Classification」" class="headerlink" title="「Recurrent Convolutional Neural Networks for Text Classification」"></a>「Recurrent Convolutional Neural Networks for Text Classification」</h1><p> 本文为中科院团队在 2015 年 AAAI 上提出来的 RCNN 网络结构。</p>
+<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>Introduction 里面提及了：</p>
 <ul>
 <li> 词向量的发展（A key problem in text classification is feature repre<br>sentation）以及作者词向量方法的选取（pre-trained word embedding）。</li>
 <li> 之所以选择使用 RecurrentNN，一是因为 RecurrentNN 的时间复杂度为 $O(n)$，二是因为 RecurrentNN 的优势在于能够更好地捕捉上下文信息（The adavantage of RecurrentNN is the ability to better capture the contextual information）。而不选择使用 RecursiveNN，一是因为 RecursiveNN 的时间复杂度较高 $O(n^2)$，其中 $n$ 为文本的句子长度，所以导致 RecursiveNN 不太适合用来处理长文本信息，二是因为 RecursiveNN 是通过树形结构捕捉句子的语义信息（The RecursiveNN captures the semantics of a sentence via a tree structure），但实际上两两句子之间几乎无法通过树形结构来表示。</li>
