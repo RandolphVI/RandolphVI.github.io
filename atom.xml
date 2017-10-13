@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://randolph.pro/"/>
-  <updated>2017-10-11T03:04:08.000Z</updated>
+  <updated>2017-10-13T14:45:04.000Z</updated>
   <id>http://randolph.pro/</id>
   
   <author>
@@ -14,6 +14,54 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>♜「Papers」 About Word Representation</title>
+    <link href="http://randolph.pro/2017/10/13/%E2%99%9C%E3%80%8CPapers%E3%80%8DAbout%20Word%20Representation/"/>
+    <id>http://randolph.pro/2017/10/13/♜「Papers」About Word Representation/</id>
+    <published>2017-10-12T16:00:00.000Z</published>
+    <updated>2017-10-13T14:45:04.000Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="https://farm5.staticflickr.com/4373/35507009504_3298ce3029_o.jpg" alt=""></p>
+<p> 有关「Machine Learning」的其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/">「Machine Learning」</a><br> 有关「Papers」的其他论文学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/Papers/">「Papers」</a></p>
+<h1 id="「Bag-of-Tricks-for-Efficient-Text-Classification」"><a href="#「Bag-of-Tricks-for-Efficient-Text-Classification」" class="headerlink" title="「Bag of Tricks for Efficient Text Classification」"></a>「Bag of Tricks for Efficient Text Classification」</h1><h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>Introduction 里面提及了：</p>
+<ul>
+<li> 神经网络很流行，在文本分类上的性能表现也很喜人。但是存在训练时间长的弊端，在大型数据集上难以发挥。</li>
+<li> 在文本分类的任务上，线性分类器经常会作为一个基准模型，尽管会相对简单，如果特征选取得当，也可以获得很好的性能表现（Despite their simplicity, they often obatin state-of-art performances if the right features are used）。</li>
+<li> 本文基于词向量的有效性，在此基础上使用线性模型 </li>
+</ul>
+<h2 id="Model-Architecture"><a href="#Model-Architecture" class="headerlink" title="Model Architecture"></a>Model Architecture</h2><p><img src="https://farm5.staticflickr.com/4508/37001961843_15cc54cf88_o.png" alt=""></p>
+<p>FastText 模型架构如上图所示。FastText 模型输入一个词的序列（一段文本或者一句话 )，输出这个词序列属于不同类别的概率。序列中的词和词组组成特征向量，特征向量通过线性变换映射到中间层，中间层再映射到标签。FastText 在预测标签时使用了非线性激活函数，但在中间层不使用非线性激活函数。</p>
+<p>FastText 模型架构和 Word2Vec 中的 CBOW 模型很类似。不同之处在于，FastText 预测标签，而 CBOW 模型预测中间词（This architecture is similar to the CBOW model of Mikolov, where the middle word is replaced by a label）。</p>
+<p>FastText 简而言之，就是把文档中所有词通过 lookup table 变成向量，取平均后直接用线性分类器得到分类结果。FastText 和 ACL-15 上的 Deep Averaging Network（DAN）相似，区别就是去掉了中间的隐层。两篇文章的结论也比较类似，也是指出对一些简单的分类任务，没有必要使用太复杂的网络结构就可以取得差不多的结果。</p>
+<h3 id="Hierarchical-Softmax"><a href="#Hierarchical-Softmax" class="headerlink" title="Hierarchical Softmax"></a>Hierarchical Softmax</h3><p> 在某些文本分类任务中，当输出的类别非常巨大的时候，使用线性分类器的计算开销就显得非常的大，时间复杂度为 $O(kh)$，其中 $k$ 是类别的个数，$h$ 是词序列向量的维度。</p>
+<p> 为了改善运行的时间，FastText 模型使用了 Hierarchical softmax 层次化的 Softmax 来优化，其是建立在哈夫曼编码的基础上，对标签先进行编码，能够极大地缩小模型预测目标的数量。对应的时间复杂度降至为 $O(log_{2}(k)h)$。</p>
+<p> 另外，同样地，当计算输出类别的 Top K 问题时，可以使用 （binary heap）来优化，其时间复杂度可以从 $O(K)$ 降至 $O(log(K))$，其中 $K$ 是 $K$ 个最有可能的类别。</p>
+<h3 id=""><a href="#"class="headerlink"title=" "></a> </h3><h2 id="Experiments"><a href="#Experiments"class="headerlink"title="Experiments"></a>Experiments</h2><h3 id="Datasets"><a href="#Datasets"class="headerlink"title="Datasets"></a>Datasets</h3><p> 实验部分就是使用几个常见的 Datasets，其中用到的有：</p>
+<ul>
+<li>​</li>
+</ul>
+<h3 id="Experiment-Setting"><a href="#Experiment-Setting" class="headerlink" title="Experiment Setting"></a>Experiment Setting</h3><ul>
+<li></li>
+</ul>
+<h3 id="Results-and-Discussion"><a href="#Results-and-Discussion" class="headerlink" title="Results and Discussion"></a>Results and Discussion</h3>]]></content>
+    
+    <summary type="html">
+    
+      本文主要介绍了 Word Representation 的一些论文.
+    
+    </summary>
+    
+      <category term="Machine Learning" scheme="http://randolph.pro/categories/Machine-Learning/"/>
+    
+      <category term="Papers" scheme="http://randolph.pro/categories/Machine-Learning/Papers/"/>
+    
+    
+      <category term="Machine Learning" scheme="http://randolph.pro/tags/Machine-Learning/"/>
+    
+      <category term="Papers" scheme="http://randolph.pro/tags/Papers/"/>
+    
+  </entry>
   
   <entry>
     <title>♜「Papers」 About Text Classification based on RCNN</title>
@@ -3931,82 +3979,6 @@ AC & (1,2)(-2),(0,1)(-1),(0,1)(-1),(0,1)(-1),(2,1)(-1),(EOB)(0,0)
       <category term="Machine Learning" scheme="http://randolph.pro/tags/Machine-Learning/"/>
     
       <category term="Python" scheme="http://randolph.pro/tags/Python/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>♞「Web Scraping with Python」smtplib &amp; email module</title>
-    <link href="http://randolph.pro/2015/12/13/%E2%99%9E%E3%80%8CWeb%20Scraping%20with%20Python%E3%80%8Dsmtplib%20&amp;%20email%20module/"/>
-    <id>http://randolph.pro/2015/12/13/♞「Web Scraping with Python」smtplib &amp; email module/</id>
-    <published>2015-12-12T16:00:00.000Z</published>
-    <updated>2017-08-06T13:17:54.000Z</updated>
-    
-    <content type="html"><![CDATA[<p><img src="https://farm5.staticflickr.com/4316/36049777032_f975ed0941_o.jpg" alt=""></p>
-<p>有关该书的其他学习笔记系列：<a href="http://randolph.pro/categories/Web-Scraping/Book-「Web-Scraping-with-Python」/">Book:「Web Scraping with Python」</a></p>
-<h1 id="Related"><a href="#Related" class="headerlink" title="Related"></a>Related</h1><ul>
-<li><strong>smtplib module</strong></li>
-<li><strong>email module</strong></li>
-</ul>
-<hr>
-<h1 id="smtplib-module"><a href="#smtplib-module" class="headerlink" title="smtplib module"></a>smtplib module</h1><p>使用 python 脚本发邮件，一般会用到 <strong><code>smtplib</code></strong> 和 <strong><code>email</code></strong> 这两个模块。<strong><code>smtplib</code></strong> 模块定义了一个简单的 SMTP 客户端，可以用来在互联网上发送邮件。参考下面的程序：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> email.header <span class="keyword">import</span> Header</div><div class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</div><div class="line"><span class="keyword">import</span> smtplib</div><div class="line"><span class="keyword">import</span> time</div><div class="line"></div><div class="line">mail_host = <span class="string">'smtp.gmail.com'</span>            <span class="comment"># 设置服务器</span></div><div class="line">mail_port = <span class="number">587</span>                         <span class="comment"># 服务器端口号</span></div><div class="line">mail_user = <span class="string">'your_username@gmail.com'</span>   <span class="comment"># 用户名</span></div><div class="line">mail_pass = <span class="string">'your_password'</span>             <span class="comment"># 口令</span></div><div class="line"></div><div class="line">sender = <span class="string">'your_username@gmail.com'</span></div><div class="line">receivers = <span class="string">'your_other_username@hotmail.com'</span></div><div class="line"></div><div class="line"><span class="comment"># fill content with MIMEText's object</span></div><div class="line">msg = MIMEText(<span class="string">'Hi, I am Randolph.'</span>)</div><div class="line">msg[<span class="string">'From'</span>] = sender</div><div class="line">msg[<span class="string">'To'</span>] = receivers</div><div class="line">msg[<span class="string">'Subject'</span>] = <span class="string">'Hello, today is a special day.'</span></div><div class="line">print(msg.as_string())</div><div class="line"></div><div class="line"><span class="comment"># connect</span></div><div class="line"><span class="keyword">try</span>:</div><div class="line">    print(<span class="string">"Connecting ..."</span>)</div><div class="line">    smtpObj = smtplib.SMTP(mail_host, mail_port)</div><div class="line"><span class="keyword">except</span>:</div><div class="line">    print(<span class="string">"CONNECT ERROR ****"</span>)</div><div class="line"></div><div class="line"><span class="comment"># show the debug log</span></div><div class="line">smtpObj.set_debuglevel(<span class="number">1</span>)</div><div class="line"></div><div class="line"><span class="comment"># gmail uses ssl</span></div><div class="line">smtpObj.ehlo()</div><div class="line">smtpObj.starttls()</div><div class="line">smtpObj.ehlo()</div><div class="line"></div><div class="line"><span class="comment"># login with username &amp; password</span></div><div class="line"><span class="keyword">try</span>:</div><div class="line">    print(<span class="string">"Loginning ..."</span>)</div><div class="line">    smtpObj.login(mail_user, mail_pass)</div><div class="line"><span class="keyword">except</span>:</div><div class="line">    print(<span class="string">"LOGIN ERROR ****"</span>)</div><div class="line"></div><div class="line">smtpObj.sendmail(sender, receivers, msg.as_string())</div><div class="line">smtpObj.quit()</div></pre></td></tr></table></figure>
-<p>smtp 实例封装一个 smtp 连接，它支持所有的 SMTP 和 ESMTP 操作指令，如果 host 和 port 参数被定义，则 smtp 会在初始化期间自动调用 <strong><code>connect()</code></strong> 方法，如果 <strong><code>connect()</code></strong> 方法失败，则会触发 <strong><code>SMTPConnectError</code></strong> 异常，<strong><code>timeout</code></strong> 参数设置了超时时间。在一般的调用过程中，应该遵 <strong><code>connect()</code></strong>、<strong><code>sendmail()</code></strong>、<strong><code>quit()</code></strong>步骤。</p>
-<hr>
-<h2 id="SMTP 模块主要方法"><a href="#SMTP 模块主要方法" class="headerlink" title="SMTP 模块主要方法"></a>SMTP 模块主要方法 </h2><p> 下面我们来看看该类的方法：</p>
-<ul>
-<li><strong><code>smtp.set_debuglevel(level)</code></strong><br>设置输出 debug 调试信息，默认不输出调试信息。</li>
-<li><strong><code>smtp.docmd(cmd, argstring)</code></strong><br>发送一个 command 到 smtp 服务器，</li>
-<li><strong><code>smtp.connect(host, port)</code></strong><br>连接到指定的 smtp 服务器，默认是本机的 25 端口。也可以写成 hostname:port 的形式。</li>
-<li><strong><code>smtp.helo(hostname)</code></strong><br>使用 helo 指令向 smtp 服务器确认你的身份。</li>
-<li><strong><code>smtp.ehlo(hostname)</code></strong><br>使用 ehlo 指令向 esmtp 服务器确认你的身份。</li>
-<li><strong><code>smtp.ehlo_or_helo_if_needed()</code></strong><br>如果在以前的会话连接中没有提供 ehlo 或者 helo 指令，这个方法调用 ehlo() 或者 helo()。</li>
-<li><strong><code>smtp.has_extn(name)</code></strong><br>判断指定的名称是否在 smtp 服务器上。</li>
-<li><strong><code>smtp.verify(address)</code></strong><br>判断邮件地址是否在 smtp 服务器上存在。</li>
-<li><strong><code>smtp.login(user, password)</code></strong><br>登陆需要验证的 smtp 服务器，如果之前没有提供 ehlo 或者 helo 指令，则会先尝试 ESMTP 的 ehlo 指令。</li>
-<li><strong><code>smtp.starttls(keyfile, certfile)</code></strong><br>使 smtp 连接运行在 TLS 模式，所有的 smtp 指令都会被加密。</li>
-<li><strong><code>smtp.sendmail(from_addr, to_addrs, msg, mail_options, rcpt_options)</code></strong><br>发送邮件，该方法需要一些邮件地址和消息。</li>
-<li><strong><code>smtp.quit()</code></strong><br>终止 smtp 会话并且关闭连接。</li>
-</ul>
-<hr>
-<h2 id="email-module"><a href="#email-module" class="headerlink" title="email module"></a>email module</h2><p>如果想在邮件中携带附件，使用 html 书写邮件，附带图片等等，就需要使用 <strong><code>email</code></strong> 模块及其子模块。下面来看看 email 包，email 包是用来管理 email 信息的，它包括 MIME 和其他基于 RFC 2822 的消息格式。email 包的主要特征是在它内部解析和生成 email 信息是分开的模块来实现的。</p>
-<p>MIME 消息由消息头和消息体两大部分组成，在邮件里就是邮件头和邮件体。邮件头与邮件体之间以空行进行分隔。</p>
-<p>邮件头包含了发件人、收件人、主题、时间、MIME 版本、邮件内容的类型等重要信息。每条信息称为一个域，由域名后加 “ : ” 和信息内容构成，可以是一行，较长的也可以占用多行。域的首行必须“顶头”写，即左边不能有空白字符（空格和制表符）；续行则必须以空白字符打头，且第一个空白字符不是信息本身固有的。</p>
-<p>邮件体包含邮件的内容，它的类型由邮件头的 “Content-Type” 域指出。最常见的类型有 text/plain（纯文本） 和 text/html（超文本）。邮件体被分为多个段，每个段又包含段头和段体两部分，这两部分之间也以空行分隔。常见的 multipart 类型有三种：multipart/mixed，multipart/related 和 multipart/alternative。</p>
-<p>在 email 的包里面包含了很多模块：</p>
-<ul>
-<li><strong><code>email.message</code></strong></li>
-<li><strong><code>email.parser</code></strong></li>
-<li><strong><code>email.generator</code></strong></li>
-<li><strong><code>email.mime</code> （创建 email 和 MIME 对象）</strong></li>
-<li><strong><code>email.header</code></strong></li>
-<li><strong><code>email.charset</code></strong></li>
-<li><strong><code>email.encoders</code></strong></li>
-<li><strong><code>email.errors</code></strong></li>
-<li><strong><code>email.utils</code></strong></li>
-<li><strong><code>email.iterators</code></strong></li>
-</ul>
-<p>主要来看看 <strong><code>email.mime</code></strong>，在邮件中携带附件、图片、音频时，主要使用的是该模块。一般情况下，你通过解析一个文件或者一段 text 来生成一个消息对象结构，你也可以从头开始建立一个消息结构，实际上，你可以给一个已经存在的消息结构追加一个新的消息对象。你可以通过创建 message 实例来创建一个对象结构，然后给该结构追加附件和头部信息。email 包提供了一些子类使得该操作变得很容易。</p>
-<p>模拟在邮件内容中携带图片，代码如下：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> email.mime.text <span class="keyword">import</span> MIMEText</div><div class="line"><span class="keyword">from</span> email.mime.multipart <span class="keyword">import</span> MIMEMultipart</div><div class="line"><span class="keyword">from</span> email.mime.image <span class="keyword">import</span> MIMEImage</div><div class="line"><span class="keyword">from</span> email.message <span class="keyword">import</span> Message</div><div class="line"><span class="keyword">import</span> email.utils</div><div class="line"><span class="keyword">import</span> smtplib</div><div class="line"><span class="keyword">import</span> time</div><div class="line"><span class="keyword">import</span> smtplib</div><div class="line"><span class="keyword">import</span> base64</div><div class="line"></div><div class="line">mail_host = <span class="string">'smtp.gmail.com'</span>            <span class="comment"># 设置服务器</span></div><div class="line">mail_port = <span class="number">587</span>                         <span class="comment"># 服务器端口号</span></div><div class="line">mail_user = <span class="string">'your_username@gmail.com'</span>   <span class="comment"># 用户名</span></div><div class="line">mail_pass = <span class="string">'your_password'</span>             <span class="comment"># 口令</span></div><div class="line"></div><div class="line">sender = <span class="string">'your_username@gmail.com'</span></div><div class="line">receivers = <span class="string">'your_other_username@hotmail.com'</span></div><div class="line"></div><div class="line"><span class="comment"># send email with images use MIMEMultipart's object</span></div><div class="line">msg = MIMEMultipart()</div><div class="line">msg[<span class="string">'From'</span>] = sender</div><div class="line">msg[<span class="string">'To'</span>] = receivers</div><div class="line">msg[<span class="string">'Subject'</span>] = <span class="string">'An email with a image.'</span></div><div class="line">body = <span class="string">'Test image send.'</span></div><div class="line">con = MIMEText(<span class="string">'&lt;b&gt;%s&lt;/b&gt;![](cid:/Users/xxx/xxx/xxx.jpg)'</span> % body, <span class="string">'html'</span>)</div><div class="line">msg.attach(con)</div><div class="line"></div><div class="line">img = MIMEImage(open(<span class="string">'/Users/xxx/xxx/xxx.jpg'</span>, <span class="string">'rb'</span>).read())</div><div class="line">img.add_header(<span class="string">'Content-ID'</span>, <span class="string">'/Users/xxx/xxx/xxx.jpg'</span>)</div><div class="line">msg.attach(img)</div><div class="line"></div><div class="line"><span class="comment"># connect</span></div><div class="line"><span class="keyword">try</span>:</div><div class="line">    print(<span class="string">"Connecting ..."</span>)</div><div class="line">    smtpObj = smtplib.SMTP(mail_host, mail_port)</div><div class="line"><span class="keyword">except</span>:</div><div class="line">    print(<span class="string">"CONNECT ERROR ****"</span>)</div><div class="line"></div><div class="line"><span class="comment"># show the debug log</span></div><div class="line">smtpObj.set_debuglevel(<span class="number">1</span>)</div><div class="line"></div><div class="line"><span class="comment"># gmail uses ssl</span></div><div class="line">smtpObj.ehlo()</div><div class="line">smtpObj.starttls()</div><div class="line">smtpObj.ehlo()</div><div class="line"></div><div class="line"><span class="comment"># login with username &amp; password</span></div><div class="line"><span class="keyword">try</span>:</div><div class="line">    print(<span class="string">"Loginning ..."</span>)</div><div class="line">    smtpObj.login(mail_user, mail_pass)</div><div class="line"><span class="keyword">except</span>:</div><div class="line">    print(<span class="string">"LOGIN ERROR ****"</span>)</div><div class="line"></div><div class="line">smtpObj.sendmail(sender, receivers, msg.as_string())</div><div class="line">smtpObj.quit()</div></pre></td></tr></table></figure>
-<hr>
-<h2 id="Send-email-with-attachment"><a href="#Send-email-with-attachment" class="headerlink" title="Send email with attachment"></a>Send email with attachment</h2><p>发送带附件的邮件，首先要创建 <strong><code>MIMEMultipart()</code></strong> 实例，然后构造附件，如果有多个附件，可依次构造，最后利用 <strong><code>smtplib.smtp</code></strong> 发送。</p>
-<p>模拟在邮件中携带附件，代码如下：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> email.mime.text <span class="keyword">import</span> MIMEText</div><div class="line"><span class="keyword">from</span> email.mime.multipart <span class="keyword">import</span> MIMEMultipart</div><div class="line"><span class="keyword">from</span> email.mime.image <span class="keyword">import</span> MIMEImage</div><div class="line"><span class="keyword">from</span> email.message <span class="keyword">import</span> Message</div><div class="line"><span class="keyword">import</span> email.utils</div><div class="line"><span class="keyword">import</span> smtplib</div><div class="line"><span class="keyword">import</span> time</div><div class="line"><span class="keyword">import</span> smtplib</div><div class="line"><span class="keyword">import</span> base64</div><div class="line"></div><div class="line">mail_host = <span class="string">'smtp.gmail.com'</span>            <span class="comment"># 设置服务器</span></div><div class="line">mail_port = <span class="number">587</span>                         <span class="comment"># 服务器端口号</span></div><div class="line">mail_user = <span class="string">'your_username@gmail.com'</span>   <span class="comment"># 用户名</span></div><div class="line">mail_pass = <span class="string">'your_password'</span>             <span class="comment"># 口令</span></div><div class="line"></div><div class="line">sender = <span class="string">'your_username@gmail.com'</span></div><div class="line">receivers = <span class="string">'your_other_username@hotmail.com'</span></div><div class="line"></div><div class="line"><span class="comment"># send email with attachment</span></div><div class="line">msg = MIMEMultipart()</div><div class="line">txt = MIMEText(<span class="string">"我这半世未算赶，何妨迷途看风光."</span>,<span class="string">'plain'</span>,<span class="string">'gb2312'</span>)</div><div class="line">msg.attach(txt)</div><div class="line"></div><div class="line"><span class="comment"># 构造附件 1</span></div><div class="line">att1 = MIMEText(open(<span class="string">'/Users/xxx/xxx/xxx.jpg'</span>, <span class="string">'rb'</span>).read(), <span class="string">'base64'</span>, <span class="string">'gb2312'</span>)</div><div class="line">att1[<span class="string">"Content-Type"</span>] = <span class="string">'application/octet-stream'</span></div><div class="line">att1[<span class="string">"Content-Disposition"</span>] = <span class="string">'attachment; filename="xxx.jpg"'</span></div><div class="line"><span class="comment"># 这里的 filename 可以任意写，写什么名字，邮件中显示什么名字</span></div><div class="line">msg.attach(att1)</div><div class="line"></div><div class="line"><span class="comment"># 构造附件 2</span></div><div class="line">att2 = MIMEText(open(<span class="string">'/Users/xxx/xxx/xxx.doc'</span>, <span class="string">'rb'</span>).read(), <span class="string">'base64'</span>, <span class="string">'gb2312'</span>)</div><div class="line">att2[<span class="string">"Content-Type"</span>] = <span class="string">'application/octet-stream'</span></div><div class="line">att2[<span class="string">"Content-Disposition"</span>] = <span class="string">'attachment; filename="xxx.doc"'</span></div><div class="line">msg.attach(att2)</div><div class="line"></div><div class="line"><span class="comment"># 加邮件头</span></div><div class="line">msg[<span class="string">'to'</span>] = sender</div><div class="line">msg[<span class="string">'from'</span>] = receivers</div><div class="line">msg[<span class="string">'subject'</span>] = <span class="string">'Test.'</span></div><div class="line"></div><div class="line"><span class="comment"># connect</span></div><div class="line"><span class="keyword">try</span>:</div><div class="line">    print(<span class="string">"Connecting ..."</span>)</div><div class="line">    smtpObj = smtplib.SMTP(mail_host, mail_port)</div><div class="line"><span class="keyword">except</span>:</div><div class="line">    print(<span class="string">"CONNECT ERROR ****"</span>)</div><div class="line"></div><div class="line"><span class="comment"># show the debug log</span></div><div class="line">smtpObj.set_debuglevel(<span class="number">1</span>)</div><div class="line"></div><div class="line"><span class="comment"># gmail uses ssl</span></div><div class="line">smtpObj.ehlo()</div><div class="line">smtpObj.starttls()</div><div class="line">smtpObj.ehlo()</div><div class="line"></div><div class="line"><span class="comment"># login with username &amp; password</span></div><div class="line"><span class="keyword">try</span>:</div><div class="line">    print(<span class="string">"Loginning ..."</span>)</div><div class="line">    smtpObj.login(mail_user, mail_pass)</div><div class="line"><span class="keyword">except</span>:</div><div class="line">    print(<span class="string">"LOGIN ERROR ****"</span>)</div><div class="line"></div><div class="line">smtpObj.sendmail(sender, receivers, msg.as_string())</div><div class="line">smtpObj.quit()</div></pre></td></tr></table></figure></p>
-]]></content>
-    
-    <summary type="html">
-    
-      本文介绍了关于 Web Scraping 网络爬虫时可能会用到的 smtplib &amp; email 模块。
-    
-    </summary>
-    
-      <category term="Web Scraping" scheme="http://randolph.pro/categories/Web-Scraping/"/>
-    
-      <category term="Book:「Web Scraping with Python」" scheme="http://randolph.pro/categories/Web-Scraping/Book-%E3%80%8CWeb-Scraping-with-Python%E3%80%8D/"/>
-    
-    
-      <category term="Python" scheme="http://randolph.pro/tags/Python/"/>
-    
-      <category term="Web Scraping" scheme="http://randolph.pro/tags/Web-Scraping/"/>
     
   </entry>
   
