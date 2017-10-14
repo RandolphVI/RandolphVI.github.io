@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://randolph.pro/"/>
-  <updated>2017-10-13T15:35:50.000Z</updated>
+  <updated>2017-10-14T04:44:24.000Z</updated>
   <id>http://randolph.pro/</id>
   
   <author>
@@ -16,11 +16,36 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>「Machine Learning」 How to Generate a Good Word Embedding?</title>
+    <link href="http://randolph.pro/2017/10/14/%E3%80%8CMachine%20Learning%E3%80%8D%20How%20to%20Generate%20a%20Good%20Word%20Embedding?/"/>
+    <id>http://randolph.pro/2017/10/14/「Machine Learning」 How to Generate a Good Word Embedding?/</id>
+    <published>2017-10-13T16:00:00.000Z</published>
+    <updated>2017-10-14T04:44:24.000Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="https://farm5.staticflickr.com/4300/35460446383_aafc34ca3c_o.jpg" alt=""></p>
+<p> 有关「Machine Learning」的其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/">「Machine Learning」</a></p>
+<h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><h1 id="Compared-with-Other-Models"><a href="#Compared-with-Other-Models" class="headerlink" title="Compared with Other Models"></a>Compared with Other Models</h1><h1 id="Related"><a href="#Related" class="headerlink" title="Related"></a>Related</h1><p>  ​</p>
+]]></content>
+    
+    <summary type="html">
+    
+      本文介绍了如何生成简单有效的词向量的方法。
+    
+    </summary>
+    
+      <category term="Machine Learning" scheme="http://randolph.pro/categories/Machine-Learning/"/>
+    
+    
+      <category term="Machine Learning" scheme="http://randolph.pro/tags/Machine-Learning/"/>
+    
+  </entry>
+  
+  <entry>
     <title>♜「Papers」 About Word Representation</title>
     <link href="http://randolph.pro/2017/10/13/%E2%99%9C%E3%80%8CPapers%E3%80%8DAbout%20Word%20Representation/"/>
     <id>http://randolph.pro/2017/10/13/♜「Papers」About Word Representation/</id>
     <published>2017-10-12T16:00:00.000Z</published>
-    <updated>2017-10-13T15:35:50.000Z</updated>
+    <updated>2017-10-14T06:46:15.000Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://farm5.staticflickr.com/4373/35507009504_3298ce3029_o.jpg" alt=""></p>
 <p> 有关「Machine Learning」的其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/">「Machine Learning」</a><br> 有关「Papers」的其他论文学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/Papers/">「Papers」</a></p>
@@ -37,13 +62,13 @@
 <h3 id="Experiment-Setting"><a href="#Experiment-Setting" class="headerlink" title="Experiment Setting"></a>Experiment Setting</h3><ul>
 <li></li>
 </ul>
-<h3 id="Results-and-Discussion"><a href="#Results-and-Discussion" class="headerlink" title="Results and Discussion"></a>Results and Discussion</h3><hr>
+<h2 id="Results-and-Discussion"><a href="#Results-and-Discussion" class="headerlink" title="Results and Discussion"></a>Results and Discussion</h2><hr>
 <h1 id="「Bag-of-Tricks-for-Efficient-Text-Classification」"><a href="#「Bag-of-Tricks-for-Efficient-Text-Classification」" class="headerlink" title="「Bag of Tricks for Efficient Text Classification」"></a>「Bag of Tricks for Efficient Text Classification」</h1><p> 本文主要介绍了 Word2Vec 作者，Facebook AI 科学家 Mikolov 在 2016 年提出的 FastText 文本分类方法。</p>
 <h2 id="Introduction-1"><a href="#Introduction-1" class="headerlink" title="Introduction"></a>Introduction</h2><p>Introduction 里面提及了：</p>
 <ul>
 <li> 神经网络很流行，在文本分类上的性能表现也很喜人。但是存在训练时间长的弊端，在大型数据集上难以发挥。</li>
 <li> 在文本分类的任务上，线性分类器经常会作为一个基准模型，尽管会相对简单，如果特征选取得当，也可以获得很好的性能表现（Despite their simplicity, they often obatin state-of-art performances if the right features are used）。</li>
-<li> 本文基于词向量的有效性，在此基础上使用线性模型 </li>
+<li> 本文基于词向量的有效性，在此基础上使用含有 rank constraint &amp; a fast loss approximation 的线性模型，即 FastText 模型，用于处理标签预测以及情感分析的任务。</li>
 </ul>
 <h2 id="Model-Architecture-1"><a href="#Model-Architecture-1" class="headerlink" title="Model Architecture"></a>Model Architecture</h2><p><img src="https://farm5.staticflickr.com/4508/37001961843_15cc54cf88_o.png" alt=""></p>
 <p>FastText 模型架构如上图所示。FastText 模型输入一个词的序列（一段文本或者一句话 )，输出这个词序列属于不同类别的概率。序列中的词和词组组成特征向量，特征向量通过线性变换映射到中间层，中间层再映射到标签。FastText 在预测标签时使用了非线性激活函数，但在中间层不使用非线性激活函数。</p>
@@ -54,14 +79,30 @@
 <p> 另外，同样地，当计算输出类别的 Top K 问题时，可以使用二叉堆（binary heap）来优化，其时间复杂度可以从 $O(K)$ 降至 $O(log(K))$，其中 $K$ 是 $K$ 个最有可能的类别。</p>
 <h4 id="N-gram-features"><a href="#N-gram-features" class="headerlink" title="N-gram features"></a>N-gram features</h4><p>FastText 可以用于文本分类和句子分类，不管是文本分类还是句子分类，我们常用的特征是词袋模型（BOW）。但词袋模型不能考虑词之间的顺序，因此 FastText 还加入了 N-gram 特征。“我 爱 她” 这句话中的词袋模型特征是 “我”，“爱”, “她”。这些特征和句子 “她 爱 我” 的特征是一样的。如果加入 2-Ngram，第一句话的特征还有 “我 - 爱” 和 “爱 - 她”，这两句话 “我 爱 她” 和 “她 爱 我” 就能区别开来了。当然为了提高效率，我们需要过滤掉低频的 N-gram。</p>
 <p> 另外，本文还提到了使用 hashing trick 来减少 N-gram 的存储开销（We maintain a fast and memory efficient mapping of the n-grams by using the <strong><em>hashing trick</em></strong>）。</p>
-<h2 id="Experiments-1"><a href="#Experiments-1" class="headerlink" title="Experiments"></a>Experiments</h2><h3 id="Datasets-1"><a href="#Datasets-1" class="headerlink" title="Datasets"></a>Datasets</h3><p> 实验部分使用到的 Datasets：</p>
+<h2 id="Experiments-1"><a href="#Experiments-1" class="headerlink" title="Experiments"></a>Experiments</h2><h3 id="Sentiment-Analysis"><a href="#Sentiment-Analysis" class="headerlink" title="Sentiment Analysis"></a>Sentiment Analysis</h3><h4 id="Datasets-1"><a href="#Datasets-1" class="headerlink" title="Datasets"></a>Datasets</h4><p> 实验部分使用到的 Datasets，可以详细参照 <strong>「Text Understanding from Scratch」</strong> 这篇论文。</p>
+<h4 id="Experiment-Setting-1"><a href="#Experiment-Setting-1" class="headerlink" title="Experiment Setting"></a>Experiment Setting</h4><ul>
+<li>Number of training epochs: 5;</li>
+<li>Hidden Layer: 10;</li>
+<li>learning rate: {0.05, 0.1, 0.25, 0.5}.</li>
+</ul>
+<h4 id="Results"><a href="#Results" class="headerlink" title="Results"></a>Results</h4><p> 实验结果为：</p>
+<p><img src="https://farm5.staticflickr.com/4449/37652878592_03a1046ba2_o.png" alt=""></p>
+<p> 从实验结果可以看到 FastText 的性能会略好于 char-CNN 以及 char-RCNN，但会稍微差于 VDCNN（Very Deep Convolutional Network）。本文提到，可以通过使用 bigrams 能够进一步提高 FastText 的效果，提升的效果大概为 1-4%，还可以通过使用更多的 n-grams 来提高效果，例如图中使用 trigrams，在 Sogou 数据集上的准确率达到了 97.1%。</p>
+<p> 下图表示训练单个 epoch 的各个模型所需要的时间，可以看到 FastText 拥有无以伦比的训练速度，这也是其优势的体现。 </p>
+<p><img src="https://farm5.staticflickr.com/4467/37652792812_a365b50bcc_o.png" alt=""></p>
+<h3 id="Tag-Prediction"><a href="#Tag-Prediction" class="headerlink" title="Tag Prediction"></a>Tag Prediction</h3><h4 id="Datasets-2"><a href="#Datasets-2" class="headerlink" title="Datasets"></a>Datasets</h4><p> 实验部分使用到的 Datasets：</p>
 <ul>
-<li>​</li>
+<li>​YFCC100M，该数据集包含将近 1 亿张图片以及摘要、标题和标签。</li>
 </ul>
-<h3 id="Experiment-Setting-1"><a href="#Experiment-Setting-1" class="headerlink" title="Experiment Setting"></a>Experiment Setting</h3><ul>
-<li></li>
+<h4 id="Experiment-Setting-2"><a href="#Experiment-Setting-2" class="headerlink" title="Experiment Setting"></a>Experiment Setting</h4><ul>
+<li>Number of training epochs: 5;</li>
+<li>Hidden Layer: 50 and 200.</li>
 </ul>
-<h3 id="Results-and-Discussion-1"><a href="#Results-and-Discussion-1" class="headerlink" title="Results and Discussion"></a>Results and Discussion</h3><p> 个人认为，本文说明在合适的任务上应当使用合适的方法，像文本分类这样的任务，如果是长文本，即使用 BOW 也能做很不错的效果。</p>
+<h4 id="Results-1"><a href="#Results-1" class="headerlink" title="Results"></a>Results</h4><p> 实验是将 FastText 模型和 Tagspace 模型进行对比，使用数据集中的摘要信息和标题信息去预测标签。Tagspace 模型是建立在 Wsabie 模型的基础上的。Wsabie 模型除了利用 CNN 抽取特征之外，还提出了一个带权近似配对排序 (Weighted Approximate-Rank Pairwise, WARP) 损失函数用于处理预测目标数量巨大的问题。</p>
+<p> 实验结果为：</p>
+<p><img src="https://farm5.staticflickr.com/4511/37636040486_57085a7686_o.png" alt=""></p>
+<p> 从实验结果来看 FastText 能够取得比 Tagspace 好的效果，并拥有无以伦比的训练测试速度。不仅如此，通过使用 bigrams 能够进一步地提升效果。但严格来说，这个实验对 Tagspace 有些不公平。YFCC100M 数据集是关于多标签分类的，即需要模型能从多个类别里预测出多个类。Tagspace 确实是做多标记分类的；但 FastText 只能做多类别分类，只能从多个类别里预测出一个类。而评价指标 <strong>prec@1</strong> 只评价一个预测结果，即刚好能够使用 FastText。</p>
+<h2 id="Discussion-amp-Conclusion"><a href="#Discussion-amp-Conclusion" class="headerlink" title="Discussion &amp; Conclusion"></a>Discussion &amp; Conclusion</h2><p> 个人认为，本文说明在合适的任务上应当使用合适的方法，像文本分类这样的任务，如果是长文本，即使用 BOW 也能做很不错的效果。</p>
 ]]></content>
     
     <summary type="html">
@@ -3877,116 +3918,6 @@ AC & (1,2)(-2),(0,1)(-1),(0,1)(-1),(0,1)(-1),(2,1)(-1),(EOB)(0,0)
     <summary type="html">
     
       本文是关于「Programming Collective Intelligence」这本书的 Chapter 3的学习笔记。
-    
-    </summary>
-    
-      <category term="Machine Learning" scheme="http://randolph.pro/categories/Machine-Learning/"/>
-    
-      <category term="Book:「Programming Collective Intelligence」" scheme="http://randolph.pro/categories/Machine-Learning/Book-%E3%80%8CProgramming-Collective-Intelligence%E3%80%8D/"/>
-    
-    
-      <category term="Machine Learning" scheme="http://randolph.pro/tags/Machine-Learning/"/>
-    
-      <category term="Python" scheme="http://randolph.pro/tags/Python/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>♞「Programming Collective Intelligence」 Chapter 1 &amp; 2</title>
-    <link href="http://randolph.pro/2016/03/12/%E2%99%9E%E3%80%8CProgramming%20Collective%20Intelligence%E3%80%8D%20Chapter%201%20&amp;%202/"/>
-    <id>http://randolph.pro/2016/03/12/♞「Programming Collective Intelligence」 Chapter 1 &amp; 2/</id>
-    <published>2016-03-11T16:00:00.000Z</published>
-    <updated>2017-08-06T13:18:21.000Z</updated>
-    
-    <content type="html"><![CDATA[<p><img src="https://farm5.staticflickr.com/4306/36216231065_8a7e508f9e_o.jpg" alt=""></p>
-<p>有关该书的其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/Book-「Programming-Collective-Intelligence」/">Book:「Programming Collective Intelligence」</a></p>
-<h1 id="Related"><a href="#Related" class="headerlink" title="Related"></a>Related</h1><ul>
-<li><strong>欧几里得距离评价</strong></li>
-<li><strong>皮尔逊相关度评价</strong></li>
-</ul>
-<blockquote>
-<ul>
-<li>The formula for this is more complicated than the Euclidean distance score, but it tends to give better results in situations where the data isn’t well normalized—for example, if critics’ movie rankings are routinely more harsh than average. 它相比于欧几里德距离评价更加复杂，但其在数据不是很规范的时候（比如，影评者对影片的评价总是相对于平均水平偏离很大的时候），会给出更好的结果。      </li>
-<li>If one critic is inclined to give higher scores than the other, there can still be perfect correlation if the difference between their scores is consistent. The Euclidean distance score described earlier will say that two critics are dissimilar because one is consistently harsher than the other, even if their tastes are very similar. 如果某人总是倾向于给出比另一个人更高的分值，而两者的分值之差又始终保持一致，则他们依然可能会存在很好的相关性。而欧几里德距离评价会因为一个人的评价之中比另外一个人的更为“严格”（从而导致评价始终相对偏低），从而得出两者不相近的结论，即使他们的品位很相似也是如此。</li>
-</ul>
-</blockquote>
-<ul>
-<li><strong>其他相似度计算函数（Minkowski 距离、Mahalanobis 距离等）</strong></li>
-</ul>
-<hr>
-<h1 id="Key"><a href="#Key" class="headerlink" title="Key:"></a>Key:</h1><p>在「推荐物品」的模块中，提到了一种方法：</p>
-<ol>
-<li>通过函数找出与自己有相似品味的影评者，并按相似度从大到小排序。</li>
-<li>对于自己未看过的影片，建立一张表，表的内容包括：品位相似的影评者以及其对应的相似度，对于自己未看过影片的评分（影评者可以看过也可以没有看过）。</li>
-<li>对于某一个未看过的电影，影评者的相似度（可理解为权值，不同评论者的权值不同，相似度越高，权值越高）乘以其对该电影的评分，其他影评者也得到一个值（如果没有看过，则为零），然后累加，记为其他影评者对于该电影者的评价总和，之后总和需要除以所有对该电影评过分的影评者的相似度之和。</li>
-<li>最后得到的结果，表示为自己对于没有看过的电影，通过自己品位相似的影评者得到的预测评分，根据预测评分，来给出决策。</li>
-</ol>
-<hr>
-<h1 id="Need-to-know"><a href="#Need-to-know" class="headerlink" title="Need to know:"></a>Need to know:</h1><p>在「构建一个基于 del.icio.us 的链接推荐系统」的模块中：<br>首先我们需要下载 <strong><code>pydelicious</code></strong> 这一个 package。<strong>［这个 package 不支持 python3.x］</strong></p>
-<p>我的尝试：</p>
-<ol>
-<li>通过 Pycharm 自带的“便利”package 下载。出错，原因：无法找到对应的版本。</li>
-<li>通过命令行输入<strong><code>sudo pip install pydelicious</code></strong>。出错，原因：Could not find a version that satisfies the requirement pydelicious (from versions:)No matching distribution found for pydelicious。</li>
-<li>通过命令行输入<strong><code>sudo pip install pydelicious --allow-external pydelicious --allow-unverified pydelicious</code></strong>。出错，原因：Could not find a version that satisfies the requirement pydelicious (from versions:)No matching distribution found for pydelicious。</li>
-</ol>
-<hr>
-<p>初次尝试失败之后，在 Stackoverflow 寻找解决办法：</p>
-<ol>
-<li>首先，按照书本提供的下载地址：<a href="https://code.google.com/archive/p/pydelicious/downloads" target="_blank" rel="external">the pydelicious download page</a>［需要翻墙］下载 <strong>pydelicious-0.5.0.zip</strong> 文件。解压之后得到文件夹。</li>
-<li>命令行 <strong><code>cd</code></strong> 到解压后的文件夹，然后输入 <strong><code>sudo python setup.py install</code></strong>，错误提示：Feedparser not available, no RSS parsing。<strong> 意思是缺少 <code>feedparser</code> 这一 package 依赖库，需要安装 feedparser</strong>。</li>
-<li>安装 feedparser，下载地址：<a href="http://download.csdn.net/download/dixin28/5271130" target="_blank" rel="external">the feedparser download page</a>［需要积分］，或者<a href="https://github.com/kurtmckee/feedparser" target="_blank" rel="external">the feedparser download page</a>［需要翻墙］，下载文件夹。</li>
-<li>命令行 <strong><code>cd</code></strong> 到 feedparser 的文件夹，然后输入<strong><code>sudo python setup.py install</code></strong>，feedparser 安装完成。</li>
-<li>命令行 <strong><code>cd</code></strong> 回到 pydelicious 文件夹，再次输入<strong><code>sudo python setup.py install</code></strong>，此时会发现 pydelicious 安装成功。</li>
-<li>测试 pydelicious 此 package 是否能够导入，命令行输入 <strong><code>python</code></strong> 之后，再输入<strong><code>import pydelicious</code></strong>，如果没有报错，这说明 pydelicious 安装成功。</li>
-</ol>
-<ul>
-<li>2016.11.28 补充：如果按照书本上下载的 pydelicious-0.5.0 版本，是可以正常运行书本上的代码的而不报错的，但是会出现无论我如何修改 tag 的值，返回的内容都是一样的，原因在后面解释了。但是如果我们下载的是 <a href="https://github.com/dotmpe/python-delicious" target="_blank" rel="external">github 上更新后的 pydelicious 版本</a>，会遇到如下问题，解决办法是需要修改<strong><code>__init__.py</code></strong> 文件中的几处代码，但是仍然会出现 tag 值的问题。</li>
-</ul>
-<hr>
-<p>本以为问题得到了解决，可以按照书上的代码继续进行:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ python</div><div class="line">&gt;&gt;&gt; import pydelicious</div><div class="line">&gt;&gt;&gt; pydelicious.get_popular(tag=<span class="string">'python'</span>)</div></pre></td></tr></table></figure>
-<p>此时会报错，无论是否翻墙，显示获取失败。</p>
-<hr>
-<p>我在 stackoverflow.com 上找到了原因：<a href="http://stackoverflow.com/questions/29543799/pydelicious-get-popularprogramming-doesnt-return-any-valid-url" target="_blank" rel="external">the answer</a><strong>［需要翻墙］</strong><br>仔细看提问者的问题，重点是后面提出解决办法的几个回答。</p>
-<blockquote>
-<p><strong>You should modify the __init__.py to:rss =http_request(‘<a href="http://feeds.delicious.com/v2/rss" target="_blank" rel="external">http://feeds.delicious.com/v2/rss</a>‘) .read()</strong></p>
-</blockquote>
-<p>所以解决的办法是：<br>打开 pydelicious 的文件夹，找到子文件夹 pydelicious 下的 <strong><code>__init__.py</code></strong> 文件，修改三处地方：</p>
-<ul>
-<li><strong>DLCS_RSS = ‘<a href="http://feeds.delicious.com/v2/rss/" target="_blank" rel="external">http://feeds.delicious.com/v2/rss/</a>‘</strong></li>
-<li><strong>rss = http_request(‘<a href="http://feeds.delicious.com/v2/rss" target="_blank" rel="external">http://feeds.delicious.com/v2/rss</a>‘). read()</strong></li>
-<li><strong>def get_popular(tag =””):return getrss(tag = tag, popular =0)</strong></li>
-</ul>
-<p>命令行 <strong><code>cd</code></strong> 到 pydelicious 安装总文件夹，重新输入<strong><code>sudo python setup.py install</code></strong>。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ python</div><div class="line">&gt;&gt;&gt; import pydelicious</div><div class="line">&gt;&gt;&gt; pydelicious.get_popular(tag=<span class="string">'python'</span>)</div></pre></td></tr></table></figure>
-<p>此时会发现成功获取到了内容（注意检查网络，如果仍然无法获取，记得翻墙）。</p>
-<hr>
-<p>本以为到此终于告一段落，但是实际上：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; import pydelicious</div><div class="line">&gt;&gt;&gt; pydelicious.get_popular(tag=<span class="string">'python'</span>)</div><div class="line">&gt;&gt;&gt; pydelicious.get_popular(tag=<span class="string">'xxx'</span>)</div></pre></td></tr></table></figure>
-<p>意思是无论我如何更改参数 <strong><code>tag</code></strong> 的值，返回的内容会发现是一样。这个问题，stackoverflow 老外也同样遇到了：</p>
-<blockquote>
-<p><strong>I see the resource code again. Maybe it is wrong. Because If you edit the code, the procedural answer always remain unchanged…I’m studing…</strong></p>
-</blockquote>
-<p>我个人觉得可能是 DLCS_RSS 的网址还需要更改一下（因为这本书在刚出来的时候，pydelicious 还是支持原 del.icio.us 的网站，是不需要去更改 <strong><code>__init__.py</code></strong> 的文件等，后来是 unspported，所以需要更改 <strong><code>__init__.py</code></strong> 文件中的 RSS 订阅源，也许可能这个订阅源还不是最新的，反正是坑…），或者说是 <strong><code>get_popular()</code></strong> 这个 function 有误（这个不太可能），总而言之，折腾了一下晚上，感觉是遇到了坑，不过好歹也算是解决出来了。</p>
-<p>貌似有 <strong><code>deliciousapi</code></strong> 这个 package 作为替代，我也尝试过，但运行说明文档中的几个函数，发现会报错，希望如果有人知道如何用 <strong>deliciousapi</strong> 替代 pydelicious 完成第二章后续的几个模块，请务必告诉我！</p>
-<p>注意：新手实践这本书的时候，完全可以跳过这个坑，因为没有必要，只需要 get 第二章几个重要的算法或者是思想就可以了。</p>
-<hr>
-<h1 id="Correct-errors-in-printing"><a href="#Correct-errors-in-printing" class="headerlink" title="Correct errors in printing:"></a>Correct errors in printing:</h1><ul>
-<li>P13</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 如果两者没有共同之处，则返回 1</span></div><div class="line"><span class="keyword">if</span> n==<span class="number">0</span>: <span class="keyword">return</span> <span class="number">1</span></div></pre></td></tr></table></figure>
-<p>需要更正为：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 如果两者没有共同之处，则返回 0</span></div><div class="line"><span class="keyword">if</span> n==<span class="number">0</span>: <span class="keyword">return</span> <span class="number">0</span></div></pre></td></tr></table></figure>
-<hr>
-<h1 id="Practice"><a href="#Practice" class="headerlink" title="Practice:"></a>Practice:</h1><ul>
-<li><strong>暂无</strong></li>
-</ul>
-<hr>
-]]></content>
-    
-    <summary type="html">
-    
-      本文是关于「Programming Collective Intelligence」这本书的 Chapter 1 &amp; 2 的学习笔记。
     
     </summary>
     
