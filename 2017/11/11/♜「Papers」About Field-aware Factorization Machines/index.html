@@ -113,7 +113,7 @@
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://farm5.staticflickr.com/4373/35507009504_3298ce3029_o.jpg">
 <meta property="og:image" content="http://randolph.pro/Users/randolph/Downloads/%20论文调研报告%20/FFM.png">
-<meta property="og:updated_time" content="2017-11-12T14:33:25.786Z">
+<meta property="og:updated_time" content="2017-11-12T14:37:11.674Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="♜「Papers」 About Field-aware Factorization Machines">
 <meta name="twitter:description" content="本文主要介绍了 Field-aware Factorization Machines 在 广告点击率（CTR）任务上的一篇论文。">
@@ -450,7 +450,7 @@
                   <i class="fa fa-file-word-o"></i>
                 </span>
                 <span title="Words count in article">
-                  1,592
+                  1,588
                 </span>
                 <span> words </span>
                 
@@ -497,7 +497,7 @@
 <h2 id="Related-Work"><a href="#Related-Work" class="headerlink" title="Related Work"></a>Related Work</h2><h3 id="Poly-2"><a href="#Poly-2" class="headerlink" title="Poly 2"></a>Poly 2</h3><p>在多项式模型中，特征 $x_i$ 和 $x_j$ 的组合采用 $x_ix_j$ 表示，即 $x_i$ 和 $x_j$ 都非零时，组合特征 $x_ix_j$ 才有意义。典型的二阶多项式模型的表达式如下：</p>
 <script type="math/tex; mode=display">
 y(\mathbf{x}) = w_0+ \sum_{i=1}^n w_i x_i + \sum_{i=1}^n \sum_{j=i+1}^n w_{ij} x_i x_j</script><p>其中，$n$ 代表样本的特征数量，<script type="math/tex">x_ i</script> 是第 <script type="math/tex">i</script>个特征的值，<script type="math/tex">w_0</script>、<script type="math/tex">w_i</script>、<script type="math/tex">w_{ij}</script> 是模型参数。这也是 Poly2 （Degree-2 Polynomial Model ）模型的表达式。</p>
-<p>从公式（1）可以看出，组合特征的参数一共有 $\frac{n(n−1)}{2}$ 个，任意两个参数都是独立的。然而，在数据稀疏性普遍存在的实际应用场景中，二次项参数的训练是很困难的。其原因是，每个参数 $w<em>{ij}$ 的训练需要大量 <script type="math/tex">x_i</script> 和 <script type="math/tex">x_j</script> 都非零的样本；由于样本数据本来就比较稀疏，满足“<script type="math/tex">x_i</script> 和 <script type="math/tex">x_j</script> 都非零”的样本将会非常少。训练样本的不足，很容易导致参数 $w</em>{ij}$ 不准确，最终将严重影响模型的性能。</p>
+<p>从公式（1）可以看出，组合特征的参数一共有 $\frac{n(n−1)}{2}$ 个，任意两个参数都是独立的。然而，在数据稀疏性普遍存在的实际应用场景中，二次项参数的训练是很困难的。其原因是，每个参数 <script type="math/tex">w_{ij}</script> 的训练需要大量 <script type="math/tex">x_i</script> 和 <script type="math/tex">x_j</script> 都非零的样本；由于样本数据本来就比较稀疏，满足“<script type="math/tex">x_i</script> 和 <script type="math/tex">x_j</script> 都非零”的样本将会非常少。训练样本的不足，很容易导致参数 <script type="math/tex">w_{ij}</script> 不准确，最终将严重影响模型的性能。</p>
 <h3 id="FM"><a href="#FM" class="headerlink" title="FM"></a>FM</h3><p>因此，为了解决二次项参数的训练问题，FM 模型基于矩阵分解的思想，在原有表达式对其稍微进行了一点改动：</p>
 <script type="math/tex; mode=display">
 y(\mathbf{x}) = w_0+ \sum_{i=1}^n w_i x_i + \sum_{i=1}^n \sum_{j=i+1}^n \left \langle v_{i},v_{j} \right \rangle x_i x_j</script><p>其中，$n$ 代表样本的特征数量，<script type="math/tex">x_ i</script> 是第 $i$ 个特征的值，<script type="math/tex">w_0</script>、<script type="math/tex">w_i</script>、<script type="math/tex">v_{i}</script>、<script type="math/tex">v_{j}</script> 是模型参数。<script type="math/tex">v_{i}</script>、<script type="math/tex">v_{j}</script> 表示长度为 $k $ 的隐向量，包含 $k$ 个描述特征的因子，$k$ 为超参数，<script type="math/tex">\left \langle v_{i},v_{j} \right \rangle</script> 表示向量点积。</p>
