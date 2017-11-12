@@ -113,7 +113,7 @@
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://farm5.staticflickr.com/4373/35507009504_3298ce3029_o.jpg">
 <meta property="og:image" content="https://farm5.staticflickr.com/4552/24489629838_2654e8c9e6_o.png">
-<meta property="og:updated_time" content="2017-11-12T14:44:30.102Z">
+<meta property="og:updated_time" content="2017-11-12T14:45:53.181Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="♜「Papers」 About Field-aware Factorization Machines">
 <meta name="twitter:description" content="本文主要介绍了 Field-aware Factorization Machines 在 广告点击率（CTR）任务上的一篇论文。">
@@ -450,7 +450,7 @@
                   <i class="fa fa-file-word-o"></i>
                 </span>
                 <span title="Words count in article">
-                  1,577
+                  1,562
                 </span>
                 <span> words </span>
                 
@@ -546,8 +546,35 @@ label \quad field_1:feat_1:val_1 \quad field_2:feat_2:val_2 \quad ...</script><p
 1 \quad P:ESPN:1 \quad A:Nike:1 \quad G:Male:1</script></li>
 <li><p>数值型特征</p>
 <p>对于数值型特征，例如下表数据：</p>
-<p>| Accepted | AR    | Hidx | Cite  |<br>| ———— | ——- | —— | ——- |<br>| Yes      | 45.73 | 2    | 3     |<br>| No       | 1.04  | 100  | 50000 |</p>
-<p>有两种处理成 FFM 数据格式的方式：</p>
+</li>
+</ol>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Accepted</th>
+<th>AR</th>
+<th>Hidx</th>
+<th>Cite</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Yes</td>
+<td>45.73</td>
+<td>2</td>
+<td>3</td>
+</tr>
+<tr>
+<td>No</td>
+<td>1.04</td>
+<td>100</td>
+<td>50000</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>   有两种处理成 FFM 数据格式的方式：</p>
 <ul>
 <li><p>Treat each feature as a dummy field:</p>
 <script type="math/tex; mode=display">
@@ -556,16 +583,33 @@ label \quad field_1:feat_1:val_1 \quad field_2:feat_2:val_2 \quad ...</script><p
 <script type="math/tex; mode=display">
 1 \quad AR:45:1 \quad Hidx:2:1 \quad Cite:3:1</script></li>
 </ul>
-</li>
-</ol>
 <p>   注意到第二种处理方法，将 AR 这 field 中的特征值进行了处理，将 $45.73$ 处理成 $45.7$、$45$、$40$ 甚至是 $int(log(45.73))$ 都是可行的。</p>
 <ol>
 <li><p>单 field 特征</p>
 <p>经常在 NLP 任务上出现，例如如下表数据：</p>
-<p>| good mood | sentence                        |<br>| ————- | ———————————————- |<br>| Yes       | Hooray!  Our paper is accepted! |<br>| No        | Well, our paper is rejected..   |</p>
-<p>所有的特征都属于同一个 field — <code>sentence</code>，那么我们的做法就是将 <code>sentence</code> 这一 field 放置在每个分词特征之前，相当于是从 FFM 降低到 FM。 </p>
 </li>
 </ol>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>good mood</th>
+<th>sentence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Yes</td>
+<td>Hooray!  Our paper is accepted!</td>
+</tr>
+<tr>
+<td>No</td>
+<td>Well, our paper is rejected..</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>   所有的特征都属于同一个 field — <code>sentence</code>，那么我们的做法就是将 <code>sentence</code> 这一 field 放置在每个分词特征之前，相当于是从 FFM 降低到 FM。 </p>
 <h3 id="Experiments"><a href="#Experiments" class="headerlink" title="Experiments"></a>Experiments</h3><h4 id="Experiment-Setting"><a href="#Experiment-Setting" class="headerlink" title="Experiment Setting"></a>Experiment Setting</h4><p><strong>1. 数据集</strong></p>
 <p>数据集为 Kaggle 两个比赛的数据集：</p>
 <ul>
