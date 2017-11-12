@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://randolph.pro/"/>
-  <updated>2017-11-12T14:29:08.777Z</updated>
+  <updated>2017-11-12T14:33:25.786Z</updated>
   <id>http://randolph.pro/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://randolph.pro/2017/11/11/%E2%99%9C%E3%80%8CPapers%E3%80%8DAbout%20Field-aware%20Factorization%20Machines/"/>
     <id>http://randolph.pro/2017/11/11/♜「Papers」About Field-aware Factorization Machines/</id>
     <published>2017-11-10T16:00:00.000Z</published>
-    <updated>2017-11-12T14:29:08.777Z</updated>
+    <updated>2017-11-12T14:33:25.786Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://farm5.staticflickr.com/4373/35507009504_3298ce3029_o.jpg" alt=""></p>
 <p>有关「Machine Learning」的其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/">「Machine Learning」</a><br>有关「Papers」的其他论文学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/Papers/">「Papers」</a></p>
@@ -30,12 +30,12 @@
 <p>因此使用多项式模型，考虑特征之间的组合会更加直观。</p>
 <h2 id="Related-Work"><a href="#Related-Work" class="headerlink" title="Related Work"></a>Related Work</h2><h3 id="Poly-2"><a href="#Poly-2" class="headerlink" title="Poly 2"></a>Poly 2</h3><p>在多项式模型中，特征 $x_i$ 和 $x_j$ 的组合采用 $x_ix_j$ 表示，即 $x_i$ 和 $x_j$ 都非零时，组合特征 $x_ix_j$ 才有意义。典型的二阶多项式模型的表达式如下：</p>
 <script type="math/tex; mode=display">
-y(\mathbf{x}) = w_0+ \sum_{i=1}^n w_i x_i + \sum_{i=1}^n \sum_{j=i+1}^n w_{ij} x_i x_j</script><p>其中，$n​$ 代表样本的特征数量，<script type="math/tex">x_ i​</script> 是第 <script type="math/tex">i​</script>个特征的值，<script type="math/tex">w_0​</script>、<script type="math/tex">w_i​</script>、<script type="math/tex">w_{ij}​</script> 是模型参数。这也是 Poly2 （Degree-2 Polynomial Model ）模型的表达式。</p>
-<p>从公式（1）可以看出，组合特征的参数一共有 $\frac{n(n−1)}{2}$ 个，任意两个参数都是独立的。然而，在数据稀疏性普遍存在的实际应用场景中，二次项参数的训练是很困难的。其原因是，每个参数 $w<em>{ij}$ 的训练需要大量 $x_i$ 和 $x_j$ 都非零的样本；由于样本数据本来就比较稀疏，满足“$x_i$ 和 $x_j$ 都非零”的样本将会非常少。训练样本的不足，很容易导致参数 $w</em>{ij}$ 不准确，最终将严重影响模型的性能。</p>
+y(\mathbf{x}) = w_0+ \sum_{i=1}^n w_i x_i + \sum_{i=1}^n \sum_{j=i+1}^n w_{ij} x_i x_j</script><p>其中，$n$ 代表样本的特征数量，<script type="math/tex">x_ i</script> 是第 <script type="math/tex">i</script>个特征的值，<script type="math/tex">w_0</script>、<script type="math/tex">w_i</script>、<script type="math/tex">w_{ij}</script> 是模型参数。这也是 Poly2 （Degree-2 Polynomial Model ）模型的表达式。</p>
+<p>从公式（1）可以看出，组合特征的参数一共有 $\frac{n(n−1)}{2}$ 个，任意两个参数都是独立的。然而，在数据稀疏性普遍存在的实际应用场景中，二次项参数的训练是很困难的。其原因是，每个参数 $w<em>{ij}$ 的训练需要大量 <script type="math/tex">x_i</script> 和 <script type="math/tex">x_j</script> 都非零的样本；由于样本数据本来就比较稀疏，满足“<script type="math/tex">x_i</script> 和 <script type="math/tex">x_j</script> 都非零”的样本将会非常少。训练样本的不足，很容易导致参数 $w</em>{ij}$ 不准确，最终将严重影响模型的性能。</p>
 <h3 id="FM"><a href="#FM" class="headerlink" title="FM"></a>FM</h3><p>因此，为了解决二次项参数的训练问题，FM 模型基于矩阵分解的思想，在原有表达式对其稍微进行了一点改动：</p>
 <script type="math/tex; mode=display">
-y(\mathbf{x}) = w_0+ \sum_{i=1}^n w_i x_i + \sum_{i=1}^n \sum_{j=i+1}^n \left \langle v_{i},v_{j} \right \rangle x_i x_j</script><p>其中，$n$ 代表样本的特征数量，$x<em> i$ 是第 $i$ 个特征的值，$w_0$、$w_i$、$v</em>{i}$、$v<em>{j}$ 是模型参数。$v</em>{i}$、$v<em>{j}$ 表示长度为 $k $ 的隐向量，包含 $k$ 个描述特征的因子，$k$ 为超参数，$\left \langle v</em>{i},v_{j} \right \rangle$ 表示向量点积。</p>
-<p>根据公式，二次项的参数数量减少为 $kn$ 个，远小于 Poly2 模型的参数数量。而且，最重要的是，参数的因子化使得 $x<em>ix_j$ 的参数和 $x_ix_t$ 的参数不再是相互独立的，因此我们可以在样本稀疏的情况下相对合理地估计 FM 的二次项参数。具体来说，$x_ix_j$ 和 $x_ix_t$ 的系数分别为 $\left \langle v</em>{i},v<em>{j} \right \rangle$ 和 $\left \langle v</em>{i},v_{t} \right \rangle$，它们之间有共同项 $v_i$。也就是说，所有包含“$x_i$ 的非零组合特征”（存在某个 $j≠i$，使得 $x_ix_j≠0$）的样本都可以用来学习隐向量 $v_i$，这很大程度上避免了数据稀疏性造成的影响。而在 Poly2 模型中，$w_iw_j$ 和 $w_iw_t$ 是相互独立的。</p>
+y(\mathbf{x}) = w_0+ \sum_{i=1}^n w_i x_i + \sum_{i=1}^n \sum_{j=i+1}^n \left \langle v_{i},v_{j} \right \rangle x_i x_j</script><p>其中，$n$ 代表样本的特征数量，<script type="math/tex">x_ i</script> 是第 $i$ 个特征的值，<script type="math/tex">w_0</script>、<script type="math/tex">w_i</script>、<script type="math/tex">v_{i}</script>、<script type="math/tex">v_{j}</script> 是模型参数。<script type="math/tex">v_{i}</script>、<script type="math/tex">v_{j}</script> 表示长度为 $k $ 的隐向量，包含 $k$ 个描述特征的因子，$k$ 为超参数，<script type="math/tex">\left \langle v_{i},v_{j} \right \rangle</script> 表示向量点积。</p>
+<p>根据公式，二次项的参数数量减少为 $kn$ 个，远小于 Poly2 模型的参数数量。而且，最重要的是，参数的因子化使得 <script type="math/tex">x_ix_j</script> 的参数和 <script type="math/tex">x_ix_t</script> 的参数不再是相互独立的，因此我们可以在样本稀疏的情况下相对合理地估计 FM 的二次项参数。具体来说，<script type="math/tex">x_ix_j</script> 和 <script type="math/tex">x_ix_t</script> 的系数分别为 <script type="math/tex">\left \langle v_{i},v_{j} \right \rangle</script> 和 <script type="math/tex">\left \langle v_{i},v_{t} \right \rangle</script>，它们之间有共同项 <script type="math/tex">v_i</script>。也就是说，所有包含“<script type="math/tex">x_i</script> 的非零组合特征”（存在某个 $j≠i$，使得 <script type="math/tex">x_ix_j≠0</script>）的样本都可以用来学习隐向量 <script type="math/tex">v_i</script>，这很大程度上避免了数据稀疏性造成的影响。而在 Poly2 模型中，<script type="math/tex">w_iw_j</script> 和 <script type="math/tex">w_iw_t</script> 是相互独立的。</p>
 <p>FM 模型比起 Poly 2 模型，其优点显而易见：</p>
 <ul>
 <li>通常 CTR 任务的数据量都是十分庞大的，FM 的参数数量比起 Poly 2 要明显减少，减少了模型的训练时间。</li>
@@ -43,7 +43,7 @@ y(\mathbf{x}) = w_0+ \sum_{i=1}^n w_i x_i + \sum_{i=1}^n \sum_{j=i+1}^n \left \l
 </ul>
 <h3 id="FFM"><a href="#FFM" class="headerlink" title="FFM"></a>FFM</h3><p>而我们今天的主角 FFM 模型，在 FM 模型表达式的基础上，更进一步：</p>
 <script type="math/tex; mode=display">
-y(\mathbf{x}) = w_0+ \sum_{i=1}^n w_i x_i + \sum_{i=1}^n \sum_{j=i+1}^n \left \langle v_{i,f_{2}},v_{j,f_{1}} \right \rangle x_i x_j</script><p>其中，$n$ 代表样本的特征数量，$x<em> i$ 是第 $i$ 个特征的值，$w_0$、$w_i$、$v</em>{i,f<em>{2}}$、$v</em>{j,f<em>{1}}$ 是模型参数。$v</em>{i,f<em>{2}}$、$v</em>{j,f<em>{1}}$ 表示长度为 $k $ 的隐向量，包含 $k$ 个描述特征的因子，$k$ 为超参数，$\left \langle v</em>{i},v<em>{j} \right \rangle$ 表示向量点积。$\left \langle v</em>{i},v<em>{j} \right \rangle$ 变成了 $\left \langle v</em>{i,f<em>{2}},v</em>{j,f_{1}} \right \rangle$ ，其中 $f_1$、$f_2$ 表示 $x_i$ 与 $x_j$ 所属的 field。</p>
+y(\mathbf{x}) = w_0+ \sum_{i=1}^n w_i x_i + \sum_{i=1}^n \sum_{j=i+1}^n \left \langle v_{i,f_{2}},v_{j,f_{1}} \right \rangle x_i x_j</script><p>其中，$n$ 代表样本的特征数量，<script type="math/tex">x_ i</script> 是第 $i$ 个特征的值，<script type="math/tex">w_0</script>、<script type="math/tex">w_i</script>、<script type="math/tex">v_{i,f_{2}}</script>、<script type="math/tex">v_{j,f_{1}}</script> 是模型参数。<script type="math/tex">v_{i,f_{2}}</script>、<script type="math/tex">v_{j,f_{1}}</script> 表示长度为 $k$ 的隐向量，包含 $k$ 个描述特征的因子，$k$ 为超参数，<script type="math/tex">\left \langle v_{i},v_{j} \right \rangle</script> 表示向量点积。<script type="math/tex">\left \langle v_{i},v_{j} \right \rangle</script> 变成了 <script type="math/tex">\left \langle v_{i,f_{2}},v_{j,f_{1}} \right \rangle</script> ，其中 <script type="math/tex">f_1</script>、<script type="math/tex">f_2</script> 表示 <script type="math/tex">x_i</script> 与 <script type="math/tex">x_j</script> 所属的 field。</p>
 <p>举个例子：</p>
 <div class="table-container">
 <table>
