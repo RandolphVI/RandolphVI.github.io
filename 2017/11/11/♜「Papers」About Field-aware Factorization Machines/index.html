@@ -113,7 +113,7 @@
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://farm5.staticflickr.com/4373/35507009504_3298ce3029_o.jpg">
 <meta property="og:image" content="http://randolph.pro/Users/randolph/Downloads/%20论文调研报告%20/FFM.png">
-<meta property="og:updated_time" content="2017-11-12T14:37:11.674Z">
+<meta property="og:updated_time" content="2017-11-12T14:41:53.173Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="♜「Papers」 About Field-aware Factorization Machines">
 <meta name="twitter:description" content="本文主要介绍了 Field-aware Factorization Machines 在 广告点击率（CTR）任务上的一篇论文。">
@@ -450,7 +450,7 @@
                   <i class="fa fa-file-word-o"></i>
                 </span>
                 <span title="Words count in article">
-                  1,588
+                  1,479
                 </span>
                 <span> words </span>
                 
@@ -535,29 +535,36 @@ y(\mathbf{x}) = w_0+ \sum_{i=1}^n w_i x_i + \sum_{i=1}^n \sum_{j=i+1}^n \left \l
 <script type="math/tex; mode=display">
 \phi_{FM}(w,x) = w_{ESPN} \cdot w_{Nike} + w_{ESPN} \cdot w_{Male} + w_{Nike} \cdot w_{Male}</script><p>而对于 FFM 模型而言，$\phi_{FFM}(w, x)$ 为：</p>
 <script type="math/tex; mode=display">
-\phi_{FM}(w,x) = w_{ESPN,A} \cdot w_{Nike,P} + w_{ESPN,G} \cdot w_{Male,P} + w_{Nike,G} \cdot w_{Male,A}</script><p>在 FM 模型中，每个特征只有一个隐向量需要学习，而 FFM 则需要学习多个隐向量，取决于与其组合的特征的 field。例如对于特征 ESPN 的参数 $w<em>{ESPN}$ ，它可以通过与特征 Nike 组合（$w</em>{ESPN} \cdot w<em>{Nike}$）或者 特征 Male 的组合（$w</em>{ESPN} \cdot w_{Male}$）来学习。然而，由于 Nike 与 Male 分别属于不同的 field ，因此（ESPN, NIKE）与（ESPN, Male）所造成的影响是不一样。</p>
-<p>$w<em>{ESPN, A}$ 是因为 Nike 的 field 为 Advertiser（A），$w</em>{ESPN,G}$ 是因为 Male 的 field 为 Gender（G）。</p>
-<h4 id="FFM- 模型数据格式"><a href="#FFM- 模型数据格式" class="headerlink" title="FFM 模型数据格式"></a>FFM 模型数据格式</h4><script type="math/tex; mode=display">
-label \quad field_1:feat_1:val_1 \quad field_2:feat_2:val_2 \quad ...</script><p> 对于大多数特征都可以用这样的方法表示，但是对于一些特征：</p>
-<ol>
-<li><p>类别型特征</p>
-<p>例如上表的数据，处理成 FFM 数据格式的话：</p>
+\phi_{FM}(w,x) = w_{ESPN,A} \cdot w_{Nike,P} + w_{ESPN,G} \cdot w_{Male,P} + w_{Nike,G} \cdot w_{Male,A}</script><p>在 FM 模型中，每个特征只有一个隐向量需要学习，而 FFM 则需要学习多个隐向量，取决于与其组合的特征的 field。例如对于特征 ESPN 的参数 <script type="math/tex">w_{ESPN}</script> ，它可以通过与特征 Nike 组合（<script type="math/tex">w_{ESPN} \cdot w_{Nike}</script>）或者 特征 Male 的组合（<script type="math/tex">w_{ESPN} \cdot w_{Male}</script>）来学习。然而，由于 Nike 与 Male 分别属于不同的 field ，因此（ESPN, NIKE）与（ESPN, Male）所造成的影响是不一样。</p>
+<script type="math/tex; mode=display">w_{ESPN, A}$$ 是因为 Nike 的 field 为 Advertiser（A），$$w_{ESPN,G}$$ 是因为 Male 的 field 为 Gender（G）。
+
+#### FFM 模型数据格式</script><p>label \quad field_1:feat_1:val_1 \quad field_2:feat_2:val_2 \quad …</p>
 <script type="math/tex; mode=display">
-1 \quad P:ESPN:1 \quad A:Nike:1 \quad G:Male:1</script></li>
-<li><p>数值型特征</p>
-<p>对于数值型特征，例如下表数据：</p>
-<p>| Accepted | AR    | Hidx | Cite  |<br>| ———— | ——- | —— | ——- |<br>| Yes      | 45.73 | 2    | 3     |<br>| No       | 1.04  | 100  | 50000 |</p>
-<p>有两种处理成 FFM 数据格式的方式：</p>
-<ul>
-<li><p>Treat each feature as a dummy field:</p>
+
+ 对于大多数特征都可以用这样的方法表示，但是对于一些特征：
+
+1. 类别型特征
+
+   例如上表的数据，处理成 FFM 数据格式的话：</script><p>   1 \quad P:ESPN:1 \quad A:Nike:1 \quad G:Male:1</p>
 <script type="math/tex; mode=display">
-1 \quad AR:AR:45.73 \quad Hidx:Hidx:2 \quad Cite:Cite:3</script></li>
-<li><p>Discretize each numerical feature to a categorical one:</p>
-<script type="math/tex; mode=display">
+
+2. 数值型特征
+
+   对于数值型特征，例如下表数据：
+
+   | Accepted | AR    | Hidx | Cite  |
+   | -------- | ----- | ---- | ----- |
+   | Yes      | 45.73 | 2    | 3     |
+   | No       | 1.04  | 100  | 50000 |
+
+   有两种处理成 FFM 数据格式的方式：
+
+   - Treat each feature as a dummy field:</script><pre><code> 1 \quad AR:AR:45.73 \quad Hidx:Hidx:2 \quad Cite:Cite:3
+ $$
+</code></pre><ul>
+<li>Discretize each numerical feature to a categorical one:<script type="math/tex; mode=display">
 1 \quad AR:45:1 \quad Hidx:2:1 \quad Cite:3:1</script></li>
 </ul>
-</li>
-</ol>
 <p>   注意到第二种处理方法，将 AR 这 field 中的特征值进行了处理，将 $45.73$ 处理成 $45.7$、$45$、$40$ 甚至是 $int(log(45.73))$ 都是可行的。</p>
 <ol>
 <li><p>单 field 特征</p>
@@ -872,7 +879,7 @@ label \quad field_1:feat_1:val_1 \quad field_2:feat_2:val_2 \quad ...</script><p
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#「Field-aware-Factorization-Machines-for-CTR-Prediction-」"><span class="nav-number">1.</span> <span class="nav-text">「Field-aware Factorization Machines for CTR Prediction 」</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Introduction"><span class="nav-number">1.1.</span> <span class="nav-text">Introduction</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Related-Work"><span class="nav-number">2.</span> <span class="nav-text">Related Work</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Poly-2"><span class="nav-number">2.1.</span> <span class="nav-text">Poly 2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#FM"><span class="nav-number">2.2.</span> <span class="nav-text">FM</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#FFM"><span class="nav-number">2.3.</span> <span class="nav-text">FFM</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#FFM- 模型数据格式"><span class="nav-number">2.3.1.</span> <span class="nav-text">FFM 模型数据格式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Experiments"><span class="nav-number">2.4.</span> <span class="nav-text">Experiments</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Experiment-Setting"><span class="nav-number">2.4.1.</span> <span class="nav-text">Experiment Setting</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Results-and-Discussion"><span class="nav-number">2.4.2.</span> <span class="nav-text">Results and Discussion</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#「Field-aware-Factorization-Machines-for-CTR-Prediction-」"><span class="nav-number">1.</span> <span class="nav-text">「Field-aware Factorization Machines for CTR Prediction 」</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Introduction"><span class="nav-number">1.1.</span> <span class="nav-text">Introduction</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Related-Work"><span class="nav-number">2.</span> <span class="nav-text">Related Work</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Poly-2"><span class="nav-number">2.1.</span> <span class="nav-text">Poly 2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#FM"><span class="nav-number">2.2.</span> <span class="nav-text">FM</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#FFM"><span class="nav-number">2.3.</span> <span class="nav-text">FFM</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Experiments"><span class="nav-number">2.4.</span> <span class="nav-text">Experiments</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Experiment-Setting"><span class="nav-number">2.4.1.</span> <span class="nav-text">Experiment Setting</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Results-and-Discussion"><span class="nav-number">2.4.2.</span> <span class="nav-text">Results and Discussion</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
