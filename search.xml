@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title><![CDATA[♜「Papers」 About Text Classification based on RNN]]></title>
-    <url>%2F2017%2F10%2F17%2F%E2%99%9C%E3%80%8CPapers%E3%80%8DAbout%20Text%20Classification%20based%20on%20RNN%2F</url>
+    <url>%2F2017%2F10%2F17%2F%E2%99%9C%E3%80%8CPapers%E3%80%8DAbout%20Text%20Classification%20based%20on%20RNN%E7%9A%84%E5%89%AF%E6%9C%AC%2F</url>
     <content type="text"><![CDATA[有关「Machine Learning」的其他学习笔记系列：「Machine Learning」 有关「Papers」的其他论文学习笔记系列：「Papers」 「Recurrent Neural Network for Text Classification with Multi-Task Learning」 本文为复旦在 2016 年 IJCAI 上的发表的关于循环神经网络在多任务文本分类上的应用。 问题定义：在先前的许多工作中，模型的学习都是基于单任务，对于复杂的问题，也可以分解为简单且相互独立的子问题来单独解决，然后再合并结果，得到最初复杂问题的结果。这样做看似合理，其实是不正确的，因为现实世界中很多问题不能分解为一个一个独立的子问题，即使可以分解，各个子问题之间也是相互关联的，通过一些共享因素或共享表示（share representation）联系在一起。把现实问题当做一个个独立的单任务处理，往往会忽略了问题之间所富含的丰富的关联信息。 提出的解决办法：多任务学习就是为了解决这个问题而诞生的。把多个相关（related）的任务（task）放在一起学习。多个任务之间共享一些因素，它们可以在学习过程中，共享它们所学到的信息，这是单任务学习没有具备的。相关联的多任务学习比单任务学习能去的更好的泛化（generalization）效果。本文基于 RNN 循环神经网络，提出三种不同的信息共享机制，整体网络是基于所有的任务共同学习得到。 IntroductionIntroduction 里面提及了： 词向量的重要性； 多任务学习的有效性。 Related Work 第一个模型使用: : : ExperimentsDatasets 实验部分就是使用几个常见的 Datasets，其中用到的有： Experiment Setting Results and Discussion]]></content>
       <categories>
         <category>Machine Learning</category>
@@ -14,14 +14,16 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[「Machine Learning」 How to Generate a Good Word Embedding?]]></title>
-    <url>%2F2017%2F10%2F14%2F%E3%80%8CMachine%20Learning%E3%80%8D%20How%20to%20Generate%20a%20Good%20Word%20Embedding%3F%2F</url>
-    <content type="text"><![CDATA[有关「Machine Learning」的其他学习笔记系列：「Machine Learning」 IntroductionCompared with Other ModelsRelated ​]]></content>
+    <title><![CDATA[♜「Papers」 About Text Classification based on RNN]]></title>
+    <url>%2F2017%2F10%2F17%2F%E2%99%9C%E3%80%8CPapers%E3%80%8DAbout%20Text%20Classification%20based%20on%20RNN%2F</url>
+    <content type="text"><![CDATA[有关「Machine Learning」的其他学习笔记系列：「Machine Learning」 有关「Papers」的其他论文学习笔记系列：「Papers」 「Recurrent Neural Network for Text Classification with Multi-Task Learning」 本文为复旦在 2016 年 IJCAI 上的发表的关于循环神经网络在多任务文本分类上的应用。 问题定义：在先前的许多工作中，模型的学习都是基于单任务，对于复杂的问题，也可以分解为简单且相互独立的子问题来单独解决，然后再合并结果，得到最初复杂问题的结果。这样做看似合理，其实是不正确的，因为现实世界中很多问题不能分解为一个一个独立的子问题，即使可以分解，各个子问题之间也是相互关联的，通过一些共享因素或共享表示（share representation）联系在一起。把现实问题当做一个个独立的单任务处理，往往会忽略了问题之间所富含的丰富的关联信息。 提出的解决办法：多任务学习就是为了解决这个问题而诞生的。把多个相关（related）的任务（task）放在一起学习。多个任务之间共享一些因素，它们可以在学习过程中，共享它们所学到的信息，这是单任务学习没有具备的。相关联的多任务学习比单任务学习能去的更好的泛化（generalization）效果。本文基于 RNN 循环神经网络，提出三种不同的信息共享机制，整体网络是基于所有的任务共同学习得到。 IntroductionIntroduction 里面提及了： 词向量的重要性； 多任务学习的有效性。 Related Work 第一个模型使用: : : ExperimentsDatasets 实验部分就是使用几个常见的 Datasets，其中用到的有： Experiment Setting Results and Discussion]]></content>
       <categories>
         <category>Machine Learning</category>
+        <category>Papers</category>
       </categories>
       <tags>
         <tag>Machine Learning</tag>
+        <tag>Papers</tag>
       </tags>
   </entry>
   <entry>

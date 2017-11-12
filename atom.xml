@@ -17,8 +17,8 @@
   
   <entry>
     <title>♜「Papers」 About Text Classification based on RNN</title>
-    <link href="http://randolph.pro/2017/10/17/%E2%99%9C%E3%80%8CPapers%E3%80%8DAbout%20Text%20Classification%20based%20on%20RNN/"/>
-    <id>http://randolph.pro/2017/10/17/♜「Papers」About Text Classification based on RNN/</id>
+    <link href="http://randolph.pro/2017/10/17/%E2%99%9C%E3%80%8CPapers%E3%80%8DAbout%20Text%20Classification%20based%20on%20RNN%E7%9A%84%E5%89%AF%E6%9C%AC/"/>
+    <id>http://randolph.pro/2017/10/17/♜「Papers」About Text Classification based on RNN的副本/</id>
     <published>2017-10-16T16:00:00.000Z</published>
     <updated>2017-10-17T06:10:25.000Z</updated>
     
@@ -64,27 +64,50 @@
   </entry>
   
   <entry>
-    <title>「Machine Learning」 How to Generate a Good Word Embedding?</title>
-    <link href="http://randolph.pro/2017/10/14/%E3%80%8CMachine%20Learning%E3%80%8D%20How%20to%20Generate%20a%20Good%20Word%20Embedding?/"/>
-    <id>http://randolph.pro/2017/10/14/「Machine Learning」 How to Generate a Good Word Embedding?/</id>
-    <published>2017-10-13T16:00:00.000Z</published>
-    <updated>2017-10-14T04:44:24.000Z</updated>
+    <title>♜「Papers」 About Text Classification based on RNN</title>
+    <link href="http://randolph.pro/2017/10/17/%E2%99%9C%E3%80%8CPapers%E3%80%8DAbout%20Text%20Classification%20based%20on%20RNN/"/>
+    <id>http://randolph.pro/2017/10/17/♜「Papers」About Text Classification based on RNN/</id>
+    <published>2017-10-16T16:00:00.000Z</published>
+    <updated>2017-10-17T06:10:25.000Z</updated>
     
-    <content type="html"><![CDATA[<p><img src="https://farm5.staticflickr.com/4300/35460446383_aafc34ca3c_o.jpg" alt=""></p>
-<p> 有关「Machine Learning」的其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/">「Machine Learning」</a></p>
-<h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><h1 id="Compared-with-Other-Models"><a href="#Compared-with-Other-Models" class="headerlink" title="Compared with Other Models"></a>Compared with Other Models</h1><h1 id="Related"><a href="#Related" class="headerlink" title="Related"></a>Related</h1><p>  ​</p>
-]]></content>
+    <content type="html"><![CDATA[<p><img src="https://farm5.staticflickr.com/4373/35507009504_3298ce3029_o.jpg" alt=""></p>
+<p> 有关「Machine Learning」的其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/">「Machine Learning」</a><br> 有关「Papers」的其他论文学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/Papers/">「Papers」</a></p>
+<h1 id="「Recurrent-Neural-Network-for-Text-Classification-with-Multi-Task-Learning」"><a href="#「Recurrent-Neural-Network-for-Text-Classification-with-Multi-Task-Learning」" class="headerlink" title="「Recurrent Neural Network for Text Classification with Multi-Task Learning」"></a>「Recurrent Neural Network for Text Classification with Multi-Task Learning」</h1><p> 本文为复旦在 2016 年 IJCAI 上的发表的关于循环神经网络在多任务文本分类上的应用。</p>
+<p> 问题定义：在先前的许多工作中，模型的学习都是基于单任务，对于复杂的问题，也可以分解为简单且相互独立的子问题来单独解决，然后再合并结果，得到最初复杂问题的结果。这样做看似合理，其实是不正确的，因为现实世界中很多问题不能分解为一个一个独立的子问题，即使可以分解，各个子问题之间也是相互关联的，通过一些共享因素或共享表示（share representation）联系在一起。把现实问题当做一个个独立的单任务处理，往往会忽略了问题之间所富含的丰富的关联信息。</p>
+<p> 提出的解决办法：多任务学习就是为了解决这个问题而诞生的。把多个相关（related）的任务（task）放在一起学习。多个任务之间共享一些因素，它们可以在学习过程中，共享它们所学到的信息，这是单任务学习没有具备的。相关联的多任务学习比单任务学习能去的更好的泛化（generalization）效果。本文基于 RNN 循环神经网络，提出三种不同的信息共享机制，整体网络是基于所有的任务共同学习得到。</p>
+<p><img src="https://farm5.staticflickr.com/4486/37490166810_74c95852c5_o.png" alt=""></p>
+<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>Introduction 里面提及了：</p>
+<ul>
+<li> 词向量的重要性；</li>
+<li> 多任务学习的有效性。</li>
+</ul>
+<h2 id="Related-Work"><a href="#Related-Work" class="headerlink" title="Related Work"></a>Related Work</h2><p> 第一个模型使用:</p>
+<p><img src="https://farm5.staticflickr.com/4510/37490446050_feb6e54ed2_o.png" alt=""></p>
+<p>:</p>
+<p><img src="https://farm5.staticflickr.com/4496/37700304396_6447763429_o.png" alt=""></p>
+<p>:</p>
+<p><img src="https://farm5.staticflickr.com/4498/37490447880_dfe28b18db_o.png" alt=""></p>
+<h2 id="Experiments"><a href="#Experiments" class="headerlink" title="Experiments"></a>Experiments</h2><h3 id="Datasets"><a href="#Datasets" class="headerlink" title="Datasets"></a>Datasets</h3><p> 实验部分就是使用几个常见的 Datasets，其中用到的有：</p>
+<ul>
+<li><h3 id="Experiment-Setting"><a href="#Experiment-Setting" class="headerlink" title="Experiment Setting"></a>Experiment Setting</h3></li>
+<li></li>
+</ul>
+<h3 id="Results-and-Discussion"><a href="#Results-and-Discussion" class="headerlink" title="Results and Discussion"></a>Results and Discussion</h3>]]></content>
     
     <summary type="html">
     
-      本文介绍了如何生成简单有效的词向量的方法。
+      本文主要介绍了 RNN 循环神经网络在文本分类上的一些论文.
     
     </summary>
     
       <category term="Machine Learning" scheme="http://randolph.pro/categories/Machine-Learning/"/>
     
+      <category term="Papers" scheme="http://randolph.pro/categories/Machine-Learning/Papers/"/>
+    
     
       <category term="Machine Learning" scheme="http://randolph.pro/tags/Machine-Learning/"/>
+    
+      <category term="Papers" scheme="http://randolph.pro/tags/Papers/"/>
     
   </entry>
   

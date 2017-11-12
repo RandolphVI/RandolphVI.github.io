@@ -4,6 +4,31 @@
 
     
   <url>
+    <loc>http://randolph.pro/2017/10/17/%E2%99%9C%E3%80%8CPapers%E3%80%8DAbout%20Text%20Classification%20based%20on%20RNN%E7%9A%84%E5%89%AF%E6%9C%AC/</loc>
+    <lastmod>2017-10-17T06:10:25.000Z</lastmod>
+    <data>
+        <display>
+        <title>♜「Papers」 About Text Classification based on RNN</title>
+        <pubTime>2017-10-16T16:00:00.000Z</pubTime>
+        
+        <tag>Machine Learning</tag>
+         
+        <tag>Papers</tag>
+         
+         
+           
+             
+              <breadCrumb title="Machine Learning" url="http://randolph.pro/categories/Machine-Learning/"/>
+          
+             
+              <breadCrumb title="Papers" url="http://randolph.pro/categories/Machine-Learning/Papers/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://randolph.pro/2017/10/17/%E2%99%9C%E3%80%8CPapers%E3%80%8DAbout%20Text%20Classification%20based%20on%20RNN/</loc>
     <lastmod>2017-10-17T06:10:25.000Z</lastmod>
     <data>
@@ -47,26 +72,6 @@
           
              
               <breadCrumb title="Papers" url="http://randolph.pro/categories/Machine-Learning/Papers/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://randolph.pro/2017/10/14/%E3%80%8CMachine%20Learning%E3%80%8D%20How%20to%20Generate%20a%20Good%20Word%20Embedding?/</loc>
-    <lastmod>2017-10-14T04:44:24.000Z</lastmod>
-    <data>
-        <display>
-        <title>「Machine Learning」 How to Generate a Good Word Embedding?</title>
-        <pubTime>2017-10-13T16:00:00.000Z</pubTime>
-        
-        <tag>Machine Learning</tag>
-         
-         
-           
-             
-              <breadCrumb title="Machine Learning" url="http://randolph.pro/categories/Machine-Learning/"/>
           
         </display>
     </data>
