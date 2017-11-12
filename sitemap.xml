@@ -2,16 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://randolph.pro/2017/10/17/%E2%99%9C%E3%80%8CPapers%E3%80%8DAbout%20Text%20Classification%20based%20on%20RNN%E7%9A%84%E5%89%AF%E6%9C%AC/</loc>
+    <loc>http://randolph.pro/2017/11/11/%E2%99%9C%E3%80%8CPapers%E3%80%8DAbout%20Field-aware%20Factorization%20Machines/</loc>
     
-    <lastmod>2017-10-17T06:10:25.000Z</lastmod>
+    <lastmod>2017-11-12T13:26:28.073Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://randolph.pro/2017/03/10/%E2%99%9C%E3%80%8CPapers%E3%80%8DAbout%20Text%20Classification%20based%20on%20CNN/</loc>
+    
+    <lastmod>2017-11-12T13:25:06.647Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://randolph.pro/2017/10/17/%E2%99%9C%E3%80%8CPapers%E3%80%8DAbout%20Text%20Classification%20based%20on%20RNN/</loc>
     
-    <lastmod>2017-10-17T06:10:25.000Z</lastmod>
+    <lastmod>2017-11-12T13:23:36.208Z</lastmod>
     
   </url>
   
@@ -131,13 +138,6 @@
     <loc>http://randolph.pro/2016/04/15/%E3%80%8CComputer%20Vision%E3%80%8D%20JPEG%20Compression/</loc>
     
     <lastmod>2017-08-09T14:21:51.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://randolph.pro/2017/03/10/%E2%99%9C%E3%80%8CPapers%E3%80%8DAbout%20Text%20Classification%20based%20on%20CNN/</loc>
-    
-    <lastmod>2017-08-08T13:34:55.000Z</lastmod>
     
   </url>
   
