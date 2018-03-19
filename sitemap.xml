@@ -2,21 +2,28 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://randolph.pro/2018/03/19/%E5%8F%AF%E6%B1%97%E5%AD%A6%E9%99%A2%E6%95%B0%E6%8D%AE%E5%88%86%E4%BA%AB/</loc>
+    <loc>http://randolph.pro/2016/04/15/%E3%80%8CComputer%20Vision%E3%80%8D%20JPEG%20Compression/</loc>
     
-    <lastmod>2018-03-19T12:50:29.169Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://randolph.pro/2017/10/09/%E5%80%9F%E5%8A%A9%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%A2%9E%E5%BC%BA%E5%9F%BA%E4%BA%8E%E5%88%86%E5%AD%90%E5%AF%B9%E6%8E%A5%E7%9A%84%E8%99%9A%E6%8B%9F%E7%AD%9B%E9%80%89/</loc>
-    
-    <lastmod>2017-12-28T04:10:17.167Z</lastmod>
+    <lastmod>2018-03-19T13:38:00.758Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://randolph.pro/2017/12/17/%E3%80%8CKaggle%E3%80%8DMusic%20Recommendation%20Challenge/</loc>
+    <loc>http://randolph.pro/2017/01/14/%E2%99%9E%E3%80%8CMachine%20Learning%E3%80%8D%20Classification%20-%20KNN%20&%20kd%20Tree/</loc>
+    
+    <lastmod>2018-03-19T13:33:56.462Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://randolph.pro/2018/03/19/%E2%99%9A%20%E5%8F%AF%E6%B1%97%E5%AD%A6%E9%99%A2%E6%95%B0%E6%8D%AE%E5%88%86%E4%BA%AB/</loc>
+    
+    <lastmod>2018-03-19T13:30:33.741Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://randolph.pro/2017/12/17/%E2%99%9A%E3%80%8CKaggle%E3%80%8DMusic%20Recommendation%20Challenge/</loc>
     
     <lastmod>2017-12-18T09:35:32.454Z</lastmod>
     
@@ -44,7 +51,7 @@
   </url>
   
   <url>
-    <loc>http://randolph.pro/2017/10/14/%E3%80%8CMachine%20Learning%E3%80%8D%20How%20to%20Generate%20a%20Good%20Word%20Embedding/</loc>
+    <loc>http://randolph.pro/2017/10/14/%E2%99%9E%E3%80%8CMachine%20Learning%E3%80%8D%20How%20to%20Generate%20a%20Good%20Word%20Embedding/</loc>
     
     <lastmod>2017-11-12T13:21:45.083Z</lastmod>
     
@@ -79,21 +86,21 @@
   </url>
   
   <url>
-    <loc>http://randolph.pro/2017/09/25/%E3%80%8CTensorFlow%E3%80%8DCross%20Entropy%20Function%20in%20TensorFlow%20/</loc>
+    <loc>http://randolph.pro/2017/09/25/%E2%99%A3%EF%B8%8E%E3%80%8CTensorFlow%E3%80%8DCross%20Entropy%20Function%20in%20TensorFlow%20/</loc>
     
     <lastmod>2017-09-25T05:04:08.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://randolph.pro/2017/09/06/%E3%80%8CMachine%20Learning%E3%80%8DDeal%20with%20Imbalanced%20Data/</loc>
+    <loc>http://randolph.pro/2017/09/06/%E2%99%9E%E3%80%8CMachine%20Learning%E3%80%8DDeal%20with%20Imbalanced%20Data/</loc>
     
     <lastmod>2017-09-11T02:19:54.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://randolph.pro/2017/09/08/%E3%80%8CMachine%20Learning%E3%80%8D%20LSTM%20Introduction/</loc>
+    <loc>http://randolph.pro/2017/09/08/%E2%99%9E%E3%80%8CMachine%20Learning%E3%80%8D%20LSTM%20Introduction/</loc>
     
     <lastmod>2017-09-10T05:53:54.000Z</lastmod>
     
@@ -142,7 +149,7 @@
   </url>
   
   <url>
-    <loc>http://randolph.pro/2017/03/07/%E3%80%8CMachine%20Learning%E3%80%8D%20CNN%20Introduction/</loc>
+    <loc>http://randolph.pro/2017/03/07/%E2%99%9E%E3%80%8CMachine%20Learning%E3%80%8D%20CNN%20Introduction/</loc>
     
     <lastmod>2017-08-17T15:22:49.000Z</lastmod>
     
@@ -163,30 +170,16 @@
   </url>
   
   <url>
-    <loc>http://randolph.pro/2016/04/15/%E3%80%8CComputer%20Vision%E3%80%8D%20JPEG%20Compression/</loc>
-    
-    <lastmod>2017-08-09T14:21:51.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://randolph.pro/2017/03/13/%E3%80%8CTensorFlow%E3%80%8D%20Tensorboard/</loc>
+    <loc>http://randolph.pro/2017/03/13/%E2%99%A3%EF%B8%8E%E3%80%8CTensorFlow%E3%80%8D%20Tensorboard/</loc>
     
     <lastmod>2017-08-08T13:34:13.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://randolph.pro/2017/03/17/%E3%80%8CTensorFlow%E3%80%8DUse%20WeChat%20to%20Monitor%20Your%20Network/</loc>
+    <loc>http://randolph.pro/2017/03/17/%E2%99%A3%EF%B8%8E%E3%80%8CTensorFlow%E3%80%8DUse%20WeChat%20to%20Monitor%20Your%20Network/</loc>
     
     <lastmod>2017-08-08T13:33:21.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://randolph.pro/2017/01/14/%E2%99%9E%E3%80%8CMachine%20Learning%E3%80%8D%20Classification%20-%20KNN%20&%20kd%20Tree/</loc>
-    
-    <lastmod>2017-08-06T13:18:34.000Z</lastmod>
     
   </url>
   
@@ -219,7 +212,7 @@
   </url>
   
   <url>
-    <loc>http://randolph.pro/2017/03/03/%E3%80%8CMachine%20Learning%E3%80%8D%20Factorization%20Machines/</loc>
+    <loc>http://randolph.pro/2017/03/03/%E2%99%9E%E3%80%8CMachine%20Learning%E3%80%8D%20Factorization%20Machines/</loc>
     
     <lastmod>2017-08-06T12:57:41.000Z</lastmod>
     
