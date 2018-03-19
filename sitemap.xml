@@ -2,6 +2,55 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://randolph.pro/2018/03/19/%E2%99%9A%20About%20Khan%20Academy%20Data/</loc>
+    
+    <lastmod>2018-03-19T15:28:42.009Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://randolph.pro/2017/09/06/%E2%99%9B%E3%80%8CMachine%20Learning%E3%80%8DDeal%20with%20Imbalanced%20Data/</loc>
+    
+    <lastmod>2018-03-19T15:19:04.685Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://randolph.pro/2017/09/08/%E2%99%9B%E3%80%8CMachine%20Learning%E3%80%8D%20LSTM%20Introduction/</loc>
+    
+    <lastmod>2018-03-19T15:18:57.915Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://randolph.pro/2017/10/14/%E2%99%9B%E3%80%8CMachine%20Learning%E3%80%8D%20How%20to%20Generate%20a%20Good%20Word%20Embedding/</loc>
+    
+    <lastmod>2018-03-19T15:18:52.357Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://randolph.pro/2017/03/03/%E2%99%9B%E3%80%8CMachine%20Learning%E3%80%8D%20Factorization%20Machines/</loc>
+    
+    <lastmod>2018-03-19T15:18:42.977Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://randolph.pro/2017/03/07/%E2%99%9B%E3%80%8CMachine%20Learning%E3%80%8D%20CNN%20Introduction/</loc>
+    
+    <lastmod>2018-03-19T15:18:37.557Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://randolph.pro/2016/04/15/%E2%99%A6%EF%B8%8E%E3%80%8CComputer%20Vision%E3%80%8D%20JPEG%20Compression/</loc>
+    
+    <lastmod>2018-03-19T15:18:17.231Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://randolph.pro/2017/03/17/%E2%99%A3%EF%B8%8E%E3%80%8CTensorFlow%E3%80%8DUse%20WeChat%20to%20Monitor%20Your%20Network/</loc>
     
     <lastmod>2018-03-19T15:14:41.439Z</lastmod>
@@ -19,20 +68,6 @@
     <loc>http://randolph.pro/2017/03/13/%E2%99%A3%EF%B8%8E%E3%80%8CTensorFlow%E3%80%8D%20Tensorboard/</loc>
     
     <lastmod>2018-03-19T15:14:25.186Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://randolph.pro/2018/03/19/%E2%99%9A%20%E5%8F%AF%E6%B1%97%E5%AD%A6%E9%99%A2%E6%95%B0%E6%8D%AE%E5%88%86%E4%BA%AB/</loc>
-    
-    <lastmod>2018-03-19T14:57:36.901Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://randolph.pro/2016/04/15/%E3%80%8CComputer%20Vision%E3%80%8D%20JPEG%20Compression/</loc>
-    
-    <lastmod>2018-03-19T13:38:00.758Z</lastmod>
     
   </url>
   
@@ -72,13 +107,6 @@
   </url>
   
   <url>
-    <loc>http://randolph.pro/2017/10/14/%E3%80%8CMachine%20Learning%E3%80%8D%20How%20to%20Generate%20a%20Good%20Word%20Embedding/</loc>
-    
-    <lastmod>2017-11-12T13:21:45.083Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://randolph.pro/2017/10/13/%E2%99%9C%E3%80%8CPapers%E3%80%8DAbout%20Word%20Representation/</loc>
     
     <lastmod>2017-10-14T06:46:15.000Z</lastmod>
@@ -103,20 +131,6 @@
     <loc>http://randolph.pro/about/index.html</loc>
     
     <lastmod>2017-10-10T15:06:15.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://randolph.pro/2017/09/06/%E3%80%8CMachine%20Learning%E3%80%8DDeal%20with%20Imbalanced%20Data/</loc>
-    
-    <lastmod>2017-09-11T02:19:54.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://randolph.pro/2017/09/08/%E3%80%8CMachine%20Learning%E3%80%8D%20LSTM%20Introduction/</loc>
-    
-    <lastmod>2017-09-10T05:53:54.000Z</lastmod>
     
   </url>
   
@@ -163,13 +177,6 @@
   </url>
   
   <url>
-    <loc>http://randolph.pro/2017/03/07/%E3%80%8CMachine%20Learning%E3%80%8D%20CNN%20Introduction/</loc>
-    
-    <lastmod>2017-08-17T15:22:49.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://randolph.pro/2017/01/03/%E2%99%9E%E3%80%8CMachine%20Learning%E3%80%8D%20Clustering/</loc>
     
     <lastmod>2017-08-15T14:52:48.000Z</lastmod>
@@ -208,13 +215,6 @@
     <loc>http://randolph.pro/2015/12/13/%E2%99%9E%E3%80%8CWeb%20Scraping%20with%20Python%E3%80%8Dsmtplib%20&%20email%20module/</loc>
     
     <lastmod>2017-08-06T13:17:54.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://randolph.pro/2017/03/03/%E3%80%8CMachine%20Learning%E3%80%8D%20Factorization%20Machines/</loc>
-    
-    <lastmod>2017-08-06T12:57:41.000Z</lastmod>
     
   </url>
   
