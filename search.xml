@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title></title>
+    <title><![CDATA[♣︎ About Khan Academy data]]></title>
     <url>%2F2018%2F03%2F19%2F%E2%99%9A%20%E5%8F%AF%E6%B1%97%E5%AD%A6%E9%99%A2%E6%95%B0%E6%8D%AE%E5%88%86%E4%BA%AB%2F</url>
-    <content type="text"><![CDATA[title: ♣︎ About Khan Academy data date: 2018-03-19 tags: Machine Learning categories: Machine Learning description: 本文主要介绍了可汗学院的内容逻辑结构以及进行了一些初步的数据分析。 About Khan Academy dataIntroductionKhan Academy Knowledge Structure 存在重复项，例如： 「Computer science」 下的 「Hour of Code」 中的内容会重定位到同级的「 Computer science」 的内容中。 「Math by subject」 与 「Math by grade」存在交集。 Data structure 数据一共为 4 个 .json 文件，以及相关视频 Video 与相关图片 Picture。 content.json 包含知识点逻辑结构信息 包含内容种类信息（主要用于指向对应的题目类型） practice.json 若数据在 content.json 中 content_kind 字段为 Exercise ，则会进一步根据 practice \ 中的唯一 practice_id 对应到 practice.json 当中。 包含了试题题面文本信息以及图像信息 包含了试题答案文本信息以及图像信息 article.json 若数据在 content.json 中 content_kind 字段为 Article ，则会进一步根据唯一的 article_url 对应到 article.json 当中。 code.json 属于可汗学院中专门的编程题，但是其实重定向后就是对应种类为 Scratchpad 内容，简而言之，就是属于 Scratchpad 的一小部分内容，但不是 Scratchpad 的全部内容。 另外，若数据在 content.json 中 content_kind 字段为 Scratchpad ，并不存在唯一的字段对应到 code.json 当中，即不存在直接联系。 Logical Structure content.json practice.json Different types of contentExercise PictureTotal 14839 items = 4128 .png + 10709 .svg (Exists duplicate items) Video Article Scratchpad Data Analysis 针对 Domain 为「Math by subject」 各个「subject」的 Video 数量分布图 各个「subject」的 Exercise 数量分布图 各个「subject」的 「child_subject」 数量分布图 各个「subject」的 「slug」 数量分布图 针对 Video 在所有各个「subject」的数量分布图 .png) 针对 Exercise 在所有各个「subject」的数量分布图 .png)]]></content>
+    <content type="text"><![CDATA[About Khan Academy dataIntroductionKhan Academy Knowledge Structure 存在重复项，例如： 「Computer science」 下的 「Hour of Code」 中的内容会重定位到同级的「 Computer science」 的内容中。 「Math by subject」 与 「Math by grade」存在交集。 Data structure 数据一共为 4 个 .json 文件，以及相关视频 Video 与相关图片 Picture。 content.json 包含知识点逻辑结构信息 包含内容种类信息（主要用于指向对应的题目类型） practice.json 若数据在 content.json 中 content_kind 字段为 Exercise ，则会进一步根据 practice \ 中的唯一 practice_id 对应到 practice.json 当中。 包含了试题题面文本信息以及图像信息 包含了试题答案文本信息以及图像信息 article.json 若数据在 content.json 中 content_kind 字段为 Article ，则会进一步根据唯一的 article_url 对应到 article.json 当中。 code.json 属于可汗学院中专门的编程题，但是其实重定向后就是对应种类为 Scratchpad 内容，简而言之，就是属于 Scratchpad 的一小部分内容，但不是 Scratchpad 的全部内容。 另外，若数据在 content.json 中 content_kind 字段为 Scratchpad ，并不存在唯一的字段对应到 code.json 当中，即不存在直接联系。 Logical Structure content.json practice.json Different types of contentExercise PictureTotal 14839 items = 4128 .png + 10709 .svg (Exists duplicate items) Video Article Scratchpad Data Analysis 针对 Domain 为「Math by subject」 各个「subject」的 Video 数量分布图 各个「subject」的 Exercise 数量分布图 各个「subject」的 「child_subject」 数量分布图 各个「subject」的 「slug」 数量分布图 针对 Video 在所有各个「subject」的数量分布图 .png) 针对 Exercise 在所有各个「subject」的数量分布图 .png)]]></content>
+      <categories>
+        <category>Machine Learning</category>
+      </categories>
+      <tags>
+        <tag>Machine Learning</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[♚「Kaggle」 Music Recommendation Challenge]]></title>

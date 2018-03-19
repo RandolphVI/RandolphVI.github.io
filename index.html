@@ -355,7 +355,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/03/19/♚ 可汗学院数据分享/" itemprop="url">Untitled</a></h2>
+                <a class="post-title-link" href="/2018/03/19/♚ 可汗学院数据分享/" itemprop="url">♣︎  About Khan Academy data</a></h2>
         
 
         <div class="post-meta">
@@ -367,7 +367,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-19T19:47:46+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-19T00:00:00+08:00">
                 2018-03-19
               </time>
             
@@ -377,6 +377,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Machine-Learning/" itemprop="url" rel="index">
+                    <span itemprop="name">Machine Learning</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -396,7 +418,7 @@
 
           
           
-             <span id="/2018/03/19/♚ 可汗学院数据分享/" class="leancloud_visitors" data-flag-title="">
+             <span id="/2018/03/19/♚ 可汗学院数据分享/" class="leancloud_visitors" data-flag-title="♣︎  About Khan Academy data">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-fire"></i>
@@ -417,7 +439,7 @@
                   <i class="fa fa-file-word-o"></i>
                 </span>
                 <span title="Words count in article">
-                  463
+                  415
                 </span>
                 <span> words </span>
                 
@@ -452,74 +474,14 @@
 
       
         
-          
-            <p>title: ♣︎  About Khan Academy data</p>
-<p>date: 2018-03-19</p>
-<p>tags:</p>
-<ul>
-<li>Machine Learning</li>
-</ul>
-<p>categories:  </p>
-<ul>
-<li>Machine Learning</li>
-</ul>
-<p>description:  本文主要介绍了可汗学院的内容逻辑结构以及进行了一些初步的数据分析。</p>
-<h1 id="About-Khan-Academy-data"><a href="#About-Khan-Academy-data" class="headerlink" title="About Khan Academy data"></a>About Khan Academy data</h1><h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><h3 id="Khan-Academy-Knowledge-Structure"><a href="#Khan-Academy-Knowledge-Structure" class="headerlink" title="Khan Academy Knowledge Structure"></a>Khan Academy Knowledge Structure</h3><p><img src="/Users/randolph/PycharmProjects/Khan Academy Resource Downloader/ 乐维 / 可汗学院知识结构.png" alt="汗学院知识结"></p>
-<p> 存在重复项，例如：</p>
-<ol>
-<li>「Computer science」 下的 「Hour of Code」 中的内容会重定位到同级的「 Computer science」 的内容中。</li>
-<li>「Math by subject」 与 「Math by grade」存在交集。</li>
-</ol>
-<h2 id="Data-structure"><a href="#Data-structure" class="headerlink" title="Data structure"></a>Data structure</h2><p> 数据一共为 4 个 <code>.json</code> 文件，以及相关视频 <strong>Video</strong> 与相关图片 <strong>Picture</strong>。</p>
-<ul>
-<li>content.json<ul>
-<li> 包含知识点逻辑结构信息 </li>
-<li> 包含内容种类信息（主要用于指向对应的题目类型）</li>
-</ul>
-</li>
-<li>practice.json<ul>
-<li> 若数据在 <code>content.json</code> 中 <code>content_kind</code> 字段为 <strong>Exercise</strong> ，则会进一步根据 <code>practice</code> \<list> 中的唯一 <strong><code>practice_id</code></strong> 对应到 <code>practice.json</code> 当中。</list></li>
-<li> 包含了试题题面文本信息以及图像信息 </li>
-<li> 包含了试题答案文本信息以及图像信息 </li>
-</ul>
-</li>
-<li>article.json<ul>
-<li> 若数据在 <code>content.json</code> 中 <code>content_kind</code> 字段为 <strong>Article</strong> ，则会进一步根据唯一的 <code>article_url</code> 对应到 <code>article.json</code> 当中。</li>
-</ul>
-</li>
-<li>code.json<ul>
-<li> 属于可汗学院中专门的编程题，但是其实重定向后就是对应种类为 <strong>Scratchpad</strong> 内容，简而言之，就是属于 <strong>Scratchpad</strong> 的一小部分内容，但不是 <strong>Scratchpad</strong>  的全部内容。</li>
-<li> 另外，若数据在 <code>content.json</code> 中 <code>content_kind</code> 字段为  <strong>Scratchpad</strong> ，并不存在唯一的字段对应到 <code>code.json</code> 当中，即不存在直接联系。</li>
-</ul>
-</li>
-</ul>
-<h3 id="Logical-Structure"><a href="#Logical-Structure" class="headerlink" title="Logical Structure"></a>Logical Structure</h3><p><img src="/Users/randolph/PycharmProjects/Khan Academy Resource Downloader/ 乐维 / 可汗学院数据逻辑结构图.png" alt="汗数据层次"></p>
-<h3 id="content-json"><a href="#content-json" class="headerlink" title="content.json"></a><code>content.json</code></h3><p><img src="/Users/randolph/PycharmProjects/Khan Academy Resource Downloader/ 乐维 /content-json-structure.png" alt="ontent-json-structur"></p>
-<h3 id="practice-json"><a href="#practice-json" class="headerlink" title="practice.json"></a><code>practice.json</code></h3><p><img src="/Users/randolph/PycharmProjects/Khan Academy Resource Downloader/ 乐维 /practice-json structure.png" alt="ractice-json structur"></p>
-<h3 id="Different-types-of-content"><a href="#Different-types-of-content" class="headerlink" title="Different types of content"></a>Different types of content</h3><h4 id="Exercise"><a href="#Exercise" class="headerlink" title="Exercise"></a>Exercise</h4><p><img src="/Users/randolph/PycharmProjects/Khan Academy Resource Downloader/ 乐维 /Exercise/ 可汗学院试题数据 - 图片截图 1.png" alt="汗学院试题数据 - 图片截图"></p>
-<h4 id="Picture"><a href="#Picture" class="headerlink" title="Picture"></a>Picture</h4><p>Total <strong>14839</strong> items = <strong>4128</strong> <code>.png</code> + <strong>10709</strong> <code>.svg</code> (Exists duplicate items)</p>
-<p><img src="/Users/randolph/PycharmProjects/Khan Academy Resource Downloader/ 乐维 / 可汗学院图片数据 Picture.png" alt="汗学院图片数据 Pictur"></p>
-<h4 id="Video"><a href="#Video" class="headerlink" title="Video"></a>Video</h4><p><img src="/Users/randolph/PycharmProjects/Khan Academy Resource Downloader/ 乐维 / 可汗学院视频数据 Video.png" alt="汗学院视频数据 Vide"></p>
-<h4 id="Article"><a href="#Article" class="headerlink" title="Article"></a>Article</h4><p><img src="/Users/randolph/PycharmProjects/Khan Academy Resource Downloader/ 乐维 / 可汗学院文章数据 Article.png" alt="汗学院文章数据 Articl"></p>
-<h4 id="Scratchpad"><a href="#Scratchpad" class="headerlink" title="Scratchpad"></a>Scratchpad</h4><p><img src="/Users/randolph/PycharmProjects/Khan Academy Resource Downloader/ 乐维 / 可汗学院实验数据 Scratchpad.png" alt="汗学院实验数据 Scratchpa"></p>
-<h2 id="Data-Analysis"><a href="#Data-Analysis" class="headerlink" title="Data Analysis"></a>Data Analysis</h2><h3 id="针对 -Domain- 为「Math-by-subject」"><a href="# 针对 -Domain- 为「Math-by-subject」" class="headerlink" title="针对 Domain 为「Math by subject」"></a> 针对 Domain 为「Math by subject」</h3><ul>
-<li><p> 各个「subject」的 Video 数量分布图 </p>
-<p><img src="/Users/randolph/PycharmProjects/Khan Academy Resource Downloader/ 乐维 / 初步分析 /Video on different subjects.png" alt="ideo on different subject"></p>
-</li>
-<li><p> 各个「subject」的  Exercise 数量分布图 </p>
-<p><img src="/Users/randolph/PycharmProjects/Khan Academy Resource Downloader/ 乐维 / 初步分析 /Exercise on different subjects.png" alt="xercise on different subject"></p>
-</li>
-<li><p> 各个「subject」的 「child_subject」 数量分布图 </p>
-<p><img src="/Users/randolph/PycharmProjects/Khan Academy Resource Downloader/ 乐维 / 初步分析 /Child subject on different subjects.png" alt="hild subject on different subject"></p>
-</li>
-<li><p> 各个「subject」的  「slug」 数量分布图 </p>
-</li>
-</ul>
-<p><img src="/Users/randolph/PycharmProjects/Khan Academy Resource Downloader/ 乐维 / 初步分析 /Slug on different subjects.png" alt="lug on different subject"></p>
-<h4 id="针对 -Video- 在所有各个「subject」的数量分布图"><a href="# 针对 -Video- 在所有各个「subject」的数量分布图" class="headerlink" title="针对 Video 在所有各个「subject」的数量分布图"></a> 针对 Video 在所有各个「subject」的数量分布图 </h4><p><img src="/Users/randolph/PycharmProjects/Khan Academy Resource Downloader/ 乐维 / 初步分析 /Video on different subjects(Total" alt="ideo on different subjects(Total">.png)</p>
-<h4 id="针对 -Exercise- 在所有各个「subject」的数量分布图"><a href="# 针对 -Exercise- 在所有各个「subject」的数量分布图" class="headerlink" title="针对 Exercise 在所有各个「subject」的数量分布图"></a> 针对 Exercise 在所有各个「subject」的数量分布图 </h4><p><img src="/Users/randolph/PycharmProjects/Khan Academy Resource Downloader/ 乐维 / 初步分析 /Exercise on different subjects(Total" alt="xercise on different subjects(Total">.png)</p>
-
-          
+          本文主要介绍了可汗学院的内容逻辑结构以及进行了一些初步的数据分析。
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/03/19/♚ 可汗学院数据分享/">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
