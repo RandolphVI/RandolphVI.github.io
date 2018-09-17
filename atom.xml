@@ -22,7 +22,7 @@
     <published>2018-03-18T16:00:00.000Z</published>
     <updated>2018-03-19T15:28:42.009Z</updated>
     
-    <content type="html"><![CDATA[<p><img src="https://farm1.staticflickr.com/797/27030261808_ebe2f72aa4_o.jpg" alt=""></p>
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><img src="https://farm1.staticflickr.com/797/27030261808_ebe2f72aa4_o.jpg" alt=""></p>
 <h1 id="About-Khan-Academy-Data"><a href="#About-Khan-Academy-Data" class="headerlink" title="About Khan Academy Data"></a>About Khan Academy Data</h1><h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><h3 id="Khan-Academy-Knowledge-Structure"><a href="#Khan-Academy-Knowledge-Structure" class="headerlink" title="Khan Academy Knowledge Structure"></a>Khan Academy Knowledge Structure</h3><p><img src="https://farm1.staticflickr.com/815/40007475165_3f002df1fc_o.png" alt=""></p>
 <p> 存在重复项，例如：</p>
 <ol>
@@ -99,7 +99,7 @@
     <published>2017-12-16T16:00:00.000Z</published>
     <updated>2017-12-18T09:35:32.454Z</updated>
     
-    <content type="html"><![CDATA[<p><img src="https://farm5.staticflickr.com/4594/27350242309_af130232ac_o.jpg" alt=""></p>
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><img src="https://farm5.staticflickr.com/4594/27350242309_af130232ac_o.jpg" alt=""></p>
 <p>有关「Machine Learning」的其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/">「Machine Learning」</a><br>有关「Kaggle」的其他论文学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/Kaggle/">「Kaggle」</a><br>有关模型代码：<a href="https://github.com/RandolphVI/Music-Recommendation-System" target="_blank" rel="external">「Music Recommendation Challenge」</a></p>
 <h1 id="「Music-Recommendation-Challenge」"><a href="#「Music-Recommendation-Challenge」" class="headerlink" title="「Music Recommendation Challenge」"></a>「Music Recommendation Challenge」</h1><h2 id="Step-1-Exploratory-Data-Analysis-EDA"><a href="#Step-1-Exploratory-Data-Analysis-EDA" class="headerlink" title="Step 1: Exploratory Data Analysis(EDA)"></a>Step 1: Exploratory Data Analysis(EDA)</h2><h3 id="原始特征"><a href="# 原始特征" class="headerlink" title="原始特征"></a>原始特征</h3><ul>
 <li>用户特征<ul>
@@ -320,7 +320,7 @@
     <published>2017-11-10T16:00:00.000Z</published>
     <updated>2017-11-12T14:52:04.671Z</updated>
     
-    <content type="html"><![CDATA[<p><img src="https://farm5.staticflickr.com/4373/35507009504_3298ce3029_o.jpg" alt=""></p>
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><img src="https://farm5.staticflickr.com/4373/35507009504_3298ce3029_o.jpg" alt=""></p>
 <p>有关「Machine Learning」的其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/">「Machine Learning」</a><br>有关「Papers」的其他论文学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/Papers/">「Papers」</a></p>
 <h2 id="「Field-aware-Factorization-Machines-for-CTR-Prediction-」"><a href="#「Field-aware-Factorization-Machines-for-CTR-Prediction-」" class="headerlink" title="「Field-aware Factorization Machines for CTR Prediction 」"></a>「Field-aware Factorization Machines for CTR Prediction 」</h2><p>FM 和 FFM 模型都是最近几年提出的模型，凭借其在数据量比较大并且特征稀疏的情况下，仍然能够得到优秀的性能和效果的特性，屡次在各大公司举办的 CTR 预估比赛中获得不错的战绩。</p>
 <p>FFM（Field-aware Factorization Machine）最初的概念来自 Yu-Chin Juan（阮毓钦，毕业于中国台湾大学，现在美国 Criteo 工作）与其比赛队员，是他们借鉴了来自 Michael Jahrer 的论文 <a href="https://kaggle2.blob.core.windows.net/competitions/kddcup2012/2748/media/Opera.pdf" target="_blank" rel="external">「Ensemble of Collaborative Filtering and Feature Engineered Models for Click Through Rate Prediction」</a> 中的 field 概念提出了 FM 的升级版模型，该篇于 2016 年发布。</p>
@@ -510,7 +510,7 @@ label \quad field_1:feat_1:val_1 \quad field_2:feat_2:val_2 \quad ...</script><p
     <published>2017-10-16T16:00:00.000Z</published>
     <updated>2017-11-12T13:23:36.208Z</updated>
     
-    <content type="html"><![CDATA[<p><img src="https://farm5.staticflickr.com/4373/35507009504_3298ce3029_o.jpg" alt=""></p>
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><img src="https://farm5.staticflickr.com/4373/35507009504_3298ce3029_o.jpg" alt=""></p>
 <p> 有关「Machine Learning」的其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/">「Machine Learning」</a><br> 有关「Papers」的其他论文学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/Papers/">「Papers」</a></p>
 <h1 id="「Recurrent-Neural-Network-for-Text-Classification-with-Multi-Task-Learning」"><a href="#「Recurrent-Neural-Network-for-Text-Classification-with-Multi-Task-Learning」" class="headerlink" title="「Recurrent Neural Network for Text Classification with Multi-Task Learning」"></a>「Recurrent Neural Network for Text Classification with Multi-Task Learning」</h1><p> 本文为复旦在 2016 年 IJCAI 上的发表的关于循环神经网络在多任务文本分类上的应用。</p>
 <p> 问题定义：在先前的许多工作中，模型的学习都是基于单任务，对于复杂的问题，也可以分解为简单且相互独立的子问题来单独解决，然后再合并结果，得到最初复杂问题的结果。这样做看似合理，其实是不正确的，因为现实世界中很多问题不能分解为一个一个独立的子问题，即使可以分解，各个子问题之间也是相互关联的，通过一些共享因素或共享表示（share representation）联系在一起。把现实问题当做一个个独立的单任务处理，往往会忽略了问题之间所富含的丰富的关联信息。</p>
@@ -560,7 +560,7 @@ label \quad field_1:feat_1:val_1 \quad field_2:feat_2:val_2 \quad ...</script><p
     <published>2017-10-13T16:00:00.000Z</published>
     <updated>2018-03-19T15:18:52.357Z</updated>
     
-    <content type="html"><![CDATA[<p><img src="https://farm5.staticflickr.com/4300/35460446383_aafc34ca3c_o.jpg" alt=""></p>
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><img src="https://farm5.staticflickr.com/4300/35460446383_aafc34ca3c_o.jpg" alt=""></p>
 <p> 有关「Machine Learning」的其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/">「Machine Learning」</a></p>
 <h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><h1 id="Compared-with-Other-Models"><a href="#Compared-with-Other-Models" class="headerlink" title="Compared with Other Models"></a>Compared with Other Models</h1><h1 id="Related"><a href="#Related" class="headerlink" title="Related"></a>Related</h1><p>  ​</p>
 ]]></content>
@@ -585,7 +585,7 @@ label \quad field_1:feat_1:val_1 \quad field_2:feat_2:val_2 \quad ...</script><p
     <published>2017-10-12T16:00:00.000Z</published>
     <updated>2017-10-14T06:46:15.000Z</updated>
     
-    <content type="html"><![CDATA[<p><img src="https://farm5.staticflickr.com/4373/35507009504_3298ce3029_o.jpg" alt=""></p>
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><img src="https://farm5.staticflickr.com/4373/35507009504_3298ce3029_o.jpg" alt=""></p>
 <p> 有关「Machine Learning」的其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/">「Machine Learning」</a><br> 有关「Papers」的其他论文学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/Papers/">「Papers」</a></p>
 <h1 id="「Efficient-Estimation-of-Word-Representation-in-Vector-Space」"><a href="#「Efficient-Estimation-of-Word-Representation-in-Vector-Space」" class="headerlink" title="「Efficient Estimation of Word Representation in Vector Space」"></a>「Efficient Estimation of Word Representation in Vector Space」</h1><p> 本文 </p>
 <h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>Introduction 里面提及了：</p>
@@ -667,7 +667,7 @@ label \quad field_1:feat_1:val_1 \quad field_2:feat_2:val_2 \quad ...</script><p
     <published>2017-10-09T16:00:00.000Z</published>
     <updated>2017-10-13T14:53:17.000Z</updated>
     
-    <content type="html"><![CDATA[<p><img src="https://farm5.staticflickr.com/4373/35507009504_3298ce3029_o.jpg" alt=""></p>
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><img src="https://farm5.staticflickr.com/4373/35507009504_3298ce3029_o.jpg" alt=""></p>
 <p> 有关「Machine Learning」的其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/">「Machine Learning」</a><br> 有关「Papers」的其他论文学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/Papers/">「Papers」</a></p>
 <h1 id="「Recurrent-Convolutional-Neural-Networks-for-Text-Classification」"><a href="#「Recurrent-Convolutional-Neural-Networks-for-Text-Classification」" class="headerlink" title="「Recurrent Convolutional Neural Networks for Text Classification」"></a>「Recurrent Convolutional Neural Networks for Text Classification」</h1><p> 本文为中科院团队在 2015 年 AAAI 上提出来的 RCNN 网络结构。</p>
 <h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>Introduction 里面提及了：</p>
@@ -733,7 +733,7 @@ p_{i}=\frac{exp\left(y^{(4)}_{i}\right)}{\sum_{k=1}^{n}exp\left(y^{(4)}_{k}\righ
     <published>2017-09-24T16:00:00.000Z</published>
     <updated>2018-03-19T15:14:36.289Z</updated>
     
-    <content type="html"><![CDATA[<p><img src="https://farm5.staticflickr.com/4399/36206153111_6662041dd1_o.png" alt=""></p>
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><img src="https://farm5.staticflickr.com/4399/36206153111_6662041dd1_o.png" alt=""></p>
 <p>有关「TensorFlow」的其他学习笔记系列：<a href="http://randolph.pro/categories/TensorFlow/">「TensorFlow」</a></p>
 <h1 id="Cross-Entropy-Introduction"><a href="#Cross-Entropy-Introduction" class="headerlink" title="Cross Entropy Introduction"></a>Cross Entropy Introduction</h1><p>交叉熵（Cross Entropy）是 Loss 函数的一种（也称为损失函数或代价函数），用于描述模型预测值与真实值的差距大小，常见的 Loss 函数就是均方平方差（Mean Squared Error），定义如下：</p>
 <script type="math/tex; mode=display">
@@ -804,7 +804,7 @@ softmax = \frac{exp(logits)}{reduce\_sum(exp(logits),  dim)}</script><p><code>so
     <published>2017-09-07T16:00:00.000Z</published>
     <updated>2018-03-19T15:18:57.915Z</updated>
     
-    <content type="html"><![CDATA[<p><img src="https://farm5.staticflickr.com/4300/35460446383_aafc34ca3c_o.jpg" alt=""></p>
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><img src="https://farm5.staticflickr.com/4300/35460446383_aafc34ca3c_o.jpg" alt=""></p>
 <p>有关「Machine Learning」的其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/">「Machine Learning」</a></p>
 <h1 id="循环神经网络 -RNN"><a href="# 循环神经网络 -RNN" class="headerlink" title="循环神经网络 (RNN)"></a> 循环神经网络 (RNN)</h1><p> 人们的每次思考并不都是从零开始的。比如说你在阅读这篇文章时，你基于对前面的文字的理解来理解你目前阅读到的文字，而不是每读到一个文字时，都抛弃掉前面的思考，从头开始。你的记忆是有持久性的。</p>
 <p>传统的神经网络并不能如此，这似乎是一个主要的缺点。例如，假设你在看一场电影，你想对电影里的每一个场景进行分类。传统的神经网络不能够基于前面的已分类场景来推断接下来的场景分类。</p>
@@ -886,7 +886,7 @@ softmax = \frac{exp(logits)}{reduce\_sum(exp(logits),  dim)}</script><p><code>so
     <published>2017-09-05T16:00:00.000Z</published>
     <updated>2018-03-19T15:19:04.685Z</updated>
     
-    <content type="html"><![CDATA[<p><img src="https://farm5.staticflickr.com/4300/35460446383_aafc34ca3c_o.jpg" alt=""></p>
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><img src="https://farm5.staticflickr.com/4300/35460446383_aafc34ca3c_o.jpg" alt=""></p>
 <p>有关「Machine Learning」的其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/">「Machine Learning」</a></p>
 <h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>在机器学习中，常常会遇到样本比例不平衡的问题，如对于一个二分类问题，正负样本的比例是 10:1。这种现象往往是由于本身数据来源决定的，如信用卡的征信问题中往往就是正样本居多。样本比例不平衡往往会带来不少问题，但是实际获取的数据又往往是不平衡的，因此本文主要讨论面对样本不平衡时的解决方法。</p>
 <p>样本不平衡往往会导致模型对样本数较多的分类造成过拟合，即总是将样本分到了样本数较多的分类中；除此之外，一个典型的问题就是 <a href="https://en.wikipedia.org/wiki/Accuracy_paradox" target="_blank" rel="external">Accuracy Paradox</a>，这个问题指的是模型的对样本预测的准确率很高，但是模型的泛化能力差。其原因是模型将大多数的样本都归类为样本数较多的那一类，如下表所示:</p>
@@ -1085,7 +1085,7 @@ x_{new}=x+rand\left(0,1\right)\times\left(\tilde{x}-x\right)</script><p><img src
     <published>2017-07-14T16:00:00.000Z</published>
     <updated>2017-08-21T10:23:56.000Z</updated>
     
-    <content type="html"><![CDATA[<p>有关「Tools」的其他笔记系列：<a href="http://randolph.pro/categories/Tools/">「Tools」</a></p>
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>有关「Tools」的其他笔记系列：<a href="http://randolph.pro/categories/Tools/">「Tools」</a></p>
 <h1 id="Chapter-1-Getting-Started"><a href="#Chapter-1-Getting-Started" class="headerlink" title="Chapter 1: Getting Started"></a>Chapter 1: Getting Started</h1><h2 id="Installing-MongoDB-on-Mac-OS"><a href="#Installing-MongoDB-on-Mac-OS" class="headerlink" title="Installing MongoDB on Mac OS"></a>Installing MongoDB on Mac OS</h2><p>Mac OS 安装 <code>MongoDB</code> 的方法有多种多样，这里使用 <code>Homebrew</code> 安装 <code>MongoDB</code>，在安装之前首先确保 <code>Homebrew</code> 更新至最新版本：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ brew update</div></pre></td></tr></table></figure>
 <p>接着，使用 <code>Homebrew</code> 安装 <code>MongoDB</code>：</p>
@@ -1727,7 +1727,7 @@ x_{new}=x+rand\left(0,1\right)\times\left(\tilde{x}-x\right)</script><p><img src
     <published>2017-03-16T16:00:00.000Z</published>
     <updated>2018-03-19T15:14:41.439Z</updated>
     
-    <content type="html"><![CDATA[<p><img src="https://farm5.staticflickr.com/4399/36206153111_6662041dd1_o.png" alt=""></p>
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><img src="https://farm5.staticflickr.com/4399/36206153111_6662041dd1_o.png" alt=""></p>
 <p> 有关「TensorFlow」的其他学习笔记系列：<a href="http://randolph.pro/categories/TensorFlow/">「TensorFlow」</a></p>
 <p> 大概的效果是：</p>
 <p><img src="https://farm4.staticflickr.com/3767/32574547714_59711d3f0b_o.jpg" alt=""></p>
@@ -1794,7 +1794,7 @@ x_{new}=x+rand\left(0,1\right)\times\left(\tilde{x}-x\right)</script><p><img src
     <published>2017-03-12T16:00:00.000Z</published>
     <updated>2018-03-19T15:14:25.186Z</updated>
     
-    <content type="html"><![CDATA[<p><img src="https://farm5.staticflickr.com/4399/36206153111_6662041dd1_o.png" alt=""></p>
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><img src="https://farm5.staticflickr.com/4399/36206153111_6662041dd1_o.png" alt=""></p>
 <p>有关「TensorFlow」的其他学习笔记系列：<a href="http://randolph.pro/categories/TensorFlow/">「TensorFlow」</a></p>
 <h1 id="TensorFlow-Tensorboard"><a href="#TensorFlow-Tensorboard" class="headerlink" title="TensorFlow Tensorboard"></a>TensorFlow Tensorboard</h1><p>Tensorboard 可以看做是我们构建的 Graph 的可视化工具，对于我们初学者理解网络架构、每层网络的细节都是很有帮助的。由于前几天刚接触 TensorFlow，所以在尝试学习 Tensorboard 的过程中，遇到了一些问题。在此基础上，参考了 TensorFlow 官方的 Tensorboard Tutorials 以及网上的一些文章。由于前不久 TensorFlow 1.0 刚发布，网上的一些学习资源或者是 tensorboard 代码在新的版本中并不适用，所以自己改写并实现了官方网站上提及的三个实例的 Tensorboard 版本：</p>
 <ol>
@@ -1880,7 +1880,7 @@ x_{new}=x+rand\left(0,1\right)\times\left(\tilde{x}-x\right)</script><p><img src
     <published>2017-03-09T16:00:00.000Z</published>
     <updated>2017-11-12T13:25:06.647Z</updated>
     
-    <content type="html"><![CDATA[<p><img src="https://farm5.staticflickr.com/4373/35507009504_3298ce3029_o.jpg" alt=""></p>
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><img src="https://farm5.staticflickr.com/4373/35507009504_3298ce3029_o.jpg" alt=""></p>
 <p>有关「Machine Learning」的其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/">「Machine Learning」</a><br>有关「Papers」的其他论文学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/Papers/">「Papers」</a></p>
 <h1 id="Embedding-layer"><a href="#Embedding-layer" class="headerlink" title="Embedding layer"></a>Embedding layer</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">with</span> tf.device(<span class="string">'/cpu:0'</span>), tf.name_scope(<span class="string">"embedding"</span>):</div><div class="line">    W = tf.Variable(</div><div class="line">        tf.random_uniform([vocab_size, embedding_size], <span class="number">-1.0</span>, <span class="number">1.0</span>),</div><div class="line">        name=<span class="string">"W"</span>)</div><div class="line">    self.embedded_chars = tf.nn.embedding_lookup(W, self.input_x)</div><div class="line">    self.embedded_chars_expanded = tf.expand_dims(self.embedded_chars, <span class="number">-1</span>)</div></pre></td></tr></table></figure>
 <p>存储全部 word vector 的矩阵 $W$，$W$ 初始化时是随机 random 出来的，也就是 paper 中的第一种模型 CNN-rand，训练过程中并不是每次都会使用全部的 vocabulary，而只是产生一个 batch（batch 中都是 sentence，每个 sentence 标记了出现哪些 word(最大长度为 max_seq_len)，因此 batch 相当于一个二维列表），这个 batch 就是 input_x：</p>
@@ -1973,7 +1973,7 @@ c_{i} = f(w⋅x_{i:i+h-1}+b)</script><p><code>conv2d()</code> 得到的其实是
     <published>2017-03-06T16:00:00.000Z</published>
     <updated>2018-03-19T15:18:37.557Z</updated>
     
-    <content type="html"><![CDATA[<p><img src="https://farm5.staticflickr.com/4300/35460446383_aafc34ca3c_o.jpg" alt=""></p>
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><img src="https://farm5.staticflickr.com/4300/35460446383_aafc34ca3c_o.jpg" alt=""></p>
 <p>有关「Machine Learning」的其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/">「Machine Learning」</a></p>
 <h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>在 20 世纪 60 年代，Hubel 和 Wiesel 在研究猫脑皮层中用于局部敏感和方向选择的神经元时发现其独特的网络结构可以有效地降低反馈神经网络的复杂性，继而出了卷积神经网络（Convolutional Neural Networks- 简称 CNN）。</p>
 <p>卷积神经网络（Convolutional Neural Network）虽然很早被出，但是却是近些年才得以发展起来并引起广泛重视的。它是深度学习技术中极具代表的网络结构之一，也是近些年语音分析和图像识别领域的研究热点，后来发现其在 NLP 自然语言处理上的效果同样不俗。它以其特有的局部连接、权值共享网络结构，有效地降低了深度神经网络模型的复杂度，极大地减少了权值的数量。</p>
@@ -2187,7 +2187,7 @@ Output = Max(zero, Input)</script><ol>
     <published>2017-03-02T16:00:00.000Z</published>
     <updated>2018-03-19T15:18:42.977Z</updated>
     
-    <content type="html"><![CDATA[<p><img src="https://farm5.staticflickr.com/4300/35460446383_aafc34ca3c_o.jpg" alt=""></p>
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><img src="https://farm5.staticflickr.com/4300/35460446383_aafc34ca3c_o.jpg" alt=""></p>
 <p> 有关「Machine Learning」的其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/">「Machine Learning」</a></p>
 <h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>Factorization Machines（FM），可译为“隐因子分解机”，由 Steffen Rendle 于 2010 年提出，并发布开源工具 <strong>libFM</strong> 。他凭借 FM 单个模型，他在 KDD Cup 2012 上，取得 Track1 的第 2 名和 Track2 的第 3 名。</p>
 <h1 id="Compared-with-Other-Models"><a href="#Compared-with-Other-Models" class="headerlink" title="Compared with Other Models"></a>Compared with Other Models</h1><ul>
@@ -2279,7 +2279,7 @@ OPTREG(S,\lambda) := argmin\left(\sum_{(x, y)\in S}l(\hat y(x \mid \Theta), y) +
     <published>2017-02-28T16:00:00.000Z</published>
     <updated>2017-08-06T12:56:57.000Z</updated>
     
-    <content type="html"><![CDATA[<p><img src="https://farm5.staticflickr.com/4373/35507009504_3298ce3029_o.jpg" alt=""></p>
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><img src="https://farm5.staticflickr.com/4373/35507009504_3298ce3029_o.jpg" alt=""></p>
 <p>有关「Machine Learning」的其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/">「Machine Learning」</a><br>有关「Papers」的其他论文学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/Papers/">「Papers」</a></p>
 <h1 id="Dropout"><a href="#Dropout" class="headerlink" title="Dropout"></a>Dropout</h1><p>开篇明义，dropout 是指在深度学习网络的训练过程中，对于神经网络单元，按照 <strong> 一定的概率 </strong> 将其 <strong> 暂时 </strong> 从网络中丢弃。注意是暂时，对于随机梯度下降来说，由于是随机丢弃，故而每一个 mini-batch 都在训练不同的网络。</p>
 <p>Dropout 是 CNN 中防止过拟合提高效果的一个大杀器，但对于其为何有效，却众说纷纭。在下读到两篇代表性的论文，代表两种不同的观点，特此分享给大家。</p>
@@ -2486,7 +2486,7 @@ h_{n} = (\overrightarrow{r_{n}} \odot \overrightarrow{w_{n}})^{T}\overrightarrow
     <published>2017-01-13T16:00:00.000Z</published>
     <updated>2018-03-19T13:33:56.462Z</updated>
     
-    <content type="html"><![CDATA[<p><img src="https://farm5.staticflickr.com/4307/36174772306_62cfbc8cd6_o.jpg" alt=""></p>
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><img src="https://farm5.staticflickr.com/4307/36174772306_62cfbc8cd6_o.jpg" alt=""></p>
 <p>有关该书的其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/Book-「Machine-Learning」/">Book:「Machine Learning」</a></p>
 <h1 id="Related"><a href="#Related" class="headerlink" title="Related"></a>Related</h1><ul>
 <li>kNN</li>
@@ -2682,7 +2682,7 @@ d(x,y) =\sqrt{\sum_{i=1}^{n}\frac{(x_{i} - y_{i})^2}{s_{i}^2}}</script><p>可以
     <published>2017-01-02T16:00:00.000Z</published>
     <updated>2017-08-15T14:52:48.000Z</updated>
     
-    <content type="html"><![CDATA[<p><img src="https://farm5.staticflickr.com/4307/36174772306_62cfbc8cd6_o.jpg" alt=""></p>
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><img src="https://farm5.staticflickr.com/4307/36174772306_62cfbc8cd6_o.jpg" alt=""></p>
 <p>有关该书的其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/Book-「Machine-Learning」/">Book:「Machine Learning」</a></p>
 <h1 id="聚类介绍"><a href="# 聚类介绍" class="headerlink" title="聚类介绍"></a>聚类介绍</h1><ul>
 <li>聚类是从数据集中挖掘相似观测值集合的方法。</li>
@@ -3092,7 +3092,7 @@ p^{'} & = p_{5} + \eta \cdot (x_{1} - p_{5}) \cr
     <published>2016-12-29T16:00:00.000Z</published>
     <updated>2017-08-15T08:17:01.000Z</updated>
     
-    <content type="html"><![CDATA[<p><img src="https://farm5.staticflickr.com/4307/36174772306_62cfbc8cd6_o.jpg" alt=""></p>
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><img src="https://farm5.staticflickr.com/4307/36174772306_62cfbc8cd6_o.jpg" alt=""></p>
 <p>有关该书的其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/Book-「Machine-Learning」/">Book:「Machine Learning」</a></p>
 <h1 id="Related"><a href="#Related" class="headerlink" title="Related"></a>Related</h1><ul>
 <li><strong>过拟合与欠拟合</strong></li>
