@@ -795,9 +795,20 @@
             </ul>
           </div>
         
+        
+        <div>
+          <iframe id="iframer" frameborder="no" border="0" marginwidth="0" marginheight="0" width=320 height=150 src=""></iframe>
+        </div>
 
-        <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=320 height=150 src="//music.163.com/outchain/player?type=0&id=880407510&auto=1&height=90"></iframe>
-
+        <script language='javascript' type='text/javascript'>
+          window.onload = function(){
+            setTimeout(function () {
+              var iframer = document.getElementById("iframer");
+              iframer.setAttribute("src","//music.163.com/outchain/player?type=0&id=880407510&auto=0&height=90");
+            }, 1000);
+          }
+        </script>
+  
         
 
 
