@@ -4,6 +4,54 @@
 
     
   <url>
+    <loc>http://randolph.pro/2017/03/13/%E2%99%A3%EF%B8%8E%E3%80%8CTensorFlow%E3%80%8D%20Tensorboard/</loc>
+    <lastmod>2019-03-17T07:49:07.524Z</lastmod>
+    <data>
+        <display>
+        <title>♣︎「TensorFlow」 Tensorboard</title>
+        <pubTime>2017-03-12T16:00:00.000Z</pubTime>
+        
+        <tag>Machine Learning</tag>
+         
+        <tag>Python</tag>
+         
+        <tag>TensorFlow</tag>
+         
+         
+           
+             
+              <breadCrumb title="TensorFlow" url="http://randolph.pro/categories/TensorFlow/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://randolph.pro/2017/09/25/%E2%99%A3%EF%B8%8E%E3%80%8CTensorFlow%E3%80%8DCross%20Entropy%20Function%20in%20TensorFlow%20/</loc>
+    <lastmod>2019-03-17T07:32:29.976Z</lastmod>
+    <data>
+        <display>
+        <title>♣︎「TensorFlow」 Cross Entropy in TensorFlow</title>
+        <pubTime>2017-09-24T16:00:00.000Z</pubTime>
+        
+        <tag>Machine Learning</tag>
+         
+        <tag>Python</tag>
+         
+        <tag>TensorFlow</tag>
+         
+         
+           
+             
+              <breadCrumb title="TensorFlow" url="http://randolph.pro/categories/TensorFlow/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://randolph.pro/2017/01/03/%E2%99%9E%E3%80%8CBooks%E3%80%8DMachine%20Learning%20-%20Clustering/</loc>
     <lastmod>2019-03-17T07:26:38.191Z</lastmod>
     <data>
@@ -491,54 +539,6 @@
         <tag>TensorFlow</tag>
          
         <tag>WeChat</tag>
-         
-         
-           
-             
-              <breadCrumb title="TensorFlow" url="http://randolph.pro/categories/TensorFlow/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://randolph.pro/2017/09/25/%E2%99%A3%EF%B8%8E%E3%80%8CTensorFlow%E3%80%8DCross%20Entropy%20Function%20in%20TensorFlow%20/</loc>
-    <lastmod>2018-03-19T15:14:36.289Z</lastmod>
-    <data>
-        <display>
-        <title>♣︎「TensorFlow」 Cross Entropy in TensorFlow</title>
-        <pubTime>2017-09-24T16:00:00.000Z</pubTime>
-        
-        <tag>Machine Learning</tag>
-         
-        <tag>Python</tag>
-         
-        <tag>TensorFlow</tag>
-         
-         
-           
-             
-              <breadCrumb title="TensorFlow" url="http://randolph.pro/categories/TensorFlow/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://randolph.pro/2017/03/13/%E2%99%A3%EF%B8%8E%E3%80%8CTensorFlow%E3%80%8D%20Tensorboard/</loc>
-    <lastmod>2018-03-19T15:14:25.186Z</lastmod>
-    <data>
-        <display>
-        <title>♣︎「TensorFlow」 Tensorboard</title>
-        <pubTime>2017-03-12T16:00:00.000Z</pubTime>
-        
-        <tag>Machine Learning</tag>
-         
-        <tag>Python</tag>
-         
-        <tag>TensorFlow</tag>
          
          
            
