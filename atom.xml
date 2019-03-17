@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://randolph.pro/"/>
-  <updated>2019-03-17T06:43:58.238Z</updated>
+  <updated>2019-03-17T08:46:57.674Z</updated>
   <id>http://randolph.pro/</id>
   
   <author>
@@ -14,6 +14,47 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>✎「匯文」 我与地坛</title>
+    <link href="http://randolph.pro/2019/03/16/%E2%9C%8E%E3%80%8C%E5%8C%AF%E6%96%87%E3%80%8D%E6%88%91%E4%B8%8E%E5%9C%B0%E5%9D%9B/"/>
+    <id>http://randolph.pro/2019/03/16/✎「匯文」我与地坛/</id>
+    <published>2019-03-15T16:00:00.000Z</published>
+    <updated>2019-03-17T08:46:57.674Z</updated>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="我与地坛"><a href="# 我与地坛" class="headerlink" title="我与地坛"></a> 我与地坛 </h1><p><img src="https://farm8.staticflickr.com/7877/33525214788_14d64fc575_o.jpg" alt=""></p>
+<p> 北平玉兰花虽然未开 </p>
+<p> 但难得今日玻璃晴朗，橘子辉煌 </p>
+<p> 便打算去地坛一览 </p>
+<p> 想起年少时读史铁生先生「我与地坛」</p>
+<p> 是真真切切感受到了一个文人原来是可以同时拥有细腻而强烈的笔触的 </p>
+<p> 我至今还可以想象得到当时文中句子所给我带来的震撼 </p>
+<p> 并且每段文字所予以都是不同的感受 </p>
+<p>「就命运而言，休论公道。」</p>
+<p> 先生在他最狂妄的年纪被命运所抛弃，地坛包容了他，先生在地坛思考人生，思考罪孽与福祉，最后他找到了他的那杆枪，迎着不公的世界，开始了他的宣言。</p>
+<p> 我驻足在地坛公园的中心，向着四周望去 </p>
+<p> 地坛中人来人往，风从树林穿过，有孩童在或近或远处嬉戏，仿佛神灵也置身于此 </p>
+<p>「我已不在地坛，地坛在我」</p>
+<p> 地坛予以了先生对世界命数思考的能力 </p>
+<p> 先生如同他所说的那般，已不在地坛，也不在这个世上了 </p>
+<p> 但先生的人格会同地坛这般与他永在 </p>
+<p>「要是有些事我没说，地坛，你别以为是我忘了，为什么也没忘，但是有些事只适合收藏。不能说，也不能想，却又不能忘。」</p>
+<p> 年少读时不得其意，如今阅历稍长也变得信佛迷事，倒是听懂了先生写时的那份平静 </p>
+<p> 如今先生已去，很久没有再读过了，在此缅怀先生 </p>
+]]></content>
+    
+    <summary type="html">
+    
+      己亥年二月初十于北平地坛所记。
+    
+    </summary>
+    
+      <category term="匯文" scheme="http://randolph.pro/categories/%E5%8C%AF%E6%96%87/"/>
+    
+    
+      <category term="匯文" scheme="http://randolph.pro/tags/%E5%8C%AF%E6%96%87/"/>
+    
+  </entry>
   
   <entry>
     <title>♣︎  About Khan Academy Data</title>
@@ -487,56 +528,6 @@ label \quad field_1:feat_1:val_1 \quad field_2:feat_2:val_2 \quad ...</script><p
     <summary type="html">
     
       本文主要介绍了 Field-aware Factorization Machines 在 广告点击率（CTR）任务上的一篇论文。
-    
-    </summary>
-    
-      <category term="Machine Learning" scheme="http://randolph.pro/categories/Machine-Learning/"/>
-    
-      <category term="Papers" scheme="http://randolph.pro/categories/Machine-Learning/Papers/"/>
-    
-    
-      <category term="Machine Learning" scheme="http://randolph.pro/tags/Machine-Learning/"/>
-    
-      <category term="Papers" scheme="http://randolph.pro/tags/Papers/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>♜「Papers」 About Text Classification based on RNN</title>
-    <link href="http://randolph.pro/2017/10/17/%E2%99%9C%E3%80%8CPapers%E3%80%8DAbout%20Text%20Classification%20based%20on%20RNN/"/>
-    <id>http://randolph.pro/2017/10/17/♜「Papers」About Text Classification based on RNN/</id>
-    <published>2017-10-16T16:00:00.000Z</published>
-    <updated>2017-11-12T13:23:36.208Z</updated>
-    
-    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><img src="https://farm5.staticflickr.com/4373/35507009504_3298ce3029_o.jpg" alt=""></p>
-<p> 有关「Machine Learning」的其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/">「Machine Learning」</a><br> 有关「Papers」的其他论文学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/Papers/">「Papers」</a></p>
-<h1 id="「Recurrent-Neural-Network-for-Text-Classification-with-Multi-Task-Learning」"><a href="#「Recurrent-Neural-Network-for-Text-Classification-with-Multi-Task-Learning」" class="headerlink" title="「Recurrent Neural Network for Text Classification with Multi-Task Learning」"></a>「Recurrent Neural Network for Text Classification with Multi-Task Learning」</h1><p> 本文为复旦在 2016 年 IJCAI 上的发表的关于循环神经网络在多任务文本分类上的应用。</p>
-<p> 问题定义：在先前的许多工作中，模型的学习都是基于单任务，对于复杂的问题，也可以分解为简单且相互独立的子问题来单独解决，然后再合并结果，得到最初复杂问题的结果。这样做看似合理，其实是不正确的，因为现实世界中很多问题不能分解为一个一个独立的子问题，即使可以分解，各个子问题之间也是相互关联的，通过一些共享因素或共享表示（share representation）联系在一起。把现实问题当做一个个独立的单任务处理，往往会忽略了问题之间所富含的丰富的关联信息。</p>
-<p> 提出的解决办法：多任务学习就是为了解决这个问题而诞生的。把多个相关（related）的任务（task）放在一起学习。多个任务之间共享一些因素，它们可以在学习过程中，共享它们所学到的信息，这是单任务学习没有具备的。相关联的多任务学习比单任务学习能去的更好的泛化（generalization）效果。本文基于 RNN 循环神经网络，提出三种不同的信息共享机制，整体网络是基于所有的任务共同学习得到。</p>
-<p><img src="https://farm5.staticflickr.com/4486/37490166810_74c95852c5_o.png" alt=""></p>
-<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>Introduction 里面提及了：</p>
-<ul>
-<li> 词向量的重要性；</li>
-<li> 多任务学习的有效性。</li>
-</ul>
-<h2 id="Related-Work"><a href="#Related-Work" class="headerlink" title="Related Work"></a>Related Work</h2><p> 第一个模型使用:</p>
-<p><img src="https://farm5.staticflickr.com/4510/37490446050_feb6e54ed2_o.png" alt=""></p>
-<p>:</p>
-<p><img src="https://farm5.staticflickr.com/4496/37700304396_6447763429_o.png" alt=""></p>
-<p>:</p>
-<p><img src="https://farm5.staticflickr.com/4498/37490447880_dfe28b18db_o.png" alt=""></p>
-<h2 id="Experiments"><a href="#Experiments" class="headerlink" title="Experiments"></a>Experiments</h2><h3 id="Datasets"><a href="#Datasets" class="headerlink" title="Datasets"></a>Datasets</h3><p> 实验部分就是使用几个常见的 Datasets，其中用到的有：</p>
-<ul>
-<li>​</li>
-</ul>
-<h3 id="Experiment-Setting"><a href="#Experiment-Setting" class="headerlink" title="Experiment Setting"></a>Experiment Setting</h3><ul>
-<li>​</li>
-</ul>
-<h3 id="Results-and-Discussion"><a href="#Results-and-Discussion" class="headerlink" title="Results and Discussion"></a>Results and Discussion</h3>]]></content>
-    
-    <summary type="html">
-    
-      本文主要介绍了 RNN 循环神经网络在文本分类上的一些论文。
     
     </summary>
     
@@ -2247,18 +2238,18 @@ OPTREG(S,\lambda) := argmin\left(\sum_{(x, y)\in S}l(\hat y(x \mid \Theta), y) +
   </entry>
   
   <entry>
-    <title>♜「Papers」 About Dropout</title>
-    <link href="http://randolph.pro/2017/03/01/%E2%99%9C%E3%80%8CPapers%E3%80%8DAbout%20Dropout/"/>
-    <id>http://randolph.pro/2017/03/01/♜「Papers」About Dropout/</id>
+    <title>♜「Machine Learning」 About Dropout</title>
+    <link href="http://randolph.pro/2017/03/01/%E2%99%9B%E3%80%8CMachine%20Learning%E3%80%8DAbout%20Dropout/"/>
+    <id>http://randolph.pro/2017/03/01/♛「Machine Learning」About Dropout/</id>
     <published>2017-02-28T16:00:00.000Z</published>
-    <updated>2017-08-06T12:56:57.000Z</updated>
+    <updated>2019-03-17T08:03:33.612Z</updated>
     
     <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><img src="https://farm5.staticflickr.com/4373/35507009504_3298ce3029_o.jpg" alt=""></p>
-<p>有关「Machine Learning」的其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/">「Machine Learning」</a><br>有关「Papers」的其他论文学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/Papers/">「Papers」</a></p>
+<p>有关「Machine Learning」的其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/">「Machine Learning」</a></p>
 <h1 id="Dropout"><a href="#Dropout" class="headerlink" title="Dropout"></a>Dropout</h1><p>开篇明义，dropout 是指在深度学习网络的训练过程中，对于神经网络单元，按照 <strong> 一定的概率 </strong> 将其 <strong> 暂时 </strong> 从网络中丢弃。注意是暂时，对于随机梯度下降来说，由于是随机丢弃，故而每一个 mini-batch 都在训练不同的网络。</p>
-<p>Dropout 是 CNN 中防止过拟合提高效果的一个大杀器，但对于其为何有效，却众说纷纭。在下读到两篇代表性的论文，代表两种不同的观点，特此分享给大家。</p>
-<h1 id="组合派"><a href="# 组合派" class="headerlink" title="组合派"></a>组合派 </h1><p> 参考文献中第一篇中的观点，Hinton 在 2014 年提出的。</p>
-<h2 id="观点"><a href="# 观点" class="headerlink" title="观点"></a>观点 </h2><p> 该论文从神经网络的难题出发，一步一步引出 dropout 为何有效的解释。大规模的神经网络有两个缺点：</p>
+<p>Dropout 是深度学习中防止过拟合提高效果的一个大杀器，但对于其为何有效，却众说纷纭。在下读到两篇代表性的论文，代表两种不同的观点，特此分享给大家。</p>
+<h2 id="组合派"><a href="# 组合派" class="headerlink" title="组合派"></a>组合派 </h2><p> 参考文献中第一篇中的观点，Hinton 在 2014 年提出的。</p>
+<h3 id="观点"><a href="# 观点" class="headerlink" title="观点"></a>观点 </h3><p> 该论文从神经网络的难题出发，一步一步引出 dropout 为何有效的解释。大规模的神经网络有两个缺点：</p>
 <ul>
 <li>费时</li>
 <li>容易过拟合</li>
@@ -2285,7 +2276,7 @@ OPTREG(S,\lambda) := argmin\left(\sum_{(x, y)\in S}l(\hat y(x \mid \Theta), y) +
 <p>那么，类比过来，有性繁殖的方式不仅仅可以将优秀的基因传下来，还可以降低基因之间的联合适应性，使得复杂的大段大段基因联合适应性变成比较小的一个一个小段基因的联合适应性。</p>
 <p>Dropout 也能达到同样的效果，它强迫一个神经单元，和随机挑选出来的其他神经单元共同工作，达到好的效果。消除减弱了神经元节点间的联合适应性，增强了泛化能力。</p>
 <p>个人补充一点：那就是植物和微生物大多采用无性繁殖，因为他们的生存环境的变化很小，因而不需要太强的适应新环境的能力，所以保留大段大段优秀的基因适应当前环境就足够了。而高等动物却不一样，要准备随时适应新的环境，因而将基因之间的联合适应性变成一个一个小的，更能提高生存的概率。</p>
-<h2 id="Dropout 带来的模型的变化"><a href="#Dropout 带来的模型的变化" class="headerlink" title="Dropout 带来的模型的变化"></a>Dropout 带来的模型的变化 </h2><p> 而为了达到 ensemble 的特性，有了 dropout 后，神经网络的训练和预测就会发生一些变化。</p>
+<h3 id="Dropout 带来的模型的变化"><a href="#Dropout 带来的模型的变化" class="headerlink" title="Dropout 带来的模型的变化"></a>Dropout 带来的模型的变化 </h3><p> 而为了达到 ensemble 的特性，有了 dropout 后，神经网络的训练和预测就会发生一些变化。</p>
 <ul>
 <li><p>训练层面</p>
 <p>无可避免的，训练网络的每个单元要添加一道概率流程。 </p>
@@ -2297,8 +2288,7 @@ OPTREG(S,\lambda) := argmin\left(\sum_{(x, y)\in S}l(\hat y(x \mid \Theta), y) +
 \begin{align}
 z_{i}^{(l+1)} & = w_{i}^{(l+1)}y^{l} + b_{i}^{(l+1)} \cr
 y_{i}^{(l+1)} & = f(z_{i}^{(l+1)})
-\end{align}</script><p>​</p>
-</li>
+\end{align}</script></li>
 <li><p>有 dropout 的神经网络 </p>
 <script type="math/tex; mode=display">
 \begin{align}
@@ -2306,8 +2296,7 @@ r_{i}^{(l)} & \sim Bernoulli(p) \cr
 \tilde{y}^{(l)} & = r^{(l)}*y^{(l)}\cr
 z_{i}^{(l+1)} & = w_{i}^{(l+1)} \tilde{y}^{l} + b_{i}^{(l+1)} \cr
 y_{i}^{(l+1)} & = f(z_{i}^{(l+1)})
-\end{align}</script><p>​</p>
-</li>
+\end{align}</script></li>
 </ul>
 </li>
 <li><p>测试层面</p>
@@ -2315,7 +2304,7 @@ y_{i}^{(l+1)} & = f(z_{i}^{(l+1)})
 <p><img src="https://farm4.staticflickr.com/3817/33123833046_48bf6f3dba_o.png" alt=""> </p>
 </li>
 </ul>
-<h2 id="论文中的其他技术点"><a href="# 论文中的其他技术点" class="headerlink" title="论文中的其他技术点"></a>论文中的其他技术点</h2><ul>
+<h3 id="论文中的其他技术点"><a href="# 论文中的其他技术点" class="headerlink" title="论文中的其他技术点"></a>论文中的其他技术点</h3><ul>
 <li><p>防止过拟合的方法：</p>
 <ul>
 <li>提前终止（当验证集上的效果变差的时候）</li>
@@ -2332,8 +2321,8 @@ y_{i}^{(l+1)} & = f(z_{i}^{(l+1)})
 </li>
 <li><p>训练过程 </p>
 <ul>
-<li>对参数 w 的训练进行球形限制（max-normalization），对 dropout 的训练非常有用。</li>
-<li>球形半径 c 是一个需要调整的参数。可以使用验证集进行参数调优。</li>
+<li>对参数 $w$ 的训练进行球形限制（max-normalization），对 dropout 的训练非常有用。</li>
+<li>球形半径 $c$ 是一个需要调整的参数。可以使用验证集进行参数调优。</li>
 <li>Dropout 单独使用效果不错，但是 <strong>dropout</strong>、<strong>max-normalization</strong>、<strong>large decaying learning rates</strong> 以及 <strong>high momentum</strong> 组合起来效果更好，比如 max-norm regularization 就可以防止大的 learning rate 导致的参数 blow up。</li>
 <li>使用 pretraining 方法也可以帮助 dropout 训练参数，在使用 dropout 时，要将所有参数都乘以 $\frac{1}{p}$。</li>
 </ul>
@@ -2341,9 +2330,9 @@ y_{i}^{(l+1)} & = f(z_{i}^{(l+1)})
 <li><p>部分实验结论</p>
 <p>该论文的实验部分很丰富，有大量的评测数据。</p>
 <ul>
-<li><p>maxout 神经网络中得另一种方法，Cifar-10 上超越 dropout</p>
+<li><p>maxout 神经网络中得另一种方法，<code>Cifar-10</code> 数据集上超越 dropout</p>
 </li>
-<li><p>文本分类上，dropout 效果提升有限，分析原因可能是 Reuters-RCV1 数据量足够大，过拟合并不是模型的主要问题</p>
+<li><p>文本分类上，dropout 效果提升有限，分析原因可能是 <code>Reuters-RCV1</code> 数据集中数据量足够大，过拟合并不是模型的主要问题</p>
 </li>
 <li><p>dropout 与其他 standerd regularizers 的对比 </p>
 </li>
@@ -2367,11 +2356,11 @@ y_{i}^{(l+1)} & = f(z_{i}^{(l+1)})
 <li><p>模型均值预测</p>
 <ul>
 <li>使用 weight-scaling 来做预测的均值化</li>
-<li>使用 mente-carlo 方法来做预测。即对每个样本根据 dropout 率先 sample 出来 k 个 net，然后做预测，k 越大，效果越好。</li>
+<li>使用 mente-carlo 方法来做预测。即对每个样本根据 dropout 率先 sample 出来 $k$ 个 net，然后做预测，$k$ 越大，效果越好。</li>
 </ul>
 </li>
 <li><p>Multiplicative Gaussian Noise </p>
-<p>使用高斯分布的 dropou t 而不是伯努利模型 dropout</p>
+<p>使用高斯分布的 dropout 而不是伯努利模型 dropout</p>
 </li>
 <li><p>dropout 的缺点就在于训练时间是没有 dropout 网络的 2-3 倍。</p>
 </li>
@@ -2388,15 +2377,15 @@ y_{i}^{(l+1)} & = f(z_{i}^{(l+1)})
 <li>Bayesian neural network 对稀疏数据特别有用，比如 medical diagnosis, genetics, drug discovery and other computational biology applications</li>
 </ul>
 </blockquote>
-<h1 id="噪声派"><a href="# 噪声派" class="headerlink" title="噪声派"></a>噪声派 </h1><p> 参考文献中第二篇论文中得观点，也很强有力。</p>
-<h2 id="观点 -1"><a href="# 观点 -1" class="headerlink" title="观点"></a>观点 </h2><p> 观点十分明确，就是对于每一个 dropout 后的网络，进行训练时，相当于做了 Data Augmentation，因为，总可以找到一个样本，使得在原始的网络上也能达到 dropout 单元后的效果。 比如，对于某一层，dropout 一些单元后，形成的结果是<code>(1.5,0,2.5,0,1,2,0)</code>，其中 0 是被 drop 的单元，那么总能找到一个样本，使得结果也是如此。这样，每一次 dropout 其实都相当于增加了样本。</p>
-<h2 id="稀疏性"><a href="# 稀疏性" class="headerlink" title="稀疏性"></a>稀疏性 </h2><h3 id="知识点 A"><a href="# 知识点 A" class="headerlink" title="知识点 A"></a> 知识点 A</h3><p>首先，先了解一个知识点：</p>
+<h2 id="噪声派"><a href="# 噪声派" class="headerlink" title="噪声派"></a>噪声派 </h2><p> 参考文献中第二篇论文中得观点，也很强有力。</p>
+<h3 id="观点 -1"><a href="# 观点 -1" class="headerlink" title="观点"></a>观点 </h3><p> 观点十分明确，就是对于每一个 dropout 后的网络，进行训练时，相当于做了 Data Augmentation，因为，总可以找到一个样本，使得在原始的网络上也能达到 dropout 单元后的效果。 比如，对于某一层，dropout 一些单元后，形成的结果是 <code>(1.5,0,2.5,0,1,2,0)</code>，其中 0 是被 drop 的单元，那么总能找到一个样本，使得结果也是如此。这样，每一次 dropout 其实都相当于增加了样本。</p>
+<h3 id="稀疏性"><a href="# 稀疏性" class="headerlink" title="稀疏性"></a>稀疏性 </h3><h4 id="知识点 -A"><a href="# 知识点 -A" class="headerlink" title="知识点 A"></a> 知识点 A</h4><p>首先，先了解一个知识点：</p>
 <blockquote>
 <p>When the data points belonging to a particular class are distributed along a linear manifold, or sub-space, of the input space, it is enough to learn a single set of features which can span the entire manifold. But when the data is distributed along a highly non-linear and discontinuous manifold, the best way to represent such a distribution is to learn features which can explicitly represent small local regions of the input space, effectively “tiling” the space to define non-linear decision boundaries.</p>
 </blockquote>
 <p>大致含义就是： </p>
 <p>在线性空间中，学习一个整个空间的特征集合是足够的，但是当数据分布在非线性不连续的空间中得时候，则学习局部空间的特征集合会比较好。</p>
-<h3 id="知识点 B"><a href="# 知识点 B" class="headerlink" title="知识点 B"></a>知识点 B</h3><p>假设有一堆数据，这些数据由 $M$ 个不同的非连续性簇表示，给定 $K$ 个数据。那么一个有效的特征表示是将输入的每个簇映射为特征以后，簇之间的重叠度最低。使用 $A$ 来表示每个簇的特征表示中激活的维度集合。重叠度是指两个不同的簇的 $A<em>{i}$ 和 $A</em>{j}$ 之间的 Jaccard 相似度最小，那么：</p>
+<h4 id="知识点 -B"><a href="# 知识点 -B" class="headerlink" title="知识点 B"></a>知识点 B</h4><p>假设有一堆数据，这些数据由 $M$ 个不同的非连续性簇表示，给定 $K$ 个数据。那么一个有效的特征表示是将输入的每个簇映射为特征以后，簇之间的重叠度最低。使用 $A$ 来表示每个簇的特征表示中激活的维度集合。重叠度是指两个不同的簇的 $A<em>{i}$ 和 $A</em>{j}$ 之间的 Jaccard 相似度最小，那么：</p>
 <ul>
 <li>当 $K$ 足够大时，即便 $A$ 也很大，也可以学习到最小的重叠度</li>
 <li>当 $K$ 小，$M$ 大时，学习到最小的重叠度的方法就是减小 $A$ 的大小，也就是稀疏性</li>
@@ -2410,27 +2399,26 @@ y_{i}^{(l+1)} & = f(z_{i}^{(l+1)})
 <p>该实验使用了一个模拟数据，即在一个圆上，有 15000 个点，将这个圆分为若干个弧，在一个弧上的属于同一个类，一共 10 个类，即不同的弧也可能属于同一个类。改变弧的大小，就可以使属于同一类的弧变多。</p>
 <p>实验结论就是当弧长变大时，簇数目变少，稀疏度变低。与假设相符合。</p>
 <p>个人观点：该假设不仅仅解释了 dropout 何以导致稀疏性，还解释了 dropout 因为使局部簇的更加显露出来，而根据知识点 A 可得，使局部簇显露出来是 dropout 能防止过拟合的原因，而稀疏性只是其外在表现。</p>
-<h2 id="论文中的其他技术知识点"><a href="# 论文中的其他技术知识点" class="headerlink" title="论文中的其他技术知识点"></a>论文中的其他技术知识点</h2><ul>
+<h3 id="论文中的其他技术知识点"><a href="# 论文中的其他技术知识点" class="headerlink" title="论文中的其他技术知识点"></a>论文中的其他技术知识点</h3><ul>
 <li><p>将 dropout 映射回得样本训练一个完整的网络，可以达到 dropout 的效果。</p>
 </li>
 <li><p>Dropout 由固定值变为一个区间，可以提高效果。</p>
 </li>
-<li><p>将 dropout 后的表示映射回输入空间时，并不能找到一个样本 x* 使得所有层都能满足 dropout 的结果，但可以为每一层都找到一个样本，这样，对于每一个 dropout，都可以找到一组样本可以模拟结果。</p>
+<li><p>将 dropout 后的表示映射回输入空间时，并不能找到一个样本 $x^{*}$ 使得所有层都能满足 dropout 的结果，但可以为每一层都找到一个样本，这样，对于每一个 dropout，都可以找到一组样本可以模拟结果。</p>
 </li>
-<li><p>dropout 对应的还有一个 dropConnect，公式如下：</p>
+<li><p>Dropout 对应的还有一个 dropConnect，公式如下：</p>
 <ul>
 <li><p>dropout</p>
 <script type="math/tex; mode=display">
-h_{n} = \overrightarrow{w_{n}}^{T}(\overrightarrow{r} \odot \overrightarrow{x}) + b_{n}</script><p>​</p>
-</li>
+h_{n} = \overrightarrow{w_{n}}^{T}(\overrightarrow{r} \odot \overrightarrow{x}) + b_{n}</script></li>
 <li><p>dropConnect</p>
 <script type="math/tex; mode=display">
-h_{n} = (\overrightarrow{r_{n}} \odot \overrightarrow{w_{n}})^{T}\overrightarrow{x} + b_{n}</script><p>​</p>
-</li>
+h_{n} = (\overrightarrow{r_{n}} \odot \overrightarrow{w_{n}})^{T}\overrightarrow{x} + b_{n}</script></li>
 </ul>
 </li>
-<li><p>试验中，纯二值化的特征的效果也非常好，说明了稀疏表示在进行空间分区的假设是成立的，一个特征是否被激活表示该样本是否在一个子空间中。</p>
-</li>
+</ul>
+<ul>
+<li>试验中，纯二值化的特征的效果也非常好，说明了稀疏表示在进行空间分区的假设是成立的，一个特征是否被激活表示该样本是否在一个子空间中。</li>
 </ul>
 <h1 id="参考文献"><a href="# 参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p>[1]. Srivastava N, Hinton G, Krizhevsky A, et al. Dropout: A simple way to prevent neural networks from overfitting[J]. The Journal of Machine Learning Research, 2014, 15(1): 1929-1958.</p>
 <p>[2]. Dropout as data augmentation. <a href="http://arxiv.org/abs/1506.08700" target="_blank" rel="external">http://arxiv.org/abs/1506.08700</a></p>
@@ -2438,18 +2426,14 @@ h_{n} = (\overrightarrow{r_{n}} \odot \overrightarrow{w_{n}})^{T}\overrightarrow
     
     <summary type="html">
     
-      Dropout 是 CNN 中防止过拟合提高效果的一个大杀器，但对于其为何有效，却众说纷纭。
+      Dropout 是深度学习中防止过拟合提高效果的一个大杀器，但对于其为何有效，却众说纷纭。
     
     </summary>
     
       <category term="Machine Learning" scheme="http://randolph.pro/categories/Machine-Learning/"/>
     
-      <category term="Papers" scheme="http://randolph.pro/categories/Machine-Learning/Papers/"/>
-    
     
       <category term="Machine Learning" scheme="http://randolph.pro/tags/Machine-Learning/"/>
-    
-      <category term="Papers" scheme="http://randolph.pro/tags/Papers/"/>
     
   </entry>
   

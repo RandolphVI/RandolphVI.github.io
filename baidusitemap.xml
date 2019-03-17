@@ -4,6 +4,46 @@
 
     
   <url>
+    <loc>http://randolph.pro/2019/03/16/%E2%9C%8E%E3%80%8C%E5%8C%AF%E6%96%87%E3%80%8D%E6%88%91%E4%B8%8E%E5%9C%B0%E5%9D%9B/</loc>
+    <lastmod>2019-03-17T08:46:57.674Z</lastmod>
+    <data>
+        <display>
+        <title>✎「匯文」 我与地坛</title>
+        <pubTime>2019-03-15T16:00:00.000Z</pubTime>
+        
+        <tag>匯文</tag>
+         
+         
+           
+             
+              <breadCrumb title="匯文" url="http://randolph.pro/categories/%E5%8C%AF%E6%96%87/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://randolph.pro/2017/03/01/%E2%99%9B%E3%80%8CMachine%20Learning%E3%80%8DAbout%20Dropout/</loc>
+    <lastmod>2019-03-17T08:03:33.612Z</lastmod>
+    <data>
+        <display>
+        <title>♜「Machine Learning」 About Dropout</title>
+        <pubTime>2017-02-28T16:00:00.000Z</pubTime>
+        
+        <tag>Machine Learning</tag>
+         
+         
+           
+             
+              <breadCrumb title="Machine Learning" url="http://randolph.pro/categories/Machine-Learning/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://randolph.pro/2017/03/13/%E2%99%A3%EF%B8%8E%E3%80%8CTensorFlow%E3%80%8D%20Tensorboard/</loc>
     <lastmod>2019-03-17T07:49:07.524Z</lastmod>
     <data>
@@ -601,31 +641,6 @@
 
     
   <url>
-    <loc>http://randolph.pro/2017/10/17/%E2%99%9C%E3%80%8CPapers%E3%80%8DAbout%20Text%20Classification%20based%20on%20RNN/</loc>
-    <lastmod>2017-11-12T13:23:36.208Z</lastmod>
-    <data>
-        <display>
-        <title>♜「Papers」 About Text Classification based on RNN</title>
-        <pubTime>2017-10-16T16:00:00.000Z</pubTime>
-        
-        <tag>Machine Learning</tag>
-         
-        <tag>Papers</tag>
-         
-         
-           
-             
-              <breadCrumb title="Machine Learning" url="http://randolph.pro/categories/Machine-Learning/"/>
-          
-             
-              <breadCrumb title="Papers" url="http://randolph.pro/categories/Machine-Learning/Papers/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://randolph.pro/2017/10/13/%E2%99%9C%E3%80%8CPapers%E3%80%8DAbout%20Word%20Representation/</loc>
     <lastmod>2017-10-14T06:46:15.000Z</lastmod>
     <data>
@@ -716,31 +731,6 @@
            
              
               <breadCrumb title="Tools" url="http://randolph.pro/categories/Tools/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://randolph.pro/2017/03/01/%E2%99%9C%E3%80%8CPapers%E3%80%8DAbout%20Dropout/</loc>
-    <lastmod>2017-08-06T12:56:57.000Z</lastmod>
-    <data>
-        <display>
-        <title>♜「Papers」 About Dropout</title>
-        <pubTime>2017-02-28T16:00:00.000Z</pubTime>
-        
-        <tag>Machine Learning</tag>
-         
-        <tag>Papers</tag>
-         
-         
-           
-             
-              <breadCrumb title="Machine Learning" url="http://randolph.pro/categories/Machine-Learning/"/>
-          
-             
-              <breadCrumb title="Papers" url="http://randolph.pro/categories/Machine-Learning/Papers/"/>
           
         </display>
     </data>
