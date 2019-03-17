@@ -2,6 +2,55 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://randolph.pro/2017/01/03/%E2%99%9E%E3%80%8CBooks%E3%80%8DMachine%20Learning%20-%20Clustering/</loc>
+    
+    <lastmod>2019-03-17T07:26:38.191Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://randolph.pro/2017/01/14/%E2%99%9E%E3%80%8CBooks%E3%80%8DMachine%20Learning%20-%20KNN%20&%20kd%20Tree/</loc>
+    
+    <lastmod>2019-03-17T07:25:06.014Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://randolph.pro/2017/12/17/%E2%99%9A%E3%80%8CKaggle%E3%80%8DMusic%20Recommendation%20Challenge/</loc>
+    
+    <lastmod>2019-03-17T07:21:12.749Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://randolph.pro/2015/11/02/%E2%99%9E%E3%80%8CBooks%E3%80%8DWeb%20Scraping%20with%20Python%20-%20Chapter%201%20&%202/</loc>
+    
+    <lastmod>2019-03-17T07:20:35.946Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://randolph.pro/2015/11/27/%E2%99%9E%E3%80%8CBooks%E3%80%8DWeb%20Scraping%20with%20Python%20-%20%20Chapter%204%20&%205/</loc>
+    
+    <lastmod>2019-03-17T07:19:19.851Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://randolph.pro/2015/11/13/%E2%99%9E%E3%80%8CBooks%E3%80%8DWeb%20Scraping%20with%20Python%20-%20%20Chapter%203/</loc>
+    
+    <lastmod>2019-03-17T07:18:57.433Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://randolph.pro/2016/03/12/%E2%99%9E%E3%80%8CBooks%E3%80%8DProgramming%20Collective%20Intelligence%20-%20Chapter%201%20&%202/</loc>
+    
+    <lastmod>2019-03-17T07:18:30.950Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://randolph.pro/2016/03/19/%E2%99%9E%E3%80%8CBooks%E3%80%8DProgramming%20Collective%20Intelligence%20-%20%20Chapter%203/</loc>
     
     <lastmod>2019-03-17T07:02:08.813Z</lastmod>
@@ -16,37 +65,9 @@
   </url>
   
   <url>
-    <loc>http://randolph.pro/2015/11/27/%E2%99%9E%E3%80%8CBooks%E3%80%8DWeb%20Scraping%20with%20Python%20-%20%20Chapter%204%20&%205/</loc>
-    
-    <lastmod>2019-03-17T06:46:18.672Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://randolph.pro/2015/11/13/%E2%99%9E%E3%80%8CBooks%E3%80%8DWeb%20Scraping%20with%20Python%20-%20%20Chapter%203/</loc>
-    
-    <lastmod>2019-03-17T06:45:45.851Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://randolph.pro/2015/11/02/%E2%99%9E%E3%80%8CBooks%E3%80%8DWeb%20Scraping%20with%20Python%20-%20Chapter%201%20&%202/</loc>
-    
-    <lastmod>2019-03-17T06:44:58.170Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://randolph.pro/2018/03/19/%E2%99%9A%20%E3%80%8CDatasets%E3%80%8DAbout%20Khan%20Academy%20Data/</loc>
     
     <lastmod>2019-03-17T06:43:58.238Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://randolph.pro/2016/03/12/%E2%99%9E%E3%80%8CBooks%E3%80%8DProgramming%20Collective%20Intelligence%20-%20Chapter%201%20&%202/</loc>
-    
-    <lastmod>2019-03-17T06:42:42.405Z</lastmod>
     
   </url>
   
@@ -142,20 +163,6 @@
   </url>
   
   <url>
-    <loc>http://randolph.pro/2017/01/14/%E2%99%9E%E3%80%8CMachine%20Learning%E3%80%8D%20Classification%20-%20KNN%20&%20kd%20Tree/</loc>
-    
-    <lastmod>2018-03-19T13:33:56.462Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://randolph.pro/2017/12/17/%E2%99%9A%E3%80%8CKaggle%E3%80%8DMusic%20Recommendation%20Challenge/</loc>
-    
-    <lastmod>2017-12-18T09:35:32.454Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://randolph.pro/2017/11/11/%E2%99%9C%E3%80%8CPapers%E3%80%8DAbout%20Field-aware%20Factorization%20Machines/</loc>
     
     <lastmod>2017-11-12T14:52:04.671Z</lastmod>
@@ -208,13 +215,6 @@
     <loc>http://randolph.pro/2016/11/11/%E2%99%9F%E3%80%8CTools%E3%80%8DMathjax/</loc>
     
     <lastmod>2017-08-19T16:56:07.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://randolph.pro/2017/01/03/%E2%99%9E%E3%80%8CMachine%20Learning%E3%80%8D%20Clustering/</loc>
-    
-    <lastmod>2017-08-15T14:52:48.000Z</lastmod>
     
   </url>
   

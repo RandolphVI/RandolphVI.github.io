@@ -97,7 +97,7 @@
     <link href="http://randolph.pro/2017/12/17/%E2%99%9A%E3%80%8CKaggle%E3%80%8DMusic%20Recommendation%20Challenge/"/>
     <id>http://randolph.pro/2017/12/17/♚「Kaggle」Music Recommendation Challenge/</id>
     <published>2017-12-16T16:00:00.000Z</published>
-    <updated>2017-12-18T09:35:32.454Z</updated>
+    <updated>2019-03-17T07:21:12.749Z</updated>
     
     <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><img src="https://farm5.staticflickr.com/4594/27350242309_af130232ac_o.jpg" alt=""></p>
 <p>有关「Machine Learning」的其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/">「Machine Learning」</a><br>有关「Kaggle」的其他论文学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/Kaggle/">「Kaggle」</a><br>有关模型代码：<a href="https://github.com/RandolphVI/Music-Recommendation-System" target="_blank" rel="external">「Music Recommendation Challenge」</a></p>
@@ -302,9 +302,7 @@
     
     </summary>
     
-      <category term="Machine Learning" scheme="http://randolph.pro/categories/Machine-Learning/"/>
-    
-      <category term="Kaggle" scheme="http://randolph.pro/categories/Machine-Learning/Kaggle/"/>
+      <category term="Kaggle" scheme="http://randolph.pro/categories/Kaggle/"/>
     
     
       <category term="Machine Learning" scheme="http://randolph.pro/tags/Machine-Learning/"/>
@@ -2480,11 +2478,11 @@ h_{n} = (\overrightarrow{r_{n}} \odot \overrightarrow{w_{n}})^{T}\overrightarrow
   </entry>
   
   <entry>
-    <title>♞「Machine Learning」 Classification - KNN &amp; kd Tree</title>
-    <link href="http://randolph.pro/2017/01/14/%E2%99%9E%E3%80%8CMachine%20Learning%E3%80%8D%20Classification%20-%20KNN%20&amp;%20kd%20Tree/"/>
-    <id>http://randolph.pro/2017/01/14/♞「Machine Learning」 Classification - KNN &amp; kd Tree/</id>
+    <title>♞「Books」Machine Learning -  KNN &amp; kd Tree</title>
+    <link href="http://randolph.pro/2017/01/14/%E2%99%9E%E3%80%8CBooks%E3%80%8DMachine%20Learning%20-%20KNN%20&amp;%20kd%20Tree/"/>
+    <id>http://randolph.pro/2017/01/14/♞「Books」Machine Learning - KNN &amp; kd Tree/</id>
     <published>2017-01-13T16:00:00.000Z</published>
-    <updated>2018-03-19T13:33:56.462Z</updated>
+    <updated>2019-03-17T07:25:06.014Z</updated>
     
     <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><img src="https://farm5.staticflickr.com/4307/36174772306_62cfbc8cd6_o.jpg" alt=""></p>
 <p>有关该书的其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/Book-「Machine-Learning」/">Book:「Machine Learning」</a></p>
@@ -2664,23 +2662,23 @@ d(x,y) =\sqrt{\sum_{i=1}^{n}\frac{(x_{i} - y_{i})^2}{s_{i}^2}}</script><p>可以
     
     </summary>
     
-      <category term="Machine Learning" scheme="http://randolph.pro/categories/Machine-Learning/"/>
+      <category term="Books" scheme="http://randolph.pro/categories/Books/"/>
     
-      <category term="Book:「Machine Learning」" scheme="http://randolph.pro/categories/Machine-Learning/Book-%E3%80%8CMachine-Learning%E3%80%8D/"/>
+      <category term="Book:「Machine Learning」" scheme="http://randolph.pro/categories/Books/Book-%E3%80%8CMachine-Learning%E3%80%8D/"/>
     
     
       <category term="Machine Learning" scheme="http://randolph.pro/tags/Machine-Learning/"/>
     
-      <category term="Python" scheme="http://randolph.pro/tags/Python/"/>
+      <category term="Books" scheme="http://randolph.pro/tags/Books/"/>
     
   </entry>
   
   <entry>
     <title>♞「Machine Learning」 Clustering</title>
-    <link href="http://randolph.pro/2017/01/03/%E2%99%9E%E3%80%8CMachine%20Learning%E3%80%8D%20Clustering/"/>
-    <id>http://randolph.pro/2017/01/03/♞「Machine Learning」 Clustering/</id>
+    <link href="http://randolph.pro/2017/01/03/%E2%99%9E%E3%80%8CBooks%E3%80%8DMachine%20Learning%20-%20Clustering/"/>
+    <id>http://randolph.pro/2017/01/03/♞「Books」Machine Learning - Clustering/</id>
     <published>2017-01-02T16:00:00.000Z</published>
-    <updated>2017-08-15T14:52:48.000Z</updated>
+    <updated>2019-03-17T07:26:38.191Z</updated>
     
     <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><img src="https://farm5.staticflickr.com/4307/36174772306_62cfbc8cd6_o.jpg" alt=""></p>
 <p>有关该书的其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/Book-「Machine-Learning」/">Book:「Machine Learning」</a></p>
@@ -3074,14 +3072,14 @@ p^{'} & = p_{5} + \eta \cdot (x_{1} - p_{5}) \cr
     
     </summary>
     
-      <category term="Machine Learning" scheme="http://randolph.pro/categories/Machine-Learning/"/>
+      <category term="Books" scheme="http://randolph.pro/categories/Books/"/>
     
-      <category term="Book:「Machine Learning」" scheme="http://randolph.pro/categories/Machine-Learning/Book-%E3%80%8CMachine-Learning%E3%80%8D/"/>
+      <category term="Book:「Machine Learning」" scheme="http://randolph.pro/categories/Books/Book-%E3%80%8CMachine-Learning%E3%80%8D/"/>
     
     
       <category term="Machine Learning" scheme="http://randolph.pro/tags/Machine-Learning/"/>
     
-      <category term="Python" scheme="http://randolph.pro/tags/Python/"/>
+      <category term="Books" scheme="http://randolph.pro/tags/Books/"/>
     
   </entry>
   
