@@ -1,741 +1,100 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
-
-    
   <url>
-    <loc>http://randolph.pro/2019/03/16/%E2%9C%8E%E3%80%8C%E5%8C%AF%E6%96%87%E3%80%8D%E6%88%91%E4%B8%8E%E5%9C%B0%E5%9D%9B/</loc>
-    <lastmod>2019-03-17T08:53:21.692Z</lastmod>
-    <data>
-        <display>
-        <title>✎「匯文」 我与地坛</title>
-        <pubTime>2019-03-15T16:00:00.000Z</pubTime>
-        
-        <tag>匯文</tag>
-         
-         
-           
-             
-              <breadCrumb title="匯文" url="http://randolph.pro/categories/%E5%8C%AF%E6%96%87/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
+    <loc>http://randolph.pro/2019/03/16/%E2%9C%8E%E3%80%8C%E5%8C%AF%E6%96%87%E3%80%8D%E6%B0%B4%E4%B9%8B%E6%B9%84/</loc>
+    <lastmod>2019-03-17</lastmod>
+  </url>  <url>
+    <loc>http://randolph.pro/2019/03/16/%E2%9C%8E%E3%80%8C%E5%8C%AF%E6%96%87%E3%80%8D%E6%88%91%E4%B8%8E%E5%9C%B0%E5%9D%9B%20copy/</loc>
+    <lastmod>2019-03-17</lastmod>
+  </url>  <url>
     <loc>http://randolph.pro/2017/03/01/%E2%99%9B%E3%80%8CMachine%20Learning%E3%80%8DAbout%20Dropout/</loc>
-    <lastmod>2019-03-17T08:03:33.612Z</lastmod>
-    <data>
-        <display>
-        <title>♜「Machine Learning」 About Dropout</title>
-        <pubTime>2017-02-28T16:00:00.000Z</pubTime>
-        
-        <tag>Machine Learning</tag>
-         
-         
-           
-             
-              <breadCrumb title="Machine Learning" url="http://randolph.pro/categories/Machine-Learning/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
+    <lastmod>2019-03-17</lastmod>
+  </url>  <url>
     <loc>http://randolph.pro/2017/03/13/%E2%99%A3%EF%B8%8E%E3%80%8CTensorFlow%E3%80%8D%20Tensorboard/</loc>
-    <lastmod>2019-03-17T07:49:07.524Z</lastmod>
-    <data>
-        <display>
-        <title>♣︎「TensorFlow」 Tensorboard</title>
-        <pubTime>2017-03-12T16:00:00.000Z</pubTime>
-        
-        <tag>Machine Learning</tag>
-         
-        <tag>Python</tag>
-         
-        <tag>TensorFlow</tag>
-         
-         
-           
-             
-              <breadCrumb title="TensorFlow" url="http://randolph.pro/categories/TensorFlow/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
+    <lastmod>2019-03-17</lastmod>
+  </url>  <url>
     <loc>http://randolph.pro/2017/09/25/%E2%99%A3%EF%B8%8E%E3%80%8CTensorFlow%E3%80%8DCross%20Entropy%20Function%20in%20TensorFlow%20/</loc>
-    <lastmod>2019-03-17T07:32:29.976Z</lastmod>
-    <data>
-        <display>
-        <title>♣︎「TensorFlow」 Cross Entropy in TensorFlow</title>
-        <pubTime>2017-09-24T16:00:00.000Z</pubTime>
-        
-        <tag>Machine Learning</tag>
-         
-        <tag>Python</tag>
-         
-        <tag>TensorFlow</tag>
-         
-         
-           
-             
-              <breadCrumb title="TensorFlow" url="http://randolph.pro/categories/TensorFlow/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
+    <lastmod>2019-03-17</lastmod>
+  </url>  <url>
     <loc>http://randolph.pro/2017/01/03/%E2%99%9E%E3%80%8CBooks%E3%80%8DMachine%20Learning%20-%20Clustering/</loc>
-    <lastmod>2019-03-17T07:26:38.191Z</lastmod>
-    <data>
-        <display>
-        <title>♞「Machine Learning」 Clustering</title>
-        <pubTime>2017-01-02T16:00:00.000Z</pubTime>
-        
-        <tag>Machine Learning</tag>
-         
-        <tag>Books</tag>
-         
-         
-           
-             
-              <breadCrumb title="Books" url="http://randolph.pro/categories/Books/"/>
-          
-             
-              <breadCrumb title="Book:「Machine Learning」" url="http://randolph.pro/categories/Books/Book-%E3%80%8CMachine-Learning%E3%80%8D/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
+    <lastmod>2019-03-17</lastmod>
+  </url>  <url>
     <loc>http://randolph.pro/2017/01/14/%E2%99%9E%E3%80%8CBooks%E3%80%8DMachine%20Learning%20-%20KNN%20&%20kd%20Tree/</loc>
-    <lastmod>2019-03-17T07:25:06.014Z</lastmod>
-    <data>
-        <display>
-        <title>♞「Books」Machine Learning -  KNN & kd Tree</title>
-        <pubTime>2017-01-13T16:00:00.000Z</pubTime>
-        
-        <tag>Machine Learning</tag>
-         
-        <tag>Books</tag>
-         
-         
-           
-             
-              <breadCrumb title="Books" url="http://randolph.pro/categories/Books/"/>
-          
-             
-              <breadCrumb title="Book:「Machine Learning」" url="http://randolph.pro/categories/Books/Book-%E3%80%8CMachine-Learning%E3%80%8D/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
+    <lastmod>2019-03-17</lastmod>
+  </url>  <url>
     <loc>http://randolph.pro/2017/12/17/%E2%99%9A%E3%80%8CKaggle%E3%80%8DMusic%20Recommendation%20Challenge/</loc>
-    <lastmod>2019-03-17T07:21:12.749Z</lastmod>
-    <data>
-        <display>
-        <title>♚「Kaggle」 Music Recommendation Challenge</title>
-        <pubTime>2017-12-16T16:00:00.000Z</pubTime>
-        
-        <tag>Machine Learning</tag>
-         
-        <tag>Kaggle</tag>
-         
-         
-           
-             
-              <breadCrumb title="Kaggle" url="http://randolph.pro/categories/Kaggle/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
+    <lastmod>2019-03-17</lastmod>
+  </url>  <url>
     <loc>http://randolph.pro/2015/11/02/%E2%99%9E%E3%80%8CBooks%E3%80%8DWeb%20Scraping%20with%20Python%20-%20Chapter%201%20&%202/</loc>
-    <lastmod>2019-03-17T07:20:35.946Z</lastmod>
-    <data>
-        <display>
-        <title>♞「Books」Web Scraping with Python - Chapter 1 & 2</title>
-        <pubTime>2015-11-01T16:00:00.000Z</pubTime>
-        
-        <tag>Python</tag>
-         
-        <tag>Web Scraping</tag>
-         
-         
-           
-             
-              <breadCrumb title="Books" url="http://randolph.pro/categories/Books/"/>
-          
-             
-              <breadCrumb title="Book:「Web Scraping with Python」" url="http://randolph.pro/categories/Books/Book-%E3%80%8CWeb-Scraping-with-Python%E3%80%8D/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
+    <lastmod>2019-03-17</lastmod>
+  </url>  <url>
     <loc>http://randolph.pro/2015/11/27/%E2%99%9E%E3%80%8CBooks%E3%80%8DWeb%20Scraping%20with%20Python%20-%20%20Chapter%204%20&%205/</loc>
-    <lastmod>2019-03-17T07:19:19.851Z</lastmod>
-    <data>
-        <display>
-        <title>♞「Books」Web Scraping with Python - Chapter 4 & 5</title>
-        <pubTime>2015-11-26T16:00:00.000Z</pubTime>
-        
-        <tag>Python</tag>
-         
-        <tag>Web Scraping</tag>
-         
-         
-           
-             
-              <breadCrumb title="Books" url="http://randolph.pro/categories/Books/"/>
-          
-             
-              <breadCrumb title="Book:「Web Scraping with Python」" url="http://randolph.pro/categories/Books/Book-%E3%80%8CWeb-Scraping-with-Python%E3%80%8D/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
+    <lastmod>2019-03-17</lastmod>
+  </url>  <url>
     <loc>http://randolph.pro/2015/11/13/%E2%99%9E%E3%80%8CBooks%E3%80%8DWeb%20Scraping%20with%20Python%20-%20%20Chapter%203/</loc>
-    <lastmod>2019-03-17T07:18:57.433Z</lastmod>
-    <data>
-        <display>
-        <title>♞「Books」Web Scraping with Python - Chapter 3</title>
-        <pubTime>2015-11-12T16:00:00.000Z</pubTime>
-        
-        <tag>Python</tag>
-         
-        <tag>Web Scraping</tag>
-         
-         
-           
-             
-              <breadCrumb title="Books" url="http://randolph.pro/categories/Books/"/>
-          
-             
-              <breadCrumb title="Book:「Web Scraping with Python」" url="http://randolph.pro/categories/Books/Book-%E3%80%8CWeb-Scraping-with-Python%E3%80%8D/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
+    <lastmod>2019-03-17</lastmod>
+  </url>  <url>
     <loc>http://randolph.pro/2016/03/12/%E2%99%9E%E3%80%8CBooks%E3%80%8DProgramming%20Collective%20Intelligence%20-%20Chapter%201%20&%202/</loc>
-    <lastmod>2019-03-17T07:18:30.950Z</lastmod>
-    <data>
-        <display>
-        <title>♞「Books」Programming Collective Intelligence - Chapter 1 & 2</title>
-        <pubTime>2016-03-11T16:00:00.000Z</pubTime>
-        
-        <tag>Machine Learning</tag>
-         
-        <tag>Python</tag>
-         
-         
-           
-             
-              <breadCrumb title="Books" url="http://randolph.pro/categories/Books/"/>
-          
-             
-              <breadCrumb title="Book:「Programming Collective Intelligence」" url="http://randolph.pro/categories/Books/Book-%E3%80%8CProgramming-Collective-Intelligence%E3%80%8D/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
+    <lastmod>2019-03-17</lastmod>
+  </url>  <url>
     <loc>http://randolph.pro/2016/03/19/%E2%99%9E%E3%80%8CBooks%E3%80%8DProgramming%20Collective%20Intelligence%20-%20%20Chapter%203/</loc>
-    <lastmod>2019-03-17T07:02:08.813Z</lastmod>
-    <data>
-        <display>
-        <title>♞「Books」Programming Collective Intelligence - Chapter 3</title>
-        <pubTime>2016-03-18T16:00:00.000Z</pubTime>
-        
-        <tag>Machine Learning</tag>
-         
-        <tag>Python</tag>
-         
-         
-           
-             
-              <breadCrumb title="Books" url="http://randolph.pro/categories/Books/"/>
-          
-             
-              <breadCrumb title="Book:「Programming Collective Intelligence」" url="http://randolph.pro/categories/Books/Book-%E3%80%8CProgramming-Collective-Intelligence%E3%80%8D/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
+    <lastmod>2019-03-17</lastmod>
+  </url>  <url>
     <loc>http://randolph.pro/2015/12/13/%E2%99%9E%E3%80%8CBooks%E3%80%8DWeb%20Scraping%20with%20Python%20-%20smtplib%20&%20email%20module/</loc>
-    <lastmod>2019-03-17T06:47:13.676Z</lastmod>
-    <data>
-        <display>
-        <title>♞「Books」Web Scraping with Python - smtplib & email module</title>
-        <pubTime>2015-12-12T16:00:00.000Z</pubTime>
-        
-        <tag>Python</tag>
-         
-        <tag>Web Scraping</tag>
-         
-         
-           
-             
-              <breadCrumb title="Books" url="http://randolph.pro/categories/Books/"/>
-          
-             
-              <breadCrumb title="Book:「Web Scraping with Python」" url="http://randolph.pro/categories/Books/Book-%E3%80%8CWeb-Scraping-with-Python%E3%80%8D/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
+    <lastmod>2019-03-17</lastmod>
+  </url>  <url>
     <loc>http://randolph.pro/2018/03/19/%E2%99%9A%20%E3%80%8CDatasets%E3%80%8DAbout%20Khan%20Academy%20Data/</loc>
-    <lastmod>2019-03-17T06:43:58.238Z</lastmod>
-    <data>
-        <display>
-        <title>♣︎  About Khan Academy Data</title>
-        <pubTime>2018-03-18T16:00:00.000Z</pubTime>
-        
-        <tag>Datasets</tag>
-         
-         
-           
-             
-              <breadCrumb title="Datasets" url="http://randolph.pro/categories/Datasets/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
+    <lastmod>2019-03-17</lastmod>
+  </url>  <url>
     <loc>http://randolph.pro/2015/09/17/%E2%99%9E%E3%80%8CBooks%E3%80%8DNLP%20with%20Python%20-%20Chapter%203/</loc>
-    <lastmod>2019-03-17T06:41:01.479Z</lastmod>
-    <data>
-        <display>
-        <title>♞「Books」NLP with Python - Chapter 3</title>
-        <pubTime>2015-09-16T16:00:00.000Z</pubTime>
-        
-        <tag>Machine Learning</tag>
-         
-        <tag>Natural Language Processing</tag>
-         
-        <tag>Python</tag>
-         
-         
-           
-             
-              <breadCrumb title="Books" url="http://randolph.pro/categories/Books/"/>
-          
-             
-              <breadCrumb title="Book:「NLP with Python」" url="http://randolph.pro/categories/Books/Book-%E3%80%8CNLP-with-Python%E3%80%8D/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
+    <lastmod>2019-03-17</lastmod>
+  </url>  <url>
     <loc>http://randolph.pro/2015/09/11/%E2%99%9E%E3%80%8CBooks%E3%80%8DNLP%20with%20Python%20-%20Chapter%201%20&%202/</loc>
-    <lastmod>2019-03-17T06:37:49.364Z</lastmod>
-    <data>
-        <display>
-        <title>♞「Books」NLP with Python - Chapter 1 & 2</title>
-        <pubTime>2015-09-10T16:00:00.000Z</pubTime>
-        
-        <tag>Machine Learning</tag>
-         
-        <tag>Books</tag>
-         
-        <tag>Natural Language Processing</tag>
-         
-        <tag>Python</tag>
-         
-         
-           
-             
-              <breadCrumb title="Books" url="http://randolph.pro/categories/Books/"/>
-          
-             
-              <breadCrumb title="Book:「NLP with Python」" url="http://randolph.pro/categories/Books/Book-%E3%80%8CNLP-with-Python%E3%80%8D/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
+    <lastmod>2019-03-17</lastmod>
+  </url>  <url>
     <loc>http://randolph.pro/2016/12/30/%E2%99%9E%E3%80%8CBooks%E3%80%8DMachine%20Learning%20-%20Chapter%202/</loc>
-    <lastmod>2019-03-17T06:37:12.880Z</lastmod>
-    <data>
-        <display>
-        <title>♞「Books」Machine Learning - Chapter 2</title>
-        <pubTime>2016-12-29T16:00:00.000Z</pubTime>
-        
-        <tag>Machine Learning</tag>
-         
-        <tag>Books</tag>
-         
-         
-           
-             
-              <breadCrumb title="Books" url="http://randolph.pro/categories/Books/"/>
-          
-             
-              <breadCrumb title="Book:「Machine Learning」" url="http://randolph.pro/categories/Books/Book-%E3%80%8CMachine-Learning%E3%80%8D/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
+    <lastmod>2019-03-17</lastmod>
+  </url>  <url>
     <loc>http://randolph.pro/2016/12/26/%E2%99%9E%E3%80%8CBooks%E3%80%8DMachine%20Learning%20-%20Chapter%201/</loc>
-    <lastmod>2019-03-17T06:37:01.088Z</lastmod>
-    <data>
-        <display>
-        <title>♞「Books」Machine Learning - Chapter 1</title>
-        <pubTime>2016-12-25T16:00:00.000Z</pubTime>
-        
-        <tag>Machine Learning</tag>
-         
-        <tag>Books</tag>
-         
-         
-           
-             
-              <breadCrumb title="Books" url="http://randolph.pro/categories/Books/"/>
-          
-             
-              <breadCrumb title="Book:「Machine Learning」" url="http://randolph.pro/categories/Books/Book-%E3%80%8CMachine-Learning%E3%80%8D/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
+    <lastmod>2019-03-17</lastmod>
+  </url>  <url>
     <loc>http://randolph.pro/2017/09/06/%E2%99%9B%E3%80%8CMachine%20Learning%E3%80%8DDeal%20with%20Imbalanced%20Data/</loc>
-    <lastmod>2018-03-19T15:19:04.685Z</lastmod>
-    <data>
-        <display>
-        <title>♛「Machine Learning」 Deal with Imbalanced Data</title>
-        <pubTime>2017-09-05T16:00:00.000Z</pubTime>
-        
-        <tag>Machine Learning</tag>
-         
-         
-           
-             
-              <breadCrumb title="Machine Learning" url="http://randolph.pro/categories/Machine-Learning/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
+    <lastmod>2018-03-19</lastmod>
+  </url>  <url>
     <loc>http://randolph.pro/2017/09/08/%E2%99%9B%E3%80%8CMachine%20Learning%E3%80%8D%20LSTM%20Introduction/</loc>
-    <lastmod>2018-03-19T15:18:57.915Z</lastmod>
-    <data>
-        <display>
-        <title>♛「Machine Learning」 LSTM Introduction</title>
-        <pubTime>2017-09-07T16:00:00.000Z</pubTime>
-        
-        <tag>Machine Learning</tag>
-         
-         
-           
-             
-              <breadCrumb title="Machine Learning" url="http://randolph.pro/categories/Machine-Learning/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
+    <lastmod>2018-03-19</lastmod>
+  </url>  <url>
     <loc>http://randolph.pro/2017/10/14/%E2%99%9B%E3%80%8CMachine%20Learning%E3%80%8D%20How%20to%20Generate%20a%20Good%20Word%20Embedding/</loc>
-    <lastmod>2018-03-19T15:18:52.357Z</lastmod>
-    <data>
-        <display>
-        <title>♛「Machine Learning」 How to Generate a Good Word Embedding?</title>
-        <pubTime>2017-10-13T16:00:00.000Z</pubTime>
-        
-        <tag>Machine Learning</tag>
-         
-         
-           
-             
-              <breadCrumb title="Machine Learning" url="http://randolph.pro/categories/Machine-Learning/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
+    <lastmod>2018-03-19</lastmod>
+  </url>  <url>
     <loc>http://randolph.pro/2017/03/03/%E2%99%9B%E3%80%8CMachine%20Learning%E3%80%8D%20Factorization%20Machines/</loc>
-    <lastmod>2018-03-19T15:18:42.977Z</lastmod>
-    <data>
-        <display>
-        <title>♛「Machine Learning」 Factorization Machines</title>
-        <pubTime>2017-03-02T16:00:00.000Z</pubTime>
-        
-        <tag>Machine Learning</tag>
-         
-         
-           
-             
-              <breadCrumb title="Machine Learning" url="http://randolph.pro/categories/Machine-Learning/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
+    <lastmod>2018-03-19</lastmod>
+  </url>  <url>
     <loc>http://randolph.pro/2017/03/07/%E2%99%9B%E3%80%8CMachine%20Learning%E3%80%8D%20CNN%20Introduction/</loc>
-    <lastmod>2018-03-19T15:18:37.557Z</lastmod>
-    <data>
-        <display>
-        <title>♛「Machine Learning」 CNN Introduction</title>
-        <pubTime>2017-03-06T16:00:00.000Z</pubTime>
-        
-        <tag>Machine Learning</tag>
-         
-         
-           
-             
-              <breadCrumb title="Machine Learning" url="http://randolph.pro/categories/Machine-Learning/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
+    <lastmod>2018-03-19</lastmod>
+  </url>  <url>
     <loc>http://randolph.pro/2016/04/15/%E2%99%A6%EF%B8%8E%E3%80%8CComputer%20Vision%E3%80%8D%20JPEG%20Compression/</loc>
-    <lastmod>2018-03-19T15:18:17.231Z</lastmod>
-    <data>
-        <display>
-        <title>♦︎「Computer Vision」 JPEG Compression</title>
-        <pubTime>2016-04-14T16:00:00.000Z</pubTime>
-        
-        <tag>Python</tag>
-         
-        <tag>Computer Vision</tag>
-         
-         
-           
-             
-              <breadCrumb title="Machine Learning" url="http://randolph.pro/categories/Machine-Learning/"/>
-          
-             
-              <breadCrumb title="Computer Vision" url="http://randolph.pro/categories/Machine-Learning/Computer-Vision/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
+    <lastmod>2018-03-19</lastmod>
+  </url>  <url>
     <loc>http://randolph.pro/2017/03/17/%E2%99%A3%EF%B8%8E%E3%80%8CTensorFlow%E3%80%8DUse%20WeChat%20to%20Monitor%20Your%20Network/</loc>
-    <lastmod>2018-03-19T15:14:41.439Z</lastmod>
-    <data>
-        <display>
-        <title>♣︎「TensorFlow」 Use WeChat to Monitor Your Network</title>
-        <pubTime>2017-03-16T16:00:00.000Z</pubTime>
-        
-        <tag>Machine Learning</tag>
-         
-        <tag>Python</tag>
-         
-        <tag>TensorFlow</tag>
-         
-        <tag>WeChat</tag>
-         
-         
-           
-             
-              <breadCrumb title="TensorFlow" url="http://randolph.pro/categories/TensorFlow/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
+    <lastmod>2018-03-19</lastmod>
+  </url>  <url>
     <loc>http://randolph.pro/2017/11/11/%E2%99%9C%E3%80%8CPapers%E3%80%8DAbout%20Field-aware%20Factorization%20Machines/</loc>
-    <lastmod>2017-11-12T14:52:04.671Z</lastmod>
-    <data>
-        <display>
-        <title>♜「Papers」 About Field-aware Factorization Machines</title>
-        <pubTime>2017-11-10T16:00:00.000Z</pubTime>
-        
-        <tag>Machine Learning</tag>
-         
-        <tag>Papers</tag>
-         
-         
-           
-             
-              <breadCrumb title="Machine Learning" url="http://randolph.pro/categories/Machine-Learning/"/>
-          
-             
-              <breadCrumb title="Papers" url="http://randolph.pro/categories/Machine-Learning/Papers/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
+    <lastmod>2017-11-12</lastmod>
+  </url>  <url>
     <loc>http://randolph.pro/2017/03/10/%E2%99%9C%E3%80%8CPapers%E3%80%8DAbout%20Text%20Classification%20based%20on%20CNN/</loc>
-    <lastmod>2017-11-12T13:25:06.647Z</lastmod>
-    <data>
-        <display>
-        <title>♜「Papers」 About Text Classification based on CNN</title>
-        <pubTime>2017-03-09T16:00:00.000Z</pubTime>
-        
-        <tag>Machine Learning</tag>
-         
-        <tag>Papers</tag>
-         
-         
-           
-             
-              <breadCrumb title="Machine Learning" url="http://randolph.pro/categories/Machine-Learning/"/>
-          
-             
-              <breadCrumb title="Papers" url="http://randolph.pro/categories/Machine-Learning/Papers/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
+    <lastmod>2017-11-12</lastmod>
+  </url>  <url>
     <loc>http://randolph.pro/2017/10/13/%E2%99%9C%E3%80%8CPapers%E3%80%8DAbout%20Word%20Representation/</loc>
-    <lastmod>2017-10-14T06:46:15.000Z</lastmod>
-    <data>
-        <display>
-        <title>♜「Papers」 About Word Representation</title>
-        <pubTime>2017-10-12T16:00:00.000Z</pubTime>
-        
-        <tag>Machine Learning</tag>
-         
-        <tag>Papers</tag>
-         
-         
-           
-             
-              <breadCrumb title="Machine Learning" url="http://randolph.pro/categories/Machine-Learning/"/>
-          
-             
-              <breadCrumb title="Papers" url="http://randolph.pro/categories/Machine-Learning/Papers/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
+    <lastmod>2017-10-14</lastmod>
+  </url>  <url>
     <loc>http://randolph.pro/2017/10/10/%E2%99%9C%E3%80%8CPapers%E3%80%8DAbout%20Text%20Classification%20based%20on%20RCNN/</loc>
-    <lastmod>2017-10-13T14:53:17.000Z</lastmod>
-    <data>
-        <display>
-        <title>♜「Papers」 About Text Classification based on RCNN</title>
-        <pubTime>2017-10-09T16:00:00.000Z</pubTime>
-        
-        <tag>Machine Learning</tag>
-         
-        <tag>Papers</tag>
-         
-         
-           
-             
-              <breadCrumb title="Machine Learning" url="http://randolph.pro/categories/Machine-Learning/"/>
-          
-             
-              <breadCrumb title="Papers" url="http://randolph.pro/categories/Machine-Learning/Papers/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-    
-  <url>
+    <lastmod>2017-10-13</lastmod>
+  </url>  <url>
     <loc>http://randolph.pro/2017/07/15/%E2%99%9F%E3%80%8CTools%E3%80%8D%20MongoDB%20and%20PyMongo/</loc>
-    <lastmod>2017-08-21T10:23:56.000Z</lastmod>
-    <data>
-        <display>
-        <title>♟「Tools」 MongoDB and PyMongo</title>
-        <pubTime>2017-07-14T16:00:00.000Z</pubTime>
-        
-        <tag>Python</tag>
-         
-        <tag>Tools</tag>
-         
-        <tag>MongoDB</tag>
-         
-         
-           
-             
-              <breadCrumb title="Tools" url="http://randolph.pro/categories/Tools/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
+    <lastmod>2017-08-21</lastmod>
+  </url>  <url>
     <loc>http://randolph.pro/2016/11/11/%E2%99%9F%E3%80%8CTools%E3%80%8DMathjax/</loc>
-    <lastmod>2017-08-19T16:56:07.000Z</lastmod>
-    <data>
-        <display>
-        <title>♟「Tools」 MathJax</title>
-        <pubTime>2016-11-10T16:00:00.000Z</pubTime>
-        
-        <tag>Tools</tag>
-         
-        <tag>MathJax</tag>
-         
-         
-           
-             
-              <breadCrumb title="Tools" url="http://randolph.pro/categories/Tools/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-    
+    <lastmod>2017-08-19</lastmod>
+  </url>
 </urlset>
