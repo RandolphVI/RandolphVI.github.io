@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://randolph.pro/"/>
-  <updated>2018-03-19T15:28:42.009Z</updated>
+  <updated>2019-03-17T06:43:58.238Z</updated>
   <id>http://randolph.pro/</id>
   
   <author>
@@ -17,10 +17,10 @@
   
   <entry>
     <title>♣︎  About Khan Academy Data</title>
-    <link href="http://randolph.pro/2018/03/19/%E2%99%9A%20%E3%80%8CDataset%E3%80%8DAbout%20Khan%20Academy%20Data/"/>
-    <id>http://randolph.pro/2018/03/19/♚ 「Dataset」About Khan Academy Data/</id>
+    <link href="http://randolph.pro/2018/03/19/%E2%99%9A%20%E3%80%8CDatasets%E3%80%8DAbout%20Khan%20Academy%20Data/"/>
+    <id>http://randolph.pro/2018/03/19/♚ 「Datasets」About Khan Academy Data/</id>
     <published>2018-03-18T16:00:00.000Z</published>
-    <updated>2018-03-19T15:28:42.009Z</updated>
+    <updated>2019-03-17T06:43:58.238Z</updated>
     
     <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><img src="https://farm1.staticflickr.com/797/27030261808_ebe2f72aa4_o.jpg" alt=""></p>
 <h1 id="About-Khan-Academy-Data"><a href="#About-Khan-Academy-Data" class="headerlink" title="About Khan Academy Data"></a>About Khan Academy Data</h1><h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><h3 id="Khan-Academy-Knowledge-Structure"><a href="#Khan-Academy-Knowledge-Structure" class="headerlink" title="Khan Academy Knowledge Structure"></a>Khan Academy Knowledge Structure</h3><p><img src="https://farm1.staticflickr.com/815/40007475165_3f002df1fc_o.png" alt=""></p>
@@ -85,10 +85,10 @@
     
     </summary>
     
-      <category term="Dataset" scheme="http://randolph.pro/categories/Dataset/"/>
+      <category term="Datasets" scheme="http://randolph.pro/categories/Datasets/"/>
     
     
-      <category term="Dataset" scheme="http://randolph.pro/tags/Dataset/"/>
+      <category term="Datasets" scheme="http://randolph.pro/tags/Datasets/"/>
     
   </entry>
   
@@ -3087,8 +3087,8 @@ p^{'} & = p_{5} + \eta \cdot (x_{1} - p_{5}) \cr
   
   <entry>
     <title>♞「Books」Machine Learning - Chapter 2</title>
-    <link href="http://randolph.pro/2016/12/30/%E2%99%9E%E3%80%8CBooks%E3%80%8DMachine%20Learning%20Chapter%202/"/>
-    <id>http://randolph.pro/2016/12/30/♞「Books」Machine Learning Chapter 2/</id>
+    <link href="http://randolph.pro/2016/12/30/%E2%99%9E%E3%80%8CBooks%E3%80%8DMachine%20Learning%20-%20Chapter%202/"/>
+    <id>http://randolph.pro/2016/12/30/♞「Books」Machine Learning - Chapter 2/</id>
     <published>2016-12-29T16:00:00.000Z</published>
     <updated>2019-03-17T06:37:12.880Z</updated>
     

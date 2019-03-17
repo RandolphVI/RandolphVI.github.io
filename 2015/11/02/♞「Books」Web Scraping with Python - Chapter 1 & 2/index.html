@@ -1,0 +1,1192 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="baidu-site-verification" content="IYvqjZ3csg" />
+<meta name="google-site-verification" content="o9GDuh4E6CmwFpEqUYW7VMmq_fysc1_3PpSQSNWSD8Y" />
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-mac-osx.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Web Scraping,Python," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="黃某人" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="本文是关于「Web Scraping with Python」这本书的 Chapter 1 &amp; 2的学习笔记。">
+<meta name="keywords" content="Web Scraping,Python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="♞「Books」Web Scraping with Python - Chapter 1 &amp; 2">
+<meta property="og:url" content="http://randolph.pro/2015/11/02/♞「Books」Web Scraping with Python - Chapter 1 & 2/index.html">
+<meta property="og:site_name" content="黃某人">
+<meta property="og:description" content="本文是关于「Web Scraping with Python」这本书的 Chapter 1 &amp; 2的学习笔记。">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://farm5.staticflickr.com/4316/36049777032_f975ed0941_o.jpg">
+<meta property="og:updated_time" content="2019-03-17T06:44:58.170Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="♞「Books」Web Scraping with Python - Chapter 1 &amp; 2">
+<meta name="twitter:description" content="本文是关于「Web Scraping with Python」这本书的 Chapter 1 &amp; 2的学习笔记。">
+<meta name="twitter:image" content="https://farm5.staticflickr.com/4316/36049777032_f975ed0941_o.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"hide","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: 'KGO9YVRPZZ',
+      apiKey: 'dcf60767769bda7791ae195caf3dfb10',
+      indexName: 'Randolph',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://randolph.pro/2015/11/02/♞「Books」Web Scraping with Python - Chapter 1 & 2/"/>
+
+
+
+
+
+  <title>♞「Books」Web Scraping with Python - Chapter 1 & 2 | 黃某人</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?80985281ddae6899cfd57ad9d458b284";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">黃某人</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">痴</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://randolph.pro/2015/11/02/♞「Books」Web Scraping with Python - Chapter 1 & 2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Randolph">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="黃某人">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">♞「Books」Web Scraping with Python - Chapter 1 & 2</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-plus-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-11-02T00:00:00+08:00">
+                2015-11-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Books/" itemprop="url" rel="index">
+                    <span itemprop="name">Books</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Books/Book-「Web-Scrapingwith-Python」/" itemprop="url" rel="index">
+                    <span itemprop="name">Book:「Web Scrapingwith Python」</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2015/11/02/♞「Books」Web Scraping with Python - Chapter 1 & 2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2015/11/02/♞「Books」Web Scraping with Python - Chapter 1 & 2/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2015/11/02/♞「Books」Web Scraping with Python - Chapter 1 & 2/" class="leancloud_visitors" data-flag-title="♞「Books」Web Scraping with Python - Chapter 1 & 2">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-fire"></i>
+               </span>
+               <span class="leancloud-visitors-count"></span>
+               <span>℃</span>
+               <span class="post-meta-divider">|</span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                <span title="Words count in article">
+                  1,589
+                </span>
+                <span> words </span>
+                
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                <span title="Reading time">
+                  7
+                </span>
+                <span> mins </span>
+              
+            </div>
+          
+
+          
+              <div class="post-description">
+                  本文是关于「Web Scraping with Python」这本书的 Chapter 1 & 2的学习笔记。
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="https://farm5.staticflickr.com/4316/36049777032_f975ed0941_o.jpg" alt=""></p>
+<p>有关该书的其他学习笔记系列：<a href="http://randolph.pro/categories/Web-Scraping/Book-「Web-Scraping-with-Python」/">Book:「Web Scraping with Python」</a></p>
+<h1 id="Related"><a href="#Related" class="headerlink" title="Related"></a>Related</h1><ul>
+<li><strong>BeautifulSoup package</strong></li>
+<li><strong>Navigating Trees</strong> </li>
+<li><strong>Regular Expression</strong></li>
+</ul>
+<hr>
+<h1 id="Key"><a href="#Key" class="headerlink" title="Key:"></a>Key:</h1><h2 id="urlib-or-urlib2"><a href="#urlib-or-urlib2" class="headerlink" title="urlib or urlib2?"></a>urlib or urlib2?</h2><blockquote>
+<p>If you’ve used the urllib2 library in Python 2.x, you might have noticed that things have changed somewhat between urllib2 and urllib. In Python 3.x, urllib2 was renamed urllib and was split into several submodules: urllib.request, urllib.parse, and url lib.error. Although function names mostly remain the same, you might want to note which functions have moved to submodules when using the new urllib. </p>
+</blockquote>
+<p>在学习这本书之前，使用过此 package（我一开始学习 Python 就用的是 3.x，Mac 自带 Python 2.x），当时出错了，在 Stackoverflow 找到了答案，现在这本书提到了这点，重新回顾一下:</p>
+<p>如果你用过 Python 2.x 里的 <strong><code>urllib2</code></strong> 库，可能会发现 <strong><code>urllib2</code></strong> 与 <strong><code>urllib</code></strong> 有些不同。在 Python 3.x 里，<strong><code>urllib2</code></strong> 改名为 <strong><code>urllib</code></strong>，被分成一些子模块：<strong><code>urllib.request</code></strong>、<strong><code>urllib.parse</code></strong> 和 <strong><code>urllib.error</code></strong>。尽管函数名称大多和原来一样，但是在用新的 <strong><code>urllib</code></strong> 库时需要注意哪些函数被移动到子模块里了。</p>
+<hr>
+<h2 id="When-to-get-text-and-When-to-Preserve-Tags"><a href="#When-to-get-text-and-When-to-Preserve-Tags" class="headerlink" title="When to get_text() and When to Preserve Tags?"></a>When to get_text() and When to Preserve Tags?</h2><blockquote>
+<p>.get_text() strips all tags from the document you are working with and returns a string containing the text only. For example, if you are working with a large block of text that contains many hyperlinks, paragraphs, and other tags, all those will be stripped away and you’ll be left with a tagless block of text.</p>
+<p>Keep in mind that it’s much easier to find what you’re looking for in a BeautifulSoup object than in a block of text. Calling .get_text() should always be the last thing you do, immediately before you print, store, or manipulate your final data. In general, you should try to preserve the tag structure of a document as long as possible.</p>
+</blockquote>
+<p>简而言之，通常在我们准备打印、存储和操作数据的时候，即最后的时候才使用 <strong><code>.get_text()</code></strong>。一般情况下，我们应该尽可能地保留 HTML 文档的标签结构。</p>
+<hr>
+<h2 id="find-and-findAll-with-BeautifulSoup"><a href="#find-and-findAll-with-BeautifulSoup" class="headerlink" title="find() and findAll() with BeautifulSoup?"></a>find() and findAll() with BeautifulSoup?</h2><ul>
+<li><strong>findAll(tag, attributes, recursive, text, limit, keywords)</strong></li>
+<li><strong>find(tag, attributes, recursive, text, keywords)</strong></li>
+</ul>
+<p>先说结论，再仔细说说参数的用法。</p>
+<p><strong><code>find()</code></strong> is equivalent to the same <strong><code>findAll()</code></strong> call, with a <strong>limit</strong> of  1.<br><strong><code>find()</code></strong> 其实等价于 <strong><code>findAll()</code></strong> 的 <strong>limit</strong> 等于 1 时的特殊情况。 </p>
+<ul>
+<li><strong><code>tag</code></strong>: 我们可以传一个标签的名称或多个标签名称组成的 Python 列表做标签参数。例如：<strong><code>(&#39;span&#39;, &#39;h1&#39;, {&#39;span&#39;, &#39;h1&#39;}, {&#39;h1&#39;, &#39;h2&#39;, &#39;h3&#39;})</code></strong>。其实就是一个「或」关系的过滤器（即我们可以选择带有 <strong><code>span</code></strong> 或 <strong><code>h1</code></strong> 或 <strong><code>h2</code></strong> 等的一列标签）。</li>
+<li><strong><code>attributes</code></strong>: 这是一个用 Python 字典封装某一标签的若干属性和对应的属性值。例如：<strong><code>{&#39;class&#39;: {&#39;green&#39;, &#39;red&#39;}}</code></strong></li>
+<li><strong><code>recursive</code></strong>: 一般情况下，这个参数不需要设置，除非我们真正了解自己需要哪些信息，而且抓取速度非常重要，因为这个参数会根据我们的要求去查找标签参数的所有子标签，以及子标签的子标签。</li>
+<li><strong><code>limit</code></strong>: 只适用于 <strong><code>findAll()</code></strong> 方法，如果我们只对网页中获取的前 <em>x</em> 项结果感兴趣，我们就可以通过设置 <strong><code>limit</code></strong> 来获取。<strong>但是需要注意的是：获得的前几项结果是按照网页上的顺序排序的，未必是我们想要的前几项，所以我们还需要额外做一些自己的排序。</strong></li>
+<li><strong><code>keyword</code></strong>: 使我们选择那些具有制定属性的标签成为可能。</li>
+</ul>
+<blockquote>
+<p><strong>keyword 关键词参数的主意事项：</strong><br>使用 <strong><code>keyword</code></strong> 偶尔会出现问题，尤其是在用 <strong>class</strong> 属性查找标签的时候，因为 <strong>class</strong> 是 Python 中受保护的关键字。也就是说，<strong>class</strong> 是 Python 语言的保留字，在 Python 程序中是不能充当变量或者参数名使用的。假如我们运行下面的代码，Python 就会因为我们误用 <strong>class</strong> 保留字而产生一个语法错误：</p>
+<p>   <strong><code>bsObj.findAll(class=&#39;green&#39;)</code></strong></p>
+<p>不过 BeautifulSoup 提供了一个解决方案，就是在 class 后面增加一个下划线：</p>
+<p>   <strong><code>bsObj.findAll(class_=&#39;green&#39;)</code></strong></p>
+<p>我们也可以使用属性参数来将 <strong>class</strong> 用引号包起来：</p>
+<p>   <strong><code>bsObj.findAll(&#39;&#39;,{&#39;class&#39;: &#39;green&#39;})</code></strong></p>
+</blockquote>
+<p><strong>另外，如果说 <code>tag</code> 参数是相当于一个「或」关系的过滤器，那么 <code>keyword</code> 参数就可以为我们构造一个「与」关系的过滤器来提高我们的工作效率，简化我们的工作。</strong></p>
+<hr>
+<h2 id="Navigating-Trees"><a href="#Navigating-Trees" class="headerlink" title="Navigating Trees"></a>Navigating Trees</h2><p>如果说 <strong><code>find()</code></strong> 和 <strong><code>findAll()</code></strong> 函数是通过标签的名称和属性来查找标签，那么 Navigating Trees 就是通过标签在文档中的位置来查找标签。</p>
+<h3 id="Make-Selections-Specific"><a href="#Make-Selections-Specific" class="headerlink" title="Make Selections Specific"></a>Make Selections Specific</h3><blockquote>
+<p>To make your scrapers more robust, it’s best to be as specific as pos‐ sible when making tag selections. Take advantage of tag attributes when they are available. </p>
+</blockquote>
+<p>如果想让我们的爬虫更加稳定，最好还是让标签的选择更加具体。如果有属性，就利用标签的属性。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">bsObj.tr</div><div class="line">bsObj.table.tr</div><div class="line">bsObj.find(<span class="string">'table'</span>, &#123;<span class="string">'id'</span>: <span class="string">'giftList'</span>&#125;).tr</div></pre></td></tr></table></figure>
+<p>上述三行目的都是获取书本上的网站中的表格的第一行。但是我们应该采用最后一条，用更具体的形式来获取，原因很简单，即使页面上只有一个表格（或者其他的目标标签），只用标签也很容易丢失细节。另外，页面的布局总是不断变化的，一个标签这次是在表格中的第一行的位置，没准哪天就在第二行或者第三行了。</p>
+<hr>
+<h2 id="Regular-Expression"><a href="#Regular-Expression" class="headerlink" title="Regular Expression"></a>Regular Expression</h2><p>学好正则表达式，走遍天下都不怕。正则表达式其实就是一个过滤器，如果你给我的字符串符合我写的规则，那么我就返回它。    </p>
+<p>让我们来看看用正则表达式来表示邮箱地址：</p>
+<p><strong>[A-Za-z0-9\._+]+@[A-Za-z]+\.(com|org|edu|net)</strong></p>
+<p>让我们把它分解开来看：</p>
+<ol>
+<li><strong>[A-Za-z0-9\._+]+</strong> : 这个表达式把所有可能的序列和符号放在中括号（而不是小括号）里面，表示“括号中的符号里任何一个”。另外注意，后面的加号表示“这些符号都可以出现多次，而且至少出现一次”。</li>
+<li><strong>@</strong>：这个符号很直接，出现在中间位置，有且仅有一次。</li>
+<li><strong>[A-Za-z]+</strong> ：可能出现在域名的前半部分、符号 @后面用字母。而且，至少有一个字母。</li>
+<li><strong>.</strong> : 域名前必须有一个点号。</li>
+<li><strong>(com|org|edu|net)</strong> : 顶级域名可能有很多种，但是作为参考，这是个后缀够用了。</li>
+</ol>
+<hr>
+<h1 id="Correct-errors-in-printing"><a href="#Correct-errors-in-printing" class="headerlink" title="Correct errors in printing:"></a>Correct errors in printing:</h1><ul>
+<li>P17:</li>
+</ul>
+<blockquote>
+<p>例如，<code>tr</code> 标签是 <strong><code>tabel</code></strong> 标签的子标签，而……</p>
+</blockquote>
+<p>需要更正为：</p>
+<blockquote>
+<p>例如，<code>tr</code> 标签是 <strong><code>table</code></strong> 标签的子标签，而……</p>
+</blockquote>
+<hr>
+<h1 id="Practice"><a href="#Practice" class="headerlink" title="Practice:"></a>Practice:</h1><ul>
+<li><strong>暂无</strong></li>
+</ul>
+<hr>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Web-Scraping/" rel="tag"># Web Scraping</a>
+          
+            <a href="/tags/Python/" rel="tag"># Python</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/09/17/♞「Books」NLP with Python - Chapter 3/" rel="next" title="♞「Books」NLP with Python - Chapter 3">
+                <i class="fa fa-chevron-left"></i> ♞「Books」NLP with Python - Chapter 3
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/11/13/♞「Books」Web Scraping with Python -  Chapter 3/" rel="prev" title="♞「Books」Web Scraping with Python - Chapter 3">
+                ♞「Books」Web Scraping with Python - Chapter 3 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="Randolph" />
+          <p class="site-author-name" itemprop="name">Randolph</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+           
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">31</span>
+                <span class="site-state-item-name">Posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">Categories</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-name">Tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/RandolphVI" target="_blank" title="Github">
+                  
+                    <i class="fa fa-fw fa-github-alt"></i>
+                  
+                  Github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.linkedin.com/in/威-黄-88060b74/" target="_blank" title="LinkedIn">
+                  
+                    <i class="fa fa-fw fa-linkedin"></i>
+                  
+                  LinkedIn
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://music.163.com/#/user/home?id=57901575" target="_blank" title="Music">
+                  
+                    <i class="fa fa-fw fa-music"></i>
+                  
+                  Music
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://steamcommunity.com/id/Chinawolfman/" target="_blank" title="Steam">
+                  
+                    <i class="fa fa-fw fa-steam"></i>
+                  
+                  Steam
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.tensorflow.org" title="TensorFlow" target="_blank">TensorFlow</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.kaggle.com" title="Kaggle" target="_blank">Kaggle</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://leetcode.com" title="LeetCode" target="_blank">LeetCode</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://weekly.codetengu.com" title="CodeTengu" target="_blank">CodeTengu</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+        
+        <div>
+          <iframe id="iframer" frameborder="no" border="0" marginwidth="0" marginheight="0" width=320 height=150 src=""></iframe>
+        </div>
+
+        <script language='javascript' type='text/javascript'>
+          window.onload = function(){
+            setTimeout(function () {
+              var iframer = document.getElementById("iframer");
+              iframer.setAttribute("src","//music.163.com/outchain/player?type=0&id=880407510&auto=0&height=90");
+            }, 1000);
+          }
+        </script>
+  
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Related"><span class="nav-number">1.</span> <span class="nav-text">Related</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Key"><span class="nav-number">2.</span> <span class="nav-text">Key:</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#urlib-or-urlib2"><span class="nav-number">2.1.</span> <span class="nav-text">urlib or urlib2?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#When-to-get-text-and-When-to-Preserve-Tags"><span class="nav-number">2.2.</span> <span class="nav-text">When to get_text() and When to Preserve Tags?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#find-and-findAll-with-BeautifulSoup"><span class="nav-number">2.3.</span> <span class="nav-text">find() and findAll() with BeautifulSoup?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Navigating-Trees"><span class="nav-number">2.4.</span> <span class="nav-text">Navigating Trees</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Make-Selections-Specific"><span class="nav-number">2.4.1.</span> <span class="nav-text">Make Selections Specific</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Regular-Expression"><span class="nav-number">2.5.</span> <span class="nav-text">Regular Expression</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Correct-errors-in-printing"><span class="nav-number">3.</span> <span class="nav-text">Correct errors in printing:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Practice"><span class="nav-number">4.</span> <span class="nav-text">Practice:</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="motto" >
+  <span class="motto">「莫怕真理无穷 进一寸便有进一寸的欢喜」</span>
+</div>
+
+<div class="copyright">
+  
+  &copy;  2017 - 
+  <span itemprop="copyrightYear">2019</span>
+  
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  
+  <span class="author" itemprop="copyrightHolder">Randolph</span>
+  
+</div>
+
+<!--  -->
+<!-- <div class="powered-by"> -->
+<!--   Powered by <a class="theme-link" href="https://hexo.io">Hexo</a> -->
+<!-- </div> -->
+<!--  -->
+<!-- <div class="theme-info"> -->
+<!--   Theme - -->
+<!--   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next"> -->
+<!--     NexT.Mist -->
+<!--   </a> -->
+<!-- </div> -->
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+
+  
+</div>
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://randolphvi.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://randolph.pro/2015/11/02/♞「Books」Web Scraping with Python - Chapter 1 & 2/';
+          this.page.identifier = '2015/11/02/♞「Books」Web Scraping with Python - Chapter 1 & 2/';
+          this.page.title = '♞「Books」Web Scraping with Python - Chapter 1 & 2';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://randolphvi.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.1"></script>
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("rlX1ugcCzQRlB8ljks0eiIKp-gzGzoHsz", "kpFrsFctrAimlBvhHvlgWnhV");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+
+
+  
+
+  
+
+  
+  
+
+
+  
+
+  
+
+</body>
+</html>
