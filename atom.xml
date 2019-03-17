@@ -3090,7 +3090,7 @@ p^{'} & = p_{5} + \eta \cdot (x_{1} - p_{5}) \cr
     <link href="http://randolph.pro/2016/12/30/%E2%99%9E%E3%80%8CBooks%E3%80%8DMachine%20Learning%20Chapter%202/"/>
     <id>http://randolph.pro/2016/12/30/♞「Books」Machine Learning Chapter 2/</id>
     <published>2016-12-29T16:00:00.000Z</published>
-    <updated>2019-03-17T06:34:14.834Z</updated>
+    <updated>2019-03-17T06:37:12.880Z</updated>
     
     <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><img src="https://farm5.staticflickr.com/4307/36174772306_62cfbc8cd6_o.jpg" alt=""></p>
 <p>有关该书的其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/Book-「Machine-Learning」/">Book:「Machine Learning」</a></p>
@@ -3350,11 +3350,9 @@ E_{cost} = \frac{m^+ \times (1-TPR) \times cost_{01}+m^- \times FPR \times cost_
     
     </summary>
     
-      <category term="Machine Learning" scheme="http://randolph.pro/categories/Machine-Learning/"/>
+      <category term="Books" scheme="http://randolph.pro/categories/Books/"/>
     
-      <category term="Books" scheme="http://randolph.pro/categories/Machine-Learning/Books/"/>
-    
-      <category term="Book:「Machine Learning」" scheme="http://randolph.pro/categories/Machine-Learning/Books/Book-%E3%80%8CMachine-Learning%E3%80%8D/"/>
+      <category term="Book:「Machine Learning」" scheme="http://randolph.pro/categories/Books/Book-%E3%80%8CMachine-Learning%E3%80%8D/"/>
     
     
       <category term="Machine Learning" scheme="http://randolph.pro/tags/Machine-Learning/"/>

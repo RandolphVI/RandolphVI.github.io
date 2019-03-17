@@ -5,7 +5,7 @@
     
   <url>
     <loc>http://randolph.pro/2015/09/11/%E2%99%9E%E3%80%8CBooks%E3%80%8DNLP%20with%20Python%20Chapter%201%20&%202/</loc>
-    <lastmod>2019-03-17T06:34:38.749Z</lastmod>
+    <lastmod>2019-03-17T06:37:49.364Z</lastmod>
     <data>
         <display>
         <title>♞「Books」NLP with Python - Chapter 1 & 2</title>
@@ -15,22 +15,18 @@
          
         <tag>Python</tag>
          
-        <tag>Natural Language Processing</tag>
-         
         <tag>Books</tag>
+         
+        <tag>Natural Language Processing</tag>
          
          
            
              
-              <breadCrumb title="Machine Learning" url="http://randolph.pro/categories/Machine-Learning/"/>
+              <breadCrumb title="Books" url="http://randolph.pro/categories/Books/"/>
           
              
-              <breadCrumb title="Natural Language Processing" url="http://randolph.pro/categories/Machine-Learning/Natural-Language-Processing/"/>
+              <breadCrumb title="Book:「NLP with Python」" url="http://randolph.pro/categories/Books/Book-%E3%80%8CNLP-with-Python%E3%80%8D/"/>
           
-             
-              <breadCrumb title="Books" url="http://randolph.pro/categories/Machine-Learning/Natural-Language-Processing/Books/"/>
-          
-             
         </display>
     </data>
     </url>
@@ -38,7 +34,7 @@
     
   <url>
     <loc>http://randolph.pro/2016/12/30/%E2%99%9E%E3%80%8CBooks%E3%80%8DMachine%20Learning%20Chapter%202/</loc>
-    <lastmod>2019-03-17T06:34:14.834Z</lastmod>
+    <lastmod>2019-03-17T06:37:12.880Z</lastmod>
     <data>
         <display>
         <title>♞「Books」Machine Learning - Chapter 2</title>
@@ -51,13 +47,10 @@
          
            
              
-              <breadCrumb title="Machine Learning" url="http://randolph.pro/categories/Machine-Learning/"/>
+              <breadCrumb title="Books" url="http://randolph.pro/categories/Books/"/>
           
              
-              <breadCrumb title="Books" url="http://randolph.pro/categories/Machine-Learning/Books/"/>
-          
-             
-              <breadCrumb title="Book:「Machine Learning」" url="http://randolph.pro/categories/Machine-Learning/Books/Book-%E3%80%8CMachine-Learning%E3%80%8D/"/>
+              <breadCrumb title="Book:「Machine Learning」" url="http://randolph.pro/categories/Books/Book-%E3%80%8CMachine-Learning%E3%80%8D/"/>
           
         </display>
     </data>
@@ -66,7 +59,7 @@
     
   <url>
     <loc>http://randolph.pro/2016/12/26/%E2%99%9E%E3%80%8CBooks%E3%80%8DMachine%20Learning%20Chapter%201/</loc>
-    <lastmod>2019-03-17T06:32:54.197Z</lastmod>
+    <lastmod>2019-03-17T06:37:01.088Z</lastmod>
     <data>
         <display>
         <title>♞「Books」Machine Learning - Chapter 1</title>
@@ -79,13 +72,10 @@
          
            
              
-              <breadCrumb title="Machine Learning" url="http://randolph.pro/categories/Machine-Learning/"/>
+              <breadCrumb title="Books" url="http://randolph.pro/categories/Books/"/>
           
              
-              <breadCrumb title="Books" url="http://randolph.pro/categories/Machine-Learning/Books/"/>
-          
-             
-              <breadCrumb title="Book:「Machine Learning」" url="http://randolph.pro/categories/Machine-Learning/Books/Book-%E3%80%8CMachine-Learning%E3%80%8D/"/>
+              <breadCrumb title="Book:「Machine Learning」" url="http://randolph.pro/categories/Books/Book-%E3%80%8CMachine-Learning%E3%80%8D/"/>
           
         </display>
     </data>
