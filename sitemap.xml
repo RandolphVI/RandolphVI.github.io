@@ -2,9 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://randolph.pro/2016/11/11/%E2%99%9F%E3%80%8CTools%E3%80%8DMathjax/</loc>
+    
+    <lastmod>2019-03-17T14:50:06.324Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://randolph.pro/2017/07/15/%E2%99%9F%E3%80%8CTools%E3%80%8D%20MongoDB%20and%20PyMongo/</loc>
+    
+    <lastmod>2019-03-17T14:50:00.806Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://randolph.pro/2016/04/15/%E2%99%A6%EF%B8%8E%E3%80%8CComputer%20Vision%E3%80%8D%20JPEG%20Compression/</loc>
+    
+    <lastmod>2019-03-17T14:36:25.225Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://randolph.pro/2018/09/06/%E2%9C%8E%E3%80%8C%E5%8C%AF%E6%96%87%E3%80%8D%E6%B0%B4%E4%B9%8B%E6%B9%84/</loc>
     
-    <lastmod>2019-03-17T10:11:56.151Z</lastmod>
+    <lastmod>2019-03-17T14:35:13.084Z</lastmod>
     
   </url>
   
@@ -170,13 +191,6 @@
   </url>
   
   <url>
-    <loc>http://randolph.pro/2016/04/15/%E2%99%A6%EF%B8%8E%E3%80%8CComputer%20Vision%E3%80%8D%20JPEG%20Compression/</loc>
-    
-    <lastmod>2018-03-19T15:18:17.231Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://randolph.pro/2017/03/17/%E2%99%A3%EF%B8%8E%E3%80%8CTensorFlow%E3%80%8DUse%20WeChat%20to%20Monitor%20Your%20Network/</loc>
     
     <lastmod>2018-03-19T15:14:41.439Z</lastmod>
@@ -215,20 +229,6 @@
     <loc>http://randolph.pro/about/index.html</loc>
     
     <lastmod>2017-10-10T15:06:15.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://randolph.pro/2017/07/15/%E2%99%9F%E3%80%8CTools%E3%80%8D%20MongoDB%20and%20PyMongo/</loc>
-    
-    <lastmod>2017-08-21T10:23:56.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://randolph.pro/2016/11/11/%E2%99%9F%E3%80%8CTools%E3%80%8DMathjax/</loc>
-    
-    <lastmod>2017-08-19T16:56:07.000Z</lastmod>
     
   </url>
   

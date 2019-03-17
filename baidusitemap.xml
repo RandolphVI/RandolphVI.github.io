@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://randolph.pro/2016/11/11/%E2%99%9F%E3%80%8CTools%E3%80%8DMathjax/</loc>
+    <lastmod>2019-03-17</lastmod>
+  </url>  <url>
+    <loc>http://randolph.pro/2017/07/15/%E2%99%9F%E3%80%8CTools%E3%80%8D%20MongoDB%20and%20PyMongo/</loc>
+    <lastmod>2019-03-17</lastmod>
+  </url>  <url>
+    <loc>http://randolph.pro/2016/04/15/%E2%99%A6%EF%B8%8E%E3%80%8CComputer%20Vision%E3%80%8D%20JPEG%20Compression/</loc>
+    <lastmod>2019-03-17</lastmod>
+  </url>  <url>
     <loc>http://randolph.pro/2018/09/06/%E2%9C%8E%E3%80%8C%E5%8C%AF%E6%96%87%E3%80%8D%E6%B0%B4%E4%B9%8B%E6%B9%84/</loc>
     <lastmod>2019-03-17</lastmod>
   </url>  <url>
@@ -73,9 +82,6 @@
     <loc>http://randolph.pro/2017/03/07/%E2%99%9B%E3%80%8CMachine%20Learning%E3%80%8D%20CNN%20Introduction/</loc>
     <lastmod>2018-03-19</lastmod>
   </url>  <url>
-    <loc>http://randolph.pro/2016/04/15/%E2%99%A6%EF%B8%8E%E3%80%8CComputer%20Vision%E3%80%8D%20JPEG%20Compression/</loc>
-    <lastmod>2018-03-19</lastmod>
-  </url>  <url>
     <loc>http://randolph.pro/2017/03/17/%E2%99%A3%EF%B8%8E%E3%80%8CTensorFlow%E3%80%8DUse%20WeChat%20to%20Monitor%20Your%20Network/</loc>
     <lastmod>2018-03-19</lastmod>
   </url>  <url>
@@ -90,11 +96,5 @@
   </url>  <url>
     <loc>http://randolph.pro/2017/10/10/%E2%99%9C%E3%80%8CPapers%E3%80%8DAbout%20Text%20Classification%20based%20on%20RCNN/</loc>
     <lastmod>2017-10-13</lastmod>
-  </url>  <url>
-    <loc>http://randolph.pro/2017/07/15/%E2%99%9F%E3%80%8CTools%E3%80%8D%20MongoDB%20and%20PyMongo/</loc>
-    <lastmod>2017-08-21</lastmod>
-  </url>  <url>
-    <loc>http://randolph.pro/2016/11/11/%E2%99%9F%E3%80%8CTools%E3%80%8DMathjax/</loc>
-    <lastmod>2017-08-19</lastmod>
   </url>
 </urlset>
