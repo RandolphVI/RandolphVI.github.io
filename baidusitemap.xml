@@ -1,6 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://randolph.pro/2017/03/10/%E2%99%A3%EF%B8%8E%E3%80%8CTensorFlow%E3%80%8DAbout%20Text%20Classification%20based%20on%20CNN/</loc>
+    <lastmod>2019-03-17</lastmod>
+  </url>  <url>
+    <loc>http://randolph.pro/2017/09/06/%E2%99%9B%E3%80%8CMachine%20Learning%E3%80%8DDeal%20with%20Imbalanced%20Data/</loc>
+    <lastmod>2019-03-17</lastmod>
+  </url>  <url>
+    <loc>http://randolph.pro/2017/11/11/%E2%99%9B%E3%80%8CMachine%20Learning%E3%80%8DAbout%20Field-aware%20Factorization%20Machines/</loc>
+    <lastmod>2019-03-17</lastmod>
+  </url>  <url>
+    <loc>http://randolph.pro/2017/09/08/%E2%99%9B%E3%80%8CMachine%20Learning%E3%80%8D%20LSTM%20Introduction/</loc>
+    <lastmod>2019-03-17</lastmod>
+  </url>  <url>
+    <loc>http://randolph.pro/2017/03/01/%E2%99%9B%E3%80%8CMachine%20Learning%E3%80%8DAbout%20Dropout/</loc>
+    <lastmod>2019-03-17</lastmod>
+  </url>  <url>
+    <loc>http://randolph.pro/2017/10/14/%E2%99%9B%E3%80%8CMachine%20Learning%E3%80%8D%20How%20to%20Generate%20a%20Good%20Word%20Embedding/</loc>
+    <lastmod>2019-03-17</lastmod>
+  </url>  <url>
+    <loc>http://randolph.pro/2017/03/03/%E2%99%9B%E3%80%8CMachine%20Learning%E3%80%8D%20Factorization%20Machines/</loc>
+    <lastmod>2019-03-17</lastmod>
+  </url>  <url>
+    <loc>http://randolph.pro/2017/03/07/%E2%99%9B%E3%80%8CMachine%20Learning%E3%80%8D%20CNN%20Introduction/</loc>
+    <lastmod>2019-03-17</lastmod>
+  </url>  <url>
     <loc>http://randolph.pro/2017/12/17/%E2%99%9A%E3%80%8CKaggle%E3%80%8DMusic%20Recommendation%20Challenge/</loc>
     <lastmod>2019-03-17</lastmod>
   </url>  <url>
@@ -17,9 +41,6 @@
     <lastmod>2019-03-17</lastmod>
   </url>  <url>
     <loc>http://randolph.pro/2019/03/16/%E2%9C%8E%E3%80%8C%E5%8C%AF%E6%96%87%E3%80%8D%E6%88%91%E4%B8%8E%E5%9C%B0%E5%9D%9B%20copy/</loc>
-    <lastmod>2019-03-17</lastmod>
-  </url>  <url>
-    <loc>http://randolph.pro/2017/03/01/%E2%99%9B%E3%80%8CMachine%20Learning%E3%80%8DAbout%20Dropout/</loc>
     <lastmod>2019-03-17</lastmod>
   </url>  <url>
     <loc>http://randolph.pro/2017/03/13/%E2%99%A3%EF%B8%8E%E3%80%8CTensorFlow%E3%80%8D%20Tensorboard/</loc>
@@ -67,34 +88,7 @@
     <loc>http://randolph.pro/2016/12/26/%E2%99%9E%E3%80%8CBooks%E3%80%8DMachine%20Learning%20-%20Chapter%201/</loc>
     <lastmod>2019-03-17</lastmod>
   </url>  <url>
-    <loc>http://randolph.pro/2017/09/06/%E2%99%9B%E3%80%8CMachine%20Learning%E3%80%8DDeal%20with%20Imbalanced%20Data/</loc>
-    <lastmod>2018-03-19</lastmod>
-  </url>  <url>
-    <loc>http://randolph.pro/2017/09/08/%E2%99%9B%E3%80%8CMachine%20Learning%E3%80%8D%20LSTM%20Introduction/</loc>
-    <lastmod>2018-03-19</lastmod>
-  </url>  <url>
-    <loc>http://randolph.pro/2017/10/14/%E2%99%9B%E3%80%8CMachine%20Learning%E3%80%8D%20How%20to%20Generate%20a%20Good%20Word%20Embedding/</loc>
-    <lastmod>2018-03-19</lastmod>
-  </url>  <url>
-    <loc>http://randolph.pro/2017/03/03/%E2%99%9B%E3%80%8CMachine%20Learning%E3%80%8D%20Factorization%20Machines/</loc>
-    <lastmod>2018-03-19</lastmod>
-  </url>  <url>
-    <loc>http://randolph.pro/2017/03/07/%E2%99%9B%E3%80%8CMachine%20Learning%E3%80%8D%20CNN%20Introduction/</loc>
-    <lastmod>2018-03-19</lastmod>
-  </url>  <url>
     <loc>http://randolph.pro/2017/03/17/%E2%99%A3%EF%B8%8E%E3%80%8CTensorFlow%E3%80%8DUse%20WeChat%20to%20Monitor%20Your%20Network/</loc>
     <lastmod>2018-03-19</lastmod>
-  </url>  <url>
-    <loc>http://randolph.pro/2017/11/11/%E2%99%9C%E3%80%8CPapers%E3%80%8DAbout%20Field-aware%20Factorization%20Machines/</loc>
-    <lastmod>2017-11-12</lastmod>
-  </url>  <url>
-    <loc>http://randolph.pro/2017/03/10/%E2%99%9C%E3%80%8CPapers%E3%80%8DAbout%20Text%20Classification%20based%20on%20CNN/</loc>
-    <lastmod>2017-11-12</lastmod>
-  </url>  <url>
-    <loc>http://randolph.pro/2017/10/13/%E2%99%9C%E3%80%8CPapers%E3%80%8DAbout%20Word%20Representation/</loc>
-    <lastmod>2017-10-14</lastmod>
-  </url>  <url>
-    <loc>http://randolph.pro/2017/10/10/%E2%99%9C%E3%80%8CPapers%E3%80%8DAbout%20Text%20Classification%20based%20on%20RCNN/</loc>
-    <lastmod>2017-10-13</lastmod>
   </url>
 </urlset>
