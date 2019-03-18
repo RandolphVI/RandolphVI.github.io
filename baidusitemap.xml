@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>http://randolph.pro/2017/01/03/%E2%99%9E%E3%80%8CBooks%E3%80%8DMachine%20Learning%20-%20Clustering/</loc>
-    <lastmod>2019-03-18</lastmod>
-  </url>  <url>
     <loc>http://randolph.pro/2017/03/17/%E2%99%A3%EF%B8%8E%E3%80%8CTensorFlow%E3%80%8DUse%20WeChat%20to%20Monitor%20Your%20Network/</loc>
     <lastmod>2019-03-18</lastmod>
   </url>  <url>
-    <loc>http://randolph.pro/2017/03/10/%E2%99%A3%EF%B8%8E%E3%80%8CTensorFlow%E3%80%8DAbout%20Text%20Classification%20based%20on%20CNN/</loc>
+    <loc>http://randolph.pro/2017/03/13/%E2%99%A3%EF%B8%8E%E3%80%8CTensorFlow%E3%80%8D%20Tensorboard/</loc>
     <lastmod>2019-03-18</lastmod>
   </url>  <url>
-    <loc>http://randolph.pro/2017/03/13/%E2%99%A3%EF%B8%8E%E3%80%8CTensorFlow%E3%80%8D%20Tensorboard/</loc>
+    <loc>http://randolph.pro/2017/01/03/%E2%99%9E%E3%80%8CBooks%E3%80%8DMachine%20Learning%20-%20Clustering/</loc>
+    <lastmod>2019-03-18</lastmod>
+  </url>  <url>
+    <loc>http://randolph.pro/2017/03/10/%E2%99%A3%EF%B8%8E%E3%80%8CTensorFlow%E3%80%8DAbout%20Text%20Classification%20based%20on%20CNN/</loc>
     <lastmod>2019-03-18</lastmod>
   </url>  <url>
     <loc>http://randolph.pro/2017/09/25/%E2%99%A3%EF%B8%8E%E3%80%8CTensorFlow%E3%80%8DCross%20Entropy%20Function%20in%20TensorFlow%20/</loc>
