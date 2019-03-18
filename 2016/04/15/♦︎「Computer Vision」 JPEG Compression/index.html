@@ -114,7 +114,7 @@
 <meta property="og:image" content="https://farm8.staticflickr.com/7817/33527479258_ebedbf6e83_o.jpg">
 <meta property="og:image" content="https://farm6.staticflickr.com/5342/31519596181_839559fe8c_o.png">
 <meta property="og:image" content="https://farm1.staticflickr.com/42/31635280065_4468d99a85_o.png">
-<meta property="og:updated_time" content="2019-03-17T14:36:25.225Z">
+<meta property="og:updated_time" content="2019-03-18T03:28:21.666Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="♦︎「Computer Vision」 JPEG Compression">
 <meta name="twitter:description" content="本文介绍了关于信息隐藏中的图像 JPEG 压缩标准方法，JPEG 是一种针对照片视频而广泛使用的一种「有损压缩」标准方法。">
@@ -506,7 +506,7 @@ Y &= &0.299R &+ 0.587G + 0.114B \cr
 Cb &= &-0.168R &- 0.331G + 0.500B  + 128 \cr
 Cr &= &0.500R &- 0.418G - 0.081B  + 128 
 \end{align}</script><h1 id="采样"><a href="# 采样" class="headerlink" title="采样"></a>采样 </h1><p> 研究发现，<strong>人眼对亮度变换的敏感度要比对色彩变换的敏感度高出很多</strong>。</p>
-<p>因此，我们可以认为 Y 分量要比 Cb，Cr 分量重要的多。在 BMP 图片中，RGB 三个分量各采用一个字节进行采样，也就是我们常听到的 RGB-888 的模式；而 JPEG 图片中，通常采用两种采样方式：YUV-411 和 YUV-422，它们所代表的意义是 Y，Cb，Cr 三个分量的数据取样比例一般是 4：1：1 或者 4：2：2（4：1：1 含义就是：在 $2\times 2$ 的单元中，本应分别有 4 个 Y，4 个 U，4 个 V 值，用 12 个字节进行存储。经过 4:1:1 采样处理后，每个单元中的值分别有 4 个 Y、1 个 U、1 个 V，只要用 6 个字节就可以存储了）</p>
+<p>因此，我们可以认为 Y 分量要比 Cb，Cr 分量重要的多。在 BMP 图片中，RGB 三个分量各采用一个字节进行采样，也就是我们常听到的 RGB-888 的模式；而 JPEG 图片中，通常采用两种采样方式：YUV-411 和 YUV-422，它们所代表的意义是 Y，Cb，Cr 三个分量的数据取样比例一般是 4:1:1 或者 4:2:2（4:1:1 含义就是：在 $2\times 2$ 的单元中，本应分别有 4 个 Y，4 个 U，4 个 V 值，用 12 个字节进行存储。经过 4:1:1 采样处理后，每个单元中的值分别有 4 个 Y、1 个 U、1 个 V，只要用 6 个字节就可以存储了）</p>
 <p>这样的采样方式，虽然损失了一定的精度但也在人眼不太察觉到的范围内减小了数据的存储量。当然，JPEG 格式里面也允许将每个点的 U，V 值都记录下来。</p>
 <h1 id="分块"><a href="# 分块" class="headerlink" title="分块"></a>分块 </h1><p> 由于后面的 DCT 变换是是对 $8 \times 8$ 的子块进行处理的，因此，在进行 DCT 变换之前必须把源图象数据进行分块。源图象中每点的 3 个分量是交替出现的，先要把这 3 个分量分开，存放到 3 张表中去。然后由左及右，由上到下依次读取 $8 \times 8$ 的子块，存放在长度为 64 的表中，即可以进行 DCT 变换。</p>
 <p>注意，编码时，程序从源数据中读取一个 $8 \times 8$ 的数据块后，进行 DCT 变换，量化，编码，然后再读取、处理下一个 $8 \times 8$ 的数据块。</p>
