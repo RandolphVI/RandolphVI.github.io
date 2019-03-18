@@ -128,7 +128,7 @@
 <meta property="og:image" content="https://farm5.staticflickr.com/4336/37117835945_006294f37c_o.png">
 <meta property="og:image" content="https://farm5.staticflickr.com/4363/36305865973_b4c970d546_o.png">
 <meta property="og:image" content="https://farm5.staticflickr.com/4411/36305863773_0780f863b0_o.png">
-<meta property="og:updated_time" content="2019-03-17T15:15:57.653Z">
+<meta property="og:updated_time" content="2019-03-18T05:56:53.975Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="♛「Machine Learning」 Deal with Imbalanced Data">
 <meta name="twitter:description" content="本文主要介绍在机器学习中样本比例不平衡的处理方法。">
@@ -666,8 +666,18 @@ x_{new}=x+rand\left(0,1\right)\times\left(\tilde{x}-x\right)</script><p><img src
 <p>如何针对不同的问题选择有效的评价指标，可以阅读这篇文章：<a href="http://machinelearningmastery.com/classification-accuracy-is-not-enough-more-performance-measures-you-can-use/" target="_blank" rel="noopener">Classification Accuracy is Not Enough: More Performance Measures You Can Use</a>。</p>
 <h2 id="Change-the-Model-Training-Process"><a href="#Change-the-Model-Training-Process" class="headerlink" title="Change the Model Training Process"></a>Change the Model Training Process</h2><p>更改模型的训练过程。假设超大类中样本的个数是极小类中样本个数的 $L$ 倍，那么在随机梯度下降（SGD，stochastic gradient descent）算法中，每次遇到一个极小类中样本进行训练时，训练 $L$ 次。</p>
 <p>参考：</p>
-<p><a href="http://machinelearningmastery.com/tactics-to-combat-imbalanced-classes-in-your-machine-learning-dataset/" target="_blank" rel="noopener">8 Tactics to Combat Imbalanced Classes in Your Machine Learning Dataset</a><br><a href="http://www.ele.uri.edu/faculty/he/PDFfiles/ImbalancedLearning.pdf" target="_blank" rel="noopener">♜ Learning from Imbalanced Data</a><br><a href="http://www.jair.org/media/953/live-953-2037-jair.pdf" target="_blank" rel="noopener">♜ SMOTE: Synthetic Minority Over-sampling Technique</a><br><a href="http://sci2s.ugr.es/keel/pdf/specific/congreso/han_borderline_smote.pdf" target="_blank" rel="noopener">♜ Borderline-SMOTE: A New Over-Sampling Method inImbalanced Data Sets Learning</a><br><a href="https://pdfs.semanticscholar.org/4823/4756b7cf798bfeb47328f7c5d597fd4838c2.pdf" target="_blank" rel="noopener">♜ ADASYN: Adaptive Synthetic Sampling Approach for ImbalancedLearning</a></p>
-<p><a href="http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=4309452" target="_blank" rel="noopener">♜ Two Modifications of CNN</a><br><a href="https://cs.nju.edu.cn/zhouzh/zhouzh.files/publication/tsmcb09.pdf" target="_blank" rel="noopener">♜ Exploratory Undersampling for Class-Imbalance Learning</a><br><a href="https://www.site.uottawa.ca/~nat/Workshop2003/jzhang.pdf" target="_blank" rel="noopener">♜ KNN Approach to Unbalanced Data Distributions: A Case Study Involving Information Extraction</a></p>
+<blockquote>
+<ul>
+<li><a href="http://machinelearningmastery.com/tactics-to-combat-imbalanced-classes-in-your-machine-learning-dataset/" target="_blank" rel="noopener">8 Tactics to Combat Imbalanced Classes in Your Machine Learning Dataset</a></li>
+<li><a href="http://www.ele.uri.edu/faculty/he/PDFfiles/ImbalancedLearning.pdf" target="_blank" rel="noopener"> Learning from Imbalanced Data</a></li>
+<li><a href="http://www.jair.org/media/953/live-953-2037-jair.pdf" target="_blank" rel="noopener">SMOTE: Synthetic Minority Over-sampling Technique</a></li>
+<li><a href="http://sci2s.ugr.es/keel/pdf/specific/congreso/han_borderline_smote.pdf" target="_blank" rel="noopener">Borderline-SMOTE: A New Over-Sampling Method inImbalanced Data Sets Learning</a></li>
+<li><a href="https://pdfs.semanticscholar.org/4823/4756b7cf798bfeb47328f7c5d597fd4838c2.pdf" target="_blank" rel="noopener">ADASYN: Adaptive Synthetic Sampling Approach for ImbalancedLearning</a></li>
+<li><a href="http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=4309452" target="_blank" rel="noopener">Two Modifications of CNN</a></li>
+<li><a href="https://cs.nju.edu.cn/zhouzh/zhouzh.files/publication/tsmcb09.pdf" target="_blank" rel="noopener">Exploratory Undersampling for Class-Imbalance Learning</a></li>
+<li><a href="https://www.site.uottawa.ca/~nat/Workshop2003/jzhang.pdf" target="_blank" rel="noopener">KNN Approach to Unbalanced Data Distributions: A Case Study Involving Information Extraction</a></li>
+</ul>
+</blockquote>
 
       
     </div>

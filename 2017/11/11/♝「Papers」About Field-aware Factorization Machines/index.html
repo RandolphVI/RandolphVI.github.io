@@ -85,7 +85,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css">
 
 
-  <meta name="keywords" content="Machine Learning,Python,TensorFlow,">
+  <meta name="keywords" content="Machine Learning,Papers,">
 
 
 
@@ -103,20 +103,21 @@
 
 
 
-<meta name="description" content="交叉熵（Cross Entropy）是 Loss 函数的一种（也称为损失函数或代价函数），用于描述模型预测值与真实值的差距大小，TensorFlow 本身也提供了多种交叉熵算法的实现，本文详细了 TensorFlow 中各个交叉熵函数的用法。">
-<meta name="keywords" content="Machine Learning,Python,TensorFlow">
+<meta name="description" content="本文主要介绍了 Field-aware Factorization Machines 在 广告点击率（CTR）任务上的一篇论文。">
+<meta name="keywords" content="Machine Learning,Papers">
 <meta property="og:type" content="article">
-<meta property="og:title" content="♣︎「TensorFlow」 Cross Entropy in TensorFlow">
-<meta property="og:url" content="http://randolph.pro/2017/09/25/♣︎「TensorFlow」Cross Entropy Function in TensorFlow /index.html">
+<meta property="og:title" content="♝「Papers」 About Field-aware Factorization Machines">
+<meta property="og:url" content="http://randolph.pro/2017/11/11/♝「Papers」About Field-aware Factorization Machines/index.html">
 <meta property="og:site_name" content="黃某人">
-<meta property="og:description" content="交叉熵（Cross Entropy）是 Loss 函数的一种（也称为损失函数或代价函数），用于描述模型预测值与真实值的差距大小，TensorFlow 本身也提供了多种交叉熵算法的实现，本文详细了 TensorFlow 中各个交叉熵函数的用法。">
+<meta property="og:description" content="本文主要介绍了 Field-aware Factorization Machines 在 广告点击率（CTR）任务上的一篇论文。">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="https://farm5.staticflickr.com/4399/36206153111_6662041dd1_o.png">
-<meta property="og:updated_time" content="2019-03-18T06:00:37.380Z">
+<meta property="og:image" content="https://farm5.staticflickr.com/4373/35507009504_3298ce3029_o.jpg">
+<meta property="og:image" content="https://farm5.staticflickr.com/4552/24489629838_2654e8c9e6_o.png">
+<meta property="og:updated_time" content="2019-03-18T05:53:51.584Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="♣︎「TensorFlow」 Cross Entropy in TensorFlow">
-<meta name="twitter:description" content="交叉熵（Cross Entropy）是 Loss 函数的一种（也称为损失函数或代价函数），用于描述模型预测值与真实值的差距大小，TensorFlow 本身也提供了多种交叉熵算法的实现，本文详细了 TensorFlow 中各个交叉熵函数的用法。">
-<meta name="twitter:image" content="https://farm5.staticflickr.com/4399/36206153111_6662041dd1_o.png">
+<meta name="twitter:title" content="♝「Papers」 About Field-aware Factorization Machines">
+<meta name="twitter:description" content="本文主要介绍了 Field-aware Factorization Machines 在 广告点击率（CTR）任务上的一篇论文。">
+<meta name="twitter:image" content="https://farm5.staticflickr.com/4373/35507009504_3298ce3029_o.jpg">
 
 
 
@@ -144,13 +145,13 @@
 
 
 
-  <link rel="canonical" href="http://randolph.pro/2017/09/25/♣︎「TensorFlow」Cross Entropy Function in TensorFlow /">
+  <link rel="canonical" href="http://randolph.pro/2017/11/11/♝「Papers」About Field-aware Factorization Machines/">
 
 
 
 
 
-  <title>♣︎「TensorFlow」 Cross Entropy in TensorFlow | 黃某人</title>
+  <title>♝「Papers」 About Field-aware Factorization Machines | 黃某人</title>
   
 
 
@@ -337,7 +338,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://randolph.pro/2017/09/25/♣︎「TensorFlow」Cross Entropy Function in TensorFlow /">
+    <link itemprop="mainEntityOfPage" href="http://randolph.pro/2017/11/11/♝「Papers」About Field-aware Factorization Machines/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Randolph">
@@ -354,7 +355,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">♣︎「TensorFlow」 Cross Entropy in TensorFlow</h2>
+          <h2 class="post-title" itemprop="name headline">♝「Papers」 About Field-aware Factorization Machines</h2>
         
 
         <div class="post-meta">
@@ -366,8 +367,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-25T00:00:00+08:00">
-                2017-09-25
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-11T00:00:00+08:00">
+                2017-11-11
               </time>
             
 
@@ -389,8 +390,19 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/TensorFlow/" itemprop="url" rel="index">
-                    <span itemprop="name">TensorFlow</span>
+                  <a href="/categories/Machine-Learning/" itemprop="url" rel="index">
+                    <span itemprop="name">Machine Learning</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Machine-Learning/CTR/" itemprop="url" rel="index">
+                    <span itemprop="name">CTR</span>
                   </a>
                 </span>
 
@@ -407,8 +419,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/09/25/♣︎「TensorFlow」Cross Entropy Function in TensorFlow /#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/09/25/♣︎「TensorFlow」Cross Entropy Function in TensorFlow /" itemprop="commentCount"></span>
+                <a href="/2017/11/11/♝「Papers」About Field-aware Factorization Machines/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/11/11/♝「Papers」About Field-aware Factorization Machines/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -416,7 +428,7 @@
 
           
           
-             <span id="/2017/09/25/♣︎「TensorFlow」Cross Entropy Function in TensorFlow /" class="leancloud_visitors" data-flag-title="♣︎「TensorFlow」 Cross Entropy in TensorFlow">
+             <span id="/2017/11/11/♝「Papers」About Field-aware Factorization Machines/" class="leancloud_visitors" data-flag-title="♝「Papers」 About Field-aware Factorization Machines">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-fire"></i>
@@ -437,7 +449,7 @@
                   <i class="fa fa-file-word-o"></i>
                 </span>
                 <span title="Words count in article">
-                  2,378
+                  1,562
                 </span>
                 <span> words </span>
                 
@@ -452,7 +464,7 @@
                   <i class="fa fa-clock-o"></i>
                 </span>
                 <span title="Reading time">
-                  9
+                  6
                 </span>
                 <span> mins </span>
               
@@ -461,7 +473,7 @@
 
           
               <div class="post-description">
-                  交叉熵（Cross Entropy）是 Loss 函数的一种（也称为损失函数或代价函数），用于描述模型预测值与真实值的差距大小，TensorFlow 本身也提供了多种交叉熵算法的实现，本文详细了 TensorFlow 中各个交叉熵函数的用法。
+                  本文主要介绍了 Field-aware Factorization Machines 在 广告点击率（CTR）任务上的一篇论文。
               </div>
           
 
@@ -475,51 +487,170 @@
       
 
       
-        <p><img src="https://farm5.staticflickr.com/4399/36206153111_6662041dd1_o.png" alt></p>
-<p>有关「TensorFlow」的其他学习笔记系列：<a href="http://randolph.pro/categories/TensorFlow/">「TensorFlow」</a></p>
-<h1 id="Cross-Entropy-Introduction"><a href="#Cross-Entropy-Introduction" class="headerlink" title="Cross Entropy Introduction"></a>Cross Entropy Introduction</h1><p>交叉熵（Cross Entropy）是 Loss 函数的一种（也称为损失函数或代价函数），用于描述模型预测值与真实值的差距大小，常见的 Loss 函数就是均方平方差（Mean Squared Error），定义如下：</p>
+        <p><img src="https://farm5.staticflickr.com/4373/35507009504_3298ce3029_o.jpg" alt></p>
+<p>有关「Machine Learning」的其他学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/">「Machine Learning」</a><br>有关「Papers」的其他论文学习笔记系列：<a href="http://randolph.pro/categories/Machine-Learning/Papers/">「Papers」</a></p>
+<h2 id="「Field-aware-Factorization-Machines-for-CTR-Prediction-」"><a href="#「Field-aware-Factorization-Machines-for-CTR-Prediction-」" class="headerlink" title="「Field-aware Factorization Machines for CTR Prediction 」"></a>「Field-aware Factorization Machines for CTR Prediction 」</h2><p>FM 和 FFM 模型都是最近几年提出的模型，凭借其在数据量比较大并且特征稀疏的情况下，仍然能够得到优秀的性能和效果的特性，屡次在各大公司举办的 CTR 预估比赛中获得不错的战绩。</p>
+<p>FFM（Field-aware Factorization Machine）最初的概念来自 Yu-Chin Juan（阮毓钦，毕业于中国台湾大学，现在美国 Criteo 工作）与其比赛队员，是他们借鉴了来自 Michael Jahrer 的论文 <a href="https://kaggle2.blob.core.windows.net/competitions/kddcup2012/2748/media/Opera.pdf" target="_blank" rel="noopener">「Ensemble of Collaborative Filtering and Feature Engineered Models for Click Through Rate Prediction」</a> 中的 field 概念提出了 FM 的升级版模型，该篇于 2016 年发布。</p>
+<h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><p>在 CTR 任务中，大部分样本数据特征是非常稀疏的，使用  One-hot 编码会造成特征空间剧增。而通过对大量样本数据的观察发现某些特征经过关联之后，与最后预测的 label  的相关性就会提高。</p>
+<p>因此使用多项式模型，考虑特征之间的组合会更加直观。</p>
+<h2 id="Related-Work"><a href="#Related-Work" class="headerlink" title="Related Work"></a>Related Work</h2><h3 id="Poly-2"><a href="#Poly-2" class="headerlink" title="Poly 2"></a>Poly 2</h3><p>在多项式模型中，特征 $x_i$ 和 $x_j$ 的组合采用 $x_ix_j$ 表示，即 $x_i$ 和 $x_j$ 都非零时，组合特征 $x_ix_j$ 才有意义。典型的二阶多项式模型的表达式如下：</p>
 <script type="math/tex; mode=display">
-C = \frac {(y-a)^2}{2}</script><p>平方差很好理解，预测值与真实值直接相减，为了避免得到负数取绝对值或者平方，再做平均就是均方平方差。注意这里预测值需要经过 sigmoid 激活函数，得到取值范围在 0 到 1 之间的预测值。</p>
-<p>平方差可以表达预测值与真实值的差异，但在分类问题种效果并不如交叉熵好，原因是：</p>
+y(\mathbf{x}) = w_0+ \sum_{i=1}^n w_i x_i + \sum_{i=1}^n \sum_{j=i+1}^n w_{ij} x_i x_j</script><p>其中，$n$ 代表样本的特征数量，<script type="math/tex">x_ i</script> 是第 <script type="math/tex">i</script>个特征的值，<script type="math/tex">w_0</script>、<script type="math/tex">w_i</script>、<script type="math/tex">w_{ij}</script> 是模型参数。这也是 Poly2 （Degree-2 Polynomial Model ）模型的表达式。</p>
+<p>从公式（1）可以看出，组合特征的参数一共有 $\frac{n(n−1)}{2}$ 个，任意两个参数都是独立的。然而，在数据稀疏性普遍存在的实际应用场景中，二次项参数的训练是很困难的。其原因是，每个参数 <script type="math/tex">w_{ij}</script> 的训练需要大量 <script type="math/tex">x_i</script> 和 <script type="math/tex">x_j</script> 都非零的样本；由于样本数据本来就比较稀疏，满足“<script type="math/tex">x_i</script> 和 <script type="math/tex">x_j</script> 都非零”的样本将会非常少。训练样本的不足，很容易导致参数 <script type="math/tex">w_{ij}</script> 不准确，最终将严重影响模型的性能。</p>
+<h3 id="FM"><a href="#FM" class="headerlink" title="FM"></a>FM</h3><p>因此，为了解决二次项参数的训练问题，FM 模型基于矩阵分解的思想，在原有表达式对其稍微进行了一点改动：</p>
+<script type="math/tex; mode=display">
+y(\mathbf{x}) = w_0+ \sum_{i=1}^n w_i x_i + \sum_{i=1}^n \sum_{j=i+1}^n \left \langle v_{i},v_{j} \right \rangle x_i x_j</script><p>其中，$n$ 代表样本的特征数量，<script type="math/tex">x_ i</script> 是第 $i$ 个特征的值，<script type="math/tex">w_0</script>、<script type="math/tex">w_i</script>、<script type="math/tex">v_{i}</script>、<script type="math/tex">v_{j}</script> 是模型参数。<script type="math/tex">v_{i}</script>、<script type="math/tex">v_{j}</script> 表示长度为 $k $ 的隐向量，包含 $k$ 个描述特征的因子，$k$ 为超参数，<script type="math/tex">\left \langle v_{i},v_{j} \right \rangle</script> 表示向量点积。</p>
+<p>根据公式，二次项的参数数量减少为 $kn$ 个，远小于 Poly2 模型的参数数量。而且，最重要的是，参数的因子化使得 <script type="math/tex">x_ix_j</script> 的参数和 <script type="math/tex">x_ix_t</script> 的参数不再是相互独立的，因此我们可以在样本稀疏的情况下相对合理地估计 FM 的二次项参数。具体来说，<script type="math/tex">x_ix_j</script> 和 <script type="math/tex">x_ix_t</script> 的系数分别为 <script type="math/tex">\left \langle v_{i},v_{j} \right \rangle</script> 和 <script type="math/tex">\left \langle v_{i},v_{t} \right \rangle</script>，它们之间有共同项 <script type="math/tex">v_i</script>。也就是说，所有包含“<script type="math/tex">x_i</script> 的非零组合特征”（存在某个 $j≠i$，使得 <script type="math/tex">x_ix_j≠0</script>）的样本都可以用来学习隐向量 <script type="math/tex">v_i</script>，这很大程度上避免了数据稀疏性造成的影响。而在 Poly2 模型中，<script type="math/tex">w_iw_j</script> 和 <script type="math/tex">w_iw_t</script> 是相互独立的。</p>
+<p>FM 模型比起 Poly 2 模型，其优点显而易见：</p>
+<ul>
+<li>通常 CTR 任务的数据量都是十分庞大的，FM 的参数数量比起 Poly 2 要明显减少，减少了模型的训练时间。</li>
+<li>FM 的参数并不是相互独立，可以从其他的参数学习得到，在样本稀疏性非常明显的情况下，能够的得到更好更准确的参数，提高了模型的精度。</li>
+</ul>
+<h3 id="FFM"><a href="#FFM" class="headerlink" title="FFM"></a>FFM</h3><p>而我们今天的主角 FFM 模型，在 FM 模型表达式的基础上，更进一步：</p>
+<script type="math/tex; mode=display">
+y(\mathbf{x}) = w_0+ \sum_{i=1}^n w_i x_i + \sum_{i=1}^n \sum_{j=i+1}^n \left \langle v_{i,f_{2}},v_{j,f_{1}} \right \rangle x_i x_j</script><p>其中，$n$ 代表样本的特征数量，<script type="math/tex">x_ i</script> 是第 $i$ 个特征的值，<script type="math/tex">w_0</script>、<script type="math/tex">w_i</script>、<script type="math/tex">v_{i,f_{2}}</script>、<script type="math/tex">v_{j,f_{1}}</script> 是模型参数。<script type="math/tex">v_{i,f_{2}}</script>、<script type="math/tex">v_{j,f_{1}}</script> 表示长度为 $k$ 的隐向量，包含 $k$ 个描述特征的因子，$k$ 为超参数，<script type="math/tex">\left \langle v_{i},v_{j} \right \rangle</script> 表示向量点积。<script type="math/tex">\left \langle v_{i},v_{j} \right \rangle</script> 变成了 <script type="math/tex">\left \langle v_{i,f_{2}},v_{j,f_{1}} \right \rangle</script> ，其中 <script type="math/tex">f_1</script>、<script type="math/tex">f_2</script> 表示 <script type="math/tex">x_i</script> 与 <script type="math/tex">x_j</script> 所属的 field。</p>
+<p>举个例子：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Clicked</th>
+<th>Publisher(P)</th>
+<th>Advertiser(A)</th>
+<th>Gender(G)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Yes</td>
+<td>ESPN</td>
+<td>Nike</td>
+<td>Male</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>对于 FM 模型而言，$\phi_{FM}(w,x)$ 为：</p>
+<script type="math/tex; mode=display">
+\phi_{FM}(w,x) = w_{ESPN} \cdot w_{Nike} + w_{ESPN} \cdot w_{Male} + w_{Nike} \cdot w_{Male}</script><p>而对于 FFM 模型而言，$\phi_{FFM}(w, x)$ 为：</p>
+<script type="math/tex; mode=display">
+\phi_{FM}(w,x) = w_{ESPN,A} \cdot w_{Nike,P} + w_{ESPN,G} \cdot w_{Male,P} + w_{Nike,G} \cdot w_{Male,A}</script><p>在 FM 模型中，每个特征只有一个隐向量需要学习，而 FFM 则需要学习多个隐向量，取决于与其组合的特征的 field。例如对于特征 ESPN 的参数 <script type="math/tex">w_{ESPN}</script> ，它可以通过与特征 Nike 组合（<script type="math/tex">w_{ESPN} \cdot w_{Nike}</script>）或者 特征 Male 的组合（<script type="math/tex">w_{ESPN} \cdot w_{Male}</script>）来学习。然而，由于 Nike 与 Male 分别属于不同的 field ，因此（ESPN, NIKE）与（ESPN, Male）所造成的影响是不一样。</p>
+<p>可以看到，<script type="math/tex">w_{ESPN, A}</script> 是因为 Nike 的 field 为 Advertiser（A），<script type="math/tex">w_{ESPN,G}</script> 是因为 Male 的 field 为 Gender（G）。</p>
+<h4 id="FFM- 模型数据格式"><a href="#FFM- 模型数据格式" class="headerlink" title="FFM 模型数据格式"></a>FFM 模型数据格式</h4><script type="math/tex; mode=display">
+label \quad field_1:feat_1:val_1 \quad field_2:feat_2:val_2 \quad ...</script><p> 对于大多数特征都可以用这样的方法表示，但是对于一些特征：</p>
 <ol>
-<li>非负性。交叉熵输出的值是非负的。</li>
-<li>当真实值 $a$ 与期望输出 $y$ 的误差越大，权值更新就快；误差越小，权值更新就慢。而使用平方差作为 Loss 函数，其权值更新往往很慢。</li>
-<li>其中用于计算的 $a$ 也是经过 sigmoid 激活的，取值范围在 0 到 1。如果 label 是 1，预测值也是 1 的话，前面一项 <script type="math/tex">y * ln(a)</script> 就是 <script type="math/tex">1 * ln(1)</script> 等于 0，后一项 <script type="math/tex">(1 – y) * ln(1 – a)</script> 也就是 <script type="math/tex">0 * ln(0)</script> 等于 0，Loss 函数为 0，反之 Loss 函数为无限大非常符合我们对 Loss 函数的定义。</li>
+<li><p>类别型特征</p>
+<p>例如上表的数据，处理成 FFM 数据格式的话：</p>
+<script type="math/tex; mode=display">
+1 \quad P:ESPN:1 \quad A:Nike:1 \quad G:Male:1</script></li>
+<li><p>数值型特征</p>
+<p>对于数值型特征，例如下表数据：</p>
+</li>
 </ol>
-<p>交叉熵的定义如下：</p>
-<script type="math/tex; mode=display">
-C = -\frac{1}{n}\sum_{x}[yln(a)+(1-y)ln(1-a)]</script><p>其中，$a = \sigma(z)$，<script type="math/tex">z=\sum_{j}w_{j}x_{j}+b</script>，$n$ 是训练数据的个数。</p>
-<p>这里多次强调 sigmoid 激活函数，是因为在多标签或者多分类的问题下有些函数是不可用的，而 TensorFlow 本身也提供了多种交叉熵算法的实现。</p>
-<h1 id="Cross-Entropy-in-TensorFlow"><a href="#Cross-Entropy-in-TensorFlow" class="headerlink" title="Cross Entropy in TensorFlow"></a>Cross Entropy in TensorFlow</h1><p>TensorFlow 针对分类问题，实现了四个交叉熵函数，分别是：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Accepted</th>
+<th>AR</th>
+<th>Hidx</th>
+<th>Cite</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Yes</td>
+<td>45.73</td>
+<td>2</td>
+<td>3</td>
+</tr>
+<tr>
+<td>No</td>
+<td>1.04</td>
+<td>100</td>
+<td>50000</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>   有两种处理成 FFM 数据格式的方式：</p>
 <ul>
-<li><a href="https://www.tensorflow.org/versions/master/api_docs/python/nn.html#sigmoid_cross_entropy_with_logits" target="_blank" rel="noopener">tf.nn.sigmoid_cross_entropy_with_logits</a></li>
-<li><a href="https://www.tensorflow.org/versions/master/api_docs/python/nn.html#softmax_cross_entropy_with_logits" target="_blank" rel="noopener">tf.nn.softmax_cross_entropy_with_logits</a></li>
-<li><a href="https://www.tensorflow.org/versions/master/api_docs/python/nn.html#sparse_softmax_cross_entropy_with_logits" target="_blank" rel="noopener">tf.nn.sparse_softmax_cross_entropy_with_logits</a></li>
-<li><a href="https://www.tensorflow.org/versions/master/api_docs/python/nn.html#weighted_cross_entropy_with_logits" target="_blank" rel="noopener">tf.nn.weighted_cross_entropy_with_logits</a></li>
+<li><p>Treat each feature as a dummy field:</p>
+<script type="math/tex; mode=display">
+1 \quad AR:AR:45.73 \quad Hidx:Hidx:2 \quad Cite:Cite:3</script></li>
+<li><p>Discretize each numerical feature to a categorical one:</p>
+<script type="math/tex; mode=display">
+1 \quad AR:45:1 \quad Hidx:2:1 \quad Cite:3:1</script><p>注意到第二种处理方法，将 AR 这 field 中的特征值进行了处理，将 $45.73$ 处理成 $45.7$、$45$、$40$ 甚至是 $int(log(45.73))$ 都是可行的。</p>
+</li>
 </ul>
-<p><a href="https://www.tensorflow.org/versions/master/api_docs/python/nn.html#sparse_softmax_cross_entropy_with_logits" target="_blank" rel="noopener">详细内容参考 API 文档</a></p>
-<h2 id="sigmoid-cross-entropy-with-logits"><a href="#sigmoid-cross-entropy-with-logits" class="headerlink" title="sigmoid_cross_entropy_with_logits"></a>sigmoid_cross_entropy_with_logits</h2><p>我们先看 <code>sigmoid_cross_entropy_with_logits</code>，为什么呢，因为它的实现和前面的交叉熵算法定义是一样的，也是 TensorFlow 最早实现的交叉熵算法。这个函数的输入是 logits 和 targets，logits 就是神经网络模型中的 $W * X$ 矩阵，注意不需要经过 sigmoid，而 targets 的 shape 和 logits 相同，就是正确的 label 值，例如这个模型一次要判断 100 张图是否包含 10 种动物，这两个输入的 shape 都是 $[100, 10]$。注释中还提到这 10 个分类之间是独立的、不要求是互斥，这种问题我们称之为多目标或者多标签分类问题，例如判断图片中是否包含 10 种动物，label 值可以包含多个 1 或 0 个 1。这种问题，我们可以使用 <code>sigmoid_cross_entropy_with_logits</code> 函数。</p>
-<p>另外，还有一种问题是多分类问题，例如我们对年龄特征分为 5 段，只允许 5 个值有且只有 1 个值为 1，这种问题可以直接用这个函数吗？答案是不可以，我们先来看看 <code>sigmoid_cross_entropy_with_logits</code> 的代码实现吧。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">For brevity, let `x = logits`, `z = labels`.  The logistic loss is</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">      z * -log(sigmoid(x)) + (1 - z) * -log(1 - sigmoid(x))</span></span><br><span class="line"><span class="string">    = z * -log(1 / (1 + exp(-x))) + (1 - z) * -log(exp(-x) / (1 + exp(-x)))</span></span><br><span class="line"><span class="string">    = z * log(1 + exp(-x)) + (1 - z) * (-log(exp(-x)) + log(1 + exp(-x)))</span></span><br><span class="line"><span class="string">    = z * log(1 + exp(-x)) + (1 - z) * (x + log(1 + exp(-x))</span></span><br><span class="line"><span class="string">    = (1 - z) * x + log(1 + exp(-x))</span></span><br><span class="line"><span class="string">    = x - x * z + log(1 + exp(-x))</span></span><br><span class="line"><span class="string">"""</span></span><br></pre></td></tr></table></figure>
-<p>可以看到这就是标准的 Cross Entropy 算法实现，对 $W * X$ 得到的值进行 sigmoid 激活，保证取值在 0 到 1 之间，然后放在交叉熵的函数中计算 Loss。对于二分类问题这样做没问题，但对于前面提到的多分类问题，例如年龄取值范围在 $[0, 4]$，目标值也在 $[0, 4]$，这里如果经过 sigmoid 后预测值就限制在 0 到 1 之间，而且公式中的 $(1 – z)$ 就会出现负数，仔细想一下 0 到 4 之间还不存在线性关系，如果直接把 label 值带入计算肯定会有非常大的误差。但是对于这多分类问题， TensorFlow 又提供了基于 Softmax 的交叉熵函数。</p>
-<p>因此对于多分类问题是不能直接代入的，但是对于多标签分类问题，我们可以灵活变通，把 5 个年龄段的预测用 <strong>onehot encoding</strong> 变成 5 维的 label，训练时当做 5 个不同的目标来训练即可，但不保证只有一个为 1。</p>
-<h2 id="softmax-cross-entropy-with-logits"><a href="#softmax-cross-entropy-with-logits" class="headerlink" title="softmax_cross_entropy_with_logits"></a>softmax_cross_entropy_with_logits</h2><p>Softmax 本身的算法很简单，就是把所有值用 $e^n$ 计算出来，求和后算每个值占的比率，保证总和为 1，一般我们可以认为 Softmax 出来的就是 confidence，也就是概率。</p>
-<script type="math/tex; mode=display">
-softmax = \frac{exp(logits)}{reduce\_sum(exp(logits),  dim)}</script><p><code>softmax_cross_entropy_with_logits</code> 和 <code>sigmoid_cross_entropy_with_logits</code> 很不一样，输入是类似的 logits 和 lables 的 shape 一样，但这里要求分类的结果是互斥的，保证只有一个字段有值，例如 CIFAR-10 中图片只能分一类而不像前面判断是否包含多类动物。</p>
-<p>想一下问什么会有这样的限制？在函数头的注释中我们看到，这个函数传入的 logits 是 unscaled 的，既不做 sigmoid 也不做 softmax，因为函数实现会在内部更高效得使用 softmax，对于任意的输入经过 softmax 都会变成和为 1 的概率预测值，这个值就可以代入变形的 Cross Entroy 算法：</p>
-<script type="math/tex; mode=display">
-- y * ln(a) – (1 – y) * ln(1 – a)</script><p>从而得到有意义的 Loss 值了。如果是多标签多目标问题，经过 softmax 就不会得到多个和为 1 的概率，而且 label 有多个 1 也无法计算交叉熵，因此这个函数只适合单目标的二分类或者多分类问题。</p>
-<p>再补充一点，对于多分类问题，例如我们的年龄分为 5 类，并且人工编码为 0、1、2、3、4，因为输出值是 5 维的特征，因此我们需要人工做 <strong>onehot encoding</strong> 分别编码为 00001、00010、00100、01000、10000，才可以作为这个函数的输入。理论上我们不做 onehot encoding 也可以，做成和为 1 的概率分布也可以，但需要保证是和为 1，和不为 1 的实际含义不明确，TensorFlow 的 C++ 代码实现计划检查这些参数，可以提前提醒用户避免误用。</p>
-<h2 id="sparse-softmax-cross-entropy-with-logits"><a href="#sparse-softmax-cross-entropy-with-logits" class="headerlink" title="sparse_softmax_cross_entropy_with_logits"></a>sparse_softmax_cross_entropy_with_logits</h2><p><code>sparse_softmax_cross_entropy_with_logits</code>是 <code>softmax_cross_entropy_with_logits</code> 的易用版本，除了输入参数不同，作用和算法实现都是一样的。前面提到 <code>softmax_cross_entropy_with_logits</code> 的输入必须是类似 <strong>onehot encoding</strong> 的多维特征，但 CIFAR-10、ImageNet 和大部分分类场景都只有一个分类目标，label 值都是从 0 编码的整数，每次转成 onehot encoding 比较麻烦，有没有更好的方法呢？答案就是用<code>sparse_softmax_cross_entropy_with_logits</code>：</p>
+<ol>
+<li><p>单 field 特征</p>
+<p>经常在 NLP 任务上出现，例如如下表数据：</p>
+</li>
+</ol>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>good mood</th>
+<th>sentence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Yes</td>
+<td>Hooray!  Our paper is accepted!</td>
+</tr>
+<tr>
+<td>No</td>
+<td>Well, our paper is rejected..</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>   所有的特征都属于同一个 field — <code>sentence</code>，那么我们的做法就是将 <code>sentence</code> 这一 field 放置在每个分词特征之前，相当于是从 FFM 降低到 FM。 </p>
+<h3 id="Experiments"><a href="#Experiments" class="headerlink" title="Experiments"></a>Experiments</h3><h4 id="Experiment-Setting"><a href="#Experiment-Setting" class="headerlink" title="Experiment Setting"></a>Experiment Setting</h4><p><strong>1. 数据集</strong></p>
+<p>数据集为 Kaggle 两个比赛的数据集：</p>
 <ul>
-<li>它的第一个参数 logits 和前面一样，shape 是<code>[batch_size, num_classes]</code>。</li>
-<li>而第二个参数 labels，<code>softmax_cross_entropy_with_logits</code>规定 shape 必须是 <code>[batch_size, num_classes]</code>，否则无法做 Cross Entropy。这意味着，labels 的值必须是从 0 开始编码的 int32 或 int64，而且值范围是 <code>[0, num_class)</code>，如果我们从 1 开始编码或者步长大于 1，会导致某些 label 值超过这个范围，代码会直接报错退出，这也很好理解，TensorFlow 通过这样的限制才能知道用户传入的 3、6 或者 9 对应是哪个 class。而<strong><code>sparse</code></strong> 版本，则允许 labels 的 shape 是 <code>[batch_size]</code>，通过在内部高效实现类似的 <strong>onehot encoding</strong>，从而简化用户的输入。</li>
+<li>Criteo</li>
+<li>Avazu</li>
 </ul>
-<p>因此，如果用户已经做了 <strong>onehot encoding</strong> 那可以直接使用不带 <code>softmax_cross_entropy_with_logits</code>函数，如果还没有进行 <strong>onehot encoding</strong>，则可以选择使用 <code>sparse_softmax_cross_entropy_with_logits</code>函数。</p>
-<h2 id="weighted-cross-entropy-with-logits"><a href="#weighted-cross-entropy-with-logits" class="headerlink" title="weighted_cross_entropy_with_logits"></a>weighted_cross_entropy_with_logits</h2><p><code>weighted_cross_entropy_with_logits</code>是 <code>sigmoid_cross_entropy_with_logits</code> 的拓展版，输入参数和实现和后者差不多，只是可以多支持一个 <code>pos_weight</code> 参数，目的是可以增加或者减小正样本在算 Cross Entropy 时的 Loss。实现原理很简单，在传统基于 Sigmoid 的交叉熵算法上，正样本算出的值乘以某个系数 <strong><code>pos_weight</code></strong>，算法实现如下：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">The usual cross-entropy cost is defined as:</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    targets * -log(sigmoid(logits)) +</span></span><br><span class="line"><span class="string">        (1 - targets) * -log(1 - sigmoid(logits))</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">The argument `pos_weight` is used as a multiplier for the positive targets:</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    targets * -log(sigmoid(logits)) * pos_weight +</span></span><br><span class="line"><span class="string">        (1 - targets) * -log(1 - sigmoid(logits))</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">For brevity, let `x = logits`, `z = targets`, `q = pos_weight`.</span></span><br><span class="line"><span class="string">The loss is:</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">      qz * -log(sigmoid(x)) + (1 - z) * -log(1 - sigmoid(x))</span></span><br><span class="line"><span class="string">    = qz * -log(1 / (1 + exp(-x))) + (1 - z) * -log(exp(-x) / (1 + exp(-x)))</span></span><br><span class="line"><span class="string">    = qz * log(1 + exp(-x)) + (1 - z) * (-log(exp(-x)) + log(1 + exp(-x)))</span></span><br><span class="line"><span class="string">    = qz * log(1 + exp(-x)) + (1 - z) * (x + log(1 + exp(-x))</span></span><br><span class="line"><span class="string">    = (1 - z) * x + (qz +  1 - z) * log(1 + exp(-x))</span></span><br><span class="line"><span class="string">    = (1 - z) * x + (1 + (q - 1) * z) * log(1 + exp(-x))</span></span><br><span class="line"><span class="string">"""</span></span><br></pre></td></tr></table></figure>
-<h1 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h1><p>这就是 TensorFlow 目前提供的有关 Cross Entropy 的函数实现，用户需要理解多标签和多分类的场景，根据业务需求（分类目标是否独立和互斥）来选择基于 Sigmoid 或者 Softmax 的实现，如果使用 Sigmoid 目前还支持加权的实现，如果使用 Softmax 我们可以自己做 onehot coding 或者使用更易用的 <code>sparse_softmax_cross_entropy_with_logits</code> 函数。</p>
-<p>TensorFlow 提供的 Cross Entropy 函数基本涵盖了多目标和多分类的问题，但如果同时是多目标多分类的场景，肯定是无法使用 <code>softmax_cross_entropy_with_logits</code>，如果使用<code>sigmoid_cross_entropy_with_logits</code> 我们就把多分类的特征都认为是独立的特征，而实际上他们有且只有一个为 1 的非独立特征，计算 Loss 时不如 Softmax 有效。这里可以预测下，未来 TensorFlow 社区将会实现更多的 op 解决类似的问题，我们也期待更多人参与 TensorFlow 贡献算法和代码。</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Data Set</th>
+<th>instances</th>
+<th>features</th>
+<th>fields</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Criteo</td>
+<td>45,840,617</td>
+<td>$10^6$</td>
+<td>39</td>
+</tr>
+<tr>
+<td>Avazu</td>
+<td>40,428,968</td>
+<td>$10^6$</td>
+<td>33</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>2. 模型训练及参数</strong></p>
+<p>模型的优化方法为普通的 SG （Stochastic Gradient），再加上 FFM 中需要我们设定的超参数 $k$ ，因此模型的参数为： </p>
+<ul>
+<li>$k$ 隐向量的长度；</li>
+<li>$\lambda$ 学习率；</li>
+<li>$\eta$ 步长；</li>
+</ul>
+<p><strong>3. 实验结果</strong></p>
+<p><img src="https://farm5.staticflickr.com/4552/24489629838_2654e8c9e6_o.png" alt="FFM"></p>
+<h4 id="Results-and-Discussion"><a href="#Results-and-Discussion" class="headerlink" title="Results and Discussion"></a>Results and Discussion</h4><p>相较于 LM、Poly 2 以及 FM 模型，FFM 在该两个数据集上表现更好，拥有更高的准确率。</p>
 
       
     </div>
@@ -551,9 +682,7 @@ softmax = \frac{exp(logits)}{reduce\_sum(exp(logits),  dim)}</script><p><code>so
           
             <a href="/tags/Machine-Learning/" rel="tag"># Machine Learning</a>
           
-            <a href="/tags/Python/" rel="tag"># Python</a>
-          
-            <a href="/tags/TensorFlow/" rel="tag"># TensorFlow</a>
+            <a href="/tags/Papers/" rel="tag"># Papers</a>
           
         </div>
       
@@ -566,8 +695,8 @@ softmax = \frac{exp(logits)}{reduce\_sum(exp(logits),  dim)}</script><p><code>so
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/09/08/♛「Machine Learning」 LSTM Introduction/" rel="next" title="♛「Machine Learning」 LSTM Introduction">
-                <i class="fa fa-chevron-left"></i> ♛「Machine Learning」 LSTM Introduction
+              <a href="/2017/10/14/♛「Machine Learning」 How to Generate a Good Word Embedding/" rel="next" title="♛「Machine Learning」 How to Generate a Good Word Embedding?">
+                <i class="fa fa-chevron-left"></i> ♛「Machine Learning」 How to Generate a Good Word Embedding?
               </a>
             
           </div>
@@ -576,8 +705,8 @@ softmax = \frac{exp(logits)}{reduce\_sum(exp(logits),  dim)}</script><p><code>so
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/10/14/♛「Machine Learning」 How to Generate a Good Word Embedding/" rel="prev" title="♛「Machine Learning」 How to Generate a Good Word Embedding?">
-                ♛「Machine Learning」 How to Generate a Good Word Embedding? <i class="fa fa-chevron-right"></i>
+              <a href="/2017/12/17/♚「Kaggle」Music Recommendation Challenge/" rel="prev" title="♚「Kaggle」 Music Recommendation Challenge">
+                ♚「Kaggle」 Music Recommendation Challenge <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -797,7 +926,7 @@ softmax = \frac{exp(logits)}{reduce\_sum(exp(logits),  dim)}</script><p><code>so
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Cross-Entropy-Introduction"><span class="nav-number">1.</span> <span class="nav-text">Cross Entropy Introduction</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Cross-Entropy-in-TensorFlow"><span class="nav-number">2.</span> <span class="nav-text">Cross Entropy in TensorFlow</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#sigmoid-cross-entropy-with-logits"><span class="nav-number">2.1.</span> <span class="nav-text">sigmoid_cross_entropy_with_logits</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#softmax-cross-entropy-with-logits"><span class="nav-number">2.2.</span> <span class="nav-text">softmax_cross_entropy_with_logits</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sparse-softmax-cross-entropy-with-logits"><span class="nav-number">2.3.</span> <span class="nav-text">sparse_softmax_cross_entropy_with_logits</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#weighted-cross-entropy-with-logits"><span class="nav-number">2.4.</span> <span class="nav-text">weighted_cross_entropy_with_logits</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Summary"><span class="nav-number">3.</span> <span class="nav-text">Summary</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#「Field-aware-Factorization-Machines-for-CTR-Prediction-」"><span class="nav-number">1.</span> <span class="nav-text">「Field-aware Factorization Machines for CTR Prediction 」</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Introduction"><span class="nav-number">1.1.</span> <span class="nav-text">Introduction</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Related-Work"><span class="nav-number">2.</span> <span class="nav-text">Related Work</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Poly-2"><span class="nav-number">2.1.</span> <span class="nav-text">Poly 2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#FM"><span class="nav-number">2.2.</span> <span class="nav-text">FM</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#FFM"><span class="nav-number">2.3.</span> <span class="nav-text">FFM</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#FFM- 模型数据格式"><span class="nav-number">2.3.1.</span> <span class="nav-text">FFM 模型数据格式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Experiments"><span class="nav-number">2.4.</span> <span class="nav-text">Experiments</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Experiment-Setting"><span class="nav-number">2.4.1.</span> <span class="nav-text">Experiment Setting</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Results-and-Discussion"><span class="nav-number">2.4.2.</span> <span class="nav-text">Results and Discussion</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -955,9 +1084,9 @@ softmax = \frac{exp(logits)}{reduce\_sum(exp(logits),  dim)}</script><p><code>so
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://randolph.pro/2017/09/25/♣︎「TensorFlow」Cross Entropy Function in TensorFlow /';
-          this.page.identifier = '2017/09/25/♣︎「TensorFlow」Cross Entropy Function in TensorFlow /';
-          this.page.title = '♣︎「TensorFlow」 Cross Entropy in TensorFlow';
+          this.page.url = 'http://randolph.pro/2017/11/11/♝「Papers」About Field-aware Factorization Machines/';
+          this.page.identifier = '2017/11/11/♝「Papers」About Field-aware Factorization Machines/';
+          this.page.title = '♝「Papers」 About Field-aware Factorization Machines';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://randolphvi.disqus.com/embed.js';
