@@ -112,7 +112,7 @@
 <meta property="og:description" content="本文是关于「Web Scraping with Python」这本书的 Chapter 3 的学习笔记。">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://farm5.staticflickr.com/4316/36049777032_f975ed0941_o.jpg">
-<meta property="og:updated_time" content="2019-03-17T07:18:57.433Z">
+<meta property="og:updated_time" content="2019-03-18T03:05:47.817Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="♞「Books」Web Scraping with Python - Chapter 3">
 <meta name="twitter:description" content="本文是关于「Web Scraping with Python」这本书的 Chapter 3 的学习笔记。">
@@ -555,7 +555,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo pip uninstall six</span><br><span class="line">$ easy_install six</span><br></pre></td></tr></table></figure>
 <p> 同样得到的是 <code>Operation not Permitted</code>（此方法在 10.11 之前的版本应该都可以行得通）。</p>
 <p> 后来尝试了通过 Python 虚拟环境进行解决，能力不够失败。<br> 还尝试了通过下载 Python 官网的 2.7.11，不使用 Mac 系统默认自带的 2.7.10（有人提到使用自己安装的 Python2.7 可以解决问题），折腾了半天，还是失败告终，还差点弄的 pip 无法安装 package。挽救办法为：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ brew link python </span><br><span class="line">$ bre unlink python</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ brew link python </span><br><span class="line">$ brew unlink python</span><br></pre></td></tr></table></figure>
 <p> 到最后，本来想着要放弃的，Stackoverflow 上的另一个办法让事情有了转机：</p>
 <blockquote>
 <p>This is a known issue on Mac OSX for Scrapy. You can refer to <a href="https://github.com/pypa/pip/issues/3165" target="_blank" rel="noopener">this link</a>.<br>Basically the issue is with the <strong>PYTHONPATH</strong> in your system. To solve the issue change the current PYTHONPATH to point to the newer or none Mac OSX version of Python. Before running Scrapy, try:</p>
