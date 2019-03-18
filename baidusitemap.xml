@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://randolph.pro/2017/07/15/%E2%99%9F%E3%80%8CTools%E3%80%8D%20MongoDB%20and%20PyMongo/</loc>
+    <lastmod>2019-03-18</lastmod>
+  </url>  <url>
+    <loc>http://randolph.pro/2017/03/10/%E2%99%A3%EF%B8%8E%E3%80%8CTensorFlow%E3%80%8DAbout%20Text%20Classification%20based%20on%20CNN/</loc>
+    <lastmod>2019-03-18</lastmod>
+  </url>  <url>
     <loc>http://randolph.pro/2017/03/13/%E2%99%A3%EF%B8%8E%E3%80%8CTensorFlow%E3%80%8D%20Tensorboard/</loc>
     <lastmod>2019-03-18</lastmod>
   </url>  <url>
@@ -49,9 +55,6 @@
     <loc>http://randolph.pro/2017/03/17/%E2%99%A3%EF%B8%8E%E3%80%8CTensorFlow%E3%80%8DUse%20WeChat%20to%20Monitor%20Your%20Network/</loc>
     <lastmod>2019-03-18</lastmod>
   </url>  <url>
-    <loc>http://randolph.pro/2017/03/10/%E2%99%A3%EF%B8%8E%E3%80%8CTensorFlow%E3%80%8DAbout%20Text%20Classification%20based%20on%20CNN/</loc>
-    <lastmod>2019-03-18</lastmod>
-  </url>  <url>
     <loc>http://randolph.pro/2017/09/06/%E2%99%9B%E3%80%8CMachine%20Learning%E3%80%8DDeal%20with%20Imbalanced%20Data/</loc>
     <lastmod>2019-03-18</lastmod>
   </url>  <url>
@@ -86,9 +89,6 @@
     <lastmod>2019-03-17</lastmod>
   </url>  <url>
     <loc>http://randolph.pro/2016/11/11/%E2%99%9F%E3%80%8CTools%E3%80%8DMathjax/</loc>
-    <lastmod>2019-03-17</lastmod>
-  </url>  <url>
-    <loc>http://randolph.pro/2017/07/15/%E2%99%9F%E3%80%8CTools%E3%80%8D%20MongoDB%20and%20PyMongo/</loc>
     <lastmod>2019-03-17</lastmod>
   </url>  <url>
     <loc>http://randolph.pro/2018/09/06/%E2%9C%8E%E3%80%8C%E5%8C%AF%E6%96%87%E3%80%8D%E6%B0%B4%E4%B9%8B%E6%B9%84/</loc>

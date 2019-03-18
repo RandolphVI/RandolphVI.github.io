@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://randolph.pro/2017/07/15/%E2%99%9F%E3%80%8CTools%E3%80%8D%20MongoDB%20and%20PyMongo/</loc>
+    
+    <lastmod>2019-03-18T08:35:48.273Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://randolph.pro/2017/03/10/%E2%99%A3%EF%B8%8E%E3%80%8CTensorFlow%E3%80%8DAbout%20Text%20Classification%20based%20on%20CNN/</loc>
+    
+    <lastmod>2019-03-18T08:23:38.741Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://randolph.pro/2017/03/13/%E2%99%A3%EF%B8%8E%E3%80%8CTensorFlow%E3%80%8D%20Tensorboard/</loc>
     
     <lastmod>2019-03-18T08:15:46.364Z</lastmod>
@@ -114,13 +128,6 @@
   </url>
   
   <url>
-    <loc>http://randolph.pro/2017/03/10/%E2%99%A3%EF%B8%8E%E3%80%8CTensorFlow%E3%80%8DAbout%20Text%20Classification%20based%20on%20CNN/</loc>
-    
-    <lastmod>2019-03-18T07:47:10.901Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://randolph.pro/2017/09/06/%E2%99%9B%E3%80%8CMachine%20Learning%E3%80%8DDeal%20with%20Imbalanced%20Data/</loc>
     
     <lastmod>2019-03-18T05:56:53.975Z</lastmod>
@@ -201,13 +208,6 @@
     <loc>http://randolph.pro/2016/11/11/%E2%99%9F%E3%80%8CTools%E3%80%8DMathjax/</loc>
     
     <lastmod>2019-03-17T14:50:06.324Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://randolph.pro/2017/07/15/%E2%99%9F%E3%80%8CTools%E3%80%8D%20MongoDB%20and%20PyMongo/</loc>
-    
-    <lastmod>2019-03-17T14:50:00.806Z</lastmod>
     
   </url>
   
