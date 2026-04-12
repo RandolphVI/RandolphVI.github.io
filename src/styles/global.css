@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* === Font Face === */
+@font-face {
+  font-family: '京华老宋体';
+  src: url('/fonts/JingHuaOldSong.woff2') format('woff2');
+  font-display: swap;
+}
+
+/* === CSS Custom Properties === */
+:root {
+  /* Light mode (Paper East Wind) */
+  --color-bg: #f5f0e8;
+  --color-bg-secondary: #ede6d8;
+  --color-text: #555555;
+  --color-heading: #3a3a3a;
+  --color-accent: #c4b5a0;
+  --color-accent-dark: #b8a88a;
+  --color-muted: #999999;
+  --color-faint: #bbbbbb;
+  --color-border: #e0d8c8;
+  --color-border-light: #e8e0d0;
+  --color-border-dark: #d4c8b0;
+  --color-surface: rgba(196, 181, 160, 0.06);
+}
+
+:root.dark {
+  /* Dark mode (Pure Clean Dark) */
+  --color-bg: #1b1b1f;
+  --color-bg-secondary: #222228;
+  --color-text: #aaaaaa;
+  --color-heading: #ececec;
+  --color-accent: #888070;
+  --color-accent-dark: #6b6560;
+  --color-muted: #777777;
+  --color-faint: #666666;
+  --color-border: #333333;
+  --color-border-light: #2a2a2e;
+  --color-border-dark: #444444;
+  --color-surface: rgba(255, 255, 255, 0.03);
+}
+
+/* === Base Styles === */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: '京华老宋体', 'Noto Serif SC', 'Source Han Serif SC', '宋体', serif;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    line-height: 1.8;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    color: var(--color-heading);
+    font-weight: 400;
+  }
+
+  a {
+    color: var(--color-heading);
+    text-decoration: none;
+    border-bottom: 1px solid var(--color-border);
+    transition: border-color 0.2s;
+  }
+
+  a:hover {
+    border-color: var(--color-accent);
+  }
+
+  ::selection {
+    background-color: var(--color-accent);
+    color: var(--color-bg);
+  }
+}

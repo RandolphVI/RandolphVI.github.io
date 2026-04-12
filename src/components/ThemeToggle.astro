@@ -1,0 +1,31 @@
+---
+---
+<button
+  id="theme-toggle"
+  class="text-[var(--color-muted)] hover:text-[var(--color-heading)] transition-colors text-lg leading-none cursor-pointer"
+  aria-label="Toggle dark mode"
+  title="切换明暗主题"
+>
+  ◐
+</button>
+
+<script>
+  function getThemePreference(): 'dark' | 'light' {
+    const stored = localStorage.getItem('theme');
+    if (stored === 'dark' || stored === 'light') return stored;
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  }
+
+  function applyTheme(theme: 'dark' | 'light') {
+    document.documentElement.classList.toggle('dark', theme === 'dark');
+    localStorage.setItem('theme', theme);
+  }
+
+  // Apply immediately to prevent flash
+  applyTheme(getThemePreference());
+
+  document.getElementById('theme-toggle')?.addEventListener('click', () => {
+    const current = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+    applyTheme(current === 'dark' ? 'light' : 'dark');
+  });
+</script>
