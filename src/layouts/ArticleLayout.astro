@@ -2,6 +2,9 @@
 import BaseLayout from './BaseLayout.astro';
 import EndMark from '../components/EndMark.astro';
 import { getReadingTime } from '../utils/reading-time';
+import ReadingProgress from '../components/ReadingProgress.astro';
+import TableOfContents from '../components/TableOfContents.astro';
+import Sidenotes from '../components/Sidenotes.astro';
 import '../styles/article.css';
 
 interface Props {
@@ -24,12 +27,14 @@ const showTOC = headings.filter((h) => h.depth <= 3).length >= 3;
 ---
 
 <BaseLayout title={title} description={description}>
+  <ReadingProgress />
   <div class="max-w-6xl mx-auto px-4 lg:px-10 py-10">
     <div class="flex gap-0 lg:gap-6 justify-center">
 
-      <!-- Left: TOC placeholder (desktop only, populated in Task 8) -->
+      <!-- Left: TOC (desktop only) -->
       {showTOC && (
-        <aside class="hidden xl:block w-36 flex-shrink-0 pt-20" id="toc-container">
+        <aside class="hidden xl:block w-36 flex-shrink-0 pt-20">
+          <TableOfContents headings={headings} />
         </aside>
       )}
 
@@ -95,4 +100,5 @@ const showTOC = headings.filter((h) => h.depth <= 3).length >= 3;
 
     </div>
   </div>
+  <Sidenotes />
 </BaseLayout>

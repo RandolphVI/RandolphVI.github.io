@@ -1,0 +1,58 @@
+---
+interface Props {
+  headings: { depth: number; slug: string; text: string }[];
+}
+
+const { headings } = Astro.props;
+const tocItems = headings.filter((h) => h.depth <= 3);
+---
+
+<nav class="sticky top-24" id="toc-nav">
+  <div class="font-sans text-[9px] tracking-[3px] text-[var(--color-accent-dark)] mb-3">
+    目录
+  </div>
+  <div class="border-l border-[var(--color-border-dark)] pl-2.5">
+    {tocItems.map((item) => (
+      <a
+        href={`#${item.slug}`}
+        class:list={[
+          'block text-[10px] mb-2 border-none transition-colors toc-link',
+          'text-[var(--color-muted)] hover:text-[var(--color-heading)]',
+          item.depth === 3 && 'ml-3',
+        ]}
+        data-heading={item.slug}
+      >
+        {item.text}
+      </a>
+    ))}
+  </div>
+</nav>
+
+<script>
+  function initTOC() {
+    const headings = document.querySelectorAll('.article-content h2, .article-content h3');
+    const links = document.querySelectorAll('.toc-link');
+    if (headings.length === 0 || links.length === 0) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const id = entry.target.id;
+            links.forEach((link) => {
+              const isActive = link.getAttribute('data-heading') === id;
+              link.classList.toggle('!text-[var(--color-heading)]', isActive);
+              link.classList.toggle('!font-bold', isActive);
+            });
+          }
+        });
+      },
+      { rootMargin: '-80px 0px -70% 0px' }
+    );
+
+    headings.forEach((h) => observer.observe(h));
+  }
+
+  initTOC();
+  document.addEventListener('astro:page-load', initTOC);
+</script>
