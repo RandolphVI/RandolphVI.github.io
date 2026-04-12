@@ -1,0 +1,145 @@
+/* === Article Typography === */
+
+/* Drop cap - first letter of first paragraph after each h2 */
+.article-content > h2 + p::first-letter {
+  float: left;
+  font-size: 3.2em;
+  line-height: 1;
+  margin: 0.05em 0.12em 0 0;
+  color: var(--color-heading);
+  font-family: '京华老宋体', 'Noto Serif SC', serif;
+}
+
+/* Headings */
+.article-content h2 {
+  font-size: 13px;
+  color: var(--color-accent-dark);
+  letter-spacing: 3px;
+  font-family: 'Josefin Sans', sans-serif;
+  margin: 2.5em 0 1.2em;
+}
+
+/* Paragraphs */
+.article-content p {
+  font-size: 15px;
+  line-height: 2.2;
+  text-align: justify;
+  margin-bottom: 1.2em;
+  color: var(--color-text);
+}
+
+/* Blockquote - Eastern style */
+.article-content blockquote {
+  margin: 2em 0;
+  padding: 1.2em 1.5em;
+  border-left: 2px solid var(--color-accent);
+  background: var(--color-surface);
+  position: relative;
+}
+
+.article-content blockquote::before {
+  content: '\201C';
+  position: absolute;
+  top: -8px;
+  left: 16px;
+  font-size: 28px;
+  color: var(--color-border-dark);
+  font-family: serif;
+}
+
+.article-content blockquote p {
+  font-size: 13px;
+  color: var(--color-muted);
+  font-style: italic;
+  line-height: 2.0;
+  margin-bottom: 0;
+}
+
+/* Footnote references */
+.article-content sup a {
+  color: var(--color-accent-dark);
+  font-size: 11px;
+  border: none;
+  margin: 0 2px;
+}
+
+/* Code blocks */
+.article-content pre {
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  padding: 1em 1.2em;
+  overflow-x: auto;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  line-height: 1.7;
+  margin: 1.5em 0;
+}
+
+.article-content code {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.9em;
+  background: var(--color-surface);
+  padding: 0.15em 0.4em;
+  border-radius: 3px;
+}
+
+.article-content pre code {
+  background: none;
+  padding: 0;
+  border-radius: 0;
+}
+
+.article-content img {
+  max-width: 100%;
+  height: auto;
+  margin: 2em auto;
+  display: block;
+}
+
+.article-content hr {
+  border: none;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-border-dark), transparent);
+  margin: 2em 0;
+}
+
+/* Footnote section at bottom (fallback / mobile) */
+.article-content .footnotes {
+  margin-top: 3em;
+  padding-top: 1.5em;
+  border-top: 1px solid var(--color-border);
+  font-size: 12px;
+  color: var(--color-muted);
+}
+
+.article-content .footnotes ol {
+  padding-left: 1.5em;
+}
+
+.article-content .footnotes li {
+  margin-bottom: 0.5em;
+  line-height: 1.8;
+}
+
+/* === Literary Animation === */
+@media (prefers-reduced-motion: no-preference) {
+  .article-fade-in {
+    animation: fadeInUp 0.5s ease-out both;
+  }
+
+  .article-fade-in-delay {
+    animation: fadeInUp 0.6s ease-out 0.15s both;
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}

@@ -1,0 +1,98 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import EndMark from '../components/EndMark.astro';
+import { getReadingTime } from '../utils/reading-time';
+import '../styles/article.css';
+
+interface Props {
+  title: string;
+  date: Date;
+  category: string;
+  tags: string[];
+  description: string;
+  rawContent: string;
+  headings: { depth: number; slug: string; text: string }[];
+  prevPost?: { title: string; href: string };
+  nextPost?: { title: string; href: string };
+}
+
+const { title, date, category, tags, description, rawContent, headings, prevPost, nextPost } = Astro.props;
+
+const { minutes, words } = getReadingTime(rawContent);
+const dateStr = `${date.getFullYear()}.${String(date.getMonth() + 1).padStart(2, '0')}.${String(date.getDate()).padStart(2, '0')}`;
+const showTOC = headings.filter((h) => h.depth <= 3).length >= 3;
+---
+
+<BaseLayout title={title} description={description}>
+  <div class="max-w-6xl mx-auto px-4 lg:px-10 py-10">
+    <div class="flex gap-0 lg:gap-6 justify-center">
+
+      <!-- Left: TOC placeholder (desktop only, populated in Task 8) -->
+      {showTOC && (
+        <aside class="hidden xl:block w-36 flex-shrink-0 pt-20" id="toc-container">
+        </aside>
+      )}
+
+      <!-- Center: Article Content -->
+      <article class="w-full max-w-[560px]">
+        <!-- Article Header -->
+        <div class="text-center mb-10 article-fade-in">
+          <div class="font-sans text-[10px] tracking-[4px] text-[var(--color-accent-dark)] mb-4">
+            {category}
+          </div>
+          <h1 class="text-[26px] text-[var(--color-heading)] tracking-[3px] mb-3">
+            {title}
+          </h1>
+          <div class="flex justify-center gap-4 font-sans text-[10px] text-[var(--color-faint)]">
+            <span>{dateStr}</span>
+            <span>·</span>
+            <span>约 {words} 字</span>
+            <span>·</span>
+            <span>{minutes} 分钟</span>
+          </div>
+        </div>
+
+        <div class="w-10 h-px bg-[var(--color-accent)] mx-auto mb-9"></div>
+
+        <!-- Article Body -->
+        <div class="article-content article-fade-in-delay">
+          <slot />
+        </div>
+
+        <EndMark />
+
+        <!-- Tags -->
+        <div class="flex gap-2 justify-center mt-6">
+          {tags.map((tag) => (
+            <span class="font-sans text-[10px] text-[var(--color-accent-dark)] border border-[var(--color-border-dark)] px-2.5 py-0.5">
+              {tag}
+            </span>
+          ))}
+        </div>
+
+        <!-- Prev / Next Navigation -->
+        {(prevPost || nextPost) && (
+          <div class="mt-10 pt-6 border-t border-[var(--color-border)] flex justify-between text-[11px]">
+            {prevPost ? (
+              <a href={prevPost.href} class="border-none group">
+                <div class="text-[var(--color-faint)] text-[9px] tracking-[2px] font-sans mb-1">← 上一篇</div>
+                <div class="text-[var(--color-muted)] group-hover:text-[var(--color-heading)] transition-colors">{prevPost.title}</div>
+              </a>
+            ) : <div />}
+            {nextPost ? (
+              <a href={nextPost.href} class="text-right border-none group">
+                <div class="text-[var(--color-faint)] text-[9px] tracking-[2px] font-sans mb-1">下一篇 →</div>
+                <div class="text-[var(--color-muted)] group-hover:text-[var(--color-heading)] transition-colors">{nextPost.title}</div>
+              </a>
+            ) : <div />}
+          </div>
+        )}
+      </article>
+
+      <!-- Right: Sidenotes area (desktop only, populated in Task 8) -->
+      <aside class="hidden xl:block w-40 flex-shrink-0 pt-20" id="sidenotes-container">
+      </aside>
+
+    </div>
+  </div>
+</BaseLayout>
