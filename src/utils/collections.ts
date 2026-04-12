@@ -20,11 +20,11 @@ export async function getReadingList(): Promise<CollectionEntry<'reading'>[]> {
   return reading.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 }
 
-export async function getAllArticles(): Promise<Array<{ slug: string; data: { title: string; date: Date; category: string; description: string }; collection: string }>> {
+export async function getAllArticles(): Promise<Array<{ id: string; data: { title: string; date: Date; category: string; description: string }; collection: string }>> {
   const [posts, tech] = await Promise.all([getPublishedPosts(), getPublishedTech()]);
   const all = [
-    ...posts.map((p) => ({ slug: p.slug, data: p.data, collection: 'posts' as const })),
-    ...tech.map((t) => ({ slug: t.slug, data: t.data, collection: 'tech' as const })),
+    ...posts.map((p) => ({ id: p.id, data: p.data, collection: 'posts' as const })),
+    ...tech.map((t) => ({ id: t.id, data: t.data, collection: 'tech' as const })),
   ];
   return all.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 }

@@ -1,0 +1,28 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import { getAllArticles } from '../../utils/collections';
+
+const articles = await getAllArticles();
+
+const categoryMap = new Map<string, number>();
+articles.forEach((a) => {
+  const cat = a.data.category;
+  categoryMap.set(cat, (categoryMap.get(cat) || 0) + 1);
+});
+const categories = Array.from(categoryMap.entries()).sort((a, b) => b[1] - a[1]);
+---
+
+<PageLayout title="分类" englishTitle="CATEGORIES" description="按分类浏览文章">
+  <div class="flex flex-wrap gap-3 justify-center max-w-md mx-auto">
+    {categories.map(([name, count]) => (
+      <a
+        href={`/categories/${encodeURIComponent(name)}/`}
+        class="block px-6 py-3 text-center min-w-[100px] border-none hover:bg-[var(--color-surface)] transition-colors"
+        style="border: 1px solid var(--color-border-dark);"
+      >
+        <div class="text-sm text-[var(--color-heading)] tracking-wide">{name}</div>
+        <div class="text-[10px] text-[var(--color-faint)] mt-1 font-sans">{count} 篇</div>
+      </a>
+    ))}
+  </div>
+</PageLayout>

@@ -1,0 +1,38 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import ArticleCard from '../../components/ArticleCard.astro';
+import { getAllArticles } from '../../utils/collections';
+
+export async function getStaticPaths() {
+  const articles = await getAllArticles();
+  const categories = [...new Set(articles.map((a) => a.data.category))];
+
+  return categories.map((category) => ({
+    params: { category },
+    props: {
+      category,
+      articles: articles.filter((a) => a.data.category === category),
+    },
+  }));
+}
+
+const { category, articles } = Astro.props;
+---
+
+<PageLayout title={category} englishTitle="CATEGORY" description={`分类：${category}`}>
+  <div class="max-w-lg mx-auto">
+    {articles.map((article) => {
+      const href = article.collection === 'posts'
+        ? `/posts/${article.id}/`
+        : `/tech/${article.id}/`;
+      return (
+        <ArticleCard
+          title={article.data.title}
+          date={article.data.date}
+          description={article.data.description}
+          href={href}
+        />
+      );
+    })}
+  </div>
+</PageLayout>

@@ -1,0 +1,25 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import BookCard from '../../components/BookCard.astro';
+import { getReadingList } from '../../utils/collections';
+
+const books = await getReadingList();
+---
+
+<PageLayout title="阅读" englishTitle="READING" description="读书记录与简评">
+  <div class="max-w-lg mx-auto">
+    {books.map((book) => (
+      <BookCard
+        title={book.data.title}
+        author={book.data.author}
+        date={book.data.date}
+        rating={book.data.rating}
+        cover={book.data.cover}
+        body={book.body ?? ''}
+      />
+    ))}
+    {books.length === 0 && (
+      <p class="text-center text-[var(--color-muted)] text-sm">暂无阅读记录</p>
+    )}
+  </div>
+</PageLayout>

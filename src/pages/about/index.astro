@@ -1,0 +1,24 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+---
+
+<PageLayout title="关于" englishTitle="ABOUT" description="关于黃某人">
+  <div class="text-center">
+    <div class="w-20 h-20 rounded-full bg-[var(--color-border-light)] border-2 border-[var(--color-border-dark)] mx-auto mb-5 flex items-center justify-center">
+      <span class="text-2xl text-[var(--color-accent)] font-sans">R</span>
+    </div>
+    <div class="text-lg text-[var(--color-heading)] tracking-[2px] mb-2">黃某人</div>
+    <div class="text-[12px] text-[var(--color-muted)] leading-[2.0] mb-6">
+      写小说，读闲书，偶尔研究机器学习。<br />
+      相信文字的力量，也相信代码的优雅。
+    </div>
+    <div class="w-10 h-px bg-[var(--color-accent)] mx-auto mb-6"></div>
+    <div class="flex gap-5 justify-center font-sans text-[11px] text-[var(--color-accent-dark)]">
+      <a href="https://github.com/RandolphVI" class="border-none hover:text-[var(--color-heading)]" target="_blank" rel="noopener">GitHub</a>
+      <span class="text-[var(--color-border)]">·</span>
+      <a href="mailto:" class="border-none hover:text-[var(--color-heading)]">Email</a>
+      <span class="text-[var(--color-border)]">·</span>
+      <a href="/rss.xml" class="border-none hover:text-[var(--color-heading)]">RSS</a>
+    </div>
+  </div>
+</PageLayout>
