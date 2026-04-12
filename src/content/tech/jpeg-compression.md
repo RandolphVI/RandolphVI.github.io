@@ -1,7 +1,7 @@
 ---
 title: "JPEG Compression"
 date: 2016-04-15
-category: "ML-AI"
+category: "AI"
 tags: ["Computer Vision"]
 description: "- 颜色模式转换：RBG to YUV"
 draft: false

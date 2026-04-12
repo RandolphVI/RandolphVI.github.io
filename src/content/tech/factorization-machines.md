@@ -1,7 +1,7 @@
 ---
 title: "Factorization Machines"
 date: 2017-03-03
-category: "ML-AI"
+category: "AI"
 tags: ["推荐系统"]
 description: "Introduction"
 draft: false

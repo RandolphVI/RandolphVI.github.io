@@ -1,7 +1,7 @@
 ---
 title: "NLP with Python — Chapter 3"
 date: 2015-09-17
-category: "ML-AI"
+category: "AI"
 tags: ["NLP", "Python"]
 description: "- The NLP Pipeline"
 draft: false

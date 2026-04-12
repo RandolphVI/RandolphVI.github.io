@@ -1,7 +1,7 @@
 ---
 title: "Cross Entropy Function in TensorFlow"
 date: 2017-09-25
-category: "ML-AI"
+category: "AI"
 tags: ["TensorFlow"]
 description: "Cross Entropy Introduction"
 draft: false

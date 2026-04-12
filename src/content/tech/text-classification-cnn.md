@@ -1,7 +1,7 @@
 ---
 title: "About Text Classification based on CNN"
 date: 2017-03-10
-category: "ML-AI"
+category: "AI"
 tags: ["Deep Learning", "NLP", "TensorFlow"]
 description: "- Embedding Layer"
 draft: false

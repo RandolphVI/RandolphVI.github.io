@@ -1,7 +1,7 @@
 ---
 title: "Deal with Imbalanced Data"
 date: 2017-09-06
-category: "ML-AI"
+category: "AI"
 tags: ["Machine Learning"]
 description: "Introduction"
 draft: false

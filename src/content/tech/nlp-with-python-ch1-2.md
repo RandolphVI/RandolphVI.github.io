@@ -1,7 +1,7 @@
 ---
 title: "NLP with Python — Chapter 1 & 2"
 date: 2015-09-11
-category: "ML-AI"
+category: "AI"
 tags: ["NLP", "Python"]
 description: "说明：由于该书出版较早，里面代码内容均是基于 python 2.x 的，且个别函数无法正常使用。另外，本人学习时，则是采用 python 3.x 与 NL..."
 draft: false

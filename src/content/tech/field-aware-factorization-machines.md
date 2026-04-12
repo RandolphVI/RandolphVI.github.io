@@ -1,7 +1,7 @@
 ---
 title: "About Field-aware Factorization Machines"
 date: 2017-11-11
-category: "ML-AI"
+category: "AI"
 tags: ["推荐系统", "Papers"]
 description: "「Field-aware Factorization Machines for CTR Prediction 」"
 draft: false

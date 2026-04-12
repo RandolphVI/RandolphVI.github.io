@@ -1,7 +1,7 @@
 ---
 title: "Machine Learning — Clustering"
 date: 2017-01-03
-category: "ML-AI"
+category: "AI"
 tags: ["Machine Learning"]
 description: "- 聚类是从数据集中挖掘相似观测值集合的方法。"
 draft: false

@@ -1,7 +1,7 @@
 ---
 title: "CNN Introduction"
 date: 2017-03-07
-category: "ML-AI"
+category: "AI"
 tags: ["Deep Learning"]
 description: "Introduction"
 draft: false

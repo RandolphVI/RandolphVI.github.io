@@ -1,7 +1,7 @@
 ---
 title: "Use WeChat to Monitor Your Network"
 date: 2017-03-17
-category: "ML-AI"
+category: "AI"
 tags: ["TensorFlow", "工具"]
 description: "Introduction"
 draft: false

@@ -1,7 +1,7 @@
 ---
 title: "LSTM Introduction"
 date: 2017-09-08
-category: "ML-AI"
+category: "AI"
 tags: ["Deep Learning", "NLP"]
 description: "循环神经网络 (RNN)"
 draft: false

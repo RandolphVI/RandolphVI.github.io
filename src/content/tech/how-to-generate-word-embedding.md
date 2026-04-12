@@ -1,7 +1,7 @@
 ---
 title: "How to Generate a Good Word Embedding"
 date: 2017-10-14
-category: "ML-AI"
+category: "AI"
 tags: ["NLP", "Machine Learning"]
 description: "Introduction"
 draft: false

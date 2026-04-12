@@ -1,7 +1,7 @@
 ---
 title: "Tensorboard"
 date: 2017-03-13
-category: "ML-AI"
+category: "AI"
 tags: ["TensorFlow"]
 description: "TensorFlow Tensorboard"
 draft: false

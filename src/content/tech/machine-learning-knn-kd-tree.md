@@ -1,7 +1,7 @@
 ---
 title: "Machine Learning — KNN & kd Tree"
 date: 2017-01-14
-category: "ML-AI"
+category: "AI"
 tags: ["Machine Learning"]
 description: "- 线性扫描实现 kNN 算法"
 draft: false

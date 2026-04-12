@@ -1,7 +1,7 @@
 ---
 title: "About Dropout"
 date: 2017-03-01
-category: "ML-AI"
+category: "AI"
 tags: ["Deep Learning", "Papers"]
 description: "开篇明义，dropout 是指在深度学习网络的训练过程中，对于神经网络单元，按照  一定的概率  将其  暂时  从网络中丢弃。注意是暂时，对于随机梯度下..."
 draft: false

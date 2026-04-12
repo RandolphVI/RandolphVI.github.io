@@ -1,7 +1,7 @@
 ---
 title: "About Khan Academy Data"
 date: 2018-03-19
-category: "ML-AI"
+category: "AI"
 tags: ["Kaggle", "Datasets"]
 description: "About Khan Academy Data"
 draft: false

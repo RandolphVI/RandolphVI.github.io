@@ -1,7 +1,7 @@
 ---
 title: "Machine Learning — Chapter 2"
 date: 2016-12-30
-category: "ML-AI"
+category: "AI"
 tags: ["Machine Learning"]
 description: "- 查准率、查全率与 F1"
 draft: false

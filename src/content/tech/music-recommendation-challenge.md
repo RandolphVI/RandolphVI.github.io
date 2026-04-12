@@ -1,7 +1,7 @@
 ---
 title: "Music Recommendation Challenge"
 date: 2017-12-17
-category: "ML-AI"
+category: "AI"
 tags: ["Kaggle", "推荐系统"]
 description: "KKBOX Music Recommendation Challenge: EDA, feature engineering and modeling on music listening data"
 draft: false

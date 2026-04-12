@@ -1,7 +1,7 @@
 ---
 title: "Machine Learning — Chapter 1"
 date: 2016-12-26
-category: "ML-AI"
+category: "AI"
 tags: ["Machine Learning"]
 description: "- 奥卡姆剃刀（Occam’s razor）"
 draft: false

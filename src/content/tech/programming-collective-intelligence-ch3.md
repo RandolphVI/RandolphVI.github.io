@@ -1,7 +1,7 @@
 ---
 title: "Programming Collective Intelligence — Chapter 3"
 date: 2016-03-19
-category: "ML-AI"
+category: "AI"
 tags: ["Machine Learning", "Python"]
 description: "定义：两个变量之间的皮尔逊相关系数定义为 （两个变量之间的协方差） 和（两个变量标准差的积）的商。"
 draft: false

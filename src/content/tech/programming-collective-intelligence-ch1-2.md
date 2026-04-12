@@ -1,7 +1,7 @@
 ---
 title: "Programming Collective Intelligence — Chapter 1 & 2"
 date: 2016-03-12
-category: "ML-AI"
+category: "AI"
 tags: ["Machine Learning", "Python"]
 description: "- 欧几里得距离评价"
 draft: false
