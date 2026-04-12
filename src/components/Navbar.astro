@@ -1,0 +1,93 @@
+---
+import ThemeToggle from './ThemeToggle.astro';
+
+interface Props {
+  currentPath?: string;
+}
+
+const { currentPath = '' } = Astro.props;
+
+const navItems = [
+  { label: '首页', href: '/' },
+  { label: '技术', href: '/tech/' },
+  { label: '阅读', href: '/reading/' },
+  { label: '分类', href: '/categories/' },
+  { label: '归档', href: '/archives/' },
+  { label: '关于', href: '/about/' },
+];
+---
+
+<header class="border-b border-[var(--color-border)]">
+  <nav class="max-w-6xl mx-auto flex items-center justify-between px-6 py-4 lg:px-10">
+    <!-- Logo -->
+    <a href="/" class="flex items-baseline gap-2 border-none">
+      <span class="font-serif text-lg text-[var(--color-heading)] tracking-widest">黃某人</span>
+      <span class="font-sans text-[10px] text-[var(--color-accent-dark)] tracking-[3px] hidden sm:inline">RANDOLPH.PRO</span>
+    </a>
+
+    <!-- Desktop Nav -->
+    <div class="hidden md:flex items-center gap-6">
+      {navItems.map((item) => (
+        <a
+          href={item.href}
+          class:list={[
+            'font-sans text-[11px] tracking-[2px] border-none transition-colors',
+            currentPath === item.href
+              ? 'text-[var(--color-heading)] border-b border-[var(--color-heading)] pb-0.5'
+              : 'text-[var(--color-muted)] hover:text-[var(--color-heading)]',
+          ]}
+        >
+          {item.label}
+        </a>
+      ))}
+      <button
+        id="search-trigger"
+        class="text-[var(--color-muted)] hover:text-[var(--color-heading)] transition-colors cursor-pointer"
+        aria-label="搜索"
+      >
+        🔍
+      </button>
+      <ThemeToggle />
+    </div>
+
+    <!-- Mobile Hamburger -->
+    <button
+      id="mobile-menu-btn"
+      class="md:hidden text-[var(--color-muted)] text-xl cursor-pointer"
+      aria-label="菜单"
+    >
+      ☰
+    </button>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="hidden md:hidden border-t border-[var(--color-border)] px-6 py-4">
+    <div class="flex flex-col gap-3">
+      {navItems.map((item) => (
+        <a
+          href={item.href}
+          class:list={[
+            'font-sans text-sm tracking-wider border-none',
+            currentPath === item.href
+              ? 'text-[var(--color-heading)]'
+              : 'text-[var(--color-muted)]',
+          ]}
+        >
+          {item.label}
+        </a>
+      ))}
+      <div class="flex items-center gap-4 pt-2 border-t border-[var(--color-border-light)]">
+        <button id="search-trigger-mobile" class="text-[var(--color-muted)] text-sm cursor-pointer">🔍 搜索</button>
+        <ThemeToggle />
+      </div>
+    </div>
+  </div>
+</header>
+
+<script>
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  btn?.addEventListener('click', () => {
+    menu?.classList.toggle('hidden');
+  });
+</script>

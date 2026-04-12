@@ -1,27 +1,10 @@
 ---
-import '../styles/global.css';
-import ThemeToggle from '../components/ThemeToggle.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
 ---
-<html lang="zh-CN">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>黃某人</title>
-    <script is:inline>
-      (function() {
-        const stored = localStorage.getItem('theme');
-        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        if (stored === 'dark' || (!stored && prefersDark)) {
-          document.documentElement.classList.add('dark');
-        }
-      })();
-    </script>
-  </head>
-  <body class="min-h-screen">
-    <div class="max-w-md mx-auto py-20 text-center">
-      <h1 class="text-2xl tracking-widest mb-4">黃某人</h1>
-      <p class="text-[var(--color-muted)]">站点重建中…</p>
-      <div class="mt-8"><ThemeToggle /></div>
-    </div>
-  </body>
-</html>
+
+<BaseLayout title="首页">
+  <div class="max-w-md mx-auto py-20 text-center">
+    <h1 class="text-2xl tracking-widest mb-4">黃某人</h1>
+    <p class="text-[var(--color-muted)]">站点重建中…</p>
+  </div>
+</BaseLayout>
