@@ -7,7 +7,7 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "astro build && npx pagefind --site dist --glob '**/*.html'",
     "preview": "astro preview",
     "astro": "astro"
   },
@@ -20,6 +20,7 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.8",
+    "pagefind": "^1.5.2",
     "vitest": "^4.1.4"
   }
 }
