@@ -1,9 +1,9 @@
 ---
-title: "Web Scraping with Python — smtplib & email module"
+title: "Web Scraping with Python - smtplib & email module"
 date: 2015-12-13
 category: "工具"
-tags: ["Python", "Web Scraping"]
-description: "- smtplib module"
+tags: ["Web Scraping", "Python"]
+description: "本文介绍了关于 Web Scraping 网络爬虫时可能会用到的 smtplib & email 模块。"
 draft: false
 ---
 
@@ -16,50 +16,93 @@ draft: false
 - **smtplib module**
 - **email module**
 
----
+------
 
 # smtplib module
 
 使用 python 脚本发邮件，一般会用到 **`smtplib`** 和 **`email`** 这两个模块。**`smtplib`** 模块定义了一个简单的 SMTP 客户端，可以用来在互联网上发送邮件。参考下面的程序：
 
-|  |  |
-| --- | --- |
-| ``` 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 ``` | ``` from email.header import Header from bs4 import BeautifulSoup import smtplib import time  mail_host = 'smtp.gmail.com'            # 设置服务器 mail_port = 587                         # 服务器端口号 mail_user = 'your_username@gmail.com'   # 用户名 mail_pass = 'your_password'             # 口令  sender = 'your_username@gmail.com' receivers = 'your_other_username@hotmail.com'  # fill content with MIMEText's object msg = MIMEText('Hi, I am Randolph.') msg['From'] = sender msg['To'] = receivers msg['Subject'] = 'Hello, today is a special day.' print(msg.as_string())  # connect try:     print("Connecting ...")     smtpObj = smtplib.SMTP(mail_host, mail_port) except:     print("CONNECT ERROR ****")  # show the debug log smtpObj.set_debuglevel(1)  # gmail uses ssl smtpObj.ehlo() smtpObj.starttls() smtpObj.ehlo()  # login with username & password try:     print("Loginning ...")     smtpObj.login(mail_user, mail_pass) except:     print("LOGIN ERROR ****")  smtpObj.sendmail(sender, receivers, msg.as_string()) smtpObj.quit() ``` |
+```python
+from email.header import Header
+from bs4 import BeautifulSoup
+import smtplib
+import time
+
+mail_host = 'smtp.gmail.com'            #设置服务器
+mail_port = 587                         #服务器端口号
+mail_user = 'your_username@gmail.com'   #用户名
+mail_pass = 'your_password'             #口令
+
+sender = 'your_username@gmail.com'
+receivers = 'your_other_username@hotmail.com'
+
+# fill content with MIMEText's object
+msg = MIMEText('Hi, I am Randolph.')
+msg['From'] = sender
+msg['To'] = receivers
+msg['Subject'] = 'Hello, today is a special day.'
+print(msg.as_string())
+
+# connect
+try:
+    print("Connecting ...")
+    smtpObj = smtplib.SMTP(mail_host, mail_port)
+except:
+    print("CONNECT ERROR ****")
+
+# show the debug log
+smtpObj.set_debuglevel(1)
+
+# gmail uses ssl
+smtpObj.ehlo()
+smtpObj.starttls()
+smtpObj.ehlo()
+
+# login with username & password
+try:
+    print("Loginning ...")
+    smtpObj.login(mail_user, mail_pass)
+except:
+    print("LOGIN ERROR ****")
+
+smtpObj.sendmail(sender, receivers, msg.as_string())
+smtpObj.quit()
+```
 
 smtp 实例封装一个 smtp 连接，它支持所有的 SMTP 和 ESMTP 操作指令，如果 host 和 port 参数被定义，则 smtp 会在初始化期间自动调用 **`connect()`** 方法，如果 **`connect()`** 方法失败，则会触发 **`SMTPConnectError`** 异常，**`timeout`** 参数设置了超时时间。在一般的调用过程中，应该遵 **`connect()`**、**`sendmail()`**、**`quit()`**步骤。
 
----
+------
 
-## SMTP 模块主要方法
+## SMTP模块主要方法
 
 下面我们来看看该类的方法：
 
-- **`smtp.set_debuglevel(level)`**  
+- **`smtp.set_debuglevel(level)`**
   设置输出 debug 调试信息，默认不输出调试信息。
-- **`smtp.docmd(cmd, argstring)`**  
+- **`smtp.docmd(cmd, argstring)`**
   发送一个 command 到 smtp 服务器，
-- **`smtp.connect(host, port)`**  
+- **`smtp.connect(host, port)`**
   连接到指定的 smtp 服务器，默认是本机的 25 端口。也可以写成 hostname:port 的形式。
-- **`smtp.helo(hostname)`**  
+- **`smtp.helo(hostname)`**
   使用 helo 指令向 smtp 服务器确认你的身份。
-- **`smtp.ehlo(hostname)`**  
-  使用 ehlo 指令向 esmtp 服务器确认你的身份。
-- **`smtp.ehlo_or_helo_if_needed()`**  
+- **`smtp.ehlo(hostname)`**
+  使用ehlo指令向 esmtp 服务器确认你的身份。
+- **`smtp.ehlo_or_helo_if_needed()`**
   如果在以前的会话连接中没有提供 ehlo 或者 helo 指令，这个方法调用 ehlo() 或者 helo()。
-- **`smtp.has_extn(name)`**  
+- **`smtp.has_extn(name)`**
   判断指定的名称是否在 smtp 服务器上。
-- **`smtp.verify(address)`**  
+- **`smtp.verify(address)`**
   判断邮件地址是否在 smtp 服务器上存在。
-- **`smtp.login(user, password)`**  
+- **`smtp.login(user, password)`**
   登陆需要验证的 smtp 服务器，如果之前没有提供 ehlo 或者 helo 指令，则会先尝试 ESMTP 的 ehlo 指令。
-- **`smtp.starttls(keyfile, certfile)`**  
+- **`smtp.starttls(keyfile, certfile)`**
   使 smtp 连接运行在 TLS 模式，所有的 smtp 指令都会被加密。
-- **`smtp.sendmail(from_addr, to_addrs, msg, mail_options, rcpt_options)`**  
+- **`smtp.sendmail(from_addr, to_addrs, msg, mail_options, rcpt_options)`**
   发送邮件，该方法需要一些邮件地址和消息。
-- **`smtp.quit()`**  
+- **`smtp.quit()`**
   终止 smtp 会话并且关闭连接。
 
----
+------
 
 ## email module
 
@@ -84,23 +127,139 @@ MIME 消息由消息头和消息体两大部分组成，在邮件里就是邮件
 - **`email.utils`**
 - **`email.iterators`**
 
-主要来看看 **`email.mime`**，在邮件中携带附件、图片、音频时，主要使用的是该模块。一般情况下，你通过解析一个文件或者一段 text 来生成一个消息对象结构，你也可以从头开始建立一个消息结构，实际上，你可以给一个已经存在的消息结构追加一个新的消息对象。你可以通过创建 message 实例来创建一个对象结构，然后给该结构追加附件和头部信息。email 包提供了一些子类使得该操作变得很容易。
+主要来看看 **`email.mime`**，在邮件中携带附件、图片、音频时，主要使用的是该模块。一般情况下，你通过解析一个文件或者一段text来生成一个消息对象结构，你也可以从头开始建立一个消息结构，实际上，你可以给一个已经存在的消息结构追加一个新的消息对象。你可以通过创建 message 实例来创建一个对象结构，然后给该结构追加附件和头部信息。email 包提供了一些子类使得该操作变得很容易。
 
 模拟在邮件内容中携带图片，代码如下：
 
-|  |  |
-| --- | --- |
-| ``` 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 ``` | ``` from email.mime.text import MIMEText from email.mime.multipart import MIMEMultipart from email.mime.image import MIMEImage from email.message import Message import email.utils import smtplib import time import smtplib import base64  mail_host = 'smtp.gmail.com'            # 设置服务器 mail_port = 587                         # 服务器端口号 mail_user = 'your_username@gmail.com'   # 用户名 mail_pass = 'your_password'             # 口令  sender = 'your_username@gmail.com' receivers = 'your_other_username@hotmail.com'  # send email with images use MIMEMultipart's object msg = MIMEMultipart() msg['From'] = sender msg['To'] = receivers msg['Subject'] = 'An email with a image.' body = 'Test image send.' con = MIMEText('<b>%s</b>![](cid:/Users/xxx/xxx/xxx.jpg)' % body, 'html') msg.attach(con)  img = MIMEImage(open('/Users/xxx/xxx/xxx.jpg', 'rb').read()) img.add_header('Content-ID', '/Users/xxx/xxx/xxx.jpg') msg.attach(img)  # connect try:     print("Connecting ...")     smtpObj = smtplib.SMTP(mail_host, mail_port) except:     print("CONNECT ERROR ****")  # show the debug log smtpObj.set_debuglevel(1)  # gmail uses ssl smtpObj.ehlo() smtpObj.starttls() smtpObj.ehlo()  # login with username & password try:     print("Loginning ...")     smtpObj.login(mail_user, mail_pass) except:     print("LOGIN ERROR ****")  smtpObj.sendmail(sender, receivers, msg.as_string()) smtpObj.quit() ``` |
+```python
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
+from email.mime.image import MIMEImage
+from email.message import Message
+import email.utils
+import smtplib
+import time
+import smtplib
+import base64
 
+mail_host = 'smtp.gmail.com'            #设置服务器
+mail_port = 587                         #服务器端口号
+mail_user = 'your_username@gmail.com'   #用户名
+mail_pass = 'your_password'             #口令
 
----
+sender = 'your_username@gmail.com'
+receivers = 'your_other_username@hotmail.com'
+
+# send email with images use MIMEMultipart's object
+msg = MIMEMultipart()
+msg['From'] = sender
+msg['To'] = receivers
+msg['Subject'] = 'An email with a image.'
+body = 'Test image send.'
+con = MIMEText('<b>%s</b>![](cid:/Users/xxx/xxx/xxx.jpg)' % body, 'html')
+msg.attach(con)
+
+img = MIMEImage(open('/Users/xxx/xxx/xxx.jpg', 'rb').read())
+img.add_header('Content-ID', '/Users/xxx/xxx/xxx.jpg')
+msg.attach(img)
+
+# connect
+try:
+    print("Connecting ...")
+    smtpObj = smtplib.SMTP(mail_host, mail_port)
+except:
+    print("CONNECT ERROR ****")
+
+# show the debug log
+smtpObj.set_debuglevel(1)
+
+# gmail uses ssl
+smtpObj.ehlo()
+smtpObj.starttls()
+smtpObj.ehlo()
+
+# login with username & password
+try:
+    print("Loginning ...")
+    smtpObj.login(mail_user, mail_pass)
+except:
+    print("LOGIN ERROR ****")
+
+smtpObj.sendmail(sender, receivers, msg.as_string())
+smtpObj.quit()
+```
+
+------
 
 ## Send email with attachment
 
-发送带附件的邮件，首先要创建 **`MIMEMultipart()`** 实例，然后构造附件，如果有多个附件，可依次构造，最后利用 **`smtplib.smtp`** 发送。
+发送带附件的邮件，首先要创建**`MIMEMultipart()`**实例，然后构造附件，如果有多个附件，可依次构造，最后利用**`smtplib.smtp`**发送。
 
-模拟在邮件中携带附件，代码如下：  
+模拟在邮件中携带附件，代码如下：
+```python
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
+from email.mime.image import MIMEImage
+from email.message import Message
+import email.utils
+import smtplib
+import time
+import smtplib
+import base64
 
-|  |  |
-| --- | --- |
-| ``` 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 ``` | ``` from email.mime.text import MIMEText from email.mime.multipart import MIMEMultipart from email.mime.image import MIMEImage from email.message import Message import email.utils import smtplib import time import smtplib import base64  mail_host = 'smtp.gmail.com'            # 设置服务器 mail_port = 587                         # 服务器端口号 mail_user = 'your_username@gmail.com'   # 用户名 mail_pass = 'your_password'             # 口令  sender = 'your_username@gmail.com' receivers = 'your_other_username@hotmail.com'  # send email with attachment msg = MIMEMultipart() txt = MIMEText("我这半世未算赶，何妨迷途看风光.",'plain','gb2312') msg.attach(txt)  # 构造附件 1 att1 = MIMEText(open('/Users/xxx/xxx/xxx.jpg', 'rb').read(), 'base64', 'gb2312') att1["Content-Type"] = 'application/octet-stream' att1["Content-Disposition"] = 'attachment; filename="xxx.jpg"' # 这里的 filename 可以任意写，写什么名字，邮件中显示什么名字 msg.attach(att1)  # 构造附件 2 att2 = MIMEText(open('/Users/xxx/xxx/xxx.doc', 'rb').read(), 'base64', 'gb2312') att2["Content-Type"] = 'application/octet-stream' att2["Content-Disposition"] = 'attachment; filename="xxx.doc"' msg.attach(att2)  # 加邮件头 msg['to'] = sender msg['from'] = receivers msg['subject'] = 'Test.'  # connect try:     print("Connecting ...")     smtpObj = smtplib.SMTP(mail_host, mail_port) except:     print("CONNECT ERROR ****")  # show the debug log smtpObj.set_debuglevel(1)  # gmail uses ssl smtpObj.ehlo() smtpObj.starttls() smtpObj.ehlo()  # login with username & password try:     print("Loginning ...")     smtpObj.login(mail_user, mail_pass) except:     print("LOGIN ERROR ****")  smtpObj.sendmail(sender, receivers, msg.as_string()) smtpObj.quit() ``` |
+mail_host = 'smtp.gmail.com'            #设置服务器
+mail_port = 587                         #服务器端口号
+mail_user = 'your_username@gmail.com'   #用户名
+mail_pass = 'your_password'             #口令
+
+sender = 'your_username@gmail.com'
+receivers = 'your_other_username@hotmail.com'
+
+# send email with attachment
+msg = MIMEMultipart()
+txt = MIMEText("我这半世未算赶，何妨迷途看风光.",'plain','gb2312')
+msg.attach(txt)
+
+#构造附件1
+att1 = MIMEText(open('/Users/xxx/xxx/xxx.jpg', 'rb').read(), 'base64', 'gb2312')
+att1["Content-Type"] = 'application/octet-stream'
+att1["Content-Disposition"] = 'attachment; filename="xxx.jpg"'
+#这里的filename可以任意写，写什么名字，邮件中显示什么名字
+msg.attach(att1)
+
+#构造附件2
+att2 = MIMEText(open('/Users/xxx/xxx/xxx.doc', 'rb').read(), 'base64', 'gb2312')
+att2["Content-Type"] = 'application/octet-stream'
+att2["Content-Disposition"] = 'attachment; filename="xxx.doc"'
+msg.attach(att2)
+
+#加邮件头
+msg['to'] = sender
+msg['from'] = receivers
+msg['subject'] = 'Test.'
+
+# connect
+try:
+    print("Connecting ...")
+    smtpObj = smtplib.SMTP(mail_host, mail_port)
+except:
+    print("CONNECT ERROR ****")
+
+# show the debug log
+smtpObj.set_debuglevel(1)
+
+# gmail uses ssl
+smtpObj.ehlo()
+smtpObj.starttls()
+smtpObj.ehlo()
+
+# login with username & password
+try:
+    print("Loginning ...")
+    smtpObj.login(mail_user, mail_pass)
+except:
+    print("LOGIN ERROR ****")
+
+smtpObj.sendmail(sender, receivers, msg.as_string())
+smtpObj.quit()
+```

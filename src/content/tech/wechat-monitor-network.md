@@ -2,8 +2,8 @@
 title: "Use WeChat to Monitor Your Network"
 date: 2017-03-17
 category: "AI"
-tags: ["TensorFlow", "工具"]
-description: "Introduction"
+tags: ["TensorFlow", "Machine Learning", "WeChat", "Python"]
+description: "平时，大家自己的机器模型在训练期间（特别是深度网络），训练时间通常几小时到十几小时不等，甚至可能会花上好几天，那么在这段时间，你们又会干些什么事情呢？作为程序员，这里提供一个「有趣的」方式，用你的微信来监控你的模型在训练期间的一举一动。"
 draft: false
 ---
 
@@ -19,9 +19,9 @@ draft: false
 
 ![](https://farm4.staticflickr.com/3767/32574547714_59711d3f0b_o.jpg)
 
-程序用到的主角是 Python 中的微信个人号接口 **itchat**。[What’s itchat?](https://itchat.readthedocs.io/zh/latest/) （itchat 的介绍及安装过程）
+程序用到的主角是 Python 中的微信个人号接口 **itchat**。[What's itchat?](https://itchat.readthedocs.io/zh/latest/) （itchat 的介绍及安装过程）
 
-这次，我们要监控的模型是先前提到过的  [基于 MNIST 手写体数据集的 CNN 模型](http://randolph.pro/2017/03/13/♣%EF%B8%8E「TensorFlow」%20Tensorboard/) 。
+这次，我们要监控的模型是先前提到过的 [基于 MNIST 手写体数据集的 CNN 模型](http://randolph.pro/2017/03/13/♣%EF%B8%8E「TensorFlow」%20Tensorboard/)。
 
 注意：
 
@@ -42,9 +42,267 @@ draft: false
 
 - Use WeChat to Monitor Your Network（tensorboard 绘图）
 
-|  |  |
-| --- | --- |
-| ``` 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120 121 122 123 124 125 126 127 128 129 130 131 132 133 134 135 136 137 138 139 140 141 142 143 144 145 146 147 148 149 150 151 152 153 154 155 156 157 158 159 160 161 162 163 164 165 166 167 168 169 170 171 172 173 174 175 176 177 178 179 180 181 182 183 184 185 186 187 188 189 190 191 192 193 194 195 196 197 198 199 200 201 202 203 204 205 206 207 208 209 210 211 212 213 214 215 216 217 218 219 220 221 222 223 224 225 226 227 228 229 230 231 232 233 234 235 236 237 238 239 240 241 242 243 244 245 246 247 248 249 250 251 252 253 254 255 256 257 258 259 ``` | ``` # 基于 MNIST 数据集 的 「CNN」（tensorboard 绘图） from tensorflow.examples.tutorials.mnist import input_data import tensorflow as tf import numpy as np import scipy  # Import itchat & threading import itchat import threading  # Create a running status flag lock = threading.Lock() running = False  # Parameters learning_rate = 0.001 training_iters = 200000 batch_size = 128 display_step = 10  def weight_variable(shape): 	initial = tf.truncated_normal(shape, stddev = 0.1) 	return tf.Variable(initial) 	 def bias_variable(shape): 	initial = tf.constant(0.1, shape = shape) 	return tf.Variable(initial)  def conv2d(x, W, strides=1): 	return tf.nn.conv2d(x, W, strides=[1, strides, strides, 1], padding='SAME')  def max_pool_2x2(x, k=2): 	return tf.nn.max_pool(x, ksize=[1, k, k, 1], strides=[1, k, k, 1], padding='SAME') 	 def variable_summaries(var): 	"""Attach a lot of summaries to a Tensor (for TensorBoard visualization).""" 	with tf.name_scope('summaries'): 		mean = tf.reduce_mean(var) 		tf.summary.scalar('mean', mean) 		with tf.name_scope('stddev'): 			stddev = tf.sqrt(tf.reduce_mean(tf.square(var - mean))) 		tf.summary.scalar('stddev', stddev) 		tf.summary.scalar('max', tf.reduce_max(var)) 		tf.summary.scalar('min', tf.reduce_min(var)) 		tf.summary.histogram('histogram', var)  def add_layer(input_tensor, weights_shape, biases_shape, layer_name, act = tf.nn.relu, flag = 1): 	"""Reusable code for making a simple neural net layer. 	 	It does a matrix multiply, bias add, and then uses relu to nonlinearize. 	It also sets up name scoping so that the resultant graph is easy to read, 	and adds a number of summary ops."""      	with tf.name_scope(layer_name): 		with tf.name_scope('weights'): 			weights = weight_variable(weights_shape) 			variable_summaries(weights) 		with tf.name_scope('biases'): 			biases = bias_variable(biases_shape) 			variable_summaries(biases) 		with tf.name_scope('Wx_plus_b'): 			if flag == 1: 				preactivate = tf.add(conv2d(input_tensor, weights), biases) 			else: 				preactivate = tf.add(tf.matmul(input_tensor, weights), biases) 			tf.summary.histogram('pre_activations', preactivate) 		if act == None: 			outputs = preactivate 		else: 			outputs = act(preactivate, name = 'activation') 			tf.summary.histogram('activation', outputs) 		return outputs  def nn_train(wechat_name, param): 	global lock, running 	# Lock 	with lock: 		running = True	 	# 参数  	learning_rate, training_iters, batch_size, display_step = param 	 	# Import data 	mnist_data_path = 'MNIST_data/' 	mnist = input_data.read_data_sets(mnist_data_path, one_hot = True) 	 	# Network Parameters 	n_input = 28*28 # MNIST data input (img shape: 28*28) 	n_classes = 10 # MNIST total classes (0-9 digits) 	dropout = 0.75 # Dropout, probability to keep units 	 	with tf.name_scope('Input'): 		x = tf.placeholder(tf.float32, [None, n_input], name = 'input_x') 		y_ = tf.placeholder(tf.float32, [None, n_classes], name = 'target_y') 		keep_prob = tf.placeholder(tf.float32, name = 'keep_prob') #dropout (keep probability)  	def cnn_net(x, weights, biases, dropout): 		# Reshape input picture 		x_image = tf.reshape(x, [-1, 28, 28 ,1]) 		 		# First Convolutional Layer 		conv_1 = add_layer(x_image, weights['conv1_w'], biases['conv1_b'], 'First_Convolutional_Layer', flag = 1) 		 		# First Pooling Layer 		pool_1 = max_pool_2x2(conv_1) 		 		# Second Convolutional Layer  		conv_2 = add_layer(pool_1, weights['conv2_w'], biases['conv2_b'], 'Second_Convolutional_Layer', flag = 1)  		# Second Pooling Layer  		pool_2 = max_pool_2x2(conv_2)  		# Densely Connected Layer 		pool_2_flat = tf.reshape(pool_2, [-1, weight_variable(weights['dc1_w']).get_shape().as_list()[0]]) 		dc_1 = add_layer(pool_2_flat, weights['dc1_w'], biases['dc1_b'], 'Densely_Connected_Layer', flag = 0)  		 		# Dropout 		dc_1_drop = tf.nn.dropout(dc_1, keep_prob)	 		 		# Readout Layer 		y = add_layer(dc_1_drop, weights['out_w'], biases['out_b'], 'Readout_Layer', flag = 0) 		 		return y 	 	# Store layers weight & bias 	weights = { 		# 5x5 conv, 1 input, 32 outputs 		'conv1_w': [5, 5, 1, 32], 		# 5x5 conv, 32 inputs, 64 outputs 		'conv2_w': [5, 5, 32, 64], 		# fully connected, 7*7*64 inputs, 1024 outputs 		'dc1_w': [7*7*64, 1024], 		# 1024 inputs, 10 outputs (class prediction) 		'out_w': [1024, n_classes] 	}  	biases = { 		'conv1_b': [32], 		'conv2_b': [64], 		'dc1_b': [1024], 		'out_b': [n_classes] 	} 	 	y = cnn_net(x, weights, biases, dropout) 	 	# Optimizer 	with tf.name_scope('cost'): 		cost = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(labels = y_, 						logits = y)) 		tf.summary.scalar('cost', cost) 		tf.summary.histogram('cost', cost) 	 	# Train 	with tf.name_scope('train'): 		optimizer = tf.train.AdamOptimizer(learning_rate=learning_rate).minimize(cost) 	 	# Test 	with tf.name_scope('accuracy'): 		with tf.name_scope('correct_prediction'): 			correct_prediction = tf.equal(tf.argmax(y, 1), tf.argmax(y_, 1)) 		with tf.name_scope('accuracy'): 			accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32)) 		tf.summary.scalar('accuracy', accuracy) 		 	sess = tf.InteractiveSession() 	merged = tf.summary.merge_all() 	train_writer = tf.summary.FileWriter('train/', sess.graph) 	test_writer = tf.summary.FileWriter('test/') 	tf.global_variables_initializer().run()  	 	# Train the model, and also write summaries. 	# Every 10th step, measure test-set accuracy, and write test summaries 	# All other steps, run train_step on training data, & add training summaries 	 	# Keep training until reach max iterations 	print('Wait for lock') 	with lock: 		run_state = running 	print('Start') 	 	step = 1 	while step * batch_size < training_iters and run_state: 		batch_x, batch_y = mnist.train.next_batch(batch_size) 		# Run optimization op (backprop) 		sess.run(optimizer, feed_dict = {x: batch_x, y_: batch_y, keep_prob: dropout}) 		if step % display_step == 0:	# Record execution stats 			run_options = tf.RunOptions(trace_level = tf.RunOptions.FULL_TRACE) 			run_metadata = tf.RunMetadata() 			summary, _ = sess.run([merged, optimizer], feed_dict =  									{x: batch_x, y_: batch_y, keep_prob: 1.},  									options = run_options, run_metadata = run_metadata) 			train_writer.add_run_metadata(run_metadata, 'step %d' % step) 			train_writer.add_summary(summary, step) 			print('Adding run metadata for', step)  			summary, loss, acc = sess.run([merged, cost, accuracy], feed_dict =  											{x: batch_x, y_: batch_y, keep_prob: 1.}) 			print("Iter" + str(step*batch_size) + ", Minibatch Loss=" + \ 				"{:.6f}".format(loss) + ", Training Accuracy=" + \ 				"{:.5f}".format(acc)) 			itchat.send("Iter" + str(step*batch_size) + ", Minibatch Loss=" + \ 				"{:.6f}".format(loss) + ", Training Accuracy=" + \ 						"{:.5f}".format(acc), 'filehelper') 		else: 			summary, _ = sess.run([merged, optimizer], feed_dict = {x: batch_x, y_: batch_y, keep_prob: 1.}) 			train_writer.add_summary(summary, step) 		step += 1 		with lock: 			run_state = running 	print("Optimization Finished!") 	itchat.send("Optimization Finished!", 'filehelper')  	# Calculate accuracy for 256 mnist test images 	summary, acc = sess.run([merged, accuracy], feed_dict =  							{x: mnist.test.images[:256], y_: mnist.test.labels[:256],  							keep_prob: 1.} ) 	text_writer.add_summary(summary) 	print("Testing Accuracy:", acc) 	itchat.send("Testing Accuracy: %s" % acc, wechat_name)  				 @itchat.msg_register([itchat.content.TEXT]) def chat_trigger(msg): 	global lock, running, learning_rate, training_iters, batch_size, display_step 	if msg['Text'] == u'开始': 		print('Starting') 		with lock: 			run_state = running 		if not run_state: 			try: 				threading.Thread(target=nn_train, args=(msg['FromUserName'], (learning_rate, training_iters, batch_size, display_step))).start() 			except: 				msg.reply('Running') 	elif msg['Text'] == u'停止': 		print('Stopping') 		with lock: 			running = False 	elif msg['Text'] == u'参数': 		itchat.send('lr=%f, ti=%d, bs=%d, ds=%d'%(learning_rate, training_iters, batch_size, display_step),msg['FromUserName']) 	else: 		try: 			param = msg['Text'].split() 			key, value = param 			print(key, value) 			if key == 'lr': 				learning_rate = float(value) 			elif key == 'ti': 				training_iters = int(value) 			elif key == 'bs': 				batch_size = int(value) 			elif key == 'ds': 				display_step = int(value) 		except: 			pass   if __name__ == '__main__': 	itchat.auto_login(hotReload=True) 	itchat.run() ``` |
+```python
+# 基于 MNIST 数据集 的 「CNN」（tensorboard 绘图）
+from tensorflow.examples.tutorials.mnist import input_data
+import tensorflow as tf
+import numpy as np
+import scipy
+
+# Import itchat & threading
+import itchat
+import threading
+
+# Create a running status flag
+lock = threading.Lock()
+running = False
+
+# Parameters
+learning_rate = 0.001
+training_iters = 200000
+batch_size = 128
+display_step = 10
+
+def weight_variable(shape):
+	initial = tf.truncated_normal(shape, stddev = 0.1)
+	return tf.Variable(initial)
+	
+def bias_variable(shape):
+	initial = tf.constant(0.1, shape = shape)
+	return tf.Variable(initial)
+
+def conv2d(x, W, strides=1):
+	return tf.nn.conv2d(x, W, strides=[1, strides, strides, 1], padding='SAME')
+
+def max_pool_2x2(x, k=2):
+	return tf.nn.max_pool(x, ksize=[1, k, k, 1], strides=[1, k, k, 1], padding='SAME')
+	
+def variable_summaries(var):
+	"""Attach a lot of summaries to a Tensor (for TensorBoard visualization)."""
+	with tf.name_scope('summaries'):
+		mean = tf.reduce_mean(var)
+		tf.summary.scalar('mean', mean)
+		with tf.name_scope('stddev'):
+			stddev = tf.sqrt(tf.reduce_mean(tf.square(var - mean)))
+		tf.summary.scalar('stddev', stddev)
+		tf.summary.scalar('max', tf.reduce_max(var))
+		tf.summary.scalar('min', tf.reduce_min(var))
+		tf.summary.histogram('histogram', var)
+
+def add_layer(input_tensor, weights_shape, biases_shape, layer_name, act = tf.nn.relu, flag = 1):
+	"""Reusable code for making a simple neural net layer.
+	
+	It does a matrix multiply, bias add, and then uses relu to nonlinearize.
+	It also sets up name scoping so that the resultant graph is easy to read,
+	and adds a number of summary ops."""
+    
+	with tf.name_scope(layer_name):
+		with tf.name_scope('weights'):
+			weights = weight_variable(weights_shape)
+			variable_summaries(weights)
+		with tf.name_scope('biases'):
+			biases = bias_variable(biases_shape)
+			variable_summaries(biases)
+		with tf.name_scope('Wx_plus_b'):
+			if flag == 1:
+				preactivate = tf.add(conv2d(input_tensor, weights), biases)
+			else:
+				preactivate = tf.add(tf.matmul(input_tensor, weights), biases)
+			tf.summary.histogram('pre_activations', preactivate)
+		if act == None:
+			outputs = preactivate
+		else:
+			outputs = act(preactivate, name = 'activation')
+			tf.summary.histogram('activation', outputs)
+		return outputs
+
+def nn_train(wechat_name, param):
+	global lock, running
+	# Lock
+	with lock:
+		running = True	
+	# 参数
+	learning_rate, training_iters, batch_size, display_step = param
+	
+	# Import data
+	mnist_data_path = 'MNIST_data/'
+	mnist = input_data.read_data_sets(mnist_data_path, one_hot = True)
+	
+	# Network Parameters
+	n_input = 28*28 # MNIST data input (img shape: 28*28)
+	n_classes = 10 # MNIST total classes (0-9 digits)
+	dropout = 0.75 # Dropout, probability to keep units
+	
+	with tf.name_scope('Input'):
+		x = tf.placeholder(tf.float32, [None, n_input], name = 'input_x')
+		y_ = tf.placeholder(tf.float32, [None, n_classes], name = 'target_y')
+		keep_prob = tf.placeholder(tf.float32, name = 'keep_prob') #dropout (keep probability)
+
+	def cnn_net(x, weights, biases, dropout):
+		# Reshape input picture
+		x_image = tf.reshape(x, [-1, 28, 28 ,1])
+		
+		# First Convolutional Layer
+		conv_1 = add_layer(x_image, weights['conv1_w'], biases['conv1_b'], 'First_Convolutional_Layer', flag = 1)
+		
+		# First Pooling Layer
+		pool_1 = max_pool_2x2(conv_1)
+		
+		# Second Convolutional Layer 
+		conv_2 = add_layer(pool_1, weights['conv2_w'], biases['conv2_b'], 'Second_Convolutional_Layer', flag = 1)
+
+		# Second Pooling Layer 
+		pool_2 = max_pool_2x2(conv_2)
+
+		# Densely Connected Layer
+		pool_2_flat = tf.reshape(pool_2, [-1, weight_variable(weights['dc1_w']).get_shape().as_list()[0]])
+		dc_1 = add_layer(pool_2_flat, weights['dc1_w'], biases['dc1_b'], 'Densely_Connected_Layer', flag = 0) 
+		
+		# Dropout
+		dc_1_drop = tf.nn.dropout(dc_1, keep_prob)	
+		
+		# Readout Layer
+		y = add_layer(dc_1_drop, weights['out_w'], biases['out_b'], 'Readout_Layer', flag = 0)
+		
+		return y
+	
+	# Store layers weight & bias
+	weights = {
+		# 5x5 conv, 1 input, 32 outputs
+		'conv1_w': [5, 5, 1, 32],
+		# 5x5 conv, 32 inputs, 64 outputs
+		'conv2_w': [5, 5, 32, 64],
+		# fully connected, 7*7*64 inputs, 1024 outputs
+		'dc1_w': [7*7*64, 1024],
+		# 1024 inputs, 10 outputs (class prediction)
+		'out_w': [1024, n_classes]
+	}
+
+	biases = {
+		'conv1_b': [32],
+		'conv2_b': [64],
+		'dc1_b': [1024],
+		'out_b': [n_classes]
+	}
+	
+	y = cnn_net(x, weights, biases, dropout)
+	
+	# Optimizer
+	with tf.name_scope('cost'):
+		cost = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(labels = y_,
+						logits = y))
+		tf.summary.scalar('cost', cost)
+		tf.summary.histogram('cost', cost)
+	
+	# Train
+	with tf.name_scope('train'):
+		optimizer = tf.train.AdamOptimizer(learning_rate=learning_rate).minimize(cost)
+	
+	# Test
+	with tf.name_scope('accuracy'):
+		with tf.name_scope('correct_prediction'):
+			correct_prediction = tf.equal(tf.argmax(y, 1), tf.argmax(y_, 1))
+		with tf.name_scope('accuracy'):
+			accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32))
+		tf.summary.scalar('accuracy', accuracy)
+		
+	sess = tf.InteractiveSession()
+	merged = tf.summary.merge_all()
+	train_writer = tf.summary.FileWriter('train/', sess.graph)
+	test_writer = tf.summary.FileWriter('test/')
+	tf.global_variables_initializer().run()
+
+	
+	# Train the model, and also write summaries.
+	# Every 10th step, measure test-set accuracy, and write test summaries
+	# All other steps, run train_step on training data, & add training summaries
+	
+	# Keep training until reach max iterations
+	print('Wait for lock')
+	with lock:
+		run_state = running
+	print('Start')
+	
+	step = 1
+	while step * batch_size < training_iters and run_state:
+		batch_x, batch_y = mnist.train.next_batch(batch_size)
+		# Run optimization op (backprop)
+		sess.run(optimizer, feed_dict = {x: batch_x, y_: batch_y, keep_prob: dropout})
+		if step % display_step == 0:	# Record execution stats
+			run_options = tf.RunOptions(trace_level = tf.RunOptions.FULL_TRACE)
+			run_metadata = tf.RunMetadata()
+			summary, _ = sess.run([merged, optimizer], feed_dict = 
+									{x: batch_x, y_: batch_y, keep_prob: 1.}, 
+									options = run_options, run_metadata = run_metadata)
+			train_writer.add_run_metadata(run_metadata, 'step %d ' % step)
+			train_writer.add_summary(summary, step)
+			print('Adding run metadata for', step)
+
+			summary, loss, acc = sess.run([merged, cost, accuracy], feed_dict = 
+											{x: batch_x, y_: batch_y, keep_prob: 1.})
+			print("Iter " + str(step*batch_size) + ", Minibatch Loss= " + \
+				"{:.6f}".format(loss) + ", Training Accuracy= " + \
+				"{:.5f}".format(acc))
+			itchat.send("Iter " + str(step*batch_size) + ", Minibatch Loss= " + \
+				"{:.6f}".format(loss) + ", Training Accuracy= " + \
+						"{:.5f}".format(acc), 'filehelper')
+		else:
+			summary, _ = sess.run([merged, optimizer], feed_dict = {x: batch_x, y_: batch_y, keep_prob: 1.})
+			train_writer.add_summary(summary, step)
+		step += 1
+		with lock:
+			run_state = running
+	print("Optimization Finished!")
+	itchat.send("Optimization Finished!", 'filehelper')
+
+	# Calculate accuracy for 256 mnist test images
+	summary, acc = sess.run([merged, accuracy], feed_dict = 
+							{x: mnist.test.images[:256], y_: mnist.test.labels[:256], 
+							keep_prob: 1.} )
+	text_writer.add_summary(summary)
+	print("Testing Accuracy:", acc)
+	itchat.send("Testing Accuracy: %s" % acc, wechat_name)
+
+				
+@itchat.msg_register([itchat.content.TEXT])
+def chat_trigger(msg):
+	global lock, running, learning_rate, training_iters, batch_size, display_step
+	if msg['Text'] == u'开始':
+		print('Starting')
+		with lock:
+			run_state = running
+		if not run_state:
+			try:
+				threading.Thread(target=nn_train, args=(msg['FromUserName'], (learning_rate, training_iters, batch_size, display_step))).start()
+			except:
+				msg.reply('Running')
+	elif msg['Text'] == u'停止':
+		print('Stopping')
+		with lock:
+			running = False
+	elif msg['Text'] == u'参数':
+		itchat.send('lr=%f, ti=%d, bs=%d, ds=%d'%(learning_rate, training_iters, batch_size, display_step),msg['FromUserName'])
+	else:
+		try:
+			param = msg['Text'].split()
+			key, value = param
+			print(key, value)
+			if key == 'lr':
+				learning_rate = float(value)
+			elif key == 'ti':
+				training_iters = int(value)
+			elif key == 'bs':
+				batch_size = int(value)
+			elif key == 'ds':
+				display_step = int(value)
+		except:
+			pass
+
+
+if __name__ == '__main__':
+	itchat.auto_login(hotReload=True)
+	itchat.run()
+```
 
 大家可以看到，我对先前的代码进行了一些修改。
 
@@ -63,7 +321,7 @@ draft: false
 
 **另外，脚本刚开始运行时，程序会弹出一个包含二维码的图片，我们需要通过微信来扫描该二维码，来登陆微信并启动 itchat 的服务。**
 
-程序是包含了 Tensorboard 绘图的，所以等模型训练好，我们依然是可以通过 Tensorboard 来更加详细地查看我们模型的训练过程。
+程序是包含了 Tensorboard 绘图的，所以等模型训练好，我们依然是可以通过 Tensorboard 来更加详细地查看我们模型的训练过程。 
 
 至此，我们就可以一边通过微信来监控我们的模型训练过程，一边与身边的朋友们谈笑风生了。
 

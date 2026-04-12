@@ -1,9 +1,9 @@
 ---
-title: "How to Generate a Good Word Embedding"
+title: "How to Generate a Good Word Embedding?"
 date: 2017-10-14
 category: "AI"
-tags: ["NLP", "Machine Learning"]
-description: "Introduction"
+tags: ["Machine Learning"]
+description: "本文介绍了如何生成简单有效的词向量的方法。"
 draft: false
 ---
 
@@ -13,8 +13,11 @@ draft: false
 
 # Introduction
 
+
 # Compared with Other Models
+
 
 # Related
 
-​
+
+  ​

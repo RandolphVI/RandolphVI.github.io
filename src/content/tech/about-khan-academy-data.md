@@ -2,8 +2,8 @@
 title: "About Khan Academy Data"
 date: 2018-03-19
 category: "AI"
-tags: ["Kaggle", "Datasets"]
-description: "About Khan Academy Data"
+tags: ["Datasets"]
+description: "本文主要介绍了可汗学院的内容逻辑结构以及进行了一些初步的数据分析。"
 draft: false
 ---
 
@@ -14,7 +14,6 @@ draft: false
 # About Khan Academy Data
 
 ## Introduction
-
 ### Khan Academy Knowledge Structure
 
 ![](https://farm1.staticflickr.com/815/40007475165_3f002df1fc_o.png)
@@ -32,15 +31,14 @@ draft: false
   - 包含知识点逻辑结构信息
   - 包含内容种类信息（主要用于指向对应的题目类型）
 - practice.json
-  - 若数据在 `content.json` 中 `content_kind` 字段为 **Exercise** ，则会进一步根据 `practice` \
-     中的唯一 **`practice_id`** 对应到 `practice.json` 当中。
+  - 若数据在 `content.json` 中 `content_kind` 字段为 **Exercise** ，则会进一步根据 `practice` \<list> 中的唯一 **`practice_id`** 对应到 `practice.json` 当中。
   - 包含了试题题面文本信息以及图像信息
   - 包含了试题答案文本信息以及图像信息
 - article.json
   - 若数据在 `content.json` 中 `content_kind` 字段为 **Article** ，则会进一步根据唯一的 `article_url` 对应到 `article.json` 当中。
 - code.json
-  - 属于可汗学院中专门的编程题，但是其实重定向后就是对应种类为 **Scratchpad** 内容，简而言之，就是属于 **Scratchpad** 的一小部分内容，但不是 **Scratchpad** 的全部内容。
-  - 另外，若数据在 `content.json` 中 `content_kind` 字段为 **Scratchpad** ，并不存在唯一的字段对应到 `code.json` 当中，即不存在直接联系。
+  - 属于可汗学院中专门的编程题，但是其实重定向后就是对应种类为 **Scratchpad** 内容，简而言之，就是属于 **Scratchpad** 的一小部分内容，但不是 **Scratchpad**  的全部内容。
+  - 另外，若数据在 `content.json` 中 `content_kind` 字段为  **Scratchpad** ，并不存在唯一的字段对应到 `code.json` 当中，即不存在直接联系。
 
 ### Logical Structure
 
@@ -85,13 +83,16 @@ Total **14839** items = **4128** `.png` + **10709** `.svg` (Exists duplicate ite
 - 各个「subject」的 Video 数量分布图
 
   ![](https://farm1.staticflickr.com/806/40859498872_f765435403_o.png)
-- 各个「subject」的 Exercise 数量分布图
+
+- 各个「subject」的  Exercise 数量分布图
 
   ![](https://farm1.staticflickr.com/803/27030763818_a44ec0274e_o.png)
-- 各个「subject」的 「child\_subject」 数量分布图
+
+- 各个「subject」的 「child_subject」 数量分布图
 
   ![](https://farm1.staticflickr.com/817/40859523822_64ec326b8b_o.png)
-- 各个「subject」的 「slug」 数量分布图
+
+- 各个「subject」的  「slug」 数量分布图
 
 ![](https://farm1.staticflickr.com/813/27030780438_74e889defe_o.png)
 
