@@ -1,0 +1,27 @@
+---
+interface Props {
+  title: string;
+  date: Date;
+  description: string;
+  href: string;
+}
+
+const { title, date, description, href } = Astro.props;
+const dateStr = `${date.getFullYear()}.${String(date.getMonth() + 1).padStart(2, '0')}`;
+---
+
+<a href={href} class="block border-none group">
+  <div class="mb-6 pb-6 border-b border-[var(--color-border-light)]">
+    <div class="flex justify-between items-baseline">
+      <span class="text-[15px] text-[var(--color-heading)] tracking-wide group-hover:text-[var(--color-accent-dark)] transition-colors">
+        {title}
+      </span>
+      <span class="text-[10px] text-[var(--color-faint)] font-sans flex-shrink-0 ml-4">
+        {dateStr}
+      </span>
+    </div>
+    <div class="text-[11px] text-[var(--color-muted)] mt-1.5 leading-relaxed">
+      {description}
+    </div>
+  </div>
+</a>

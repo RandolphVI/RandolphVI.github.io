@@ -1,10 +1,77 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import ArticleCard from '../components/ArticleCard.astro';
+import { getFeaturedPost, getPublishedPosts } from '../utils/collections';
+import { getReadingTime } from '../utils/reading-time';
+import { getVolumeLabel } from '../utils/season';
+
+const featured = await getFeaturedPost();
+const allPosts = await getPublishedPosts();
+const recentPosts = allPosts.filter((p) => p.slug !== featured?.slug).slice(0, 5);
+
+// Volume number = total published literary articles
+const featuredExcerpt = featured?.data.description ?? '';
+const volumeLabel = getVolumeLabel(allPosts.length, featured?.data.date ?? new Date());
 ---
 
-<BaseLayout title="首页">
-  <div class="max-w-md mx-auto py-20 text-center">
-    <h1 class="text-2xl tracking-widest mb-4">黃某人</h1>
-    <p class="text-[var(--color-muted)]">站点重建中…</p>
+<BaseLayout title="首页" description="黃某人的个人博客 — 写小说，读闲书，偶尔研究机器学习">
+  <!-- Cover Section -->
+  <div class="relative py-16 px-6 lg:px-10 text-center">
+    <!-- Vertical "痴" decoration -->
+    <div class="absolute top-10 right-6 lg:right-10 text-[11px] text-[var(--color-accent)] tracking-[6px] font-serif hidden sm:block" style="writing-mode: vertical-rl;">
+      痴
+    </div>
+
+    <div class="font-sans text-[11px] tracking-[6px] text-[var(--color-accent-dark)] mb-5">
+      {volumeLabel}
+    </div>
+    <div class="w-10 h-px bg-[var(--color-accent)] mx-auto mb-6"></div>
+
+    {featured && (
+      <div>
+        <h2 class="text-[28px] text-[var(--color-heading)] tracking-[4px] mb-3">
+          {featured.data.title}
+        </h2>
+        <div class="font-sans text-[12px] text-[var(--color-muted)] tracking-wider mb-6">
+          最新发表 · {featured.data.category}
+        </div>
+        <p class="max-w-lg mx-auto text-[13px] text-[var(--color-muted)] leading-[2.2]">
+          {featuredExcerpt}
+        </p>
+        <div class="mt-6">
+          <a
+            href={`/posts/${featured.slug}/`}
+            class="inline-block font-sans text-[11px] text-[var(--color-accent-dark)] border border-[var(--color-border-dark)] px-5 py-1.5 tracking-[2px] hover:bg-[var(--color-accent)] hover:text-[var(--color-bg)] transition-colors"
+          >
+            阅读全文
+          </a>
+        </div>
+      </div>
+    )}
+  </div>
+
+  <!-- Gradient divider -->
+  <div class="w-3/5 h-px mx-auto" style="background: linear-gradient(90deg, transparent, var(--color-border-dark), transparent);"></div>
+
+  <!-- Recent Articles -->
+  <div class="max-w-lg mx-auto px-6 lg:px-10 py-10">
+    <div class="font-sans text-[10px] tracking-[4px] text-[var(--color-accent-dark)] mb-5">
+      近期文章
+    </div>
+
+    {recentPosts.map((post) => (
+      <ArticleCard
+        title={post.data.title}
+        date={post.data.date}
+        description={post.data.description}
+        href={`/posts/${post.slug}/`}
+      />
+    ))}
+
+    <div class="text-center mt-8">
+      <a href="/archives/" class="font-sans text-[11px] text-[var(--color-accent-dark)] tracking-[2px] border-none hover:text-[var(--color-heading)]">
+        查看全部 →
+      </a>
+    </div>
   </div>
 </BaseLayout>
