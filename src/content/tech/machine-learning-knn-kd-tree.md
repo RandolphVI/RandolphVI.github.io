@@ -1,7 +1,7 @@
 ---
 title: "Machine Learning -  KNN & kd Tree"
 date: 2017-01-14
-category: "AI"
+category: "ML"
 tags: ["Machine Learning", "Books"]
 description: "本文是关于周志华「Machine Learning」这本书的 Classification - KNN & kd Tree 的学习笔记。"
 draft: false

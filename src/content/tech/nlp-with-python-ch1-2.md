@@ -1,7 +1,7 @@
 ---
 title: "NLP with Python - Chapter 1 & 2"
 date: 2015-09-11
-category: "AI"
+category: "ML"
 tags: ["Machine Learning", "Natural Language Processing", "Books", "Python"]
 description: "本文是关于「Natural Language Processing with Python」这本书的 Chapter 1 & 2 的学习笔记。"
 draft: false

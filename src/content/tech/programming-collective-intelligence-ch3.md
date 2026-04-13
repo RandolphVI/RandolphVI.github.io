@@ -1,7 +1,7 @@
 ---
 title: "Programming Collective Intelligence - Chapter 3"
 date: 2016-03-19
-category: "AI"
+category: "ML"
 tags: ["Machine Learning", "Python"]
 description: "本文是关于「Programming Collective Intelligence」这本书的 Chapter 3的学习笔记。"
 draft: false

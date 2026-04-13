@@ -1,7 +1,7 @@
 ---
 title: "Clustering"
 date: 2017-01-03
-category: "AI"
+category: "ML"
 tags: ["Machine Learning", "Books"]
 description: "本文是关于周志华「Machine Learning」这本书的 Clustering 的学习笔记。"
 draft: false
