@@ -9,11 +9,11 @@ draft: false
 
 ![](https://farm5.staticflickr.com/4373/35507009504_3298ce3029_o.jpg)
 
-> **更多 AI 文章：** [查看 AI 分类](/categories/AI/)
+> ** 更多 AI 文章： ** [查看 AI 分类](/categories/AI/)
 
 # Dropout
 
-开篇明义，dropout 是指在深度学习网络的训练过程中，对于神经网络单元，按照**一定的概率**将其**暂时**从网络中丢弃。注意是暂时，对于随机梯度下降来说，由于是随机丢弃，故而每一个 mini-batch 都在训练不同的网络。
+开篇明义，dropout 是指在深度学习网络的训练过程中，对于神经网络单元，按照 ** 一定的概率 ** 将其 ** 暂时 ** 从网络中丢弃。注意是暂时，对于随机梯度下降来说，由于是随机丢弃，故而每一个 mini-batch 都在训练不同的网络。
 
 Dropout 是深度学习中防止过拟合提高效果的一个大杀器，但对于其为何有效，却众说纷纭。在下读到两篇代表性的论文，代表两种不同的观点，特此分享给大家。
 
@@ -119,7 +119,7 @@ Dropout 也能达到同样的效果，它强迫一个神经单元，和随机挑
 
   - 对参数 $w$ 的训练进行球形限制（max-normalization），对 dropout 的训练非常有用。
   - 球形半径 $c$ 是一个需要调整的参数。可以使用验证集进行参数调优。
-  - Dropout 单独使用效果不错，但是 **dropout**、**max-normalization**、**large decaying learning rates** 以及 **high momentum** 组合起来效果更好，比如 max-norm regularization 就可以防止大的 learning rate 导致的参数 blow up。
+  - Dropout 单独使用效果不错，但是 **dropout** 、 **max-normalization** 、 **large decaying learning rates** 以及 **high momentum** 组合起来效果更好，比如 max-norm regularization 就可以防止大的 learning rate 导致的参数 blow up。
   - 使用 pretraining 方法也可以帮助 dropout 训练参数，在使用 dropout 时，要将所有参数都乘以 $\frac{1}{p}$。
 
 - 部分实验结论

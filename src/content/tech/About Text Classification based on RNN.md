@@ -9,7 +9,7 @@ draft: false
 
 ![](https://farm5.staticflickr.com/4373/35507009504_3298ce3029_o.jpg)
 
-> **更多 AI 文章：** [查看 AI 分类](/categories/AI/)
+> ** 更多 AI 文章： ** [查看 AI 分类](/categories/AI/)
 
 # 「Recurrent Neural Network for Text Classification with Multi-Task Learning」
 

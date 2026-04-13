@@ -9,7 +9,7 @@ draft: false
 
 ![](https://farm5.staticflickr.com/4316/36049777032_f975ed0941_o.jpg)
 
-> **本系列文章：** [Chapter 1 & 2](/tech/web-scraping-with-python---chapter-1--2/) · [Chapter 3](/tech/web-scraping-with-python---chapter-3/) · [Chapter 4 & 5](/tech/web-scraping-with-python---chapter-4--5/) · [smtplib & email module](/tech/web-scraping-with-python---smtplib--email-module/)
+> ** 本系列文章： ** [Chapter 1 & 2](/tech/web-scraping-with-python---chapter-1--2/) · [Chapter 3](/tech/web-scraping-with-python---chapter-3/) · [Chapter 4 & 5](/tech/web-scraping-with-python---chapter-4--5/) · [smtplib & email module](/tech/web-scraping-with-python---smtplib--email-module/)
 
 
 
@@ -163,7 +163,7 @@ ps: 注意，这上面 alias 别名的方法，只是一次性的，意味着我
 $ cd ~
 $ vim ./bash_profile
 ```
-**注意：如果你安装了 oh-my-zsh，需要去更改 .zshrc 文件。**
+** 注意：如果你安装了 oh-my-zsh，需要去更改 .zshrc 文件。 **
 
 然后更改密码，命令行输入：
 
@@ -196,9 +196,9 @@ Python 没有内置的 MySQL 支持工具。不过，有很多开源的库可以
 >>> print(cur.fetchone())cur.close().conn.close() 
 ```
 
-1. 程序中有两个对象：连接对象 **`conn`** 和光标对象 **`cur`**。
+1. 程序中有两个对象：连接对象 **`conn`** 和光标对象 **`cur`** 。
 2. 连接/光标模式是数据库编程中常见的模式。连接模式除了要连接数据库之外，还要发送数据库信息，处理回滚操作（当一个查询或一组查询被中断时，数据库需要回到初始状态，一般用事务控制手段实现状态会滚），创建新的光标对象，等等。
-3. __而一个 `conn` 可以有很多个 `cur`__。一个光标跟踪一种状态信息，比如跟踪数据库的使用状态。如果你有多个数据库，且需要向所有数据库写内容，就需要多个光标来处理。光标还包含最后一次查询执行的结果。通过调用光标函数，比如 **`cur.fetchone()`**，可以获取查询结果。
+3. __而一个 `conn` 可以有很多个 `cur`__。一个光标跟踪一种状态信息，比如跟踪数据库的使用状态。如果你有多个数据库，且需要向所有数据库写内容，就需要多个光标来处理。光标还包含最后一次查询执行的结果。通过调用光标函数，比如 **`cur.fetchone()`** ，可以获取查询结果。
 4. 用完光标和链接之后，千万记得要把它们关闭。如果不关闭就会导致连接泄漏（__connection leak__），造成一种未关闭连接的现象，即连接已经不在使用，但是数据库却不能关闭，因为数据库不能确定你还要不要继续使用它。这种现象会一直耗费数据库的资源，所以用完数据库之后记得关闭连接！
 5. 进行网络数据采集的时候，处理 Unicode 字符串是很痛苦的事情。默认情况下，MySQL 也不支持 Unicode 字符处理。不过我们可以设置这个功能，因为采集的时候，我们难免会遇到各种各样的字符，所以最好一开始就让我们的数据库支持 Unicode：
 
@@ -252,17 +252,17 @@ finally:
     conn.close()
 ```
 
-- 需要注意的是 **`store()`** 函数，它有两个参数：**`title`** 和 **`content`**，并把这两个参数加到了一个 INSERT 语句中并用光标执行，然后用光标进行连接确认。这是一个让光标与连接操作分离的好例子；当光标里存储了一些数据库与数据库上下文的信息时，需要通过连接的确认操作先将信息传进数据库，再将信息插入数据库。
+- 需要注意的是 **`store()`** 函数，它有两个参数： **`title`** 和 **`content`** ，并把这两个参数加到了一个 INSERT 语句中并用光标执行，然后用光标进行连接确认。这是一个让光标与连接操作分离的好例子；当光标里存储了一些数据库与数据库上下文的信息时，需要通过连接的确认操作先将信息传进数据库，再将信息插入数据库。
 - 最后需要注意的是 finally 语句是在程序主循环的外面，代码的最底下。这样做可以保证，无论程序执行过程中如何发生中断或抛出异常（当然，因为网络很复杂，我们需要随时准备遭遇异常），光标和连接都会在程序结束前立即关闭。无论我们是在采集网络还是在处理一个打开连接的数据库，用 **`try...finally`** 都是一个好主意。
 
 ------
 
 # Correct errors in printing:
 
-- **暂无**
+- ** 暂无 **
 
 ------
 
 # Practice:
 
-- **暂无**
+- ** 暂无 **

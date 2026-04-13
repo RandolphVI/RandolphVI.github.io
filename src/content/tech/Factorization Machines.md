@@ -9,7 +9,7 @@ draft: false
 
 ![](https://farm5.staticflickr.com/4300/35460446383_aafc34ca3c_o.jpg)
 
-> **更多 AI 文章：** [查看 AI 分类](/categories/AI/)
+> ** 更多 AI 文章： ** [查看 AI 分类](/categories/AI/)
 
 # Introduction
 
@@ -127,16 +127,16 @@ $$
 
 ## Algorithm
 
-- **随机梯度下降法 (StochasticGradient Descent, SGD)**
+- ** 随机梯度下降法 (StochasticGradient Descent, SGD)**
 
-- **交替最小二乘法 (AlternatingLeast-Squares, ALS)**
+- ** 交替最小二乘法 (AlternatingLeast-Squares, ALS)**
 
-- **马尔可夫链蒙特卡洛法 (MarkovChain Monte Carlo, MCMC)**
+- ** 马尔可夫链蒙特卡洛法 (MarkovChain Monte Carlo, MCMC)**
 
 
 ## Multilinearity
 
-FM 的一个重要性质—**Multilinearity**，对于 FM 的任意参数 $\theta$ ，存在两个与 $\theta $ 的取值无关的函数 $g(\theta )$ 和 $h(\theta )$ 使得：
+FM 的一个重要性质—**Multilinearity** ，对于 FM 的任意参数 $\theta$ ，存在两个与 $\theta $ 的取值无关的函数 $g(\theta )$ 和 $h(\theta )$ 使得：
 
 $$
 \hat y(x) = g_{\theta}(x) + \theta h_{\theta}(x) \qquad \forall\theta \in \Theta

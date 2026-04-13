@@ -9,20 +9,20 @@ draft: false
 
 ![](https://farm5.staticflickr.com/4423/36425940061_fe957aaf15_o.jpg)
 
-> **本系列文章：** [Chapter 1 & 2](/tech/nlp-with-python---chapter-1--2/) · [Chapter 3](/tech/nlp-with-python---chapter-3/)
+> ** 本系列文章： ** [Chapter 1 & 2](/tech/nlp-with-python---chapter-1--2/) · [Chapter 3](/tech/nlp-with-python---chapter-3/)
 
-**说明：由于该书出版较早，里面代码内容均是基于 python 2.x 的，且个别函数无法正常使用。另外，本人学习时，则是采用 python 3.x 与 NLTK 3.x，文章代码内容均进行了适当的修改，特此说明。**
+** 说明：由于该书出版较早，里面代码内容均是基于 python 2.x 的，且个别函数无法正常使用。另外，本人学习时，则是采用 python 3.x 与 NLTK 3.x，文章代码内容均进行了适当的修改，特此说明。 **
 
-**另外，该书作者一直有在更新该书，包括一些错误勘正，并且对其进行了从 python 2.x 到 python 3.x 的代码风格转换，可以访问该书网站[Natural Language Processing with Python](http://www.nltk.org/book/)。**
+** 另外，该书作者一直有在更新该书，包括一些错误勘正，并且对其进行了从 python 2.x 到 python 3.x 的代码风格转换，可以访问该书网站[Natural Language Processing with Python](http://www.nltk.org/book/)。 **
 
 
 ## **What's NLTK?**
 
 **`NLTK`** 是一个自然语言工具包，最初创建于 2001 年，最初是宾州大学计算机与信息科学系计算语言学课程的一部分，大部分 NLP 研究者入门的首选工具。
 
-另外，这本书是关于用 Python 进行自然语言处理的一本入门书，基本上可以看做是 **`NLTK`** 这个库的 HandBook，使用的方法均是 **`nltk`** 库中的方法。如果希望查阅 API 文档或者是下载安装 **`NLTK`**，可以前往[官方网站](http://www.nltk.org)下载，官网上提供和的 API 文档涵盖了工具包中的每一个模块、类和函数，详细说明了各种参数，以及用法示例，在此不再赘述。
+另外，这本书是关于用 Python 进行自然语言处理的一本入门书，基本上可以看做是 **`NLTK`** 这个库的 HandBook，使用的方法均是 **`nltk`** 库中的方法。如果希望查阅 API 文档或者是下载安装 **`NLTK`** ，可以前往[官方网站](http://www.nltk.org)下载，官网上提供和的 API 文档涵盖了工具包中的每一个模块、类和函数，详细说明了各种参数，以及用法示例，在此不再赘述。
 
-- **简单介绍一下 `NLTK` 的几个重要的模块以及功能描述：**
+- ** 简单介绍一下 `NLTK` 的几个重要的模块以及功能描述： **
 
 | 语言处理任务   | NLTK模块                     | 功能描述                            |
 | -------- | -------------------------- | ------------------------------- |
@@ -43,7 +43,7 @@ draft: false
 
 ## Download with NLTK
 
-安装完之后 **`NLTK`**，我们还需要下载 **`NLTK`** 的语料库，在 Python 解释器中输入：
+安装完之后 **`NLTK`** ，我们还需要下载 **`NLTK`** 的语料库，在 Python 解释器中输入：
 
 ```bash
 >>> nltk.download()
@@ -84,7 +84,7 @@ draft: false
 
 - Pronoun Resolution
 
-<u>指代消解</u>，是解决“词义消歧”的一个手段，解决“谁对谁做了什么”，即检测动词的主语和宾语，另外还有**语义角色标注**（semantic role labing）— 确定名词短语如何与动词相关联（如代理、受事、工具等）。
+<u>指代消解</u>，是解决“词义消歧”的一个手段，解决“谁对谁做了什么”，即检测动词的主语和宾语，另外还有 ** 语义角色标注 ** （semantic role labing）— 确定名词短语如何与动词相关联（如代理、受事、工具等）。
 
 ------
 ## Text Corpus Structure
@@ -121,13 +121,13 @@ WordNet 概念的层次片段：每个节点对应一个同义词集；边表示
 
 在 「Frequency Distributions」 的那块内容中：
 
-> ... for `text2`. Be careful to use ... If you get an error message `NameError: name 'FreqDist'is not defined`, you need to start your work with **`from nltk.book import *`**。
+> ... for `text2`. Be careful to use ... If you get an error message `NameError: name 'FreqDist'is not defined`, you need to start your work with **`from nltk.book import *`** 。
 
 需更正为：
 
-> ... for `text2`. Be careful to use ... If you get an error message `NameError: name 'FreqDist'is not defined`, you need to start your work with **`from nltk import *`**。
+> ... for `text2`. Be careful to use ... If you get an error message `NameError: name 'FreqDist'is not defined`, you need to start your work with **`from nltk import *`** 。
 
-**原因：`nltk.book` 中并不存在 `FreqDist()` 这一函数。**
+** 原因：`nltk.book` 中并不存在 `FreqDist()` 这一函数。 **
 
 -----
 # Practice:
@@ -197,7 +197,7 @@ translate.update(dict(de2en))
 print(translate['Hund-de'])
 ```
 
-- 另外，如果输入错误（例如不存在的词语或者其他没有通过 **`translate.update(dict(xx))`** 加入字典的语言词语，则会引发 **KeyError**）。其中一个解决办法是，添加一个错误处理情况。
+- 另外，如果输入错误（例如不存在的词语或者其他没有通过 **`translate.update(dict(xx))`** 加入字典的语言词语，则会引发 **KeyError** ）。其中一个解决办法是，添加一个错误处理情况。
 
 -----
 > 7.○ According to Strunk and White’s ***Elements of Style***, the word **however**, used at the start of a sentence, means “in whatever way” or “to whatever extent,” and not “nevertheless.” They give this example of correct usage: [However you advise him, he will probably do as he thinks best.](http://www.bartleby.com/141/strunk3.html) Use the concordance tool to study actual usage of this word in the various texts we have been considering. See also the **LanguageLog** posting “Fossilized prejudices about ‘however’” at [this website](http://itre.cis.upenn.edu/~myl/languagelog/archives/001913.html).

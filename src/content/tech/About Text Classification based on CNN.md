@@ -9,7 +9,7 @@ draft: false
 
 ![](https://farm5.staticflickr.com/4373/35507009504_3298ce3029_o.jpg)
 
-> **更多 AI 文章：** [查看 AI 分类](/categories/AI/)
+> ** 更多 AI 文章： ** [查看 AI 分类](/categories/AI/)
 
 # Outline
 
@@ -32,7 +32,7 @@ with tf.device('/cpu:0'), tf.name_scope("embedding"):
     self.embedded_sentence_expanded = tf.expand_dims(self.embedded_chars, -1)
 ```
 
-存储全部 word vector 的矩阵 $W$，$W$ 初始化时是随机 random 出来的，训练过程中并不是每次都会使用全部的 vocabulary，而只是产生一个 batch（batch 中都是 sentence，每个 sentence 标记了出现哪些 word，每个 sentence 最大长度为 `max_seq_len` 个 word，因此 batch 相当于一个二维列表），这个 batch 就是 **input_x**：
+存储全部 word vector 的矩阵 $W$，$W$ 初始化时是随机 random 出来的，训练过程中并不是每次都会使用全部的 vocabulary，而只是产生一个 batch（batch 中都是 sentence，每个 sentence 标记了出现哪些 word，每个 sentence 最大长度为 `max_seq_len` 个 word，因此 batch 相当于一个二维列表），这个 batch 就是 **input_x** ：
 
 ```python
 self.input_x = tf.placeholder(tf.int32, [None, sequence_length], name="input_x")
@@ -219,7 +219,7 @@ with tf.name_scope("loss"):
 ```
 
 
-还是使用常规的交叉熵 [cross_entropy](/tech/cross-entropy-in-tensorflow/) 作为 loss function。最后一层是全连接层，为了防止过拟合，最后还要在 loss function 中加入 **L2 正则项**，即 `l2_loss`。`l2_reg_lambda` 来确定惩罚的力度。
+还是使用常规的交叉熵 [cross_entropy](/tech/cross-entropy-in-tensorflow/) 作为 loss function。最后一层是全连接层，为了防止过拟合，最后还要在 loss function 中加入 **L2 正则项 ** ，即 `l2_loss`。`l2_reg_lambda` 来确定惩罚的力度。
 
 ## Accuracy
 ```python

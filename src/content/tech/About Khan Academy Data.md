@@ -9,7 +9,7 @@ draft: false
 
 ![](https://farm1.staticflickr.com/797/27030261808_ebe2f72aa4_o.jpg)
 
-> **更多 AI 文章：** [查看 AI 分类](/categories/AI/)
+> ** 更多 AI 文章： ** [查看 AI 分类](/categories/AI/)
 
 # About Khan Academy Data
 
@@ -25,7 +25,7 @@ draft: false
 
 ## Data structure
 
-数据一共为 4 个 `.json` 文件，以及相关视频 **Video** 与相关图片 **Picture**。
+数据一共为 4 个 `.json` 文件，以及相关视频 **Video** 与相关图片 **Picture** 。
 
 - content.json
   - 包含知识点逻辑结构信息
