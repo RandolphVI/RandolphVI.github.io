@@ -1,7 +1,7 @@
 ---
 title: "About Field-aware Factorization Machines"
 date: 2017-11-11
-category: "ML"
+category: "AI"
 tags: ["Machine Learning", "Papers"]
 description: "本文主要介绍了 Field-aware Factorization Machines 在 广告点击率（CTR）任务上的一篇论文。"
 draft: false

@@ -1,7 +1,7 @@
 ---
 title: "Machine Learning - Chapter 1"
 date: 2016-12-26
-category: "ML"
+category: "AI"
 tags: ["Machine Learning", "Books"]
 description: "本文是关于周志华「Machine Learning」这本书的 Chapter 1 的学习笔记。"
 draft: false

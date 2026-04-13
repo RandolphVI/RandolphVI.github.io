@@ -1,7 +1,7 @@
 ---
 title: "Music Recommendation Challenge"
 date: 2017-12-17
-category: "ML"
+category: "AI"
 tags: ["Machine Learning", "Kaggle"]
 description: "本文主要介绍了一些本人在 Kaggle 上首战的经验，包括数据的 EDA 、FE 特征工程、所选择的模型、模型融合的以及其他。"
 draft: false
