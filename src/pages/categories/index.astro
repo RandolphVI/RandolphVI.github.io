@@ -56,9 +56,7 @@ const huiwen = posts.filter(a => a.data.category === '匯文');
 const huiwenCreation = huiwen.filter(a => a.data.tags.includes('创作'));
 const huiwenReading = huiwen.filter(a => a.data.tags.includes('读书'));
 const huiwenEssay = huiwen.filter(a => a.data.tags.includes('杂谈'));
-const huiwenClassic = huiwen.filter(a =>
-  a.data.tags.includes('匯文') && !a.data.tags.includes('创作') && !a.data.tags.includes('读书') && !a.data.tags.includes('杂谈')
-);
+// huiwenClassic removed — 我与地坛 and 水之湄 now tagged as 创作
 
 const tabs = [
   { id: 'huiwen', label: '匯文', count: huiwen.length + techEssays.length },
@@ -129,16 +127,6 @@ const tabs = [
                 ))}
                 {techEssays.map(a => (
                   <li><a href={`/tech/${a.id}/`} class="tree-link border-none">{a.data.title}</a></li>
-                ))}
-              </ul>
-            </div>
-          )}
-          {huiwenClassic.length > 0 && (
-            <div class="tree-node">
-              <div class="tree-node-label">匯文</div>
-              <ul class="tree-list">
-                {huiwenClassic.map(a => (
-                  <li><a href={`/posts/${a.id}/`} class="tree-link border-none">{a.data.title}</a></li>
                 ))}
               </ul>
             </div>
