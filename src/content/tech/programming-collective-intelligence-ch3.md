@@ -11,16 +11,6 @@ draft: false
 
 > **本系列文章：** [Chapter 1 & 2](/tech/programming-collective-intelligence-ch1-2/) · [Chapter 3](/tech/programming-collective-intelligence-ch3/)
 
-# Related 
-- **皮尔逊相关系数**
-- **分级聚类**
-- **K-均值聚类**
-- **针对偏好的聚类**
-- **多维缩放**
-- **EM聚类**
-
----
-# Key:
 
 ## 皮尔逊相关系数：
 

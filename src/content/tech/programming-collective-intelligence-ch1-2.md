@@ -11,17 +11,7 @@ draft: false
 
 > **本系列文章：** [Chapter 1 & 2](/tech/programming-collective-intelligence-ch1-2/) · [Chapter 3](/tech/programming-collective-intelligence-ch3/)
 
-# Related
-- **欧几里得距离评价**
-- **皮尔逊相关度评价**
 
-> - The formula for this is more complicated than the Euclidean distance score, but it tends to give better results in situations where the data isn’t well normalized—for example, if critics’ movie rankings are routinely more harsh than average. 它相比于欧几里德距离评价更加复杂，但其在数据不是很规范的时候（比如，影评者对影片的评价总是相对于平均水平偏离很大的时候），会给出更好的结果。      
-> - If one critic is inclined to give higher scores than the other, there can still be perfect correlation if the difference between their scores is consistent. The Euclidean distance score described earlier will say that two critics are dissimilar because one is consistently harsher than the other, even if their tastes are very similar. 如果某人总是倾向于给出比另一个人更高的分值，而两者的分值之差又始终保持一致，则他们依然可能会存在很好的相关性。而欧几里德距离评价会因为一个人的评价之中比另外一个人的更为“严格”（从而导致评价始终相对偏低），从而得出两者不相近的结论，即使他们的品位很相似也是如此。
-
-- **其他相似度计算函数（Minkowski距离、Mahalanobis距离等）**
-
----
-# Key:
 在「推荐物品」的模块中，提到了一种方法：
 
 1.  通过函数找出与自己有相似品味的影评者，并按相似度从大到小排序。

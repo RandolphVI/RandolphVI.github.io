@@ -11,20 +11,6 @@ draft: false
 
 > **本系列文章：** [Chapter 1 & 2](/tech/nlp-with-python-ch1-2/) · [Chapter 3](/tech/nlp-with-python-ch3/)
 
-# Related
-
-- **The NLP Pipeline**
-- **Basic Operations with Strings**
-- **Regular Expressions for Detecting Word Patterns**
-- **Finding Word Stems**
-- **Searching Tokenized Text**
-- **Normalizing Text**
-- **Word Segmentation**
-- **Formatting: From Lists to Strings**
-
------
-
-# Key:
 
 ## The NLP Pipeline
 

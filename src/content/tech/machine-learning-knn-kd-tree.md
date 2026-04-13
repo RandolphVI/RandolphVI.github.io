@@ -12,13 +12,6 @@ draft: false
 > **本系列文章：** [Chapter 1](/tech/machine-learning-ch1/) · [Chapter 2](/tech/machine-learning-ch2/) · [Clustering](/tech/machine-learning-clustering/) · [KNN & kd Tree](/tech/machine-learning-knn-kd-tree/)
 
 
-# Related
-
-- kNN
-- 线性扫描实现 kNN 算法
-- kd 树实现 kNN 算法 
-
-------
 
 # kNN
 

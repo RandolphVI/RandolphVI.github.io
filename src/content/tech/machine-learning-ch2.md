@@ -12,24 +12,6 @@ draft: false
 > **本系列文章：** [Chapter 1](/tech/machine-learning-ch1/) · [Chapter 2](/tech/machine-learning-ch2/) · [Clustering](/tech/machine-learning-clustering/) · [KNN & kd Tree](/tech/machine-learning-knn-kd-tree/)
 
 
-# Related
-
-- **过拟合与欠拟合**
-- **评估方法**
-   - **留出法**
-   - **交叉验证法**
-   - **自助法**
-- **性能度量**
-   - **错误率与精度**
-   - **查准率、查全率与 F1**
-   - **ROC 与 AUC**
-   - **代价敏感错误率与代价曲线**
-   - **比较检验**
-   - **偏差与方差（Bias-Variance）**
-
-------
-
-# Key:
 
 ## 过拟合与欠拟合
 当学习器把训练样本学得“太好”了的时候，很可能已经把训练样本自身的一些特点当作了所有潜在样本都会具有的一般性质，这样就会导致泛化性能下降。这种现象就是“过拟合”（Overfitting）。

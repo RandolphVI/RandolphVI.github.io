@@ -15,16 +15,6 @@ draft: false
 
 **另外，该书作者一直有在更新该书，包括一些错误勘正，并且对其进行了从 python 2.x 到 python 3.x 的代码风格转换，可以访问该书网站[Natural Language Processing with Python](http://www.nltk.org/book/)。**
 
-# Related
-
-- **NLTK**
-- **concordance( ) function**
-- **Word Sense Disambiguation & Pronoun Resolution**
-- **Text Corpus Structure**
-- **WordNet**
-
------
-# Key:
 
 ## **What's NLTK?**
 

@@ -11,14 +11,6 @@ draft: false
 
 > **本系列文章：** [Chapter 1](/tech/machine-learning-ch1/) · [Chapter 2](/tech/machine-learning-ch2/) · [Clustering](/tech/machine-learning-clustering/) · [KNN & kd Tree](/tech/machine-learning-knn-kd-tree/)
 
-# Related
-
-- **归纳偏好**
-- **奥卡姆剃刀（Occam's razor）**
-- **NFL定理（No Free Lunch Theorem）**
-
-------
-# Key:
 
 我们可以把学习过程看做是一个在所有假设（hypothesis）组成的空间中进行搜索的过程，搜索目标就是找到与训练集“匹配”（fit）的假设。
 

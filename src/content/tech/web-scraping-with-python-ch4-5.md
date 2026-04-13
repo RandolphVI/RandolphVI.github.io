@@ -12,15 +12,6 @@ draft: false
 > **本系列文章：** [Chapter 1 & 2](/tech/web-scraping-with-python-ch1-2/) · [Chapter 3](/tech/web-scraping-with-python-ch3/) · [Chapter 4 & 5](/tech/web-scraping-with-python-ch4-5/) · [smtplib & email module](/tech/web-scraping-with-python-smtplib/)
 
 
-# Related
-
-- **Parsing JSON**
-- **Storing Data to CSV**
-- **Integrating with Python & MySQL**
-
-------
-
-# Key：
 
 ## Parsing JSON?
 
