@@ -123,9 +123,17 @@
   border: 1px solid var(--color-border-light);
 }
 
-/* Bold code: inherit font-weight from strong */
+/* Bold code: visually distinct when code is inside strong */
 .article-content strong code {
   font-weight: 700;
+  color: var(--color-heading);
+  border-color: var(--color-accent);
+  background: rgba(196, 181, 160, 0.12);
+}
+
+:root.dark .article-content strong code {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--color-accent-dark);
 }
 
 /* Code blocks */
