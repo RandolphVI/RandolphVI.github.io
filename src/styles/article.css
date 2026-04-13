@@ -123,6 +123,11 @@
   border: 1px solid var(--color-border-light);
 }
 
+/* Bold code: inherit font-weight from strong */
+.article-content strong code {
+  font-weight: 700;
+}
+
 /* Code blocks */
 .article-content pre {
   background: var(--color-code-bg);
