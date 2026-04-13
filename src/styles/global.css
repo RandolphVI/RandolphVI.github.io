@@ -1,13 +1,39 @@
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&family=JetBrains+Mono:wght@400;500&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 /* === Font Face === */
 @font-face {
-  font-family: '京华老宋体';
-  src: url('/fonts/JingHuaOldSong.woff2') format('woff2');
+  font-family: 'KingHwa_OldSong';
+  src: url('/fonts/KingHwa_OldSong.ttf') format('truetype');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Josefin Sans';
+  src: url('/fonts/JosefinSans-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Josefin Sans';
+  src: url('/fonts/JosefinSans-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('/fonts/JetBrainsMono-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('/fonts/JetBrainsMono-Bold.ttf') format('truetype');
+  font-weight: 700;
   font-display: swap;
 }
 
@@ -26,6 +52,7 @@
   --color-border-light: #e8e0d0;
   --color-border-dark: #d4c8b0;
   --color-surface: rgba(196, 181, 160, 0.06);
+  --color-code-bg: #f0ebe3;
 }
 
 :root.dark {
@@ -42,18 +69,21 @@
   --color-border-light: #2a2a2e;
   --color-border-dark: #444444;
   --color-surface: rgba(255, 255, 255, 0.03);
+  --color-code-bg: #1e1e22;
 }
 
 /* === Base Styles === */
 @layer base {
   html {
     scroll-behavior: smooth;
+    font-size: 16px;
   }
 
   body {
-    font-family: '京华老宋体', 'Noto Serif SC', 'Source Han Serif SC', '宋体', serif;
+    font-family: 'KingHwa_OldSong', '京華老宋体', 'Noto Serif SC', 'Source Han Serif SC', '宋体', serif;
     background-color: var(--color-bg);
     color: var(--color-text);
+    font-size: 1rem;
     line-height: 1.8;
     transition: background-color 0.3s ease, color 0.3s ease;
   }
@@ -77,5 +107,9 @@
   ::selection {
     background-color: var(--color-accent);
     color: var(--color-bg);
+  }
+
+  code, pre {
+    font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
   }
 }

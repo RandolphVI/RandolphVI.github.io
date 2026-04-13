@@ -17,5 +17,11 @@ export default defineConfig({
         external: ['/pagefind/pagefind.js'],
       },
     },
+    optimizeDeps: {
+      exclude: ['pagefind'],
+    },
+    ssr: {
+      noExternal: [],
+    },
   },
 });

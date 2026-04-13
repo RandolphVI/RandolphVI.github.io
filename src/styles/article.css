@@ -7,33 +7,65 @@
   line-height: 1;
   margin: 0.05em 0.12em 0 0;
   color: var(--color-heading);
-  font-family: '京华老宋体', 'Noto Serif SC', serif;
+  font-family: 'KingHwa_OldSong', '京華老宋体', 'Noto Serif SC', serif;
 }
 
 /* Headings */
+.article-content h1 {
+  font-size: 1.6rem;
+  color: var(--color-heading);
+  letter-spacing: 1px;
+  margin: 2em 0 1em;
+  font-weight: 500;
+}
+
 .article-content h2 {
-  font-size: 13px;
-  color: var(--color-accent-dark);
-  letter-spacing: 3px;
-  font-family: 'Josefin Sans', sans-serif;
-  margin: 2.5em 0 1.2em;
+  font-size: 1.3rem;
+  color: var(--color-heading);
+  letter-spacing: 1px;
+  margin: 2.5em 0 1em;
+  font-weight: 500;
+  padding-bottom: 0.3em;
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.article-content h3 {
+  font-size: 1.1rem;
+  color: var(--color-heading);
+  margin: 2em 0 0.8em;
+  font-weight: 500;
 }
 
 /* Paragraphs */
 .article-content p {
-  font-size: 15px;
-  line-height: 2.2;
+  font-size: 1rem;
+  line-height: 2;
   text-align: justify;
   margin-bottom: 1.2em;
   color: var(--color-text);
 }
 
+/* Lists */
+.article-content ul,
+.article-content ol {
+  font-size: 1rem;
+  line-height: 2;
+  margin-bottom: 1.2em;
+  padding-left: 1.5em;
+  color: var(--color-text);
+}
+
+.article-content li {
+  margin-bottom: 0.3em;
+}
+
 /* Blockquote - Eastern style */
 .article-content blockquote {
-  margin: 2em 0;
-  padding: 1.2em 1.5em;
-  border-left: 2px solid var(--color-accent);
+  margin: 1.5em 0;
+  padding: 1em 1.5em;
+  border-left: 3px solid var(--color-accent);
   background: var(--color-surface);
+  border-radius: 0 6px 6px 0;
   position: relative;
 }
 
@@ -48,55 +80,87 @@
 }
 
 .article-content blockquote p {
-  font-size: 13px;
+  font-size: 0.95rem;
   color: var(--color-muted);
   font-style: italic;
-  line-height: 2.0;
+  line-height: 1.9;
   margin-bottom: 0;
+}
+
+/* Strong / Bold */
+.article-content strong {
+  color: var(--color-heading);
+  font-weight: 600;
 }
 
 /* Footnote references */
 .article-content sup a {
   color: var(--color-accent-dark);
-  font-size: 11px;
+  font-size: 0.75rem;
   border: none;
   margin: 0 2px;
 }
 
-/* Code blocks */
-.article-content pre {
-  background: var(--color-bg-secondary);
-  border: 1px solid var(--color-border);
+/* === Code Styles === */
+
+/* Inline code */
+.article-content code {
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-size: 0.88em;
+  color: var(--color-heading);
+  background: var(--color-code-bg);
+  padding: 0.2em 0.45em;
   border-radius: 4px;
-  padding: 1em 1.2em;
-  overflow-x: auto;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 13px;
-  line-height: 1.7;
-  margin: 1.5em 0;
+  border: 1px solid var(--color-border-light);
 }
 
-.article-content code {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.9em;
-  background: var(--color-surface);
-  padding: 0.15em 0.4em;
-  border-radius: 3px;
+/* Code blocks */
+.article-content pre {
+  background: var(--color-code-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 1.2em 1.5em;
+  overflow-x: auto;
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-size: 0.9rem;
+  line-height: 1.7;
+  margin: 1.5em 0;
+  position: relative;
 }
 
 .article-content pre code {
   background: none;
   padding: 0;
   border-radius: 0;
+  border: none;
+  color: inherit;
+  font-size: inherit;
 }
 
+/* Scrollbar for code blocks */
+.article-content pre::-webkit-scrollbar {
+  height: 6px;
+}
+
+.article-content pre::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.article-content pre::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 3px;
+}
+
+/* Images */
 .article-content img {
   max-width: 100%;
   height: auto;
   margin: 2em auto;
   display: block;
+  border-radius: 4px;
 }
 
+/* Horizontal rule */
 .article-content hr {
   border: none;
   height: 1px;
@@ -104,12 +168,33 @@
   margin: 2em 0;
 }
 
+/* Tables */
+.article-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5em 0;
+  font-size: 0.95rem;
+}
+
+.article-content th,
+.article-content td {
+  border: 1px solid var(--color-border);
+  padding: 0.6em 1em;
+  text-align: left;
+}
+
+.article-content th {
+  background: var(--color-surface);
+  color: var(--color-heading);
+  font-weight: 500;
+}
+
 /* Footnote section at bottom (fallback / mobile) */
 .article-content .footnotes {
   margin-top: 3em;
   padding-top: 1.5em;
   border-top: 1px solid var(--color-border);
-  font-size: 12px;
+  font-size: 0.85rem;
   color: var(--color-muted);
 }
 

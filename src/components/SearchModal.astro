@@ -67,10 +67,11 @@
 
       if (!pagefind) {
         try {
-          pagefind = await import(/* @vite-ignore */ '/pagefind/pagefind.js');
+          const url = '/pagefind/pagefind.js';
+          pagefind = await import(/* @vite-ignore */ url);
           await pagefind.init();
         } catch {
-          results!.innerHTML = '<div class="text-[var(--color-muted)] text-xs p-4">搜索索引加载中，请在构建后使用…</div>';
+          results!.innerHTML = '<div class="text-[var(--color-muted)] text-xs p-4">搜索功能需要构建后才可用（npm run build）</div>';
           return;
         }
       }

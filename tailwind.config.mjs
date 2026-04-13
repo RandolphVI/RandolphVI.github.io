@@ -29,7 +29,7 @@ export default {
         },
       },
       fontFamily: {
-        serif: ['"京华老宋体"', '"Noto Serif SC"', '"Source Han Serif SC"', '"宋体"', 'serif'],
+        serif: ['"KingHwa_OldSong"', '"京華老宋体"', '"Noto Serif SC"', '"Source Han Serif SC"', '"宋体"', 'serif'],
         sans: ['"Josefin Sans"', 'system-ui', 'sans-serif'],
         mono: ['"JetBrains Mono"', 'monospace'],
       },
