@@ -12,8 +12,14 @@ const aiDeepLearning = aiArticles.filter(a =>
   dlKeywords.some(k => a.data.title.includes(k)) && !a.data.tags.includes('Books')
 );
 
+// --- AI: 理论学习 ---
+const theoryKeywords = ['Cross Entropy'];
+const aiTheory = aiArticles.filter(a =>
+  theoryKeywords.some(k => a.data.title.includes(k))
+);
+
 // --- AI: 机器学习 ---
-const mlKeywords = ['Factorization', 'Imbalanced', 'JPEG', 'Music Recommendation', 'Khan Academy'];
+const mlKeywords = ['Factorization', 'Imbalanced', 'JPEG'];
 const aiML = aiArticles.filter(a =>
   mlKeywords.some(k => a.data.title.includes(k)) && !a.data.tags.includes('Books')
 );
@@ -27,10 +33,17 @@ const otherBooks = aiBooks.filter(a =>
   !mlBooks.includes(a) && !nlpBooks.includes(a) && !pciBooks.includes(a)
 );
 
-// --- AI: 其他 ---
+// --- AI: 其他 (exclude 科技碎碎念 which goes to 杂谈, and Khan Academy which goes to 数据) ---
 const aiOther = aiArticles.filter(a =>
-  !aiDeepLearning.includes(a) && !aiML.includes(a) && !aiBooks.includes(a)
+  !aiDeepLearning.includes(a) && !aiTheory.includes(a) && !aiML.includes(a) && !aiBooks.includes(a)
+  && !a.data.title.includes('科技碎碎念') && !a.data.title.includes('Khan Academy')
 );
+
+// --- 数据 ---
+const dataArticles = tech.filter(a => a.data.title.includes('Khan Academy'));
+
+// --- 杂谈 (tech) ---
+const techEssays = tech.filter(a => a.data.title.includes('科技碎碎念'));
 
 // --- 架构 ---
 const archArticles = tech.filter(a => a.data.category === '工具' || a.data.category === '前端');
@@ -50,9 +63,10 @@ const huiwenClassic = huiwen.filter(a =>
   a.data.tags.includes('匯文') && !a.data.tags.includes('创作') && !a.data.tags.includes('读书') && !a.data.tags.includes('杂谈')
 );
 
-const aiTotal = aiArticles.length;
+const aiTotal = aiDeepLearning.length + aiTheory.length + aiML.length + aiBooks.length + aiOther.length;
 const archTotal = archArticles.length + archFrontend.length;
-const huiwenTotal = huiwen.length;
+const dataTotal = dataArticles.length;
+const huiwenTotal = huiwen.length + techEssays.length;
 ---
 
 <BaseLayout title="分类" description="按分类浏览文章">
@@ -79,6 +93,18 @@ const huiwenTotal = huiwen.length;
               <div class="tree-l2"><span class="tree-label-l2">深度学习</span></div>
               <div class="tree-leaves">
                 {aiDeepLearning.map(a => (
+                  <a href={`/tech/${a.id}/`} class="tree-article border-none">{a.data.title}</a>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* 理论学习 */}
+          {aiTheory.length > 0 && (
+            <div class="tree-branch-inner">
+              <div class="tree-l2"><span class="tree-label-l2">理论学习</span></div>
+              <div class="tree-leaves">
+                {aiTheory.map(a => (
                   <a href={`/tech/${a.id}/`} class="tree-article border-none">{a.data.title}</a>
                 ))}
               </div>
@@ -216,6 +242,26 @@ const huiwenTotal = huiwen.length;
         </div>
       </div>
 
+      {/* ========== 数据 ========== */}
+      {dataArticles.length > 0 && (
+        <div class="tree-branch">
+          <div class="tree-l1">
+            <span class="tree-label-l1">数据</span>
+            <span class="tree-count">{dataTotal}</span>
+          </div>
+          <div class="tree-children">
+            <div class="tree-branch-inner">
+              <div class="tree-l2"><span class="tree-label-l2">网站</span></div>
+              <div class="tree-leaves">
+                {dataArticles.map(a => (
+                  <a href={`/tech/${a.id}/`} class="tree-article border-none">{a.data.title}</a>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* ========== 匯文 ========== */}
       <div class="tree-branch">
         <div class="tree-l1">
@@ -243,12 +289,15 @@ const huiwenTotal = huiwen.length;
               </div>
             </div>
           )}
-          {huiwenEssay.length > 0 && (
+          {(huiwenEssay.length > 0 || techEssays.length > 0) && (
             <div class="tree-branch-inner">
               <div class="tree-l2"><span class="tree-label-l2">杂谈</span></div>
               <div class="tree-leaves">
                 {huiwenEssay.map(a => (
                   <a href={`/posts/${a.id}/`} class="tree-article border-none">{a.data.title}</a>
+                ))}
+                {techEssays.map(a => (
+                  <a href={`/tech/${a.id}/`} class="tree-article border-none">{a.data.title}</a>
                 ))}
               </div>
             </div>
