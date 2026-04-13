@@ -2,7 +2,7 @@
 title: "The Outsider"
 date: 2020-08-27
 category: "匯文"
-tags: ["小说"]
+tags: ["读书"]
 description: "今日，我想聊聊关于美剧「The Outsider」的一些事。"
 featured: false
 draft: false

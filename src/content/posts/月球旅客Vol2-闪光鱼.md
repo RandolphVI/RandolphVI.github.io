@@ -2,7 +2,7 @@
 title: "月球旅客 Vol.2 闪光鱼"
 date: 2021-06-15
 category: "匯文"
-tags: ["小说"]
+tags: ["小说", "月球旅客"]
 description: "月球旅客系列第二篇，关于闪光鱼的传说"
 featured: false
 draft: false

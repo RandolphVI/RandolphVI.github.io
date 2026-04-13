@@ -53,10 +53,14 @@ const archOther = archArticles.filter(a =>
 
 // --- 匯文 ---
 const huiwen = posts.filter(a => a.data.category === '匯文');
-const huiwenNovel = huiwen.filter(a => a.data.tags.includes('小说'));
+// 小说 sub-series
+const novelZiNan = huiwen.filter(a => a.data.tags.includes('子囡'));
+const novelMoonTraveler = huiwen.filter(a => a.data.tags.includes('月球旅客'));
+const novelFu = huiwen.filter(a => a.data.tags.includes('芾系列'));
 const huiwenEssayProse = huiwen.filter(a => a.data.tags.includes('随笔'));
 const huiwenReading = huiwen.filter(a => a.data.tags.includes('读书'));
 const huiwenEssay = huiwen.filter(a => a.data.tags.includes('杂谈'));
+const hasNovels = novelZiNan.length + novelMoonTraveler.length + novelFu.length > 0;
 
 const tabs = [
   { id: 'huiwen', label: '匯文', count: huiwen.length + techEssays.length },
@@ -98,14 +102,41 @@ const tabs = [
       {/* ========== 匯文 ========== */}
       <div class="cat-panel" data-panel="huiwen">
         <div class="tree-root">
-          {huiwenNovel.length > 0 && (
+          {hasNovels && (
             <div class="tree-node">
               <div class="tree-node-label">小说</div>
-              <ul class="tree-list">
-                {huiwenNovel.map(a => (
-                  <li><a href={`/posts/${a.id}/`} class="tree-link border-none">{a.data.title}</a></li>
-                ))}
-              </ul>
+              <div class="tree-sub-nodes">
+                {novelZiNan.length > 0 && (
+                  <div class="tree-sub-node">
+                    <div class="tree-sub-label">子囡</div>
+                    <ul class="tree-list">
+                      {novelZiNan.map(a => (
+                        <li><a href={`/posts/${a.id}/`} class="tree-link border-none">{a.data.title}</a></li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+                {novelMoonTraveler.length > 0 && (
+                  <div class="tree-sub-node">
+                    <div class="tree-sub-label">月球旅客</div>
+                    <ul class="tree-list">
+                      {novelMoonTraveler.map(a => (
+                        <li><a href={`/posts/${a.id}/`} class="tree-link border-none">{a.data.title}</a></li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+                {novelFu.length > 0 && (
+                  <div class="tree-sub-node">
+                    <div class="tree-sub-label">芾</div>
+                    <ul class="tree-list">
+                      {novelFu.map(a => (
+                        <li><a href={`/posts/${a.id}/`} class="tree-link border-none">{a.data.title}</a></li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </div>
             </div>
           )}
           {huiwenEssayProse.length > 0 && (
