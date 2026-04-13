@@ -14,10 +14,10 @@ const years = Array.from(yearMap.entries()).sort((a, b) => b[0] - a[0]);
 ---
 
 <PageLayout title="归档" englishTitle="ARCHIVES" description="按时间线浏览所有文章">
-  <div class="max-w-lg mx-auto">
+  <div class="max-w-2xl mx-auto">
     {years.map(([year, yearArticles]) => (
-      <div class="mb-8">
-        <div class="text-base text-[var(--color-heading)] tracking-[2px] mb-4 pb-2 border-b border-[var(--color-border-light)]">
+      <div class="mb-10">
+        <div class="text-xl text-[var(--color-heading)] tracking-[2px] mb-4 pb-2 border-b border-[var(--color-border-light)]">
           {year}
         </div>
         <div class="ml-4">
@@ -28,15 +28,15 @@ const years = Array.from(yearMap.entries()).sort((a, b) => b[0] - a[0]);
               ? `/posts/${article.id}/`
               : `/tech/${article.id}/`;
             return (
-              <a href={href} class="flex items-baseline gap-3 mb-2.5 border-none group">
-                <span class="text-[10px] text-[var(--color-faint)] font-sans w-10 flex-shrink-0">
+              <a href={href} class="flex items-baseline gap-3 mb-3 border-none group">
+                <span class="text-sm text-[var(--color-faint)] font-sans w-12 flex-shrink-0">
                   {dateStr}
                 </span>
-                <div class="w-1 h-1 bg-[var(--color-accent)] rounded-full flex-shrink-0 mt-1.5"></div>
-                <span class="text-[13px] text-[var(--color-text)] group-hover:text-[var(--color-heading)] transition-colors">
+                <div class="w-1.5 h-1.5 bg-[var(--color-accent)] rounded-full flex-shrink-0 mt-1.5"></div>
+                <span class="text-base text-[var(--color-text)] group-hover:text-[var(--color-heading)] transition-colors">
                   {article.data.title}
                 </span>
-                <span class="text-[9px] text-[var(--color-faint)] font-sans flex-shrink-0">
+                <span class="text-xs text-[var(--color-faint)] font-sans flex-shrink-0">
                   {article.data.category}
                 </span>
               </a>
@@ -50,7 +50,7 @@ const years = Array.from(yearMap.entries()).sort((a, b) => b[0] - a[0]);
       <div class="text-base text-[var(--color-heading)] tracking-[2px] mb-4 pb-2 border-b border-[var(--color-border-light)]">
         2019 及更早
       </div>
-      <div class="ml-4 text-[11px] text-[var(--color-faint)] italic">
+      <div class="ml-4 text-base text-[var(--color-faint)] italic">
         旧文章迁移中……
       </div>
     </div>

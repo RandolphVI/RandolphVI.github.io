@@ -6,25 +6,25 @@ const articles = await getPublishedTech();
 ---
 
 <PageLayout title="技术碎碎念" englishTitle="TECH NOTES" description="ML/AI 碎碎念和技术笔记">
-  <div class="max-w-lg mx-auto">
+  <div class="max-w-2xl mx-auto">
     {articles.map((article) => {
       const dateStr = `${article.data.date.getFullYear()}.${String(article.data.date.getMonth() + 1).padStart(2, '0')}`;
       return (
         <a href={`/tech/${article.id}/`} class="block border-none group mb-7 pb-7 border-b border-[var(--color-border-light)]">
           <div class="flex justify-between items-baseline">
-            <span class="text-[15px] text-[var(--color-heading)] tracking-wide group-hover:text-[var(--color-accent-dark)] transition-colors">
+            <span class="text-lg text-[var(--color-heading)] tracking-wide group-hover:text-[var(--color-accent-dark)] transition-colors">
               {article.data.title}
             </span>
-            <span class="text-[10px] text-[var(--color-faint)] font-sans flex-shrink-0 ml-4">
+            <span class="text-sm text-[var(--color-faint)] font-sans flex-shrink-0 ml-4">
               {dateStr}
             </span>
           </div>
-          <div class="text-[11px] text-[var(--color-muted)] mt-1.5 leading-relaxed">
+          <div class="text-base text-[var(--color-muted)] mt-2 leading-relaxed">
             {article.data.description}
           </div>
-          <div class="flex gap-1.5 mt-2">
+          <div class="flex gap-2 mt-2">
             {article.data.tags.map((tag) => (
-              <span class="font-sans text-[9px] text-[var(--color-accent-dark)] border border-[var(--color-border-dark)] px-2 py-0.5">
+              <span class="font-sans text-xs text-[var(--color-accent-dark)] border border-[var(--color-border-dark)] px-2.5 py-0.5">
                 {tag}
               </span>
             ))}
@@ -33,7 +33,7 @@ const articles = await getPublishedTech();
       );
     })}
     {articles.length === 0 && (
-      <p class="text-center text-[var(--color-muted)] text-sm">暂无文章</p>
+      <p class="text-center text-[var(--color-muted)] text-base">暂无文章</p>
     )}
   </div>
 </PageLayout>

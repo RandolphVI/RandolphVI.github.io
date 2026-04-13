@@ -14,23 +14,23 @@ const stars = '★'.repeat(rating) + '☆'.repeat(5 - rating);
 ---
 
 <div class="flex gap-5 mb-7 pb-7 border-b border-[var(--color-border-light)]">
-  <div class="w-16 h-22 flex-shrink-0 border border-[var(--color-border-dark)] bg-[var(--color-border-light)] flex items-center justify-center">
+  <div class="w-20 h-28 flex-shrink-0 border border-[var(--color-border-dark)] bg-[var(--color-border-light)] flex items-center justify-center">
     {cover ? (
       <img src={cover} alt={title} class="w-full h-full object-cover" />
     ) : (
-      <div class="text-[10px] text-[var(--color-muted)] tracking-[2px]" style="writing-mode: vertical-rl;">
+      <div class="text-xs text-[var(--color-muted)] tracking-[2px]" style="writing-mode: vertical-rl;">
         书影
       </div>
     )}
   </div>
   <div class="flex-1">
-    <div class="text-[15px] text-[var(--color-heading)] tracking-wide mb-1">{title}</div>
-    <div class="text-[11px] text-[var(--color-faint)] font-sans mb-2">
+    <div class="text-lg text-[var(--color-heading)] tracking-wide mb-1">{title}</div>
+    <div class="text-sm text-[var(--color-faint)] font-sans mb-2">
       {author} · {dateStr} 读毕
     </div>
-    <div class="text-[11px] text-[var(--color-muted)] leading-relaxed mb-1.5">
+    <div class="text-base text-[var(--color-muted)] leading-relaxed mb-2">
       {body}
     </div>
-    <div class="text-[10px] text-[var(--color-accent)]">{stars}</div>
+    <div class="text-sm text-[var(--color-accent)]">{stars}</div>
   </div>
 </div>

@@ -21,8 +21,8 @@ const navItems = [
   <nav class="max-w-6xl mx-auto flex items-center justify-between px-6 py-4 lg:px-10">
     <!-- Logo -->
     <a href="/" class="flex items-baseline gap-2 border-none">
-      <span class="font-serif text-lg text-[var(--color-heading)] tracking-widest">黃某人</span>
-      <span class="font-sans text-[10px] text-[var(--color-accent-dark)] tracking-[3px] hidden sm:inline">RANDOLPH.PRO</span>
+      <span class="font-serif text-xl text-[var(--color-heading)] tracking-widest">黃某人</span>
+      <span class="font-sans text-xs text-[var(--color-accent-dark)] tracking-[3px] hidden sm:inline">RANDOLPH.PRO</span>
     </a>
 
     <!-- Desktop Nav -->
@@ -31,7 +31,7 @@ const navItems = [
         <a
           href={item.href}
           class:list={[
-            'font-sans text-[11px] tracking-[2px] border-none transition-colors',
+            'font-sans text-sm tracking-[2px] border-none transition-colors',
             currentPath === item.href
               ? 'text-[var(--color-heading)] border-b border-[var(--color-heading)] pb-0.5'
               : 'text-[var(--color-muted)] hover:text-[var(--color-heading)]',

@@ -37,26 +37,26 @@ const recentPosts = allPosts.slice(0, 5);
       痴
     </div>
 
-    <div class="font-sans text-[11px] tracking-[6px] text-[var(--color-accent-dark)] mb-5">
+    <div class="font-sans text-sm tracking-[6px] text-[var(--color-accent-dark)] mb-5">
       {volumeLabel}
     </div>
     <div class="w-10 h-px bg-[var(--color-accent)] mx-auto mb-6"></div>
 
     <div>
-      <h2 id="cover-title" class="text-[28px] text-[var(--color-heading)] tracking-[4px] mb-3">
+      <h2 id="cover-title" class="text-4xl text-[var(--color-heading)] tracking-[4px] mb-4">
         {coverCandidates[0]?.title}
       </h2>
-      <div id="cover-category" class="font-sans text-[12px] text-[var(--color-muted)] tracking-wider mb-6">
+      <div id="cover-category" class="font-sans text-base text-[var(--color-muted)] tracking-wider mb-6">
         随机推荐 · {coverCandidates[0]?.category}
       </div>
-      <p id="cover-desc" class="max-w-lg mx-auto text-[13px] text-[var(--color-muted)] leading-[2.2]">
+      <p id="cover-desc" class="max-w-2xl mx-auto text-lg text-[var(--color-muted)] leading-[2.2]">
         {coverCandidates[0]?.description}
       </p>
-      <div class="mt-6">
+      <div class="mt-8">
         <a
           id="cover-link"
           href={`/posts/${coverCandidates[0]?.id}/`}
-          class="inline-block font-sans text-[11px] text-[var(--color-accent-dark)] border border-[var(--color-border-dark)] px-5 py-1.5 tracking-[2px] hover:bg-[var(--color-accent)] hover:text-[var(--color-bg)] transition-colors"
+          class="inline-block font-sans text-sm text-[var(--color-accent-dark)] border border-[var(--color-border-dark)] px-6 py-2 tracking-[2px] hover:bg-[var(--color-accent)] hover:text-[var(--color-bg)] transition-colors"
         >
           阅读全文
         </a>
@@ -68,8 +68,8 @@ const recentPosts = allPosts.slice(0, 5);
   <div class="w-3/5 h-px mx-auto" style="background: linear-gradient(90deg, transparent, var(--color-border-dark), transparent);"></div>
 
   <!-- Recent Articles -->
-  <div class="max-w-lg mx-auto px-6 lg:px-10 py-10">
-    <div class="font-sans text-[10px] tracking-[4px] text-[var(--color-accent-dark)] mb-5">
+  <div class="max-w-2xl mx-auto px-6 lg:px-10 py-10">
+    <div class="font-sans text-sm tracking-[4px] text-[var(--color-accent-dark)] mb-6">
       近期文章
     </div>
 
