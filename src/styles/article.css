@@ -46,13 +46,22 @@
 }
 
 /* Lists */
-.article-content ul,
+.article-content ul {
+  font-size: 1rem;
+  line-height: 2;
+  margin-bottom: 1.2em;
+  padding-left: 1.8em;
+  color: var(--color-text);
+  list-style-type: disc;
+}
+
 .article-content ol {
   font-size: 1rem;
   line-height: 2;
   margin-bottom: 1.2em;
-  padding-left: 1.5em;
+  padding-left: 1.8em;
   color: var(--color-text);
+  list-style-type: decimal;
 }
 
 .article-content li {
