@@ -9,7 +9,7 @@ draft: false
 
 ![](https://farm5.staticflickr.com/4399/36206153111_6662041dd1_o.png)
 
-> ** 更多 AI 文章： ** [查看 AI 分类](/categories/AI/)
+> **更多 AI 文章：** [查看 AI 分类](/categories/AI/)
 
 # Cross Entropy Introduction
 
@@ -97,13 +97,13 @@ $$
 `sparse_softmax_cross_entropy_with_logits` 是 `softmax_cross_entropy_with_logits`的易用版本，除了输入参数不同，作用和算法实现都是一样的。前面提到`softmax_cross_entropy_with_logits`的输入必须是类似 **onehot encoding** 的多维特征，但 CIFAR-10、ImageNet 和大部分分类场景都只有一个分类目标，label值都是从 0 编码的整数，每次转成 onehot encoding 比较麻烦，有没有更好的方法呢？答案就是用 `sparse_softmax_cross_entropy_with_logits`：
 
 - 它的第一个参数 logits 和前面一样，shape 是 `[batch_size, num_classes]`。
-- 而第二个参数 labels，`softmax_cross_entropy_with_logits `规定 shape 必须是 `[batch_size, num_classes]`，否则无法做 Cross Entropy。这意味着，labels 的值必须是从 0 开始编码的 int32 或 int64，而且值范围是 `[0, num_class)`，如果我们从 1 开始编码或者步长大于 1，会导致某些 label 值超过这个范围，代码会直接报错退出，这也很好理解，TensorFlow 通过这样的限制才能知道用户传入的 3、6 或者 9 对应是哪个 class。而 **`sparse`** 版本，则允许 labels 的 shape 是 `[batch_size]`，通过在内部高效实现类似的 **onehot encoding** ，从而简化用户的输入。
+- 而第二个参数 labels，`softmax_cross_entropy_with_logits `规定 shape 必须是 `[batch_size, num_classes]`，否则无法做 Cross Entropy。这意味着，labels 的值必须是从 0 开始编码的 int32 或 int64，而且值范围是 `[0, num_class)`，如果我们从 1 开始编码或者步长大于 1，会导致某些 label 值超过这个范围，代码会直接报错退出，这也很好理解，TensorFlow 通过这样的限制才能知道用户传入的 3、6 或者 9 对应是哪个 class。而 **`sparse`** 版本，则允许 labels 的 shape 是 `[batch_size]`，通过在内部高效实现类似的 <strong>onehot encoding</strong>，从而简化用户的输入。
 
-因此，如果用户已经做了 **onehot encoding** 那可以直接使用不带 `softmax_cross_entropy_with_logits` 函数，如果还没有进行 **onehot encoding** ，则可以选择使用 `sparse_softmax_cross_entropy_with_logits` 函数。
+因此，如果用户已经做了 **onehot encoding** 那可以直接使用不带 `softmax_cross_entropy_with_logits` 函数，如果还没有进行 <strong>onehot encoding</strong>，则可以选择使用 `sparse_softmax_cross_entropy_with_logits` 函数。
 
 ## weighted_cross_entropy_with_logits
 
-`weighted_cross_entropy_with_logits` 是 `sigmoid_cross_entropy_with_logits` 的拓展版，输入参数和实现和后者差不多，只是可以多支持一个`pos_weight`参数，目的是可以增加或者减小正样本在算 Cross Entropy 时的 Loss。实现原理很简单，在传统基于 Sigmoid 的交叉熵算法上，正样本算出的值乘以某个系数 **`pos_weight`** ，算法实现如下：
+`weighted_cross_entropy_with_logits` 是 `sigmoid_cross_entropy_with_logits` 的拓展版，输入参数和实现和后者差不多，只是可以多支持一个`pos_weight`参数，目的是可以增加或者减小正样本在算 Cross Entropy 时的 Loss。实现原理很简单，在传统基于 Sigmoid 的交叉熵算法上，正样本算出的值乘以某个系数 <strong>`pos_weight`</strong>，算法实现如下：
 
 ```python
   """

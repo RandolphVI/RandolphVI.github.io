@@ -9,7 +9,7 @@ draft: false
 
 ![](https://farm5.staticflickr.com/4373/35507009504_3298ce3029_o.jpg)
 
-> ** 更多 AI 文章： ** [查看 AI 分类](/categories/AI/)
+> **更多 AI 文章：** [查看 AI 分类](/categories/AI/)
 
 ## 「Field-aware Factorization Machines for CTR Prediction 」
 
@@ -129,7 +129,7 @@ $$
 
 #### Experiment Setting
 
-**1. 数据集 **
+**1. 数据集**
 
 数据集为 Kaggle 两个比赛的数据集：
 
@@ -141,7 +141,7 @@ $$
 | Criteo   | 45,840,617 | $10^6$   | 39     |
 | Avazu    | 40,428,968 | $10^6$   | 33     |
 
-**2. 模型训练及参数 **
+**2. 模型训练及参数**
 
 模型的优化方法为普通的 SG （Stochastic Gradient），再加上 FFM 中需要我们设定的超参数 $k$ ，因此模型的参数为： 
 
@@ -149,7 +149,7 @@ $$
 - $\lambda$ 学习率；
 - $\eta$ 步长；
 
-**3. 实验结果 **
+**3. 实验结果**
 
 ![FFM](https://farm5.staticflickr.com/4552/24489629838_2654e8c9e6_o.png)
 

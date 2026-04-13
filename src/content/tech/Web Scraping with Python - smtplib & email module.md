@@ -9,12 +9,12 @@ draft: false
 
 ![](https://farm5.staticflickr.com/4316/36049777032_f975ed0941_o.jpg)
 
-> ** 本系列文章： ** [Chapter 1 & 2](/tech/web-scraping-with-python---chapter-1--2/) · [Chapter 3](/tech/web-scraping-with-python---chapter-3/) · [Chapter 4 & 5](/tech/web-scraping-with-python---chapter-4--5/) · [smtplib & email module](/tech/web-scraping-with-python---smtplib--email-module/)
+> **本系列文章：** [Chapter 1 & 2](/tech/web-scraping-with-python---chapter-1--2/) · [Chapter 3](/tech/web-scraping-with-python---chapter-3/) · [Chapter 4 & 5](/tech/web-scraping-with-python---chapter-4--5/) · [smtplib & email module](/tech/web-scraping-with-python---smtplib--email-module/)
 
 
 # smtplib module
 
-使用 python 脚本发邮件，一般会用到 **`smtplib`** 和 **`email`** 这两个模块。 **`smtplib`** 模块定义了一个简单的 SMTP 客户端，可以用来在互联网上发送邮件。参考下面的程序：
+使用 python 脚本发邮件，一般会用到 **`smtplib`** 和 **`email`** 这两个模块。<strong>`smtplib`</strong> 模块定义了一个简单的 SMTP 客户端，可以用来在互联网上发送邮件。参考下面的程序：
 
 ```python
 from email.header import Header
@@ -63,7 +63,7 @@ smtpObj.sendmail(sender, receivers, msg.as_string())
 smtpObj.quit()
 ```
 
-smtp 实例封装一个 smtp 连接，它支持所有的 SMTP 和 ESMTP 操作指令，如果 host 和 port 参数被定义，则 smtp 会在初始化期间自动调用 **`connect()`** 方法，如果 **`connect()`** 方法失败，则会触发 **`SMTPConnectError`** 异常， **`timeout`** 参数设置了超时时间。在一般的调用过程中，应该遵 **`connect()`** 、 **`sendmail()`** 、 **`quit()`** 步骤。
+smtp 实例封装一个 smtp 连接，它支持所有的 SMTP 和 ESMTP 操作指令，如果 host 和 port 参数被定义，则 smtp 会在初始化期间自动调用 **`connect()`** 方法，如果 **`connect()`** 方法失败，则会触发 **`SMTPConnectError`** 异常，<strong>`timeout`</strong> 参数设置了超时时间。在一般的调用过程中，应该遵 <strong>`connect()`</strong>、<strong>`sendmail()`</strong>、<strong>`quit()`</strong>步骤。
 
 ------
 
@@ -113,7 +113,7 @@ MIME 消息由消息头和消息体两大部分组成，在邮件里就是邮件
 - **`email.message`**
 - **`email.parser`**
 - **`email.generator`**
-- **`email.mime` （创建 email 和 MIME 对象） **
+- **`email.mime` （创建 email 和 MIME 对象）**
 - **`email.header`**
 - **`email.charset`**
 - **`email.encoders`**
@@ -121,7 +121,7 @@ MIME 消息由消息头和消息体两大部分组成，在邮件里就是邮件
 - **`email.utils`**
 - **`email.iterators`**
 
-主要来看看 **`email.mime`** ，在邮件中携带附件、图片、音频时，主要使用的是该模块。一般情况下，你通过解析一个文件或者一段text来生成一个消息对象结构，你也可以从头开始建立一个消息结构，实际上，你可以给一个已经存在的消息结构追加一个新的消息对象。你可以通过创建 message 实例来创建一个对象结构，然后给该结构追加附件和头部信息。email 包提供了一些子类使得该操作变得很容易。
+主要来看看 <strong>`email.mime`</strong>，在邮件中携带附件、图片、音频时，主要使用的是该模块。一般情况下，你通过解析一个文件或者一段text来生成一个消息对象结构，你也可以从头开始建立一个消息结构，实际上，你可以给一个已经存在的消息结构追加一个新的消息对象。你可以通过创建 message 实例来创建一个对象结构，然后给该结构追加附件和头部信息。email 包提供了一些子类使得该操作变得很容易。
 
 模拟在邮件内容中携带图片，代码如下：
 
@@ -187,7 +187,7 @@ smtpObj.quit()
 
 ## Send email with attachment
 
-发送带附件的邮件，首先要创建 **`MIMEMultipart()`** 实例，然后构造附件，如果有多个附件，可依次构造，最后利用 **`smtplib.smtp`** 发送。
+发送带附件的邮件，首先要创建<strong>`MIMEMultipart()`</strong>实例，然后构造附件，如果有多个附件，可依次构造，最后利用<strong>`smtplib.smtp`</strong>发送。
 
 模拟在邮件中携带附件，代码如下：
 ```python

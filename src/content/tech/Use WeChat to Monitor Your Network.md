@@ -9,7 +9,7 @@ draft: false
 
 ![](https://farm5.staticflickr.com/4399/36206153111_6662041dd1_o.png)
 
-> ** 更多 AI 文章： ** [查看 AI 分类](/categories/AI/)
+> **更多 AI 文章：** [查看 AI 分类](/categories/AI/)
 
 # Introduction
 
@@ -19,7 +19,7 @@ draft: false
 
 ![](https://farm4.staticflickr.com/3767/32574547714_59711d3f0b_o.jpg)
 
-程序用到的主角是 Python 中的微信个人号接口 **itchat** 。[What's itchat?](https://itchat.readthedocs.io/zh/latest/) （itchat 的介绍及安装过程）
+程序用到的主角是 Python 中的微信个人号接口 <strong>itchat</strong>。[What's itchat?](https://itchat.readthedocs.io/zh/latest/) （itchat 的介绍及安装过程）
 
 这次，我们要监控的模型是先前提到过的 [基于 MNIST 手写体数据集的 CNN 模型](/tech/tensorboard/)。
 
@@ -319,7 +319,7 @@ if __name__ == '__main__':
 3. 加了一个带锁的状态量 **`running`** 用来做为发送微信消息的运行开关。
 4. 写了一个 itchat 的 handler（就是上图）。其作用就是当程序运行，我们需要在微信中，对自己的微信号发送「开始」，模型才会开始训练，为了防止信息阻塞，所以要用到 **`threading`** 将其放在另一个线程当中。在训练的过程中，如果我们觉得结果已到达我们自己的预期，可以微信发送「停止」来停止模型的训练过程。
 
-** 另外，脚本刚开始运行时，程序会弹出一个包含二维码的图片，我们需要通过微信来扫描该二维码，来登陆微信并启动 itchat 的服务。 **
+**另外，脚本刚开始运行时，程序会弹出一个包含二维码的图片，我们需要通过微信来扫描该二维码，来登陆微信并启动 itchat 的服务。**
 
 程序是包含了 Tensorboard 绘图的，所以等模型训练好，我们依然是可以通过 Tensorboard 来更加详细地查看我们模型的训练过程。 
 

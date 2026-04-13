@@ -9,7 +9,7 @@ draft: false
 
 ![](https://farm5.staticflickr.com/4307/36174772306_62cfbc8cd6_o.jpg)
 
-> ** 本系列文章： ** [Chapter 1](/tech/machine-learning---chapter-1/) · [Chapter 2](/tech/machine-learning---chapter-2/) · [Clustering](/tech/clustering/) · [KNN & kd Tree](/tech/machine-learning---knn--kd-tree/)
+> **本系列文章：** [Chapter 1](/tech/machine-learning---chapter-1/) · [Chapter 2](/tech/machine-learning---chapter-2/) · [Clustering](/tech/clustering/) · [KNN & kd Tree](/tech/machine-learning---knn--kd-tree/)
 
 # 聚类介绍
 
@@ -21,27 +21,27 @@ draft: false
 ----
 ## 聚类算法
 
-** 角度I： **
+**角度I：**
 
-*    ** 基于原型的聚类（Prototype-based Clustering） **
-     *   **K均值聚类（K-means） **
-     *   ** 学习向量量化聚类（Learning Vector Quantization） **
-     *   ** 高斯混合模型聚类 （Gaussian Mixture Model） **
-*    ** 基于密度的聚类 （Density-based Clustering） **
-     *   **DBSCAN （Density-Based Spatial Clustering of Application with Noise） **
-     *   **OPTICS （Ordering Points To Identify the Clustering Structure） **
-*    ** 层次聚类 （Hierarchical Clustering） **
-*    ** 基于模型的聚类 （Model-based Clustering） **
-     *   ** 混合回归模型 （Mixture Regression Model） **
+*    **基于原型的聚类（Prototype-based Clustering）**
+     *   **K均值聚类（K-means）**
+     *   **学习向量量化聚类（Learning Vector Quantization）**
+     *   **高斯混合模型聚类 （Gaussian Mixture Model）**
+*    **基于密度的聚类 （Density-based Clustering）**
+     *   **DBSCAN （Density-Based Spatial Clustering of Application with Noise）**
+     *   **OPTICS （Ordering Points To Identify the Clustering Structure）**
+*    **层次聚类 （Hierarchical Clustering）**
+*    **基于模型的聚类 （Model-based Clustering）**
+     *   **混合回归模型 （Mixture Regression Model）**
 
-** 角度II： **
+**角度II：**
 
-*   ** 基于中心的聚类： kmeans聚类 **
-*   ** 基于分布的聚类： GMM聚类 **
-*   ** 基于密度的聚类： DBSCAN, OPTICS**
-*   ** 基于连通性的聚类： 层次聚类 **
-*   ** 基于模型的聚类： Miture Regression Model**
-*   ** 其他聚类方法： 谱聚类, Chameleon, Canopy…**
+*   **基于中心的聚类： kmeans聚类**
+*   **基于分布的聚类： GMM聚类**
+*   **基于密度的聚类： DBSCAN, OPTICS**
+*   **基于连通性的聚类： 层次聚类**
+*   **基于模型的聚类： Miture Regression Model**
+*   **其他聚类方法： 谱聚类, Chameleon, Canopy…**
 
 ----
 ## 聚类数据设置
@@ -84,19 +84,19 @@ $$
 
 ## 聚类性能度量
 
-** 聚类性能度量亦称聚类“有效性指标”（validity index）。 **
+**聚类性能度量亦称聚类“有效性指标”（validity index）。**
 
-** 设置聚类性能度量的目的:**
+**设置聚类性能度量的目的:**
 
 - 对聚类结果，通过某种性能度量来评估其好坏；
 - 若明确了最终将要使用的性能度量，则可直接将其作为聚类过程的优化目标，从而更好地得到符合要求的聚类结果。
 
-** 什么样的聚类结果比较好？ **
+**什么样的聚类结果比较好？**
 
 - “簇内相似度”（intra-cluster similarity）高
 - “蔟间相似度”（inter-cluster similarity）低
 
-** 聚类性能度量分类： **
+**聚类性能度量分类：**
 
 - “外部指标”（external index）：将聚类结果与某个“参考模型”（reference model）进行比较。
 - “内部指标”（internal index）：直接考察聚类结果而不利用任何参考模型。
@@ -145,7 +145,7 @@ JC系数的结果分布在$[0,1]$区间，值越大越好。个人总结，JC系
 
 > The Jaccard index is also more general than the SMC and can be used to compare other data types than just vectors of binary attributes, such as Probability measures.
 
-上段重点的大体意思是：JC的一个适用场景，例如商场或者电商（亚马逊）的用户们，在买东西的时候，我们对其相似性进行判断的时候，SMC（Simple Matching Coefficient）简单匹配系数并不太适用，是因为SMC中添加了（两个顾客都不感兴趣的商品这一信息），而JC并没有考虑这一部分。对于琳琅满目的商品信息而言，两个顾客不感兴趣的商品应该远远多于他们感兴趣的商品，简而言之，如果将顾客对所有的商品向量进行标记，感兴趣的为1，不感兴趣的为0，那么得到的这个向量应当是一个非常稀疏的。在这种情况下，如果使用SMC，势必会导致结果很小，但是实际上我们完全可以不考虑两个顾客都不感兴趣的内容，而是考虑两个顾客感兴趣的商品信息之和，对其进行计算，相对于SMC，得到的结果会好解释许多。就像那句话说的， **JC就好比是一个局域性的“相似性”比较的衡量指标，而SMC就好比是要考虑整个宏观宇宙之下的“相似性”比较 ** 。
+上段重点的大体意思是：JC的一个适用场景，例如商场或者电商（亚马逊）的用户们，在买东西的时候，我们对其相似性进行判断的时候，SMC（Simple Matching Coefficient）简单匹配系数并不太适用，是因为SMC中添加了（两个顾客都不感兴趣的商品这一信息），而JC并没有考虑这一部分。对于琳琅满目的商品信息而言，两个顾客不感兴趣的商品应该远远多于他们感兴趣的商品，简而言之，如果将顾客对所有的商品向量进行标记，感兴趣的为1，不感兴趣的为0，那么得到的这个向量应当是一个非常稀疏的。在这种情况下，如果使用SMC，势必会导致结果很小，但是实际上我们完全可以不考虑两个顾客都不感兴趣的内容，而是考虑两个顾客感兴趣的商品信息之和，对其进行计算，相对于SMC，得到的结果会好解释许多。就像那句话说的，<strong>JC就好比是一个局域性的“相似性”比较的衡量指标，而SMC就好比是要考虑整个宏观宇宙之下的“相似性”比较</strong>。
 
 
 #### FMI (Fowlkes and Mallows Index)
@@ -173,7 +173,7 @@ RI系数的结果分布在$[0,1]$区间，值越大越好。关于RI系数的数
 
 #### ARI (Adjusted Rand Index)
 
-  在 **RI（Rand Index） ** 的评判基础上，为了实现“在聚类结果随机产生的情况下，指标应该接近零”， **ARI（Adjusted Rand Index） ** 系数被提出，它具有更高的区分度。
+  在<strong>RI（Rand Index）</strong>的评判基础上，为了实现“在聚类结果随机产生的情况下，指标应该接近零”，<strong>ARI（Adjusted Rand Index）</strong>系数被提出，它具有更高的区分度。
 
   > A problem with the Rand index is that the expected value of the Rand index of two random partitions does not take a constant value (say zero). The adjusted Rand index proposed by [Hubert and Arabie, 1985] assumes the generalized hypergeometric distribution as the model of randomness, i.e., the $U$ and $V$ partitions are picked at random such that the number of objects in the classes and clusters are fixed.
 $$
@@ -302,14 +302,14 @@ DI系数结果为非负数，值越大意味着簇间距离越大，同时簇内
 
 ## 聚类距离计算
 
-** 距离度量（distance measure）函数 $dist(,)$ 需满足的基本性质： **
+**距离度量（distance measure）函数 $dist(,)$ 需满足的基本性质：**
 
-- ** 非负性 ** ：$$dist(x_{i}, x_{j}) \geqslant 0$$
-- ** 同一性 ** ：$$dist(x_{i}, x_{j})=0$$ 当且仅当 $$x_{i}=x_{j}$$
-- ** 对称性 ** ：$$dist(x_{i}, x_{j})=dist(x_{j}, x_{i})$$
-- ** 直递性 ** ：$$dist(x_{i}, x_{j}) \leqslant dist(x_{i}, x_{k}) + dist(x_{k}, x_{j})$$ (可不满足)
+- <strong>非负性</strong>：$$dist(x_{i}, x_{j}) \geqslant 0$$
+- <strong>同一性</strong>：$$dist(x_{i}, x_{j})=0$$ 当且仅当 $$x_{i}=x_{j}$$
+- <strong>对称性</strong>：$$dist(x_{i}, x_{j})=dist(x_{j}, x_{i})$$
+- <strong>直递性</strong>：$$dist(x_{i}, x_{j}) \leqslant dist(x_{i}, x_{k}) + dist(x_{k}, x_{j})$$ (可不满足)
 
-** 变量属性： **
+**变量属性：**
 
 - 连续属性： 闵可夫斯基距离
 - 离散属性
@@ -359,26 +359,26 @@ $$
 
 # 聚类算法介绍及实现
 
-** 聚类算法类型： **
+**聚类算法类型：**
 
-- ** 基于原型的聚类（Prototype-based Clustering） **
-  - **K均值聚类（K-means） **
-  - ** 学习向量量化聚类（Learning vector Quantization） **
-  - ** 高斯混合聚类（Mixture-of-Gaussian） **
+- **基于原型的聚类（Prototype-based Clustering）**
+  - **K均值聚类（K-means）**
+  - **学习向量量化聚类（Learning vector Quantization）**
+  - **高斯混合聚类（Mixture-of-Gaussian）**
 
-- ** 基于密度的聚类（Density-based Clustering） **
+- **基于密度的聚类（Density-based Clustering）**
 
-- ** 层次聚类（Hierarchical Clustering） **
+- **层次聚类（Hierarchical Clustering）**
 
 ---
 ## 基于原型的聚类
 
-** 基于原型的聚类（Prototype-based Clustering），此类算法假设聚类结构能通过一组原形刻画。通常情况下，算法先对原型进行初始化，然后对原型进行迭代更新求解，采用不同的原型表示，不同的求解方式，将产生不同的算法。 **
+**基于原型的聚类（Prototype-based Clustering），此类算法假设聚类结构能通过一组原形刻画。通常情况下，算法先对原型进行初始化，然后对原型进行迭代更新求解，采用不同的原型表示，不同的求解方式，将产生不同的算法。**
 
-- ** 基于原型的聚类（Prototype-based Clustering） **
-  - **K均值聚类（K-means） **
-  - ** 学习向量量化聚类（Learning vector Quantization） **
-  - ** 高斯混合聚类（Mixture-of-Gaussian） **
+- **基于原型的聚类（Prototype-based Clustering）**
+  - **K均值聚类（K-means）**
+  - **学习向量量化聚类（Learning vector Quantization）**
+  - **高斯混合聚类（Mixture-of-Gaussian）**
 
 ### K均值聚类（K-means）
 
@@ -484,7 +484,7 @@ table(irisCluster$cluster, iris$Species)
 
 #### 算法介绍
 
-**LVQ 假设数据样本带有类别标记，学习过程利用样本的这些监督信息来辅助聚类。 **
+**LVQ 假设数据样本带有类别标记，学习过程利用样本的这些监督信息来辅助聚类。**
 
 给定样本集 $$D=\lbrace (x_{1}, y_{1}), (x_{2}, y_{2}), \ldots, (x_{m}, y_{m}) \rbrace$$，每个样本$$x_{j}$$是由$n$个属性描述的特征向量$$(x_{j1}; x_{j2}; \ldots; x_{jn})$$,$$y_{j} \in \mathcal{Y}$$是样本$$x_{j}$$的类别标记。LVQ的目标是学得一组$n$维原型向量$$\lbrace p_{1}, p_{2}, \ldots, p_{q} \rbrace$$, 每个原型向量代表一个聚类簇，簇标记为$$t_{i}\in \mathcal{Y}$$。
 
@@ -492,7 +492,7 @@ table(irisCluster$cluster, iris$Species)
 
 ![学习向量量化方法](https://farm5.staticflickr.com/4320/36049858912_c400743b7f_o.png)
 
-** 算法解释 **
+**算法解释**
 
 * 算法第1行：对原型向量进行初始化。例如：对第$i,i=(1,2,\ldots,q)$个簇，可以从类别标记为$t_{i}$的样本中随机选取一个作为原型向量。
 * 算法第2-12行：对原型向量进行迭代优化。在每一轮迭代中，算法随机选取一个有标记训练样本，找出与其距离最近的原型向量，并根据两者的类别标记是否一致来对原型向量进行相应的更新。
@@ -541,7 +541,7 @@ ART (Adaptive Resonance Theory,自适应谐振理论）网络「Carpenter and Gr
 
 显然，识别阈值对ART网络的性能有重要影响。当识别阈值较高时，输入样本将会被分成比较多、比较精细的模式类，而如果识别阈值较低，则会产生比较少、比较粗略的模式类。
 
-ART比较好地缓解了竞争型学习中的“可塑性一稳定性窘境”（stability-- plasticity dilemma），可塑性是指神经网络要有学习新知识的能力，而稳定性则是指神经网络在学习新知识时要保持对旧知识的记忆．这就使得ART网络具有一个很重要的优点：可进行 ** 增量学习（incremental learning） ** 或 ** 在线学习（online learning)** 。
+ART比较好地缓解了竞争型学习中的“可塑性一稳定性窘境”（stability-- plasticity dilemma），可塑性是指神经网络要有学习新知识的能力，而稳定性则是指神经网络在学习新知识时要保持对旧知识的记忆．这就使得ART网络具有一个很重要的优点：可进行<strong>增量学习（incremental learning）</strong>或<strong>在线学习（online learning)</strong>。
 
 早期的ART网络只能处理布尔型输入数据，此后ART发展成了一个算法族，包括能处理实值输入的ART2网络、结合模糊处理的FuzzyART网络，以及可进行监督学习的ARTMAP网络等。 
 
@@ -558,7 +558,7 @@ SOM (Self-Organizing Map，自组织映射）网络「Kohollen, 1982」是一种
 
 #### 算法介绍
 
-与 $k$ 均值、LVQ用原型向量来刻画聚类结构不同， ** 高斯混合聚类(Mixture-of-Gaussian)采用概率模型来表达聚类原型 ** 。
+与 $k$ 均值、LVQ用原型向量来刻画聚类结构不同，<strong>高斯混合聚类(Mixture-of-Gaussian)采用概率模型来表达聚类原型</strong>。
 
 ##### （多元）高斯分布：
 
@@ -645,7 +645,7 @@ $$
 ---
 
 
-# ** 各聚类算法过程 **
+# **各聚类算法过程**
 
 使用西瓜数据集合：
 
