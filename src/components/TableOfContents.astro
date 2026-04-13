@@ -8,15 +8,15 @@ const tocItems = headings.filter((h) => h.depth <= 3);
 ---
 
 <nav class="sticky top-24" id="toc-nav">
-  <div class="font-sans text-[9px] tracking-[3px] text-[var(--color-accent-dark)] mb-3">
+  <div class="font-sans text-xs tracking-[3px] text-[var(--color-accent-dark)] mb-4">
     目录
   </div>
-  <div class="border-l border-[var(--color-border-dark)] pl-2.5">
+  <div class="border-l border-[var(--color-border-dark)] pl-3">
     {tocItems.map((item) => (
       <a
         href={`#${item.slug}`}
         class:list={[
-          'block text-[10px] mb-2 border-none transition-colors toc-link',
+          'block text-sm mb-2.5 border-none transition-colors toc-link leading-snug',
           'text-[var(--color-muted)] hover:text-[var(--color-heading)]',
           item.depth === 3 && 'ml-3',
         ]}

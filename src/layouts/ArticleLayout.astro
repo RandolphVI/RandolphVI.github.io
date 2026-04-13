@@ -67,27 +67,30 @@ const showTOC = headings.filter((h) => h.depth <= 3).length >= 3;
         <EndMark />
 
         <!-- Tags -->
-        <div class="flex gap-2 justify-center mt-6">
+        <div class="flex flex-wrap gap-2 justify-center mt-6">
           {tags.map((tag) => (
-            <span class="font-sans text-xs text-[var(--color-accent-dark)] border border-[var(--color-border-dark)] px-3 py-1">
+            <a
+              href={`/tags/${encodeURIComponent(tag)}/`}
+              class="font-sans text-xs text-[var(--color-accent-dark)] border border-[var(--color-border-dark)] px-3 py-1 hover:bg-[var(--color-accent)] hover:text-[var(--color-bg)] transition-colors border-b-0"
+            >
               {tag}
-            </span>
+            </a>
           ))}
         </div>
 
         <!-- Prev / Next Navigation -->
         {(prevPost || nextPost) && (
-          <div class="mt-10 pt-6 border-t border-[var(--color-border)] flex justify-between text-sm">
+          <div class="mt-12 pt-6 border-t border-[var(--color-border)] flex justify-between">
             {prevPost ? (
               <a href={prevPost.href} class="border-none group">
-                <div class="text-[var(--color-faint)] text-[9px] tracking-[2px] font-sans mb-1">← 上一篇</div>
-                <div class="text-[var(--color-muted)] group-hover:text-[var(--color-heading)] transition-colors">{prevPost.title}</div>
+                <div class="text-[var(--color-faint)] text-xs tracking-[2px] font-sans mb-1">← 上一篇</div>
+                <div class="text-base text-[var(--color-muted)] group-hover:text-[var(--color-heading)] transition-colors">{prevPost.title}</div>
               </a>
             ) : <div />}
             {nextPost ? (
               <a href={nextPost.href} class="text-right border-none group">
-                <div class="text-[var(--color-faint)] text-[9px] tracking-[2px] font-sans mb-1">下一篇 →</div>
-                <div class="text-[var(--color-muted)] group-hover:text-[var(--color-heading)] transition-colors">{nextPost.title}</div>
+                <div class="text-[var(--color-faint)] text-xs tracking-[2px] font-sans mb-1">下一篇 →</div>
+                <div class="text-base text-[var(--color-muted)] group-hover:text-[var(--color-heading)] transition-colors">{nextPost.title}</div>
               </a>
             ) : <div />}
           </div>

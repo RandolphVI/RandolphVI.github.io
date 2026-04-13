@@ -1,0 +1,42 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import ArticleCard from '../../components/ArticleCard.astro';
+import { getAllArticles } from '../../utils/collections';
+
+export async function getStaticPaths() {
+  const articles = await getAllArticles();
+  const tagMap = new Map<string, typeof articles>();
+
+  articles.forEach((a) => {
+    (a.data.tags || []).forEach((tag: string) => {
+      if (!tagMap.has(tag)) tagMap.set(tag, []);
+      tagMap.get(tag)!.push(a);
+    });
+  });
+
+  return Array.from(tagMap.entries()).map(([tag, articles]) => ({
+    params: { tag },
+    props: { tag, articles },
+  }));
+}
+
+const { tag, articles } = Astro.props;
+---
+
+<PageLayout title={tag} englishTitle="TAG" description={`标签：${tag}`}>
+  <div class="max-w-2xl mx-auto">
+    {articles.map((article) => {
+      const href = article.collection === 'posts'
+        ? `/posts/${article.id}/`
+        : `/tech/${article.id}/`;
+      return (
+        <ArticleCard
+          title={article.data.title}
+          date={article.data.date}
+          description={article.data.description}
+          href={href}
+        />
+      );
+    })}
+  </div>
+</PageLayout>
