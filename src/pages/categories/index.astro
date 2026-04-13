@@ -1,28 +1,391 @@
 ---
-import PageLayout from '../../layouts/PageLayout.astro';
-import { getAllArticles } from '../../utils/collections';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getPublishedPosts, getPublishedTech } from '../../utils/collections';
 
-const articles = await getAllArticles();
+const posts = await getPublishedPosts();
+const tech = await getPublishedTech();
 
-const categoryMap = new Map<string, number>();
-articles.forEach((a) => {
-  const cat = a.data.category;
-  categoryMap.set(cat, (categoryMap.get(cat) || 0) + 1);
-});
-const categories = Array.from(categoryMap.entries()).sort((a, b) => b[1] - a[1]);
+// Build hierarchy for AI
+const aiArticles = tech.filter(a => a.data.category === 'AI');
+const aiBooks = aiArticles.filter(a => a.data.tags.includes('Books'));
+const aiPapers = aiArticles.filter(a => a.data.tags.includes('Papers') && !a.data.tags.includes('Books'));
+const aiDeepLearning = aiArticles.filter(a =>
+  (a.data.tags.includes('Deep Learning') || a.data.tags.includes('TensorFlow'))
+  && !a.data.tags.includes('Papers') && !a.data.tags.includes('Books')
+);
+const aiOther = aiArticles.filter(a =>
+  !a.data.tags.includes('Books') && !a.data.tags.includes('Papers')
+  && !a.data.tags.includes('Deep Learning') && !a.data.tags.includes('TensorFlow')
+);
+
+// Group books by series
+const mlBooks = aiBooks.filter(a => a.data.title.includes('Machine Learning'));
+const nlpBooks = aiBooks.filter(a => a.data.title.includes('NLP'));
+const pciBooks = aiBooks.filter(a => a.data.title.includes('Programming Collective'));
+const otherBooks = aiBooks.filter(a =>
+  !a.data.title.includes('Machine Learning') && !a.data.title.includes('NLP') && !a.data.title.includes('Programming Collective')
+);
+
+// 工具
+const toolArticles = tech.filter(a => a.data.category === '工具');
+const webScraping = toolArticles.filter(a => a.data.tags.includes('Web Scraping'));
+const toolOther = toolArticles.filter(a => !a.data.tags.includes('Web Scraping'));
+
+// 前端
+const frontendArticles = tech.filter(a => a.data.category === '前端');
+
+// 匯文
+const huiwen = posts.filter(a => a.data.category === '匯文');
+const huiwenCreation = huiwen.filter(a => a.data.tags.includes('创作'));
+const huiwenReading = huiwen.filter(a => a.data.tags.includes('读书'));
+const huiwenEssay = huiwen.filter(a => a.data.tags.includes('杂谈'));
+const huiwenClassic = huiwen.filter(a => a.data.tags.includes('匯文') && !a.data.tags.includes('创作') && !a.data.tags.includes('读书') && !a.data.tags.includes('杂谈'));
 ---
 
-<PageLayout title="分类" englishTitle="CATEGORIES" description="按分类浏览文章">
-  <div class="flex flex-wrap gap-4 justify-center max-w-xl mx-auto">
-    {categories.map(([name, count]) => (
-      <a
-        href={`/categories/${encodeURIComponent(name)}/`}
-        class="block px-8 py-4 text-center min-w-[120px] border-none hover:bg-[var(--color-surface)] transition-colors"
-        style="border: 1px solid var(--color-border-dark);"
-      >
-        <div class="text-lg text-[var(--color-heading)] tracking-wide">{name}</div>
-        <div class="text-sm text-[var(--color-faint)] mt-1 font-sans">{count} 篇</div>
-      </a>
-    ))}
+<BaseLayout title="分类" description="按分类浏览文章">
+  <div class="max-w-5xl mx-auto px-6 lg:px-10 py-16">
+    <div class="text-center mb-12">
+      <div class="font-sans text-sm tracking-[4px] text-[var(--color-accent-dark)] mb-3">CATEGORIES</div>
+      <h1 class="text-3xl tracking-[3px]">分类</h1>
+      <div class="w-8 h-px bg-[var(--color-accent)] mx-auto mt-4"></div>
+    </div>
+
+    <div class="space-y-8">
+
+      {/* === AI === */}
+      <div class="tree-branch">
+        <div class="tree-l1">
+          <a href="/categories/AI/" class="tree-label-l1 border-none">AI</a>
+          <span class="tree-count">{aiArticles.length}</span>
+        </div>
+        <div class="tree-children">
+          {/* Books */}
+          {aiBooks.length > 0 && (
+            <div class="tree-branch-inner">
+              <div class="tree-l2">
+                <span class="tree-label-l2">读书笔记</span>
+              </div>
+              <div class="tree-leaves">
+                {mlBooks.length > 0 && (
+                  <div class="tree-l3-group">
+                    <span class="tree-label-l3">Machine Learning（周志华）</span>
+                    <div class="tree-articles">
+                      {mlBooks.map(a => (
+                        <a href={`/tech/${a.id}/`} class="tree-article border-none">{a.data.title}</a>
+                      ))}
+                    </div>
+                  </div>
+                )}
+                {nlpBooks.length > 0 && (
+                  <div class="tree-l3-group">
+                    <span class="tree-label-l3">NLP with Python</span>
+                    <div class="tree-articles">
+                      {nlpBooks.map(a => (
+                        <a href={`/tech/${a.id}/`} class="tree-article border-none">{a.data.title}</a>
+                      ))}
+                    </div>
+                  </div>
+                )}
+                {pciBooks.length > 0 && (
+                  <div class="tree-l3-group">
+                    <span class="tree-label-l3">Programming Collective Intelligence</span>
+                    <div class="tree-articles">
+                      {pciBooks.map(a => (
+                        <a href={`/tech/${a.id}/`} class="tree-article border-none">{a.data.title}</a>
+                      ))}
+                    </div>
+                  </div>
+                )}
+                {otherBooks.map(a => (
+                  <a href={`/tech/${a.id}/`} class="tree-article border-none">{a.data.title}</a>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Papers */}
+          {aiPapers.length > 0 && (
+            <div class="tree-branch-inner">
+              <div class="tree-l2">
+                <span class="tree-label-l2">论文笔记</span>
+              </div>
+              <div class="tree-leaves">
+                {aiPapers.map(a => (
+                  <a href={`/tech/${a.id}/`} class="tree-article border-none">{a.data.title}</a>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Deep Learning / TensorFlow */}
+          {aiDeepLearning.length > 0 && (
+            <div class="tree-branch-inner">
+              <div class="tree-l2">
+                <span class="tree-label-l2">深度学习 & TensorFlow</span>
+              </div>
+              <div class="tree-leaves">
+                {aiDeepLearning.map(a => (
+                  <a href={`/tech/${a.id}/`} class="tree-article border-none">{a.data.title}</a>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Other AI */}
+          {aiOther.length > 0 && (
+            <div class="tree-branch-inner">
+              <div class="tree-l2">
+                <span class="tree-label-l2">其他</span>
+              </div>
+              <div class="tree-leaves">
+                {aiOther.map(a => (
+                  <a href={`/tech/${a.id}/`} class="tree-article border-none">{a.data.title}</a>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+
+      {/* === 工具 === */}
+      <div class="tree-branch">
+        <div class="tree-l1">
+          <a href="/categories/工具/" class="tree-label-l1 border-none">工具</a>
+          <span class="tree-count">{toolArticles.length}</span>
+        </div>
+        <div class="tree-children">
+          {webScraping.length > 0 && (
+            <div class="tree-branch-inner">
+              <div class="tree-l2">
+                <span class="tree-label-l2">Web Scraping with Python</span>
+              </div>
+              <div class="tree-leaves">
+                {webScraping.map(a => (
+                  <a href={`/tech/${a.id}/`} class="tree-article border-none">{a.data.title}</a>
+                ))}
+              </div>
+            </div>
+          )}
+          {toolOther.length > 0 && (
+            <div class="tree-branch-inner">
+              <div class="tree-l2">
+                <span class="tree-label-l2">其他工具</span>
+              </div>
+              <div class="tree-leaves">
+                {toolOther.map(a => (
+                  <a href={`/tech/${a.id}/`} class="tree-article border-none">{a.data.title}</a>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+
+      {/* === 匯文 === */}
+      <div class="tree-branch">
+        <div class="tree-l1">
+          <a href="/categories/匯文/" class="tree-label-l1 border-none">匯文</a>
+          <span class="tree-count">{huiwen.length}</span>
+        </div>
+        <div class="tree-children">
+          {huiwenCreation.length > 0 && (
+            <div class="tree-branch-inner">
+              <div class="tree-l2">
+                <span class="tree-label-l2">创作</span>
+              </div>
+              <div class="tree-leaves">
+                {huiwenCreation.map(a => (
+                  <a href={`/posts/${a.id}/`} class="tree-article border-none">{a.data.title}</a>
+                ))}
+              </div>
+            </div>
+          )}
+          {huiwenReading.length > 0 && (
+            <div class="tree-branch-inner">
+              <div class="tree-l2">
+                <span class="tree-label-l2">读书</span>
+              </div>
+              <div class="tree-leaves">
+                {huiwenReading.map(a => (
+                  <a href={`/posts/${a.id}/`} class="tree-article border-none">{a.data.title}</a>
+                ))}
+              </div>
+            </div>
+          )}
+          {huiwenEssay.length > 0 && (
+            <div class="tree-branch-inner">
+              <div class="tree-l2">
+                <span class="tree-label-l2">杂谈</span>
+              </div>
+              <div class="tree-leaves">
+                {huiwenEssay.map(a => (
+                  <a href={`/posts/${a.id}/`} class="tree-article border-none">{a.data.title}</a>
+                ))}
+              </div>
+            </div>
+          )}
+          {huiwenClassic.length > 0 && (
+            <div class="tree-branch-inner">
+              <div class="tree-l2">
+                <span class="tree-label-l2">匯文</span>
+              </div>
+              <div class="tree-leaves">
+                {huiwenClassic.map(a => (
+                  <a href={`/posts/${a.id}/`} class="tree-article border-none">{a.data.title}</a>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+
+      {/* === 前端 === */}
+      {frontendArticles.length > 0 && (
+        <div class="tree-branch">
+          <div class="tree-l1">
+            <a href="/categories/前端/" class="tree-label-l1 border-none">前端</a>
+            <span class="tree-count">{frontendArticles.length}</span>
+          </div>
+          <div class="tree-children">
+            <div class="tree-leaves">
+              {frontendArticles.map(a => (
+                <a href={`/tech/${a.id}/`} class="tree-article border-none">{a.data.title}</a>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
+
+    </div>
   </div>
-</PageLayout>
+</BaseLayout>
+
+<style>
+  /* === Mind Map Tree Styles === */
+  .tree-branch {
+    position: relative;
+    padding-left: 0;
+  }
+
+  .tree-l1 {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .tree-label-l1 {
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: var(--color-heading);
+    letter-spacing: 2px;
+    padding: 0.4rem 1.2rem;
+    border: 2px solid var(--color-accent) !important;
+    border-radius: 6px;
+    transition: all 0.2s;
+  }
+
+  .tree-label-l1:hover {
+    background: var(--color-accent);
+    color: var(--color-bg);
+  }
+
+  .tree-count {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 0.85rem;
+    color: var(--color-faint);
+  }
+
+  .tree-children {
+    margin-left: 2rem;
+    padding-left: 1.5rem;
+    border-left: 2px solid var(--color-border-light);
+  }
+
+  .tree-branch-inner {
+    position: relative;
+    margin: 0.75rem 0;
+  }
+
+  .tree-branch-inner::before {
+    content: '';
+    position: absolute;
+    left: -1.5rem;
+    top: 0.85rem;
+    width: 1.2rem;
+    height: 2px;
+    background: var(--color-border-light);
+  }
+
+  .tree-l2 {
+    margin-bottom: 0.4rem;
+  }
+
+  .tree-label-l2 {
+    font-size: 1.05rem;
+    color: var(--color-heading);
+    font-weight: 500;
+    padding: 0.2rem 0.8rem;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    display: inline-block;
+  }
+
+  .tree-leaves {
+    margin-left: 1.5rem;
+    padding-left: 1rem;
+    border-left: 1px solid var(--color-border-light);
+  }
+
+  .tree-l3-group {
+    margin: 0.5rem 0;
+    position: relative;
+  }
+
+  .tree-l3-group::before {
+    content: '';
+    position: absolute;
+    left: -1rem;
+    top: 0.7rem;
+    width: 0.8rem;
+    height: 1px;
+    background: var(--color-border-light);
+  }
+
+  .tree-label-l3 {
+    font-size: 0.9rem;
+    color: var(--color-accent-dark);
+    font-family: 'Josefin Sans', sans-serif;
+    margin-bottom: 0.3rem;
+    display: block;
+  }
+
+  .tree-articles {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    margin-left: 0.5rem;
+  }
+
+  .tree-article {
+    position: relative;
+    font-size: 0.9rem;
+    color: var(--color-text);
+    padding: 0.15rem 0 0.15rem 1rem;
+    transition: color 0.2s;
+    border-bottom: none !important;
+  }
+
+  .tree-article::before {
+    content: '·';
+    position: absolute;
+    left: 0;
+    color: var(--color-accent);
+    font-weight: bold;
+  }
+
+  .tree-article:hover {
+    color: var(--color-heading);
+  }
+</style>
