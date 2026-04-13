@@ -5,6 +5,7 @@ import { getReadingTime } from '../utils/reading-time';
 import ReadingProgress from '../components/ReadingProgress.astro';
 import TableOfContents from '../components/TableOfContents.astro';
 import Sidenotes from '../components/Sidenotes.astro';
+import ScrollButtons from '../components/ScrollButtons.astro';
 import '../styles/article.css';
 
 interface Props {
@@ -71,7 +72,8 @@ const showTOC = headings.filter((h) => h.depth <= 3).length >= 3;
           {tags.map((tag) => (
             <a
               href={`/tags/${encodeURIComponent(tag)}/`}
-              class="font-sans text-xs text-[var(--color-accent-dark)] border border-[var(--color-border-dark)] px-3 py-1 hover:bg-[var(--color-accent)] hover:text-[var(--color-bg)] transition-colors border-b-0"
+              class="font-sans text-xs text-[var(--color-accent-dark)] border border-[var(--color-border-dark)] px-3 py-1 hover:bg-[var(--color-accent)] hover:text-[var(--color-bg)] transition-colors !border-b !border-[var(--color-border-dark)]"
+              style="border-bottom: 1px solid var(--color-border-dark) !important;"
             >
               {tag}
             </a>
@@ -104,4 +106,5 @@ const showTOC = headings.filter((h) => h.depth <= 3).length >= 3;
     </div>
   </div>
   <Sidenotes />
+  <ScrollButtons />
 </BaseLayout>

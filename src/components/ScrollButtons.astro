@@ -1,0 +1,50 @@
+---
+---
+<div id="scroll-buttons" class="fixed right-6 bottom-8 z-40 flex flex-col gap-2 opacity-0 transition-opacity duration-300">
+  <button
+    id="scroll-top"
+    class="w-10 h-10 rounded-full bg-[var(--color-bg)] border border-[var(--color-border)] shadow-md flex items-center justify-center text-[var(--color-muted)] hover:text-[var(--color-heading)] hover:border-[var(--color-accent)] transition-colors cursor-pointer"
+    aria-label="返回顶部"
+    title="返回顶部"
+  >
+    ↑
+  </button>
+  <button
+    id="scroll-bottom"
+    class="w-10 h-10 rounded-full bg-[var(--color-bg)] border border-[var(--color-border)] shadow-md flex items-center justify-center text-[var(--color-muted)] hover:text-[var(--color-heading)] hover:border-[var(--color-accent)] transition-colors cursor-pointer"
+    aria-label="去底部"
+    title="去底部"
+  >
+    ↓
+  </button>
+</div>
+
+<script>
+  function initScrollButtons() {
+    const container = document.getElementById('scroll-buttons');
+    const topBtn = document.getElementById('scroll-top');
+    const bottomBtn = document.getElementById('scroll-bottom');
+    if (!container || !topBtn || !bottomBtn) return;
+
+    // Show/hide based on scroll position
+    function updateVisibility() {
+      const scrolled = window.scrollY > 300;
+      container!.style.opacity = scrolled ? '1' : '0';
+      container!.style.pointerEvents = scrolled ? 'auto' : 'none';
+    }
+
+    window.addEventListener('scroll', updateVisibility, { passive: true });
+    updateVisibility();
+
+    topBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    bottomBtn.addEventListener('click', () => {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    });
+  }
+
+  initScrollButtons();
+  document.addEventListener('astro:page-load', initScrollButtons);
+</script>
