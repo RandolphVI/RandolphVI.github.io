@@ -53,10 +53,10 @@ const archOther = archArticles.filter(a =>
 
 // --- 匯文 ---
 const huiwen = posts.filter(a => a.data.category === '匯文');
-const huiwenCreation = huiwen.filter(a => a.data.tags.includes('创作'));
+const huiwenNovel = huiwen.filter(a => a.data.tags.includes('小说'));
+const huiwenEssayProse = huiwen.filter(a => a.data.tags.includes('随笔'));
 const huiwenReading = huiwen.filter(a => a.data.tags.includes('读书'));
 const huiwenEssay = huiwen.filter(a => a.data.tags.includes('杂谈'));
-// huiwenClassic removed — 我与地坛 and 水之湄 now tagged as 创作
 
 const tabs = [
   { id: 'huiwen', label: '匯文', count: huiwen.length + techEssays.length },
@@ -98,11 +98,21 @@ const tabs = [
       {/* ========== 匯文 ========== */}
       <div class="cat-panel" data-panel="huiwen">
         <div class="tree-root">
-          {huiwenCreation.length > 0 && (
+          {huiwenNovel.length > 0 && (
             <div class="tree-node">
-              <div class="tree-node-label">创作</div>
+              <div class="tree-node-label">小说</div>
               <ul class="tree-list">
-                {huiwenCreation.map(a => (
+                {huiwenNovel.map(a => (
+                  <li><a href={`/posts/${a.id}/`} class="tree-link border-none">{a.data.title}</a></li>
+                ))}
+              </ul>
+            </div>
+          )}
+          {huiwenEssayProse.length > 0 && (
+            <div class="tree-node">
+              <div class="tree-node-label">随笔</div>
+              <ul class="tree-list">
+                {huiwenEssayProse.map(a => (
                   <li><a href={`/posts/${a.id}/`} class="tree-link border-none">{a.data.title}</a></li>
                 ))}
               </ul>
@@ -121,13 +131,27 @@ const tabs = [
           {(huiwenEssay.length > 0 || techEssays.length > 0) && (
             <div class="tree-node">
               <div class="tree-node-label">杂谈</div>
-              <ul class="tree-list">
-                {huiwenEssay.map(a => (
-                  <li><a href={`/posts/${a.id}/`} class="tree-link border-none">{a.data.title}</a></li>
-                ))}
-                {techEssays.map(a => (
-                  <li><a href={`/tech/${a.id}/`} class="tree-link border-none">{a.data.title}</a></li>
-                ))}
+              <div class="tree-sub-nodes">
+                {huiwenEssay.length > 0 && (
+                  <div class="tree-sub-node">
+                    <ul class="tree-list">
+                      {huiwenEssay.map(a => (
+                        <li><a href={`/posts/${a.id}/`} class="tree-link border-none">{a.data.title}</a></li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+                {techEssays.length > 0 && (
+                  <div class="tree-sub-node">
+                    <div class="tree-sub-label">科技碎碎念</div>
+                    <ul class="tree-list">
+                      {techEssays.map(a => (
+                        <li><a href={`/tech/${a.id}/`} class="tree-link border-none">{a.data.title}</a></li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </div>
               </ul>
             </div>
           )}

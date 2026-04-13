@@ -2,7 +2,7 @@
 title: "NLP with Python - Chapter 3"
 date: 2015-09-17
 category: "AI"
-tags: ["Machine Learning", "Natural Language Processing", "Python"]
+tags: ["Machine Learning", "Natural Language Processing", "Books", "Python"]
 description: "本文是关于「Natural Language Processing with Python」这本书的 Chapter 3 的学习笔记。"
 draft: false
 ---

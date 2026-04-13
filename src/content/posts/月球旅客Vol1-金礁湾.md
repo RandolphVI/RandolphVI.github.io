@@ -2,7 +2,7 @@
 title: "月球旅客 Vol.1 金礁湾"
 date: 2021-04-11
 category: "匯文"
-tags: ["创作"]
+tags: ["小说"]
 description: "长久以来，黄芾都处于睡眠不足的状态，这大概都源于他的职业。"
 featured: false
 draft: false
