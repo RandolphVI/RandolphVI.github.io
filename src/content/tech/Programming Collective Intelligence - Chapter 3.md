@@ -9,7 +9,7 @@ draft: false
 
 ![](https://farm5.staticflickr.com/4306/36216231065_8a7e508f9e_o.jpg)
 
-> **本系列文章：** [Chapter 1 & 2](/tech/programming-collective-intelligence-ch1-2/) · [Chapter 3](/tech/programming-collective-intelligence-ch3/)
+> **本系列文章：** [Chapter 1 & 2](/tech/programming-collective-intelligence---chapter-1--2/) · [Chapter 3](/tech/programming-collective-intelligence---chapter-3/)
 
 
 ## 皮尔逊相关系数：

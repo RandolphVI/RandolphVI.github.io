@@ -9,7 +9,7 @@ draft: false
 
 ![](https://farm5.staticflickr.com/4423/36425940061_fe957aaf15_o.jpg)
 
-> **本系列文章：** [Chapter 1 & 2](/tech/nlp-with-python-ch1-2/) · [Chapter 3](/tech/nlp-with-python-ch3/)
+> **本系列文章：** [Chapter 1 & 2](/tech/nlp-with-python---chapter-1--2/) · [Chapter 3](/tech/nlp-with-python---chapter-3/)
 
 
 ## The NLP Pipeline

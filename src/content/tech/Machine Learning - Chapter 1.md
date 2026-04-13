@@ -9,7 +9,7 @@ draft: false
 
 ![](https://farm5.staticflickr.com/4307/36174772306_62cfbc8cd6_o.jpg)
 
-> **本系列文章：** [Chapter 1](/tech/machine-learning-ch1/) · [Chapter 2](/tech/machine-learning-ch2/) · [Clustering](/tech/machine-learning-clustering/) · [KNN & kd Tree](/tech/machine-learning-knn-kd-tree/)
+> **本系列文章：** [Chapter 1](/tech/machine-learning---chapter-1/) · [Chapter 2](/tech/machine-learning---chapter-2/) · [Clustering](/tech/clustering/) · [KNN & kd Tree](/tech/machine-learning---knn--kd-tree/)
 
 
 我们可以把学习过程看做是一个在所有假设（hypothesis）组成的空间中进行搜索的过程，搜索目标就是找到与训练集“匹配”（fit）的假设。

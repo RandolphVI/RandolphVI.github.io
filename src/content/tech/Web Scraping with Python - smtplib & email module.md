@@ -9,7 +9,7 @@ draft: false
 
 ![](https://farm5.staticflickr.com/4316/36049777032_f975ed0941_o.jpg)
 
-> **本系列文章：** [Chapter 1 & 2](/tech/web-scraping-with-python-ch1-2/) · [Chapter 3](/tech/web-scraping-with-python-ch3/) · [Chapter 4 & 5](/tech/web-scraping-with-python-ch4-5/) · [smtplib & email module](/tech/web-scraping-with-python-smtplib/)
+> **本系列文章：** [Chapter 1 & 2](/tech/web-scraping-with-python---chapter-1--2/) · [Chapter 3](/tech/web-scraping-with-python---chapter-3/) · [Chapter 4 & 5](/tech/web-scraping-with-python---chapter-4--5/) · [smtplib & email module](/tech/web-scraping-with-python---smtplib--email-module/)
 
 
 # smtplib module
