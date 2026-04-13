@@ -10,6 +10,14 @@
     ↑
   </button>
   <button
+    id="auto-reader"
+    class="w-10 h-10 rounded-full bg-[var(--color-bg)] border border-[var(--color-border)] shadow-md flex items-center justify-center text-[var(--color-muted)] hover:text-[var(--color-heading)] hover:border-[var(--color-accent)] transition-colors cursor-pointer relative group"
+    aria-label="自动阅读"
+    title="自动阅读（点击开始/暂停，滚轮调速）"
+  >
+    <span id="auto-reader-icon">▶</span>
+  </button>
+  <button
     id="scroll-bottom"
     class="w-10 h-10 rounded-full bg-[var(--color-bg)] border border-[var(--color-border)] shadow-md flex items-center justify-center text-[var(--color-muted)] hover:text-[var(--color-heading)] hover:border-[var(--color-accent)] transition-colors cursor-pointer"
     aria-label="去底部"
@@ -19,12 +27,27 @@
   </button>
 </div>
 
+<!-- Speed indicator tooltip -->
+<div id="speed-indicator" class="fixed right-[4.5rem] z-40 bg-[var(--color-bg)] border border-[var(--color-border)] shadow-md rounded-lg px-3 py-1.5 text-xs font-sans text-[var(--color-heading)] opacity-0 transition-opacity duration-200 pointer-events-none" style="bottom: calc(2rem + 3.25rem);">
+  <span id="speed-text">1.0x</span>
+</div>
+
 <script>
   function initScrollButtons() {
     const container = document.getElementById('scroll-buttons');
     const topBtn = document.getElementById('scroll-top');
     const bottomBtn = document.getElementById('scroll-bottom');
-    if (!container || !topBtn || !bottomBtn) return;
+    const autoBtn = document.getElementById('auto-reader');
+    const autoIcon = document.getElementById('auto-reader-icon');
+    const speedIndicator = document.getElementById('speed-indicator');
+    const speedText = document.getElementById('speed-text');
+
+    if (!container || !topBtn || !bottomBtn || !autoBtn || !autoIcon) return;
+
+    let isAutoScrolling = false;
+    let scrollSpeed = 1.0; // pixels per frame at 60fps
+    let animationId: number | null = null;
+    let speedTimeout: number | null = null;
 
     // Show/hide based on scroll position
     function updateVisibility() {
@@ -37,11 +60,86 @@
     updateVisibility();
 
     topBtn.addEventListener('click', () => {
+      stopAutoScroll();
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
     bottomBtn.addEventListener('click', () => {
+      stopAutoScroll();
       window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    });
+
+    // Auto scroll
+    function autoScroll() {
+      window.scrollBy(0, scrollSpeed);
+      // Stop at bottom
+      if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight) {
+        stopAutoScroll();
+        return;
+      }
+      animationId = requestAnimationFrame(autoScroll);
+    }
+
+    function startAutoScroll() {
+      isAutoScrolling = true;
+      autoIcon!.textContent = '⏸';
+      autoBtn!.classList.add('!text-[var(--color-heading)]', '!border-[var(--color-accent)]');
+      animationId = requestAnimationFrame(autoScroll);
+      showSpeed();
+    }
+
+    function stopAutoScroll() {
+      isAutoScrolling = false;
+      autoIcon!.textContent = '▶';
+      autoBtn!.classList.remove('!text-[var(--color-heading)]', '!border-[var(--color-accent)]');
+      if (animationId) {
+        cancelAnimationFrame(animationId);
+        animationId = null;
+      }
+    }
+
+    function showSpeed() {
+      if (!speedIndicator || !speedText) return;
+      speedText.textContent = scrollSpeed.toFixed(1) + 'x';
+      speedIndicator.style.opacity = '1';
+      if (speedTimeout) clearTimeout(speedTimeout);
+      speedTimeout = window.setTimeout(() => {
+        speedIndicator!.style.opacity = '0';
+      }, 1500);
+    }
+
+    autoBtn.addEventListener('click', () => {
+      if (isAutoScrolling) {
+        stopAutoScroll();
+      } else {
+        startAutoScroll();
+      }
+    });
+
+    // Scroll wheel on auto-reader button to adjust speed
+    autoBtn.addEventListener('wheel', (e) => {
+      e.preventDefault();
+      if (e.deltaY < 0) {
+        scrollSpeed = Math.min(5.0, scrollSpeed + 0.5);
+      } else {
+        scrollSpeed = Math.max(0.5, scrollSpeed - 0.5);
+      }
+      showSpeed();
+    }, { passive: false });
+
+    // Stop auto-scroll on manual scroll (user interaction)
+    let lastScrollTime = 0;
+    window.addEventListener('wheel', (e) => {
+      if (isAutoScrolling && e.target !== autoBtn) {
+        stopAutoScroll();
+      }
+    }, { passive: true });
+
+    // Stop on keypress (space, arrow keys, etc.)
+    window.addEventListener('keydown', (e) => {
+      if (isAutoScrolling && ['Space', 'ArrowUp', 'ArrowDown', 'PageUp', 'PageDown'].includes(e.code)) {
+        stopAutoScroll();
+      }
     });
   }
 
