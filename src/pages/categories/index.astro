@@ -4,42 +4,55 @@ import { getPublishedPosts, getPublishedTech } from '../../utils/collections';
 
 const posts = await getPublishedPosts();
 const tech = await getPublishedTech();
-
-// Build hierarchy for AI
 const aiArticles = tech.filter(a => a.data.category === 'AI');
-const aiBooks = aiArticles.filter(a => a.data.tags.includes('Books'));
-const aiPapers = aiArticles.filter(a => a.data.tags.includes('Papers') && !a.data.tags.includes('Books'));
+
+// --- AI: 深度学习 ---
+const dlKeywords = ['Dropout', 'CNN', 'LSTM', 'RNN', 'RCNN', 'Word Representation', 'Word Embedding'];
 const aiDeepLearning = aiArticles.filter(a =>
-  (a.data.tags.includes('Deep Learning') || a.data.tags.includes('TensorFlow'))
-  && !a.data.tags.includes('Papers') && !a.data.tags.includes('Books')
-);
-const aiOther = aiArticles.filter(a =>
-  !a.data.tags.includes('Books') && !a.data.tags.includes('Papers')
-  && !a.data.tags.includes('Deep Learning') && !a.data.tags.includes('TensorFlow')
+  dlKeywords.some(k => a.data.title.includes(k)) && !a.data.tags.includes('Books')
 );
 
-// Group books by series
+// --- AI: 机器学习 ---
+const mlKeywords = ['Factorization', 'Imbalanced', 'JPEG', 'Music Recommendation', 'Khan Academy'];
+const aiML = aiArticles.filter(a =>
+  mlKeywords.some(k => a.data.title.includes(k)) && !a.data.tags.includes('Books')
+);
+
+// --- AI: 读书笔记 ---
+const aiBooks = aiArticles.filter(a => a.data.tags.includes('Books'));
 const mlBooks = aiBooks.filter(a => a.data.title.includes('Machine Learning'));
 const nlpBooks = aiBooks.filter(a => a.data.title.includes('NLP'));
 const pciBooks = aiBooks.filter(a => a.data.title.includes('Programming Collective'));
 const otherBooks = aiBooks.filter(a =>
-  !a.data.title.includes('Machine Learning') && !a.data.title.includes('NLP') && !a.data.title.includes('Programming Collective')
+  !mlBooks.includes(a) && !nlpBooks.includes(a) && !pciBooks.includes(a)
 );
 
-// 工具
-const toolArticles = tech.filter(a => a.data.category === '工具');
-const webScraping = toolArticles.filter(a => a.data.tags.includes('Web Scraping'));
-const toolOther = toolArticles.filter(a => !a.data.tags.includes('Web Scraping'));
+// --- AI: 其他 ---
+const aiOther = aiArticles.filter(a =>
+  !aiDeepLearning.includes(a) && !aiML.includes(a) && !aiBooks.includes(a)
+);
 
-// 前端
-const frontendArticles = tech.filter(a => a.data.category === '前端');
+// --- 架构 ---
+const archArticles = tech.filter(a => a.data.category === '工具' || a.data.category === '前端');
+const archSpider = archArticles.filter(a => a.data.tags.includes('Web Scraping'));
+const archDB = archArticles.filter(a => a.data.tags.includes('MongoDB'));
+const archFrontend = tech.filter(a => a.data.category === '前端');
+const archOther = archArticles.filter(a =>
+  !archSpider.includes(a) && !archDB.includes(a) && !archFrontend.includes(a)
+);
 
-// 匯文
+// --- 匯文 ---
 const huiwen = posts.filter(a => a.data.category === '匯文');
 const huiwenCreation = huiwen.filter(a => a.data.tags.includes('创作'));
 const huiwenReading = huiwen.filter(a => a.data.tags.includes('读书'));
 const huiwenEssay = huiwen.filter(a => a.data.tags.includes('杂谈'));
-const huiwenClassic = huiwen.filter(a => a.data.tags.includes('匯文') && !a.data.tags.includes('创作') && !a.data.tags.includes('读书') && !a.data.tags.includes('杂谈'));
+const huiwenClassic = huiwen.filter(a =>
+  a.data.tags.includes('匯文') && !a.data.tags.includes('创作') && !a.data.tags.includes('读书') && !a.data.tags.includes('杂谈')
+);
+
+const aiTotal = aiArticles.length;
+const archTotal = archArticles.length + archFrontend.length;
+const huiwenTotal = huiwen.length;
 ---
 
 <BaseLayout title="分类" description="按分类浏览文章">
@@ -50,21 +63,44 @@ const huiwenClassic = huiwen.filter(a => a.data.tags.includes('匯文') && !a.da
       <div class="w-8 h-px bg-[var(--color-accent)] mx-auto mt-4"></div>
     </div>
 
-    <div class="space-y-8">
+    <div class="space-y-10">
 
-      {/* === AI === */}
+      {/* ========== AI ========== */}
       <div class="tree-branch">
         <div class="tree-l1">
           <a href="/categories/AI/" class="tree-label-l1 border-none">AI</a>
-          <span class="tree-count">{aiArticles.length}</span>
+          <span class="tree-count">{aiTotal}</span>
         </div>
         <div class="tree-children">
-          {/* Books */}
+
+          {/* 深度学习 */}
+          {aiDeepLearning.length > 0 && (
+            <div class="tree-branch-inner">
+              <div class="tree-l2"><span class="tree-label-l2">深度学习</span></div>
+              <div class="tree-leaves">
+                {aiDeepLearning.map(a => (
+                  <a href={`/tech/${a.id}/`} class="tree-article border-none">{a.data.title}</a>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* 机器学习 */}
+          {aiML.length > 0 && (
+            <div class="tree-branch-inner">
+              <div class="tree-l2"><span class="tree-label-l2">机器学习</span></div>
+              <div class="tree-leaves">
+                {aiML.map(a => (
+                  <a href={`/tech/${a.id}/`} class="tree-article border-none">{a.data.title}</a>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* 读书笔记 */}
           {aiBooks.length > 0 && (
             <div class="tree-branch-inner">
-              <div class="tree-l2">
-                <span class="tree-label-l2">读书笔记</span>
-              </div>
+              <div class="tree-l2"><span class="tree-label-l2">读书笔记</span></div>
               <div class="tree-leaves">
                 {mlBooks.length > 0 && (
                   <div class="tree-l3-group">
@@ -103,40 +139,10 @@ const huiwenClassic = huiwen.filter(a => a.data.tags.includes('匯文') && !a.da
             </div>
           )}
 
-          {/* Papers */}
-          {aiPapers.length > 0 && (
-            <div class="tree-branch-inner">
-              <div class="tree-l2">
-                <span class="tree-label-l2">论文笔记</span>
-              </div>
-              <div class="tree-leaves">
-                {aiPapers.map(a => (
-                  <a href={`/tech/${a.id}/`} class="tree-article border-none">{a.data.title}</a>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {/* Deep Learning / TensorFlow */}
-          {aiDeepLearning.length > 0 && (
-            <div class="tree-branch-inner">
-              <div class="tree-l2">
-                <span class="tree-label-l2">深度学习 & TensorFlow</span>
-              </div>
-              <div class="tree-leaves">
-                {aiDeepLearning.map(a => (
-                  <a href={`/tech/${a.id}/`} class="tree-article border-none">{a.data.title}</a>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {/* Other AI */}
+          {/* 其他 */}
           {aiOther.length > 0 && (
             <div class="tree-branch-inner">
-              <div class="tree-l2">
-                <span class="tree-label-l2">其他</span>
-              </div>
+              <div class="tree-l2"><span class="tree-label-l2">其他</span></div>
               <div class="tree-leaves">
                 {aiOther.map(a => (
                   <a href={`/tech/${a.id}/`} class="tree-article border-none">{a.data.title}</a>
@@ -147,32 +153,61 @@ const huiwenClassic = huiwen.filter(a => a.data.tags.includes('匯文') && !a.da
         </div>
       </div>
 
-      {/* === 工具 === */}
+      {/* ========== 架构 ========== */}
       <div class="tree-branch">
         <div class="tree-l1">
-          <a href="/categories/工具/" class="tree-label-l1 border-none">工具</a>
-          <span class="tree-count">{toolArticles.length}</span>
+          <span class="tree-label-l1">架构</span>
+          <span class="tree-count">{archTotal}</span>
         </div>
         <div class="tree-children">
-          {webScraping.length > 0 && (
+
+          {/* 爬虫 */}
+          {archSpider.length > 0 && (
             <div class="tree-branch-inner">
-              <div class="tree-l2">
-                <span class="tree-label-l2">Web Scraping with Python</span>
-              </div>
+              <div class="tree-l2"><span class="tree-label-l2">爬虫</span></div>
               <div class="tree-leaves">
-                {webScraping.map(a => (
+                {archSpider.map(a => (
                   <a href={`/tech/${a.id}/`} class="tree-article border-none">{a.data.title}</a>
                 ))}
               </div>
             </div>
           )}
-          {toolOther.length > 0 && (
+
+          {/* 后端 - 数据库 */}
+          {archDB.length > 0 && (
             <div class="tree-branch-inner">
-              <div class="tree-l2">
-                <span class="tree-label-l2">其他工具</span>
-              </div>
+              <div class="tree-l2"><span class="tree-label-l2">后端</span></div>
               <div class="tree-leaves">
-                {toolOther.map(a => (
+                <div class="tree-l3-group">
+                  <span class="tree-label-l3">数据库</span>
+                  <div class="tree-articles">
+                    {archDB.map(a => (
+                      <a href={`/tech/${a.id}/`} class="tree-article border-none">{a.data.title}</a>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* 前端 */}
+          {archFrontend.length > 0 && (
+            <div class="tree-branch-inner">
+              <div class="tree-l2"><span class="tree-label-l2">前端</span></div>
+              <div class="tree-leaves">
+                {archFrontend.map(a => (
+                  <a href={`/tech/${a.id}/`} class="tree-article border-none">{a.data.title}</a>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* 其他 */}
+          {archOther.length > 0 && (
+            <div class="tree-branch-inner">
+              <div class="tree-l2"><span class="tree-label-l2">其他</span></div>
+              <div class="tree-leaves">
+                {archOther.map(a => (
                   <a href={`/tech/${a.id}/`} class="tree-article border-none">{a.data.title}</a>
                 ))}
               </div>
@@ -181,18 +216,16 @@ const huiwenClassic = huiwen.filter(a => a.data.tags.includes('匯文') && !a.da
         </div>
       </div>
 
-      {/* === 匯文 === */}
+      {/* ========== 匯文 ========== */}
       <div class="tree-branch">
         <div class="tree-l1">
           <a href="/categories/匯文/" class="tree-label-l1 border-none">匯文</a>
-          <span class="tree-count">{huiwen.length}</span>
+          <span class="tree-count">{huiwenTotal}</span>
         </div>
         <div class="tree-children">
           {huiwenCreation.length > 0 && (
             <div class="tree-branch-inner">
-              <div class="tree-l2">
-                <span class="tree-label-l2">创作</span>
-              </div>
+              <div class="tree-l2"><span class="tree-label-l2">创作</span></div>
               <div class="tree-leaves">
                 {huiwenCreation.map(a => (
                   <a href={`/posts/${a.id}/`} class="tree-article border-none">{a.data.title}</a>
@@ -202,9 +235,7 @@ const huiwenClassic = huiwen.filter(a => a.data.tags.includes('匯文') && !a.da
           )}
           {huiwenReading.length > 0 && (
             <div class="tree-branch-inner">
-              <div class="tree-l2">
-                <span class="tree-label-l2">读书</span>
-              </div>
+              <div class="tree-l2"><span class="tree-label-l2">读书</span></div>
               <div class="tree-leaves">
                 {huiwenReading.map(a => (
                   <a href={`/posts/${a.id}/`} class="tree-article border-none">{a.data.title}</a>
@@ -214,9 +245,7 @@ const huiwenClassic = huiwen.filter(a => a.data.tags.includes('匯文') && !a.da
           )}
           {huiwenEssay.length > 0 && (
             <div class="tree-branch-inner">
-              <div class="tree-l2">
-                <span class="tree-label-l2">杂谈</span>
-              </div>
+              <div class="tree-l2"><span class="tree-label-l2">杂谈</span></div>
               <div class="tree-leaves">
                 {huiwenEssay.map(a => (
                   <a href={`/posts/${a.id}/`} class="tree-article border-none">{a.data.title}</a>
@@ -226,9 +255,7 @@ const huiwenClassic = huiwen.filter(a => a.data.tags.includes('匯文') && !a.da
           )}
           {huiwenClassic.length > 0 && (
             <div class="tree-branch-inner">
-              <div class="tree-l2">
-                <span class="tree-label-l2">匯文</span>
-              </div>
+              <div class="tree-l2"><span class="tree-label-l2">匯文</span></div>
               <div class="tree-leaves">
                 {huiwenClassic.map(a => (
                   <a href={`/posts/${a.id}/`} class="tree-article border-none">{a.data.title}</a>
@@ -239,32 +266,13 @@ const huiwenClassic = huiwen.filter(a => a.data.tags.includes('匯文') && !a.da
         </div>
       </div>
 
-      {/* === 前端 === */}
-      {frontendArticles.length > 0 && (
-        <div class="tree-branch">
-          <div class="tree-l1">
-            <a href="/categories/前端/" class="tree-label-l1 border-none">前端</a>
-            <span class="tree-count">{frontendArticles.length}</span>
-          </div>
-          <div class="tree-children">
-            <div class="tree-leaves">
-              {frontendArticles.map(a => (
-                <a href={`/tech/${a.id}/`} class="tree-article border-none">{a.data.title}</a>
-              ))}
-            </div>
-          </div>
-        </div>
-      )}
-
     </div>
   </div>
 </BaseLayout>
 
 <style>
-  /* === Mind Map Tree Styles === */
   .tree-branch {
     position: relative;
-    padding-left: 0;
   }
 
   .tree-l1 {
