@@ -9,8 +9,7 @@ draft: false
 
 ![](https://farm8.staticflickr.com/7820/46680387594_4f5c2a631f_o.jpg)
 
-有关「Machine Learning」的其他学习笔记系列：[「Machine Learning」](http://randolph.pro/categories/Machine-Learning/)
-有关「Kaggle」的其他论文学习笔记系列：[「Kaggle」](http://randolph.pro/categories/Machine-Learning/Kaggle/)
+> **更多 AI 文章：** [查看 AI 分类](/categories/AI/)
 有关模型代码：[「Music Recommendation Challenge」](https://github.com/RandolphVI/Music-Recommendation-System)
 
 # 「Music Recommendation Challenge」

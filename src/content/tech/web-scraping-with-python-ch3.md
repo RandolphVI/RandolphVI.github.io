@@ -9,7 +9,7 @@ draft: false
 
 ![](https://farm5.staticflickr.com/4316/36049777032_f975ed0941_o.jpg)
 
-有关该书的其他学习笔记系列：[Book:「Web Scraping with Python」](http://randolph.pro/categories/Books/Book-「Web-Scraping-with-Python」/)
+> **本系列文章：** [Chapter 1 & 2](/tech/web-scraping-with-python-ch1-2/) · [Chapter 3](/tech/web-scraping-with-python-ch3/) · [Chapter 4 & 5](/tech/web-scraping-with-python-ch4-5/) · [smtplib & email module](/tech/web-scraping-with-python-smtplib/)
 
 # Related
 

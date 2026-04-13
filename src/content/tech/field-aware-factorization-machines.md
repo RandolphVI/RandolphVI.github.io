@@ -9,8 +9,7 @@ draft: false
 
 ![](https://farm5.staticflickr.com/4373/35507009504_3298ce3029_o.jpg)
 
-有关「Machine Learning」的其他学习笔记系列：[「Machine Learning」](http://randolph.pro/categories/Machine-Learning/)
-有关「Papers」的其他论文学习笔记系列：[「Papers」](http://randolph.pro/categories/Machine-Learning/Papers/)
+> **更多 AI 文章：** [查看 AI 分类](/categories/AI/)
 
 ## 「Field-aware Factorization Machines for CTR Prediction 」
 

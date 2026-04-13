@@ -9,8 +9,7 @@ draft: false
 
 ![](https://farm5.staticflickr.com/4373/35507009504_3298ce3029_o.jpg)
 
-有关「Machine Learning」的其他学习笔记系列：[「Machine Learning」](http://randolph.pro/categories/Machine-Learning/)
-有关「TensorFlow」的其他学习笔记系列：[「TensorFlow」](http://randolph.pro/categories/TensorFlow/)
+> **更多 AI 文章：** [查看 AI 分类](/categories/AI/)
 
 # Outline
 
@@ -220,7 +219,7 @@ with tf.name_scope("loss"):
 ```
 
 
-还是使用常规的交叉熵 [cross_entropy](http://randolph.pro/2017/09/25/♣%EF%B8%8E「TensorFlow」Cross%20Entropy%20Function%20in%20TensorFlow%20/) 作为 loss function。最后一层是全连接层，为了防止过拟合，最后还要在 loss function 中加入 **L2 正则项**，即 `l2_loss`。`l2_reg_lambda` 来确定惩罚的力度。
+还是使用常规的交叉熵 [cross_entropy](/tech/cross-entropy-in-tensorflow/) 作为 loss function。最后一层是全连接层，为了防止过拟合，最后还要在 loss function 中加入 **L2 正则项**，即 `l2_loss`。`l2_reg_lambda` 来确定惩罚的力度。
 
 ## Accuracy
 ```python

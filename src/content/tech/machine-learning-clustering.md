@@ -9,7 +9,7 @@ draft: false
 
 ![](https://farm5.staticflickr.com/4307/36174772306_62cfbc8cd6_o.jpg)
 
-有关该书的其他学习笔记系列：[Book:「Machine Learning」](http://randolph.pro/categories/Books/Book-「Machine-Learning」/)
+> **本系列文章：** [Chapter 1](/tech/machine-learning-ch1/) · [Chapter 2](/tech/machine-learning-ch2/) · [Clustering](/tech/machine-learning-clustering/) · [KNN & kd Tree](/tech/machine-learning-knn-kd-tree/)
 
 # 聚类介绍
 
@@ -400,7 +400,7 @@ $$
 
 #### 算法实现 （R语言）
 
-Python的实现可以参考[♞「Books」Programming Collective Intelligence -  Chapter 3](http://randolph.pro/2016/03/19/♞「Books」Programming%20Collective%20Intelligence%20-%20%20Chapter%203/) 这篇文章。
+Python的实现可以参考[Programming Collective Intelligence - Chapter 3](/tech/programming-collective-intelligence-ch3/) 这篇文章。
 
 ```R
 head(iris)

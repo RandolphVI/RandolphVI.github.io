@@ -9,7 +9,7 @@ draft: false
 
 ![](https://farm5.staticflickr.com/4399/36206153111_6662041dd1_o.png)
 
-有关「TensorFlow」的其他学习笔记系列：[「TensorFlow」](http://randolph.pro/categories/TensorFlow/)
+> **更多 AI 文章：** [查看 AI 分类](/categories/AI/)
 
 # Introduction
 
@@ -21,7 +21,7 @@ draft: false
 
 程序用到的主角是 Python 中的微信个人号接口 **itchat**。[What's itchat?](https://itchat.readthedocs.io/zh/latest/) （itchat 的介绍及安装过程）
 
-这次，我们要监控的模型是先前提到过的 [基于 MNIST 手写体数据集的 CNN 模型](http://randolph.pro/2017/03/13/♣%EF%B8%8E「TensorFlow」%20Tensorboard/)。
+这次，我们要监控的模型是先前提到过的 [基于 MNIST 手写体数据集的 CNN 模型](/tech/tensorboard/)。
 
 注意：
 
@@ -329,6 +329,6 @@ if __name__ == '__main__':
 
 关于各个模块的作用，以及各个变量的意义，我在此就不再赘述了。
 
-如果有读者对于 CNN 卷积神经网络有些陌生或者是遗忘，可以参考我的另外一篇文章 [♛「Machine Learning」CNN Introduction](http://randolph.pro/2017/03/07/♛「Machine%20Learning」%20CNN%20Introduction/)。
+如果有读者对于 CNN 卷积神经网络有些陌生或者是遗忘，可以参考我的另外一篇文章 [CNN Introduction](/tech/cnn-introduction/)。
 
-如果读者对 Tensorboard 有所遗忘，可以参考我的另一篇文章 [♣︎「TensorFlow」 Tensorboard](http://randolph.pro/2017/03/13/♣%EF%B8%8E「TensorFlow」%20Tensorboard/)。
+如果读者对 Tensorboard 有所遗忘，可以参考我的另一篇文章 [Tensorboard](/tech/tensorboard/)。

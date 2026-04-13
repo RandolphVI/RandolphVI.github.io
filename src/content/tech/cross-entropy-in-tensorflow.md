@@ -9,7 +9,7 @@ draft: false
 
 ![](https://farm5.staticflickr.com/4399/36206153111_6662041dd1_o.png)
 
-有关「TensorFlow」的其他学习笔记系列：[「TensorFlow」](http://randolph.pro/categories/TensorFlow/)
+> **更多 AI 文章：** [查看 AI 分类](/categories/AI/)
 
 # Cross Entropy Introduction
 

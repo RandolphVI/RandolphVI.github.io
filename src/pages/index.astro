@@ -1,23 +1,38 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ArticleCard from '../components/ArticleCard.astro';
-import { getFeaturedPost, getPublishedPosts } from '../utils/collections';
-import { getReadingTime } from '../utils/reading-time';
+import { getPublishedPosts } from '../utils/collections';
 import { getVolumeLabel } from '../utils/season';
 
-const featured = await getFeaturedPost();
 const allPosts = await getPublishedPosts();
-const recentPosts = allPosts.filter((p) => p.slug !== featured?.slug).slice(0, 5);
+const volumeLabel = getVolumeLabel(allPosts.length, new Date());
 
-// Volume number = total published literary articles
-const featuredExcerpt = featured?.data.description ?? '';
-const volumeLabel = getVolumeLabel(allPosts.length, featured?.data.date ?? new Date());
+// Prepare cover candidates (all posts for random selection)
+const coverCandidates = allPosts.map(p => ({
+  id: p.id,
+  title: p.data.title,
+  category: p.data.category,
+  description: p.data.description,
+}));
+
+// Recent posts for the list (latest 5)
+const recentPosts = allPosts.slice(0, 5);
 ---
 
 <BaseLayout title="首页" description="黃某人的个人博客 — 写小说，读闲书，偶尔研究机器学习">
+  <script define:vars={{ coverCandidates }} is:inline>
+    // Pick random post on each page load
+    const pick = coverCandidates[Math.floor(Math.random() * coverCandidates.length)];
+    document.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('cover-title').textContent = pick.title;
+      document.getElementById('cover-category').textContent = '随机推荐 · ' + pick.category;
+      document.getElementById('cover-desc').textContent = pick.description;
+      document.getElementById('cover-link').href = '/posts/' + pick.id + '/';
+    });
+  </script>
+
   <!-- Cover Section -->
   <div class="relative py-16 px-6 lg:px-10 text-center">
-    <!-- Vertical "痴" decoration -->
     <div class="absolute top-10 right-6 lg:right-10 text-[11px] text-[var(--color-accent)] tracking-[6px] font-serif hidden sm:block" style="writing-mode: vertical-rl;">
       痴
     </div>
@@ -27,27 +42,26 @@ const volumeLabel = getVolumeLabel(allPosts.length, featured?.data.date ?? new D
     </div>
     <div class="w-10 h-px bg-[var(--color-accent)] mx-auto mb-6"></div>
 
-    {featured && (
-      <div>
-        <h2 class="text-[28px] text-[var(--color-heading)] tracking-[4px] mb-3">
-          {featured.data.title}
-        </h2>
-        <div class="font-sans text-[12px] text-[var(--color-muted)] tracking-wider mb-6">
-          最新发表 · {featured.data.category}
-        </div>
-        <p class="max-w-lg mx-auto text-[13px] text-[var(--color-muted)] leading-[2.2]">
-          {featuredExcerpt}
-        </p>
-        <div class="mt-6">
-          <a
-            href={`/posts/${featured.slug}/`}
-            class="inline-block font-sans text-[11px] text-[var(--color-accent-dark)] border border-[var(--color-border-dark)] px-5 py-1.5 tracking-[2px] hover:bg-[var(--color-accent)] hover:text-[var(--color-bg)] transition-colors"
-          >
-            阅读全文
-          </a>
-        </div>
+    <div>
+      <h2 id="cover-title" class="text-[28px] text-[var(--color-heading)] tracking-[4px] mb-3">
+        {coverCandidates[0]?.title}
+      </h2>
+      <div id="cover-category" class="font-sans text-[12px] text-[var(--color-muted)] tracking-wider mb-6">
+        随机推荐 · {coverCandidates[0]?.category}
       </div>
-    )}
+      <p id="cover-desc" class="max-w-lg mx-auto text-[13px] text-[var(--color-muted)] leading-[2.2]">
+        {coverCandidates[0]?.description}
+      </p>
+      <div class="mt-6">
+        <a
+          id="cover-link"
+          href={`/posts/${coverCandidates[0]?.id}/`}
+          class="inline-block font-sans text-[11px] text-[var(--color-accent-dark)] border border-[var(--color-border-dark)] px-5 py-1.5 tracking-[2px] hover:bg-[var(--color-accent)] hover:text-[var(--color-bg)] transition-colors"
+        >
+          阅读全文
+        </a>
+      </div>
+    </div>
   </div>
 
   <!-- Gradient divider -->
@@ -64,7 +78,7 @@ const volumeLabel = getVolumeLabel(allPosts.length, featured?.data.date ?? new D
         title={post.data.title}
         date={post.data.date}
         description={post.data.description}
-        href={`/posts/${post.slug}/`}
+        href={`/posts/${post.id}/`}
       />
     ))}
 

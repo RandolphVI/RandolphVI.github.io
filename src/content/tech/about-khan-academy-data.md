@@ -9,7 +9,7 @@ draft: false
 
 ![](https://farm1.staticflickr.com/797/27030261808_ebe2f72aa4_o.jpg)
 
-有关「Datasets」的其他数据集介绍系列：[「Datasets」](http://randolph.pro/categories/Datasets/)
+> **更多 AI 文章：** [查看 AI 分类](/categories/AI/)
 
 # About Khan Academy Data
 

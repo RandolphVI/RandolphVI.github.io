@@ -9,7 +9,7 @@ draft: false
 
 ![](https://farm5.staticflickr.com/4306/36216231065_8a7e508f9e_o.jpg)
 
-有关该书的其他学习笔记系列：[Book:「Programming Collective Intelligence」](http://randolph.pro/categories/Books/Book-「Programming-Collective-Intelligence」/)
+> **本系列文章：** [Chapter 1 & 2](/tech/programming-collective-intelligence-ch1-2/) · [Chapter 3](/tech/programming-collective-intelligence-ch3/)
 
 # Related
 - **欧几里得距离评价**

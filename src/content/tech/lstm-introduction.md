@@ -9,7 +9,7 @@ draft: false
 
 ![](https://farm5.staticflickr.com/4300/35460446383_aafc34ca3c_o.jpg)
 
-有关「Machine Learning」的其他学习笔记系列：[「Machine Learning」](http://randolph.pro/categories/Machine-Learning/)
+> **更多 AI 文章：** [查看 AI 分类](/categories/AI/)
 
 # 循环神经网络(RNN)
 

@@ -9,7 +9,7 @@ draft: false
 
 ![](https://farm5.staticflickr.com/4423/36425940061_fe957aaf15_o.jpg)
 
-有关该书的其他学习笔记系列：[Book:「NLP with Python」](http://randolph.pro/categories/Books/Book-「NLP-with-Python」/)
+> **本系列文章：** [Chapter 1 & 2](/tech/nlp-with-python-ch1-2/) · [Chapter 3](/tech/nlp-with-python-ch3/)
 
 # Related
 

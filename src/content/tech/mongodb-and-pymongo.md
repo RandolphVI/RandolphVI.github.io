@@ -9,7 +9,7 @@ draft: false
 
 ![](https://farm8.staticflickr.com/7874/32461566277_401e85a69d_o.jpg)
 
-有关「Tools」的其他笔记系列：[「Tools」](http://randolph.pro/categories/Tools/)
+> **更多工具文章：** [查看工具分类](/categories/工具/)
 
 # Chapter 1: Getting Started
 

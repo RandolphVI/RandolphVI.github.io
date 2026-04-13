@@ -9,7 +9,7 @@ draft: false
 
 ![](https://farm8.staticflickr.com/7817/33527479258_ebedbf6e83_o.jpg)
 
-有关「Computer Vision」的其他学习笔记系列：[「Computer Vision」](http://randolph.pro/categories/Machine-Learning/Computer-Vision/)
+> **更多 AI 文章：** [查看 AI 分类](/categories/AI/)
 
 # Related
 
