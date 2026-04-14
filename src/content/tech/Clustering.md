@@ -106,10 +106,10 @@ $$
 对数据集  $$D = \{x_1, x_2, \ldots, x_n\}$$，假定通过聚类，给出的簇划分为 $$V=\{v_{1}, v_{2}, \ldots, v_{C}\}$$，参考模型给出的簇划分为$$U=\{u_{1}, u_{2}\, \ldots, u_{R}\}$$。相应地，令$$\lambda$$ 与 $$\lambda^{*}$$分别表示与$V$和$U$对应的簇标记向量。我们将样本两两配对考虑，定义：
 
 $$
-\begin{align}
-a & = |SS|, SS =\left \{  (x_i,x_j)|(\lambda_i = \lambda_j, \lambda_i^* =  \lambda_j^* , i < j )\right \} \cr
-b & = |SD|, SD =\left \{  (x_i,x_j)|(\lambda_i = \lambda_j, \lambda_i^* \neq  \lambda_j^* , i < j )\right \} \cr
-c & = |DS|, DS =\left \{  (x_i,x_j)|(\lambda_i \neq \lambda_j, \lambda_i^* =  \lambda_j^* , i < j )\right \} \cr
+\begin{aligned}
+a & = |SS|, SS =\left \{  (x_i,x_j)|(\lambda_i = \lambda_j, \lambda_i^* =  \lambda_j^* , i < j )\right \} \\
+b & = |SD|, SD =\left \{  (x_i,x_j)|(\lambda_i = \lambda_j, \lambda_i^* \neq  \lambda_j^* , i < j )\right \} \\
+c & = |DS|, DS =\left \{  (x_i,x_j)|(\lambda_i \neq \lambda_j, \lambda_i^* =  \lambda_j^* , i < j )\right \} \\
 d & = |DD|, DD =\left \{  (x_i,x_j)|(\lambda_i \neq \lambda_j, \lambda_i^* \neq  \lambda_j^* , i < j )\right \}
 \end{aligned}
 $$
@@ -192,14 +192,14 @@ Let $$n_{ij}$$ be the number of objects that are in both class $$u_{i}$$ and clu
 
 $$
 \begin{array}{c|cccc|c}
-Class \ Cluster & v_{1}  & v_{2} & ... & v_{C} & Sums \cr
+Class \ Cluster & v_{1}  & v_{2} & ... & v_{C} & Sums \\
 \hline
-u_{1} & n_{11} & n_{12} & ... & n_{1C} & n_{1.}  \cr
-u_{2} & n_{21} & n_{22} & ... & n_{2C} & n_{2.}  \cr
-... & ... & ... & ... & ... & ...  \cr
-u_{R} & n_{R1} & n_{R2} & ... & n_{RC} & n_{R.}  \cr
+u_{1} & n_{11} & n_{12} & ... & n_{1C} & n_{1.}  \\
+u_{2} & n_{21} & n_{22} & ... & n_{2C} & n_{2.}  \\
+... & ... & ... & ... & ... & ...  \\
+u_{R} & n_{R1} & n_{R2} & ... & n_{RC} & n_{R.}  \\
 \hline
-Sums & n_{.1} & n_{.2} & ... & n_{.C} & n.. = n  \cr
+Sums & n_{.1} & n_{.2} & ... & n_{.C} & n.. = n  \\
 \end{array}
 $$
 
@@ -207,13 +207,13 @@ Here is the example:
 
 $$
 \begin{array}{c|ccc|c}
-Class \ Cluster & v_{1}  & v_{2} &  v_{3} & Sums \cr
+Class \ Cluster & v_{1}  & v_{2} &  v_{3} & Sums \\
 \hline
-u_{1} & 1 & 1 &  0 & 2  \cr
-u_{2} & 1 & 2 &  1 & 4  \cr
-u_{3} & 0 & 0 &  4 & 4  \cr
+u_{1} & 1 & 1 &  0 & 2  \\
+u_{2} & 1 & 2 &  1 & 4  \\
+u_{3} & 0 & 0 &  4 & 4  \\
 \hline
-Sums & 2 & 3 & 5 & n = 10  \cr
+Sums & 2 & 3 & 5 & n = 10  \\
 \end{array}
 $$
 
@@ -263,8 +263,8 @@ $$
 #### CP (Compactness)
 
 $$
-\begin{align}
-\overline{CP_{i}} & =\frac{1}{|C_{i}|}\sum_{x_{i} \in C_{i}} dist(x_{i}, \mu_{i}) \cr
+\begin{aligned}
+\overline{CP_{i}} & =\frac{1}{|C_{i}|}\sum_{x_{i} \in C_{i}} dist(x_{i}, \mu_{i}) \\
 \overline{CP} & =\frac{1}{k}\sum_{k=1}^{k} \overline{CP_{k}}
 \end{aligned}
 $$
@@ -594,10 +594,10 @@ $$
 
 由Bayesian定理得 $z_{j}$ 的后验分布为：
 $$
-\begin{align*}
-P_{\mathcal{M}}(z_{j}=i|x_{j}) &=\frac{P(z_{j}=i) \cdot p_{\mathcal{M}}(x_{j}|z_{j}=i)}{p_{\mathcal{M}}(x_{j})} \cr
+\begin{aligned}
+P_{\mathcal{M}}(z_{j}=i|x_{j}) &=\frac{P(z_{j}=i) \cdot p_{\mathcal{M}}(x_{j}|z_{j}=i)}{p_{\mathcal{M}}(x_{j})} \\
 & =\frac{\alpha_{i}\cdot p(x_{j}|\mu_{i},\Sigma_{i})}{\sum^{k}_{l=1}\alpha_{l}\cdot p(x_{j}|\mu_{l},\Sigma_{l})}
-\end{align*}
+\end{aligned}
 $$
 
 可知，$$P_{\mathcal{M}}(z_{j}=i|x_{j})$$ 给出了样本 $$x_{j}$$ 由第 $i$ 个高斯混合成分生成的后验概率，记：
@@ -621,16 +621,16 @@ $$
 
 给定样本集 $D$， 最大化（对数）似然函数：
 $$
-\begin{align*}
-LL(D) & = ln\Big(\prod^{n}_{j=1}p_{\mathcal{M}}(x_{j})\Big) \cr
+\begin{aligned}
+LL(D) & = ln\Big(\prod^{n}_{j=1}p_{\mathcal{M}}(x_{j})\Big) \\
 &=\sum^{n}_{j=1}\Big(\sum^{k}_{i=1}\alpha_{i}\cdot p(x_{j}|\mu_{i}, \Sigma_{i})\Big)
-\end{align*}
+\end{aligned}
 $$
 MLE解为：
 $$
-\begin{align}
-\mu_{i} & = \frac{\sum^{n}_{j=1}\gamma_{ji}x_{j}}{\sum^{n}_{j=1}\gamma{ji}} \cr
-\Sigma_{i} & = \frac{\sum^{n}_{j=1}\gamma_{ji}(x_{j}-\mu_{i})(x_{j}-\mu_{i})^{T}}{\sum^{n}_{j=1}\gamma_{ji}} \cr
+\begin{aligned}
+\mu_{i} & = \frac{\sum^{n}_{j=1}\gamma_{ji}x_{j}}{\sum^{n}_{j=1}\gamma_{ji}} \\
+\Sigma_{i} & = \frac{\sum^{n}_{j=1}\gamma_{ji}(x_{j}-\mu_{i})(x_{j}-\mu_{i})^{T}}{\sum^{n}_{j=1}\gamma_{ji}} \\
 \alpha_{i} &= \frac{1}{n}\sum^{n}_{j=1}\gamma_{ji}
 \end{aligned}
 $$
@@ -652,18 +652,18 @@ $$
 $$
 \begin{array}{ccc|ccc|ccc}
 \hline
-编号 & 密度 & 含糖率 & 编号 & 密度 & 含糖率 & 编号 & 密度 & 含糖率 \cr
+编号 & 密度 & 含糖率 & 编号 & 密度 & 含糖率 & 编号 & 密度 & 含糖率 \\
 \hline
-1 & 0.697 & 0.460 & 11 & 0.245 & 0.057 & 21 & 0.748 & 0.232 \cr
-2 & 0.774 & 0.376 & 12 & 0.343 & 0.099 & 22 & 0.714 & 0.346 \cr
-3 & 0.634 & 0.264 & 13 & 0.639 & 0.161 & 23 & 0.483 & 0.312 \cr
-4 & 0.608 & 0.318 & 14 & 0.657 & 0.198 & 24 & 0.478 & 0.437 \cr
-5 & 0.556 & 0.215 & 15 & 0.360 & 0.370 & 25 & 0.525 & 0.369 \cr
-6 & 0.403 & 0.237 & 16 & 0.593 & 0.042 & 26 & 0.751 & 0.489 \cr
-7 & 0.481 & 0.149 & 17 & 0.719 & 0.103 & 27 & 0.532 & 0.472 \cr
-8 & 0.437 & 0.211 & 18 & 0.359 & 0.188 & 28 & 0.473 & 0.376 \cr
-9 & 0.666 & 0.091 & 19 & 0.339 & 0.241 & 29 & 0.725 & 0.445 \cr
-10 & 0.243 & 0.267 & 20 & 0282 & 0.257 & 30 & 0.446 & 0.459 \cr
+1 & 0.697 & 0.460 & 11 & 0.245 & 0.057 & 21 & 0.748 & 0.232 \\
+2 & 0.774 & 0.376 & 12 & 0.343 & 0.099 & 22 & 0.714 & 0.346 \\
+3 & 0.634 & 0.264 & 13 & 0.639 & 0.161 & 23 & 0.483 & 0.312 \\
+4 & 0.608 & 0.318 & 14 & 0.657 & 0.198 & 24 & 0.478 & 0.437 \\
+5 & 0.556 & 0.215 & 15 & 0.360 & 0.370 & 25 & 0.525 & 0.369 \\
+6 & 0.403 & 0.237 & 16 & 0.593 & 0.042 & 26 & 0.751 & 0.489 \\
+7 & 0.481 & 0.149 & 17 & 0.719 & 0.103 & 27 & 0.532 & 0.472 \\
+8 & 0.437 & 0.211 & 18 & 0.359 & 0.188 & 28 & 0.473 & 0.376 \\
+9 & 0.666 & 0.091 & 19 & 0.339 & 0.241 & 29 & 0.725 & 0.445 \\
+10 & 0.243 & 0.267 & 20 & 0282 & 0.257 & 30 & 0.446 & 0.459 \\
 \end{array}
 $$
 
@@ -680,9 +680,9 @@ $$
 考察样本 $$x_{1}=(0.697;0.460)$$，它与当前均值向量 $$\mu_{1},\mu_{2},\mu_{3}$$的距离分别是$$0.369, 0.506, 0.166$$，因此 $$x_{1}$$ 将被划入簇 $$C_{3}$$ 中。类似的，对数据集中的所有样本考察一遍后，可得当前簇划分为：
 
 $$
-\begin{align}
-C_{1} & = \lbrace x_{5},x_{6},x_{7},x_{8},x_{9},x_{10},x_{13},x_{14},x_{15},x_{17},x_{18},x_{19},x_{20},x_{23} \rbrace; \cr
-C_{2} & = \lbrace x_{11},x_{12},x_{16} \rbrace; \cr
+\begin{aligned}
+C_{1} & = \lbrace x_{5},x_{6},x_{7},x_{8},x_{9},x_{10},x_{13},x_{14},x_{15},x_{17},x_{18},x_{19},x_{20},x_{23} \rbrace; \\
+C_{2} & = \lbrace x_{11},x_{12},x_{16} \rbrace; \\
 C_{3} & = \lbrace x_{1},x_{2},x_{3},x_{4},x_{21},x_{22},x_{24},x_{25},x_{26},x_{27},x_{28},x_{29},x_{30} \rbrace
 \end{aligned}
 $$
@@ -705,9 +705,9 @@ $$
 算法开始时，根据样本的类别标记和簇的预设类别标记，对原型向量进行随机初始化，假定初始化为样本 $$x_{5},x_{12},x_{18},x_{23},x_{29}$$ 。在第一轮迭代中，假定随机选取的样本为 $$x_{1}$$ ，该样本与当前原型向量 $$p_{1},p_{2},p_{3},p_{4},p_{5}$$ 的距离分别为 $$0.283, 0.506, 0.434, 0.260, 0.032$$ 。由于 $$p_{5}$$ 与 $$x_{1}$$ 距离最近且两者具有相同的类别标记 $$c_{2}$$ ，假定学习率 $\eta = 0.1$ ，则LVQ更新 $$p_{5}$$ 得到新原型向量：
 
 $$
-\begin{align}
-p^{'} & = p_{5} + \eta \cdot (x_{1} - p_{5}) \cr
-      & = (0.725;0.445) + 0.1 \cdot ((0.697;0.460) - (0.725;0.445)) \cr
+\begin{aligned}
+p^{'} & = p_{5} + \eta \cdot (x_{1} - p_{5}) \\
+      & = (0.725;0.445) + 0.1 \cdot ((0.697;0.460) - (0.725;0.445)) \\
       & = (0.722;0.442).
 \end{aligned}
 $$
@@ -718,6 +718,6 @@ $$
 
 ## 使用高斯混合聚类
 
-令高斯混合成分的个数$k=3$。算法开始时，假定将高斯混合分布的模型参数初始化为：$$\alpha_{1} = \alpha_{2} = \alpha_{3} = \frac{1}{3}$$；$$\mu_{1} = x_{6}$$，$$\mu_{2}=x_{22}$$，$$\mu_{3} = x_{27}$$；$$\Sigma_{1} = \Sigma_{2} = \Sigma_{3} = \binom{0.1 \ 0.0}{0.0 \ 0.1}$$。
+令高斯混合成分的个数$k=3$。算法开始时，假定将高斯混合分布的模型参数初始化为：$$\alpha_{1} = \alpha_{2} = \alpha_{3} = \frac{1}{3}$$；$$\mu_{1} = x_{6}$$，$$\mu_{2}=x_{22}$$，$$\mu_{3} = x_{27}$$；$$\Sigma_{1} = \Sigma_{2} = \Sigma_{3} = \begin{pmatrix}0.1 & 0.0\\0.0 & 0.1\end{pmatrix}$$。
 
 在第一轮迭代中，先计算样本由各混合成分生成的后验概率。
