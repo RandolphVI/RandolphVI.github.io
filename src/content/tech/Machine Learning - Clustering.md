@@ -1,5 +1,5 @@
 ---
-title: "Clustering"
+title: "Machine Learning - Clustering"
 date: 2017-01-03
 category: "AI"
 tags: ["Machine Learning", "Books"]
@@ -9,7 +9,7 @@ draft: false
 
 ![](https://farm5.staticflickr.com/4307/36174772306_62cfbc8cd6_o.jpg)
 
-> **本系列文章：** [Chapter 1](/tech/machine-learning---chapter-1/) · [Chapter 2](/tech/machine-learning---chapter-2/) · [Clustering](/tech/clustering/) · [KNN & kd Tree](/tech/machine-learning---knn--kd-tree/)
+> **本系列文章：** [Chapter 1](/tech/machine-learning---chapter-1/) · [Chapter 2](/tech/machine-learning---chapter-2/) · [Clustering](/tech/machine-learning---clustering/) · [KNN & kd Tree](/tech/machine-learning---knn--kd-tree/)
 
 # 聚类介绍
 

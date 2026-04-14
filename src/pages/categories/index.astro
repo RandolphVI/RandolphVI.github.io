@@ -23,7 +23,7 @@ const aiML = aiArticles.filter(a =>
 
 // --- AI: 读书笔记 ---
 const aiBooks = aiArticles.filter(a => a.data.tags.includes('Books'));
-const mlBooks = aiBooks.filter(a => a.data.title.includes('Machine Learning') || a.data.title === 'Clustering');
+const mlBooks = aiBooks.filter(a => a.data.title.includes('Machine Learning'));
 const nlpBooks = aiBooks.filter(a => a.data.title.includes('NLP'));
 const pciBooks = aiBooks.filter(a => a.data.title.includes('Programming Collective'));
 const otherBooks = aiBooks.filter(a =>
