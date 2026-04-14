@@ -261,21 +261,21 @@ $$
 ----
 
 $$
-\begin{align}
+\begin{aligned}
 E_{rr} (x) & = E[(y-\hat{f}(x))^{2}] = E[y^2-2y\hat{f}(x)+(\hat{f}(x))^2] \cr
 & = E(y^2) {\color{Orchid}{ - E^2(y) + E^2(y)}} -2E(y)E(\hat{f}(x)) + E(\hat{f^2}(x)) {\color{Orchid}{ - E^2(\hat{f}(x)) + E^2(\hat{f}(x))}} \cr
 & =  {\color{Red}{E^2(\hat{f}(x)) -2E(y)E(\hat{f}(x)) + E^2(y)}} + {\color{Green}{ E(\hat{f^2}(x))-  E^2(\hat{f}(x))}} + {\color{Blue} {E(y^2)-  E^2(y) }}
-\end{align}
+\end{aligned}
 $$
 
 结合上面两条式子：
 
 $$
-\begin{align}
+\begin{aligned}
 E_{rr}(x) & =  {\color{Red}{ E^2(\hat{f}(x)) -2E(f(x))E(\hat{f}(x)) + E^2(f(x))}} + {\color{Blue}{ E(\hat{f^2}(x))-  E^2(\hat{f}(x))}} + {\color{Green}{E(y^2)-  E^2(y) }} \cr
 & =  {\color{Red}{[E(\hat{f}(x))-E(f(x))]^2}} + {\color{Blue}{ E[(\hat{f}(x) - E\hat{f}(x))^2]}} + {\color{Green}{ Var(y) }} \cr
 & =  {\color{Red}{Bias^2[\hat{f}(x)]}} + {\color{Blue}{ Var[\hat{f}(x)]}} + {\color{Green}{\delta _{\varepsilon }^{2}}}
-\end{align}
+\end{aligned}
 $$
 
 -----

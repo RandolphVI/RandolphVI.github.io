@@ -82,7 +82,7 @@ Dropout 也能达到同样的效果，它强迫一个神经单元，和随机挑
     \begin{align}
     z_{i}^{(l+1)} & = w_{i}^{(l+1)}y^{l} + b_{i}^{(l+1)} \cr
     y_{i}^{(l+1)} & = f(z_{i}^{(l+1)})
-    \end{align}
+    \end{aligned}
     $$
 
   - 有 dropout 的神经网络 
@@ -92,7 +92,7 @@ Dropout 也能达到同样的效果，它强迫一个神经单元，和随机挑
     \tilde{y}^{(l)} & = r^{(l)}*y^{(l)}\cr
     z_{i}^{(l+1)} & = w_{i}^{(l+1)} \tilde{y}^{l} + b_{i}^{(l+1)} \cr
     y_{i}^{(l+1)} & = f(z_{i}^{(l+1)})
-    \end{align}
+    \end{aligned}
     $$
   
 - 测试层面

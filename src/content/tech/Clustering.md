@@ -111,7 +111,7 @@ a & = |SS|, SS =\left \{  (x_i,x_j)|(\lambda_i = \lambda_j, \lambda_i^* =  \lamb
 b & = |SD|, SD =\left \{  (x_i,x_j)|(\lambda_i = \lambda_j, \lambda_i^* \neq  \lambda_j^* , i < j )\right \} \cr
 c & = |DS|, DS =\left \{  (x_i,x_j)|(\lambda_i \neq \lambda_j, \lambda_i^* =  \lambda_j^* , i < j )\right \} \cr
 d & = |DD|, DD =\left \{  (x_i,x_j)|(\lambda_i \neq \lambda_j, \lambda_i^* \neq  \lambda_j^* , i < j )\right \}
-\end{align}
+\end{aligned}
 $$
 
 其中：
@@ -266,7 +266,7 @@ $$
 \begin{align}
 \overline{CP_{i}} & =\frac{1}{|C_{i}|}\sum_{x_{i} \in C_{i}} dist(x_{i}, \mu_{i}) \cr
 \overline{CP} & =\frac{1}{k}\sum_{k=1}^{k} \overline{CP_{k}}
-\end{align}
+\end{aligned}
 $$
 
 CP紧密性，其计算的是每个簇中各个点到簇中心的平均距离，值越低意味着簇内聚类距离越近，缺点就是没有考虑到簇间效果。
@@ -632,7 +632,7 @@ $$
 \mu_{i} & = \frac{\sum^{n}_{j=1}\gamma_{ji}x_{j}}{\sum^{n}_{j=1}\gamma{ji}} \cr
 \Sigma_{i} & = \frac{\sum^{n}_{j=1}\gamma_{ji}(x_{j}-\mu_{i})(x_{j}-\mu_{i})^{T}}{\sum^{n}_{j=1}\gamma_{ji}} \cr
 \alpha_{i} &= \frac{1}{n}\sum^{n}_{j=1}\gamma_{ji}
-\end{align}
+\end{aligned}
 $$
 
 具体算法如下：
@@ -684,7 +684,7 @@ $$
 C_{1} & = \lbrace x_{5},x_{6},x_{7},x_{8},x_{9},x_{10},x_{13},x_{14},x_{15},x_{17},x_{18},x_{19},x_{20},x_{23} \rbrace; \cr
 C_{2} & = \lbrace x_{11},x_{12},x_{16} \rbrace; \cr
 C_{3} & = \lbrace x_{1},x_{2},x_{3},x_{4},x_{21},x_{22},x_{24},x_{25},x_{26},x_{27},x_{28},x_{29},x_{30} \rbrace
-\end{align}
+\end{aligned}
 $$
 
 于是，可以从 $$C_{1},C_{2},C_{3}$$ 分别求出新的均值向量：
@@ -709,7 +709,7 @@ $$
 p^{'} & = p_{5} + \eta \cdot (x_{1} - p_{5}) \cr
       & = (0.725;0.445) + 0.1 \cdot ((0.697;0.460) - (0.725;0.445)) \cr
       & = (0.722;0.442).
-\end{align}
+\end{aligned}
 $$
 
 将 $$p_{5}$$ 更新为 $$p^{'}$$ 后，不断重复上述过程，不同轮数之后的聚类结果如下图所示，其中 $$c_{1}$$ ， $$c_{2}$$ 类别样本点与原型向量分别用"●","○"与"+"表示，红色虚线显示出聚类形成的Voronoi剖分。

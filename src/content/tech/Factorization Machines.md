@@ -88,7 +88,7 @@ $$
 =& \frac{1}{2} \left ( \sum_{i=1}^{n}\sum_{j=1}^{n}\sum_{f=1}^{k} v_{i,f} \cdot v_{j,f} \ x_ix_j - \sum_{i=1}^{n}\sum_{f=1}^{k} v_{i,f} \cdot v_{i,f} \ x_ix_i \right) \cr
 =& \frac{1}{2} \sum_{f=1}^{k} \left( \left( \sum_{i=1}^{n}v_{i,f}x_{i}\right) \left( \sum_{j=1}^{n}v_{j,f}x_{j}\right) - \sum_{i=1}^{n}v_{i,f}^2 x_{i}^2\right) \cr
 =& \frac{1}{2}  \sum_{f=1}^{k} \left( \left( \sum_{i=1}^{n}v_{i,f}x_{i}\right)^2 - \sum_{i=1}^{n}v_{i,f}^2 x_{i}^2\right)\cr
-\end{align}
+\end{aligned}
 $$
 
 计算复杂度经过改写后降低到线性的 $O(kn)$ 。
