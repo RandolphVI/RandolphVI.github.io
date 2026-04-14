@@ -60,7 +60,6 @@ $$
 
 - 上标和下标分别用`^`和`_`，如`x_i^2`：$$x_i^2$$，但是`^`和`_`分别只对下一个数起作用，比如`10^10`会得到$10^10$而不是$10^{10}$，这时需要使用`{...}`，也就是`10^{10}`。
 - 同时，大括号还能消除二义性，如`x^5^6`将得到一个错误，必须使用大括号来界定`^`的结合性，如`{x^5}^6`：${x^5}^6$ 或者 `x^{5^6}`：$x^{5^6}$。
-- 另外，如果要在左右两边都有上下标，可以用`\sideset`命令。例如，`\sideset{^1_2}{^3_4}\bigotimes`：$$\sideset{^1_2}{^3_4}\bigotimes$$。
 
 ## 括号
 
@@ -100,7 +99,7 @@ $$
 - 黑体字，例如`\mathbf A`：$\mathbf A$，或者`\mathbf {ABC}`：$$\mathbf {ABC}$$；
 - 打印机字体，例如`\mathtt A`：$\mathtt A$，或者`\mathtt {ABC}`：$$\mathtt {ABC}$$；
 - 罗马字体，例如`\mathrm A`：$\mathrm A$，或者`\mathrm {ABC}`：$$\mathrm {ABC}$$；
-- 手写字体，例如`\mathscr A`：$\mathscr A$，或者`\mathscr {ABC}`:$$\mathscr {ABC}$$；
+- 手写字体，例如`\mathcal A`：$\mathcal A$，或者`\mathcal {ABC}`:$$\mathcal {ABC}$$；
 - Fraktur 字体，例如`\mathfrak A`：$\mathfrak A$，或者`\mathfrak {ABC}`:$$\mathfrak {ABC}$$。
 
 ## 特殊函数 & 符号
@@ -592,32 +591,36 @@ $$
 
 书写连分数表达式时，请使用`\cfrac`代替`\frac`或者`\over`两者效果对比如下:
 
+使用 `\cfrac`：
+
 ```text
 $$
 x = a_0 + \cfrac{1^2}{a_1
           + \cfrac{2^2}{a_2
-            + \cfrac{3^2}{a_3 + \cfrac{4^4}{a_4 + \cdots}}}} \tag{\cfrac}
+            + \cfrac{3^2}{a_3 + \cfrac{4^4}{a_4 + \cdots}}}}
 $$
 ```
 
 $$
 x = a_0 + \cfrac{1^2}{a_1
           + \cfrac{2^2}{a_2
-            + \cfrac{3^2}{a_3 + \cfrac{4^4}{a_4 + \cdots}}}} \tag{\cfrac}
+            + \cfrac{3^2}{a_3 + \cfrac{4^4}{a_4 + \cdots}}}}
 $$
+
+使用 `\frac`：
 
 ```text
 $$
 x = a_0 + \frac{1^2}{a_1
           + \frac{2^2}{a_2
-            + \frac{3^2}{a_3 + \frac{4^4}{a_4 + \cdots}}}} \tag{\frac}
+            + \frac{3^2}{a_3 + \frac{4^4}{a_4 + \cdots}}}}
 $$
 ```
 
 $$
 x = a_0 + \frac{1^2}{a_1
           + \frac{2^2}{a_2
-            + \frac{3^2}{a_3 + \frac{4^4}{a_4 + \cdots}}}} \tag{\frac}
+            + \frac{3^2}{a_3 + \frac{4^4}{a_4 + \cdots}}}}
 $$
 
 # 方程组
@@ -719,52 +722,26 @@ $$
 命名颜色是浏览器相关的，如果浏览器没有定义相关的颜色名称，则相关文本将被渲染为黑色，具体列表如下：
 
 $$
-\begin{array}{|rc|}
+\begin{array}{|rl|}
 \hline
-\verb+\color{black}{text}+ & \color{black}{text} \\
-\verb+\color{gray}{text}+ & \color{gray}{text} \\
-\verb+\color{silver}{text}+ & \color{silver}{text} \\
-\verb+\color{white}{text}+ & \color{white}{text} \\
+\texttt{\backslash color\{black\}\{text\}} & \color{black}{text} \\
+\texttt{\backslash color\{gray\}\{text\}} & \color{gray}{text} \\
+\texttt{\backslash color\{silver\}\{text\}} & \color{silver}{text} \\
+\texttt{\backslash color\{white\}\{text\}} & \color{white}{text} \\
 \hline
-\verb+\color{maroon}{text}+ & \color{maroon}{text} \\
-\verb+\color{red}{text}+ & \color{red}{text} \\
-\verb+\color{yellow}{text}+ & \color{yellow}{text} \\
-\verb+\color{lime}{text}+ & \color{lime}{text} \\
-\verb+\color{olive}{text}+ & \color{olive}{text} \\
-\verb+\color{green}{text}+ & \color{green}{text} \\
-\verb+\color{teal}{text}+ & \color{teal}{text} \\
-\verb+\color{aqua}{text}+ & \color{aqua}{text} \\
-\verb+\color{blue}{text}+ & \color{blue}{text} \\
-\verb+\color{navy}{text}+ & \color{navy}{text} \\
-\verb+\color{purple}{text}+ & \color{purple}{text} \\
-\verb+\color{fuchsia}{text}+ & \color{magenta}{text} \\
+\texttt{\backslash color\{maroon\}\{text\}} & \color{maroon}{text} \\
+\texttt{\backslash color\{red\}\{text\}} & \color{red}{text} \\
+\texttt{\backslash color\{yellow\}\{text\}} & \color{yellow}{text} \\
+\texttt{\backslash color\{lime\}\{text\}} & \color{lime}{text} \\
+\texttt{\backslash color\{olive\}\{text\}} & \color{olive}{text} \\
+\texttt{\backslash color\{green\}\{text\}} & \color{green}{text} \\
+\texttt{\backslash color\{teal\}\{text\}} & \color{teal}{text} \\
+\texttt{\backslash color\{aqua\}\{text\}} & \color{aqua}{text} \\
+\texttt{\backslash color\{blue\}\{text\}} & \color{blue}{text} \\
+\texttt{\backslash color\{navy\}\{text\}} & \color{navy}{text} \\
+\texttt{\backslash color\{purple\}\{text\}} & \color{purple}{text} \\
+\texttt{\backslash color\{fuchsia\}\{text\}} & \color{magenta}{text} \\
 \hline
 \end{array}
 $$
 
-# 公式的标记与引用
-
-使用`\tag{yourtag}`来标记公式，如果想在之后引用该公式，则还需要加上`\label{yourlabel}`在`\tag`之后，如:
-
-```text
-$$
-a := x^2-y^3 \tag{1-1}\label{1-1}
-$$
-```
-
-$$
-a := x^2-y^3 \tag{1-1}\label{1-1}
-$$
-
-
-为了引用公式，可以使用`\eqref{rlabel}`，如：
-
-$$
-a+y^3 \stackrel{\eqref{1-1}}= x^2
-$$
-
-```text
-$$
-a+y^3 \stackrel{\eqref{1-1}}= x^2
-$$
-```
