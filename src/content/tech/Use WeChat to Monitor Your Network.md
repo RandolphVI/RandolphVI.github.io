@@ -329,9 +329,11 @@ if __name__ == '__main__':
 
 关于各个模块的作用，以及各个变量的意义，我在此就不再赘述了。
 
-如果有读者对于 CNN 卷积神经网络有些陌生或者是遗忘，可以参考我的另外一篇文章 [CNN Introduction](/tech/cnn-introduction/)。
+如果有读者对于 CNN 卷积神经网络有些陌生或者是遗忘，可以参考我的另外一篇文章 [CNN Introduction](/tech/cnn-introduction/)[^3]。
 
-如果读者对 Tensorboard 有所遗忘，可以参考我的另一篇文章 [Tensorboard](/tech/tensorboard/)。
+如果读者对 Tensorboard 有所遗忘，可以参考我的另一篇文章 [Tensorboard](/tech/tensorboard/)[^4]。
 
 [^1]: itchat 是一个非官方的微信个人号 Python API，通过模拟网页微信登录实现消息收发。由于微信官方的限制政策，该库已于 2019 年左右停止维护。
 [^2]: Python 的 `threading` 模块实现多线程并发，但由于 GIL（全局解释器锁）的限制， Python 多线程并不能真正并行执行 CPU 密集型任务；在此场景中用于将训练循环和微信监听分开，属于 IO 密集型操作，多线程屠刚奇效。
+[^3]: 介绍卷积神经网络的基础概念，包括卷积层、池化层的工作原理，以及在 MNIST 手写体数据集上的 CNN 实现。
+[^4]: 介绍如何使用 TensorFlow 配套的可视化工具 TensorBoard 来监控模型训练过程中的标量、计算图、权重分布等信息。

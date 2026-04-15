@@ -348,7 +348,7 @@ def main():
 main()
 ```
 
-可能对于最后一个模型 CNN 的代码，需要一些 CNN 卷积神经网络的一些知识。例如什么是卷积、池化，还需要了解 TensorFlow 中用到的相应函数，如 <strong>`tf.nn.conv2d()`</strong>，<strong>`tf.nn.max_pool()`</strong>，这里不再赘述，可以参考我的这篇文章：[CNN Introduction](/tech/cnn-introduction/)。
+可能对于最后一个模型 CNN 的代码，需要一些 CNN 卷积神经网络的一些知识。例如什么是卷积、池化，还需要了解 TensorFlow 中用到的相应函数，如 <strong>`tf.nn.conv2d()`</strong>，<strong>`tf.nn.max_pool()`</strong>，这里不再赘述，可以参考我的这篇文章：[CNN Introduction](/tech/cnn-introduction/)[^3]。
 
 ## Experiment
 
@@ -380,7 +380,9 @@ main()
 
 关于各个模块的作用，以及各个变量的意义，开篇已经提及，我在此就不再赘述了。
 
-另外，在自己的机器模型在训练期间（特别是深度网络），训练时间通常几小时到十几小时不等，甚至可能会花上好几天，那么在这段时间，你们又会干些什么事情呢？作为程序员，这里提供一个「有趣的」方式，可以使用你的微信来监控你的模型在训练期间的一举一动，具体做法参考我的另一篇文章 [Use WeChat to Monitor Your Network](/tech/use-wechat-to-monitor-your-network/)
+另外，在自己的机器模型在训练期间（特别是深度网络），训练时间通常几小时到十几小时不等，甚至可能会花上好几天，那么在这段时间，你们又会干些什么事情呢？作为程序员，这里提供一个「有趣的」方式，可以使用你的微信来监控你的模型在训练期间的一举一动，具体做法参考我的另一篇文章 [Use WeChat to Monitor Your Network](/tech/use-wechat-to-monitor-your-network/)[^4]。
 
 [^1]: TensorFlow 1.0 于 2017 年 2 月发布，带来了稳定的 API 以及 XLA、分布式训练等新特性。当时很多网络教程还基于 0.x 版本，说明了当时生态迅速迭代带来的兼容性挑战。
 [^2]: Tensorboard 的 GRAPHS 模块展示的是 TensorFlow 的静态计算图 (computational graph)，与 PyTorch 审调 eager execution 的设计哲学有根本差异。静态图强迫用户提前定义计算流程，但也因此能进行更好的图优化和部署。
+[^3]: 介绍卷积神经网络的基础概念，包括卷积层、池化层的工作原理以及相关 TensorFlow API 的用法，以 MNIST 手写体数据集为例。
+[^4]: 通过 Python 的 itchat 库将微信个人号接入训练脚本，实现在手机端实时接收训练日志，无需守在电脑旁。

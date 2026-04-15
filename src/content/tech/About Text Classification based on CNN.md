@@ -219,7 +219,7 @@ with tf.name_scope("loss"):
 ```
 
 
-还是使用常规的交叉熵 [cross_entropy](/tech/cross-entropy-in-tensorflow/) 作为 loss function。最后一层是全连接层，为了防止过拟合，最后还要在 loss function 中加入 <strong>L2 正则项</strong>[^3]，即 `l2_loss`。`l2_reg_lambda` 来确定惩罚的力度。
+还是使用常规的交叉熵 [cross_entropy](/tech/cross-entropy-in-tensorflow/)[^4] 作为 loss function。最后一层是全连接层，为了防止过拟合，最后还要在 loss function 中加入 <strong>L2 正则项</strong>[^3]，即 `l2_loss`。`l2_reg_lambda` 来确定惩罚的力度。
 
 ## Accuracy
 ```python
@@ -238,3 +238,4 @@ with tf.name_scope("accuracy"):
 [^1]: 与 `tf.random_normal()` 不同，截断正态分布会将超出均値正负两个标准差范围的值重新采样。这对权重初始化很重要，可防止极端初始化值导致梯度爆炸或消失。
 [^2]: Dropout 由 Srivastava et al. (2014) 在同名论文中提出，通过训练时随机将神经元输出置零来防止共同适应（co-adaptation），即多个神经元过度依赖彼此而减弱单个神经元的表达能力。
 [^3]: L2 正则化（也称 weight decay）通过向损失函数加入权重平方和来惩罚大权重，过于复杂的模型将被惩罚而而应对测试集要学习更泛化的表示。与 Dropout 组合使用效果更佳。
+[^4]: 交叉熵（Cross Entropy）是分类任务中最常用的损失函数，详细介绍了 TensorFlow 中四种不同交叉熵函数（sigmoid、softmax、sparse_softmax、weighted）的适用场景与区别。
