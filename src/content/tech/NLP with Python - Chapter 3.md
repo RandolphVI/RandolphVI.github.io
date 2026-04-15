@@ -86,7 +86,7 @@ And Summer's lease hath all too short a date:
 
 正则表达式错误的找到了后缀 `'-s'`，而不是后缀 `'-es'`。这表明另一个微妙之处：
 
-**`*`** 操作符是“贪婪的”，所以表达式的 **`.*`** 部分试图尽可能多地匹配输入的字符串。如果使用“非贪婪”版本的 **`*`** 操作符，写成 **`*?`** 操作符，就得到想要的结果。
+**`*`** 操作符是”贪婪的”[^1]，所以表达式的 **`.*`** 部分试图尽可能多地匹配输入的字符串。如果使用”非贪婪”版本的 **`*`** 操作符，写成 **`*?`** 操作符，就得到想要的结果。
 
 ```bash
 >>> re.findall(r'^(.*?)(ing|ly|ed|ious|ies|ive|es|s|ment)$', 'processes')
@@ -120,7 +120,7 @@ abstracts and other compilations; iron and other metals
 
 ### Stemmers
 
-**词干提取器<strong>。`NLTK` 中包括了一些现成的词干提取器，如果需要使用词干提取器，应该优先使用它们中的一个，而不是使用正则表达式制作自己的词干提取器，因为 `NLTK` 中的词干提取器能处理的不规则情况很广泛。</strong>Porter** 和 **Lancaster** 词干提取器按照它们自己的规则剥离词缀。下面的例子表明 **Porter** 词干提取器正确处理了词 <strong>lying</strong>（将它映射为 <strong>lie</strong>），而 **Lancaster** 词干提取器并没有处理好。
+**词干提取器<strong>。`NLTK` 中包括了一些现成的词干提取器，如果需要使用词干提取器，应该优先使用它们中的一个，而不是使用正则表达式制作自己的词干提取器，因为 `NLTK` 中的词干提取器能处理的不规则情况很广泛。</strong>Porter** 和 **Lancaster** 词干提取器按照它们自己的规则剥离词缀。[^3]下面的例子表明 **Porter** 词干提取器正确处理了词 <strong>lying</strong>（将它映射为 <strong>lie</strong>），而 **Lancaster** 词干提取器并没有处理好。
 
 ```bash
 >>> porter = nltk.PorterStemmer()
@@ -306,7 +306,7 @@ def evaluate(text, segs):
 - 若$ J(Y(i+1)) \geqslant  J(Y(i)) $  (即移动后得到更优解)，则总是接受该移动
 - 若$ J(Y(i+1)) <  J(Y(i)) $  (即移动后的解比当前解要差)，则以一定的概率接受移动，而且这个概率随着时间推移逐渐降低（逐渐降低才能趋向稳定）
 
-**这里的“一定的概率”的计算参考了金属冶炼的退火过程，这也是模拟退火算法名称的由来。**
+**这里的”一定的概率”的计算参考了金属冶炼的退火过程，这也是模拟退火算法名称的由来。**[^2]
 
 根据热力学的原理，在温度为 ***T*** 时，出现能量差为 ***dE*** 的降温的概率为 ***P(dE)***，表示为：
 
@@ -494,6 +494,10 @@ nltk.re_show(r'\w+|[^\w\s]+', 'should match me but not a apple \n')
 >>> sent.split(' ')
 ['Tres', '\ttristes\t\t\ttigres\t\t', 'comen\t', '\t', 'trigo', 'en', 'un', 'trigal.']
 ```
+
+[^1]: 正则表达式中的"贪婪"（greedy）匹配是默认行为，`*`、`+`、`?` 等量词会尽可能多地消耗字符。对应的"非贪婪"（lazy）版本在量词后加 `?`，如 `*?`、`+?`，会尽可能少地匹配。
+[^2]: 模拟退火（Simulated Annealing）由 Kirkpatrick 等人于 1983 年发表在 *Science* 上，灵感来自固体物理中的退火过程——缓慢降温使系统趋向能量最低的稳定态。与爬山算法不同，它允许以一定概率接受较差的解，从而有机会跳出局部最优。
+[^3]: Porter stemmer 由 Martin Porter 于 1980 年提出，是最广泛使用的英文词干提取算法，规则简洁但偶有过度截断。Lancaster stemmer 规则更激进，速度较快但错误率也更高。
 
 -----
 > 20.◑ Write code to access a favorite web page and extract some text from it. For example, access a weather site and extract the forecast top temperature for your town or city today.

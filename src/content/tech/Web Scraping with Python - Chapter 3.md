@@ -30,7 +30,7 @@ draft: false
 
 ## urlparse module
 
-**urlparse** 模块主要是把 url 拆分为六个部分，并返回元组 tuple。并且可以把拆分后的部分再组成一个 url。主要函数有 <strong>`urljoin`</strong>、<strong>`urlsplit`</strong>、<strong>`urlunsplit`</strong>、<strong>`urlparse`</strong> 等。
+**urlparse** 模块主要是把 url 拆分为六个部分，并返回元组 tuple。并且可以把拆分后的部分再组成一个 url。主要函数有 <strong>`urljoin`</strong>、<strong>`urlsplit`</strong>、<strong>`urlunsplit`</strong>、<strong>`urlparse`</strong> 等。[^1]
 
 ### urlparse function
 
@@ -135,7 +135,7 @@ $ sudo pip install six
 > - This is because OS X El Capitan ships with six 1.4.1 installed already and when it attempts to uninstall it (because scrapy depends on six >= 1.5) it doesn't have permission to do so because **System Integrity Protection** doesn't allow even root to modify those directories.
 > - Ideally, pip should just skip uninstalling those items since they aren't installed to site-packages they are installed to a special Apple directory. However, even if pip skips uninstalling those items and installs six into site-packages we'll hit another bug where Apple puts their pre-installed stuff earlier in the sys.path than site-packages. I've talked to Apple about this and I'm not sure if they're going to do anything about it or not.
 
-我的 Mac OS X 系统版本为 10.11.4，Mac 自版本 10.11 之后，由于新的 SIP 机制，即使是 root 用户也无法对 /System 中的内容进行修改删除（在系统恢复中可以办到）。
+我的 Mac OS X 系统版本为 10.11.4，Mac 自版本 10.11 之后，由于新的 SIP 机制[^2]，即使是 root 用户也无法对 /System 中的内容进行修改删除（在系统恢复中可以办到）。
 
 于是，我采用另外一种方法继续尝试：
 
@@ -209,3 +209,6 @@ You can start your first spider with:
 - **暂无**
 
 -----
+
+[^1]: 在 Python 3 中，`urlparse` 模块被移入 `urllib.parse`，使用时需 `from urllib.parse import urlparse`。RFC 3986 定义了 URI 的通用语法，`urlparse` 的六元组正是对应其中的 scheme、netloc、path、params、query、fragment 六个组成部分。
+[^2]: SIP（System Integrity Protection，系统完整性保护）是 Apple 在 OS X El Capitan（10.11）引入的安全机制，限制了对 `/System`、`/usr`、`/bin`、`/sbin` 等目录的写权限，即便是 root 权限也无法修改，防止恶意软件篡改系统文件。

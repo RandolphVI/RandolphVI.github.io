@@ -12,7 +12,7 @@ draft: false
 > **本系列文章：** [Chapter 1 & 2](/tech/programming-collective-intelligence---chapter-1--2/) · [Chapter 3](/tech/programming-collective-intelligence---chapter-3/)
 
 
-在「推荐物品」的模块中，提到了一种方法：
+在「推荐物品」的模块中，提到了一种方法：[^1]
 
 1.  通过函数找出与自己有相似品味的影评者，并按相似度从大到小排序。
 2.  对于自己未看过的影片，建立一张表，表的内容包括：品位相似的影评者以及其对应的相似度，对于自己未看过影片的评分（影评者可以看过也可以没有看过）。
@@ -88,13 +88,16 @@ $ python
 意思是无论我如何更改参数<strong>`tag`</strong>的值，返回的内容会发现是一样。这个问题，stackoverflow老外也同样遇到了：
 > __I see the resource code again. Maybe it is wrong. Because If you edit the code, the procedural answer always remain unchanged...I'm studing...__
 
-我个人觉得可能是DLCS\_RSS的网址还需要更改一下（因为这本书在刚出来的时候，pydelicious还是支持原del.icio.us的网站，是不需要去更改<strong>`__init__.py`</strong>的文件等，后来是unspported，所以需要更改<strong>`__init__.py`</strong>文件中的RSS订阅源，也许可能这个订阅源还不是最新的，反正是坑...），或者说是<strong>`get_popular()`</strong>这个function有误（这个不太可能），总而言之，折腾了一下晚上，感觉是遇到了坑，不过好歹也算是解决出来了。
+我个人觉得可能是DLCS\_RSS的网址还需要更改一下（因为这本书在刚出来的时候，pydelicious还是支持原del.icio.us的网站[^2]，是不需要去更改<strong>`__init__.py`</strong>的文件等，后来是unspported，所以需要更改<strong>`__init__.py`</strong>文件中的RSS订阅源，也许可能这个订阅源还不是最新的，反正是坑...），或者说是<strong>`get_popular()`</strong>这个function有误（这个不太可能），总而言之，折腾了一下晚上，感觉是遇到了坑，不过好歹也算是解决出来了。
 
 貌似有<strong>`deliciousapi`</strong>这个package作为替代，我也尝试过，但运行说明文档中的几个函数，发现会报错，希望如果有人知道如何用<strong>deliciousapi</strong>替代pydelicious完成第二章后续的几个模块，请务必告诉我！
 
 注意：新手实践这本书的时候，完全可以跳过这个坑，因为没有必要，只需要get第二章几个重要的算法或者是思想就可以了。
 
 ---
+[^1]: 这种方法是协同过滤（Collaborative Filtering）中的"基于用户的协同过滤"（User-based CF）。《Programming Collective Intelligence》这本书由 Toby Segaran 于 2007 年出版，是机器学习与数据挖掘领域的经典入门读物。
+[^2]: del.icio.us 是 2003 年由 Joshua Schachter 创立的社会化书签网站，是 Web 2.0 时代的代表产品之一，后被 Yahoo 收购，最终于 2017 年关闭。书中依赖该网站的代码目前已完全不可用。
+
 # Correct errors in printing:
 
 - P13

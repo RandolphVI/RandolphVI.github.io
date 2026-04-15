@@ -18,7 +18,7 @@ draft: false
 
 ## **What's NLTK?**
 
-**`NLTK`** 是一个自然语言工具包，最初创建于 2001 年，最初是宾州大学计算机与信息科学系计算语言学课程的一部分，大部分 NLP 研究者入门的首选工具。
+**`NLTK`** 是一个自然语言工具包，最初创建于 2001 年，最初是宾州大学计算机与信息科学系计算语言学课程的一部分，大部分 NLP 研究者入门的首选工具。[^1]
 
 另外，这本书是关于用 Python 进行自然语言处理的一本入门书，基本上可以看做是 **`NLTK`** 这个库的 HandBook，使用的方法均是 **`nltk`** 库中的方法。如果希望查阅 API 文档或者是下载安装 <strong>`NLTK`</strong>，可以前往[官方网站](http://www.nltk.org)下载，官网上提供和的 API 文档涵盖了工具包中的每一个模块、类和函数，详细说明了各种参数，以及用法示例，在此不再赘述。
 
@@ -76,7 +76,7 @@ draft: false
 
 - Word Sense Disambiguation
 
-<u>词义消歧</u>，简而言之，我们需要做的就是分析出特定上下文中的词被赋予的是哪个意思。例如：
+<u>词义消歧</u>[^2]，简而言之，我们需要做的就是分析出特定上下文中的词被赋予的是哪个意思。例如：
 
 > a. **serve**: help with food or drink; hold an office; put ball into play 
 >
@@ -107,7 +107,7 @@ draft: false
 
 > WordNet synsets correspond to abstract concepts, and they don’t always have corre- sponding words in English. These concepts are linked together in a hierarchy. Some concepts are very general, such as Entity, State, Event; these are called unique begin- ners or root synsets. Others, such as gas guzzler and hatchback, are much more specific.
 
-WordNet 概念的层次片段：每个节点对应一个同义词集；边表示上位词/下位词关系，即上级概念与从属概念的关系。
+WordNet 概念的层次片段：每个节点对应一个同义词集；边表示上位词/下位词关系，即上级概念与从属概念的关系。[^3]
 
 ![](https://farm1.staticflickr.com/474/31598383846_537809b299_o.png)
 
@@ -709,3 +709,7 @@ print(sorted(lch, key=itemgetter(2), reverse=True))
 print('----------\n')
 print(sorted(path, key=itemgetter(2), reverse=True))
 ```
+
+[^1]: NLTK 由 Steven Bird 和 Edward Loper 在宾州大学（University of Pennsylvania）开发，2001 年作为计算语言学课程的辅助工具诞生，后逐渐发展为社区维护的开源项目，官网为 [nltk.org](http://www.nltk.org)。
+[^2]: 词义消歧（Word Sense Disambiguation，WSD）是自然语言处理的经典难题之一，因为同一词在不同上下文中可能有截然不同的含义。例如 "bank" 可以指银行，也可以指河岸。
+[^3]: WordNet 由普林斯顿大学 George A. Miller 于 1985 年开始主持开发，是英语词汇的大型语义网络数据库，按同义词集（synset）组织词汇，并通过上位/下位、整体/部分等语义关系将概念互联。
