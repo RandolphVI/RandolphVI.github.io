@@ -1,31 +1,94 @@
 ---
 interface Props {
   headings: { depth: number; slug: string; text: string }[];
+  title?: string;
+  date?: Date;
+  category?: string;
+  tags?: string[];
+  words?: number;
+  minutes?: number;
 }
 
-const { headings } = Astro.props;
+const { headings, title, date, category, tags, words, minutes } = Astro.props;
 const tocItems = headings.filter((h) => h.depth <= 3);
+const dateStr = date ? `${date.getFullYear()}.${String(date.getMonth() + 1).padStart(2, '0')}.${String(date.getDate()).padStart(2, '0')}` : '';
 ---
 
-<nav class="sticky top-24" id="toc-nav">
-  <div class="font-sans text-xs tracking-[3px] text-[var(--color-accent-dark)] mb-4">
-    目录
-  </div>
-  <div class="border-l border-[var(--color-border-dark)] pl-3">
-    {tocItems.map((item) => (
-      <a
-        href={`#${item.slug}`}
-        class:list={[
-          'block text-sm mb-2.5 border-none transition-colors toc-link leading-snug',
-          'text-[var(--color-muted)] hover:text-[var(--color-heading)]',
-          item.depth === 3 && 'ml-3',
-        ]}
-        data-heading={item.slug}
-      >
-        {item.text}
-      </a>
-    ))}
-  </div>
+<nav class="sticky top-24 text-[var(--color-text)]" id="toc-nav">
+
+  <!-- Article Info Panel -->
+  {title && (
+    <div class="mb-5 pb-4 border-b border-[var(--color-border)]">
+      <div class="font-sans text-[10px] tracking-[3px] text-[var(--color-accent-dark)] mb-2 uppercase">
+        Article
+      </div>
+      <div class="text-[13px] text-[var(--color-heading)] leading-snug mb-3 font-serif">
+        {title}
+      </div>
+      <dl class="text-[11px] font-sans space-y-1">
+        {category && (
+          <div class="flex justify-between gap-2">
+            <dt class="text-[var(--color-faint)]">Category</dt>
+            <dd class="text-[var(--color-muted)]">{category}</dd>
+          </div>
+        )}
+        {dateStr && (
+          <div class="flex justify-between gap-2">
+            <dt class="text-[var(--color-faint)]">Date</dt>
+            <dd class="text-[var(--color-muted)]">{dateStr}</dd>
+          </div>
+        )}
+        {words !== undefined && (
+          <div class="flex justify-between gap-2">
+            <dt class="text-[var(--color-faint)]">Words</dt>
+            <dd class="text-[var(--color-muted)]">{words.toLocaleString()}</dd>
+          </div>
+        )}
+        {minutes !== undefined && (
+          <div class="flex justify-between gap-2">
+            <dt class="text-[var(--color-faint)]">Reading</dt>
+            <dd class="text-[var(--color-muted)]">{minutes} min</dd>
+          </div>
+        )}
+      </dl>
+      {tags && tags.length > 0 && (
+        <div class="mt-3 flex flex-wrap gap-1">
+          {tags.map((tag) => (
+            <a
+              href={`/tags/${encodeURIComponent(tag)}/`}
+              class="text-[10px] font-sans text-[var(--color-accent-dark)] border-b border-dotted border-[var(--color-accent)] leading-tight"
+            >
+              {tag}
+            </a>
+          ))}
+        </div>
+      )}
+    </div>
+  )}
+
+  <!-- TOC -->
+  {tocItems.length > 0 && (
+    <>
+      <div class="font-sans text-[10px] tracking-[3px] text-[var(--color-accent-dark)] mb-3 uppercase">
+        Contents
+      </div>
+      <div class="border-l border-[var(--color-border-dark)] pl-3">
+        {tocItems.map((item) => (
+          <a
+            href={`#${item.slug}`}
+            class:list={[
+              'block text-[13px] mb-2 border-none transition-colors toc-link leading-snug',
+              'text-[var(--color-muted)] hover:text-[var(--color-heading)]',
+              item.depth === 3 && 'ml-3 text-[12px]',
+            ]}
+            data-heading={item.slug}
+          >
+            {item.text}
+          </a>
+        ))}
+      </div>
+    </>
+  )}
 </nav>
 
 <script>
