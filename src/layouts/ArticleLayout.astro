@@ -29,8 +29,8 @@ const showSidebar = true;
 
 <BaseLayout title={title} description={description}>
   <ReadingProgress />
-  <div class="max-w-[1440px] mx-auto px-4 lg:px-6 py-10">
-    <div class="flex gap-0 lg:gap-6 justify-center">
+  <div class="max-w-[1600px] mx-auto px-4 lg:px-6 py-10">
+    <div class="flex gap-0 lg:gap-8 justify-center">
 
       <!-- Left: Article Info + TOC (desktop only) -->
       {showSidebar && (
@@ -108,7 +108,7 @@ const showSidebar = true;
       </article>
 
       <!-- Right: Sidenotes area (desktop only, populated in Task 8) -->
-      <aside class="hidden xl:block w-56 flex-shrink-0 pt-20" id="sidenotes-container">
+      <aside class="hidden xl:block w-80 flex-shrink-0 pt-20" id="sidenotes-container">
       </aside>
 
     </div>
