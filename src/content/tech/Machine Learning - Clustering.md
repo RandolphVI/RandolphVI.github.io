@@ -131,7 +131,7 @@ $$
 JC = \frac{a}{a+b+c}
 $$
 
-JC系数的结果分布在$[0,1]$区间，值越大越好。个人总结，JC系数是一个比较“爱憎分明”的相似性度量指标，对于聚类效果越好的模型的JC计算结果会很好，对于聚类效果越差的模型的JC计算结果会很差。关于JC系数的数学解释及实际意义，可以参考Wiki对应词条，讲的非常清晰：[Jaccard index](https://en.wikipedia.org/wiki/Jaccard_index)。
+JC系数的结果分布在$[0,1]$区间，值越大越好。个人总结，JC系数是一个比较”爱憎分明”的相似性度量指标，对于聚类效果越好的模型的JC计算结果会很好，对于聚类效果越差的模型的JC计算结果会很差。[^4]
 
 在此我摘取其中的重点：
 
@@ -153,7 +153,7 @@ $$
 FMI = \sqrt{\frac{a}{a+b}\cdot \frac{a}{a+c}}
 $$
 
-FMI系数的结果分布在$[0,1]$区间，值越大越好。个人总结，FMI系数是一个比较“温文儒雅”的相似性度量指标，对于聚类效果特别好的模型的FMI计算结果不会好得特别夸张，对于聚类效果特别越差的模型的FMI计算结果也不会差得特别夸张。同样，FMI系数的数学解释及实际意义，对应的Wiki词条：[Fowlkes–Mallows index](https://en.wikipedia.org/wiki/Fowlkes–Mallows_index)。
+FMI系数的结果分布在$[0,1]$区间，值越大越好。个人总结，FMI系数是一个比较”温文儒雅”的相似性度量指标，对于聚类效果特别好的模型的FMI计算结果不会好得特别夸张，对于聚类效果特别越差的模型的FMI计算结果也不会差得特别夸张。[^5]
 
 在此我摘取其中的重点：
 
@@ -168,7 +168,7 @@ $$
 RI = \frac{a+d}{a+b+c+d}
 $$
 
-RI系数的结果分布在$[0,1]$区间，值越大越好。关于RI系数的数学解释及实际意义，可以参考Wiki对应词条，重点是要看它的改进指标ARI：[Rand  index](https://en.wikipedia.org/wiki/Rand_index)。
+RI系数的结果分布在$[0,1]$区间，值越大越好。[^6]
 
 
 #### ARI (Adjusted Rand Index)
@@ -282,7 +282,7 @@ $$
 DBI=\frac{1}{k}\sum^{k}_{i=1}\underset{j \neq i}{max}\bigg(\frac{avg(C_{i})+avg(C_{j})}{d_{cen}(\mu_{i}, \mu_{j})}\bigg)
 $$
 
-关于DBI系数的数学解释及实际意义，可以参考Wiki对应词条：[Davies-Bouldin Index](https://en.wikipedia.org/wiki/Davies–Bouldin_index)。
+关于DBI系数的数学解释及实际意义，可以参考Wiki词条。[^7]
 
 > These conditions constrain the index so defined to be symmetric and non-negative. Due to the way it is defined, as a function of the ratio of the within cluster scatter, to the between cluster separation, a lower value will mean that the clustering is better. **It happens to be the average similarity between each cluster and its most similar one, averaged over all the clusters, where the similarity is defined as $S_{i}$ above.** This affirms the idea that no cluster has to be similar to another, and hence the best clustering scheme essentially minimizes the Davies–Bouldin index. This index thus defined is an average over all the $i$ clusters, and hence a good measure of deciding how many clusters actually exists in the data is to plot it against the number of clusters it is calculated over. The number *i* for which this value is the lowest is a good measure of the number of clusters the data could be ideally classified into. This has applications in deciding the value of $k$ in the [kmeans](https://en.wikipedia.org/wiki/Kmeans) algorithm, where the value of k is not known apriori. 
 
@@ -293,7 +293,7 @@ $$
 DI=\underset{1 \leqslant i \leqslant k}{min}\bigg\{\underset{j \neq i}{min}\bigg(\frac{d_{min}(C_{i}, C_{j})}{max_{1 \leqslant l \leqslant k}diam(C_{l})}\bigg)\bigg\}
 $$
 
-关于DI系数的数学解释及实际意义，可以参考Wiki对应词条：[Dunn Index](https://en.wikipedia.org/wiki/Dunn_index)。
+关于DI系数的数学解释及实际意义，可以参考Wiki词条。[^8]
 
 > Being defined in this way, the *DI* depends on $k$, the number of clusters in the set. If the number of clusters is not known apriori, the $k$ for which the *DI* is the highest can be chosen as the number of clusters. There is also some flexibility when it comes to the definition of d(x,y) where any of the well known metrics can be used, like [Manhattan distance](https://en.wikipedia.org/wiki/Manhattan_distance) or [Euclidean distance](https://en.wikipedia.org/wiki/Euclidean_distance) based on the geometry of the clustering problem. **This formulation has a peculiar problem, in that if one of the clusters is badly behaved, where the others are tightly packed, since the denominator contains a 'max' term instead of an average term, the Dunn Index for that set of clusters will be uncharacteristically low. This is thus some sort of a worst case indicator, and has to be kept in mind.**
 
@@ -329,7 +329,7 @@ $$
 
 > 我们常将属性划分为“连续属性”（continuous attribute）和“离散属性”（categorical attribute），前者在定义域上有无穷多个可能的取值，后者在定义域上是有限个取值。然而，在讨论距离计算时，属性上是否定义了“序”关系更为重要。例如定义域为 $\lbrace 1,2,3 \rbrace$ 的离散属性与连续属性的性质更接近一些， 能直接在属性值上计算距离：“1”与“2”比较接近、与“3”比较远，这样的属性称为“有序属性”（ordinal attribute）;而定义域为｛飞机，火车，轮船｝这样的离散属性则不能直接在属性值上计算距离，称为“无序属性”（non-ordinal attribute）。显然， 闵可夫斯基距离可用于有序属性。
 >
-> 对无序属性可采用VDM（Value Difference Metric） 「Stanfill and Waltz, 1986」。
+> 对无序属性可采用VDM（Value Difference Metric）。[^9]
 
 令 $$m_{u,a}$$ 表示在属性 $u$ 上取值为 $a$ 的样本数，$$m_{u, a, i}$$ 表示在第 $i$ 个样本簇中在属性 $u$ 上取值为 $a$ 的样本数，$k$ 为样本簇数，则属性 $u$ 上两个离散值 $a$ 与 $b$ 之间的VDM距离为：
 $$
@@ -535,7 +535,7 @@ table(irisCluster$cluster, iris$Species)
 ##### 竞争型学习
 竞争型学习是神经网络中一种常见的无监督学习策略，在使用该策略时，网络的输出神经元相互竞争，每一时刻仅有一个竞争获胜的神经元被激活，其他神经元的状态被抑制。这种机制亦称为"胜者通吃"(winner-take-all)原则。
 ##### ART 网络
-ART (Adaptive Resonance Theory,自适应谐振理论）网络「Carpenter and Grossberg, 1987」是竞争型学习的重要代表。该网络由比较层、识别层、识别阈值和重置模块构成。其中，比较层负责接收输入样本，并将其传递给识别层神经元。识别层每个神经元对应一个模式类（模式类可以认为是某类别的“子类”），神经元数目可在训练过程中动态增长以增加新的模式类。
+ART (Adaptive Resonance Theory,自适应谐振理论）网络[^10]是竞争型学习的重要代表。该网络由比较层、识别层、识别阈值和重置模块构成。其中，比较层负责接收输入样本，并将其传递给识别层神经元。识别层每个神经元对应一个模式类（模式类可以认为是某类别的“子类”），神经元数目可在训练过程中动态增长以增加新的模式类。
 
 在接收到比较层的输入信号后，识别层神经元之间相互竞争以产生获胜神经元。竞争的最简单方式是，计算输入向量与每个识别层神经元所对应的模式类的代表向量之间的距离，距离最小者胜．获胜神经元将向其他识别层神经元发送信号，抑制其激活。若输入向量与获胜神经元所对应的代表向量之间的相似度大于识别阈值，则当前输入样本将被归为该代表向量所属类别，同时，网络连接权将会更新，使得以后在接收到相似输入样本时该模式类会计算出更大的相似度，从而使该获胜神经元有更大可能获胜；若相似度不大于识别阈值，则重置模块将在识别层增设一个新的神经元，其代表向量就设置为当前输入向量。
 
@@ -725,3 +725,10 @@ $$
 [^1]: DBSCAN 由 Ester、Kriegel、Sander 和 Xu 于 1996 年在 KDD 会议上提出，是基于密度聚类的奠基性算法。它无需预先指定簇的数目（与 K-means 不同），能发现任意形状的簇，并将低密度区域的点标记为噪声点而非强行归入某簇。其核心概念是"核心点"（core point）、"边界点"（border point）和"噪声点"（noise point），通过邻域半径 ε 和最小样本数 MinPts 两个参数控制密度定义。
 [^2]: Voronoi 剖分（Voronoi tessellation）由乌克兰数学家 Georgy Voronoi 于 1908 年正式定义，将平面（或高维空间）划分为以各生成点为中心、由离该点最近的区域组成的多边形。在 LVQ 中，每个原型向量 $p_i$ 自然定义了一个 Voronoi 单元，即所有比其他原型向量更靠近 $p_i$ 的样本点的集合。
 [^3]: SOM（自组织映射）由芬兰神经网络学家 Teuvo Kohonen 于 1982 年发表（原文中"Kohollen"为误写），故又称 Kohonen 网络。它是最早成功实现"拓扑保持映射"的神经网络之一，在数据可视化、降维和语音识别等领域影响深远。
+[^4]: [Jaccard index — Wikipedia](https://en.wikipedia.org/wiki/Jaccard_index)
+[^5]: [Fowlkes–Mallows index — Wikipedia](https://en.wikipedia.org/wiki/Fowlkes%E2%80%93Mallows_index)
+[^6]: [Rand index — Wikipedia](https://en.wikipedia.org/wiki/Rand_index)。RI 的改进指标 ARI（Adjusted Rand Index）在聚类结果随机产生时期望值接近零，区分度更高。
+[^7]: [Davies–Bouldin index — Wikipedia](https://en.wikipedia.org/wiki/Davies%E2%80%93Bouldin_index)
+[^8]: [Dunn index — Wikipedia](https://en.wikipedia.org/wiki/Dunn_index)
+[^9]: Stanfill, C., & Waltz, D. (1986). Toward memory-based reasoning. *Communications of the ACM*, 29(12), 1213–1228.
+[^10]: Carpenter, G. A., & Grossberg, S. (1987). A massively parallel architecture for a self-organizing neural pattern recognition machine. *Computer Vision, Graphics, and Image Processing*, 37(1), 54–115.
