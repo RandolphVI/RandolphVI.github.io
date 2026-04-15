@@ -15,7 +15,7 @@ draft: false
 
 FM 和 FFM 模型都是最近几年提出的模型，凭借其在数据量比较大并且特征稀疏的情况下，仍然能够得到优秀的性能和效果的特性，屡次在各大公司举办的 CTR 预估比赛中获得不错的战绩。
 
-FFM（Field-aware Factorization Machine）最初的概念来自 Yu-Chin Juan（阮毓钦，毕业于中国台湾大学，现在美国 Criteo 工作）与其比赛队员，是他们借鉴了来自 Michael Jahrer 的论文[「Ensemble of Collaborative Filtering and Feature Engineered Models for Click Through Rate Prediction」](https://kaggle2.blob.core.windows.net/competitions/kddcup2012/2748/media/Opera.pdf)中的 field 概念提出了 FM 的升级版模型，该篇于 2016 年发布。
+FFM（Field-aware Factorization Machine）最初的概念来自 Yu-Chin Juan（阮毓钦，毕业于中国台湾大学，现在美国 Criteo 工作）[^1]与其比赛队员，是他们借鉴了来自 Michael Jahrer 的论文[「Ensemble of Collaborative Filtering and Feature Engineered Models for Click Through Rate Prediction」](https://kaggle2.blob.core.windows.net/competitions/kddcup2012/2748/media/Opera.pdf)中的 field 概念提出了 FM 的升级版模型，该篇于 2016 年发布。
 
 ### Introduction
 
@@ -131,7 +131,7 @@ $$
 
 **1. 数据集**
 
-数据集为 Kaggle 两个比赛的数据集：
+数据集为 Kaggle 两个比赛的数据集[^3]：
 
 - Criteo
 - Avazu
@@ -143,7 +143,7 @@ $$
 
 **2. 模型训练及参数**
 
-模型的优化方法为普通的 SG （Stochastic Gradient），再加上 FFM 中需要我们设定的超参数 $k$ ，因此模型的参数为： 
+模型的优化方法为普通的 SG （Stochastic Gradient）[^2]，再加上 FFM 中需要我们设定的超参数 $k$ ，因此模型的参数为： 
 
 - $k$ 隐向量的长度；
 - $\lambda$ 学习率；
@@ -156,3 +156,7 @@ $$
 #### Results and Discussion
 
 相较于 LM、Poly 2 以及 FM 模型，FFM 在该两个数据集上表现更好，拥有更高的准确率。
+
+[^1]: Criteo 是法国广告技术公司，其数据集常被用于 CTR 预估研究的标准基准；Yu-Chin Juan 后来与 Steffen Rendle 等人合著了 FFM 的正式论文，发表于 2016 年 RecSys 会议。
+[^2]: FFM 的开源实现 LIBFFM 由台湾大学团队开发，提供高效的 C++ 实现与命令行接口；训练时采用随机梯度下降（SG）配合 Adagrad 自适应学习率，目前许多 Kaggle 竞赛选手仍将其作为基线模型之一。
+[^3]: Criteo 数据集包含约 4500 万条点击记录，是工业界最常用的 CTR 预估公开数据集之一；Avazu 数据集来自移动广告平台，两者特征稀疏性均超过 99%，是检验稀疏场景模型性能的标准测试。

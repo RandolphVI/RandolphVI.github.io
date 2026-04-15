@@ -13,7 +13,7 @@ draft: false
 
 # Introduction
 
-在 20 世纪 60 年代，Hubel 和 Wiesel 在研究猫脑皮层中用于局部敏感和方向选择的神经元时发现其独特的网络结构可以有效地降低反馈神经网络的复杂性，继而出了卷积神经网络（Convolutional Neural Networks-简称 CNN）。
+在 20 世纪 60 年代，Hubel 和 Wiesel[^1] 在研究猫脑皮层中用于局部敏感和方向选择的神经元时发现其独特的网络结构可以有效地降低反馈神经网络的复杂性，继而出了卷积神经网络（Convolutional Neural Networks-简称 CNN）。
 
 卷积神经网络（Convolutional Neural Network）虽然很早被出，但是却是近些年才得以发展起来并引起广泛重视的。它是深度学习技术中极具代表的网络结构之一，也是近些年语音分析和图像识别领域的研究热点，后来发现其在 NLP 自然语言处理上的效果同样不俗。它以其特有的局部连接、权值共享网络结构，有效地降低了深度神经网络模型的复杂度，极大地减少了权值的数量。
 
@@ -298,9 +298,13 @@ Adam Harley 创建了一个卷积神经网络的可视化结果，使用的是 M
 
 - LeNet (1990s)： 本文已介绍。
 - 1990s to 2012：在上世纪 90 年代后期至 2010 年初期，卷积神经网络进入孵化期。随着数据量和计算能力的逐渐发展，卷积神经网络可以处理的问题变得越来越有趣。
-- AlexNet (2012) – 在 2012，Alex Krizhevsky （与其他人）发布了 [AlexNet](https://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks.pdf)，它是比 LeNet 更深更宽的版本，并在 2012 年的 ImageNet 大规模视觉识别大赛（ImageNet Large Scale Visual Recognition Challenge，ILSVRC）中以巨大优势获胜。这对于以前的方法具有巨大的突破，当前 CNN 大范围的应用也是基于这个工作。
+- AlexNet (2012) – 在 2012，Alex Krizhevsky （与其他人）发布了 [AlexNet](https://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks.pdf)，它是比 LeNet 更深更宽的版本，并在 2012 年的 ImageNet 大规模视觉识别大赛（ImageNet Large Scale Visual Recognition Challenge，ILSVRC）中以巨大优势获胜[^2]。这对于以前的方法具有巨大的突破，当前 CNN 大范围的应用也是基于这个工作。
 - ZF Net (2013) – ILSVRC 2013 的获胜者是来自 Matthew Zeiler 和 Rob Fergus 的卷积神经网络。它以 [ZFNet](http://arxiv.org/abs/1311.2901) （Zeiler & Fergus Net 的缩写）出名。它是在 AlexNet 架构超参数上进行调整得到的效果提升。
 - GoogLeNet (2014) – ILSVRC 2014 的获胜者是来自于 Google 的 [Szegedy](http://arxiv.org/abs/1409.4842)等人的卷积神经网络。它的主要贡献在于使用了一个 Inception 模块，可以大量减少网络的参数个数（4M，AlexNet 有 60M 的参数）。
 - VGGNet (2014) – 在 ILSVRC 2014 的领先者中有一个 [VGGNet](http://www.robots.ox.ac.uk/~vgg/research/very_deep/) 的网络。它的主要贡献是展示了网络的深度（层数）对于性能具有很大的影响。
-- ResNets (2015) – [残差网络](http://arxiv.org/abs/1512.03385)是何凯明（和其他人）开发的，并赢得 ILSVRC 2015 的冠军。ResNets 是当前卷积神经网络中最好的模型，也是实践中使用 ConvNet 的默认选择（截至到 2016 年五月）。
+- ResNets (2015)[^3] – [残差网络](http://arxiv.org/abs/1512.03385)是何凯明（和其他人）开发的，并赢得 ILSVRC 2015 的冠军。ResNets 是当前卷积神经网络中最好的模型，也是实践中使用 ConvNet 的默认选择（截至到 2016 年五月）。
 - DenseNet (2016 八月) – 近来由 Gao Huang （和其他人）发表的，[the Densely Connected Convolutional Network](http://arxiv.org/abs/1608.06993) 的各层都直接于其他层以前向的方式连接。DenseNet 在五种竞争积累的目标识别基准任务中，比以前最好的架构有显著的提升。可以在[这里](https://github.com/liuzhuang13/DenseNet)看 Torch 实现。
+
+[^1]: Hubel 与 Wiesel 因这项关于视觉皮层信息处理的研究共同获得 1981 年诺贝尔生理学和医学奖。他们发现大脑视觉皮层具有分层结构，各层分别响应不同复杂度的视觉特征，这一生物学观察直接起到了 CNN 分层特征提取的架构设计灵感。
+[^2]: ImageNet 大规模视觉识别大赛 (ILSVRC) 是基于 ImageNet 数据库的年度竞赛，2012 年 AlexNet 将 Top-5 错误率从 25.8% 降至 16.4%，这一重大跳跃进标志了深度学习丫的开始。
+[^3]: 残差网络 (ResNet) 由闻名的 skip connection （跳过连接）解决了深层网络的梯度消失问题，使训练超过 100 层以上的网络成为可能。何凷明的 ResNet 论文 (He et al., 2015) 是计算机视觉领域引用最广的论文之一。

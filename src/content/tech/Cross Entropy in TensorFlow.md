@@ -28,7 +28,7 @@ $$
 2. 当真实值 $a$ 与期望输出 $y$ 的误差越大，权值更新就快；误差越小，权值更新就慢。而使用平方差作为 Loss 函数，其权值更新往往很慢。
 3. 其中用于计算的 $a$ 也是经过 sigmoid 激活的，取值范围在 0 到 1。如果 label 是 1，预测值也是 1 的话，前面一项 $$y * ln(a)$$ 就是 $$1 * ln(1)$$ 等于 0，后一项 $$(1 – y) * ln(1 – a)$$ 也就是 $$0 * ln(0)$$ 等于 0，Loss 函数为 0，反之 Loss 函数为无限大非常符合我们对 Loss 函数的定义。
 
-交叉熵的定义如下：
+交叉熵[^1]的定义如下：
 
 $$
 C = -\frac{1}{n}\sum_{x}[yln(a)+(1-y)ln(1-a)]
@@ -134,3 +134,6 @@ $$
 这就是 TensorFlow 目前提供的有关 Cross Entropy 的函数实现，用户需要理解多标签和多分类的场景，根据业务需求（分类目标是否独立和互斥）来选择基于 Sigmoid 或者 Softmax 的实现，如果使用 Sigmoid 目前还支持加权的实现，如果使用 Softmax 我们可以自己做 onehot coding 或者使用更易用的`sparse_softmax_cross_entropy_with_logits`函数。
 
 TensorFlow 提供的 Cross Entropy 函数基本涵盖了多目标和多分类的问题，但如果同时是多目标多分类的场景，肯定是无法使用`softmax_cross_entropy_with_logits`，如果使用`sigmoid_cross_entropy_with_logits`我们就把多分类的特征都认为是独立的特征，而实际上他们有且只有一个为 1 的非独立特征，计算 Loss 时不如 Softmax 有效。这里可以预测下，未来 TensorFlow 社区将会实现更多的 op 解决类似的问题，我们也期待更多人参与 TensorFlow 贡献算法和代码。
+
+[^1]: 交叉熵来源于信息论，测量两个概率分布之间的差异。在机器学习中，它的直观含义是“模型预测分布与真实分布的差距”，相比均方误差 (MSE) ，在分类任务中交叉熵相对于 sigmoid 输出的梯度更大、收敛更快。
+[^2]: 对于互斥多分类问题，应该使用 Softmax 而非 Sigmoid。两者的核心区别在于：Softmax 保证所有类别概率之和为 1（建模类别间的竞争关系），而 Sigmoid 对每个输出经行独立处理（适合多标签问题）。

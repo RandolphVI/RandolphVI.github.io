@@ -19,7 +19,7 @@ draft: false
 
 ![](https://farm4.staticflickr.com/3767/32574547714_59711d3f0b_o.jpg)
 
-程序用到的主角是 Python 中的微信个人号接口 <strong>itchat</strong>。[What's itchat?](https://itchat.readthedocs.io/zh/latest/) （itchat 的介绍及安装过程）
+程序用到的主角是 Python 中的微信个人号接口 <strong>itchat</strong>[^1]。[What's itchat?](https://itchat.readthedocs.io/zh/latest/) （itchat 的介绍及安装过程）
 
 这次，我们要监控的模型是先前提到过的 [基于 MNIST 手写体数据集的 CNN 模型](/tech/tensorboard/)。
 
@@ -317,7 +317,7 @@ if __name__ == '__main__':
 1. 首先我导入了 itchat 和 threading。
 2. 在原先所有 **`print`** 消息的地方，都添加了 **`itchat.send()`** 来输出我们的模型训练日志。
 3. 加了一个带锁的状态量 **`running`** 用来做为发送微信消息的运行开关。
-4. 写了一个 itchat 的 handler（就是上图）。其作用就是当程序运行，我们需要在微信中，对自己的微信号发送「开始」，模型才会开始训练，为了防止信息阻塞，所以要用到 **`threading`** 将其放在另一个线程当中。在训练的过程中，如果我们觉得结果已到达我们自己的预期，可以微信发送「停止」来停止模型的训练过程。
+4. 写了一个 itchat 的 handler（就是上图）。其作用就是当程序运行，我们需要在微信中，对自己的微信号发送「开始」，模型才会开始训练，为了防止信息阻塞，所以要用到 **`threading`**[^2] 将其放在另一个线程当中。在训练的过程中，如果我们觉得结果已到达我们自己的预期，可以微信发送「停止」来停止模型的训练过程。
 
 **另外，脚本刚开始运行时，程序会弹出一个包含二维码的图片，我们需要通过微信来扫描该二维码，来登陆微信并启动 itchat 的服务。**
 
@@ -332,3 +332,6 @@ if __name__ == '__main__':
 如果有读者对于 CNN 卷积神经网络有些陌生或者是遗忘，可以参考我的另外一篇文章 [CNN Introduction](/tech/cnn-introduction/)。
 
 如果读者对 Tensorboard 有所遗忘，可以参考我的另一篇文章 [Tensorboard](/tech/tensorboard/)。
+
+[^1]: itchat 是一个非官方的微信个人号 Python API，通过模拟网页微信登录实现消息收发。由于微信官方的限制政策，该库已于 2019 年左右停止维护。
+[^2]: Python 的 `threading` 模块实现多线程并发，但由于 GIL（全局解释器锁）的限制， Python 多线程并不能真正并行执行 CPU 密集型任务；在此场景中用于将训练循环和微信监听分开，属于 IO 密集型操作，多线程屠刚奇效。

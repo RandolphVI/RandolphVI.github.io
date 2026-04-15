@@ -13,7 +13,7 @@ draft: false
 
 # TensorFlow Tensorboard
 
-Tensorboard 是 TensorFlow 中帮助我们对所构建的静态图 Graph 进行可视化的工具，对于我们初学者理解网络架构、每层网络的细节都是很有帮助的。由于前几天刚接触 TensorFlow，所以在尝试学习 Tensorboard 的过程中，遇到了一些问题。在此基础上，参考了 TensorFlow 官方的 Tensorboard Tutorials 以及网上的一些文章。由于前不久 TensorFlow 1.0 刚发布，网上的一些学习资源或者是 tensorboard 代码在新的版本中并不适用，所以自己改写并实现了官方网站上提及的三个实例的 Tensorboard 版本：
+Tensorboard 是 TensorFlow 中帮助我们对所构建的静态图 Graph 进行可视化的工具，对于我们初学者理解网络架构、每层网络的细节都是很有帮助的。由于前几天刚接触 TensorFlow，所以在尝试学习 Tensorboard 的过程中，遇到了一些问题。在此基础上，参考了 TensorFlow 官方的 Tensorboard Tutorials 以及网上的一些文章。由于前不久 TensorFlow 1.0[^1] 刚发布，网上的一些学习资源或者是 tensorboard 代码在新的版本中并不适用，所以自己改写并实现了官方网站上提及的三个实例的 Tensorboard 版本：
 
 1. 最基础简单的线性回归模型
 2. 基于 MNIST 手写体数据集的浅层 MLP 模型
@@ -38,7 +38,7 @@ Tensorboard有几大模块：
 - <strong>SCALARS</strong>：记录单一变量的，使用 **`tf.summary.scalar()`** 收集构建。
 - <strong>IMAGES</strong>：收集的图片数据，当我们使用的数据为图片时（选用）。
 - <strong>AUDIO</strong>：收集的音频数据，当我们使用数据为音频时（选用）。
-- <strong>GRAPHS</strong>：构件图，效果图类似流程图一样，我们可以看到数据的流向，使用<strong>`tf.name_scope()`</strong>收集构建。
+- <strong>GRAPHS</strong>[^2]：构件图，效果图类似流程图一样，我们可以看到数据的流向，使用<strong>`tf.name_scope()`</strong>收集构建。
 - <strong>DISTRIBUTIONS</strong>：用于查看变量的分布值，比如 W（Weights）变化的过程中，主要是在 0.5 附近徘徊。
 - <strong>HISTOGRAMS</strong>：用于记录变量的历史值（比如 weights 值，平均值等），并使用折线图的方式展现，使用<strong>`tf.summary.histogram()`</strong>进行收集构建。
 
@@ -381,3 +381,6 @@ main()
 关于各个模块的作用，以及各个变量的意义，开篇已经提及，我在此就不再赘述了。
 
 另外，在自己的机器模型在训练期间（特别是深度网络），训练时间通常几小时到十几小时不等，甚至可能会花上好几天，那么在这段时间，你们又会干些什么事情呢？作为程序员，这里提供一个「有趣的」方式，可以使用你的微信来监控你的模型在训练期间的一举一动，具体做法参考我的另一篇文章 [Use WeChat to Monitor Your Network](/tech/use-wechat-to-monitor-your-network/)
+
+[^1]: TensorFlow 1.0 于 2017 年 2 月发布，带来了稳定的 API 以及 XLA、分布式训练等新特性。当时很多网络教程还基于 0.x 版本，说明了当时生态迅速迭代带来的兼容性挑战。
+[^2]: Tensorboard 的 GRAPHS 模块展示的是 TensorFlow 的静态计算图 (computational graph)，与 PyTorch 审调 eager execution 的设计哲学有根本差异。静态图强迫用户提前定义计算流程，但也因此能进行更好的图优化和部署。
