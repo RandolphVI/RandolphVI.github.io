@@ -19,7 +19,7 @@ Dropout 是深度学习中防止过拟合提高效果的一个大杀器，但对
 
 ## 组合派
 
-参考文献中第一篇中的观点，Hinton 在 2014 年提出的。
+参考文献中第一篇[^1]中的观点，Hinton 在 2014 年提出的。
 
 ### 观点
 
@@ -79,18 +79,18 @@ Dropout 也能达到同样的效果，它强迫一个神经单元，和随机挑
 
   - 没有 dropout 的神经网络 
     $$
-    \begin{align}
-    z_{i}^{(l+1)} & = w_{i}^{(l+1)}y^{l} + b_{i}^{(l+1)} \cr
+    \begin{aligned}
+    z_{i}^{(l+1)} & = w_{i}^{(l+1)}y^{l} + b_{i}^{(l+1)} \\
     y_{i}^{(l+1)} & = f(z_{i}^{(l+1)})
     \end{aligned}
     $$
 
   - 有 dropout 的神经网络 
     $$
-    \begin{align}
-    r_{i}^{(l)} & \sim Bernoulli(p) \cr
-    \tilde{y}^{(l)} & = r^{(l)}*y^{(l)}\cr
-    z_{i}^{(l+1)} & = w_{i}^{(l+1)} \tilde{y}^{l} + b_{i}^{(l+1)} \cr
+    \begin{aligned}
+    r_{i}^{(l)} & \sim Bernoulli(p) \\
+    \tilde{y}^{(l)} & = r^{(l)} * y^{(l)} \\
+    z_{i}^{(l+1)} & = w_{i}^{(l+1)} \tilde{y}^{l} + b_{i}^{(l+1)} \\
     y_{i}^{(l+1)} & = f(z_{i}^{(l+1)})
     \end{aligned}
     $$
@@ -169,7 +169,7 @@ Dropout 也能达到同样的效果，它强迫一个神经单元，和随机挑
 
 ## 噪声派
 
-参考文献中第二篇论文中得观点，也很强有力。
+参考文献中第二篇[^2]论文中得观点，也很强有力。
 
 ### 观点
 
@@ -232,8 +232,6 @@ Dropout 也能达到同样的效果，它强迫一个神经单元，和随机挑
 
 - 试验中，纯二值化的特征的效果也非常好，说明了稀疏表示在进行空间分区的假设是成立的，一个特征是否被激活表示该样本是否在一个子空间中。
 
-# 参考文献
+[^1]: Srivastava N, Hinton G, Krizhevsky A, et al. Dropout: A simple way to prevent neural networks from overfitting[J]. The Journal of Machine Learning Research, 2014, 15(1): 1929-1958.
 
-[1]. Srivastava N, Hinton G, Krizhevsky A, et al. Dropout: A simple way to prevent neural networks from overfitting[J]. The Journal of Machine Learning Research, 2014, 15(1): 1929-1958.
-
-[2]. Dropout as data augmentation. [http://arxiv.org/abs/1506.08700](http://arxiv.org/abs/1506.08700)
+[^2]: Dropout as data augmentation. [http://arxiv.org/abs/1506.08700](http://arxiv.org/abs/1506.08700)
