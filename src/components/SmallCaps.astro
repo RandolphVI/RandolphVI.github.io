@@ -1,0 +1,56 @@
+---
+---
+<script>
+  function applySmallCaps() {
+    const article = document.querySelector('.article-content');
+    if (!article) return;
+
+    // Target 2+ consecutive uppercase letters (or letters+digits like GPT-3, AGI, CNN, RNN, LSTM, AI)
+    const ACRONYM_RE = /\b([A-Z]{2,}(?:-[A-Z0-9]+)?|[A-Z]+[0-9]+)\b/g;
+
+    function walk(node: Node) {
+      if (node.nodeType === Node.TEXT_NODE) {
+        const text = node.textContent || '';
+        if (!ACRONYM_RE.test(text)) return;
+
+        ACRONYM_RE.lastIndex = 0;
+        const frag = document.createDocumentFragment();
+        let lastIdx = 0;
+        let m: RegExpExecArray | null;
+        while ((m = ACRONYM_RE.exec(text)) !== null) {
+          if (m.index > lastIdx) {
+            frag.appendChild(document.createTextNode(text.slice(lastIdx, m.index)));
+          }
+          const span = document.createElement('span');
+          span.className = 'smallcaps';
+          span.textContent = m[0];
+          frag.appendChild(span);
+          lastIdx = m.index + m[0].length;
+        }
+        if (lastIdx < text.length) {
+          frag.appendChild(document.createTextNode(text.slice(lastIdx)));
+        }
+        (node as ChildNode).replaceWith(frag);
+        return;
+      }
+
+      // Skip code, pre, headings, already-processed, and math content
+      if (node.nodeType === Node.ELEMENT_NODE) {
+        const el = node as Element;
+        const tag = el.tagName;
+        if (['CODE', 'PRE', 'H1', 'H2', 'H3', 'H4', 'H5', 'H6', 'SCRIPT', 'STYLE', 'A'].includes(tag)) return;
+        if (el.classList.contains('smallcaps')) return;
+        if (el.classList.contains('katex')) return;
+        if (el.closest('.katex, .katex-display, pre, code')) return;
+      }
+
+      const children = Array.from(node.childNodes);
+      for (const child of children) walk(child);
+    }
+
+    walk(article);
+  }
+
+  applySmallCaps();
+  document.addEventListener('astro:page-load', applySmallCaps);
+</script>

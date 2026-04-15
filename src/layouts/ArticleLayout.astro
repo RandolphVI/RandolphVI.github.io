@@ -6,6 +6,10 @@ import ReadingProgress from '../components/ReadingProgress.astro';
 import TableOfContents from '../components/TableOfContents.astro';
 import Sidenotes from '../components/Sidenotes.astro';
 import ScrollButtons from '../components/ScrollButtons.astro';
+import Backlinks from '../components/Backlinks.astro';
+import LinkPopup from '../components/LinkPopup.astro';
+import SmallCaps from '../components/SmallCaps.astro';
+import type { BacklinkEntry } from '../utils/backlinks';
 import '../styles/article.css';
 
 interface Props {
@@ -18,9 +22,10 @@ interface Props {
   headings: { depth: number; slug: string; text: string }[];
   prevPost?: { title: string; href: string };
   nextPost?: { title: string; href: string };
+  backlinks?: BacklinkEntry[];
 }
 
-const { title, date, category, tags, description, rawContent, headings, prevPost, nextPost } = Astro.props;
+const { title, date, category, tags, description, rawContent, headings, prevPost, nextPost, backlinks = [] } = Astro.props;
 
 const { minutes, words } = getReadingTime(rawContent);
 const dateStr = `${date.getFullYear()}.${String(date.getMonth() + 1).padStart(2, '0')}.${String(date.getDate()).padStart(2, '0')}`;
@@ -88,6 +93,9 @@ const showSidebar = true;
           ))}
         </div>
 
+        <!-- Backlinks -->
+        <Backlinks backlinks={backlinks} />
+
         <!-- Prev / Next Navigation -->
         {(prevPost || nextPost) && (
           <div class="mt-12 pt-6 border-t border-[var(--color-border)] flex justify-between">
@@ -115,4 +123,6 @@ const showSidebar = true;
   </div>
   <Sidenotes />
   <ScrollButtons />
+  <LinkPopup />
+  <SmallCaps />
 </BaseLayout>

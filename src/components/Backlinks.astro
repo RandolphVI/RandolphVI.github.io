@@ -1,0 +1,33 @@
+---
+import type { BacklinkEntry } from '../utils/backlinks';
+
+interface Props {
+  backlinks: BacklinkEntry[];
+}
+
+const { backlinks } = Astro.props;
+---
+
+{backlinks.length > 0 && (
+  <aside class="mt-12 pt-6 border-t border-[var(--color-border)]">
+    <div class="font-sans text-xs tracking-[3px] text-[var(--color-accent-dark)] mb-4 uppercase">
+      Backlinks
+    </div>
+    <ul class="space-y-2 list-none p-0">
+      {backlinks.map((link) => (
+        <li class="flex items-baseline gap-2">
+          <span class="text-[var(--color-accent)] text-xs">·</span>
+          <a
+            href={link.href}
+            class="text-base text-[var(--color-muted)] hover:text-[var(--color-heading)] transition-colors border-none"
+          >
+            {link.title}
+            <span class="font-sans text-xs text-[var(--color-faint)] ml-2">
+              {link.collection === 'tech' ? '技术' : link.collection === 'reading' ? '阅读' : '匯文'}
+            </span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </aside>
+)}

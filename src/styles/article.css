@@ -3,11 +3,19 @@
 /* Drop cap - first letter of first paragraph after each h2 */
 .article-content > h2 + p::first-letter {
   float: left;
-  font-size: 3.2em;
-  line-height: 1;
-  margin: 0.05em 0.12em 0 0;
+  font-size: 3.8em;
+  line-height: 0.9;
+  margin: 0.08em 0.14em 0 0;
+  padding: 0.05em 0.1em 0 0;
   color: var(--color-heading);
   font-family: 'KingHwa_OldSong', '京華老宋体', 'Noto Serif SC', serif;
+  font-weight: 500;
+  text-shadow: 1px 1px 0 var(--color-border-light);
+  background: linear-gradient(135deg, transparent 40%, var(--color-surface) 40%);
+  background-size: 100% 100%;
+  border-right: 1px solid var(--color-border-dark);
+  padding-right: 0.15em;
+  margin-right: 0.2em;
 }
 
 /* Headings */
@@ -249,4 +257,262 @@
       transform: translateY(0);
     }
   }
+}
+
+/* === Epigraph (题记) === */
+.article-content .epigraph {
+  margin: 2em auto;
+  max-width: 75%;
+  padding: 1.2em 1.5em;
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  text-align: center;
+  font-family: 'KingHwa_OldSong', 'Noto Serif SC', serif;
+  font-style: italic;
+  font-size: 0.95rem;
+  line-height: 1.9;
+  color: var(--color-muted);
+}
+
+.article-content .epigraph p {
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+  margin-bottom: 0.5em;
+  text-align: center;
+}
+
+.article-content .epigraph p:last-child {
+  margin-bottom: 0;
+}
+
+.article-content .epigraph cite,
+.article-content .epigraph .source {
+  display: block;
+  margin-top: 0.8em;
+  font-size: 0.85rem;
+  font-style: normal;
+  color: var(--color-faint);
+  font-family: 'Josefin Sans', sans-serif;
+  letter-spacing: 1px;
+}
+
+/* === Marginnote (边注) — author's aside in right margin === */
+.article-content .marginnote {
+  display: block;
+  float: right;
+  clear: right;
+  margin: 0 -15rem 1em 1em;
+  width: 13rem;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: var(--color-muted);
+  border-left: 2px solid var(--color-accent);
+  padding-left: 0.8em;
+  font-style: italic;
+}
+
+/* On narrow screens, marginnote becomes inline note */
+@media (max-width: 1439px) {
+  .article-content .marginnote {
+    float: none;
+    margin: 1em 0;
+    width: auto;
+    padding: 0.5em 0.8em;
+    background: var(--color-surface);
+  }
+}
+
+/* === Admonition (提示块) === */
+.article-content .admonition {
+  margin: 1.5em 0;
+  padding: 1em 1.2em;
+  border-left: 4px solid var(--color-accent);
+  background: var(--color-surface);
+  border-radius: 0 6px 6px 0;
+  position: relative;
+}
+
+.article-content .admonition-title {
+  display: flex;
+  align-items: center;
+  gap: 0.4em;
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--color-accent-dark);
+  margin-bottom: 0.6em;
+}
+
+.article-content .admonition-title::before {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background: var(--color-accent);
+  border-radius: 50%;
+}
+
+.article-content .admonition p {
+  margin-bottom: 0.6em;
+}
+
+.article-content .admonition p:last-child {
+  margin-bottom: 0;
+}
+
+/* Admonition variants */
+.article-content .admonition.note {
+  border-left-color: #7a9ab8;
+  background: rgba(122, 154, 184, 0.08);
+}
+.article-content .admonition.note .admonition-title { color: #5d82a3; }
+.article-content .admonition.note .admonition-title::before { background: #7a9ab8; }
+
+.article-content .admonition.tip {
+  border-left-color: #8ba878;
+  background: rgba(139, 168, 120, 0.08);
+}
+.article-content .admonition.tip .admonition-title { color: #6b8a5c; }
+.article-content .admonition.tip .admonition-title::before { background: #8ba878; }
+
+.article-content .admonition.warning {
+  border-left-color: #c9a36a;
+  background: rgba(201, 163, 106, 0.1);
+}
+.article-content .admonition.warning .admonition-title { color: #a47f4a; }
+.article-content .admonition.warning .admonition-title::before { background: #c9a36a; }
+
+.article-content .admonition.danger {
+  border-left-color: #b87878;
+  background: rgba(184, 120, 120, 0.08);
+}
+.article-content .admonition.danger .admonition-title { color: #945e5e; }
+.article-content .admonition.danger .admonition-title::before { background: #b87878; }
+
+/* === Collapsible sections (<details>) === */
+.article-content details {
+  margin: 1.5em 0;
+  padding: 0.8em 1.2em;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  background: var(--color-surface);
+}
+
+.article-content details[open] {
+  padding-bottom: 1.2em;
+}
+
+.article-content details summary {
+  cursor: pointer;
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--color-heading);
+  letter-spacing: 1px;
+  list-style: none;
+  position: relative;
+  padding-left: 1.5em;
+  user-select: none;
+  transition: color 0.2s;
+}
+
+.article-content details summary:hover {
+  color: var(--color-accent-dark);
+}
+
+.article-content details summary::-webkit-details-marker {
+  display: none;
+}
+
+.article-content details summary::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--color-accent);
+  transition: transform 0.2s;
+  font-size: 0.85em;
+}
+
+.article-content details[open] summary::before {
+  transform: rotate(90deg);
+}
+
+.article-content details > *:not(summary) {
+  margin-top: 0.8em;
+}
+
+/* === Link icons === */
+
+/* External links (not internal) */
+.article-content a[href^="http"]:not([href*="randolph.pro"]):not([href*="localhost"])::after {
+  content: '↗';
+  display: inline-block;
+  margin-left: 0.15em;
+  font-size: 0.75em;
+  color: var(--color-accent-dark);
+  vertical-align: super;
+  line-height: 1;
+  text-decoration: none;
+  border-bottom: none;
+}
+
+/* PDF links */
+.article-content a[href$=".pdf"]::after,
+.article-content a[href*=".pdf?"]::after {
+  content: ' [PDF]';
+  font-size: 0.7em;
+  color: var(--color-accent-dark);
+  font-family: 'Josefin Sans', sans-serif;
+  letter-spacing: 0.5px;
+  vertical-align: baseline;
+  border-bottom: none;
+}
+
+/* Wikipedia */
+.article-content a[href*="wikipedia.org"]::after {
+  content: ' [W]';
+  font-size: 0.7em;
+  color: var(--color-accent-dark);
+  font-family: 'Josefin Sans', sans-serif;
+  letter-spacing: 0.5px;
+  border-bottom: none;
+}
+
+/* GitHub */
+.article-content a[href*="github.com"]::after {
+  content: ' [G]';
+  font-size: 0.7em;
+  color: var(--color-accent-dark);
+  font-family: 'Josefin Sans', sans-serif;
+  letter-spacing: 0.5px;
+  border-bottom: none;
+}
+
+/* arXiv */
+.article-content a[href*="arxiv.org"]::after {
+  content: ' [arXiv]';
+  font-size: 0.7em;
+  color: var(--color-accent-dark);
+  font-family: 'Josefin Sans', sans-serif;
+  letter-spacing: 0.5px;
+  border-bottom: none;
+}
+
+/* Don't add icons to links that already contain images */
+.article-content a:has(img)::after {
+  content: none !important;
+}
+
+/* === Small caps for acronyms === */
+.article-content abbr,
+.article-content .smallcaps {
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.05em;
+  font-weight: 500;
+  text-decoration: none;
+  border: none;
 }

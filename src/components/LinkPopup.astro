@@ -1,0 +1,106 @@
+---
+---
+<div
+  id="link-popup"
+  class="fixed z-50 pointer-events-none opacity-0 transition-opacity duration-150"
+  style="max-width: 360px;"
+>
+  <div class="bg-[var(--color-bg)] border border-[var(--color-border-dark)] shadow-xl rounded-lg p-4">
+    <div id="popup-category" class="font-sans text-[10px] tracking-[3px] text-[var(--color-accent-dark)] mb-2 uppercase"></div>
+    <div id="popup-title" class="text-base text-[var(--color-heading)] font-serif leading-snug mb-2"></div>
+    <div id="popup-meta" class="font-sans text-xs text-[var(--color-faint)] mb-2"></div>
+    <div id="popup-desc" class="text-sm text-[var(--color-muted)] leading-relaxed"></div>
+  </div>
+</div>
+
+<script>
+  type ArticleMeta = {
+    title: string;
+    category: string;
+    date: string;
+    description: string;
+  };
+
+  const cache = new Map<string, ArticleMeta | null>();
+  let showTimer: number | null = null;
+  let hideTimer: number | null = null;
+
+  async function fetchMeta(href: string): Promise<ArticleMeta | null> {
+    if (cache.has(href)) return cache.get(href)!;
+    try {
+      const res = await fetch(href);
+      if (!res.ok) { cache.set(href, null); return null; }
+      const html = await res.text();
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+
+      const title = doc.querySelector('article h1')?.textContent?.trim() || '';
+      const categoryEl = doc.querySelector('article .mb-10 .font-sans.text-xs.tracking-\\[4px\\]');
+      const category = categoryEl?.textContent?.trim() || '';
+      const meta = doc.querySelector('article .flex.justify-center.gap-4')?.textContent?.replace(/\s+/g, ' ').trim() || '';
+      const description = doc.querySelector('meta[name="description"]')?.getAttribute('content') || '';
+
+      const result = { title, category, date: meta, description };
+      cache.set(href, result);
+      return result;
+    } catch {
+      cache.set(href, null);
+      return null;
+    }
+  }
+
+  async function showPopup(link: HTMLAnchorElement, event: MouseEvent) {
+    const href = link.getAttribute('href');
+    if (!href) return;
+
+    const popup = document.getElementById('link-popup');
+    if (!popup) return;
+
+    const meta = await fetchMeta(href);
+    if (!meta || !meta.title) return;
+
+    (document.getElementById('popup-category') as HTMLElement).textContent = meta.category;
+    (document.getElementById('popup-title') as HTMLElement).textContent = meta.title;
+    (document.getElementById('popup-meta') as HTMLElement).textContent = meta.date;
+    (document.getElementById('popup-desc') as HTMLElement).textContent = meta.description;
+
+    // Position near cursor, but keep within viewport
+    const pad = 12;
+    let x = event.clientX + pad;
+    let y = event.clientY + pad;
+    const popupRect = popup.getBoundingClientRect();
+    if (x + 360 > window.innerWidth) x = event.clientX - 360 - pad;
+    if (y + popupRect.height > window.innerHeight) y = event.clientY - popupRect.height - pad;
+
+    popup.style.left = `${x}px`;
+    popup.style.top = `${y}px`;
+    popup.style.opacity = '1';
+  }
+
+  function hidePopup() {
+    const popup = document.getElementById('link-popup');
+    if (popup) popup.style.opacity = '0';
+  }
+
+  function initLinkPopup() {
+    // Target internal article links only
+    const links = document.querySelectorAll<HTMLAnchorElement>(
+      '.article-content a[href^="/posts/"], .article-content a[href^="/tech/"], .article-content a[href^="/reading/"]'
+    );
+
+    links.forEach((link) => {
+      link.addEventListener('mouseenter', (e) => {
+        if (hideTimer) { clearTimeout(hideTimer); hideTimer = null; }
+        showTimer = window.setTimeout(() => {
+          showPopup(link, e as MouseEvent);
+        }, 400);
+      });
+      link.addEventListener('mouseleave', () => {
+        if (showTimer) { clearTimeout(showTimer); showTimer = null; }
+        hideTimer = window.setTimeout(hidePopup, 200);
+      });
+    });
+  }
+
+  initLinkPopup();
+  document.addEventListener('astro:page-load', initLinkPopup);
+</script>

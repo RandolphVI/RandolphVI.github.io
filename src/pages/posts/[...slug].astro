@@ -1,6 +1,7 @@
 ---
 import { getCollection, render } from 'astro:content';
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import { getBacklinks } from '../../utils/backlinks';
 
 export async function getStaticPaths() {
   const posts = await getCollection('posts', ({ data }) => !data.draft);
@@ -22,6 +23,7 @@ export async function getStaticPaths() {
 
 const { post, prevPost, nextPost } = Astro.props;
 const { Content, headings } = await render(post);
+const backlinks = await getBacklinks('posts', post.id);
 ---
 
 <ArticleLayout
@@ -34,6 +36,7 @@ const { Content, headings } = await render(post);
   headings={headings}
   prevPost={prevPost}
   nextPost={nextPost}
+  backlinks={backlinks}
 >
   <Content />
 </ArticleLayout>
