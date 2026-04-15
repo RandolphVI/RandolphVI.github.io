@@ -32,8 +32,8 @@
       const sidenote = document.createElement('div');
       sidenote.className = 'mb-8';
       sidenote.innerHTML = `
-        <div class="text-[10px] text-[var(--color-accent-dark)] mb-1 font-sans">${num}</div>
-        <div class="text-[10px] text-[var(--color-muted)] leading-relaxed border-l border-[var(--color-border-dark)] pl-2">
+        <div class="text-sm text-[var(--color-accent-dark)] mb-1.5 font-sans">${num}</div>
+        <div class="text-[0.95rem] text-[var(--color-muted)] leading-relaxed border-l border-[var(--color-border-dark)] pl-3">
           ${item.innerHTML.replace(/<a[^>]*class="footnote-backref"[^>]*>.*?<\/a>/g, '')}
         </div>
       `;
