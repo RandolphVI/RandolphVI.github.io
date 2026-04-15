@@ -251,20 +251,20 @@ $$
 $Var[X] = E[X^2] - E^2[X]$，且由于函数$f(x)$是确定的，所以$E[f(x)] = f(x)$，且有$ \varepsilon \sim N(0,\delta_{\varepsilon}^2)$，再结合$y = f(x) + \varepsilon$可以得到：
 
 $$
-E(y) =  E[f(x) +  \varepsilon] = E[f(x)] + 0 = E[f(x)] \tag{1.1}
+E(y) =  E[f(x) +  \varepsilon] = E[f(x)] + 0 = E[f(x)]
 $$
 
 $$
-Var(y) = E[(y - E(y)^2] = E[(f(x) + \varepsilon - E[f(x)])^2] =  E[\varepsilon ^ 2] = \delta_{\varepsilon}^2 \tag{1.2}
+Var(y) = E[(y - E(y)^2] = E[(f(x) + \varepsilon - E[f(x)])^2] =  E[\varepsilon ^ 2] = \delta_{\varepsilon}^2
 $$
 
 ----
 
 $$
 \begin{aligned}
-E_{rr} (x) & = E[(y-\hat{f}(x))^{2}] = E[y^2-2y\hat{f}(x)+(\hat{f}(x))^2] \cr
-& = E(y^2) {\color{Orchid}{ - E^2(y) + E^2(y)}} -2E(y)E(\hat{f}(x)) + E(\hat{f^2}(x)) {\color{Orchid}{ - E^2(\hat{f}(x)) + E^2(\hat{f}(x))}} \cr
-& =  {\color{Red}{E^2(\hat{f}(x)) -2E(y)E(\hat{f}(x)) + E^2(y)}} + {\color{Green}{ E(\hat{f^2}(x))-  E^2(\hat{f}(x))}} + {\color{Blue} {E(y^2)-  E^2(y) }}
+E_{rr} (x) & = E[(y-\hat{f}(x))^{2}] = E[y^2-2y\hat{f}(x)+(\hat{f}(x))^2] \\ 
+& = E(y^2) {\color{orchid}{ - E^2(y) + E^2(y)}} -2E(y)E(\hat{f}(x)) + E(\hat{f^2}(x)) {\color{orchid}{ - E^2(\hat{f}(x)) + E^2(\hat{f}(x))}} \\ 
+& =  {\color{red}{E^2(\hat{f}(x)) -2E(y)E(\hat{f}(x)) + E^2(y)}} + {\color{green}{ E(\hat{f^2}(x))-  E^2(\hat{f}(x))}} + {\color{blue} {E(y^2)-  E^2(y) }}
 \end{aligned}
 $$
 
@@ -272,9 +272,9 @@ $$
 
 $$
 \begin{aligned}
-E_{rr}(x) & =  {\color{Red}{ E^2(\hat{f}(x)) -2E(f(x))E(\hat{f}(x)) + E^2(f(x))}} + {\color{Blue}{ E(\hat{f^2}(x))-  E^2(\hat{f}(x))}} + {\color{Green}{E(y^2)-  E^2(y) }} \cr
-& =  {\color{Red}{[E(\hat{f}(x))-E(f(x))]^2}} + {\color{Blue}{ E[(\hat{f}(x) - E\hat{f}(x))^2]}} + {\color{Green}{ Var(y) }} \cr
-& =  {\color{Red}{Bias^2[\hat{f}(x)]}} + {\color{Blue}{ Var[\hat{f}(x)]}} + {\color{Green}{\delta _{\varepsilon }^{2}}}
+E_{rr}(x) & =  {\color{red}{ E^2(\hat{f}(x)) -2E(f(x))E(\hat{f}(x)) + E^2(f(x))}} + {\color{blue}{ E(\hat{f^2}(x))-  E^2(\hat{f}(x))}} + {\color{green}{E(y^2)-  E^2(y) }} \\ 
+& =  {\color{red}{[E(\hat{f}(x))-E(f(x))]^2}} + {\color{blue}{ E[(\hat{f}(x) - E\hat{f}(x))^2]}} + {\color{green}{ Var(y) }} \\ 
+& =  {\color{red}{Bias^2[\hat{f}(x)]}} + {\color{blue}{ Var[\hat{f}(x)]}} + {\color{green}{\delta _{\varepsilon }^{2}}}
 \end{aligned}
 $$
 

@@ -17,10 +17,10 @@ draft: false
 JPEG 采用的是 YCrCb 颜色空间[^1]，而 BMP 采用的是 RGB 颜色空间，要想对 BMP 图片进行压缩，首先需要进行颜色空间的转换。YCrCb 颜色空间中，$Y$ 代表亮度，$Cr$，$Cb$ 则代表色度和饱和度（也有人将 $Cb$，$Cr$ 两者统称为色度），三者通常以 $Y$，$U$，$V$ 来表示，即用 $U$ 代表 $Cb$，用 $V$ 代表 $Cr$。RGB 和 YCrCb 之间的转换关系如下所示：
 
 $$
-\begin{align}
-Y &= &0.299R &+ 0.587G + 0.114B \cr
-Cb &= &-0.168R &- 0.331G + 0.500B  + 128 \cr
-Cr &= &0.500R &- 0.418G - 0.081B  + 128 
+\begin{aligned}
+Y &= 0.299R + 0.587G + 0.114B \\
+Cb &= -0.168R - 0.331G + 0.500B + 128 \\
+Cr &= 0.500R - 0.418G - 0.081B + 128
 \end{aligned}
 $$
 
@@ -54,7 +54,7 @@ $$
 c(u)=
 \begin{cases}
 \sqrt{\frac 1N},& u = 0 \cr
-\sqrt{2 \over N},& u \neq 0 \cr
+\sqrt{\frac{2}{N}},& u \neq 0 \cr
 \end{cases}
 $$
 
@@ -67,7 +67,7 @@ $$
 c(u)=
 \begin{cases}
 \sqrt{\frac 1N},& u = 0 \cr
-\sqrt{2 \over N},& u \neq 0 \cr
+\sqrt{\frac{2}{N}},& u \neq 0 \cr
 \end{cases}
 $$
 

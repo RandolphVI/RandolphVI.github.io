@@ -13,7 +13,7 @@ draft: false
 
 # Introduction
 
-Factorization Machines（FM），可译为“隐因子分解机”，由 Steffen Rendle 于 2010 年提出，并发布开源工具 **libFM** 。他凭借 FM 单个模型，他在 KDD Cup 2012上，取得 Track1 的第 2 名和 Track2 的第 3 名。
+Factorization Machines（FM），可译为“隐因子分解机”，由 Steffen Rendle 于 2010 年提出，并发布开源工具 **libFM**[^1] 。他凭借 FM 单个模型，他在 KDD Cup 2012[^2]上，取得 Track1 的第 2 名和 Track2 的第 3 名。
 
 # Compared with Other Models
 
@@ -82,12 +82,12 @@ FM 模型中需要估计的参数包括 $$w_0 \ \epsilon\  \mathbb{R},w \ \epsil
 直观上看，上述模型的计算复杂度是 $O(kn^2)$ ，但是经过下面的改写后：
 
 $$
-\begin{align}
-& \sum_{i=1}^{n}\sum_{j=i+1}^{n}\left \langle  v_i, v_j\right \rangle x_ix_j \cr
-=& \frac{1}{2} \sum_{i=1}^{n}\sum_{j=1}^{n}\left \langle  v_i, v_j\right \rangle x_ix_j - \frac{1}{2} \sum_{i=1}^{n}\left \langle  v_i, v_i\right \rangle x_ix_i\cr 
-=& \frac{1}{2} \left ( \sum_{i=1}^{n}\sum_{j=1}^{n}\sum_{f=1}^{k} v_{i,f} \cdot v_{j,f} \ x_ix_j - \sum_{i=1}^{n}\sum_{f=1}^{k} v_{i,f} \cdot v_{i,f} \ x_ix_i \right) \cr
-=& \frac{1}{2} \sum_{f=1}^{k} \left( \left( \sum_{i=1}^{n}v_{i,f}x_{i}\right) \left( \sum_{j=1}^{n}v_{j,f}x_{j}\right) - \sum_{i=1}^{n}v_{i,f}^2 x_{i}^2\right) \cr
-=& \frac{1}{2}  \sum_{f=1}^{k} \left( \left( \sum_{i=1}^{n}v_{i,f}x_{i}\right)^2 - \sum_{i=1}^{n}v_{i,f}^2 x_{i}^2\right)\cr
+\begin{aligned}
+& \sum_{i=1}^{n}\sum_{j=i+1}^{n}\left \langle  v_i, v_j\right \rangle x_ix_j \\
+=& \frac{1}{2} \sum_{i=1}^{n}\sum_{j=1}^{n}\left \langle  v_i, v_j\right \rangle x_ix_j - \frac{1}{2} \sum_{i=1}^{n}\left \langle  v_i, v_i\right \rangle x_ix_i \\
+=& \frac{1}{2} \left ( \sum_{i=1}^{n}\sum_{j=1}^{n}\sum_{f=1}^{k} v_{i,f} \cdot v_{j,f} \ x_ix_j - \sum_{i=1}^{n}\sum_{f=1}^{k} v_{i,f} \cdot v_{i,f} \ x_ix_i \right) \\
+=& \frac{1}{2} \sum_{f=1}^{k} \left( \left( \sum_{i=1}^{n}v_{i,f}x_{i}\right) \left( \sum_{j=1}^{n}v_{j,f}x_{j}\right) - \sum_{i=1}^{n}v_{i,f}^2 x_{i}^2\right) \\
+=& \frac{1}{2}  \sum_{f=1}^{k} \left( \left( \sum_{i=1}^{n}v_{i,f}x_{i}\right)^2 - \sum_{i=1}^{n}v_{i,f}^2 x_{i}^2\right)
 \end{aligned}
 $$
 
@@ -131,7 +131,7 @@ $$
 
 - **交替最小二乘法 (AlternatingLeast-Squares, ALS)**
 
-- **马尔可夫链蒙特卡洛法 (MarkovChain Monte Carlo, MCMC)**
+- **马尔可夫链蒙特卡洛法 (MarkovChain Monte Carlo, MCMC)**[^3]
 
 
 ## Multilinearity
@@ -172,3 +172,7 @@ $$
 ## Gradient
 
   ​
+
+[^1]: libFM 是 Rendle 发布的 FM 开源实现，支持 SGD、ALS 和 MCMC 三种优化算法，目前已整合入更广泛的推荐系统框架如 TensorFlow Recommenders 中。
+[^2]: KDD Cup 是由 ACM SIGKDD 主办的年度数据挖掘竞赛，2012 年竞赛数据来自腾讯社交广告平台，属于当时规模最大的 CTR 预估赛事之一。
+[^3]: 对于 FM，MCMC 方法通常比 SGD 取得更好的效果，但计算成本也更高；Rendle 本人的实验表明在稀疏数据上 MCMC 往往是最优选择。
