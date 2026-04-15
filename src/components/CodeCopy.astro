@@ -1,0 +1,50 @@
+---
+---
+<script>
+  function initCodeCopy() {
+    const pres = document.querySelectorAll<HTMLPreElement>('.article-content pre');
+
+    pres.forEach((pre) => {
+      // Skip if already has a copy button
+      if (pre.querySelector('.code-copy-btn')) return;
+
+      // Make pre relative so button can absolutely position
+      const currentPos = window.getComputedStyle(pre).position;
+      if (currentPos === 'static') {
+        pre.style.position = 'relative';
+      }
+
+      const btn = document.createElement('button');
+      btn.className = 'code-copy-btn';
+      btn.type = 'button';
+      btn.setAttribute('aria-label', '复制代码');
+      btn.title = '复制代码';
+      btn.textContent = '复制';
+
+      btn.addEventListener('click', async (e) => {
+        e.preventDefault();
+        const code = pre.querySelector('code');
+        const text = code?.innerText || pre.innerText;
+        try {
+          await navigator.clipboard.writeText(text);
+          btn.textContent = '已复制';
+          btn.classList.add('copied');
+          setTimeout(() => {
+            btn.textContent = '复制';
+            btn.classList.remove('copied');
+          }, 1600);
+        } catch {
+          btn.textContent = '失败';
+          setTimeout(() => {
+            btn.textContent = '复制';
+          }, 1600);
+        }
+      });
+
+      pre.appendChild(btn);
+    });
+  }
+
+  initCodeCopy();
+  document.addEventListener('astro:page-load', initCodeCopy);
+</script>
