@@ -4,6 +4,10 @@ export default {
   darkMode: 'class',
   theme: {
     extend: {
+      screens: {
+        // Custom breakpoint: only show side panels when there's real room
+        'wide': '1440px',
+      },
       colors: {
         paper: {
           50: '#faf8f5',
