@@ -29,12 +29,12 @@ const showSidebar = true;
 
 <BaseLayout title={title} description={description}>
   <ReadingProgress />
-  <div class="max-w-[1400px] mx-auto px-4 lg:px-8 py-10">
-    <div class="flex gap-0 lg:gap-10 justify-center">
+  <div class="max-w-[1440px] mx-auto px-4 lg:px-6 py-10">
+    <div class="flex gap-0 lg:gap-6 justify-center">
 
       <!-- Left: Article Info + TOC (desktop only) -->
       {showSidebar && (
-        <aside class="hidden xl:block w-52 flex-shrink-0 pt-20">
+        <aside class="hidden xl:block w-60 flex-shrink-0 pt-20">
           <TableOfContents
             headings={headings}
             title={title}
@@ -48,7 +48,7 @@ const showSidebar = true;
       )}
 
       <!-- Center: Article Content -->
-      <article class="w-full max-w-[860px]">
+      <article class="w-full max-w-[900px]">
         <!-- Article Header -->
         <div class="text-center mb-10 article-fade-in">
           <div class="font-sans text-xs tracking-[4px] text-[var(--color-accent-dark)] mb-4">
@@ -108,7 +108,7 @@ const showSidebar = true;
       </article>
 
       <!-- Right: Sidenotes area (desktop only, populated in Task 8) -->
-      <aside class="hidden xl:block w-72 flex-shrink-0 pt-20" id="sidenotes-container">
+      <aside class="hidden xl:block w-56 flex-shrink-0 pt-20" id="sidenotes-container">
       </aside>
 
     </div>
