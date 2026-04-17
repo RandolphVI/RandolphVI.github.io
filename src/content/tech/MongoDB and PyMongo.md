@@ -412,7 +412,7 @@ a = 20
 b = 400   
 str = struct.pack("ii", a, b)  
 print 'length: ', len(str)          # length:  8  
-print str                           # 乱码：   
+print str                           # 乱码：   
 print repr(str)                     # '\x14\x00\x00\x00\x90\x01\x00\x00' 
 ```
 
