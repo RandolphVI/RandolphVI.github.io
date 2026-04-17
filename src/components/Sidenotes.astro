@@ -18,6 +18,10 @@
 
     // Clear container
     container.innerHTML = '';
+    container.style.position = 'relative';
+
+    const GAP = 16; // minimum pixels between stacked sidenotes
+    const placed: { el: HTMLElement; top: number; bottom: number }[] = [];
 
     footnoteItems.forEach((item, index) => {
       const id = item.id;
@@ -30,28 +34,41 @@
 
       // Create sidenote element
       const sidenote = document.createElement('div');
-      sidenote.className = 'mb-8';
       sidenote.innerHTML = `
         <div class="text-sm text-[var(--color-accent-dark)] mb-1.5 font-sans">${num}</div>
         <div class="text-[0.95rem] text-[var(--color-muted)] leading-relaxed border-l border-[var(--color-border-dark)] pl-3">
           ${item.innerHTML.replace(/<a[^>]*class="footnote-backref"[^>]*>.*?<\/a>/g, '')}
         </div>
       `;
+      sidenote.style.position = 'absolute';
+      sidenote.style.left = '0';
+      sidenote.style.right = '0';
+      container.appendChild(sidenote);
 
-      // Position relative to the reference
+      // Compute desired top based on reference position
+      let desiredTop = 0;
       if (ref) {
         const refRect = ref.getBoundingClientRect();
         const containerRect = container.getBoundingClientRect();
-        const offsetTop = refRect.top - containerRect.top + container.scrollTop;
-        sidenote.style.position = 'absolute';
-        sidenote.style.top = `${offsetTop}px`;
+        desiredTop = refRect.top - containerRect.top + container.scrollTop;
+      } else if (placed.length > 0) {
+        desiredTop = placed[placed.length - 1].bottom + GAP;
       }
 
-      container.appendChild(sidenote);
-    });
+      // Push down if overlapping with previous placed sidenote
+      if (placed.length > 0) {
+        const last = placed[placed.length - 1];
+        if (desiredTop < last.bottom + GAP) {
+          desiredTop = last.bottom + GAP;
+        }
+      }
 
-    // Set container to relative positioning
-    container.style.position = 'relative';
+      sidenote.style.top = `${desiredTop}px`;
+
+      // Measure height after placement (it's already in DOM)
+      const height = sidenote.offsetHeight;
+      placed.push({ el: sidenote, top: desiredTop, bottom: desiredTop + height });
+    });
 
     // Hide the original footnotes section
     (footnoteSection as HTMLElement).style.display = 'none';
