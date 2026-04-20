@@ -169,10 +169,6 @@ $$
 OPTREG(S,\lambda) := argmin\left( \sum_{(x, y)\in S}l(\hat y(x \mid \Theta), y) + \sum_{\theta \in \Theta}\lambda_{\theta}\theta^2\right)
 $$
 
-## Gradient
-
-  ​
-
 [^1]: libFM 是 Rendle 发布的 FM 开源实现，支持 SGD、ALS 和 MCMC 三种优化算法，目前已整合入更广泛的推荐系统框架如 TensorFlow Recommenders 中。
 [^2]: KDD Cup 是由 ACM SIGKDD 主办的年度数据挖掘竞赛，2012 年竞赛数据来自腾讯社交广告平台，属于当时规模最大的 CTR 预估赛事之一。
 [^3]: 对于 FM，MCMC 方法通常比 SGD 取得更好的效果，但计算成本也更高；Rendle 本人的实验表明在稀疏数据上 MCMC 往往是最优选择。
