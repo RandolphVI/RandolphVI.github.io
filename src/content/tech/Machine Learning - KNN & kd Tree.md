@@ -12,7 +12,6 @@ draft: false
 > **本系列文章：** [Chapter 1](/tech/machine-learning---chapter-1/) · [Chapter 2](/tech/machine-learning---chapter-2/) · [Clustering](/tech/machine-learning---clustering/) · [KNN & kd Tree](/tech/machine-learning---knn--kd-tree/)
 
 
-
 # kNN
 
 $k$-邻近算法(kNN)，是一种基本<strong>分类与回归</strong>方法。

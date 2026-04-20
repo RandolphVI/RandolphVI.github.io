@@ -168,7 +168,7 @@ self.pool = tf.concat(pooled_outputs, axis=3)
 self.pool_flat = tf.reshape(self.pool, [-1, num_filters_total])
 ```
 
-`num_filters_total` 一共有 `  num_filters * len(filter_sizes)`个，比如  $100 * 3 = 300​$ 个，连接的过程需要使用 `tf.concat`，官方给出的例子很容易理解。
+`num_filters_total` 一共有 `  num_filters * len(filter_sizes)`个，比如  $100 * 3 = 300$ 个，连接的过程需要使用 `tf.concat`，官方给出的例子很容易理解。
 
 最后得到的 `pool_flat` 就是 shape 为 `[batch, 300]` 的 tensor。
 

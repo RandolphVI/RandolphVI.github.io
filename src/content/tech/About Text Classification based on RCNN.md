@@ -17,7 +17,7 @@ draft: false
 
 ## Introduction
 
-Introduction 里面提及了：
+作者在论文 Introduction 部分重点提及了以下几个问题与动机：
 
 - 词向量的发展（A key problem in text classification is feature repre  
   sentation）以及作者词向量方法的选取（pre-trained word embedding）。

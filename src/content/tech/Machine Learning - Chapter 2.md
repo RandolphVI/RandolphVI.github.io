@@ -12,7 +12,6 @@ draft: false
 > **本系列文章：** [Chapter 1](/tech/machine-learning---chapter-1/) · [Chapter 2](/tech/machine-learning---chapter-2/) · [Clustering](/tech/machine-learning---clustering/) · [KNN & kd Tree](/tech/machine-learning---knn--kd-tree/)
 
 
-
 ## 过拟合与欠拟合
 当学习器把训练样本学得“太好”了的时候，很可能已经把训练样本自身的一些特点当作了所有潜在样本都会具有的一般性质，这样就会导致泛化性能下降。这种现象就是“过拟合”（Overfitting）。
 

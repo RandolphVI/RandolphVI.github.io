@@ -12,7 +12,6 @@ draft: false
 > **本系列文章：** [Chapter 1 & 2](/tech/web-scraping-with-python---chapter-1--2/) · [Chapter 3](/tech/web-scraping-with-python---chapter-3/) · [Chapter 4 & 5](/tech/web-scraping-with-python---chapter-4--5/) · [smtplib & email module](/tech/web-scraping-with-python---smtplib--email-module/)
 
 
-
 ## Parsing JSON?
 
 > Python uses a more flexible approach and turns JSON objects into dictionaries, JSON arrays into lists, JSON strings into strings, and so forth. In this way, it makes it extremely easy to access and manipulate values stored in JSON.

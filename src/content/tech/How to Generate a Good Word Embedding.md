@@ -17,5 +17,4 @@ draft: false
 # Compared with Other Models
 
 
-
-  ​
+  

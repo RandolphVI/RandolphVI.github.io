@@ -635,7 +635,7 @@ db.collection.update({'attribute1': value1}, {'$unset': {'attribute2': value2}},
 <strong>`$rename`</strong>表示对原来的记录中的指定属性的 **key** 值进行修改：
 
 例如，存在这样的数据`{'_id': 1, 'nmae': {'first': 'george', 'last': 'washington'}}`，对其进行<strong>`$rename`</strong>更新操作，分为以下几种情况：
-​    
+    
 ◎ **Rename a Field**
 
 ```python
@@ -649,7 +649,7 @@ db.collection.update({'_id': 1}, {'$rename': {'nmae': 'name'}})
 db.collection.update({'_id': 1}, {'$rename': {'name.first': 'name.fname'}})
 ```
 更新后的数据为`{'_id': 1, 'name': {'fname': 'george', 'last': 'washington'}}`。
-​    
+    
 ◎ **Rename a Field That Does Not Exist**
 
 ```python

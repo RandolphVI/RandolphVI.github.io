@@ -23,7 +23,7 @@ draft: false
 
 ## Introduction
 
-Introduction 里面提及了：
+作者在论文 Introduction 部分重点提及了以下几个核心观点：
 
 - 词向量的重要性；
 - 多任务学习的有效性。
@@ -48,10 +48,10 @@ Introduction 里面提及了：
 
 实验部分就是使用几个常见的 Datasets，其中用到的有：
 
-- ​
+- 
 
 ### Experiment Setting
 
-- ​
+- 
 
 ### Results and Discussion
