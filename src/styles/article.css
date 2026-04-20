@@ -76,14 +76,13 @@
   margin-bottom: 0.4em;
 }
 
-/* Nested list styles — visually distinct per level */
+/* Nested list styles */
 .article-content ul ul,
 .article-content ol ul {
   list-style-type: circle;
   margin-top: 0.3em;
   margin-bottom: 0.3em;
   padding-left: 1.5em;
-  border-left: 2px solid var(--color-border-light);
 }
 
 .article-content ul ul ul,
@@ -98,12 +97,6 @@
   margin-top: 0.3em;
   margin-bottom: 0.3em;
   padding-left: 1.5em;
-  border-left: 2px solid var(--color-border-light);
-}
-
-.article-content ul > li,
-.article-content ol > li {
-  padding-left: 0.3em;
 }
 
 /* Blockquote - Eastern style */
