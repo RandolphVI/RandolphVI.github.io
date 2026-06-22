@@ -489,7 +489,7 @@
 /* === Link icons === */
 
 /* External links (not internal) */
-.article-content a[href^="http"]:not([href*="randolph.pro"]):not([href*="localhost"])::after {
+.article-content a[href^="http"]:not([href*="randolphvi.github.io"]):not([href*="localhost"])::after {
   content: '↗';
   display: inline-block;
   margin-left: 0.15em;
