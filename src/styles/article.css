@@ -1,7 +1,8 @@
 /* === Article Typography === */
 
-/* Drop cap - first letter of first paragraph after each h2 */
-.article-content > h2 + p::first-letter {
+/* Drop cap - first letter of the article's opening paragraph only */
+.article-content > blockquote:first-of-type + p::first-letter,
+.article-content > p:first-of-type::first-letter {
   float: left;
   font-size: 3.8em;
   line-height: 0.9;
@@ -16,6 +17,14 @@
   border-right: 1px solid var(--color-border-dark);
   padding-right: 0.15em;
   margin-right: 0.2em;
+}
+
+/* Clear drop cap float for subsequent elements */
+.article-content > blockquote:first-of-type + p + ul,
+.article-content > blockquote:first-of-type + p + ol,
+.article-content > p:first-of-type + ul,
+.article-content > p:first-of-type + ol {
+  clear: left;
 }
 
 /* Headings */
@@ -414,6 +423,15 @@
 }
 .article-content .admonition.danger .admonition-title { color: #945e5e; }
 .article-content .admonition.danger .admonition-title::before { background: #b87878; }
+
+:root.dark .article-content .admonition.note { border-left-color: #5a7a98; background: rgba(90, 122, 152, 0.1); }
+:root.dark .article-content .admonition.note .admonition-title { color: #7a9ab8; }
+:root.dark .article-content .admonition.tip { border-left-color: #6b8a58; background: rgba(107, 138, 88, 0.1); }
+:root.dark .article-content .admonition.tip .admonition-title { color: #8ba878; }
+:root.dark .article-content .admonition.warning { border-left-color: #a9834a; background: rgba(169, 131, 74, 0.12); }
+:root.dark .article-content .admonition.warning .admonition-title { color: #c9a36a; }
+:root.dark .article-content .admonition.danger { border-left-color: #985858; background: rgba(152, 88, 88, 0.1); }
+:root.dark .article-content .admonition.danger .admonition-title { color: #b87878; }
 
 /* === Collapsible sections (<details>) === */
 .article-content details {

@@ -5,10 +5,15 @@ interface ReadingTimeResult {
 }
 
 export function getReadingTime(content: string): ReadingTimeResult {
-  // Count Chinese characters (CJK Unified Ideographs)
-  const chineseChars = (content.match(/[\u4e00-\u9fff\u3400-\u4dbf]/g) || []).length;
-  // Count English words
-  const englishWords = (content.match(/[a-zA-Z]+/g) || []).length;
+  const stripped = content
+    .replace(/```[\s\S]*?```/g, '')
+    .replace(/\$\$[\s\S]*?\$\$/g, '')
+    .replace(/!\[.*?\]\(.*?\)/g, '')
+    .replace(/\[([^\]]*)\]\(.*?\)/g, '$1')
+    .replace(/<[^>]+>/g, '')
+    .replace(/^---[\s\S]*?---/m, '');
+  const chineseChars = (stripped.match(/[\u4e00-\u9fff\u3400-\u4dbf]/g) || []).length;
+  const englishWords = (stripped.match(/[a-zA-Z]+/g) || []).length;
 
   // Reading speed: ~300 Chinese chars/min, ~200 English words/min
   const totalMinutes = chineseChars / 300 + englishWords / 200;

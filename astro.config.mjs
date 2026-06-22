@@ -11,7 +11,18 @@ export default defineConfig({
     remarkPlugins: [remarkGfm, remarkMath],
     rehypePlugins: [[rehypeKatex, { strict: false }]],
     shikiConfig: {
-      theme: 'github-light',
+      themes: {
+        light: 'github-light',
+        dark: 'github-dark',
+      },
+      // Map the uppercase fence tags used in our articles to Shiki's lowercase
+      // grammar ids so they highlight instead of falling back to plaintext.
+      langAlias: {
+        C: 'c',
+        'C++': 'cpp',
+        R: 'r',
+        SQL: 'sql',
+      },
     },
   },
   vite: {

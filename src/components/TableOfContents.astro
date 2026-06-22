@@ -10,7 +10,9 @@ interface Props {
 }
 
 const { headings, title, date, category, tags, words, minutes } = Astro.props;
-const tocItems = headings.filter((h) => h.depth <= 3);
+const tocItems = headings.filter(
+  (h) => h.depth <= 3 && h.slug !== 'footnote-label' && h.text !== 'Footnotes',
+);
 const dateStr = date ? `${date.getFullYear()}.${String(date.getMonth() + 1).padStart(2, '0')}.${String(date.getDate()).padStart(2, '0')}` : '';
 ---
 

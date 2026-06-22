@@ -1,0 +1,228 @@
+---
+interface Article {
+  id: string;
+  data: {
+    title: string;
+    date: Date;
+    description: string;
+    tags?: string[];
+  };
+}
+
+interface Props {
+  articles: Article[];
+  basePath: string; // '/posts' or '/tech'
+}
+
+const { articles, basePath } = Astro.props;
+
+// Group by year
+const byYear = new Map<number, Article[]>();
+for (const a of articles) {
+  const y = a.data.date.getFullYear();
+  if (!byYear.has(y)) byYear.set(y, []);
+  byYear.get(y)!.push(a);
+}
+const years = [...byYear.keys()].sort((a, b) => b - a);
+---
+
+<!-- Year filter tabs -->
+{years.length > 1 && (
+  <div class="year-filter-wrap">
+    <nav class="year-filter" aria-label="按年份筛选">
+      <button class="yf-btn active" data-year="all">
+        全部 <em>{articles.length}</em>
+      </button>
+      {years.map((y) => (
+        <button class="yf-btn" data-year={y}>
+          {y} <em>{byYear.get(y)!.length}</em>
+        </button>
+      ))}
+    </nav>
+  </div>
+)}
+
+<div class="art-list-root">
+  {years.map((y) => {
+    const list = byYear.get(y)!;
+    return (
+      <section class="year-block" data-year={y}>
+        <header class="year-head">
+          <span class="year-num">{y}</span>
+          <span class="year-info">记&nbsp;{list.length}&nbsp;篇</span>
+          <span class="year-rule"></span>
+        </header>
+        <ol class="art-grid">
+          {list.map((a) => {
+            const d = a.data.date;
+            const dateStr = `${String(d.getMonth() + 1).padStart(2, '0')}.${String(d.getDate()).padStart(2, '0')}`;
+            return (
+              <li>
+                <a href={`${basePath}/${a.id}/`} class="art-item">
+                  <time>{dateStr}</time>
+                  <div class="art-meta">
+                    <span class="art-title">{a.data.title}</span>
+                    {a.data.description && <p class="art-desc">{a.data.description}</p>}
+                    {a.data.tags && a.data.tags.length > 0 && (
+                      <div class="art-tags">
+                        {a.data.tags.map((t) => (
+                          <span class="art-tag">{t}</span>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                </a>
+              </li>
+            );
+          })}
+        </ol>
+      </section>
+    );
+  })}
+  {articles.length === 0 && (
+    <p class="art-empty">暂无文章</p>
+  )}
+</div>
+
+<script>
+  function initYearFilter() {
+    const buttons = document.querySelectorAll<HTMLButtonElement>('.yf-btn');
+    const blocks = document.querySelectorAll<HTMLElement>('.year-block');
+    if (buttons.length === 0) return;
+    buttons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        buttons.forEach((b) => b.classList.remove('active'));
+        btn.classList.add('active');
+        const y = btn.dataset.year;
+        blocks.forEach((block) => {
+          if (y === 'all' || block.dataset.year === y) {
+            block.style.display = '';
+          } else {
+            block.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // Wheel-to-horizontal-scroll inside the filter strip
+    const list = document.querySelector<HTMLElement>('.year-filter');
+    if (list) {
+      list.addEventListener(
+        'wheel',
+        (e) => {
+          const max = list.scrollWidth - list.clientWidth;
+          if (max <= 0) return; // nothing to scroll
+          const delta = Math.abs(e.deltaY) > Math.abs(e.deltaX) ? e.deltaY : e.deltaX;
+          if (delta === 0) return;
+          // only consume the event when we can actually scroll in that direction
+          const canScroll =
+            (delta > 0 && list.scrollLeft < max) ||
+            (delta < 0 && list.scrollLeft > 0);
+          if (canScroll) {
+            e.preventDefault();
+            list.scrollLeft += delta;
+          }
+        },
+        { passive: false },
+      );
+    }
+  }
+  initYearFilter();
+  document.addEventListener('astro:page-load', initYearFilter);
+</script>
+
+<style is:global>
+  .art-list-root { max-width: 920px; margin: 0 auto; }
+
+  .art-list-root .year-block { margin-bottom: 4.5rem; }
+  .art-list-root .year-head {
+    display: flex;
+    align-items: baseline;
+    gap: 1.2rem;
+    margin-bottom: 1.5rem;
+  }
+  .art-list-root .year-num {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: clamp(2.8rem, 6vw, 4.2rem);
+    font-weight: 200;
+    letter-spacing: 4px;
+    color: var(--color-heading);
+    line-height: 1;
+  }
+  .art-list-root .year-info {
+    font-family: 'KingHwa_OldSong', serif;
+    font-size: 0.85rem;
+    color: var(--color-muted);
+    letter-spacing: 4px;
+    padding-bottom: 0.5rem;
+  }
+  .art-list-root .year-rule {
+    flex: 1;
+    height: 1px;
+    background: var(--color-border-light);
+    margin-bottom: 0.7rem;
+  }
+
+  .art-grid {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .art-grid li {
+    border-bottom: 1px solid var(--color-border-light);
+  }
+  .art-grid li:last-child { border-bottom: none; }
+  .art-item {
+    display: grid;
+    grid-template-columns: 70px 1fr;
+    gap: 1.4rem;
+    padding: 1.2rem 0;
+    border: none !important;
+    align-items: baseline;
+    transition: background-color 0.15s;
+  }
+  .art-item time {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 0.78rem;
+    letter-spacing: 1.5px;
+    color: var(--color-faint);
+    padding-top: 0.3em;
+  }
+  .art-meta { min-width: 0; }
+  .art-title {
+    font-family: 'KingHwa_OldSong', serif;
+    font-size: 1.1rem;
+    color: var(--color-heading);
+    letter-spacing: 0.04em;
+    transition: color 0.15s;
+    display: block;
+  }
+  .art-item:hover .art-title { color: var(--color-accent-dark); }
+  .art-desc {
+    font-family: 'KingHwa_OldSong', serif;
+    font-size: 0.92rem;
+    color: var(--color-muted);
+    line-height: 1.75;
+    margin: 0.4rem 0 0;
+    letter-spacing: 0.015em;
+  }
+  .art-tags {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+    flex-wrap: wrap;
+  }
+  .art-tag {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 0.7rem;
+    color: var(--color-accent-dark);
+    border: 1px solid var(--color-border-dark);
+    padding: 0.1rem 0.6rem;
+    letter-spacing: 0.5px;
+  }
+  .art-empty {
+    text-align: center;
+    color: var(--color-muted);
+    padding: 4rem 0;
+  }
+</style>

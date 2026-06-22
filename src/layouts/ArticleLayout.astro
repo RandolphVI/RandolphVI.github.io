@@ -8,7 +8,6 @@ import Sidenotes from '../components/Sidenotes.astro';
 import ScrollButtons from '../components/ScrollButtons.astro';
 import Backlinks from '../components/Backlinks.astro';
 import LinkPopup from '../components/LinkPopup.astro';
-import SmallCaps from '../components/SmallCaps.astro';
 import CodeCopy from '../components/CodeCopy.astro';
 import type { BacklinkEntry } from '../utils/backlinks';
 import '../styles/article.css';
@@ -35,12 +34,12 @@ const showSidebar = true;
 
 <BaseLayout title={title} description={description}>
   <ReadingProgress />
-  <div class="max-w-[1600px] mx-auto px-4 lg:px-6 py-10">
+  <div class="max-w-[2000px] mx-auto px-4 lg:px-6 py-10">
     <div class="flex gap-0 lg:gap-8 justify-center">
 
       <!-- Left: Article Info + TOC (desktop only) -->
       {showSidebar && (
-        <aside class="hidden min-[1520px]:block w-[300px] flex-shrink-0 pt-20">
+        <aside class="hidden min-[1740px]:block w-[500px] flex-shrink-0 pt-20 pr-12">
           <TableOfContents
             headings={headings}
             title={title}
@@ -54,7 +53,7 @@ const showSidebar = true;
       )}
 
       <!-- Center: Article Content -->
-      <article class="w-full max-w-[760px] mx-auto">
+      <article class="w-full max-w-[900px] mx-auto">
         <!-- Article Header -->
         <div class="text-center mb-10 article-fade-in">
           <div class="font-sans text-xs tracking-[4px] text-[var(--color-accent-dark)] mb-4">
@@ -99,7 +98,7 @@ const showSidebar = true;
 
         <!-- Prev / Next Navigation -->
         {(prevPost || nextPost) && (
-          <div class="mt-12 pt-6 border-t border-[var(--color-border)] flex justify-between">
+          <nav aria-label="文章导航" class="mt-12 pt-6 border-t border-[var(--color-border)] flex justify-between">
             {prevPost ? (
               <a href={prevPost.href} class="border-none group">
                 <div class="text-[var(--color-faint)] text-xs tracking-[2px] font-sans mb-1">← 上一篇</div>
@@ -112,12 +111,12 @@ const showSidebar = true;
                 <div class="text-base text-[var(--color-muted)] group-hover:text-[var(--color-heading)] transition-colors">{nextPost.title}</div>
               </a>
             ) : <div />}
-          </div>
+          </nav>
         )}
       </article>
 
       <!-- Right: Sidenotes area (desktop only, populated in Task 8) -->
-      <aside class="hidden min-[1520px]:block w-[400px] flex-shrink-0 pt-20" id="sidenotes-container">
+      <aside class="hidden min-[1740px]:block w-[500px] flex-shrink-0 pt-20" id="sidenotes-container">
       </aside>
 
     </div>
