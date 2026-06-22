@@ -1,0 +1,147 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ScrollTopBottom from '../../components/ScrollTopBottom.astro';
+import { getCollection } from 'astro:content';
+
+const all = await getCollection('games', ({ data }) => !data.draft);
+const sorted = all.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const finishedCount = sorted.filter((g) => g.data.status === 'finished').length;
+const playingCount = sorted.filter((g) => g.data.status === 'playing').length;
+
+const gamesJSON = sorted.map((g) => ({
+  id: g.id,
+  title: g.data.title,
+  platform: g.data.platform,
+  status: g.data.status,
+  cover: g.data.cover || '',
+  hours: g.data.hours || '',
+  genre: g.data.genre || '',
+  year: g.data.date.getFullYear(),
+  finishedDate: g.data.finishedDate?.toISOString() || '',
+  startDate: g.data.startDate?.toISOString() || '',
+}));
+---
+
+<BaseLayout title="游戏" description="玩过、在玩、想玩">
+  <div class="art-page-wrap" style="max-width: 1200px;">
+    <header class="art-masthead">
+      <div class="art-eyebrow">
+        <span>GAMES</span>
+        <span>{sorted.length} 部</span>
+      </div>
+      <h1>游 戏</h1>
+      <p class="art-sub">CRPG · Indie · 与那些反复重玩的</p>
+      <div class="art-rule"></div>
+    </header>
+
+    <div class="reading-tabs">
+      <button class="rt active" data-status="all">全部 <em>{sorted.length}</em></button>
+      <button class="rt" data-status="playing">在玩 <em>{playingCount}</em></button>
+      <button class="rt" data-status="finished">通关 <em>{finishedCount}</em></button>
+    </div>
+
+    <div id="games-container"></div>
+    <p id="games-empty" class="hidden text-center text-[var(--color-muted)] text-base py-12">暂无</p>
+  </div>
+
+  <script type="application/json" id="games-data" set:html={JSON.stringify(gamesJSON)}></script>
+
+  <script>
+    function init() {
+      const dataEl = document.getElementById('games-data');
+      if (!dataEl) return;
+      const games: Array<{
+        id: string;
+        title: string;
+        platform: string;
+        status: string;
+        cover: string;
+        hours: string;
+        genre: string;
+        year: number;
+        finishedDate: string;
+        startDate: string;
+      }> = JSON.parse(dataEl.textContent || '[]');
+
+      const container = document.getElementById('games-container')!;
+      const empty = document.getElementById('games-empty')!;
+      let activeStatus = 'all';
+
+      function escapeHTML(s: string) {
+        return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+      }
+
+      function filtered() {
+        if (activeStatus === 'all') return games;
+        return games.filter((g) => g.status === activeStatus);
+      }
+
+      function renderGame(g: typeof games[0]): string {
+        const cover = g.cover
+          ? `<img src="${escapeHTML(g.cover)}" alt="${escapeHTML(g.title)}" loading="lazy">`
+          : `<div class="b-placeholder">游</div>`;
+        const meta = g.hours || g.genre || g.platform;
+        return `
+          <a href="/games/${g.id}/" class="book-cover-only" title="${escapeHTML(g.title)}">
+            ${cover}
+            <div class="book-cover-only-caption">
+              <div class="t">${escapeHTML(g.title)}</div>
+              <div class="meta">${escapeHTML(meta)}</div>
+            </div>
+          </a>
+        `;
+      }
+
+      function render() {
+        const items = filtered();
+        if (items.length === 0) {
+          container.innerHTML = '';
+          empty.classList.remove('hidden');
+          return;
+        }
+        empty.classList.add('hidden');
+        // group by year
+        const byYear = new Map<number, typeof games>();
+        for (const g of items) {
+          let y = g.year;
+          if (g.finishedDate) y = new Date(g.finishedDate).getFullYear();
+          else if (g.startDate) y = new Date(g.startDate).getFullYear();
+          if (!byYear.has(y)) byYear.set(y, []);
+          byYear.get(y)!.push(g);
+        }
+        const years = [...byYear.keys()].sort((a, b) => b - a);
+        const verb = activeStatus === 'playing' ? '在玩' : activeStatus === 'finished' ? '通关' : '记录';
+        container.innerHTML = years.map((y) => {
+          const list = byYear.get(y)!;
+          return `
+            <section class="year-block">
+              <header class="year-head">
+                <span class="year-num">${y}</span>
+                <span class="year-info">${verb} ${list.length} 部</span>
+                <span class="year-rule"></span>
+              </header>
+              <div class="book-grid-cover">${list.map(renderGame).join('')}</div>
+            </section>
+          `;
+        }).join('');
+      }
+
+      document.querySelectorAll<HTMLButtonElement>('.rt').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.rt').forEach((b) => b.classList.remove('active'));
+          btn.classList.add('active');
+          activeStatus = btn.dataset.status || 'all';
+          render();
+        });
+      });
+
+      render();
+    }
+
+    init();
+    document.addEventListener('astro:page-load', init);
+  </script>
+
+  <ScrollTopBottom />
+</BaseLayout>

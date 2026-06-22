@@ -1,0 +1,196 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const lists = await getCollection('booklists');
+  return lists.map((list) => ({
+    params: { slug: list.id },
+    props: { list },
+  }));
+}
+
+const { list } = Astro.props;
+const { Content } = await render(list);
+const books = await getCollection('reading');
+const bookMap = new Map(books.map((b) => [b.id, b]));
+
+const entries = list.data.books
+  .map((id) => bookMap.get(id))
+  .filter(Boolean);
+---
+
+<BaseLayout title={list.data.title} description={list.data.description}>
+  <article class="bl-page">
+
+    <header class="bl-head">
+      <a href="/reading/lists/" class="bl-crumb">← 全 部 书 单</a>
+      <div class="bl-eyebrow">
+        <span>READING&nbsp;LIST</span>
+        <span>{entries.length} 本</span>
+      </div>
+      <h1 class="bl-title">{list.data.title}</h1>
+      <p class="bl-desc">{list.data.description}</p>
+      <div class="bl-rule"></div>
+    </header>
+
+    <div class="bl-intro article-content">
+      <Content />
+    </div>
+
+    <section class="bl-books">
+      {entries.map((b, i) => (
+        <a href={`/reading/${b!.id}/`} class="bl-book">
+          <div class="bl-num">{String(i + 1).padStart(2, '0')}</div>
+          <div class="bl-cover-wrap">
+            {b!.data.cover ? (
+              <img src={b!.data.cover} alt={b!.data.title} loading="lazy" />
+            ) : (
+              <div class="bl-cover-empty">书</div>
+            )}
+          </div>
+          <div class="bl-info">
+            <h3 class="bl-book-title">{b!.data.title}</h3>
+            <div class="bl-book-author">{b!.data.author}</div>
+            {b!.data.summary && <p class="bl-book-summary">{b!.data.summary}</p>}
+          </div>
+        </a>
+      ))}
+    </section>
+
+  </article>
+
+  <style is:global>
+    .bl-page { max-width: 920px; margin: 0 auto; padding: 4rem 2rem 6rem; }
+
+    .bl-head { text-align: center; margin-bottom: 3rem; }
+    .bl-crumb {
+      display: inline-block;
+      font-family: 'KingHwa_OldSong', serif;
+      font-size: 0.78rem;
+      letter-spacing: 4px;
+      color: var(--color-faint);
+      border: none !important;
+      margin-bottom: 2rem;
+      transition: color 0.2s;
+    }
+    .bl-crumb:hover { color: var(--color-heading); }
+    .bl-eyebrow {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      align-items: baseline;
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 4px;
+      color: var(--color-accent-dark);
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--color-border-light);
+      margin-bottom: 1.5rem;
+    }
+    .bl-title {
+      font-family: 'KingHwa_OldSong', serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      letter-spacing: 0.06em;
+      color: var(--color-heading);
+      font-weight: 400;
+      line-height: 1.25;
+      margin: 0 0 1rem;
+    }
+    .bl-desc {
+      font-family: 'KingHwa_OldSong', serif;
+      font-size: 1rem;
+      color: var(--color-muted);
+      line-height: 1.95;
+      max-width: 640px;
+      margin: 0 auto 1.5rem;
+      letter-spacing: 0.025em;
+    }
+    .bl-rule { width: 30px; height: 1px; background: var(--color-accent); margin: 0 auto; }
+
+    .bl-intro {
+      max-width: 640px;
+      margin: 0 auto 3rem;
+      font-family: 'KingHwa_OldSong', serif;
+    }
+    .bl-intro p {
+      font-size: 1rem;
+      line-height: 2;
+      color: var(--color-text);
+      margin: 1rem 0;
+      letter-spacing: 0.025em;
+    }
+
+    .bl-books { display: flex; flex-direction: column; }
+    .bl-book {
+      display: grid;
+      grid-template-columns: 50px 100px 1fr;
+      gap: 1.6rem;
+      padding: 2rem 0;
+      border-bottom: 1px solid var(--color-border-light);
+      border-top: none !important;
+      border-left: none !important;
+      border-right: none !important;
+      align-items: start;
+      transition: background-color 0.2s;
+    }
+    .bl-book:last-child { border-bottom: none; }
+    .bl-book:hover .bl-book-title { color: var(--color-accent-dark); }
+
+    .bl-num {
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 200;
+      color: var(--color-accent);
+      letter-spacing: 2px;
+      padding-top: 0.4rem;
+    }
+
+    .bl-cover-wrap img {
+      width: 100%;
+      aspect-ratio: 2/3;
+      object-fit: cover;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+    }
+    :root.dark .bl-cover-wrap img { box-shadow: 0 4px 14px rgba(0,0,0,0.5); }
+    .bl-cover-empty {
+      width: 100%;
+      aspect-ratio: 2/3;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-muted);
+    }
+
+    .bl-book-title {
+      font-family: 'KingHwa_OldSong', serif;
+      font-size: 1.15rem;
+      color: var(--color-heading);
+      letter-spacing: 0.04em;
+      margin: 0 0 0.4rem;
+      font-weight: 400;
+      transition: color 0.2s;
+    }
+    .bl-book-author {
+      font-family: 'KingHwa_OldSong', serif;
+      font-size: 0.85rem;
+      color: var(--color-muted);
+      letter-spacing: 0.1em;
+      margin-bottom: 0.7rem;
+    }
+    .bl-book-summary {
+      font-family: 'KingHwa_OldSong', serif;
+      font-size: 0.9rem;
+      line-height: 1.85;
+      color: var(--color-muted);
+      margin: 0;
+      letter-spacing: 0.02em;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+  </style>
+</BaseLayout>

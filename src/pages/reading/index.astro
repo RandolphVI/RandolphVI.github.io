@@ -1,25 +1,424 @@
 ---
-import PageLayout from '../../layouts/PageLayout.astro';
-import BookCard from '../../components/BookCard.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ScrollTopBottom from '../../components/ScrollTopBottom.astro';
 import { getReadingList } from '../../utils/collections';
+import { getActiveYears } from '../../utils/reading-stats';
 
 const books = await getReadingList();
+const years = getActiveYears(books);
+
+function isFinished(b: typeof books[number]): boolean {
+  return Boolean(b.data.finishedDate) || b.data.progress === '100%';
+}
+
+const finishedCount = books.filter(isFinished).length;
+const inProgressCount = books.length - finishedCount;
+
+const booksJSON = books.map((b) => ({
+  id: b.id,
+  title: b.data.title,
+  author: b.data.author,
+  year: b.data.date.getFullYear(),
+  cover: b.data.cover || '',
+  readingTime: b.data.readingTime || '',
+  progress: b.data.progress || '',
+  startDate: b.data.startDate ? b.data.startDate.toISOString() : '',
+  finishedDate: b.data.finishedDate ? b.data.finishedDate.toISOString() : '',
+  finished: isFinished(b),
+}));
 ---
 
-<PageLayout title="阅读" englishTitle="READING" description="读书记录与简评">
-  <div class="max-w-lg mx-auto">
-    {books.map((book) => (
-      <BookCard
-        title={book.data.title}
-        author={book.data.author}
-        date={book.data.date}
-        rating={book.data.rating}
-        cover={book.data.cover}
-        body={book.body ?? ''}
-      />
-    ))}
-    {books.length === 0 && (
-      <p class="text-center text-[var(--color-muted)] text-sm">暂无阅读记录</p>
-    )}
+<BaseLayout title="阅读" description="读书记录与划线集">
+  <div class="reading-wrap">
+
+    <header class="reading-masthead">
+      <div class="reading-eyebrow">
+        <span>BOOKSHELF</span>
+        <span>{books.length} 本</span>
+      </div>
+      <h1>阅 读</h1>
+      <p class="reading-sub">划线、笔记，与读毕之书</p>
+      <div class="reading-rule"></div>
+    </header>
+
+    <!-- Side links: lists / highlights / yearly recap -->
+    <nav class="reading-side-nav" aria-label="阅读其他入口">
+      <a href="/reading/lists/">书&nbsp;单</a>
+      <span class="rsd">·</span>
+      <a href="/highlights/">划&nbsp;线&nbsp;集</a>
+      {years.length > 0 && <span class="rsd">·</span>}
+      {years.map((y, i) => (
+        <>
+          <a href={`/reading/recap/${y}/`}>{y}&nbsp;回顾</a>
+          {i < years.length - 1 && <span class="rsd">·</span>}
+        </>
+      ))}
+    </nav>
+
+    <div class="reading-tabs">
+      <button class="rt active" data-status="all">
+        全部 <em>{books.length}</em>
+      </button>
+      <button class="rt" data-status="reading">
+        在读 <em>{inProgressCount}</em>
+      </button>
+      <button class="rt" data-status="finished">
+        读完 <em>{finishedCount}</em>
+      </button>
+    </div>
+
+    <div id="books-container"></div>
+
+    <p id="empty-state" class="hidden text-center text-[var(--color-muted)] text-base py-12">
+      暂无符合条件的书
+    </p>
   </div>
-</PageLayout>
+
+  <script type="application/json" id="books-data" set:html={JSON.stringify(booksJSON)}></script>
+
+  <script>
+    function init() {
+      const dataEl = document.getElementById('books-data');
+      if (!dataEl) return;
+      const books: Array<{
+        id: string;
+        title: string;
+        author: string;
+        year: number;
+        cover: string;
+        readingTime: string;
+        progress: string;
+        startDate: string;
+        finishedDate: string;
+        finished: boolean;
+      }> = JSON.parse(dataEl.textContent || '[]');
+
+      const container = document.getElementById('books-container')!;
+      const emptyEl = document.getElementById('empty-state')!;
+
+      let activeStatus: 'all' | 'reading' | 'finished' = 'all';
+
+      function escapeHTML(s: string): string {
+        return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+      }
+
+      function filtered() {
+        if (activeStatus === 'reading') return books.filter((b) => !b.finished);
+        if (activeStatus === 'finished') return books.filter((b) => b.finished);
+        return books;
+      }
+
+      function renderBook(b: typeof books[0]): string {
+        const cover = b.cover
+          ? `<img src="${escapeHTML(b.cover)}" alt="${escapeHTML(b.title)}" loading="lazy">`
+          : `<div class="b-placeholder">书影</div>`;
+        const showProgress = !b.finished && b.progress && b.progress !== '0%';
+        const progressBadge = showProgress
+          ? `<span class="b-progress">${escapeHTML(b.progress)}</span>`
+          : '';
+        return `
+          <a href="/reading/${b.id}/" class="b-item" title="${escapeHTML(b.title)}">
+            <div class="b-cover">${cover}${progressBadge}</div>
+            <div class="b-meta">
+              <div class="b-title">${escapeHTML(b.title)}</div>
+              <div class="b-author">${escapeHTML(b.author)}</div>
+            </div>
+          </a>
+        `;
+      }
+
+      function render() {
+        const items = filtered();
+        if (items.length === 0) {
+          container.innerHTML = '';
+          emptyEl.classList.remove('hidden');
+          return;
+        }
+        emptyEl.classList.add('hidden');
+
+        const byYear = new Map<number, typeof books>();
+        for (const b of items) {
+          let y = b.year;
+          if (b.finished && b.finishedDate) y = new Date(b.finishedDate).getFullYear();
+          else if (!b.finished && b.startDate) y = new Date(b.startDate).getFullYear();
+          if (!byYear.has(y)) byYear.set(y, []);
+          byYear.get(y)!.push(b);
+        }
+        const sortedYears = [...byYear.keys()].sort((a, b) => b - a);
+        const verb = activeStatus === 'reading' ? '在读' : activeStatus === 'finished' ? '读毕' : '记录';
+
+        container.innerHTML = sortedYears
+          .map((y) => {
+            const list = byYear.get(y)!;
+            return `
+              <section class="year-block">
+                <header class="year-head">
+                  <span class="year-num">${y}</span>
+                  <span class="year-info">${verb}&nbsp;${list.length}&nbsp;本</span>
+                  <span class="year-rule"></span>
+                </header>
+                <div class="b-grid">${list.map(renderBook).join('')}</div>
+              </section>
+            `;
+          })
+          .join('');
+      }
+
+      document.querySelectorAll<HTMLButtonElement>('.rt').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.rt').forEach((b) => b.classList.remove('active'));
+          btn.classList.add('active');
+          activeStatus = (btn.dataset.status || 'all') as typeof activeStatus;
+          render();
+        });
+      });
+
+      render();
+    }
+
+    init();
+    document.addEventListener('astro:page-load', init);
+  </script>
+
+  <style is:global>
+    .reading-wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 4rem 2rem 6rem;
+    }
+    @media (max-width: 768px) {
+      .reading-wrap { padding: 2.5rem 1.5rem 4rem; }
+    }
+
+    /* Masthead */
+    .reading-masthead {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+    .reading-eyebrow {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      max-width: 100%;
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 4px;
+      color: var(--color-faint);
+      padding-bottom: 0.6rem;
+      border-bottom: 1px solid var(--color-border-light);
+      margin-bottom: 2rem;
+    }
+    .reading-masthead h1 {
+      font-family: 'KingHwa_OldSong', 'Noto Serif SC', serif;
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      letter-spacing: clamp(0.4rem, 1.5vw, 1rem);
+      color: var(--color-heading);
+      font-weight: 400;
+      line-height: 1;
+      margin: 0 0 0.8rem;
+    }
+    .reading-sub {
+      font-family: 'KingHwa_OldSong', serif;
+      font-size: 0.95rem;
+      color: var(--color-muted);
+      letter-spacing: 0.25em;
+      margin: 0 0 1.5rem;
+    }
+    .reading-rule {
+      width: 30px;
+      height: 1px;
+      background: var(--color-accent);
+      margin: 0 auto;
+    }
+
+    /* Side links */
+    .reading-side-nav {
+      text-align: center;
+      margin-bottom: 2.5rem;
+      font-family: 'KingHwa_OldSong', serif;
+      font-size: 0.85rem;
+      letter-spacing: 4px;
+      color: var(--color-muted);
+    }
+    .reading-side-nav a {
+      color: var(--color-accent-dark);
+      border: none !important;
+      transition: color 0.2s;
+    }
+    .reading-side-nav a:hover { color: var(--color-heading); }
+    .rsd {
+      margin: 0 0.5rem;
+      color: var(--color-faint);
+    }
+
+    /* Tabs */
+    .reading-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      margin: 0 auto 3.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--color-border);
+      max-width: 600px;
+    }
+    .rt {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: 'KingHwa_OldSong', serif;
+      font-size: 1rem;
+      color: var(--color-muted);
+      letter-spacing: 5px;
+      padding: 0.4rem 0.5rem;
+      position: relative;
+      transition: color 0.2s;
+    }
+    .rt em {
+      font-style: normal;
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 0.7rem;
+      color: var(--color-faint);
+      margin-left: 0.4rem;
+      letter-spacing: 1px;
+    }
+    .rt:hover { color: var(--color-heading); }
+    .rt.active {
+      color: var(--color-heading);
+    }
+    .rt.active::after {
+      content: '';
+      position: absolute;
+      bottom: -1.05rem;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 24px;
+      height: 1px;
+      background: var(--color-accent);
+    }
+
+    /* Year section */
+    .year-block { margin-bottom: 4.5rem; }
+    .year-head {
+      display: flex;
+      align-items: baseline;
+      gap: 1.2rem;
+      margin-bottom: 2rem;
+    }
+    .year-num {
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: clamp(2.8rem, 6vw, 4.2rem);
+      font-weight: 200;
+      letter-spacing: 4px;
+      color: var(--color-heading);
+      line-height: 1;
+    }
+    .year-info {
+      font-family: 'KingHwa_OldSong', serif;
+      font-size: 0.85rem;
+      color: var(--color-muted);
+      letter-spacing: 4px;
+      padding-bottom: 0.5rem;
+    }
+    .year-rule {
+      flex: 1;
+      height: 1px;
+      background: var(--color-border-light);
+      margin-bottom: 0.7rem;
+    }
+
+    /* Book grid */
+    .b-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(135px, 1fr));
+      gap: 2.6rem 1.6rem;
+    }
+    @media (max-width: 640px) {
+      .b-grid {
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+        gap: 1.8rem 1rem;
+      }
+    }
+    .b-item {
+      display: block;
+      border: none !important;
+      transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+    .b-item:hover { transform: translateY(-4px); }
+    .b-cover {
+      position: relative;
+      aspect-ratio: 2 / 3;
+      background: var(--color-surface);
+    }
+    .b-cover img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.10), 0 1px 3px rgba(0,0,0,0.06);
+      transition: box-shadow 0.3s;
+    }
+    .b-item:hover .b-cover img {
+      box-shadow: 0 8px 24px rgba(0,0,0,0.15), 0 2px 6px rgba(0,0,0,0.08);
+    }
+    :root.dark .b-cover img {
+      box-shadow: 0 4px 16px rgba(0,0,0,0.4), 0 1px 3px rgba(0,0,0,0.25);
+    }
+    :root.dark .b-item:hover .b-cover img {
+      box-shadow: 0 8px 24px rgba(0,0,0,0.55), 0 2px 6px rgba(0,0,0,0.3);
+    }
+    .b-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-muted);
+      font-size: 0.85rem;
+      letter-spacing: 4px;
+      writing-mode: vertical-rl;
+      border: 1px solid var(--color-border);
+    }
+    .b-progress {
+      position: absolute;
+      top: 6px;
+      right: 6px;
+      background: rgba(0,0,0,0.78);
+      color: #fff;
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 0.65rem;
+      padding: 2px 7px;
+      letter-spacing: 0.5px;
+      backdrop-filter: blur(4px);
+    }
+
+    .b-meta {
+      margin-top: 0.85rem;
+      padding: 0 0.1rem;
+    }
+    .b-title {
+      font-family: 'KingHwa_OldSong', serif;
+      font-size: 0.92rem;
+      line-height: 1.45;
+      color: var(--color-heading);
+      letter-spacing: 0.5px;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      transition: color 0.2s;
+    }
+    .b-author {
+      margin-top: 0.3rem;
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 0.7rem;
+      color: var(--color-faint);
+      letter-spacing: 1px;
+      display: -webkit-box;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .b-item:hover .b-title { color: var(--color-accent-dark); }
+  </style>
+  <ScrollTopBottom />
+</BaseLayout>

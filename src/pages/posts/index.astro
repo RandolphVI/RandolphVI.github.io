@@ -2,24 +2,25 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleListWithTimeline from '../../components/ArticleListWithTimeline.astro';
 import ScrollTopBottom from '../../components/ScrollTopBottom.astro';
-import { getPublishedTech } from '../../utils/collections';
+import { getPublishedPosts } from '../../utils/collections';
 
-const articles = await getPublishedTech();
+const articles = await getPublishedPosts();
 ---
 
-<BaseLayout title="技术" description="ML/AI 笔记与技术文章">
+<BaseLayout title="匯文" description="小说、随笔、读书札记">
   <div class="art-page-wrap">
     <header class="art-masthead">
       <div class="art-eyebrow">
-        <span>TECH&nbsp;NOTES</span>
+        <span>ESSAYS&nbsp;&amp;&nbsp;FICTION</span>
         <span>{articles.length} 篇</span>
       </div>
-      <h1>技 术</h1>
-      <p class="art-sub">ML/AI 笔记与技术文章</p>
+      <h1>匯 文</h1>
+      <p class="art-sub">小说、随笔、读书札记</p>
       <div class="art-rule"></div>
     </header>
 
-    <ArticleListWithTimeline articles={articles} basePath="/tech" />
+    <ArticleListWithTimeline articles={articles} basePath="/posts" />
   </div>
   <ScrollTopBottom />
 </BaseLayout>
+

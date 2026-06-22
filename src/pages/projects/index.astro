@@ -1,0 +1,246 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ScrollTopBottom from '../../components/ScrollTopBottom.astro';
+import { getCollection } from 'astro:content';
+
+// Fetch live star counts from GitHub at build time. The `stars` field in each
+// project's frontmatter is kept only as a fallback for when the API is
+// unreachable or rate-limited (unauthenticated GitHub allows 60 req/hour; set
+// the GITHUB_TOKEN env var in CI for 5000/hour).
+async function fetchStars(repoUrl: string | undefined): Promise<number | null> {
+  const m = repoUrl?.match(/github\.com\/([^/]+)\/([^/?#]+?)(?:\.git)?\/?$/i);
+  if (!m) return null;
+  const [, owner, name] = m;
+  try {
+    const headers: Record<string, string> = {
+      Accept: 'application/vnd.github+json',
+      'User-Agent': 'randolph-blog',
+    };
+    const token = import.meta.env.GITHUB_TOKEN ?? process.env.GITHUB_TOKEN;
+    if (token) headers.Authorization = `Bearer ${token}`;
+    const res = await fetch(`https://api.github.com/repos/${owner}/${name}`, { headers });
+    if (!res.ok) return null;
+    const json = await res.json();
+    return typeof json.stargazers_count === 'number' ? json.stargazers_count : null;
+  } catch {
+    return null;
+  }
+}
+
+const all = await getCollection('projects', ({ data }) => !data.draft);
+
+// Resolve a live star count per project, falling back to the frontmatter value.
+const withStars = await Promise.all(
+  all.map(async (p) => {
+    const live = await fetchStars(p.data.repo);
+    return { entry: p, stars: live ?? p.data.stars ?? 0 };
+  }),
+);
+
+// Public repos with > 10 stars only, sorted by (live) stars desc
+const STAR_THRESHOLD = 10;
+const sorted = withStars
+  .filter((p) => p.stars > STAR_THRESHOLD)
+  .sort((a, b) => b.stars - a.stars);
+
+const categories = [
+  { id: 'all', label: '全部' },
+  { id: 'research', label: '研究' },
+  { id: 'localization', label: '翻译' },
+  { id: 'tool', label: '工具' },
+  { id: 'blog', label: '博客' },
+  { id: 'misc', label: '其他' },
+];
+const counts: Record<string, number> = { all: sorted.length };
+for (const p of sorted) {
+  counts[p.entry.data.category] = (counts[p.entry.data.category] || 0) + 1;
+}
+---
+
+<BaseLayout title="项目" description="开源项目与翻译">
+  <div class="art-page-wrap">
+    <header class="art-masthead">
+      <div class="art-eyebrow">
+        <span>PROJECTS</span>
+        <span>{sorted.length} 个</span>
+      </div>
+      <h1>项 目</h1>
+      <p class="art-sub">研究 · 翻译 · 工具</p>
+      <div class="art-rule"></div>
+    </header>
+
+    <nav class="proj-cats" aria-label="按分类筛选">
+      {categories.filter((c) => c.id === 'all' || (counts[c.id] || 0) > 0).map((c) => (
+        <button class:list={['pc-btn', c.id === 'all' && 'active']} data-cat={c.id}>
+          {c.label} <em>{counts[c.id] || 0}</em>
+        </button>
+      ))}
+    </nav>
+
+    <div id="proj-grid" class="proj-grid">
+      {sorted.map(({ entry, stars }) => (
+        <a
+          href={entry.data.repo || '#'}
+          target={entry.data.repo ? '_blank' : undefined}
+          rel={entry.data.repo ? 'noopener noreferrer' : undefined}
+          class="proj-card"
+          data-cat={entry.data.category}
+        >
+          {entry.data.featured && <span class="proj-star">★</span>}
+          <div class="proj-head">
+            <h3 class="proj-name">{entry.data.name}</h3>
+            <div class="proj-meta">
+              {entry.data.language && <span class="proj-lang">{entry.data.language}</span>}
+              {stars > 0 && (
+                <span class="proj-stars">★ {stars}</span>
+              )}
+            </div>
+          </div>
+          <p class="proj-desc">{entry.data.description}</p>
+          {entry.data.tags && entry.data.tags.length > 0 && (
+            <div class="proj-tags">
+              {entry.data.tags.map((t) => <span class="proj-tag">{t}</span>)}
+            </div>
+          )}
+        </a>
+      ))}
+    </div>
+  </div>
+
+  <script>
+    function initCats() {
+      const buttons = document.querySelectorAll<HTMLButtonElement>('.pc-btn');
+      const cards = document.querySelectorAll<HTMLElement>('.proj-card');
+      buttons.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          buttons.forEach((b) => b.classList.remove('active'));
+          btn.classList.add('active');
+          const cat = btn.dataset.cat || 'all';
+          cards.forEach((c) => {
+            c.style.display = (cat === 'all' || c.dataset.cat === cat) ? '' : 'none';
+          });
+        });
+      });
+    }
+    initCats();
+    document.addEventListener('astro:page-load', initCats);
+  </script>
+
+  <ScrollTopBottom />
+
+  <style is:global>
+    .proj-cats {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.4rem 1.6rem;
+      max-width: 920px;
+      margin: 0 auto 3rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--color-border-light);
+    }
+    .pc-btn {
+      background: none; border: none; cursor: pointer;
+      font-family: 'KingHwa_OldSong', serif;
+      font-size: 1rem;
+      color: var(--color-muted);
+      letter-spacing: 5px;
+      padding: 0.3rem 0;
+      transition: color 0.2s;
+      position: relative;
+    }
+    .pc-btn em {
+      font-style: normal;
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 0.65rem;
+      color: var(--color-faint);
+      margin-left: 0.3rem;
+      letter-spacing: 1px;
+    }
+    .pc-btn:hover { color: var(--color-heading); }
+    .pc-btn.active { color: var(--color-heading); }
+    .pc-btn.active::after {
+      content: ''; position: absolute;
+      bottom: -1.05rem; left: 50%; transform: translateX(-50%);
+      width: 22px; height: 1px; background: var(--color-accent);
+    }
+
+    .proj-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.6rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .proj-card {
+      display: block;
+      padding: 1.6rem 1.7rem;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border-light);
+      transition: all 0.25s;
+      position: relative;
+      border-radius: 2px;
+      text-decoration: none;
+    }
+    .proj-card:hover {
+      border-color: var(--color-accent);
+      transform: translateY(-2px);
+    }
+    .proj-star {
+      position: absolute;
+      top: 1rem; right: 1.2rem;
+      color: var(--color-accent);
+      font-size: 0.85rem;
+    }
+    .proj-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 0.6rem;
+    }
+    .proj-name {
+      font-family: 'KingHwa_OldSong', serif;
+      font-size: 1.05rem;
+      color: var(--color-heading);
+      letter-spacing: 0.03em;
+      margin: 0;
+      font-weight: 400;
+      line-height: 1.45;
+    }
+    .proj-card:hover .proj-name { color: var(--color-accent-dark); }
+    .proj-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      align-items: flex-end;
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 0.7rem;
+      color: var(--color-faint);
+      letter-spacing: 0.5px;
+      flex-shrink: 0;
+    }
+    .proj-stars { color: var(--color-accent-dark); }
+    .proj-desc {
+      font-family: 'KingHwa_OldSong', serif;
+      font-size: 0.9rem;
+      color: var(--color-muted);
+      line-height: 1.7;
+      margin: 0 0 0.8rem;
+      letter-spacing: 0.015em;
+    }
+    .proj-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+    .proj-tag {
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 0.65rem;
+      letter-spacing: 1px;
+      color: var(--color-accent-dark);
+      border: 1px solid var(--color-border-dark);
+      padding: 0.08rem 0.55rem;
+    }
+  </style>
+</BaseLayout>

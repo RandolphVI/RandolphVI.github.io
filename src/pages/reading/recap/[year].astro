@@ -1,0 +1,913 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { getReadingList, getPublishedPosts } from '../../../utils/collections';
+import {
+  computeYearStats,
+  getActiveYears,
+  fmtMinutes,
+  buildHeatmap,
+} from '../../../utils/reading-stats';
+import { getAllHighlights } from '../../../utils/highlights';
+
+export async function getStaticPaths() {
+  const books = await getReadingList();
+  const years = getActiveYears(books);
+  return years.map((y) => ({
+    params: { year: String(y) },
+    props: { year: y, books },
+  }));
+}
+
+const { year, books } = Astro.props;
+const stats = computeYearStats(year, books);
+const heatmap = buildHeatmap(year, books);
+const allHighlights = await getAllHighlights();
+const allPosts = await getPublishedPosts();
+
+const yearBookIds = new Set(stats.finishedBooks.map((b) => b.id));
+const yearHighlights = allHighlights.filter((h) => yearBookIds.has(h.bookId));
+
+const yearReviews = allPosts.filter((p) => {
+  if (p.data.date.getFullYear() !== year) return false;
+  const tags = p.data.tags || [];
+  return tags.includes('读书') || tags.includes('书评') || p.data.category === '读书';
+});
+
+const allYears = getActiveYears(books);
+const monthMax = Math.max(1, ...stats.monthly);
+
+// Pre-compute book covers map for client-side reveal
+const bookMeta = books.map((b) => ({
+  id: b.id,
+  title: b.data.title,
+  author: b.data.author,
+  cover: b.data.cover || '',
+  finishedDate: b.data.finishedDate?.toISOString() || '',
+  startDate: b.data.startDate?.toISOString() || '',
+  readingTime: b.data.readingTime || '',
+  finishedMonth: b.data.finishedDate ? b.data.finishedDate.getMonth() + 1 : 0,
+}));
+
+// Heatmap grid prep
+function dayOfWeekMon(d: Date): number {
+  const js = d.getDay();
+  return js === 0 ? 6 : js - 1;
+}
+const yearStart = new Date(year, 0, 1);
+const firstColOffset = dayOfWeekMon(yearStart);
+const totalDays = heatmap.length;
+const totalCells = firstColOffset + totalDays;
+const weekCount = Math.ceil(totalCells / 7);
+const grid: Array<Array<{ day?: typeof heatmap[0] }>> = [];
+for (let w = 0; w < weekCount; w++) {
+  grid.push(new Array(7).fill(null).map(() => ({})));
+}
+for (let i = 0; i < totalDays; i++) {
+  const cellIdx = firstColOffset + i;
+  const w = Math.floor(cellIdx / 7);
+  const d = cellIdx % 7;
+  grid[w][d] = { day: heatmap[i] };
+}
+const heatmapMax = Math.max(1, ...heatmap.map((d) => d.count));
+function intensity(count: number): number {
+  if (count === 0) return 0;
+  if (count >= heatmapMax) return 4;
+  return Math.min(4, Math.ceil((count / heatmapMax) * 4));
+}
+
+const monthCols: Array<{ month: number; col: number }> = [];
+let lastMonth = -1;
+for (let i = 0; i < totalDays; i++) {
+  const d = new Date(year, 0, 1);
+  d.setDate(d.getDate() + i);
+  const m = d.getMonth();
+  if (m !== lastMonth) {
+    const col = Math.floor((firstColOffset + i) / 7);
+    monthCols.push({ month: m + 1, col });
+    lastMonth = m;
+  }
+}
+
+const heatmapJSON = heatmap.map((d) => ({
+  date: d.date,
+  count: d.count,
+  finished: d.finished,
+  active: d.active,
+}));
+---
+
+<BaseLayout title={`${year} 年阅读回顾`} description={`${year} 年读毕 ${stats.finishedBooks.length} 本书`}>
+  <div class="recap-wrap">
+
+    <header class="recap-head">
+      <a href="/reading/" class="recap-crumb">← 回 到 书 架</a>
+      <div class="recap-eyebrow">
+        <span>YEAR&nbsp;IN&nbsp;READING</span>
+        <span>{year}</span>
+      </div>
+      <h1 class="recap-year">{year}</h1>
+      <p class="recap-sub">
+        读毕 {stats.finishedBooks.length} 本，累计 {fmtMinutes(stats.totalMinutes)}
+      </p>
+      <div class="recap-rule"></div>
+    </header>
+
+    <section class="recap-stats">
+      <div class="stat">
+        <div class="stat-num">{stats.finishedBooks.length}</div>
+        <div class="stat-label">读毕</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">{stats.startedBooks.length}</div>
+        <div class="stat-label">新启读</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">{Math.round(stats.totalMinutes / 60)}</div>
+        <div class="stat-label">小时</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">{yearHighlights.length}</div>
+        <div class="stat-label">划线</div>
+      </div>
+    </section>
+
+    <!-- Monthly distribution: stacked by category (clickable) -->
+    {stats.finishedBooks.length > 0 && (
+      <section class="recap-section">
+        <h2>月份分布<span class="hint">（按类型堆叠 · 点击查看详情）</span></h2>
+
+        <!-- Category legend -->
+        <div class="cat-legend">
+          {stats.categoryOrder.map((cat, idx) => (
+            <span class="cat-chip">
+              <span class={`cat-swatch cat-color-${idx % 8}`}></span>
+              {cat}
+              <em>{stats.monthlyByCategory.reduce((sum, m) => sum + (m[idx]?.count || 0), 0)}</em>
+            </span>
+          ))}
+        </div>
+
+        <div class="monthly">
+          {stats.monthly.map((count, i) => (
+            <button
+              class="month month-btn"
+              data-month={i + 1}
+              data-count={count}
+              type="button"
+            >
+              <div class="bar-wrap">
+                <div class="bar-stack" style={`height: ${(count / monthMax) * 100}%`}>
+                  {count > 0 && <span class="bar-num">{count}</span>}
+                  {stats.monthlyByCategory[i].map((seg, idx) =>
+                    seg.count > 0 ? (
+                      <div
+                        class={`bar-seg cat-color-${idx % 8}`}
+                        style={`flex-grow: ${seg.count};`}
+                        title={`${seg.category}: ${seg.count}`}
+                      ></div>
+                    ) : null,
+                  )}
+                </div>
+              </div>
+              <div class="month-label">{i + 1}</div>
+            </button>
+          ))}
+        </div>
+        <div id="month-detail" class="detail-panel hidden"></div>
+      </section>
+    )}
+
+    <!-- Heatmap (responsive, clickable) -->
+    <section class="recap-section">
+      <h2>阅读热力<span class="hint">（点击日期查看详情）</span></h2>
+
+      <div class="heatmap-stage">
+        <div class="heatmap-legend">
+          <span>少</span>
+          <div class="hm-cell lvl-0"></div>
+          <div class="hm-cell lvl-1"></div>
+          <div class="hm-cell lvl-2"></div>
+          <div class="hm-cell lvl-3"></div>
+          <div class="hm-cell lvl-4"></div>
+          <span>多</span>
+        </div>
+
+        <div class="heatmap-inner" style={`--week-count: ${weekCount};`}>
+          <!-- month axis (offset +2: col 1 is the 36px weekday spacer) -->
+          <div class="heatmap-months">
+            {monthCols.map((m) => (
+              <span class="hm-month" style={`grid-column: ${m.col + 2};`}>
+                {m.month}月
+              </span>
+            ))}
+          </div>
+          <!-- weekday + cells row -->
+          <div class="heatmap-row">
+            <div class="hm-weekdays">
+              <span>一</span><span></span><span>三</span><span></span><span>五</span><span></span><span>日</span>
+            </div>
+            <div class="heatmap">
+              {Array.from({ length: 7 }, (_, weekday) =>
+                grid.map((week, wi) => {
+                  const cell = week[weekday];
+                  if (!cell || !cell.day) {
+                    return <div class="hm-cell empty"></div>;
+                  }
+                  const lvl = intensity(cell.day.count);
+                  return (
+                    <button
+                      class={`hm-cell lvl-${lvl} ${cell.day.count > 0 ? 'has-data' : ''}`}
+                      type="button"
+                      data-date={cell.day.date}
+                      title={cell.day.date}
+                    ></button>
+                  );
+                }),
+              ).flat()}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="day-detail" class="detail-panel hidden"></div>
+    </section>
+
+    <!-- Year book reviews -->
+    {yearReviews.length > 0 && (
+      <section class="recap-section">
+        <h2>本年书评</h2>
+        <ul class="review-list">
+          {yearReviews.map((p) => (
+            <li>
+              <a href={`/posts/${p.id}/`}>
+                <time>{`${p.data.date.getMonth() + 1}.${String(p.data.date.getDate()).padStart(2, '0')}`}</time>
+                <div>
+                  <span class="review-title">{p.data.title}</span>
+                  {p.data.description && <p class="review-desc">{p.data.description}</p>}
+                </div>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )}
+
+    <!-- Sample highlights with covers -->
+    {yearHighlights.length > 0 && (
+      <section class="recap-section">
+        <header class="hl-section-head">
+          <h2 style="margin: 0; padding: 0; border: none;">本年精选划线</h2>
+          <button id="hl-shuffle" class="hl-shuffle" aria-label="换一批">↻</button>
+        </header>
+        <div id="recap-hl-list" class="hl-list"></div>
+      </section>
+    )}
+
+    <nav class="year-nav" aria-label="切换年份">
+      {allYears.map((y) => (
+        <a href={`/reading/recap/${y}/`} class={y === year ? 'active' : ''}>{y}</a>
+      ))}
+    </nav>
+
+  </div>
+
+  <script type="application/json" id="recap-highlights" set:html={JSON.stringify(yearHighlights)}></script>
+  <script type="application/json" id="recap-heatmap" set:html={JSON.stringify(heatmapJSON)}></script>
+  <script type="application/json" id="recap-books" set:html={JSON.stringify(bookMeta)}></script>
+
+  <script>
+    function escapeHTML(s: string): string {
+      return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    }
+
+    function init() {
+      // ============ Highlights with covers ============
+      const hlEl = document.getElementById('recap-highlights');
+      const hlList = document.getElementById('recap-hl-list');
+      if (hlEl && hlList) {
+        const all: Array<{ bookId: string; bookTitle: string; author: string; cover: string; text: string; chapter: string }> = JSON.parse(hlEl.textContent || '[]');
+        const SHOW = 6;
+        function pickAndRender() {
+          const shuffled = all.slice();
+          for (let i = shuffled.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+          }
+          const picks = shuffled.slice(0, SHOW);
+          hlList!.innerHTML = picks.map((h) => {
+            const cover = h.cover
+              ? `<img src="${escapeHTML(h.cover)}" alt="${escapeHTML(h.bookTitle)}" loading="lazy">`
+              : `<div class="hl-cover-empty">书</div>`;
+            return `
+              <a href="/reading/${h.bookId}/" class="hl-card">
+                <div class="hl-card-cover">${cover}</div>
+                <div class="hl-card-body">
+                  <p class="hl-card-text">${escapeHTML(h.text)}</p>
+                  <footer class="hl-card-attr">
+                    《${escapeHTML(h.bookTitle)}》 &middot; ${escapeHTML(h.author)}${h.chapter ? ` &middot; ${escapeHTML(h.chapter)}` : ''}
+                  </footer>
+                </div>
+              </a>
+            `;
+          }).join('');
+        }
+        if (all.length > 0) pickAndRender();
+        document.getElementById('hl-shuffle')?.addEventListener('click', pickAndRender);
+      }
+
+      // ============ Click-to-reveal: monthly bars ============
+      const booksEl = document.getElementById('recap-books');
+      const heatEl = document.getElementById('recap-heatmap');
+      if (!booksEl || !heatEl) return;
+      const books: Array<{
+        id: string;
+        title: string;
+        author: string;
+        cover: string;
+        finishedDate: string;
+        startDate: string;
+        readingTime: string;
+        finishedMonth: number;
+      }> = JSON.parse(booksEl.textContent || '[]');
+      const heatmap: Array<{
+        date: string;
+        count: number;
+        finished: string[];
+        active: string[];
+      }> = JSON.parse(heatEl.textContent || '[]');
+
+      const monthDetail = document.getElementById('month-detail');
+      const dayDetail = document.getElementById('day-detail');
+
+      function renderBookCard(b: typeof books[0], extraMeta: string = ''): string {
+        const cover = b.cover
+          ? `<img src="${escapeHTML(b.cover)}" alt="${escapeHTML(b.title)}" loading="lazy">`
+          : `<div class="dp-cover-empty">书</div>`;
+        return `
+          <a href="/reading/${b.id}/" class="dp-book">
+            <div class="dp-cover">${cover}</div>
+            <div class="dp-info">
+              <div class="dp-title">${escapeHTML(b.title)}</div>
+              <div class="dp-author">${escapeHTML(b.author)}</div>
+              ${extraMeta ? `<div class="dp-extra">${extraMeta}</div>` : ''}
+            </div>
+          </a>
+        `;
+      }
+
+      let activeMonth: number | null = null;
+      document.querySelectorAll<HTMLButtonElement>('.month-btn').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const m = parseInt(btn.dataset.month || '0', 10);
+          if (activeMonth === m) {
+            // toggle off
+            activeMonth = null;
+            monthDetail?.classList.add('hidden');
+            document.querySelectorAll('.month-btn.active').forEach((el) => el.classList.remove('active'));
+            return;
+          }
+          document.querySelectorAll('.month-btn.active').forEach((el) => el.classList.remove('active'));
+          btn.classList.add('active');
+          activeMonth = m;
+
+          const list = books.filter((b) => b.finishedMonth === m);
+          if (!monthDetail) return;
+          if (list.length === 0) {
+            monthDetail.innerHTML = `<div class="dp-empty">${m} 月没有读毕的书</div>`;
+          } else {
+            monthDetail.innerHTML = `
+              <div class="dp-head">${m} 月 · 读毕 ${list.length} 本</div>
+              <div class="dp-grid">
+                ${list.map((b) => {
+                  const meta = b.readingTime ? `用时 ${escapeHTML(b.readingTime)}` : '';
+                  return renderBookCard(b, meta);
+                }).join('')}
+              </div>
+            `;
+          }
+          monthDetail.classList.remove('hidden');
+        });
+      });
+
+      let activeDate: string | null = null;
+      document.querySelectorAll<HTMLButtonElement>('.hm-cell.has-data').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const date = btn.dataset.date;
+          if (!date) return;
+          if (activeDate === date) {
+            activeDate = null;
+            dayDetail?.classList.add('hidden');
+            document.querySelectorAll('.hm-cell.active').forEach((el) => el.classList.remove('active'));
+            return;
+          }
+          document.querySelectorAll('.hm-cell.active').forEach((el) => el.classList.remove('active'));
+          btn.classList.add('active');
+          activeDate = date;
+
+          const day = heatmap.find((d) => d.date === date);
+          if (!day || !dayDetail) return;
+          const finishedBooks = books.filter((b) => day.finished.includes(b.title));
+          const activeBooks = books.filter((b) => day.active.includes(b.title));
+          const dateObj = new Date(date);
+          const dateLabel = `${dateObj.getMonth() + 1} 月 ${dateObj.getDate()} 日`;
+
+          let html = `<div class="dp-head">${dateLabel}</div>`;
+          if (finishedBooks.length > 0) {
+            html += `<div class="dp-sub">读 毕</div><div class="dp-grid">${finishedBooks.map((b) => renderBookCard(b)).join('')}</div>`;
+          }
+          if (activeBooks.length > 0) {
+            html += `<div class="dp-sub">在 读</div><div class="dp-grid">${activeBooks.map((b) => renderBookCard(b)).join('')}</div>`;
+          }
+          if (finishedBooks.length === 0 && activeBooks.length === 0) {
+            html += `<div class="dp-empty">这一天没有阅读记录</div>`;
+          }
+          dayDetail.innerHTML = html;
+          dayDetail.classList.remove('hidden');
+        });
+      });
+    }
+
+    init();
+    document.addEventListener('astro:page-load', init);
+  </script>
+
+  <style is:global>
+    .recap-wrap { max-width: 1280px; margin: 0 auto; padding: 4rem 2.5rem 6rem; }
+    @media (max-width: 768px) {
+      .recap-wrap { padding: 2.5rem 1.5rem 4rem; }
+    }
+
+    /* Header */
+    .recap-head { text-align: center; margin-bottom: 4rem; }
+    .recap-crumb {
+      display: inline-block;
+      font-family: 'KingHwa_OldSong', serif;
+      font-size: 0.78rem; letter-spacing: 4px;
+      color: var(--color-faint);
+      border: none !important;
+      margin-bottom: 2rem;
+      transition: color 0.2s;
+    }
+    .recap-crumb:hover { color: var(--color-heading); }
+    .recap-eyebrow {
+      display: flex; justify-content: center; align-items: baseline;
+      gap: 1.5rem;
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 0.7rem; letter-spacing: 4px;
+      color: var(--color-accent-dark);
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--color-border-light);
+      margin-bottom: 1.5rem;
+    }
+    .recap-year {
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: clamp(4rem, 12vw, 8rem);
+      font-weight: 200; letter-spacing: 6px;
+      color: var(--color-heading);
+      margin: 0 0 1rem; line-height: 1;
+    }
+    .recap-sub {
+      font-family: 'KingHwa_OldSong', serif;
+      font-size: 1rem; color: var(--color-muted);
+      letter-spacing: 0.2em; margin: 0 0 1.5rem;
+    }
+    .recap-rule { width: 30px; height: 1px; background: var(--color-accent); margin: 0 auto; }
+
+    /* Stat cards */
+    .recap-stats {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 1rem; margin: 3rem 0 4rem;
+    }
+    @media (max-width: 640px) { .recap-stats { grid-template-columns: repeat(2, 1fr); } }
+    .stat {
+      text-align: center; padding: 2rem 1rem;
+      border-top: 1px solid var(--color-border);
+      border-bottom: 1px solid var(--color-border);
+    }
+    .stat-num {
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: clamp(2.6rem, 4.5vw, 3.6rem); font-weight: 200; color: var(--color-heading);
+      letter-spacing: 2px; line-height: 1;
+    }
+    .stat-label {
+      margin-top: 0.7rem;
+      font-family: 'KingHwa_OldSong', serif;
+      font-size: 0.95rem; color: var(--color-muted); letter-spacing: 5px;
+    }
+
+    .recap-section { margin: 5rem 0; }
+    .recap-section h2 {
+      font-family: 'KingHwa_OldSong', serif;
+      font-size: 1.4rem; letter-spacing: 8px;
+      color: var(--color-heading);
+      margin: 0 0 2.5rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 1px solid var(--color-border-light);
+      font-weight: 400;
+    }
+    .recap-section h2 .hint {
+      margin-left: 0.8rem;
+      font-family: 'KingHwa_OldSong', serif;
+      font-size: 0.7rem; letter-spacing: 2px;
+      color: var(--color-faint);
+      font-weight: 400;
+    }
+
+    /* Monthly bar chart - large Steam-style */
+    .monthly {
+      display: grid; grid-template-columns: repeat(12, 1fr);
+      gap: 0.7rem; align-items: end; height: 320px;
+      padding: 1rem 0 0;
+    }
+    .month {
+      display: flex; flex-direction: column; align-items: center;
+      height: 100%;
+      background: none; border: none; cursor: pointer; padding: 0;
+      transition: opacity 0.2s;
+    }
+    .month-btn[data-count="0"] { cursor: default; }
+    .month:hover .bar { opacity: 1; }
+    .month.active .bar { background: var(--color-accent-dark); opacity: 1; }
+    .month.active .month-label { color: var(--color-heading); font-weight: 500; }
+    .bar-wrap { flex: 1; width: 100%; display: flex; align-items: flex-end; }
+    .bar {
+      width: 100%; background: var(--color-accent);
+      min-height: 1px; position: relative;
+      transition: opacity 0.2s, background 0.2s; opacity: 0.85;
+    }
+    .bar-stack {
+      width: 100%;
+      display: flex;
+      flex-direction: column-reverse; /* stack top-down: largest cat at bottom */
+      min-height: 1px;
+      position: relative;
+      gap: 1px;
+    }
+    .bar-seg {
+      width: 100%;
+      min-height: 2px;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+    .month:hover .bar-seg { opacity: 0.9; }
+    .month.active .bar-seg { opacity: 1; }
+    .bar-num {
+      position: absolute; top: -1.8rem; left: 50%; transform: translateX(-50%);
+      font-family: 'Josefin Sans', sans-serif; font-size: 0.95rem; font-weight: 300;
+      color: var(--color-muted);
+    }
+    /* === Category palette (8 muted tones harmonious with paper aesthetic) === */
+    .cat-color-0 { background: #b8a88a; } /* accent-dark */
+    .cat-color-1 { background: #7a9ab8; } /* note blue */
+    .cat-color-2 { background: #8ba878; } /* tip green */
+    .cat-color-3 { background: #c9a36a; } /* warm tan */
+    .cat-color-4 { background: #b87878; } /* danger rose */
+    .cat-color-5 { background: #9b8caf; } /* muted purple */
+    .cat-color-6 { background: #6f9c9c; } /* teal */
+    .cat-color-7 { background: #c98a64; } /* terracotta */
+    :root.dark .cat-color-0 { background: #888070; }
+    :root.dark .cat-color-1 { background: #5a7a98; }
+    :root.dark .cat-color-2 { background: #6b8a58; }
+    :root.dark .cat-color-3 { background: #a9834a; }
+    :root.dark .cat-color-4 { background: #985858; }
+    :root.dark .cat-color-5 { background: #7b6c8f; }
+    :root.dark .cat-color-6 { background: #4f7c7c; }
+    :root.dark .cat-color-7 { background: #a96a44; }
+
+    .cat-legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem 1.4rem;
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--color-border-light);
+    }
+    .cat-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: 'KingHwa_OldSong', serif;
+      font-size: 0.85rem;
+      letter-spacing: 2px;
+      color: var(--color-muted);
+    }
+    .cat-chip em {
+      font-style: normal;
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 0.7rem;
+      color: var(--color-faint);
+      letter-spacing: 1px;
+    }
+    .cat-swatch {
+      display: inline-block;
+      width: 11px;
+      height: 11px;
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
+    .month-label {
+      margin-top: 0.8rem;
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 0.85rem; color: var(--color-faint);
+      letter-spacing: 1px;
+      transition: color 0.2s;
+    }
+
+    /* === Heatmap (responsive, no scroll) === */
+    .heatmap-stage {
+      display: flex; flex-direction: column; align-items: center;
+      gap: 1.4rem;
+      width: 100%;
+    }
+    .heatmap-legend {
+      display: flex; align-items: center; gap: 6px;
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 0.85rem; color: var(--color-faint);
+      letter-spacing: 2px;
+    }
+    .heatmap-legend .hm-cell {
+      width: 16px; height: 16px;
+      border-radius: 3px;
+    }
+    .heatmap-inner {
+      width: 100%;
+      max-width: 100%;
+    }
+    .heatmap-months {
+      display: grid;
+      grid-template-columns: 36px repeat(var(--week-count), 1fr);
+      grid-auto-rows: 1.4rem;
+      margin-bottom: 0.5rem;
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 0.78rem;
+      color: var(--color-muted);
+      letter-spacing: 1px;
+    }
+    .hm-month {
+      grid-row: 1;
+      white-space: nowrap;
+      overflow: visible;
+      line-height: 1.4rem;
+    }
+    .heatmap-row {
+      display: grid;
+      grid-template-columns: 36px 1fr;
+      gap: 6px;
+      align-items: stretch;
+    }
+    .hm-weekdays {
+      display: grid;
+      grid-template-rows: repeat(7, 1fr);
+      gap: 3px;
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 0.75rem;
+      color: var(--color-faint);
+      letter-spacing: 1px;
+      align-content: stretch;
+    }
+    .hm-weekdays span {
+      line-height: 1;
+      text-align: right;
+      padding-right: 6px;
+      align-self: center;
+    }
+    .heatmap {
+      display: grid;
+      grid-auto-flow: row;
+      grid-template-rows: repeat(7, 1fr);
+      grid-template-columns: repeat(var(--week-count), 1fr);
+      gap: 3px;
+      aspect-ratio: calc(var(--week-count) / 7);
+      width: 100%;
+    }
+    .hm-cell {
+      width: 100%; height: 100%;
+      min-height: 0; min-width: 0;
+      background: var(--color-border-light);
+      border-radius: 3px;
+      transition: outline 0.15s, transform 0.15s;
+      cursor: default;
+      border: none;
+      padding: 0;
+      aspect-ratio: 1;
+    }
+    .hm-cell.has-data { cursor: pointer; }
+    .hm-cell.has-data:hover {
+      transform: scale(1.5);
+      z-index: 2;
+      outline: 1px solid var(--color-accent);
+      outline-offset: 1px;
+    }
+    .hm-cell.active {
+      outline: 2px solid var(--color-accent-dark);
+      outline-offset: 1px;
+      transform: scale(1.4);
+      z-index: 2;
+    }
+    .hm-cell.empty { background: transparent; }
+    .hm-cell.lvl-0 { background: var(--color-border-light); }
+    .hm-cell.lvl-1 { background: rgba(196, 181, 160, 0.4); }
+    .hm-cell.lvl-2 { background: rgba(196, 181, 160, 0.62); }
+    .hm-cell.lvl-3 { background: rgba(196, 181, 160, 0.85); }
+    .hm-cell.lvl-4 { background: var(--color-accent-dark); }
+    :root.dark .hm-cell.lvl-1 { background: rgba(136, 128, 112, 0.4); }
+    :root.dark .hm-cell.lvl-2 { background: rgba(136, 128, 112, 0.6); }
+    :root.dark .hm-cell.lvl-3 { background: rgba(136, 128, 112, 0.8); }
+    :root.dark .hm-cell.lvl-4 { background: var(--color-accent); }
+
+    /* === Detail panel (Steam-style reveal) === */
+    .detail-panel {
+      margin-top: 1.5rem;
+      padding: 1.4rem 1.6rem;
+      background: var(--color-surface);
+      border-left: 2px solid var(--color-accent);
+      animation: dpFade 0.3s ease;
+    }
+    .detail-panel.hidden { display: none; }
+    @keyframes dpFade {
+      from { opacity: 0; transform: translateY(-6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .dp-head {
+      font-family: 'KingHwa_OldSong', serif;
+      font-size: 0.95rem;
+      letter-spacing: 4px;
+      color: var(--color-heading);
+      margin-bottom: 1rem;
+      padding-bottom: 0.6rem;
+      border-bottom: 1px solid var(--color-border-light);
+    }
+    .dp-sub {
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 0.7rem; letter-spacing: 3px;
+      color: var(--color-accent-dark);
+      margin: 1.2rem 0 0.8rem;
+    }
+    .dp-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+    .dp-book {
+      display: grid;
+      grid-template-columns: 50px 1fr;
+      gap: 0.9rem;
+      padding: 0.6rem;
+      border: none !important;
+      background: var(--color-bg);
+      transition: transform 0.2s;
+    }
+    .dp-book:hover { transform: translateX(2px); }
+    .dp-cover img {
+      width: 100%;
+      aspect-ratio: 2/3;
+      object-fit: cover;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    :root.dark .dp-cover img { box-shadow: 0 2px 8px rgba(0,0,0,0.4); }
+    .dp-cover-empty {
+      width: 100%; aspect-ratio: 2/3;
+      background: var(--color-surface);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--color-muted); font-size: 0.7rem;
+    }
+    .dp-info { min-width: 0; align-self: center; }
+    .dp-title {
+      font-family: 'KingHwa_OldSong', serif;
+      font-size: 0.92rem;
+      color: var(--color-heading);
+      letter-spacing: 0.04em;
+      display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+    }
+    .dp-author {
+      margin-top: 0.25rem;
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 0.7rem; color: var(--color-faint);
+      letter-spacing: 1px;
+    }
+    .dp-extra {
+      margin-top: 0.3rem;
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 0.68rem;
+      color: var(--color-accent-dark);
+      letter-spacing: 1px;
+    }
+    .dp-empty {
+      text-align: center;
+      padding: 1.5rem 0;
+      color: var(--color-muted);
+      font-family: 'KingHwa_OldSong', serif;
+      letter-spacing: 0.2em;
+    }
+
+    /* Reviews list */
+    .review-list { list-style: none; padding: 0; margin: 0; }
+    .review-list li { border-bottom: 1px solid var(--color-border-light); }
+    .review-list li:last-child { border: none; }
+    .review-list a {
+      display: grid; grid-template-columns: 70px 1fr;
+      gap: 1.2rem; padding: 1rem 0;
+      border: none !important; align-items: baseline;
+    }
+    .review-list time {
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 0.72rem; letter-spacing: 1.5px;
+      color: var(--color-faint); padding-top: 0.3em;
+    }
+    .review-title {
+      display: block;
+      font-family: 'KingHwa_OldSong', serif;
+      font-size: 1.05rem; color: var(--color-heading);
+      letter-spacing: 0.04em; transition: color 0.15s;
+    }
+    .review-list a:hover .review-title { color: var(--color-accent-dark); }
+    .review-desc {
+      font-family: 'KingHwa_OldSong', serif;
+      font-size: 0.85rem; color: var(--color-muted);
+      line-height: 1.7; margin: 0.3rem 0 0;
+      letter-spacing: 0.01em;
+      display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+    }
+
+    /* Highlight cards (reuse from /highlights/) */
+    .hl-section-head {
+      display: flex; justify-content: space-between; align-items: center;
+      padding-bottom: 0.6rem;
+      border-bottom: 1px solid var(--color-border-light);
+      margin-bottom: 2rem;
+    }
+    .hl-shuffle {
+      background: none; border: none;
+      color: var(--color-faint);
+      font-size: 1rem;
+      cursor: pointer; padding: 0.2rem 0.5rem; line-height: 1;
+      transition: color 0.2s, transform 0.4s;
+    }
+    .hl-shuffle:hover { color: var(--color-heading); transform: rotate(180deg); }
+
+    .hl-list { display: grid; grid-template-columns: 1fr; gap: 1.4rem; }
+    .hl-card {
+      display: grid; grid-template-columns: 56px 1fr;
+      gap: 1.2rem;
+      padding: 1.4rem 1.5rem;
+      background: var(--color-surface);
+      border: none !important;
+      transition: background-color 0.2s, transform 0.2s;
+      position: relative;
+    }
+    .hl-card::before {
+      content: ''; position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 2px; background: var(--color-accent);
+      opacity: 0.6; transition: opacity 0.2s;
+    }
+    .hl-card:hover { background: rgba(196, 181, 160, 0.12); transform: translateX(2px); }
+    .hl-card:hover::before { opacity: 1; }
+    .hl-card-cover img {
+      width: 100%;
+      aspect-ratio: 2/3;
+      object-fit: cover;
+      display: block;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    :root.dark .hl-card-cover img { box-shadow: 0 2px 8px rgba(0,0,0,0.4); }
+    .hl-cover-empty {
+      width: 100%; aspect-ratio: 2/3;
+      background: var(--color-border-light);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--color-muted); font-size: 0.8rem;
+    }
+    .hl-card-text {
+      font-family: 'KingHwa_OldSong', serif;
+      font-size: 1rem; line-height: 1.95;
+      color: var(--color-heading);
+      letter-spacing: 0.025em;
+      margin: 0 0 0.8rem;
+    }
+    .hl-card-text::before { content: '"'; color: var(--color-accent); }
+    .hl-card-text::after { content: '"'; color: var(--color-accent); }
+    .hl-card-attr {
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 0.72rem; color: var(--color-muted); letter-spacing: 1px;
+    }
+
+    /* Year nav */
+    .year-nav {
+      display: flex; justify-content: center;
+      gap: 1.6rem; margin-top: 5rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--color-border);
+    }
+    .year-nav a {
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 1rem; letter-spacing: 2px;
+      color: var(--color-muted); border: none !important;
+      transition: color 0.2s;
+    }
+    .year-nav a:hover { color: var(--color-heading); }
+    .year-nav a.active {
+      color: var(--color-heading);
+      border-bottom: 1px solid var(--color-accent) !important;
+      padding-bottom: 2px;
+    }
+  </style>
+</BaseLayout>

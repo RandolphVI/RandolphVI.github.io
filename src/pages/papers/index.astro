@@ -1,0 +1,251 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ScrollTopBottom from '../../components/ScrollTopBottom.astro';
+import { getCollection } from 'astro:content';
+
+const all = await getCollection('papers', ({ data }) => !data.draft);
+const sorted = all.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const featured = sorted.filter((p) => p.data.featured);
+
+const byYear = new Map<number, typeof sorted>();
+for (const p of sorted) {
+  if (!byYear.has(p.data.year)) byYear.set(p.data.year, []);
+  byYear.get(p.data.year)!.push(p);
+}
+const years = [...byYear.keys()].sort((a, b) => b - a);
+
+const typeLabel = (t: string) => ({
+  conference: '会议',
+  journal: '期刊',
+  preprint: '预印本',
+  workshop: 'Workshop',
+  thesis: '学位论文',
+}[t] || t);
+---
+
+<BaseLayout title="论文" description="学术发表清单">
+  <div class="art-page-wrap">
+    <header class="art-masthead">
+      <div class="art-eyebrow">
+        <span>PUBLICATIONS</span>
+        <span>{sorted.length} 篇</span>
+      </div>
+      <h1>论 文</h1>
+      <p class="art-sub">学术发表 · 2019 至今</p>
+      <div class="art-rule"></div>
+    </header>
+
+    {years.length > 1 && (
+      <div class="year-filter-wrap">
+        <nav class="year-filter" aria-label="按年份筛选">
+          <button class="yf-btn active" data-year="all">
+            全部 <em>{sorted.length}</em>
+          </button>
+          {years.map((y) => (
+            <button class="yf-btn" data-year={y}>
+              {y} <em>{byYear.get(y)!.length}</em>
+            </button>
+          ))}
+        </nav>
+      </div>
+    )}
+
+    <div class="art-list-root papers-root">
+      {years.map((y) => (
+        <section class="year-block" data-year={y}>
+          <header class="year-head">
+            <span class="year-num">{y}</span>
+            <span class="year-info">发&nbsp;{byYear.get(y)!.length}&nbsp;篇</span>
+            <span class="year-rule"></span>
+          </header>
+          <ol class="paper-grid">
+            {byYear.get(y)!.map((p) => (
+              <li class:list={['paper-item', p.data.featured && 'featured']}>
+                <div class="paper-meta">
+                  <span class="paper-venue">{p.data.venue}</span>
+                  <span class="paper-type">{typeLabel(p.data.type)}</span>
+                </div>
+                <h3 class="paper-title">{p.data.title}</h3>
+                <p class="paper-authors">
+                  {p.data.authors.map((a, i) => (
+                    <>
+                      {i > 0 && <span class="paper-sep"> · </span>}
+                      <span class:list={['paper-author', a === 'Wei Huang' && 'self']}>
+                        {a}{a === 'Wei Huang' && p.data.correspondingAuthor && (
+                          <span class="corr-mark" title="通讯作者 / Corresponding Author">*</span>
+                        )}
+                      </span>
+                    </>
+                  ))}
+                </p>
+                {p.data.venueFull && (
+                  <p class="paper-venue-full">{p.data.venueFull}</p>
+                )}
+                <div class="paper-links">
+                  {p.data.doi && <a href={`https://doi.org/${p.data.doi}`} target="_blank" rel="noopener noreferrer">DOI</a>}
+                  {p.data.arxiv && <a href={p.data.arxiv} target="_blank" rel="noopener noreferrer">arXiv</a>}
+                  {p.data.pdf && <a href={p.data.pdf} target="_blank" rel="noopener noreferrer">PDF</a>}
+                  {p.data.code && <a href={p.data.code} target="_blank" rel="noopener noreferrer">Code</a>}
+                  {p.data.project && <a href={p.data.project} target="_blank" rel="noopener noreferrer">Project</a>}
+                </div>
+              </li>
+            ))}
+          </ol>
+        </section>
+      ))}
+    </div>
+
+    <footer class="paper-legend">
+      <span><span class="self-swatch">Wei&nbsp;Huang</span> 本人</span>
+      <span class="sep">·</span>
+      <span><span class="corr-swatch">*</span> 通讯作者</span>
+      <span class="sep">·</span>
+      <span><span class="star-swatch">★</span> 精选</span>
+    </footer>
+  </div>
+
+  <script>
+    function initYearFilter() {
+      const buttons = document.querySelectorAll<HTMLButtonElement>('.yf-btn');
+      const blocks = document.querySelectorAll<HTMLElement>('.year-block');
+      buttons.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          buttons.forEach((b) => b.classList.remove('active'));
+          btn.classList.add('active');
+          const y = btn.dataset.year;
+          blocks.forEach((block) => {
+            block.style.display = (y === 'all' || block.dataset.year === y) ? '' : 'none';
+          });
+        });
+      });
+      const list = document.querySelector<HTMLElement>('.year-filter');
+      if (list) {
+        list.addEventListener('wheel', (e) => {
+          const max = list.scrollWidth - list.clientWidth;
+          if (max <= 0) return;
+          const delta = Math.abs(e.deltaY) > Math.abs(e.deltaX) ? e.deltaY : e.deltaX;
+          if (delta === 0) return;
+          const can = (delta > 0 && list.scrollLeft < max) || (delta < 0 && list.scrollLeft > 0);
+          if (can) { e.preventDefault(); list.scrollLeft += delta; }
+        }, { passive: false });
+      }
+    }
+    initYearFilter();
+    document.addEventListener('astro:page-load', initYearFilter);
+  </script>
+
+  <ScrollTopBottom />
+
+  <style is:global>
+    .paper-grid { list-style: none; padding: 0; margin: 0; }
+    .paper-item {
+      padding: 1.6rem 0;
+      border-bottom: 1px solid var(--color-border-light);
+      position: relative;
+    }
+    .paper-item:last-child { border-bottom: none; }
+    .paper-item.featured::before {
+      content: '★';
+      position: absolute;
+      left: -1.4rem;
+      top: 1.8rem;
+      color: var(--color-accent);
+      font-size: 0.85rem;
+    }
+    .paper-meta {
+      display: flex;
+      align-items: baseline;
+      gap: 0.8rem;
+      margin-bottom: 0.4rem;
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 2px;
+      color: var(--color-faint);
+    }
+    .paper-venue {
+      color: var(--color-accent-dark);
+      font-weight: 500;
+    }
+    .paper-type::before { content: '·'; margin-right: 0.6rem; color: var(--color-faint); }
+    .paper-title {
+      font-family: 'KingHwa_OldSong', serif;
+      font-size: 1.1rem;
+      color: var(--color-heading);
+      letter-spacing: 0.04em;
+      line-height: 1.5;
+      margin: 0 0 0.5rem;
+      font-weight: 400;
+    }
+    .paper-authors {
+      font-family: 'KingHwa_OldSong', serif;
+      font-size: 0.85rem;
+      color: var(--color-muted);
+      letter-spacing: 0.05em;
+      line-height: 1.6;
+      margin: 0 0 0.3rem;
+    }
+    .paper-author.self {
+      color: #c9750e;
+      font-weight: 600;
+    }
+    :root.dark .paper-author.self {
+      color: #e09b3e;
+    }
+    .paper-sep { color: var(--color-faint); }
+    .corr-mark {
+      color: #c9750e;
+      font-weight: 700;
+      margin-left: 1px;
+      cursor: help;
+    }
+    :root.dark .corr-mark { color: #e09b3e; }
+
+    .paper-legend {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.6rem 1.2rem;
+      margin-top: 4rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--color-border-light);
+      font-family: 'KingHwa_OldSong', serif;
+      font-size: 0.78rem;
+      letter-spacing: 2px;
+      color: var(--color-faint);
+    }
+    .paper-legend .sep { opacity: 0.4; }
+    .paper-legend .self-swatch { color: #c9750e; font-weight: 600; }
+    :root.dark .paper-legend .self-swatch { color: #e09b3e; }
+    .paper-legend .corr-swatch { color: #c9750e; font-weight: 700; }
+    :root.dark .paper-legend .corr-swatch { color: #e09b3e; }
+    .paper-legend .star-swatch { color: var(--color-accent); font-weight: 700; }
+    .paper-venue-full {
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 0.78rem;
+      color: var(--color-faint);
+      letter-spacing: 0.5px;
+      font-style: italic;
+      margin: 0 0 0.6rem;
+    }
+    .paper-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 0.6rem;
+    }
+    .paper-links a {
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 1.5px;
+      color: var(--color-accent-dark);
+      border: 1px solid var(--color-border-dark);
+      padding: 0.18rem 0.7rem;
+      transition: all 0.2s;
+    }
+    .paper-links a:hover {
+      color: var(--color-bg);
+      background: var(--color-accent-dark);
+      border-color: var(--color-accent-dark);
+    }
+  </style>
+</BaseLayout>

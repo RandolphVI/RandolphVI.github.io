@@ -1,0 +1,164 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const lists = await getCollection('booklists', ({ data }) => !data.draft);
+const sorted = lists.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+// Resolve cover for each list
+const books = await getCollection('reading');
+const bookMap = new Map(books.map((b) => [b.id, b]));
+
+const enriched = sorted.map((l) => {
+  const coverId = l.data.coverBook || l.data.books[0];
+  const coverBook = coverId ? bookMap.get(coverId) : undefined;
+  return { list: l, cover: coverBook?.data.cover || '', count: l.data.books.length };
+});
+---
+
+<BaseLayout title="书单" description="编辑挑选的主题书单">
+  <div class="ll-wrap">
+
+    <header class="ll-masthead">
+      <a href="/reading/" class="ll-crumb">← 回 到 书 架</a>
+      <div class="ll-eyebrow">
+        <span>READING&nbsp;LISTS</span>
+        <span>{lists.length} 份</span>
+      </div>
+      <h1>书 单</h1>
+      <p class="ll-sub">手挑的主题，给犹豫的读者</p>
+      <div class="ll-rule"></div>
+    </header>
+
+    {enriched.length === 0 ? (
+      <p class="ll-empty">暂无书单</p>
+    ) : (
+      <div class="ll-grid">
+        {enriched.map(({ list, cover, count }) => (
+          <a href={`/reading/lists/${list.id}/`} class="ll-card">
+            <div class="ll-cover">
+              {cover && <img src={cover} alt={list.data.title} loading="lazy" />}
+            </div>
+            <div class="ll-meta">
+              <div class="ll-count">{count} 本</div>
+              <h2 class="ll-title">{list.data.title}</h2>
+              <p class="ll-desc">{list.data.description}</p>
+            </div>
+          </a>
+        ))}
+      </div>
+    )}
+
+  </div>
+
+  <style is:global>
+    .ll-wrap { max-width: 1100px; margin: 0 auto; padding: 4rem 2rem 6rem; }
+
+    .ll-masthead { text-align: center; margin-bottom: 4rem; }
+    .ll-crumb {
+      display: inline-block;
+      font-family: 'KingHwa_OldSong', serif;
+      font-size: 0.78rem;
+      letter-spacing: 4px;
+      color: var(--color-faint);
+      border: none !important;
+      margin-bottom: 2rem;
+      transition: color 0.2s;
+    }
+    .ll-crumb:hover { color: var(--color-heading); }
+    .ll-eyebrow {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      max-width: 100%;
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 4px;
+      color: var(--color-faint);
+      padding-bottom: 0.6rem;
+      border-bottom: 1px solid var(--color-border-light);
+      margin-bottom: 2rem;
+    }
+    .ll-masthead h1 {
+      font-family: 'KingHwa_OldSong', serif;
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      letter-spacing: clamp(0.4rem, 1.5vw, 1rem);
+      color: var(--color-heading);
+      font-weight: 400;
+      line-height: 1;
+      margin: 0 0 0.8rem;
+    }
+    .ll-sub {
+      font-family: 'KingHwa_OldSong', serif;
+      font-size: 0.95rem;
+      color: var(--color-muted);
+      letter-spacing: 0.25em;
+      margin: 0 0 1.5rem;
+    }
+    .ll-rule { width: 30px; height: 1px; background: var(--color-accent); margin: 0 auto; }
+    .ll-empty { text-align: center; color: var(--color-muted); padding: 4rem 0; }
+
+    .ll-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
+      gap: 3rem 2.5rem;
+    }
+    @media (max-width: 640px) {
+      .ll-grid { grid-template-columns: 1fr; }
+    }
+    .ll-card {
+      display: grid;
+      grid-template-columns: 130px 1fr;
+      gap: 1.6rem;
+      border: none !important;
+      align-items: start;
+      padding: 1.4rem 1.2rem 1.4rem 0;
+      border-bottom: 1px solid var(--color-border-light);
+      transition: background-color 0.2s;
+    }
+    .ll-card:hover { background-color: var(--color-surface); }
+
+    .ll-cover {
+      aspect-ratio: 2 / 3;
+      background: var(--color-surface);
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+      transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+    .ll-card:hover .ll-cover { transform: translateY(-3px); }
+    :root.dark .ll-cover { box-shadow: 0 6px 20px rgba(0,0,0,0.45); }
+    .ll-cover img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .ll-meta { padding: 0.5rem 0 0; min-width: 0; }
+    .ll-count {
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 0.65rem;
+      letter-spacing: 3px;
+      color: var(--color-accent-dark);
+      margin-bottom: 0.4rem;
+    }
+    .ll-title {
+      font-family: 'KingHwa_OldSong', serif;
+      font-size: 1.25rem;
+      color: var(--color-heading);
+      letter-spacing: 0.04em;
+      margin: 0 0 0.6rem;
+      transition: color 0.2s;
+      font-weight: 400;
+    }
+    .ll-card:hover .ll-title { color: var(--color-accent-dark); }
+    .ll-desc {
+      font-family: 'KingHwa_OldSong', serif;
+      font-size: 0.92rem;
+      color: var(--color-muted);
+      line-height: 1.7;
+      margin: 0;
+      letter-spacing: 0.02em;
+    }
+  </style>
+</BaseLayout>

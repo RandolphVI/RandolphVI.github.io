@@ -1,0 +1,404 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getAllHighlights } from '../../utils/highlights';
+import { getReadingList } from '../../utils/collections';
+
+const highlights = await getAllHighlights();
+const books = await getReadingList();
+
+// Build book metadata lookup for category filter
+const bookMap = new Map(books.map((b) => [b.id, b]));
+const bookOptions = [...new Set(highlights.map((h) => h.bookTitle))].sort();
+
+// Primary category list for filter
+const catCounts = new Map<string, number>();
+for (const h of highlights) {
+  const b = bookMap.get(h.bookId);
+  const bc = b?.data.bookCategory;
+  const primary = bc ? bc.split('-')[0] : '其他';
+  catCounts.set(primary, (catCounts.get(primary) || 0) + 1);
+}
+const cats = [...catCounts.entries()]
+  .sort((a, b) => b[1] - a[1])
+  .map(([name, count]) => ({ name, count }));
+
+// Augment highlights with primary category
+const augmented = highlights.map((h) => {
+  const b = bookMap.get(h.bookId);
+  const bc = b?.data.bookCategory;
+  return {
+    ...h,
+    primary: bc ? bc.split('-')[0] : '其他',
+  };
+});
+---
+
+<BaseLayout title="划线集" description={`${highlights.length} 条阅读划线`}>
+  <div class="hl-wrap">
+
+    <header class="hl-masthead">
+      <a href="/reading/" class="hl-crumb">← 回 到 书 架</a>
+      <div class="hl-eyebrow">
+        <span>HIGHLIGHTS</span>
+        <span>{highlights.length} 条</span>
+      </div>
+      <h1>划 线 集</h1>
+      <p class="hl-sub">书海里捞出的句子</p>
+      <div class="hl-rule"></div>
+    </header>
+
+    <!-- Filters -->
+    <div class="hl-controls">
+      <div class="hl-search">
+        <input id="hl-search-input" type="search" placeholder="搜索划线内容…" aria-label="搜索" />
+      </div>
+      <div class="hl-cat-row">
+        <button class="hc active" data-cat="all">全部 <em>{highlights.length}</em></button>
+        {cats.map((c) => (
+          <button class="hc" data-cat={c.name}>{c.name} <em>{c.count}</em></button>
+        ))}
+      </div>
+    </div>
+
+    <div id="hl-stats" class="hl-stats"></div>
+    <div id="hl-list" class="hl-grid"></div>
+    <p id="hl-empty" class="hidden hl-empty">没有匹配的划线</p>
+    <div id="hl-loadmore" class="hl-loadmore"></div>
+
+  </div>
+
+  <script type="application/json" id="hl-data" set:html={JSON.stringify(augmented)}></script>
+
+  <script>
+    function init() {
+      const dataEl = document.getElementById('hl-data');
+      if (!dataEl) return;
+      const raw: Array<{
+        bookId: string;
+        bookTitle: string;
+        author: string;
+        cover: string;
+        text: string;
+        chapter: string;
+        primary: string;
+      }> = JSON.parse(dataEl.textContent || '[]');
+      // Shuffle once on each page load (Fisher-Yates)
+      const all = raw.slice();
+      for (let i = all.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [all[i], all[j]] = [all[j], all[i]];
+      }
+
+      const listEl = document.getElementById('hl-list')!;
+      const emptyEl = document.getElementById('hl-empty')!;
+      const statsEl = document.getElementById('hl-stats')!;
+      const loadMoreEl = document.getElementById('hl-loadmore')!;
+      const searchEl = document.getElementById('hl-search-input') as HTMLInputElement;
+
+      let activeCat = 'all';
+      let query = '';
+      const PAGE_SIZE = 30;
+      let visible = PAGE_SIZE;
+
+      function escapeHTML(s: string): string {
+        return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+      }
+
+      function filtered() {
+        let items = all;
+        if (activeCat !== 'all') items = items.filter((h) => h.primary === activeCat);
+        if (query) {
+          const q = query.toLowerCase();
+          items = items.filter((h) =>
+            h.text.toLowerCase().includes(q) ||
+            h.bookTitle.toLowerCase().includes(q) ||
+            h.author.toLowerCase().includes(q),
+          );
+        }
+        return items;
+      }
+
+      function render() {
+        const items = filtered();
+        statsEl.textContent = items.length === all.length
+          ? `共 ${all.length} 条`
+          : `匹配 ${items.length} / ${all.length} 条`;
+
+        if (items.length === 0) {
+          listEl.innerHTML = '';
+          emptyEl.classList.remove('hidden');
+          loadMoreEl.innerHTML = '';
+          return;
+        }
+        emptyEl.classList.add('hidden');
+
+        const slice = items.slice(0, visible);
+        listEl.innerHTML = slice
+          .map((h) => {
+            const cover = h.cover
+              ? `<img src="${escapeHTML(h.cover)}" alt="${escapeHTML(h.bookTitle)}" loading="lazy">`
+              : `<div class="hl-cover-empty">书</div>`;
+            return `
+              <a href="/reading/${h.bookId}/" class="hl-card">
+                <div class="hl-card-cover">${cover}</div>
+                <div class="hl-card-body">
+                  <p class="hl-card-text">${escapeHTML(h.text)}</p>
+                  <footer class="hl-card-attr">
+                    《${escapeHTML(h.bookTitle)}》 &middot; ${escapeHTML(h.author)}${h.chapter ? ` &middot; ${escapeHTML(h.chapter)}` : ''}
+                  </footer>
+                </div>
+              </a>
+            `;
+          })
+          .join('');
+
+        if (items.length > visible) {
+          loadMoreEl.innerHTML = `<button id="hl-more" class="hl-more">查 看 更 多 (${items.length - visible})</button>`;
+          document.getElementById('hl-more')?.addEventListener('click', () => {
+            visible += PAGE_SIZE;
+            render();
+          });
+        } else {
+          loadMoreEl.innerHTML = '';
+        }
+      }
+
+      document.querySelectorAll<HTMLButtonElement>('.hc').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.hc').forEach((b) => b.classList.remove('active'));
+          btn.classList.add('active');
+          activeCat = btn.dataset.cat || 'all';
+          visible = PAGE_SIZE;
+          render();
+        });
+      });
+
+      let searchTimer: number | undefined;
+      searchEl?.addEventListener('input', () => {
+        clearTimeout(searchTimer);
+        searchTimer = window.setTimeout(() => {
+          query = searchEl.value.trim();
+          visible = PAGE_SIZE;
+          render();
+        }, 200);
+      });
+
+      render();
+    }
+
+    init();
+    document.addEventListener('astro:page-load', init);
+  </script>
+
+  <style is:global>
+    .hl-wrap {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 4rem 2rem 6rem;
+    }
+
+    .hl-masthead { text-align: center; margin-bottom: 3rem; }
+    .hl-crumb {
+      display: inline-block;
+      font-family: 'KingHwa_OldSong', serif;
+      font-size: 0.78rem;
+      letter-spacing: 4px;
+      color: var(--color-faint);
+      border: none !important;
+      margin-bottom: 2rem;
+      transition: color 0.2s;
+    }
+    .hl-crumb:hover { color: var(--color-heading); }
+    .hl-eyebrow {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 4px;
+      color: var(--color-faint);
+      padding-bottom: 0.6rem;
+      border-bottom: 1px solid var(--color-border-light);
+      margin-bottom: 2rem;
+    }
+    .hl-masthead h1 {
+      font-family: 'KingHwa_OldSong', serif;
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      letter-spacing: clamp(0.4rem, 1.5vw, 1rem);
+      color: var(--color-heading);
+      font-weight: 400;
+      line-height: 1;
+      margin: 0 0 0.8rem;
+    }
+    .hl-sub {
+      font-family: 'KingHwa_OldSong', serif;
+      font-size: 0.95rem;
+      color: var(--color-muted);
+      letter-spacing: 0.25em;
+      margin: 0 0 1.5rem;
+    }
+    .hl-rule { width: 30px; height: 1px; background: var(--color-accent); margin: 0 auto; }
+
+    /* Controls */
+    .hl-controls { margin-bottom: 2rem; }
+    .hl-search {
+      max-width: 520px;
+      margin: 0 auto 1.6rem;
+      position: relative;
+    }
+    .hl-search input {
+      width: 100%;
+      background: var(--color-surface);
+      border: none;
+      border-bottom: 1px solid var(--color-border-dark);
+      padding: 0.7rem 0.4rem;
+      font-family: 'KingHwa_OldSong', serif;
+      font-size: 1rem;
+      color: var(--color-heading);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .hl-search input::placeholder { color: var(--color-faint); letter-spacing: 0.05em; }
+    .hl-search input:focus { border-color: var(--color-accent); }
+
+    .hl-cat-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.3rem 1.2rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--color-border-light);
+    }
+    .hc {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: 'KingHwa_OldSong', serif;
+      font-size: 0.9rem;
+      color: var(--color-muted);
+      letter-spacing: 3px;
+      padding: 0.3rem 0;
+      transition: color 0.2s;
+      position: relative;
+    }
+    .hc em {
+      font-style: normal;
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 0.65rem;
+      color: var(--color-faint);
+      margin-left: 0.3rem;
+      letter-spacing: 1px;
+    }
+    .hc:hover { color: var(--color-heading); }
+    .hc.active { color: var(--color-heading); }
+    .hc.active::after {
+      content: '';
+      position: absolute;
+      bottom: -0.4rem;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 18px;
+      height: 1px;
+      background: var(--color-accent);
+    }
+
+    .hl-stats {
+      text-align: center;
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 0.72rem;
+      color: var(--color-faint);
+      letter-spacing: 2px;
+      margin-bottom: 2rem;
+    }
+
+    /* Highlight grid */
+    .hl-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.4rem;
+    }
+
+    .hl-card {
+      display: grid;
+      grid-template-columns: 56px 1fr;
+      gap: 1.2rem;
+      padding: 1.4rem 1.5rem;
+      background: var(--color-surface);
+      border: none !important;
+      transition: background-color 0.2s, transform 0.2s;
+      position: relative;
+    }
+    .hl-card::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 2px;
+      background: var(--color-accent);
+      opacity: 0.6;
+      transition: opacity 0.2s;
+    }
+    .hl-card:hover {
+      background: rgba(196, 181, 160, 0.12);
+      transform: translateX(2px);
+    }
+    .hl-card:hover::before { opacity: 1; }
+
+    .hl-card-cover img {
+      width: 100%;
+      aspect-ratio: 2/3;
+      object-fit: cover;
+      display: block;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    :root.dark .hl-card-cover img { box-shadow: 0 2px 8px rgba(0,0,0,0.4); }
+    .hl-cover-empty {
+      width: 100%;
+      aspect-ratio: 2/3;
+      background: var(--color-border-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-muted);
+      font-size: 0.8rem;
+    }
+
+    .hl-card-text {
+      font-family: 'KingHwa_OldSong', serif;
+      font-size: 1rem;
+      line-height: 1.95;
+      color: var(--color-heading);
+      letter-spacing: 0.025em;
+      margin: 0 0 0.8rem;
+    }
+    .hl-card-text::before { content: '“'; color: var(--color-accent); }
+    .hl-card-text::after { content: '”'; color: var(--color-accent); }
+    .hl-card-attr {
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 0.72rem;
+      color: var(--color-muted);
+      letter-spacing: 1px;
+    }
+
+    .hl-empty {
+      text-align: center;
+      color: var(--color-muted);
+      padding: 4rem 0;
+      font-family: 'KingHwa_OldSong', serif;
+      letter-spacing: 0.2em;
+    }
+    .hl-loadmore { text-align: center; margin-top: 3rem; }
+    .hl-more {
+      background: none;
+      border: none;
+      border-bottom: 1px solid var(--color-border-dark);
+      font-family: 'KingHwa_OldSong', serif;
+      font-size: 0.85rem;
+      letter-spacing: 6px;
+      color: var(--color-muted);
+      padding: 0.4rem 0.5rem;
+      cursor: pointer;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .hl-more:hover { color: var(--color-heading); border-color: var(--color-accent); }
+  </style>
+</BaseLayout>

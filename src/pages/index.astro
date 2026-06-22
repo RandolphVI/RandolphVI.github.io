@@ -1,91 +1,606 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import ArticleCard from '../components/ArticleCard.astro';
-import { getPublishedPosts } from '../utils/collections';
-import { getVolumeLabel } from '../utils/season';
+import { getAllHighlights } from '../utils/highlights';
+import { getPublishedPosts, getPublishedTech } from '../utils/collections';
 
-const allPosts = await getPublishedPosts();
-const volumeLabel = getVolumeLabel(allPosts.length, new Date());
+const highlights = await getAllHighlights();
+const [posts, tech] = await Promise.all([getPublishedPosts(), getPublishedTech()]);
+const recentPosts = posts.slice(0, 5);
+const recentTech = tech.slice(0, 5);
 
-// Prepare cover candidates (all posts for random selection)
-const coverCandidates = allPosts.map(p => ({
-  id: p.id,
-  title: p.data.title,
-  category: p.data.category,
-  description: p.data.description,
-}));
+// === News (synced from GitHub profile README) ===
+const allLocalizations = [
+  { ver: 'v2.1', name: 'Esoteric Ebb', emoji: '🎲', url: 'https://github.com/RandolphVI/EsotericEbb_Chinese', desc: '侦探 + 神职 + 苹果，三位一体的 CRPG 体验。' },
+  { ver: 'v1.3', name: 'Dead in Antares', emoji: '🥫', url: 'https://github.com/RandolphVI/DeadInAntares_Chinese', desc: '外星殖民地求生 RPG，罐头即道德。' },
+  { ver: 'v1.0', name: 'of the Devil', emoji: '😈', url: 'https://github.com/RandolphVI/oftheDevil_Chinese', desc: '与魔鬼立约的叙事小品，DLC 续写合同。' },
+  { ver: 'v1.0', name: 'The Pale Beyond', emoji: '🧊', url: 'https://github.com/RandolphVI/ThePaleBeyond_Chinese', desc: '南极冰原求生叙事，人心比物资难管。' },
+  { ver: 'v1.0', name: 'Athanasy', emoji: '🧬', url: 'https://github.com/RandolphVI/Athanasy_Chinese', desc: '地下巨城的生物朋克视觉小说，世界烂得比肉体快。' },
+];
 
-// Recent posts for the list (latest 5)
-const recentPosts = allPosts.slice(0, 5);
+const allRecentlyPlayed = [
+  { date: '2026.04', name: 'Banquet for Fools', emoji: '💀', url: 'https://store.steampowered.com/app/3172700/Banquet_for_Fools/', desc: 'Bowing to petty gods — kill the bandit and he comes back as a ghost, stun him and he becomes paperwork.' },
+  { date: '2025.11', name: 'S.T.A.L.K.E.R. 2', emoji: '☢️', url: 'https://store.steampowered.com/app/1643320/2/', desc: 'A-Life 2.0 just means Bloodsuckers spawn behind you AND in front of you. Get out of here, stalker.' },
+  { date: '2025.04', name: '逸剑风云决', emoji: '⚔️', url: 'https://store.steampowered.com/app/1876890/_/', desc: 'Soul-swapped into a dying nobody — turns out 江湖 grievances all boil down to: punch harder, run faster, or write a better poem.' },
+  { date: '2025.02', name: 'Fallout: New Vegas', emoji: '🤠', url: 'https://store.steampowered.com/app/22380/Fallout_New_Vegas/', desc: 'Got ambushed by Benny... again — 17th playthrough. Obsidian\'s spaghetti code? Still a masterpiece.' },
+  { date: '2024.10', name: 'Metaphor: ReFantazio', emoji: '👑', url: 'https://store.steampowered.com/app/2679460/Metaphor_ReFantazio/', desc: 'Dodging reality — who needs sleep when there\'s another 100-hour persona-esque journey to binge?!' },
+  { date: '2023.08', name: 'Baldur\'s Gate 3', emoji: '🎲', url: 'https://store.steampowered.com/app/1086940/Baldurs_Gate_3/', desc: 'Gods Among Us.' },
+  { date: '2023.06', name: 'Darkest Dungeon', emoji: '🕯️', url: 'https://store.steampowered.com/app/262060/Darkest_Dungeon/', desc: "I've suffered, and no one is spared!" },
+  { date: '2023.05', name: 'Tears of the Kingdom', emoji: '🗡️', url: 'https://zelda.nintendo.com/tears-of-the-kingdom/', desc: 'Nintendo rules the fxxking world!' },
+  { date: '2023.04', name: 'Octopath Traveler II', emoji: '🐙', url: 'https://store.steampowered.com/app/1971650/_II/', desc: "I've cleared it — スクエニさん、さすがかよ!" },
+];
+
+const SHOW_NEWS = 2;
+const localizations = allLocalizations.slice(0, SHOW_NEWS);
+const recentlyPlayed = allRecentlyPlayed.slice(0, SHOW_NEWS);
+const moreLocCount = allLocalizations.length - localizations.length;
+const morePlayedCount = allRecentlyPlayed.length - recentlyPlayed.length;
 ---
 
 <BaseLayout title="首页" description="黃某人的个人博客 — 写小说，读闲书，偶尔研究机器学习">
-  <script define:vars={{ coverCandidates }} is:inline>
-    // Pick random post on each page load
-    const pick = coverCandidates[Math.floor(Math.random() * coverCandidates.length)];
-    document.addEventListener('DOMContentLoaded', () => {
-      document.getElementById('cover-title').textContent = pick.title;
-      document.getElementById('cover-category').textContent = '随机推荐 · ' + pick.category;
-      document.getElementById('cover-desc').textContent = pick.description;
-      document.getElementById('cover-link').href = '/posts/' + pick.id + '/';
-    });
+  <div class="home-wrap">
+
+    <!-- 今日一语 (floats right; articles flow around it) -->
+    <aside class="daily" data-count={highlights.length}>
+      <div class="daily-head">
+        <span class="daily-label">今 日 一 语</span>
+        <button type="button" id="daily-refresh" class="daily-refresh" aria-label="换一句">↻</button>
+      </div>
+
+      <div class="daily-body">
+        <a href="#" id="daily-cover" class="daily-cover" aria-label="书本">
+          <img id="daily-cover-img" src="" alt="" />
+        </a>
+
+        <div class="daily-text-wrap">
+          <p id="daily-text" class="daily-text">…</p>
+          <footer class="daily-attr">
+            <cite>
+              《<span id="daily-book"></span>》
+              &nbsp;·&nbsp;
+              <span id="daily-author"></span>
+            </cite>
+            <span id="daily-chapter" class="daily-chapter"></span>
+          </footer>
+        </div>
+      </div>
+    </aside>
+
+    <!-- News: 汉化工作 + 最近游玩 (left-flowing) -->
+    <section class="news">
+      <header class="news-head">
+        <span class="news-label">近&nbsp;况</span>
+        <span class="news-eyebrow">NEWS</span>
+      </header>
+
+      <div class="news-sub">
+        <header class="news-sub-title">
+          <div>
+            <span>汉&nbsp;化&nbsp;工&nbsp;作</span>
+            <span class="news-sub-eyebrow">LOCALIZATION</span>
+          </div>
+          <a href="/projects/" class="news-more">全部 →</a>
+        </header>
+        <ul class="news-list news-list-loc">
+          {localizations.map((l) => (
+            <li>
+              <span class="news-ver">{l.ver}</span>
+              <a href={l.url} target="_blank" rel="noopener noreferrer" class="news-item-name">
+                {l.name}<span class="news-emoji">{l.emoji}</span>
+              </a>
+              <span class="news-desc">{l.desc}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="news-sub">
+        <header class="news-sub-title">
+          <div>
+            <span>最&nbsp;近&nbsp;游&nbsp;玩</span>
+            <span class="news-sub-eyebrow">RECENTLY&nbsp;PLAYED</span>
+          </div>
+          <a href="https://steamcommunity.com/id/RandolphVI/" target="_blank" rel="noopener noreferrer" class="news-more">Steam →</a>
+        </header>
+        <ul class="news-list news-list-played">
+          {recentlyPlayed.map((g) => (
+            <li>
+              <time>{g.date}</time>
+              <div class="news-played-body">
+                <a href={g.url} target="_blank" rel="noopener noreferrer" class="news-item-name">
+                  {g.name}<span class="news-emoji">{g.emoji}</span>
+                </a>
+                <p class="news-desc-block">{g.desc}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <!-- Article streams (匯文 left + 技术 right) — full width, after float clears -->
+    <div class="streams-row">
+      <section class="stream">
+        <header class="stream-head">
+          <span class="stream-label">匯&nbsp;文</span>
+          <a href="/posts/" class="stream-more">全部 →</a>
+        </header>
+        <ol class="stream-list">
+          {recentPosts.map((p) => (
+            <li>
+              <a href={`/posts/${p.id}/`}>
+                <time>{`${p.data.date.getFullYear()}.${String(p.data.date.getMonth() + 1).padStart(2, '0')}.${String(p.data.date.getDate()).padStart(2, '0')}`}</time>
+                <div class="stream-meta">
+                  <span class="stream-title">{p.data.title}</span>
+                  {p.data.description && <p class="stream-desc">{p.data.description}</p>}
+                </div>
+              </a>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <section class="stream">
+        <header class="stream-head">
+          <span class="stream-label">技&nbsp;术</span>
+          <a href="/tech/" class="stream-more">全部 →</a>
+        </header>
+        <ol class="stream-list">
+          {recentTech.map((p) => (
+            <li>
+              <a href={`/tech/${p.id}/`}>
+                <time>{`${p.data.date.getFullYear()}.${String(p.data.date.getMonth() + 1).padStart(2, '0')}.${String(p.data.date.getDate()).padStart(2, '0')}`}</time>
+                <div class="stream-meta">
+                  <span class="stream-title">{p.data.title}</span>
+                  {p.data.description && <p class="stream-desc">{p.data.description}</p>}
+                </div>
+              </a>
+            </li>
+          ))}
+        </ol>
+      </section>
+    </div>
+
+  </div>
+
+  <script type="application/json" id="all-highlights" set:html={JSON.stringify(highlights)}></script>
+
+  <script>
+    function initDaily() {
+      const dataEl = document.getElementById('all-highlights');
+      if (!dataEl) return;
+      const all = JSON.parse(dataEl.textContent || '[]') as Array<{
+        bookId: string;
+        bookTitle: string;
+        author: string;
+        cover: string;
+        text: string;
+        chapter: string;
+      }>;
+      if (all.length === 0) return;
+
+      const withCover = all.filter((h) => h.cover);
+      const pool = withCover.length ? withCover : all;
+
+      function pickRandom() {
+        return pool[Math.floor(Math.random() * pool.length)];
+      }
+
+      function render(h: typeof pool[0]) {
+        const txt = document.getElementById('daily-text');
+        const book = document.getElementById('daily-book');
+        const author = document.getElementById('daily-author');
+        const chapter = document.getElementById('daily-chapter');
+        const coverImg = document.getElementById('daily-cover-img') as HTMLImageElement;
+        const coverLink = document.getElementById('daily-cover') as HTMLAnchorElement;
+        if (txt) {
+          // wrap text with curly quote marks (inline, so line-clamp truncation works)
+          const escape = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+          txt.innerHTML = `<span class="qmark">"</span>${escape(h.text)}<span class="qmark">"</span>`;
+        }
+        if (book) book.textContent = h.bookTitle;
+        if (author) author.textContent = h.author;
+        if (chapter) chapter.textContent = h.chapter || '';
+        if (coverImg) {
+          coverImg.src = h.cover;
+          coverImg.alt = h.bookTitle;
+        }
+        if (coverLink) coverLink.href = `/reading/${h.bookId}/`;
+      }
+
+      render(pickRandom());
+
+      const btn = document.getElementById('daily-refresh');
+      btn?.addEventListener('click', () => render(pickRandom()));
+    }
+
+    initDaily();
+    document.addEventListener('astro:page-load', initDaily);
   </script>
 
-  <!-- Cover Section -->
-  <div class="relative py-16 px-6 lg:px-10 text-center">
-    <div class="absolute top-10 right-6 lg:right-10 text-[11px] text-[var(--color-accent)] tracking-[6px] font-serif hidden sm:block" style="writing-mode: vertical-rl;">
-      痴
-    </div>
+  <style>
+    .home-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 4rem 2rem 6rem;
+    }
+    @media (max-width: 768px) {
+      .home-wrap { padding: 2rem 1.25rem 4rem; }
+    }
 
-    <div class="font-sans text-sm tracking-[6px] text-[var(--color-accent-dark)] mb-5">
-      {volumeLabel}
-    </div>
-    <div class="w-10 h-px bg-[var(--color-accent)] mx-auto mb-6"></div>
+    /* ============ 今日一语 (floating top-right) ============ */
+    .daily {
+      float: right;
+      width: 360px;
+      margin: 0 0 3.5rem 2.8rem;
+      padding: 1.6rem 1.7rem 1.7rem;
+      background: var(--color-bg);
+      position: relative;
+      /* solid background hides any list border that would otherwise show through */
+    }
+    /* L-shaped accent at top-left corner */
+    .daily::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 22px;
+      height: 1px;
+      background: var(--color-accent);
+    }
+    .daily::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 1px;
+      height: 22px;
+      background: var(--color-accent);
+    }
+    @media (max-width: 768px) {
+      .daily {
+        float: none;
+        width: 100%;
+        margin: 0 0 2.5rem;
+      }
+    }
 
-    <div>
-      <h2 id="cover-title" class="text-4xl text-[var(--color-heading)] tracking-[4px] mb-4">
-        {coverCandidates[0]?.title}
-      </h2>
-      <div id="cover-category" class="font-sans text-base text-[var(--color-muted)] tracking-wider mb-6">
-        随机推荐 · {coverCandidates[0]?.category}
-      </div>
-      <p id="cover-desc" class="max-w-2xl mx-auto text-lg text-[var(--color-muted)] leading-[2.2]">
-        {coverCandidates[0]?.description}
-      </p>
-      <div class="mt-8">
-        <a
-          id="cover-link"
-          href={`/posts/${coverCandidates[0]?.id}/`}
-          class="inline-block font-sans text-sm text-[var(--color-accent-dark)] border border-[var(--color-border-dark)] px-6 py-2 tracking-[2px] hover:bg-[var(--color-accent)] hover:text-[var(--color-bg)] transition-colors"
-        >
-          阅读全文
-        </a>
-      </div>
-    </div>
-  </div>
+    .daily-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 0.7rem;
+      margin-bottom: 1.3rem;
+      border-bottom: 1px solid var(--color-border-light);
+    }
+    .daily-label {
+      font-family: 'KingHwa_OldSong', serif;
+      font-size: 0.78rem;
+      letter-spacing: 6px;
+      color: var(--color-accent-dark);
+    }
+    .daily-refresh {
+      background: none;
+      border: none;
+      color: var(--color-faint);
+      font-size: 1rem;
+      cursor: pointer;
+      padding: 0.2rem 0.4rem;
+      line-height: 1;
+      transition: color 0.2s, transform 0.4s;
+    }
+    .daily-refresh:hover {
+      color: var(--color-heading);
+      transform: rotate(180deg);
+    }
 
-  <!-- Gradient divider -->
-  <div class="w-3/5 h-px mx-auto" style="background: linear-gradient(90deg, transparent, var(--color-border-dark), transparent);"></div>
+    /* Body: cover at top-right, text wraps around it */
+    .daily-body {
+      overflow: hidden; /* contain the float */
+    }
+    .daily-cover {
+      float: right;
+      width: 90px;
+      margin: 0.2rem 0 0.6rem 0.9rem;
+      display: block;
+      border: none !important;
+      transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+    .daily-cover:hover { transform: translateY(-2px); }
+    .daily-cover img {
+      width: 100%;
+      aspect-ratio: 2 / 3;
+      object-fit: cover;
+      display: block;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.12), 0 1px 3px rgba(0,0,0,0.08);
+    }
+    :root.dark .daily-cover img {
+      box-shadow: 0 4px 14px rgba(0,0,0,0.5), 0 1px 3px rgba(0,0,0,0.3);
+    }
 
-  <!-- Recent Articles -->
-  <div class="max-w-2xl mx-auto px-6 lg:px-10 py-10">
-    <div class="font-sans text-sm tracking-[4px] text-[var(--color-accent-dark)] mb-6">
-      近期文章
-    </div>
+    .daily-text-wrap { /* text wraps naturally around floated cover */ }
+    .daily-text {
+      font-family: 'KingHwa_OldSong', 'Noto Serif SC', serif;
+      font-size: 0.95rem;
+      line-height: 1.95;
+      color: var(--color-heading);
+      letter-spacing: 0.04em;
+      margin: 0 0 1rem;
+      text-indent: 1.6em;
+      /* Truncate to ~7 visible lines to keep module height bounded */
+      display: -webkit-box;
+      -webkit-line-clamp: 7;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .daily-text .qmark {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.6em;
+      color: var(--color-accent);
+      vertical-align: -0.18em;
+      margin: 0 0.04em;
+    }
+    .daily-attr {
+      clear: right; /* attribution starts below the cover */
+      padding-top: 1rem;
+      margin-top: 0.4rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+      font-size: 0.74rem;
+      position: relative;
+    }
+    .daily-attr::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 24px;
+      height: 1px;
+      background: var(--color-accent);
+      opacity: 0.5;
+    }
+    .daily-attr cite {
+      font-style: normal;
+      font-family: 'KingHwa_OldSong', serif;
+      color: var(--color-muted);
+      letter-spacing: 0.05em;
+    }
+    .daily-chapter {
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 0.65rem;
+      letter-spacing: 2px;
+      color: var(--color-faint);
+    }
 
-    {recentPosts.map((post) => (
-      <ArticleCard
-        title={post.data.title}
-        date={post.data.date}
-        description={post.data.description}
-        href={`/posts/${post.id}/`}
-      />
-    ))}
+    /* ============ NEWS ============ */
+    .news { margin-top: 0.5rem; }
+    .news-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 2rem;
+      padding-bottom: 0.7rem;
+      border-bottom: 1px solid var(--color-border);
+    }
+    .news-label {
+      font-family: 'KingHwa_OldSong', serif;
+      font-size: 1.4rem;
+      letter-spacing: 6px;
+      color: var(--color-heading);
+    }
+    .news-eyebrow {
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 4px;
+      color: var(--color-faint);
+    }
 
-    <div class="text-center mt-8">
-      <a href="/archives/" class="font-sans text-[11px] text-[var(--color-accent-dark)] tracking-[2px] border-none hover:text-[var(--color-heading)]">
-        查看全部 →
-      </a>
-    </div>
-  </div>
+    .news-sub { margin-bottom: 3rem; }
+    .news-sub:last-child { margin-bottom: 0; }
+    .news-sub-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin: 0 0 1.4rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--color-border-light);
+      font-weight: 400;
+    }
+    .news-sub-title > div {
+      display: flex;
+      align-items: baseline;
+      gap: 0.8rem;
+    }
+    .news-sub-title > div > span:first-child {
+      font-family: 'KingHwa_OldSong', serif;
+      font-size: 1rem;
+      letter-spacing: 5px;
+      color: var(--color-accent-dark);
+    }
+    .news-sub-eyebrow {
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 0.65rem;
+      letter-spacing: 3px;
+      color: var(--color-faint);
+    }
+    .news-more {
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 2px;
+      color: var(--color-faint);
+      border: none !important;
+      transition: color 0.2s;
+      flex-shrink: 0;
+    }
+    .news-more:hover { color: var(--color-heading); }
+
+
+    .news-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    /* Localization list — compact rows */
+    .news-list-loc li {
+      display: grid;
+      grid-template-columns: 50px 1fr;
+      column-gap: 0.9rem;
+      row-gap: 0.2rem;
+      padding: 0.7rem 0;
+      border-bottom: 1px solid var(--color-border-light);
+      align-items: baseline;
+    }
+    .news-list-loc li:last-child { border-bottom: none; }
+    .news-list-loc .news-ver {
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 1px;
+      color: var(--color-accent-dark);
+      text-align: right;
+    }
+    .news-list-loc .news-item-name {
+      font-family: 'KingHwa_OldSong', serif;
+      font-size: 1rem;
+      letter-spacing: 0.04em;
+      color: var(--color-heading);
+      border: none !important;
+      transition: color 0.15s;
+    }
+    .news-list-loc .news-item-name:hover { color: var(--color-accent-dark); }
+    .news-list-loc .news-desc {
+      grid-column: 2;
+      font-family: 'KingHwa_OldSong', serif;
+      font-size: 0.85rem;
+      color: var(--color-muted);
+      line-height: 1.7;
+    }
+
+    /* Recently played — narrative paragraph cards */
+    .news-list-played li {
+      display: grid;
+      grid-template-columns: 60px 1fr;
+      gap: 1.2rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--color-border-light);
+      align-items: baseline;
+    }
+    .news-list-played li:last-child { border-bottom: none; }
+    .news-list-played time {
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 1px;
+      color: var(--color-faint);
+      padding-top: 0.3em;
+    }
+    .news-played-body { min-width: 0; }
+    .news-list-played .news-item-name {
+      display: inline-block;
+      font-family: 'KingHwa_OldSong', serif;
+      font-size: 1.05rem;
+      letter-spacing: 0.04em;
+      color: var(--color-heading);
+      border: none !important;
+      transition: color 0.15s;
+    }
+    .news-list-played .news-item-name:hover { color: var(--color-accent-dark); }
+    .news-desc-block {
+      font-family: 'KingHwa_OldSong', serif;
+      font-size: 0.88rem;
+      color: var(--color-muted);
+      line-height: 1.85;
+      margin: 0.4rem 0 0;
+      letter-spacing: 0.015em;
+    }
+    .news-emoji {
+      margin-left: 0.35em;
+      font-size: 0.95em;
+      filter: saturate(0.9);
+    }
+
+    /* ============ STREAMS (full-width 2-col below news/daily) ============ */
+    .streams-row {
+      clear: both;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      margin-top: 5rem;
+      padding-top: 3rem;
+      border-top: 1px solid var(--color-border);
+    }
+    @media (max-width: 768px) {
+      .streams-row { grid-template-columns: 1fr; gap: 2.5rem; }
+    }
+    .stream-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 1.4rem;
+      padding-bottom: 0.7rem;
+      border-bottom: 1px solid var(--color-border-light);
+    }
+    .stream-label {
+      font-family: 'KingHwa_OldSong', serif;
+      font-size: 1.4rem;
+      letter-spacing: 6px;
+      color: var(--color-heading);
+    }
+    .stream-more {
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 2px;
+      color: var(--color-faint);
+      border: none;
+      transition: color 0.2s;
+    }
+    .stream-more:hover { color: var(--color-heading); }
+    .stream-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .stream-list li {
+      border-bottom: 1px solid var(--color-border-light);
+    }
+    .stream-list li:last-child { border-bottom: none; }
+    .stream-list a {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 1rem;
+      padding: 0.95rem 0;
+      border: none !important;
+      align-items: baseline;
+    }
+    .stream-list time {
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 1px;
+      color: var(--color-faint);
+      padding-top: 0.3em;
+    }
+    .stream-meta { min-width: 0; }
+    .stream-title {
+      font-family: 'KingHwa_OldSong', serif;
+      font-size: 1rem;
+      color: var(--color-heading);
+      letter-spacing: 0.04em;
+      transition: color 0.15s;
+      display: block;
+    }
+    .stream-desc {
+      font-family: 'KingHwa_OldSong', serif;
+      font-size: 0.82rem;
+      color: var(--color-muted);
+      line-height: 1.65;
+      margin: 0.3rem 0 0;
+      letter-spacing: 0.01em;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .stream-list a:hover .stream-title {
+      color: var(--color-accent-dark);
+    }
+  </style>
 </BaseLayout>

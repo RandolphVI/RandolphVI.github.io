@@ -1,5 +1,6 @@
 ---
-import PageLayout from '../../layouts/PageLayout.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ScrollTopBottom from '../../components/ScrollTopBottom.astro';
 import { getAllArticles } from '../../utils/collections';
 
 const articles = await getAllArticles();
@@ -13,46 +14,147 @@ articles.forEach((a) => {
 const years = Array.from(yearMap.entries()).sort((a, b) => b[0] - a[0]);
 ---
 
-<PageLayout title="归档" englishTitle="ARCHIVES" description="按时间线浏览所有文章">
-  <div class="max-w-2xl mx-auto">
-    {years.map(([year, yearArticles]) => (
-      <div class="mb-10">
-        <div class="text-xl text-[var(--color-heading)] tracking-[2px] mb-4 pb-2 border-b border-[var(--color-border-light)]">
-          {year}
-        </div>
-        <div class="ml-4">
-          {yearArticles.map((article) => {
-            const d = article.data.date;
-            const dateStr = `${String(d.getMonth() + 1).padStart(2, '0')}.${String(d.getDate()).padStart(2, '0')}`;
-            const href = article.collection === 'posts'
-              ? `/posts/${article.id}/`
-              : `/tech/${article.id}/`;
-            return (
-              <a href={href} class="flex items-baseline gap-3 mb-3 border-none group">
-                <span class="text-sm text-[var(--color-faint)] font-sans w-12 flex-shrink-0">
-                  {dateStr}
-                </span>
-                <div class="w-1.5 h-1.5 bg-[var(--color-accent)] rounded-full flex-shrink-0 mt-1.5"></div>
-                <span class="text-base text-[var(--color-text)] group-hover:text-[var(--color-heading)] transition-colors">
-                  {article.data.title}
-                </span>
-                <span class="text-xs text-[var(--color-faint)] font-sans flex-shrink-0">
-                  {article.data.category}
-                </span>
-              </a>
-            );
-          })}
-        </div>
+<BaseLayout title="归档" description="按时间线浏览所有文章">
+  <div class="art-page-wrap">
+    <header class="art-masthead">
+      <div class="art-eyebrow">
+        <span>ARCHIVES</span>
+        <span>{articles.length} 篇</span>
       </div>
-    ))}
+      <h1>归 档</h1>
+      <p class="art-sub">按时间线浏览所有文章</p>
+      <div class="art-rule"></div>
+    </header>
 
-    <div class="mb-8">
-      <div class="text-base text-[var(--color-heading)] tracking-[2px] mb-4 pb-2 border-b border-[var(--color-border-light)]">
-        2019 及更早
+    {years.length > 1 && (
+      <div class="year-filter-wrap">
+        <nav class="year-filter" aria-label="按年份筛选">
+          <button class="yf-btn active" data-year="all">
+            全部 <em>{articles.length}</em>
+          </button>
+          {years.map(([y, list]) => (
+            <button class="yf-btn" data-year={y}>
+              {y} <em>{list.length}</em>
+            </button>
+          ))}
+        </nav>
       </div>
-      <div class="ml-4 text-base text-[var(--color-faint)] italic">
-        旧文章迁移中……
-      </div>
+    )}
+
+    <div class="art-list-root archives-root">
+      {years.map(([year, yearArticles]) => (
+        <section class="year-block" data-year={year}>
+          <header class="year-head">
+            <span class="year-num">{year}</span>
+            <span class="year-info">记&nbsp;{yearArticles.length}&nbsp;篇</span>
+            <span class="year-rule"></span>
+          </header>
+          <ol class="archive-grid">
+            {yearArticles.map((a) => {
+              const d = a.data.date;
+              const dateStr = `${String(d.getMonth() + 1).padStart(2, '0')}.${String(d.getDate()).padStart(2, '0')}`;
+              const href = a.collection === 'posts' ? `/posts/${a.id}/` : `/tech/${a.id}/`;
+              return (
+                <li>
+                  <a href={href} class="archive-item">
+                    <time>{dateStr}</time>
+                    <span class="archive-title">{a.data.title}</span>
+                    <span class="archive-cat">{a.data.category}</span>
+                  </a>
+                </li>
+              );
+            })}
+          </ol>
+        </section>
+      ))}
     </div>
   </div>
-</PageLayout>
+  <ScrollTopBottom />
+
+  <script>
+    function initYearFilter() {
+      const buttons = document.querySelectorAll<HTMLButtonElement>('.yf-btn');
+      const blocks = document.querySelectorAll<HTMLElement>('.year-block');
+      if (buttons.length === 0) return;
+      buttons.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          buttons.forEach((b) => b.classList.remove('active'));
+          btn.classList.add('active');
+          const y = btn.dataset.year;
+          blocks.forEach((block) => {
+            if (y === 'all' || block.dataset.year === y) {
+              block.style.display = '';
+            } else {
+              block.style.display = 'none';
+            }
+          });
+        });
+      });
+
+      const list = document.querySelector<HTMLElement>('.year-filter');
+      if (list) {
+        list.addEventListener(
+          'wheel',
+          (e) => {
+            const max = list.scrollWidth - list.clientWidth;
+            if (max <= 0) return;
+            const delta = Math.abs(e.deltaY) > Math.abs(e.deltaX) ? e.deltaY : e.deltaX;
+            if (delta === 0) return;
+            const canScroll =
+              (delta > 0 && list.scrollLeft < max) ||
+              (delta < 0 && list.scrollLeft > 0);
+            if (canScroll) {
+              e.preventDefault();
+              list.scrollLeft += delta;
+            }
+          },
+          { passive: false },
+        );
+      }
+    }
+    initYearFilter();
+    document.addEventListener('astro:page-load', initYearFilter);
+  </script>
+
+  <style is:global>
+    .archive-grid {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .archive-grid li {
+      border-bottom: 1px solid var(--color-border-light);
+    }
+    .archive-grid li:last-child { border-bottom: none; }
+    .archive-item {
+      display: grid;
+      grid-template-columns: 70px 1fr auto;
+      gap: 1.4rem;
+      padding: 1rem 0;
+      border: none !important;
+      align-items: baseline;
+      transition: color 0.15s;
+    }
+    .archive-item time {
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 0.78rem;
+      letter-spacing: 1.5px;
+      color: var(--color-faint);
+    }
+    .archive-title {
+      font-family: 'KingHwa_OldSong', serif;
+      font-size: 1rem;
+      color: var(--color-heading);
+      letter-spacing: 0.04em;
+      transition: color 0.15s;
+    }
+    .archive-item:hover .archive-title { color: var(--color-accent-dark); }
+    .archive-cat {
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 2px;
+      color: var(--color-accent-dark);
+      flex-shrink: 0;
+    }
+  </style>
+</BaseLayout>

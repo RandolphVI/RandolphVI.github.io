@@ -1,24 +1,93 @@
 ---
-import PageLayout from '../../layouts/PageLayout.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
 ---
 
-<PageLayout title="关于" englishTitle="ABOUT" description="关于黃某人">
-  <div class="text-center">
-    <div class="w-24 h-24 rounded-full bg-[var(--color-border-light)] border-2 border-[var(--color-border-dark)] mx-auto mb-6 flex items-center justify-center">
-      <span class="text-3xl text-[var(--color-accent)] font-sans">R</span>
-    </div>
-    <div class="text-2xl text-[var(--color-heading)] tracking-[2px] mb-3">黃某人</div>
-    <div class="text-base text-[var(--color-muted)] leading-[2.0] mb-8">
-      写小说，读闲书，偶尔研究机器学习。<br />
-      相信文字的力量，也相信代码的优雅。
-    </div>
-    <div class="w-10 h-px bg-[var(--color-accent)] mx-auto mb-8"></div>
-    <div class="flex gap-6 justify-center font-sans text-base text-[var(--color-accent-dark)]">
-      <a href="https://github.com/RandolphVI" class="border-none hover:text-[var(--color-heading)]" target="_blank" rel="noopener">GitHub</a>
-      <span class="text-[var(--color-border)]">·</span>
-      <a href="mailto:" class="border-none hover:text-[var(--color-heading)]">Email</a>
-      <span class="text-[var(--color-border)]">·</span>
-      <a href="/rss.xml" class="border-none hover:text-[var(--color-heading)]">RSS</a>
-    </div>
+<BaseLayout title="关于" description="关于黃某人">
+  <div class="art-page-wrap" style="max-width: 720px;">
+    <header class="art-masthead">
+      <div class="art-eyebrow">
+        <span>ABOUT</span>
+        <span>RANDOLPH&nbsp;·&nbsp;PRO</span>
+      </div>
+      <h1>关 于</h1>
+      <p class="art-sub">黃某人的自留地</p>
+      <div class="art-rule"></div>
+    </header>
+
+    <section class="about-body">
+      <img
+        class="about-avatar"
+        src="https://github.com/RandolphVI.png?size=460"
+        alt="Randolph"
+        width="230"
+        height="230"
+      />
+
+      <div class="about-bio">
+        <p>世之落拓而无成者</p>
+        <p>皆自谓不痴者也</p>
+      </div>
+
+      <div class="about-rule"></div>
+
+      <nav class="about-links" aria-label="联系方式">
+        <a href="https://github.com/RandolphVI" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <span class="dot">·</span>
+        <a href="mailto:fxck.randolph@gmail.com">Email</a>
+        <span class="dot">·</span>
+        <a href="/rss.xml">RSS</a>
+      </nav>
+    </section>
   </div>
-</PageLayout>
+
+  <style>
+    .about-body {
+      text-align: center;
+      max-width: 540px;
+      margin: 0 auto;
+    }
+    .about-avatar {
+      width: 230px;
+      height: 230px;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+      margin: 0 auto 2.5rem;
+      border: 1px solid var(--color-border);
+      box-shadow: 0 8px 28px rgba(0,0,0,0.10);
+    }
+    :root.dark .about-avatar {
+      box-shadow: 0 8px 28px rgba(0,0,0,0.4);
+    }
+    .about-bio {
+      font-family: 'KingHwa_OldSong', serif;
+      font-size: 1.05rem;
+      line-height: 2;
+      color: var(--color-muted);
+      letter-spacing: 0.05em;
+    }
+    .about-bio p { margin: 0.5rem 0; }
+    .about-rule {
+      width: 30px;
+      height: 1px;
+      background: var(--color-accent);
+      margin: 2.5rem auto;
+    }
+    .about-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.4rem;
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 0.85rem;
+      letter-spacing: 2px;
+      color: var(--color-accent-dark);
+    }
+    .about-links a {
+      color: var(--color-accent-dark);
+      border: none !important;
+      transition: color 0.2s;
+    }
+    .about-links a:hover { color: var(--color-heading); }
+    .about-links .dot { color: var(--color-faint); }
+  </style>
+</BaseLayout>

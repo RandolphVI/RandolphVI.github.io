@@ -1,0 +1,70 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const items = await getCollection('games');
+  return items.map((game) => ({
+    params: { slug: game.id },
+    props: { game },
+  }));
+}
+
+const { game } = Astro.props;
+const { Content } = await render(game);
+const d = game.data;
+
+function fmt(date?: Date) {
+  if (!date) return '';
+  return `${date.getFullYear()}.${String(date.getMonth() + 1).padStart(2, '0')}.${String(date.getDate()).padStart(2, '0')}`;
+}
+const statusLabel = ({ playing: '在玩', finished: '通关', abandoned: '搁置', wishlist: '想玩' } as const)[d.status];
+
+const metaItems: Array<[string, string]> = [];
+if (d.platform) metaItems.push(['平台', d.platform]);
+if (d.genre) metaItems.push(['类型', d.genre]);
+if (d.hours) metaItems.push(['时长', d.hours]);
+if (d.startDate) metaItems.push(['开始', fmt(d.startDate)]);
+if (d.finishedDate) metaItems.push(['通关', fmt(d.finishedDate)]);
+metaItems.push(['状态', statusLabel]);
+---
+
+<BaseLayout title={d.title} description={d.summary || `${d.title} 游戏笔记`} image={d.cover}>
+  <article class="book-page">
+    <header class="book-head">
+      <a href="/games/" class="book-crumb">← 回 到 游 戏</a>
+      <div class="book-eyebrow">
+        <span>{d.genre || '游戏'}</span>
+        <span>GAME&nbsp;NOTE</span>
+      </div>
+      <h1 class="book-title">{d.title}</h1>
+      <div class="book-rule"></div>
+      {d.summary && <p class="book-summary">{d.summary}</p>}
+    </header>
+
+    <div class="book-body-grid">
+      <aside class="book-side">
+        <div class="book-cover-wrap">
+          {d.cover ? (
+            <img src={d.cover} alt={d.title} class="book-cover" />
+          ) : (
+            <div class="book-cover book-cover-placeholder">游戏</div>
+          )}
+        </div>
+
+        <dl class="book-meta">
+          {metaItems.map(([k, v]) => (
+            <>
+              <dt>{k}</dt>
+              <dd>{v}</dd>
+            </>
+          ))}
+        </dl>
+      </aside>
+
+      <main class="book-content">
+        <Content />
+      </main>
+    </div>
+  </article>
+</BaseLayout>
