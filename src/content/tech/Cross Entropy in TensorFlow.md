@@ -11,7 +11,7 @@ draft: false
 
 > **更多 AI 文章：** [查看 AI 分类](/categories/AI/)
 
-# Cross Entropy Introduction
+## Cross Entropy Introduction
 
 交叉熵（Cross Entropy）是 Loss 函数的一种（也称为损失函数或代价函数），用于描述模型预测值与真实值的差距大小，常见的 Loss 函数就是均方平方差（Mean Squared Error），定义如下：
 
@@ -38,7 +38,7 @@ $$
 
 这里多次强调 sigmoid 激活函数，是因为在多标签或者多分类的问题下有些函数是不可用的，而 TensorFlow 本身也提供了多种交叉熵算法的实现。
 
-# Cross Entropy in TensorFlow
+## Cross Entropy in TensorFlow
 
 TensorFlow 针对分类问题，实现了四个交叉熵函数，分别是：
 
@@ -49,7 +49,7 @@ TensorFlow 针对分类问题，实现了四个交叉熵函数，分别是：
 
 [详细内容参考API文档](https://www.tensorflow.org/versions/master/api_docs/python/nn.html#sparse_softmax_cross_entropy_with_logits)
 
-##  sigmoid_cross_entropy_with_logits
+###  sigmoid_cross_entropy_with_logits
 
 我们先看 `sigmoid_cross_entropy_with_logits`，为什么呢，因为它的实现和前面的交叉熵算法定义是一样的，也是 TensorFlow 最早实现的交叉熵算法。这个函数的输入是 logits 和 targets，logits 就是神经网络模型中的 $W * X$ 矩阵，注意不需要经过 sigmoid，而 targets 的 shape 和 logits 相同，就是正确的 label 值，例如这个模型一次要判断 100 张图是否包含 10 种动物，这两个输入的 shape 都是 $[100, 10]$。注释中还提到这 10 个分类之间是独立的、不要求是互斥，这种问题我们称之为多目标或者多标签分类问题，例如判断图片中是否包含10种动物，label 值可以包含多个 1 或 0 个 1。这种问题，我们可以使用`sigmoid_cross_entropy_with_logits`函数。
 
@@ -72,7 +72,7 @@ TensorFlow 针对分类问题，实现了四个交叉熵函数，分别是：
 
 因此对于多分类问题是不能直接代入的，但是对于多标签分类问题，我们可以灵活变通，把 5 个年龄段的预测用 **onehot encoding** 变成 5 维的 label，训练时当做 5 个不同的目标来训练即可，但不保证只有一个为 1。
 
-## softmax_cross_entropy_with_logits
+### softmax_cross_entropy_with_logits
 
 Softmax 本身的算法很简单，就是把所有值用 $e^n$计算出来，求和后算每个值占的比率，保证总和为 1，一般我们可以认为 Softmax 出来的就是 confidence，也就是概率。
 
@@ -92,7 +92,7 @@ $$
 
 再补充一点，对于多分类问题，例如我们的年龄分为 5 类，并且人工编码为 0、1、2、3、4，因为输出值是 5 维的特征，因此我们需要人工做 **onehot encoding** 分别编码为 00001、00010、00100、01000、10000，才可以作为这个函数的输入。理论上我们不做 onehot encoding 也可以，做成和为 1 的概率分布也可以，但需要保证是和为 1，和不为 1 的实际含义不明确，TensorFlow 的 C++ 代码实现计划检查这些参数，可以提前提醒用户避免误用。
 
-## sparse_softmax_cross_entropy_with_logits
+### sparse_softmax_cross_entropy_with_logits
 
 `sparse_softmax_cross_entropy_with_logits` 是 `softmax_cross_entropy_with_logits`的易用版本，除了输入参数不同，作用和算法实现都是一样的。前面提到`softmax_cross_entropy_with_logits`的输入必须是类似 **onehot encoding** 的多维特征，但 CIFAR-10、ImageNet 和大部分分类场景都只有一个分类目标，label值都是从 0 编码的整数，每次转成 onehot encoding 比较麻烦，有没有更好的方法呢？答案就是用 `sparse_softmax_cross_entropy_with_logits`：
 
@@ -101,7 +101,7 @@ $$
 
 因此，如果用户已经做了 **onehot encoding** 那可以直接使用不带 `softmax_cross_entropy_with_logits` 函数，如果还没有进行 <strong>onehot encoding</strong>，则可以选择使用 `sparse_softmax_cross_entropy_with_logits` 函数。
 
-## weighted_cross_entropy_with_logits
+### weighted_cross_entropy_with_logits
 
 `weighted_cross_entropy_with_logits` 是 `sigmoid_cross_entropy_with_logits` 的拓展版，输入参数和实现和后者差不多，只是可以多支持一个`pos_weight`参数，目的是可以增加或者减小正样本在算 Cross Entropy 时的 Loss。实现原理很简单，在传统基于 Sigmoid 的交叉熵算法上，正样本算出的值乘以某个系数 <strong>`pos_weight`</strong>，算法实现如下：
 
@@ -129,11 +129,11 @@ $$
   """
 ```
 
-# Summary
+## Summary
 
 这就是 TensorFlow 目前提供的有关 Cross Entropy 的函数实现，用户需要理解多标签和多分类的场景，根据业务需求（分类目标是否独立和互斥）来选择基于 Sigmoid 或者 Softmax 的实现，如果使用 Sigmoid 目前还支持加权的实现，如果使用 Softmax 我们可以自己做 onehot coding 或者使用更易用的`sparse_softmax_cross_entropy_with_logits`函数。
 
 TensorFlow 提供的 Cross Entropy 函数基本涵盖了多目标和多分类的问题，但如果同时是多目标多分类的场景，肯定是无法使用`softmax_cross_entropy_with_logits`，如果使用`sigmoid_cross_entropy_with_logits`我们就把多分类的特征都认为是独立的特征，而实际上他们有且只有一个为 1 的非独立特征，计算 Loss 时不如 Softmax 有效。这里可以预测下，未来 TensorFlow 社区将会实现更多的 op 解决类似的问题，我们也期待更多人参与 TensorFlow 贡献算法和代码。
 
-[^1]: 交叉熵来源于信息论，测量两个概率分布之间的差异。在机器学习中，它的直观含义是“模型预测分布与真实分布的差距”，相比均方误差 (MSE) ，在分类任务中交叉熵相对于 sigmoid 输出的梯度更大、收敛更快。
+[^1]: 交叉熵来源于信息论，测量两个概率分布之间的差异。在机器学习中，它的直观含义是“模型预测分布与真实分布的差距”，相比均方误差 （MSE） ，在分类任务中交叉熵相对于 sigmoid 输出的梯度更大、收敛更快。
 [^2]: 对于互斥多分类问题，应该使用 Softmax 而非 Sigmoid。两者的核心区别在于：Softmax 保证所有类别概率之和为 1（建模类别间的竞争关系），而 Sigmoid 对每个输出经行独立处理（适合多标签问题）。

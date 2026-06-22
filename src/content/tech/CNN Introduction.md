@@ -11,13 +11,13 @@ draft: false
 
 > **更多 AI 文章：** [查看 AI 分类](/categories/AI/)
 
-# Introduction
+## Introduction
 
 在 20 世纪 60 年代，Hubel 和 Wiesel[^1] 在研究猫脑皮层中用于局部敏感和方向选择的神经元时发现其独特的网络结构可以有效地降低反馈神经网络的复杂性，继而出了卷积神经网络（Convolutional Neural Networks-简称 CNN）。
 
 卷积神经网络（Convolutional Neural Network）虽然很早被出，但是却是近些年才得以发展起来并引起广泛重视的。它是深度学习技术中极具代表的网络结构之一，也是近些年语音分析和图像识别领域的研究热点，后来发现其在 NLP 自然语言处理上的效果同样不俗。它以其特有的局部连接、权值共享网络结构，有效地降低了深度神经网络模型的复杂度，极大地减少了权值的数量。
 
-## Perceptron
+### Perceptron
 
 在理解 CNN 卷积神经网络之前，有必要了解神经网络的机制以及缺点，而其中典型的神经元网络就是 MLP （Multi-Layer Perceptron）多层感知器。
 
@@ -25,7 +25,7 @@ draft: false
 
 而单层感知器的基本结构如图所示，其以一个实数向量作为输入，计算这些输入的线性组合，若结果大于某个阈值则输出 1，否则输出 0。
 
-## Build a Multilayer Convolutional Network
+### Build a Multilayer Convolutional Network
 
 这些操作对于各个卷积神经网络来说都是基本组件，因此理解它们的工作原理有助于充分了解卷积神经网络。下面我们将会尝试理解各步操作背后的原理。
 
@@ -36,9 +36,9 @@ draft: false
 3. 池化或者亚采样
 4. 分类（全连接层）
 
-## What's CNN
+### What's CNN
 
-### Convolution
+#### Convolution
 
 卷积的主要目的是为了从输入图像中提取特征。卷积可以通过从输入的一小块数据中学到图像的特征，并可以保留像素间的空间关系。让我们举个例子来尝试理解一下卷积是如何处理图像的：
 
@@ -56,7 +56,7 @@ draft: false
 
 现在停下来好好理解下上面的计算是怎么完成的。我们用橙色的矩阵在原始图像（绿色）上滑动，每次滑动一个像素（也叫做「步长」），在每个位置上，我们计算对应元素的乘积（两个矩阵间），并把乘积的和作为最后的结果，得到输出矩阵（粉色）中的每一个元素的值。注意，3 x 3 的矩阵每次步长中仅可以看到输入图像的一部分。
 
-在 CNN 的术语中，3x3 的矩阵叫做「滤波器」(filter) 或「核」(kernel) 或者 「特征检测器」(feature detector)，通过在图像上滑动滤波器并计算点乘得到矩阵叫做「卷积特征」(Convolved Feature) 或者 「激活图」(Activation Map) 或者 「特征图」(Feature Map)。记住，滤波器在原始输入图像上的作用是特征检测器。
+在 CNN 的术语中，3x3 的矩阵叫做「滤波器」（filter） 或「核」（kernel） 或者 「特征检测器」（feature detector），通过在图像上滑动滤波器并计算点乘得到矩阵叫做「卷积特征」（Convolved Feature） 或者 「激活图」（Activation Map） 或者 「特征图」（Feature Map）。记住，滤波器在原始输入图像上的作用是特征检测器。
 
 从上面图中的动画可以看出，对于同样的输入图像，不同值的滤波器将会生成不同的特征图。比如，对于下面这张输入图像：
 
@@ -84,7 +84,7 @@ draft: false
 
   <img style="width:50%" src="https://farm3.staticflickr.com/2929/32183844484_8be44cdea0_o.png">
 
-### ReLU
+#### ReLU
 
 ReLU表示修正线性单元（Rectified Linear Unit），是一个非线性操作。
 
@@ -114,7 +114,7 @@ $$
 
    优点：
 
-   - 解决了gradient vanishing问题 (在正区间)
+   - 解决了gradient vanishing问题 （在正区间）
    - 计算速度非常快，只需要判断输入是否大于0
    - 收敛速度远快于sigmoid和tanh
 
@@ -139,7 +139,7 @@ ReLU 操作可以从下面的图中理解。这里的输出特征图也可以看
 
 所谓麻雀虽小，五脏俱全，ReLU虽小，但也是可以改进的。
 
-#### ReLU的种类
+##### ReLU的种类
 
 <strong>ReLU的区分主要在负数端，根据负数端斜率的不同来进行区分</strong>，大致如下图所示。
 
@@ -147,7 +147,7 @@ ReLU 操作可以从下面的图中理解。这里的输出特征图也可以看
 
 普通的ReLU负数端斜率是0，Leaky ReLU则是负数端有一个比较小的斜率，而PReLU则是在后向传播中学习到斜率。而Randomized Leaky ReLU则是使用一个均匀分布在训练的时候随机生成斜率，在测试的时候使用均值斜率来计算。
 
-#### 效果
+##### 效果
 
 其中，NDSB 数据集是 Kaggle 的比赛，而 RReLU 正是在这次比赛中崭露头角的[^4]。
 
@@ -160,7 +160,7 @@ ReLU 操作可以从下面的图中理解。这里的输出特征图也可以看
 - 在 NSDB 数据集上 RReLU 的提升比 cifar10 和 cifar100 上的提升更加明显，而 NSDB 数据集比较小，从而可以说明，RReLU在与过拟合的对抗中更加有效。
 - 对于 RReLU 来说，还需要研究一下随机化得斜率是怎样影响训练和测试过程的。
 
-### Pooling
+#### Pooling
 
 空间池化（Spatial Pooling）（也叫做亚采用或者下采样）<strong>降低了各个特征图的维度，但可以保持大部分重要的信息</strong>。空间池化有下面几种方式：最大化、平均化、加和等等。
 
@@ -198,9 +198,9 @@ ReLU 操作可以从下面的图中理解。这里的输出特征图也可以看
 
 第二组池化层的输出作为全连接层的输入，接下来我们将介绍全连接层。
 
-### Connect
+#### Connect
 
-全连接层是传统的多层感知器，在输出层使用的是 softmax 激活函数（也可以使用其他像 SVM 的分类器，但在本文中只使用 softmax）。「全连接」(Fully Connected) 这个词表明前面层的所有神经元都与下一层的所有神经元连接。
+全连接层是传统的多层感知器，在输出层使用的是 softmax 激活函数（也可以使用其他像 SVM 的分类器，但在本文中只使用 softmax）。「全连接」（Fully Connected） 这个词表明前面层的所有神经元都与下一层的所有神经元连接。
 
 卷积和池化层的输出表示了输入图像的高级特征。全连接层的目的是为了使用这些特征把输入图像基于训练数据集进行分类。比如，在下面图中我们进行的图像分类有四个可能的输出结果（注意下图并没有显示全连接层的节点连接）。
 
@@ -210,7 +210,7 @@ ReLU 操作可以从下面的图中理解。这里的输出特征图也可以看
 
 从全连接层得到的输出概率和为 1。这个可以在输出层使用 softmax 作为激活函数进行保证。softmax 函数输入一个任意大于 0 值的矢量，并把它们转换为零一之间的数值矢量，其和为一。
 
-### Use Backpropagation to Train whole network
+#### Use Backpropagation to Train whole network
 
 正如上面讨论的，卷积 + 池化层的作用是从输入图像中提取特征，而全连接层的作用是分类器。
 
@@ -247,7 +247,7 @@ ReLU 操作可以从下面的图中理解。这里的输出特征图也可以看
 
 <img style="width:80%" src="https://farm3.staticflickr.com/2113/32875828582_ce237c84d2_o.png">
 
-### Visualization on CNN
+#### Visualization on CNN
 
 一般而言，越多的卷积步骤，网络可以学到的识别特征就越复杂。比如，ConvNet 的图像分类可能在第一层从原始像素中检测出边缘，然后在第二层使用边缘检测简单的形状，接着使用这些形状检测更高级的特征，比如更高层的人脸。下面的图中展示了这些内容——我们使用[卷积深度置信网络](http://web.eecs.umich.edu/~honglak/icml09-ConvolutionalDeepBeliefNetworks.pdf)学习到的特征，这张图仅仅是用来证明上面的内容（这仅仅是一个例子：真正的卷积滤波器可能会检测到对我们毫无意义的物体）。
 
@@ -281,7 +281,7 @@ Adam Harley 创建了一个卷积神经网络的可视化结果，使用的是 M
 
 同样的 3D 可视化可以在[这里](http://scs.ryerson.ca/~aharley/vis/conv/)看到。
 
-### Other ConvNet
+#### Other ConvNet
 
 卷积神经网络从上世纪 90 年代初期开始出现。我们上面提到的 LeNet 是早期卷积神经网络之一。其他有一定影响力的架构如下所示：
 
@@ -295,7 +295,7 @@ Adam Harley 创建了一个卷积神经网络的可视化结果，使用的是 M
 - DenseNet (2016 八月) – 近来由 Gao Huang （和其他人）发表的，[the Densely Connected Convolutional Network](http://arxiv.org/abs/1608.06993) 的各层都直接于其他层以前向的方式连接。DenseNet 在五种竞争积累的目标识别基准任务中，比以前最好的架构有显著的提升。可以在[这里](https://github.com/liuzhuang13/DenseNet)看 Torch 实现。
 
 [^1]: Hubel 与 Wiesel 因这项关于视觉皮层信息处理的研究共同获得 1981 年诺贝尔生理学和医学奖。他们发现大脑视觉皮层具有分层结构，各层分别响应不同复杂度的视觉特征，这一生物学观察直接起到了 CNN 分层特征提取的架构设计灵感。
-[^2]: ImageNet 大规模视觉识别大赛 (ILSVRC) 是基于 ImageNet 数据库的年度竞赛，2012 年 AlexNet 将 Top-5 错误率从 25.8% 降至 16.4%，这一重大跳跃进标志了深度学习丫的开始。
-[^3]: 残差网络 (ResNet) 由闻名的 skip connection （跳过连接）解决了深层网络的梯度消失问题，使训练超过 100 层以上的网络成为可能。何凷明的 ResNet 论文 (He et al., 2015) 是计算机视觉领域引用最广的论文之一。
+[^2]: ImageNet 大规模视觉识别大赛 （ILSVRC） 是基于 ImageNet 数据库的年度竞赛，2012 年 AlexNet 将 Top-5 错误率从 25.8% 降至 16.4%，这一重大跳跃进标志了深度学习丫的开始。
+[^3]: 残差网络 （ResNet） 由闻名的 skip connection （跳过连接）解决了深层网络的梯度消失问题，使训练超过 100 层以上的网络成为可能。何凷明的 ResNet 论文 （He et al., 2015） 是计算机视觉领域引用最广的论文之一。
 
 [^4]: Xu B, Wang N, Chen T, et al. Empirical evaluation of rectified activations in convolutional network. arXiv preprint arXiv:1505.00853, 2015.

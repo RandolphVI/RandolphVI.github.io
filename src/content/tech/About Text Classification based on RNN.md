@@ -11,7 +11,7 @@ draft: false
 
 > **更多 AI 文章：** [查看 AI 分类](/categories/AI/)
 
-# 「Recurrent Neural Network for Text Classification with Multi-Task Learning」
+## 「Recurrent Neural Network for Text Classification with Multi-Task Learning」
 
 本文为复旦在 2016 年 IJCAI 上的发表的关于循环神经网络在多任务文本分类上的应用。
 
@@ -21,14 +21,14 @@ draft: false
 
 ![](https://farm5.staticflickr.com/4486/37490166810_74c95852c5_o.png)
 
-## Introduction
+### Introduction
 
 作者在论文 Introduction 部分重点提及了以下几个核心观点：
 
 - 词向量的重要性；
 - 多任务学习的有效性。
 
-## Related Work
+### Related Work
 
 第一个模型使用:
 
@@ -42,16 +42,16 @@ draft: false
 
 ![](https://farm5.staticflickr.com/4498/37490447880_dfe28b18db_o.png)
 
-## Experiments
+### Experiments
 
-### Datasets
+#### Datasets
 
 实验部分就是使用几个常见的 Datasets，其中用到的有：
 
 - 
 
-### Experiment Setting
+#### Experiment Setting
 
 - 
 
-### Results and Discussion
+#### Results and Discussion

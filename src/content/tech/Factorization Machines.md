@@ -11,18 +11,18 @@ draft: false
 
 > **更多 AI 文章：** [查看 AI 分类](/categories/AI/)
 
-# Introduction
+## Introduction
 
 Factorization Machines（FM），可译为“隐因子分解机”，由 Steffen Rendle 于 2010 年提出，并发布开源工具 **libFM**[^1] 。他凭借 FM 单个模型，他在 KDD Cup 2012[^2]上，取得 Track1 的第 2 名和 Track2 的第 3 名。
 
-# Compared with Other Models
+## Compared with Other Models
 
 - 在数据非常稀疏时（如推荐系统），SVM 不能取得很好的效果。
 - 对带非线性核函数的 SVM，需要在对偶问题上进行求解。
 - 目前还有很多不同的 factorization models ，比如 matrix factorization 和一些特殊的模型 SVD++, PITF, FPMC。这些模型的一个缺点是它们只适用于某些特定的输入数据，优化算法也需要根据问题专门设计。
 - FM 适用于实数值的特征向量。并且经过一些变换，可以看出 FM 囊括了以上方法。
 
-# Related
+## Related
 
 首先考虑线性模型：
 
@@ -57,7 +57,7 @@ $$
 $$
 
 
-## 2-way FM
+### 2-way FM
 
 $$
 \hat y(x) := w_0 + \sum_{i=1}^{n}w_ix_i + \sum_{i=1}^{n-1}\sum_{j=i+1}^{n}\left \langle  v_i, v_j\right \rangle x_ix_j
@@ -75,7 +75,7 @@ $$
 - 正整数 $k$ 是超参，决定了分解的维度。
 
 
-## Complexity Analysis
+### Complexity Analysis
 
 FM 模型中需要估计的参数包括 $$w_0 \ \epsilon\  \mathbb{R},w \ \epsilon\  \mathbb{R}^n, V \ \epsilon\  \mathbb{R}^{n\times k}$$，共 $$1+n+n*k$$ 个，$$w_{0}$$ 为整体的偏置量，$w$ 对特征向量的各个分量的强度进行建模，$V$ 对特征向量中任意两个分量之间的关系进行建模。
 
@@ -93,7 +93,7 @@ $$
 
 计算复杂度经过改写后降低到线性的 $O(kn)$ 。
 
-## d-way FM
+### d-way FM
 
 方程同时刻画 $l(1 \leq l \leq d)$ 个特征向量之间的相互关系：
 
@@ -101,7 +101,7 @@ $$
 \hat y(x) := w_0 + \sum_{i=1}^{n}w_ix_i + \sum_{l=2}^{d}\sum_{i_{1}=1}^{n}\dots \sum_{i_{t} = i_{t-1}+1}^{n}\left ( \prod_{j=1}^{l}x_{i_{j}} \right)\left ( \prod_{f=1}^{k_{l}}\prod_{j=1}^{l}v_{i_{j},f}^{(l)} \right)
 $$
 
-## Problem Solving
+### Problem Solving
 
 最小化优化目标函数：
 
@@ -125,16 +125,16 @@ $$
 \sigma (x) = \frac{1}{1+e^{-x}}
 $$
 
-## Algorithm
+### Algorithm
 
-- **随机梯度下降法 (StochasticGradient Descent, SGD)**
+- **随机梯度下降法 （StochasticGradient Descent, SGD）**
 
-- **交替最小二乘法 (AlternatingLeast-Squares, ALS)**
+- **交替最小二乘法 （AlternatingLeast-Squares, ALS）**
 
-- **马尔可夫链蒙特卡洛法 (MarkovChain Monte Carlo, MCMC)**[^3]
+- **马尔可夫链蒙特卡洛法 （MarkovChain Monte Carlo, MCMC）**[^3]
 
 
-## Multilinearity
+### Multilinearity
 
 FM 的一个重要性质—<strong>Multilinearity</strong>，对于 FM 的任意参数 $\theta$ ，存在两个与 $\theta $ 的取值无关的函数 $g(\theta )$ 和 $h(\theta )$ 使得：
 
@@ -155,7 +155,7 @@ $$
 
 $g(\theta)$ 相对复杂，计算时，使用 $$g_{\theta}(x) = \hat y(x) - \theta h_{\theta}(x)$$ 代替。
 
-## Optimization
+### Optimization
 
 最小化损失函数的和：
 

@@ -11,7 +11,7 @@ draft: false
 
 > **更多 AI 文章：** [查看 AI 分类](/categories/AI/)
 
-# Introduction
+## Introduction
 
 平时，大家自己的机器模型在训练期间（特别是深度网络），训练时间通常几小时到十几小时不等，甚至可能会花上好几天，那么在这段时间，你们又会干些什么事情呢？作为程序员，这里提供一个「有趣的」方式，用你的微信来监控你的模型在训练期间的一举一动。
 
@@ -28,7 +28,7 @@ draft: false
 1. 文章要求读者事先下载安装好 itchat。
 2. 文章不会详细介绍 TensorFlow 以及 Tensorboard 的知识。
 
-## Environment
+### Environment
 
 **OS: macOS Sierra 10.12.x**
 
@@ -38,7 +38,7 @@ draft: false
 
 **itchat: 1.2.x**
 
-## Code
+### Code
 
 - Use WeChat to Monitor Your Network（tensorboard 绘图）
 

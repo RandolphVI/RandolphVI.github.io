@@ -11,7 +11,7 @@ draft: false
 
 > **更多 AI 文章：** [查看 AI 分类](/categories/AI/)
 
-# Outline
+## Outline
 
 - **Embedding Layer**
 - **Convolution Layer**
@@ -22,7 +22,7 @@ draft: false
 - **Loss Function**
 - **Accuracy**
 
-## Embedding Layer
+### Embedding Layer
 ```python
 with tf.device('/cpu:0'), tf.name_scope("embedding"):
     W = tf.Variable(
@@ -57,7 +57,7 @@ shape(expand_dims(t, -1)) ==> [2, 1]
 
 因此只需要 `tf.expand_dims(self.embedded_chars, -1)`，之后就能在 embedded_sentence 后面加一个 `in_channels=1` 了。
 
-## Convolution Layer
+### Convolution Layer
 
 ```python
 # Create a convolution + maxpool layer for each filter size
@@ -91,7 +91,7 @@ self.pool = tf.concat(pooled_outputs, axis=3)
 self.pool_flat = tf.reshape(self.pool, [-1, num_filters_total])
 ```
 
-### Convolution
+#### Convolution
 
 首先，对 `filter_sizes` 中的每一个 `filter_window_size`（常见的为 3, 4, 5） 都要进行卷积（每一种 `size` 都要产生 `num_filters` 个 `filter maps` 特征图），所以外层就是一个大的 **for** 循环。
 
@@ -144,7 +144,7 @@ $$
 
 `[batch, sequence_length - filter_size + 1, 1, num_filters]`
 
-### Max-Pooling
+#### Max-Pooling
 
 接下来的工作就是 max-pooling 了，来看一下 tensorflow 中给出的函数:
 
@@ -173,7 +173,7 @@ self.pool_flat = tf.reshape(self.pool, [-1, num_filters_total])
 最后得到的 `pool_flat` 就是 shape 为 `[batch, 300]` 的 tensor。
 
 
-## Dropout
+### Dropout
 ```python
 # Add dropout
 with tf.name_scope("dropout"):
@@ -182,7 +182,7 @@ with tf.name_scope("dropout"):
 
 Dropout[^2] 仅对隐层的输出层进行 drop，使得有些结点的值不输出给 softmax 层。
 
-## Output Layer
+### Output Layer
 
 ```python
 # Final (unnormalized) scores and predictions
@@ -204,7 +204,7 @@ with tf.name_scope("output"):
 
 因此，最后 `self.predictions` 的 shape 为：`[batch, 1]`。
 
-## Loss function
+### Loss function
 
 得到了整个网络的输出之后，也就是我们得到了 `y_prediction` ，但还需要和真实的 `y_label` 进行比较，以此来确定预测好坏。
 
@@ -221,7 +221,7 @@ with tf.name_scope("loss"):
 
 还是使用常规的交叉熵 [cross_entropy](/tech/cross-entropy-in-tensorflow/)[^4] 作为 loss function。最后一层是全连接层，为了防止过拟合，最后还要在 loss function 中加入 <strong>L2 正则项</strong>[^3]，即 `l2_loss`。`l2_reg_lambda` 来确定惩罚的力度。
 
-## Accuracy
+### Accuracy
 ```python
 # Accuracy
 with tf.name_scope("accuracy"):

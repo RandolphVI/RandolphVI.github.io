@@ -115,7 +115,9 @@ WordNet 概念的层次片段：每个节点对应一个同义词集；边表示
 - Antonyms.（反义词）
 
 -----
-# Correct errors in printing:
+## Appendix
+
+### Correct errors in printing
 
 - P19:
 
@@ -130,7 +132,7 @@ WordNet 概念的层次片段：每个节点对应一个同义词集；边表示
 **原因：`nltk.book` 中并不存在 `FreqDist()` 这一函数。**
 
 -----
-# Practice:
+### Practice
 
 Chapter 1 的习题比较简单，因此以下均是 Chapter 2 的习题解答：
 

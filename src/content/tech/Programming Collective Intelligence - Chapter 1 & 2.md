@@ -21,7 +21,7 @@ draft: false
 
 ---
 
-# Need to know:
+## Need to know
 在「构建一个基于del.icio.us的链接推荐系统」的模块中：
 首先我们需要下载 **`pydelicious`** 这一个package。__［这个package不支持python3.x］__
 
@@ -98,7 +98,9 @@ $ python
 [^1]: 这种方法是协同过滤（Collaborative Filtering）中的"基于用户的协同过滤"（User-based CF）。《Programming Collective Intelligence》这本书由 Toby Segaran 于 2007 年出版，是机器学习与数据挖掘领域的经典入门读物。
 [^2]: del.icio.us 是 2003 年由 Joshua Schachter 创立的社会化书签网站，是 Web 2.0 时代的代表产品之一，后被 Yahoo 收购，最终于 2017 年关闭。书中依赖该网站的代码目前已完全不可用。
 
-# Correct errors in printing:
+## Appendix
+
+### Correct errors in printing
 
 - P13
 
@@ -115,7 +117,7 @@ if n==0: return 0
 ```
 
 ---
-# Practice:
+### Practice
 - **暂无**
 
 ---

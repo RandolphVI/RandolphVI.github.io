@@ -49,12 +49,14 @@ draft: false
 [^2]: NFL 定理（No Free Lunch Theorem）由 David Wolpert 和 William Macready 于 1997 年在 IEEE Transactions on Evolutionary Computation 上发表。其核心结论是：在所有可能问题上对所有优化算法求平均，任何两种算法的期望性能相同。这一定理提醒我们，"通用最优算法"不存在，算法设计必须结合具体问题。
 
 -----
-# Correct errors in printing:
+## Appendix
+
+### Correct errors in printing
 
 - **暂无**
 
 ------
-# Practice:
+### Practice
 
 > 1.表 1.1 中若只包含编号为 1 和 4 的两个样例，试给出相应的版本空间.
 

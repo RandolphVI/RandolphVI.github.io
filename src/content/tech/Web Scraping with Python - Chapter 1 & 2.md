@@ -103,7 +103,9 @@ bsObj.find('table', {'id': 'giftList'}).tr
 
 -----
 
-# Correct errors in printing:
+## Appendix
+
+### Correct errors in printing
 
 - P17:
 
@@ -115,7 +117,7 @@ bsObj.find('table', {'id': 'giftList'}).tr
 
 -----
 
-# Practice:
+### Practice
 - **暂无**
 
 -----

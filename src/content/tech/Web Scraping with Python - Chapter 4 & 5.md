@@ -140,9 +140,9 @@ pear,1.25
 
 ------
 
-# Need to Know:
+## Need to Know
 
-## MySQL
+### MySQL
 
 [**The download page**](http://dev.mysql.com/downloads/mysql/)
 
@@ -180,7 +180,7 @@ $ mysql -u root -p
 
 ------
 
-## Integrating with Python
+### Integrating with Python
 
 Python 没有内置的 MySQL 支持工具。不过，有很多开源的库可以用来与MySQL 做交互，Python2.x 和 Python3.x 版本都支持。最有名的一个库就是PyMySQL。
 
@@ -256,13 +256,15 @@ finally:
 
 ------
 
-# Correct errors in printing:
+## Appendix
+
+### Correct errors in printing
 
 - **暂无**
 
 ------
 
-# Practice:
+### Practice
 
 - **暂无**
 
