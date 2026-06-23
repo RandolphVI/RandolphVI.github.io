@@ -347,14 +347,14 @@ user_id  age  gender  wealth  gender_wealth  gender_wealth_ohe   age_wealth
 - **Neural Network: Restricted Boltzmann Machines**
 - **Deep Learning: Autoencoder**
 
-#### Step 3: Choose the Model
+### Step 3: Choose the Model
 
-##### LIBFFM + GBDT
+#### LIBFFM + GBDT
 
 This model is called **Field-aware Factorization Machines**. If you want to use this model, please download [LIBFFM](http://www.csie.ntu.edu.tw/~r01922136/libffm) first.
 
-##### CatBoost
+#### CatBoost
 
-##### XGBoost
+#### XGBoost
 
-##### LightBGM
+#### LightBGM
