@@ -1,0 +1,13 @@
+# 二进制资源：禁止行尾转换与文本 diff，避免 autocrlf 损坏字体/图片
+*.woff2 binary
+*.woff  binary
+*.ttf   binary
+*.otf   binary
+*.eot   binary
+*.png   binary
+*.jpg   binary
+*.jpeg  binary
+*.gif   binary
+*.webp  binary
+*.ico   binary
+*.pdf   binary

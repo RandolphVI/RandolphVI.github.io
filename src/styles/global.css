@@ -5,34 +5,34 @@
 /* === Font Face === */
 @font-face {
   font-family: 'KingHwa_OldSong';
-  src: url('/fonts/KingHwa_OldSong.ttf') format('truetype');
+  src: url('/fonts/KingHwa_OldSong.woff2') format('woff2');
   font-display: swap;
 }
 
 @font-face {
   font-family: 'Josefin Sans';
-  src: url('/fonts/JosefinSans-Regular.ttf') format('truetype');
+  src: url('/fonts/JosefinSans-Regular.woff2') format('woff2');
   font-weight: 400;
   font-display: swap;
 }
 
 @font-face {
   font-family: 'Josefin Sans';
-  src: url('/fonts/JosefinSans-Bold.ttf') format('truetype');
+  src: url('/fonts/JosefinSans-Bold.woff2') format('woff2');
   font-weight: 700;
   font-display: swap;
 }
 
 @font-face {
   font-family: 'JetBrains Mono';
-  src: url('/fonts/JetBrainsMono-Regular.ttf') format('truetype');
+  src: url('/fonts/JetBrainsMono-Regular.woff2') format('woff2');
   font-weight: 400;
   font-display: swap;
 }
 
 @font-face {
   font-family: 'JetBrains Mono';
-  src: url('/fonts/JetBrainsMono-Bold.ttf') format('truetype');
+  src: url('/fonts/JetBrainsMono-Bold.woff2') format('woff2');
   font-weight: 700;
   font-display: swap;
 }
