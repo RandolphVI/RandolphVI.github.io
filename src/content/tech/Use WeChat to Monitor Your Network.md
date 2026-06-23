@@ -28,7 +28,7 @@ draft: false
 1. 文章要求读者事先下载安装好 itchat。
 2. 文章不会详细介绍 TensorFlow 以及 Tensorboard 的知识。
 
-### Environment
+## Environment
 
 **OS: macOS Sierra 10.12.x**
 
@@ -38,7 +38,7 @@ draft: false
 
 **itchat: 1.2.x**
 
-### Code
+## Code
 
 - Use WeChat to Monitor Your Network（tensorboard 绘图）
 
