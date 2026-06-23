@@ -12,7 +12,7 @@ draft: false
 > **本系列文章：** [Chapter 1 & 2](/tech/programming-collective-intelligence---chapter-1--2/) · [Chapter 3](/tech/programming-collective-intelligence---chapter-3/)
 
 
-在「推荐物品」的模块中，提到了一种方法：[^1]
+在 「推荐物品」的模块中，提到了一种方法：[^1]
 
 1.  通过函数找出与自己有相似品味的影评者，并按相似度从大到小排序。
 2.  对于自己未看过的影片，建立一张表，表的内容包括：品位相似的影评者以及其对应的相似度，对于自己未看过影片的评分（影评者可以看过也可以没有看过）。
