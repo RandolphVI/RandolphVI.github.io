@@ -36,9 +36,9 @@ draft: false
 3. 池化或者亚采样
 4. 分类（全连接层）
 
-### What's CNN
+## What's CNN
 
-#### Convolution
+### Convolution
 
 卷积的主要目的是为了从输入图像中提取特征。卷积可以通过从输入的一小块数据中学到图像的特征，并可以保留像素间的空间关系。让我们举个例子来尝试理解一下卷积是如何处理图像的：
 
@@ -84,7 +84,7 @@ draft: false
 
   <img style="width:50%" src="https://farm3.staticflickr.com/2929/32183844484_8be44cdea0_o.png">
 
-#### ReLU
+### ReLU
 
 ReLU表示修正线性单元（Rectified Linear Unit），是一个非线性操作。
 
@@ -139,7 +139,7 @@ ReLU 操作可以从下面的图中理解。这里的输出特征图也可以看
 
 所谓麻雀虽小，五脏俱全，ReLU虽小，但也是可以改进的。
 
-##### ReLU的种类
+#### ReLU的种类
 
 <strong>ReLU的区分主要在负数端，根据负数端斜率的不同来进行区分</strong>，大致如下图所示。
 
@@ -147,7 +147,7 @@ ReLU 操作可以从下面的图中理解。这里的输出特征图也可以看
 
 普通的ReLU负数端斜率是0，Leaky ReLU则是负数端有一个比较小的斜率，而PReLU则是在后向传播中学习到斜率。而Randomized Leaky ReLU则是使用一个均匀分布在训练的时候随机生成斜率，在测试的时候使用均值斜率来计算。
 
-##### 效果
+#### 效果
 
 其中，NDSB 数据集是 Kaggle 的比赛，而 RReLU 正是在这次比赛中崭露头角的[^4]。
 
@@ -160,7 +160,7 @@ ReLU 操作可以从下面的图中理解。这里的输出特征图也可以看
 - 在 NSDB 数据集上 RReLU 的提升比 cifar10 和 cifar100 上的提升更加明显，而 NSDB 数据集比较小，从而可以说明，RReLU在与过拟合的对抗中更加有效。
 - 对于 RReLU 来说，还需要研究一下随机化得斜率是怎样影响训练和测试过程的。
 
-#### Pooling
+### Pooling
 
 空间池化（Spatial Pooling）（也叫做亚采用或者下采样）<strong>降低了各个特征图的维度，但可以保持大部分重要的信息</strong>。空间池化有下面几种方式：最大化、平均化、加和等等。
 
@@ -198,7 +198,7 @@ ReLU 操作可以从下面的图中理解。这里的输出特征图也可以看
 
 第二组池化层的输出作为全连接层的输入，接下来我们将介绍全连接层。
 
-#### Connect
+### Connect
 
 全连接层是传统的多层感知器，在输出层使用的是 softmax 激活函数（也可以使用其他像 SVM 的分类器，但在本文中只使用 softmax）。「全连接」（Fully Connected） 这个词表明前面层的所有神经元都与下一层的所有神经元连接。
 
@@ -210,7 +210,7 @@ ReLU 操作可以从下面的图中理解。这里的输出特征图也可以看
 
 从全连接层得到的输出概率和为 1。这个可以在输出层使用 softmax 作为激活函数进行保证。softmax 函数输入一个任意大于 0 值的矢量，并把它们转换为零一之间的数值矢量，其和为一。
 
-#### Use Backpropagation to Train whole network
+### Use Backpropagation to Train whole network
 
 正如上面讨论的，卷积 + 池化层的作用是从输入图像中提取特征，而全连接层的作用是分类器。
 
@@ -247,7 +247,7 @@ ReLU 操作可以从下面的图中理解。这里的输出特征图也可以看
 
 <img style="width:80%" src="https://farm3.staticflickr.com/2113/32875828582_ce237c84d2_o.png">
 
-#### Visualization on CNN
+### Visualization on CNN
 
 一般而言，越多的卷积步骤，网络可以学到的识别特征就越复杂。比如，ConvNet 的图像分类可能在第一层从原始像素中检测出边缘，然后在第二层使用边缘检测简单的形状，接着使用这些形状检测更高级的特征，比如更高层的人脸。下面的图中展示了这些内容——我们使用[卷积深度置信网络](http://web.eecs.umich.edu/~honglak/icml09-ConvolutionalDeepBeliefNetworks.pdf)学习到的特征，这张图仅仅是用来证明上面的内容（这仅仅是一个例子：真正的卷积滤波器可能会检测到对我们毫无意义的物体）。
 
@@ -281,7 +281,7 @@ Adam Harley 创建了一个卷积神经网络的可视化结果，使用的是 M
 
 同样的 3D 可视化可以在[这里](http://scs.ryerson.ca/~aharley/vis/conv/)看到。
 
-#### Other ConvNet
+### Other ConvNet
 
 卷积神经网络从上世纪 90 年代初期开始出现。我们上面提到的 LeNet 是早期卷积神经网络之一。其他有一定影响力的架构如下所示：
 
