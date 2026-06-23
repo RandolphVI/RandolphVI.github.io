@@ -125,14 +125,14 @@ draft: false
 论文 Introduction 部分阐述了以下几个核心论点，为 FastText 的提出奠定了背景：
 
 - 神经网络很流行，在文本分类上的性能表现也很喜人。但是存在训练时间长的弊端，在大型数据集上难以发挥。
-- 在文本分类的任务上，线性分类器经常会作为一个基准模型，尽管会相对简单，如果特征选取得当，也可以获得很好的性能表现（Despite their simplicity, they often obatin state-of-art performances if the right features are used）。
+- 在文本分类的任务上，线性分类器经常会作为一个基准模型，尽管会相对简单，如果特征选取得当，也可以获得很好的性能表现（Despite their simplicity, they often obtain state-of-art performances if the right features are used）。
 - 本文基于词向量的有效性，在此基础上使用含有 rank constraint & a fast loss approximation 的线性模型，即 FastText 模型，用于处理标签预测以及情感分析的任务。
 
 ### Model Architecture
 
 ![](https://farm5.staticflickr.com/4508/37001961843_15cc54cf88_o.png)
 
-FastText 模型架构如上图所示。FastText 模型输入一个词的序列（一段文本或者一句话 ），输出这个词序列属于不同类别的概率。序列中的词和词组组成特征向量，特征向量通过线性变换映射到中间层，中间层再映射到标签。FastText 在预测标签时使用了非线性激活函数，但在中间层不使用非线性激活函数。
+FastText 模型架构如上图所示。FastText 模型输入一个词的序列（一段文本或者一句话），输出这个词序列属于不同类别的概率。序列中的词和词组组成特征向量，特征向量通过线性变换映射到中间层，中间层再映射到标签。FastText 在预测标签时使用了非线性激活函数，但在中间层不使用非线性激活函数。
 
 FastText 模型架构和 Word2Vec 中的 CBOW 模型很类似。不同之处在于，FastText 预测标签，而 CBOW 模型预测中间词（This architecture is similar to the CBOW model of Mikolov, where the middle word is replaced by a label）。
 

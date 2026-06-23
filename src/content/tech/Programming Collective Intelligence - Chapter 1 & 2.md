@@ -88,7 +88,7 @@ $ python
 意思是无论我如何更改参数<strong>`tag`</strong>的值，返回的内容会发现是一样。这个问题，stackoverflow老外也同样遇到了：
 > __I see the resource code again. Maybe it is wrong. Because If you edit the code, the procedural answer always remain unchanged...I'm studing...__
 
-我个人觉得可能是DLCS\_RSS的网址还需要更改一下（因为这本书在刚出来的时候，pydelicious还是支持原del.icio.us的网站[^2]，是不需要去更改<strong>`__init__.py`</strong>的文件等，后来是unspported，所以需要更改<strong>`__init__.py`</strong>文件中的RSS订阅源，也许可能这个订阅源还不是最新的，反正是坑...），或者说是<strong>`get_popular()`</strong>这个function有误（这个不太可能），总而言之，折腾了一下晚上，感觉是遇到了坑，不过好歹也算是解决出来了。
+我个人觉得可能是DLCS\_RSS的网址还需要更改一下（因为这本书在刚出来的时候，pydelicious还是支持原del.icio.us的网站[^2]，是不需要去更改<strong>`__init__.py`</strong>的文件等，后来是unspported，所以需要更改<strong>`__init__.py`</strong>文件中的RSS订阅源，也许可能这个订阅源还不是最新的，反正是坑...），或者说是<strong>`get_popular()`</strong>这个function有误（这个不太可能），总而言之，折腾了一晚上，感觉是遇到了坑，不过好歹也算是解决出来了。
 
 貌似有<strong>`deliciousapi`</strong>这个package作为替代，我也尝试过，但运行说明文档中的几个函数，发现会报错，希望如果有人知道如何用<strong>deliciousapi</strong>替代pydelicious完成第二章后续的几个模块，请务必告诉我！
 

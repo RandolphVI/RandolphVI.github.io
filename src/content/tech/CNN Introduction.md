@@ -13,9 +13,9 @@ draft: false
 
 ## Introduction
 
-在 20 世纪 60 年代，Hubel 和 Wiesel[^1] 在研究猫脑皮层中用于局部敏感和方向选择的神经元时发现其独特的网络结构可以有效地降低反馈神经网络的复杂性，继而出了卷积神经网络（Convolutional Neural Networks-简称 CNN）。
+在 20 世纪 60 年代，Hubel 和 Wiesel[^1] 在研究猫脑皮层中用于局部敏感和方向选择的神经元时发现其独特的网络结构可以有效地降低反馈神经网络的复杂性，继而提出了卷积神经网络（Convolutional Neural Networks-简称 CNN）。
 
-卷积神经网络（Convolutional Neural Network）虽然很早被出，但是却是近些年才得以发展起来并引起广泛重视的。它是深度学习技术中极具代表的网络结构之一，也是近些年语音分析和图像识别领域的研究热点，后来发现其在 NLP 自然语言处理上的效果同样不俗。它以其特有的局部连接、权值共享网络结构，有效地降低了深度神经网络模型的复杂度，极大地减少了权值的数量。
+卷积神经网络（Convolutional Neural Network）虽然很早被提出，但是却是近些年才得以发展起来并引起广泛重视的。它是深度学习技术中极具代表的网络结构之一，也是近些年语音分析和图像识别领域的研究热点，后来发现其在 NLP 自然语言处理上的效果同样不俗。它以其特有的局部连接、权值共享网络结构，有效地降低了深度神经网络模型的复杂度，极大地减少了权值的数量。
 
 ### Perceptron
 
@@ -80,7 +80,7 @@ draft: false
 
 - 步长（Stride）：<strong>步长是我们在输入矩阵上滑动滤波矩阵的像素数</strong>。当步长为 1 时，我们每次移动滤波器一个像素的位置。当步长为 2 时，我们每次移动滤波器会跳过 2 个像素。步长越大，将会得到更小的特征图。
 
-- 零填充（Zero-padding）：<strong>有时，在输入矩阵的边缘使用零值进行填充，这样我们就可以对输入图像矩阵的边缘进行滤波。</strong>零填充的一大好处是可以让我们控制特征图的大小。使用零填充的也叫做泛卷积，不适用零填充的叫做严格卷积。
+- 零填充（Zero-padding）：<strong>有时，在输入矩阵的边缘使用零值进行填充，这样我们就可以对输入图像矩阵的边缘进行滤波。</strong>零填充的一大好处是可以让我们控制特征图的大小。使用零填充的也叫做泛卷积，不使用零填充的叫做严格卷积。
 
   <img style="width:50%" src="https://farm3.staticflickr.com/2929/32183844484_8be44cdea0_o.png">
 
@@ -162,7 +162,7 @@ ReLU 操作可以从下面的图中理解。这里的输出特征图也可以看
 
 ### Pooling
 
-空间池化（Spatial Pooling）（也叫做亚采用或者下采样）<strong>降低了各个特征图的维度，但可以保持大部分重要的信息</strong>。空间池化有下面几种方式：最大化、平均化、加和等等。
+空间池化（Spatial Pooling）（也叫做亚采样或者下采样）<strong>降低了各个特征图的维度，但可以保持大部分重要的信息</strong>。空间池化有下面几种方式：最大化、平均化、加和等等。
 
 对于最大池化（Max Pooling），我们定义一个空间邻域（比如，2x2 的窗口），并从窗口内的修正特征图中取出最大的元素。除了取最大元素，我们也可以取平均（Average Pooling）或者对窗口内的元素求和。<strong>在实际中，最大池化被证明效果更好一些。</strong>
 
@@ -271,7 +271,7 @@ Adam Harley 创建了一个卷积神经网络的可视化结果，使用的是 M
 
 - 第一个全连接层有 120 个神经元
 - 第二层全连接层有 100 个神经元
-- 第三个全连接层有 10 个神经元，对应 10 个数字——也就做输出层
+- 第三个全连接层有 10 个神经元，对应 10 个数字——也就是输出层
 
 注意在下图中，输出层中的 10 个节点的各个都与第二个全连接层的所有 100 个节点相连（因此叫做全连接）。
 
@@ -292,10 +292,10 @@ Adam Harley 创建了一个卷积神经网络的可视化结果，使用的是 M
 - GoogLeNet (2014) – ILSVRC 2014 的获胜者是来自于 Google 的 [Szegedy](http://arxiv.org/abs/1409.4842)等人的卷积神经网络。它的主要贡献在于使用了一个 Inception 模块，可以大量减少网络的参数个数（4M，AlexNet 有 60M 的参数）。
 - VGGNet (2014) – 在 ILSVRC 2014 的领先者中有一个 [VGGNet](http://www.robots.ox.ac.uk/~vgg/research/very_deep/) 的网络。它的主要贡献是展示了网络的深度（层数）对于性能具有很大的影响。
 - ResNets (2015)[^3] – [残差网络](http://arxiv.org/abs/1512.03385)是何凯明（和其他人）开发的，并赢得 ILSVRC 2015 的冠军。ResNets 是当前卷积神经网络中最好的模型，也是实践中使用 ConvNet 的默认选择（截至到 2016 年五月）。
-- DenseNet (2016 八月) – 近来由 Gao Huang （和其他人）发表的，[the Densely Connected Convolutional Network](http://arxiv.org/abs/1608.06993) 的各层都直接于其他层以前向的方式连接。DenseNet 在五种竞争积累的目标识别基准任务中，比以前最好的架构有显著的提升。可以在[这里](https://github.com/liuzhuang13/DenseNet)看 Torch 实现。
+- DenseNet (2016 八月) – 近来由 Gao Huang （和其他人）发表的，[the Densely Connected Convolutional Network](http://arxiv.org/abs/1608.06993) 的各层都直接与其他层以前向的方式连接。DenseNet 在五种竞争激烈的目标识别基准任务中，比以前最好的架构有显著的提升。可以在[这里](https://github.com/liuzhuang13/DenseNet)看 Torch 实现。
 
-[^1]: Hubel 与 Wiesel 因这项关于视觉皮层信息处理的研究共同获得 1981 年诺贝尔生理学和医学奖。他们发现大脑视觉皮层具有分层结构，各层分别响应不同复杂度的视觉特征，这一生物学观察直接起到了 CNN 分层特征提取的架构设计灵感。
-[^2]: ImageNet 大规模视觉识别大赛 （ILSVRC） 是基于 ImageNet 数据库的年度竞赛，2012 年 AlexNet 将 Top-5 错误率从 25.8% 降至 16.4%，这一重大跳跃进标志了深度学习丫的开始。
-[^3]: 残差网络 （ResNet） 由闻名的 skip connection （跳过连接）解决了深层网络的梯度消失问题，使训练超过 100 层以上的网络成为可能。何凷明的 ResNet 论文 （He et al., 2015） 是计算机视觉领域引用最广的论文之一。
+[^1]: Hubel 与 Wiesel 因这项关于视觉皮层信息处理的研究共同获得 1981 年诺贝尔生理学和医学奖。他们发现大脑视觉皮层具有分层结构，各层分别响应不同复杂度的视觉特征，这一生物学观察直接启发了 CNN 分层特征提取的架构设计。
+[^2]: ImageNet 大规模视觉识别大赛 （ILSVRC） 是基于 ImageNet 数据库的年度竞赛，2012 年 AlexNet 将 Top-5 错误率从 25.8% 降至 16.4%，这一重大跳跃标志了深度学习的开始。
+[^3]: 残差网络 （ResNet） 由著名的 skip connection （跳过连接）解决了深层网络的梯度消失问题，使训练超过 100 层以上的网络成为可能。何凯明的 ResNet 论文 （He et al., 2015） 是计算机视觉领域引用最广的论文之一。
 
 [^4]: Xu B, Wang N, Chen T, et al. Empirical evaluation of rectified activations in convolutional network. arXiv preprint arXiv:1505.00853, 2015.

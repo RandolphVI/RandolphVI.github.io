@@ -42,7 +42,7 @@ draft: false
 *   **基于分布的聚类： GMM聚类**
 *   **基于密度的聚类： DBSCAN, OPTICS**
 *   **基于连通性的聚类： 层次聚类**
-*   **基于模型的聚类： Miture Regression Model**
+*   **基于模型的聚类： Mixture Regression Model**
 *   **其他聚类方法： 谱聚类, Chameleon, Canopy…**
 
 ----
@@ -96,7 +96,7 @@ $$
 **什么样的聚类结果比较好？**
 
 - “簇内相似度”（intra-cluster similarity）高
-- “蔟间相似度”（inter-cluster similarity）低
+- “簇间相似度”（inter-cluster similarity）低
 
 **聚类性能度量分类：**
 
@@ -137,7 +137,7 @@ JC系数的结果分布在$[0,1]$区间，值越大越好。个人总结，JC系
 
 在此我摘取其中的重点：
 
-> When used for binary attributes, the Jaccard index is very similar to the Simple matching coefficient. The main difference is that the SMC has the term $M_{00}$ in its numerator and denominator, whereas the Jaccard index does not. Thus, the SMC compares the number of matches with the entire set of the possible attributes, whereas the Jaccard index only compares it to tshe attributes that have been chosen by at least A or B.
+> When used for binary attributes, the Jaccard index is very similar to the Simple matching coefficient. The main difference is that the SMC has the term $M_{00}$ in its numerator and denominator, whereas the Jaccard index does not. Thus, the SMC compares the number of matches with the entire set of the possible attributes, whereas the Jaccard index only compares it to the attributes that have been chosen by at least A or B.
 
 > **In market basket analysis for example, the basket of two consumers who we wish to compare might only contain a small fraction of all the available products in the store, so the SMC would always return very small values compared to the Jaccard index. Using the SMC would then induce a bias by systematically considering, as more similar, two customers with large identical baskets compared to two customers with identical but smaller baskets; thus making the Jaccard index a better measure of similarity in that context.**
 
@@ -155,7 +155,7 @@ $$
 FMI = \sqrt{\frac{a}{a+b}\cdot \frac{a}{a+c}}
 $$
 
-FMI系数的结果分布在$[0,1]$区间，值越大越好。个人总结，FMI系数是一个比较”温文儒雅”的相似性度量指标，对于聚类效果特别好的模型的FMI计算结果不会好得特别夸张，对于聚类效果特别越差的模型的FMI计算结果也不会差得特别夸张。[^5]
+FMI系数的结果分布在$[0,1]$区间，值越大越好。个人总结，FMI系数是一个比较”温文儒雅”的相似性度量指标，对于聚类效果特别好的模型的FMI计算结果不会好得特别夸张，对于聚类效果特别差的模型的FMI计算结果也不会差得特别夸张。[^5]
 
 在此我摘取其中的重点：
 
@@ -184,7 +184,7 @@ $$
 
 进行进一步的展开推导后：
 $$
-API = \frac{\frac{a+d}{a+b+c+d} - \frac{(a+b)(a+c)+(c+d)(b+d)}{(a+b+c+d)^2}}{\frac{(a+b)(a+c)+(c+d)(b+d)}{(a+b+c+d)^2}}
+ARI = \frac{\frac{a+d}{a+b+c+d} - \frac{(a+b)(a+c)+(c+d)(b+d)}{(a+b+c+d)^2}}{\frac{(a+b)(a+c)+(c+d)(b+d)}{(a+b+c+d)^2}}
 $$
 
 ARI系数结果分布在$[-1,1]$区间，负数代表结果不好，越接近于1意味着聚类结果与真实情况越吻合。个人总结，ARI系数对于任意数量的聚类中心和样本数，随机聚类的ARI都非常接近于0。ARI相比于RI好在，它是负数的时候就说明我们自己的模型很糟糕，有个更加相对明确的评判标准。（从广义的角度上来说，ARI衡量的是两个数据分布的吻合程度）
@@ -418,7 +418,7 @@ head(iris)
 6          5.4         3.9          1.7         0.4  setosa
 ```
 
-After a little bit of exploration, I found that Petal.Length and Petal. Width were similar among the same species but varied considerably between different species, as demonstrated below:
+After a little bit of exploration, I found that Petal.Length and Petal.Width were similar among the same species but varied considerably between different species, as demonstrated below:
 
 ```R
 library(ggplot2)
@@ -522,7 +522,7 @@ table(irisCluster$cluster, iris$Species)
           原型向量 $$p_{i^{*}}$$ 更新为 $$p'$$之后将更远离 $$x_{j}$$。
 * 算法第12行：若算法的停止条件已满足（例如已达到最大迭代轮数，或原型向量更新很小甚至不再更新），则将当前原型向量作为最终结果返回。
 * 在学得一组原型向量 $$\lbrace p_{1}, p_{2}, \ldots, p_{q} \rbrace$$ 后即可实现对样本空间 $$\mathcal{X}$$ 的簇划分。
-     *   对任意样本 $x$, 他将被划入与其距离最近的原型向量所代表的簇中，每个原型向量$$p_{i}$$ 定义了与之相关的一个区域 $$R_{i}$$，该区域中每个样本与 $$p_{i}$$ 的距离不大于他与其他原型向量 $$p_{i'} (i \neq i')$$，即 
+     *   对任意样本 $x$, 它将被划入与其距离最近的原型向量所代表的簇中，每个原型向量$$p_{i}$$ 定义了与之相关的一个区域 $$R_{i}$$，该区域中每个样本与 $$p_{i}$$ 的距离不大于它与其他原型向量 $$p_{i'} (i \neq i')$$，即 
      $$
      R_{i}= \lbrace x \in \mathcal{X} \ |\ ||x-p_{i}||_{2} \leqslant ||x-p_{i'}||_{2}, i \neq i'\rbrace
      $$
@@ -573,7 +573,7 @@ $$
 p_{\mathcal{M}}(x)=\sum_{i=1}^{k}\alpha_{i} \cdot p(x| \mu_{i}, \Sigma_{i})
 $$
 
-该分布由 $k$ 个混合成分组成，每个成分对应一个（多元）高斯分布，其中：$$\mu_{i}$$, $$\Sigma_{i}$$ 是第 $i$ 个高斯混合成分的参数， 而 $$\alpha_{i}$$ 为相应的“混合系数” （mixture coeffcient）， $$\sum_{i=1}^{k}\alpha_{i}=1$$。
+该分布由 $k$ 个混合成分组成，每个成分对应一个（多元）高斯分布，其中：$$\mu_{i}$$, $$\Sigma_{i}$$ 是第 $i$ 个高斯混合成分的参数， 而 $$\alpha_{i}$$ 为相应的“混合系数” （mixture coefficient）， $$\sum_{i=1}^{k}\alpha_{i}=1$$。
 
 ###### 样本集的生成模型
 

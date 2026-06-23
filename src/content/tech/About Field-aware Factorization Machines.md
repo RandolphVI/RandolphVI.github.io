@@ -17,7 +17,7 @@ FM 和 FFM 模型都是最近几年提出的模型，凭借其在数据量比较
 
 FFM（Field-aware Factorization Machine）最初的概念来自 Yu-Chin Juan（阮毓钦，毕业于中国台湾大学，现在美国 Criteo 工作）[^1]与其比赛队员，是他们借鉴了来自 Michael Jahrer 的论文[「Ensemble of Collaborative Filtering and Feature Engineered Models for Click Through Rate Prediction」](https://kaggle2.blob.core.windows.net/competitions/kddcup2012/2748/media/Opera.pdf)中的 field 概念提出了 FM 的升级版模型，该篇于 2016 年发布。
 
-在 CTR 任务中，大部分样本数据特征是非常稀疏的，使用  One-hot 编码会造成特征空间剧增。而通过对大量样本数据的观察发现某些特征经过关联之后，与最后预测的 label  的相关性就会提高。
+在 CTR 任务中，大部分样本数据特征是非常稀疏的，使用 One-hot 编码会造成特征空间剧增。而通过对大量样本数据的观察发现某些特征经过关联之后，与最后预测的 label 的相关性就会提高。
 
 因此使用多项式模型，考虑特征之间的组合会更加直观。
 
@@ -46,7 +46,7 @@ $$
 FM 模型比起 Poly 2 模型，其优点显而易见：
 
 - 通常 CTR 任务的数据量都是十分庞大的，FM 的参数数量比起 Poly 2 要明显减少，减少了模型的训练时间。
-- FM 的参数并不是相互独立，可以从其他的参数学习得到，在样本稀疏性非常明显的情况下，能够的得到更好更准确的参数，提高了模型的精度。
+- FM 的参数并不是相互独立，可以从其他的参数学习得到，在样本稀疏性非常明显的情况下，能够得到更好更准确的参数，提高了模型的精度。
 
 ### FFM
 
@@ -68,9 +68,9 @@ $$
 $$
 而对于 FFM 模型而言，$\phi_{FFM}(w, x)$ 为：
 $$
-\phi_{FM}(w,x) = w_{ESPN,A} \cdot w_{Nike,P} + w_{ESPN,G} \cdot w_{Male,P} + w_{Nike,G} \cdot w_{Male,A}
+\phi_{FFM}(w,x) = w_{ESPN,A} \cdot w_{Nike,P} + w_{ESPN,G} \cdot w_{Male,P} + w_{Nike,G} \cdot w_{Male,A}
 $$
-在 FM 模型中，每个特征只有一个隐向量需要学习，而 FFM 则需要学习多个隐向量，取决于与其组合的特征的 field。例如对于特征 ESPN 的参数 $$w_{ESPN}$$ ，它可以通过与特征 Nike 组合（$$w_{ESPN} \cdot w_{Nike}$$）或者 特征 Male 的组合（$$w_{ESPN} \cdot w_{Male}$$）来学习。然而，由于 Nike 与 Male 分别属于不同的 field ，因此（ESPN, NIKE）与（ESPN, Male）所造成的影响是不一样。
+在 FM 模型中，每个特征只有一个隐向量需要学习，而 FFM 则需要学习多个隐向量，取决于与其组合的特征的 field。例如对于特征 ESPN 的参数 $$w_{ESPN}$$ ，它可以通过与特征 Nike 组合（$$w_{ESPN} \cdot w_{Nike}$$）或者 特征 Male 的组合（$$w_{ESPN} \cdot w_{Male}$$）来学习。然而，由于 Nike 与 Male 分别属于不同的 field ，因此（ESPN, Nike）与（ESPN, Male）所造成的影响是不一样的。
 
 可以看到，$$w_{ESPN, A}$$ 是因为 Nike 的 field 为 Advertiser（A），$$w_{ESPN,G}$$ 是因为 Male 的 field 为 Gender（G）。
 
@@ -110,9 +110,9 @@ $$
      1 \quad AR:45:1 \quad Hidx:2:1 \quad Cite:3:1
      $$
 
-   注意到第二种处理方法，将 AR 这 field 中的特征值进行了处理，将 $45.73$ 处理成 $45.7$、$45$、$40$ 甚至是 $int(log(45.73))$ 都是可行的。
+   注意到第二种处理方法，将 AR 这一 field 中的特征值进行了处理，将 $45.73$ 处理成 $45.7$、$45$、$40$ 甚至是 $int(log(45.73))$ 都是可行的。
 
-1. 单 field 特征
+3. 单 field 特征
 
    经常在 NLP 任务上出现，例如如下表数据：
 
@@ -144,8 +144,8 @@ $$
 模型的优化方法为普通的 SG （Stochastic Gradient）[^2]，再加上 FFM 中需要我们设定的超参数 $k$ ，因此模型的参数为： 
 
 - $k$ 隐向量的长度；
-- $\lambda$ 学习率；
-- $\eta$ 步长；
+- $\lambda$ 正则化系数；
+- $\eta$ 学习率；
 
 **3. 实验结果**
 
@@ -155,6 +155,6 @@ $$
 
 相较于 LM、Poly 2 以及 FM 模型，FFM 在该两个数据集上表现更好，拥有更高的准确率。
 
-[^1]: Criteo 是法国广告技术公司，其数据集常被用于 CTR 预估研究的标准基准；Yu-Chin Juan 后来与 Steffen Rendle 等人合著了 FFM 的正式论文，发表于 2016 年 RecSys 会议。
+[^1]: Criteo 是法国广告技术公司，其数据集常被用于 CTR 预估研究的标准基准；Yu-Chin Juan 后来与林智仁（Chih-Jen Lin）等人合著了 FFM 的正式论文，发表于 2016 年 RecSys 会议。
 [^2]: FFM 的开源实现 LIBFFM 由台湾大学团队开发，提供高效的 C++ 实现与命令行接口；训练时采用随机梯度下降（SG）配合 Adagrad 自适应学习率，目前许多 Kaggle 竞赛选手仍将其作为基线模型之一。
 [^3]: Criteo 数据集包含约 4500 万条点击记录，是工业界最常用的 CTR 预估公开数据集之一；Avazu 数据集来自移动广告平台，两者特征稀疏性均超过 99%，是检验稀疏场景模型性能的标准测试。

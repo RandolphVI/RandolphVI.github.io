@@ -12,7 +12,7 @@ draft: false
 > **本系列文章：** [Chapter 1 & 2](/tech/web-scraping-with-python---chapter-1--2/) · [Chapter 3](/tech/web-scraping-with-python---chapter-3/) · [Chapter 4 & 5](/tech/web-scraping-with-python---chapter-4--5/) · [smtplib & email module](/tech/web-scraping-with-python---smtplib--email-module/)
 
 
-## urlib or urlib2?
+## urllib or urllib2?
 
 > If you’ve used the urllib2 library in Python 2.x, you might have noticed that things have changed somewhat between urllib2 and urllib. In Python 3.x, urllib2 was renamed urllib and was split into several submodules: urllib.request, urllib.parse, and url lib.error. Although function names mostly remain the same, you might want to note which functions have moved to submodules when using the new urllib. 
 
@@ -46,9 +46,9 @@ draft: false
 - **`attributes`**: 这是一个用 Python 字典封装某一标签的若干属性和对应的属性值。例如：<strong>`{'class': {'green', 'red'}}`</strong>
 - **`recursive`**: 一般情况下，这个参数不需要设置，除非我们真正了解自己需要哪些信息，而且抓取速度非常重要，因为这个参数会根据我们的要求去查找标签参数的所有子标签，以及子标签的子标签。[^2]
 - **`limit`**: 只适用于 **`findAll()`** 方法，如果我们只对网页中获取的前 *x* 项结果感兴趣，我们就可以通过设置 **`limit`** 来获取。<strong>但是需要注意的是：获得的前几项结果是按照网页上的顺序排序的，未必是我们想要的前几项，所以我们还需要额外做一些自己的排序。</strong>
-- **`keyword`**: 使我们选择那些具有制定属性的标签成为可能。
+- **`keyword`**: 使我们选择那些具有指定属性的标签成为可能。
 
-> **keyword 关键词参数的主意事项：**
+> **keyword 关键词参数的注意事项：**
 > 使用 **`keyword`** 偶尔会出现问题，尤其是在用 **class** 属性查找标签的时候，因为 **class** 是 Python 中受保护的关键字。也就是说，<strong>class</strong> 是 Python 语言的保留字，在 Python 程序中是不能充当变量或者参数名使用的。假如我们运行下面的代码，Python 就会因为我们误用 **class** 保留字而产生一个语法错误：
 
 >    **`bsObj.findAll(class='green')`**

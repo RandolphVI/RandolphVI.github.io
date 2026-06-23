@@ -30,15 +30,15 @@ Dropout 是深度学习中防止过拟合提高效果的一个大杀器，但对
 
 这两个缺点是深度学习上的两大瓶颈，过拟合是很多机器学习的通病，过拟合了，得到的模型基本就废了。而为了解决过拟合问题，一般会采用 ensemble 方法，即训练多个模型做组合，此时，费时就成为一个大问题，不仅训练起来费时，测试起来多个模型也很费时。总之，几乎形成了一个死锁。
 
-Dropout 的出现很好的可以解决这个问题，每次做完 dropout，相当于从原始的网络中找到一个更瘦的网络，如下图所示：
+Dropout 的出现可以很好地解决这个问题，每次做完 dropout，相当于从原始的网络中找到一个更瘦的网络，如下图所示：
 
 ![](https://farm4.staticflickr.com/3878/33037649431_ab442383e2_o.png)
 
-因而，对于一个有 $N$ 个节点的神经网络，有了 dropout 后，就可以看做是 $2^n$ 个模型的集合了，但此时要训练的参数数目却是不变的，这就解脱了费时的问题。
+因而，对于一个有 $N$ 个节点的神经网络，有了 dropout 后，就可以看做是 $2^N$ 个模型的集合了，但此时要训练的参数数目却是不变的，这就解脱了费时的问题。
 
 #### Motivation
 
-虽然直观上看 dropout 是 ensemble 在分类性能上的一个近似，然而实际中，dropout 毕竟还是在一个神经网络上进行的，只训练出了一套模型参数。那么他到底是因何而有效呢？这就要从动机上进行分析了。论文中作者对 dropout 的动机做了一个十分精彩的类比：
+虽然直观上看 dropout 是 ensemble 在分类性能上的一个近似，然而实际中，dropout 毕竟还是在一个神经网络上进行的，只训练出了一套模型参数。那么它到底是因何而有效呢？这就要从动机上进行分析了。论文中作者对 dropout 的动机做了一个十分精彩的类比：
 
 > A motivation for dropout comes from a theory of the role of sex in evolution (Livnat et al., 2010). Sexual reproduction involves taking half the genes of one parent and half of the other, adding a very small amount of random mutation, and combining them to produce an offspring. The asexual alternative is to create an offspring with a slightly mutated copy of the parent’s genes. It seems plausible that asexual reproduction should be a better way to optimize individual fitness because a good set of genes that have come to work well together can be passed on directly to the offspring. On the other hand, sexual reproduction is likely to break up these co-adapted sets of genes, especially if these sets are large and, intuitively, this should decrease the fitness of organisms that have already evolved complicated co- adaptations. However, sexual reproduction is the way most advanced organisms evolved.
 >
@@ -75,7 +75,7 @@ Dropout 也能达到同样的效果，它强迫一个神经单元，和随机挑
 
   ![](https://farm3.staticflickr.com/2588/32782576600_aefb2c6586_o.png)
 
-  对应的公式变化如下如下：
+  对应的公式变化如下：
 
   - 没有 dropout 的神经网络 
     $$
@@ -126,11 +126,11 @@ Dropout 也能达到同样的效果，它强迫一个神经单元，和随机挑
 
   该论文的实验部分很丰富，有大量的评测数据。
 
-  - maxout 神经网络中得另一种方法，`Cifar-10` 数据集上超越 dropout
+  - maxout 神经网络中的另一种方法，`Cifar-10` 数据集上超越 dropout
 
   - 文本分类上，dropout 效果提升有限，分析原因可能是 `Reuters-RCV1` 数据集中数据量足够大，过拟合并不是模型的主要问题
 
-  - dropout 与其他 standerd regularizers 的对比 
+  - dropout 与其他 standard regularizers 的对比 
 
   - - L2 weight decay
     - lasso
@@ -140,7 +140,7 @@ Dropout 也能达到同样的效果，它强迫一个神经单元，和随机挑
 
   - 特征学习 
 
-    - 标准神经网络，节点之间的相关性使得他们可以合作去 fix 其他节点中得噪声，但这些合作并不能在 unseen data 上泛化，于是，过拟合，dropout 破坏了这种相关性。在 autoencoder 上，有 dropout 的算法更能学习有意义的特征（不过只能从直观上，不能量化）。
+    - 标准神经网络，节点之间的相关性使得他们可以合作去 fix 其他节点中的噪声，但这些合作并不能在 unseen data 上泛化，于是，过拟合，dropout 破坏了这种相关性。在 autoencoder 上，有 dropout 的算法更能学习有意义的特征（不过只能从直观上，不能量化）。
     - 产生的向量具有稀疏性。
     - 保持隐含节点数目不变，dropout 率变化；保持激活的隐节点数目不变，隐节点数目变化。
 
@@ -149,7 +149,7 @@ Dropout 也能达到同样的效果，它强迫一个神经单元，和随机挑
   - 模型均值预测
 
     - 使用 weight-scaling 来做预测的均值化
-    - 使用 mente-carlo 方法来做预测。即对每个样本根据 dropout 率先 sample 出来 $k$ 个 net，然后做预测，$k$ 越大，效果越好。
+    - 使用 monte-carlo 方法来做预测。即对每个样本根据 dropout 率先 sample 出来 $k$ 个 net，然后做预测，$k$ 越大，效果越好。
 
   - Multiplicative Gaussian Noise 
 
@@ -169,7 +169,7 @@ Dropout 也能达到同样的效果，它强迫一个神经单元，和随机挑
 
 ### 噪声派
 
-参考文献中第二篇[^2]论文中得观点，也很强有力。
+参考文献中第二篇[^2]论文中的观点，也很强有力。
 
 #### 观点
 
@@ -185,7 +185,7 @@ Dropout 也能达到同样的效果，它强迫一个神经单元，和随机挑
 
 大致含义就是： 
 
-在线性空间中，学习一个整个空间的特征集合是足够的，但是当数据分布在非线性不连续的空间中得时候，则学习局部空间的特征集合会比较好。
+在线性空间中，学习一个整个空间的特征集合是足够的，但是当数据分布在非线性不连续的空间中的时候，则学习局部空间的特征集合会比较好。
 
 ##### 知识点 B
 
@@ -211,7 +211,7 @@ Dropout 也能达到同样的效果，它强迫一个神经单元，和随机挑
 
 #### 论文中的其他技术知识点
 
-- 将 dropout 映射回得样本训练一个完整的网络，可以达到 dropout 的效果。
+- 将 dropout 映射回的样本训练一个完整的网络，可以达到 dropout 的效果。
 
 - Dropout 由固定值变为一个区间，可以提高效果。
 
