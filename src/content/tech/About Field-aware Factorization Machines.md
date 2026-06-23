@@ -11,21 +11,19 @@ draft: false
 
 > **更多 AI 文章：** [查看 AI 分类](/categories/AI/)
 
-## 「Field-aware Factorization Machines for CTR Prediction 」
+## Introduction
 
 FM 和 FFM 模型都是最近几年提出的模型，凭借其在数据量比较大并且特征稀疏的情况下，仍然能够得到优秀的性能和效果的特性，屡次在各大公司举办的 CTR 预估比赛中获得不错的战绩。
 
 FFM（Field-aware Factorization Machine）最初的概念来自 Yu-Chin Juan（阮毓钦，毕业于中国台湾大学，现在美国 Criteo 工作）[^1]与其比赛队员，是他们借鉴了来自 Michael Jahrer 的论文[「Ensemble of Collaborative Filtering and Feature Engineered Models for Click Through Rate Prediction」](https://kaggle2.blob.core.windows.net/competitions/kddcup2012/2748/media/Opera.pdf)中的 field 概念提出了 FM 的升级版模型，该篇于 2016 年发布。
 
-### Introduction
-
 在 CTR 任务中，大部分样本数据特征是非常稀疏的，使用  One-hot 编码会造成特征空间剧增。而通过对大量样本数据的观察发现某些特征经过关联之后，与最后预测的 label  的相关性就会提高。
 
 因此使用多项式模型，考虑特征之间的组合会更加直观。
 
-### Related Work
+## Related Work
 
-#### Poly 2
+### Poly 2
 
 在多项式模型中，特征 $x_i$ 和 $x_j$ 的组合采用 $x_ix_j$ 表示，即 $x_i$ 和 $x_j$都非零时，组合特征 $x_ix_j$ 才有意义。典型的二阶多项式模型的表达式如下：
 $$
@@ -35,7 +33,7 @@ $$
 
 从公式（1）可以看出，组合特征的参数一共有 $\frac{n(n−1)}{2}$ 个，任意两个参数都是独立的。然而，在数据稀疏性普遍存在的实际应用场景中，二次项参数的训练是很困难的。其原因是，每个参数 $$w_{ij}$$ 的训练需要大量 $$x_i$$ 和 $$x_j$$ 都非零的样本；由于样本数据本来就比较稀疏，满足“$$x_i$$ 和 $$x_j$$ 都非零”的样本将会非常少。训练样本的不足，很容易导致参数 $$w_{ij}$$ 不准确，最终将严重影响模型的性能。
 
-#### FM
+### FM
 
 因此，为了解决二次项参数的训练问题，FM 模型基于矩阵分解的思想，在原有表达式对其稍微进行了一点改动：
 $$
@@ -50,7 +48,7 @@ FM 模型比起 Poly 2 模型，其优点显而易见：
 - 通常 CTR 任务的数据量都是十分庞大的，FM 的参数数量比起 Poly 2 要明显减少，减少了模型的训练时间。
 - FM 的参数并不是相互独立，可以从其他的参数学习得到，在样本稀疏性非常明显的情况下，能够的得到更好更准确的参数，提高了模型的精度。
 
-#### FFM
+### FFM
 
 而我们今天的主角 FFM 模型，在 FM 模型表达式的基础上，更进一步：
 $$
@@ -76,7 +74,7 @@ $$
 
 可以看到，$$w_{ESPN, A}$$ 是因为 Nike 的 field 为 Advertiser（A），$$w_{ESPN,G}$$ 是因为 Male 的 field 为 Gender（G）。
 
-##### FFM 模型数据格式
+#### FFM 模型数据格式
 
 $$
 label \quad field_1:feat_1:val_1 \quad field_2:feat_2:val_2 \quad ...
@@ -125,9 +123,9 @@ $$
 
    所有的特征都属于同一个 field — `sentence`，那么我们的做法就是将 `sentence` 这一 field 放置在每个分词特征之前，相当于是从 FFM 降低到 FM。 
 
-### Experiments
+## Experiments
 
-#### Experiment Setting
+### Experiment Setting
 
 **1. 数据集**
 
@@ -153,7 +151,7 @@ $$
 
 ![FFM](https://farm5.staticflickr.com/4552/24489629838_2654e8c9e6_o.png)
 
-#### Results and Discussion
+### Results and Discussion
 
 相较于 LM、Poly 2 以及 FM 模型，FFM 在该两个数据集上表现更好，拥有更高的准确率。
 
