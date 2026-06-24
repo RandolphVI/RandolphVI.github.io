@@ -144,6 +144,25 @@
   color: var(--color-text);
 }
 
+/* 图注：紧跟图片段落的引用块视为图片说明，去除引用块装饰（边框/背景/装饰引号），改小号淡色非斜体 */
+.article-content p:has(img) + blockquote {
+  margin: -0.8em 0 2.2em;
+  padding: 0.7em 1.4em 0;
+  border-left: none;
+  background: transparent;
+  border-radius: 0;
+}
+.article-content p:has(img) + blockquote::before {
+  content: none;
+}
+.article-content p:has(img) + blockquote p {
+  font-size: 0.85rem;
+  font-style: normal;
+  color: var(--color-muted);
+  line-height: 1.75;
+  margin-bottom: 0;
+}
+
 /* Strong / Bold */
 .article-content strong {
   color: var(--color-heading);
