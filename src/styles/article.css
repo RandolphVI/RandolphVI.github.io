@@ -136,6 +136,14 @@
   margin-bottom: 0;
 }
 
+/* 论文信息 等含列表的信息块：非斜体、字号略大（区别于引用块；期刊名 <em> 仍斜体） */
+.article-content blockquote:has(li) > p,
+.article-content blockquote:has(li) li {
+  font-style: normal;
+  font-size: 1.05rem;
+  color: var(--color-text);
+}
+
 /* Strong / Bold */
 .article-content strong {
   color: var(--color-heading);
