@@ -1,6 +1,6 @@
 ---
 title: "测量通往 AGI 的进展：一个认知框架"
-date: 2026-06-24
+date: 2026-06-21
 category: AI
 tags: [论文阅读, AI评估, AGI, 认知框架]
 description: Google DeepMind 提出用一套认知分类法（10 项认知能力）来可操作化并测量通往 AGI 的进展。
@@ -319,3 +319,9 @@ draft: false
 
 > **引用**
 > **Burnell, R., Yamamori, Y., Firat, O., Olszewska, K., Hughes-Fitt, S., Kelly, O., Galatzer-Levy, I. R., Ringel Morris, M., Dafoe, A., Snyder, A. M., Goodman, N. D., Botvinick, M., & Legg, S.** (2026). Measuring Progress Toward AGI: A Cognitive Framework. *Google DeepMind White Paper*, March 16, 2026.
+
+## 相关阅读
+
+- [Evidence of interrelated cognitive-like capabilities in large language models…](/tech/evidence-of-interrelated-cognitive-like-capabilities-in-large-language-models-indications-of-artificial-general-intelligence-or-achievement/)
+- [认知与人工智能评估框架（CAIE）](/tech/caie-认知与ai评估框架/)
+- [什么是效度？](/tech/什么是效度/)

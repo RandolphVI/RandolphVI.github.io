@@ -1,6 +1,6 @@
 ---
 title: "通用人工智能（GPAI）模型分类框架"
-date: 2026-06-24
+date: 2026-06-17
 category: AI
 tags: [论文阅读, AI评估, GPAI, 欧盟AI法案]
 description: 欧盟 JRC 报告：基于能力与通用性，把欧盟《AI 法案》中的 GPAI（通用人工智能模型）定义拆解为可测量元素的分类框架。
@@ -425,3 +425,8 @@ ADeLe 流程分为：
 ---
 > **引用**
 > **Burden, J., Pacchiardi, L., Martínez-Plumed, F., Hernández-Orallo, J.** (2025). *A Framework for General-Purpose AI Model Categorisation*. Fernández Llorca, D. & Gómez, E. (eds.), Publications Office of the European Union, Luxembourg, JRC143256. DOI: [10.2760/5330387](https://doi.org/10.2760/5330387).
+
+## 相关阅读
+
+- [我们能信任 AI 基准吗？AI 评估当前问题的跨学科综述](/tech/我们能信任ai基准吗/)
+- [Paradigms of AI Evaluation Mapping Goals, Methodologies and Culture](/tech/paradigms-of-ai-evaluation-mapping-goals-methodologies-and-culture/)

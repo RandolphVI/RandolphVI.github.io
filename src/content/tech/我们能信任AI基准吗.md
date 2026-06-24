@@ -174,3 +174,8 @@ AI 模型评估也被 AI 模型中潜在存在的**未知和潜在脆弱性**复
 ---
 > **引用**
 > **Eriksson, M., Purificato, E., Noroozian, A., Vinagre, J., Chaslot, G., Gómez, E., & Fernández-Llorca, D.** (2025). Can We Trust AI Benchmarks? An Interdisciplinary Review of Current Issues in AI Evaluation. *Proceedings of the AAAI/ACM Conference on AI, Ethics, and Society (AIES 2025)*. [arXiv:2502.06559v2](https://arxiv.org/abs/2502.06559).
+
+## 相关阅读
+
+- [迷失在基准中？基于项目反应理论重新思考大语言模型评测](/tech/psn-irt-迷失在基准中/)
+- [通用人工智能（GPAI）模型分类框架](/tech/欧盟jrc-gpai模型分类框架/)
