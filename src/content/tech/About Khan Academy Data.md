@@ -11,10 +11,9 @@ draft: false
 
 > **更多 AI 文章：** [查看 AI 分类](/categories/AI/)
 
-## About Khan Academy Data
 
-### Introduction
-#### Khan Academy Knowledge Structure
+## Introduction
+### Khan Academy Knowledge Structure
 
 ![](https://farm1.staticflickr.com/815/40007475165_3f002df1fc_o.png)
 
@@ -23,7 +22,7 @@ draft: false
 1. 「Computer science」 下的 「Hour of Code」 中的内容会重定位到同级的「 Computer science」 的内容中。
 2. 「Math by subject」 与 「Math by grade」存在交集。
 
-### Data structure
+## Data structure
 
 数据一共为 4 个 `.json` 文件，以及相关视频 **Video** 与相关图片 <strong>Picture</strong>。
 
@@ -40,45 +39,45 @@ draft: false
   - 属于可汗学院中专门的编程题，但是其实重定向后就是对应种类为 **Scratchpad** 内容，简而言之，就是属于 **Scratchpad** 的一小部分内容，但不是 **Scratchpad**  的全部内容。
   - 另外，若数据在 `content.json` 中 `content_kind` 字段为  **Scratchpad** ，并不存在唯一的字段对应到 `code.json` 当中，即不存在直接联系。
 
-#### Logical Structure
+### Logical Structure
 
 ![](https://farm1.staticflickr.com/807/26028761257_c79edc4013_o.png)
 
-#### `content.json`
+### `content.json`
 
 ![](https://farm1.staticflickr.com/815/40193083274_e7ac89c514_o.png)
 
-#### `practice.json`
+### `practice.json`
 
 ![](https://farm5.staticflickr.com/4776/40007579025_a3160e419c_o.png)
 
-#### Different types of content
+### Different types of content
 
-##### Exercise
+#### Exercise
 
 ![](https://farm5.staticflickr.com/4776/26028894047_f866849115_o.png)
 
-##### Picture
+#### Picture
 
 Total **14839** items = **4128** `.png` + **10709** `.svg` (Exists duplicate items)
 
 ![](https://farm1.staticflickr.com/813/40193098264_6ec4f5842e_o.png)
 
-##### Video
+#### Video
 
 ![](https://farm1.staticflickr.com/791/39091655630_73e8720a62_o.png)
 
-##### Article
+#### Article
 
 ![](https://farm1.staticflickr.com/814/40901331191_30e7694fdb_o.png)
 
-##### Scratchpad
+#### Scratchpad
 
 ![](https://farm1.staticflickr.com/802/40859462552_e6bdc986ee_o.png)
 
-### Data Analysis
+## Data Analysis
 
-#### 针对 Domain 为「Math by subject」
+### 针对 Domain 为「Math by subject」
 
 - 各个「subject」的 Video 数量分布图
 
@@ -96,10 +95,10 @@ Total **14839** items = **4128** `.png` + **10709** `.svg` (Exists duplicate ite
 
 ![](https://farm1.staticflickr.com/813/27030780438_74e889defe_o.png)
 
-##### 针对 Video 在所有各个「subject」的数量分布图
+#### 针对 Video 在所有各个「subject」的数量分布图
 
 ![](https://farm1.staticflickr.com/799/27030789618_113a7e0b9c_o.png)
 
-##### 针对 Exercise 在所有各个「subject」的数量分布图
+#### 针对 Exercise 在所有各个「subject」的数量分布图
 
 ![](https://farm1.staticflickr.com/807/27030796068_3ee5504c9e_o.png)
