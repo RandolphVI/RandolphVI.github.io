@@ -2,13 +2,14 @@ import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
 import remarkGfm from 'remark-gfm';
 import remarkMath from 'remark-math';
+import remarkCjkFriendly from 'remark-cjk-friendly';
 import rehypeKatex from 'rehype-katex';
 
 export default defineConfig({
   site: 'https://randolphvi.github.io',
   integrations: [tailwind()],
   markdown: {
-    remarkPlugins: [remarkGfm, remarkMath],
+    remarkPlugins: [remarkGfm, remarkMath, remarkCjkFriendly],
     rehypePlugins: [[rehypeKatex, { strict: false }]],
     shikiConfig: {
       themes: {
