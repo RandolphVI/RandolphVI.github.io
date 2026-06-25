@@ -1,7 +1,7 @@
 ---
 title: "CNN Introduction"
 date: 2017-03-07
-category: "AI"
+category: 深度学习
 tags: ["Machine Learning"]
 description: "本文主要介绍 Deep Learning 中的 CNN 卷积神经网络。"
 draft: false

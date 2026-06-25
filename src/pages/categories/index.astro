@@ -4,62 +4,31 @@ import { getPublishedPosts, getPublishedTech } from '../../utils/collections';
 
 const posts = await getPublishedPosts();
 const tech = await getPublishedTech();
-const aiArticles = tech.filter(a => a.data.category === 'AI');
 
-// --- AI: 深度学习 ---
-const dlKeywords = ['Dropout', 'CNN', 'LSTM', 'RNN', 'RCNN', 'Word Representation', 'Word Embedding'];
-const aiDeepLearning = aiArticles.filter(a =>
-  dlKeywords.some(k => a.data.title.includes(k)) && !a.data.tags.includes('Books')
-);
+// ===== tech：按 category 字段分组 =====
+const byCat = {};
+for (const a of tech) (byCat[a.data.category] ??= []).push(a);
+const sortDesc = (arr) => arr.slice().sort((a, b) => new Date(b.data.date) - new Date(a.data.date));
+const catList = (name) => sortDesc(byCat[name] ?? []);
 
-// --- AI: 理论学习 ---
-const aiTheory = aiArticles.filter(a => a.data.title.includes('Cross Entropy'));
+// 「AI」Tab 下的细分分类（按由浅入深的阅读顺序）
+const aiCats = ['机器学习', '深度学习', '自然语言处理', '推荐系统', '计算机视觉', 'AI 评估'];
+const aiCount = aiCats.reduce((s, c) => s + (byCat[c]?.length ?? 0), 0);
 
-// --- AI: 机器学习 ---
-const mlKeywords = ['Factorization', 'Imbalanced', 'JPEG'];
-const aiML = aiArticles.filter(a =>
-  mlKeywords.some(k => a.data.title.includes(k)) && !a.data.tags.includes('Books')
-);
+// 数据 / 评价 / 杂谈
+const dataArticles = catList('数据分析');
+const evalArticles = catList('评价');
+const techEssays = catList('杂谈');
 
-// --- AI: 读书笔记 ---
-const aiBooks = aiArticles.filter(a => a.data.tags.includes('Books'));
-const mlBooks = aiBooks.filter(a => a.data.title.includes('Machine Learning'));
-const nlpBooks = aiBooks.filter(a => a.data.title.includes('NLP'));
-const pciBooks = aiBooks.filter(a => a.data.title.includes('Programming Collective'));
-const otherBooks = aiBooks.filter(a =>
-  !mlBooks.includes(a) && !nlpBooks.includes(a) && !pciBooks.includes(a)
-);
+// 架构（工具 + 前端）
+const toolArticles = byCat['工具'] ?? [];
+const archSpider = sortDesc(toolArticles.filter(a => a.data.tags.includes('Web Scraping')));
+const archDB = sortDesc(toolArticles.filter(a => a.data.tags.includes('MongoDB')));
+const archFrontend = catList('前端');
+const archOther = sortDesc(toolArticles.filter(a => !a.data.tags.includes('Web Scraping') && !a.data.tags.includes('MongoDB')));
 
-// --- AI: 论文阅读 ---
-const aiPapers = aiArticles.filter(a => a.data.tags.includes('论文阅读'));
-
-// --- AI: 其他 ---
-const aiOther = aiArticles.filter(a =>
-  !aiDeepLearning.includes(a) && !aiTheory.includes(a) && !aiML.includes(a) && !aiBooks.includes(a) && !aiPapers.includes(a)
-  && !a.data.title.includes('科技碎碎念') && !a.data.title.includes('Khan Academy')
-);
-
-// --- 数据 ---
-const dataArticles = tech.filter(a => a.data.title.includes('Khan Academy'));
-
-// --- 杂谈 (tech) ---
-const techEssays = tech.filter(a => a.data.title.includes('科技碎碎念'));
-
-// --- 评价 ---
-const evalArticles = tech.filter(a => a.data.category === '评价');
-
-// --- 架构 ---
-const archArticles = tech.filter(a => a.data.category === '工具' || a.data.category === '前端');
-const archSpider = archArticles.filter(a => a.data.tags.includes('Web Scraping'));
-const archDB = archArticles.filter(a => a.data.tags.includes('MongoDB'));
-const archFrontend = tech.filter(a => a.data.category === '前端');
-const archOther = archArticles.filter(a =>
-  !archSpider.includes(a) && !archDB.includes(a) && !archFrontend.includes(a)
-);
-
-// --- 匯文 ---
+// ===== 匯文（小说 / 随笔）=====
 const huiwen = posts.filter(a => a.data.category === '匯文');
-// 小说 sub-series
 const novelZiNan = huiwen.filter(a => a.data.tags.includes('子囡'));
 const novelMoonTraveler = huiwen.filter(a => a.data.tags.includes('月球旅客'));
 const novelFu = huiwen.filter(a => a.data.tags.includes('芾系列'));
@@ -70,8 +39,8 @@ const hasNovels = novelZiNan.length + novelMoonTraveler.length + novelFu.length 
 
 const tabs = [
   { id: 'huiwen', label: '匯文', count: huiwen.length + techEssays.length },
-  { id: 'ai', label: 'AI', count: aiArticles.length - techEssays.length - dataArticles.length },
-  { id: 'arch', label: '架构', count: archArticles.length + archFrontend.length },
+  { id: 'ai', label: 'AI', count: aiCount },
+  { id: 'arch', label: '架构', count: toolArticles.length + archFrontend.length },
   { id: 'eval', label: '评价', count: evalArticles.length },
   { id: 'data', label: '数据', count: dataArticles.length },
 ];
@@ -203,93 +172,16 @@ const tabs = [
       {/* ========== AI ========== */}
       <div class="cat-panel hidden" data-panel="ai">
         <div class="tree-root">
-          {aiDeepLearning.length > 0 && (
+          {aiCats.map(c => (byCat[c]?.length > 0) && (
             <div class="tree-node">
-              <div class="tree-node-label">深度学习</div>
+              <div class="tree-node-label">{c}</div>
               <ul class="tree-list">
-                {aiDeepLearning.map(a => (
+                {catList(c).map(a => (
                   <li><a href={`/tech/${a.id}/`} class="tree-link border-none">{a.data.title}</a></li>
                 ))}
               </ul>
             </div>
-          )}
-          {aiTheory.length > 0 && (
-            <div class="tree-node">
-              <div class="tree-node-label">理论学习</div>
-              <ul class="tree-list">
-                {aiTheory.map(a => (
-                  <li><a href={`/tech/${a.id}/`} class="tree-link border-none">{a.data.title}</a></li>
-                ))}
-              </ul>
-            </div>
-          )}
-          {aiML.length > 0 && (
-            <div class="tree-node">
-              <div class="tree-node-label">机器学习</div>
-              <ul class="tree-list">
-                {aiML.map(a => (
-                  <li><a href={`/tech/${a.id}/`} class="tree-link border-none">{a.data.title}</a></li>
-                ))}
-              </ul>
-            </div>
-          )}
-          {aiPapers.length > 0 && (
-            <div class="tree-node">
-              <div class="tree-node-label">论文阅读</div>
-              <ul class="tree-list">
-                {aiPapers.map(a => (
-                  <li><a href={`/tech/${a.id}/`} class="tree-link border-none">{a.data.title}</a></li>
-                ))}
-              </ul>
-            </div>
-          )}
-          {aiBooks.length > 0 && (
-            <div class="tree-node">
-              <div class="tree-node-label">读书笔记</div>
-              <div class="tree-sub-nodes">
-                {mlBooks.length > 0 && (
-                  <div class="tree-sub-node">
-                    <div class="tree-sub-label">Machine Learning（周志华）</div>
-                    <ul class="tree-list">
-                      {mlBooks.map(a => (
-                        <li><a href={`/tech/${a.id}/`} class="tree-link border-none">{a.data.title}</a></li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-                {nlpBooks.length > 0 && (
-                  <div class="tree-sub-node">
-                    <div class="tree-sub-label">NLP with Python</div>
-                    <ul class="tree-list">
-                      {nlpBooks.map(a => (
-                        <li><a href={`/tech/${a.id}/`} class="tree-link border-none">{a.data.title}</a></li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-                {pciBooks.length > 0 && (
-                  <div class="tree-sub-node">
-                    <div class="tree-sub-label">Programming Collective Intelligence</div>
-                    <ul class="tree-list">
-                      {pciBooks.map(a => (
-                        <li><a href={`/tech/${a.id}/`} class="tree-link border-none">{a.data.title}</a></li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-              </div>
-            </div>
-          )}
-          {aiOther.length > 0 && (
-            <div class="tree-node">
-              <div class="tree-node-label">其他</div>
-              <ul class="tree-list">
-                {aiOther.map(a => (
-                  <li><a href={`/tech/${a.id}/`} class="tree-link border-none">{a.data.title}</a></li>
-                ))}
-              </ul>
-            </div>
-          )}
+          ))}
         </div>
       </div>
 
@@ -362,7 +254,7 @@ const tabs = [
       <div class="cat-panel hidden" data-panel="data">
         <div class="tree-root">
           <div class="tree-node">
-            <div class="tree-node-label">网站</div>
+            <div class="tree-node-label">数据分析</div>
             <ul class="tree-list">
               {dataArticles.map(a => (
                 <li><a href={`/tech/${a.id}/`} class="tree-link border-none">{a.data.title}</a></li>

@@ -1,7 +1,7 @@
 ---
 title: "About Text Classification based on RCNN"
 date: 2017-10-10
-category: "AI"
+category: 自然语言处理
 tags: ["Deep Learning", "NLP", "Papers"]
 description: "「Recurrent Convolutional Neural Networks for Text Classification」"
 draft: false

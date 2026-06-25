@@ -1,7 +1,7 @@
 ---
 title: "Use WeChat to Monitor Your Network"
 date: 2017-03-17
-category: "AI"
+category: 工具
 tags: ["TensorFlow", "Machine Learning", "WeChat", "Python"]
 description: "平时，大家自己的机器模型在训练期间（特别是深度网络），训练时间通常几小时到十几小时不等，甚至可能会花上好几天，那么在这段时间，你们又会干些什么事情呢？作为程序员，这里提供一个「有趣的」方式，用你的微信来监控你的模型在训练期间的一举一动。"
 draft: false

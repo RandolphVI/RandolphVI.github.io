@@ -1,7 +1,7 @@
 ---
 title: "测量通往 AGI 的进展：一个认知框架"
 date: 2026-06-21
-category: AI
+category: AI 评估
 tags: [论文阅读, AI评估, AGI, 认知框架]
 description: Google DeepMind 提出用一套认知分类法（10 项认知能力）来可操作化并测量通往 AGI 的进展。
 draft: false

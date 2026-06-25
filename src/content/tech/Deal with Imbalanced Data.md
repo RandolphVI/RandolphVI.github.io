@@ -1,7 +1,7 @@
 ---
 title: "Deal with Imbalanced Data"
 date: 2017-09-06
-category: "AI"
+category: 数据分析
 tags: ["Machine Learning"]
 description: "本文主要介绍在机器学习中样本比例不平衡的处理方法。"
 draft: false

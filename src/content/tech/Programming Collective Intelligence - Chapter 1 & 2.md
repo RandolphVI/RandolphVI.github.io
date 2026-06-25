@@ -1,7 +1,7 @@
 ---
 title: "Programming Collective Intelligence - Chapter 1 & 2"
 date: 2016-03-12
-category: "AI"
+category: 机器学习
 tags: ["Machine Learning", "Books", "Python"]
 description: "本文是关于「Programming Collective Intelligence」这本书的 Chapter 1 & 2 的学习笔记。"
 draft: false

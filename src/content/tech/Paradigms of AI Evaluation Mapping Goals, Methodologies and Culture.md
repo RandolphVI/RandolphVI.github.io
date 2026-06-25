@@ -1,7 +1,7 @@
 ---
 title: "Paradigms of AI Evaluation Mapping Goals, Methodologies and Culture"
 date: 2025-07-08
-category: AI
+category: AI 评估
 tags: [论文阅读, AI评估, 评估范式]
 description: 解决AI评估领域的碎片化困境：多学科参与导致范式孤立、术语冲突、方法论隔阂，进而引发研究重复、公众误解及政策实施困难（如欧盟《AI法案》中“评估”一词的多义性）。
 draft: false

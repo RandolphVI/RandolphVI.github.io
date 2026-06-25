@@ -1,7 +1,7 @@
 ---
 title: "JPEG Compression"
 date: 2016-4-15
-category: "AI"
+category: 计算机视觉
 tags: ["Computer Vision", "Python"]
 description: "本文介绍了关于信息隐藏中的图像 JPEG 压缩标准方法，JPEG 是一种针对照片视频而广泛使用的一种「有损压缩」标准方法。"
 draft: false

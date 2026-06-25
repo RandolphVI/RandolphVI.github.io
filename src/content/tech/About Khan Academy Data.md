@@ -1,7 +1,7 @@
 ---
 title: "About Khan Academy Data"
 date: 2018-03-19
-category: "AI"
+category: 数据分析
 tags: ["Datasets"]
 description: "本文主要介绍了可汗学院的内容逻辑结构以及进行了一些初步的数据分析。"
 draft: false

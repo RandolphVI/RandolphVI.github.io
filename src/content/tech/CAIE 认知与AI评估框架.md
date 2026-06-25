@@ -1,7 +1,7 @@
 ---
 title: "认知与人工智能评估框架（CAIE）"
 date: 2026-06-22
-category: AI
+category: AI 评估
 tags: [论文阅读, AI评估, 认知评估]
 description: 把 90+ 项认知特征归入六大评估区域、用两阶段评分模型评估人工与信息系统智能的结构化、领域无关框架。
 draft: false

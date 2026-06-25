@@ -1,7 +1,7 @@
 ---
 title: "How to Generate a Good Word Embedding?"
 date: 2017-10-14
-category: "AI"
+category: 自然语言处理
 tags: ["Machine Learning"]
 description: "本文介绍了如何生成简单有效的词向量的方法。"
 draft: true

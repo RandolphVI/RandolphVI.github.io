@@ -1,7 +1,7 @@
 ---
 title: "我们能信任 AI 基准吗？AI 评估当前问题的跨学科综述"
 date: 2026-06-24
-category: AI
+category: AI 评估
 tags: [论文阅读, AI评估, 基准可信度]
 description: 欧盟 JRC 的跨学科综述：从九个角度剖析当前 AI 基准在数据、构念效度、社会文化、商业、游戏化等方面的可信度问题。
 draft: false

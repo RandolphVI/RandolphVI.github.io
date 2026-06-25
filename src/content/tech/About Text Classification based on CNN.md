@@ -1,7 +1,7 @@
 ---
 title: "About Text Classification based on CNN"
 date: 2017-03-10
-category: "AI"
+category: 自然语言处理
 tags: ["Machine Learning", "TensorFlow", "Python"]
 description: "本文介绍了 CNN 用于文本分类任务的流程，并结合 TensorFlow 代码详细介绍实现细节。"
 draft: false

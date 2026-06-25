@@ -1,7 +1,7 @@
 ---
 title: "Tensorboard"
 date: 2017-03-13
-category: "AI"
+category: 工具
 tags: ["TensorFlow", "Machine Learning", "Python"]
 description: "本文主要介绍 TensorFlow 的 Tensorboard 功能。"
 draft: false

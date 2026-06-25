@@ -1,7 +1,7 @@
 ---
 title: "Evidence of interrelated cognitive-like capabilities in large language models, Indications of artificial general intelligence or achievement"
 date: 2025-07-09
-category: AI
+category: AI 评估
 tags: [论文阅读]
 description: 核心解决两个相互关联的问题：
 draft: false

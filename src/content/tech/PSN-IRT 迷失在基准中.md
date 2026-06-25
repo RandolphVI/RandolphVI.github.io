@@ -1,7 +1,7 @@
 ---
 title: "迷失在基准中？基于项目反应理论重新思考大语言模型评测"
 date: 2026-06-19
-category: AI
+category: AI 评估
 tags: [论文阅读, AI评估, IRT, 基准测试]
 description: 针对 LLM 基准排名不一致、顶级模型弱可分辨的问题，用伪孪生网络（PSN-IRT）从项目反应理论角度重新审视基准有效性。
 draft: false

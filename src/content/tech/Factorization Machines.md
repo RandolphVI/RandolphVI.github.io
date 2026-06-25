@@ -1,7 +1,7 @@
 ---
 title: "Factorization Machines"
 date: 2017-03-03
-category: "AI"
+category: 推荐系统
 tags: ["Machine Learning"]
 description: "本文介绍了 Factorization Machines 隐因子分解机模型，包括模型数学知识介绍以及与其他模型的对比。"
 draft: false

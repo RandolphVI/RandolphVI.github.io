@@ -1,7 +1,7 @@
 ---
 title: "About Word Representations"
 date: 2017-10-13
-category: "AI"
+category: 自然语言处理
 tags: ["NLP", "Papers"]
 description: "「Efficient Estimation of Word Representations in Vector Space」"
 draft: false

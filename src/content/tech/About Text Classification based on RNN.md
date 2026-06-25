@@ -1,7 +1,7 @@
 ---
 title: "About Text Classification based on RNN"
 date: 2017-10-17
-category: "AI"
+category: 自然语言处理
 tags: ["Deep Learning", "NLP", "Papers"]
 description: "「Recurrent Neural Network for Text Classification with Multi-Task Learning」"
 draft: false

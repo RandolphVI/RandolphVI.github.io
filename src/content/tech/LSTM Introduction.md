@@ -1,7 +1,7 @@
 ---
 title: "LSTM Introduction"
 date: 2017-09-08
-category: "AI"
+category: 深度学习
 tags: ["Machine Learning"]
 description: "本文主要介绍 Deep Learning 中的 LSTM 神经网络。"
 draft: false

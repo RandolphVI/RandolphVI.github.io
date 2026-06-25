@@ -1,7 +1,7 @@
 ---
 title: "About Dropout"
 date: 2017-03-01
-category: "AI"
+category: 深度学习
 tags: ["Machine Learning"]
 description: "Dropout 是深度学习中防止过拟合提高效果的一个大杀器，但对于其为何有效，却众说纷纭。"
 draft: false

@@ -1,7 +1,7 @@
 ---
 title: "通用人工智能（GPAI）模型分类框架"
 date: 2026-06-17
-category: AI
+category: AI 评估
 tags: [论文阅读, AI评估, GPAI, 欧盟AI法案]
 description: 欧盟 JRC 报告：基于能力与通用性，把欧盟《AI 法案》中的 GPAI（通用人工智能模型）定义拆解为可测量元素的分类框架。
 draft: false

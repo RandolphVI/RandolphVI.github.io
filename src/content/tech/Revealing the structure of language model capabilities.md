@@ -1,7 +1,7 @@
 ---
 title: Revealing the structure of language model capabilities
 date: 2025-07-08
-category: AI
+category: AI 评估
 tags: [论文阅读, LLM, 因子分析]
 description: 核心问题：如何理论化和量化分析大规模语言模型（LLMs）的能力结构？
 draft: false

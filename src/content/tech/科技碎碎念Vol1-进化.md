@@ -1,7 +1,7 @@
 ---
 title: "科技碎碎念 Vol.1 进化"
 date: 2023-12-06
-category: "AI"
+category: 杂谈
 tags: ["AI"]
 description: "无论是最让上帝骄傲的人类、最精密的机器还是最复杂的程序，都无法逃避照料和维护的必要性。"
 draft: false

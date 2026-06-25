@@ -1,7 +1,7 @@
 ---
 title: Inferring Capabilities from Task Performance with Bayesian Triangulation
 date: 2025-07-09
-category: AI
+category: AI 评估
 tags: [论文阅读, 认知能力评估, 贝叶斯网络, 贝叶斯三角测量]
 description: 核心问题：如何从任务表现中推断机器学习系统的认知能力（如记忆、导航），而非仅依赖聚合评分或总体统计。
 draft: false

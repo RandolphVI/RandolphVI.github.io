@@ -1,7 +1,7 @@
 ---
 title: "Cross Entropy in TensorFlow"
 date: 2017-09-25
-category: "AI"
+category: 深度学习
 tags: ["TensorFlow", "Machine Learning", "Python"]
 description: "交叉熵（Cross Entropy）是 Loss 函数的一种（也称为损失函数或代价函数），用于描述模型预测值与真实值的差距大小，TensorFlow 本身也提供了多种交叉熵算法的实现，本文详细介绍了 TensorFlow 中各个交叉熵函数的用法。"
 draft: false
