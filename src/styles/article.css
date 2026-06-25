@@ -144,23 +144,36 @@
   color: var(--color-text);
 }
 
-/* 图注：紧跟图片段落的引用块视为图片说明，去除引用块装饰（边框/背景/装饰引号），改小号淡色非斜体 */
-.article-content p:has(img) + blockquote {
-  margin: -0.8em 0 2.2em;
-  padding: 0.7em 1.4em 0;
+/* 图注/表注：去引用块装饰，小号淡色非斜体居中
+   - 图注：紧跟图片段落的引用块，置于图片下方
+   - 表注：紧接表格之前的引用块，置于表格上方 */
+.article-content p:has(img) + blockquote,
+.article-content blockquote:has(+ table) {
   border-left: none;
   background: transparent;
   border-radius: 0;
+  text-align: center;
 }
-.article-content p:has(img) + blockquote::before {
+.article-content p:has(img) + blockquote {
+  margin: -0.8em 0 2.2em;
+  padding: 0.7em 1.4em 0;
+}
+.article-content blockquote:has(+ table) {
+  margin: 1.5em 0 -0.6em;
+  padding: 0 1.4em 0.5em;
+}
+.article-content p:has(img) + blockquote::before,
+.article-content blockquote:has(+ table)::before {
   content: none;
 }
-.article-content p:has(img) + blockquote p {
+.article-content p:has(img) + blockquote p,
+.article-content blockquote:has(+ table) p {
   font-size: 0.85rem;
   font-style: normal;
   color: var(--color-muted);
   line-height: 1.75;
   margin-bottom: 0;
+  text-align: center;
 }
 
 /* Strong / Bold */
