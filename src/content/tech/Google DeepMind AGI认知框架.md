@@ -282,7 +282,7 @@ draft: false
 
 ## 相关阅读
 
-- [Evidence of interrelated cognitive-like capabilities in large language models…](/tech/evidence-of-interrelated-cognitive-like-capabilities-in-large-language-models-indications-of-artificial-general-intelligence-or-achievement/)
+- [大语言模型中相互关联的类认知能力：AGI 的迹象，还是成就的迹象？](/tech/大语言模型的类认知能力/)
 - [认知与人工智能评估框架（CAIE）](/tech/caie-认知与ai评估框架/)
 - [什么是效度？](/tech/什么是效度/)
 

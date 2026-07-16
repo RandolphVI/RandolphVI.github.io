@@ -410,7 +410,7 @@ ADeLe 流程分为：
 ## 相关阅读
 
 - [我们能信任 AI 基准吗？AI 评估当前问题的跨学科综述](/tech/我们能信任ai基准吗/)
-- [Paradigms of AI Evaluation Mapping Goals, Methodologies and Culture](/tech/paradigms-of-ai-evaluation-mapping-goals-methodologies-and-culture/)
+- [AI 评估的范式图谱：目标、方法论与文化](/tech/ai评估范式图谱/)
 
 [^tn-adele]: ADeLe 是 Zhou 等人 2025/2026 年在 *Nature* 上发表的 AI 评测框架，核心思想是把每个测试题对各种认知能力的“需求级别”事先标注好，再用模型答题情况反推它的能力级别。
 [^tn1]: 自监督学习（self-supervision）指模型从无标注数据中自动构造监督信号进行训练，例如让模型预测文本中被遮挡的下一个词。当代大语言模型几乎都采用这种方法。
