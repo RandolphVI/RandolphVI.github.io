@@ -1,6 +1,6 @@
 ---
 title: "随便读读 Vol.1 地海巫师"
-date: 2024-01-15
+date: 2024-05-14
 category: "匯文"
 tags: ["读书"]
 description: "Le Guin 的地海巫师，一个关于自我认知与内心黑暗的寓言"
