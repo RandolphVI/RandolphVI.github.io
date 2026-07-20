@@ -19,6 +19,22 @@
   margin-right: 0.2em;
 }
 
+/* 段首为引号/括号的段落不做首字下沉（::first-letter 会连同前置标点一起放大） */
+.article-content > blockquote:first-of-type + p.no-dropcap::first-letter,
+.article-content > p.no-dropcap:first-of-type::first-letter {
+  float: none;
+  font-size: inherit;
+  line-height: inherit;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: none;
+  text-shadow: none;
+  color: inherit;
+  font-family: inherit;
+  font-weight: inherit;
+}
+
 /* Clear drop cap float for subsequent elements */
 .article-content > blockquote:first-of-type + p + ul,
 .article-content > blockquote:first-of-type + p + ol,
